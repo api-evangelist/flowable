@@ -1,0 +1,254 @@
+vocabulary:
+  name: Flowable API Vocabulary
+  description: >-
+    Common terms, concepts, and resource types used across the Flowable BPM
+    and workflow REST APIs including BPMN, CMMN, DMN, Form, Content, IDM,
+    and External Worker APIs.
+  version: '2025.2'
+  url: https://www.flowable.com
+  terms:
+
+    # Core Process Concepts
+    - term: processDefinition
+      label: Process Definition
+      description: >-
+        A BPMN 2.0 process model that defines the sequence of activities,
+        gateways, and events in a business process workflow.
+      type: Resource
+      api: BPMN
+      endpoint: /process-definitions
+
+    - term: processInstance
+      label: Process Instance
+      description: >-
+        A running execution of a process definition, representing one
+        active invocation of the workflow with its own state and variables.
+      type: Resource
+      api: BPMN
+      endpoint: /process-instances
+
+    - term: task
+      label: Task
+      description: >-
+        A unit of work assigned to a user or group within a running process
+        or case instance. Tasks can be claimed, completed, and delegated.
+      type: Resource
+      api: BPMN
+      endpoint: /tasks
+
+    - term: deployment
+      label: Deployment
+      description: >-
+        A package of process, case, or decision definitions uploaded to the
+        Flowable engine. Deployments can contain BPMN, CMMN, DMN, and form
+        definition files.
+      type: Resource
+      api: BPMN, CMMN, DMN
+      endpoint: /deployments
+
+    - term: execution
+      label: Execution
+      description: >-
+        A pointer to a specific point within an active process instance,
+        representing the current state of one path through the process.
+      type: Resource
+      api: BPMN
+      endpoint: /executions
+
+    - term: variable
+      label: Variable
+      description: >-
+        A named value stored on a process instance, execution, task, or
+        case instance. Variables carry data through the workflow.
+      type: Concept
+      api: BPMN, CMMN
+
+    - term: job
+      label: Job
+      description: >-
+        An asynchronous unit of work scheduled or triggered by a timer,
+        message, or async continuation within a process or case.
+      type: Resource
+      api: BPMN
+      endpoint: /jobs
+
+    - term: deadLetterJob
+      label: Dead Letter Job
+      description: >-
+        A job that has failed the maximum number of retry attempts and been
+        moved to the dead letter queue for manual inspection and replay.
+      type: Resource
+      api: BPMN
+      endpoint: /deadletter-jobs
+
+    # CMMN Case Concepts
+    - term: caseDefinition
+      label: Case Definition
+      description: >-
+        A CMMN case model that defines adaptive, event-driven case lifecycle
+        with plan items, milestones, stages, and discretionary tasks.
+      type: Resource
+      api: CMMN
+      endpoint: /cmmn-repository/case-definitions
+
+    - term: caseInstance
+      label: Case Instance
+      description: >-
+        A running instance of a case definition with its own plan item instances,
+        milestones, and associated data.
+      type: Resource
+      api: CMMN
+      endpoint: /cmmn-runtime/case-instances
+
+    - term: planItem
+      label: Plan Item
+      description: >-
+        An element within a CMMN case that can be a task, stage, milestone,
+        or event listener with lifecycle-controlled activation.
+      type: Resource
+      api: CMMN
+      endpoint: /cmmn-runtime/plan-item-instances
+
+    - term: milestone
+      label: Milestone
+      description: >-
+        A CMMN plan item representing an achievable objective within a case
+        that, when reached, indicates a significant phase of the case.
+      type: Concept
+      api: CMMN
+
+    # DMN Decision Concepts
+    - term: decisionDefinition
+      label: Decision Definition
+      description: >-
+        A DMN decision table or decision requirements diagram defining business
+        rules and decision logic for automated evaluation.
+      type: Resource
+      api: DMN
+      endpoint: /dmn-repository/decision-definitions
+
+    - term: decisionExecution
+      label: Decision Execution
+      description: >-
+        The result of evaluating a decision table against a set of input values,
+        returning one or more output row results.
+      type: Concept
+      api: DMN
+
+    # Form Concepts
+    - term: formDefinition
+      label: Form Definition
+      description: >-
+        A structured definition of a user form used within tasks and start
+        events for capturing and displaying data.
+      type: Resource
+      api: Form
+      endpoint: /form/form-definitions
+
+    - term: formInstance
+      label: Form Instance
+      description: >-
+        A completed submission of a form definition, capturing the data
+        entered by a user during a task or process start.
+      type: Resource
+      api: Form
+      endpoint: /form/form-instances
+
+    # Content Concepts
+    - term: contentItem
+      label: Content Item
+      description: >-
+        A binary attachment or file associated with a task, process instance,
+        or case instance stored in the content repository.
+      type: Resource
+      api: Content
+      endpoint: /content/content-items
+
+    # IDM Concepts
+    - term: user
+      label: User
+      description: >-
+        An individual identity within the Flowable IDM system that can be
+        assigned tasks, added to groups, and granted privileges.
+      type: Resource
+      api: IDM
+      endpoint: /idm/users
+
+    - term: group
+      label: Group
+      description: >-
+        A named collection of users used for candidate group assignment on
+        tasks and access control within Flowable.
+      type: Resource
+      api: IDM
+      endpoint: /idm/groups
+
+    - term: privilege
+      label: Privilege
+      description: >-
+        A named permission granted to users or groups to control access to
+        specific features or administrative functions in Flowable.
+      type: Resource
+      api: IDM
+      endpoint: /idm/privileges
+
+    # External Worker Concepts
+    - term: externalWorkerJob
+      label: External Worker Job
+      description: >-
+        A service task in a BPMN or CMMN process designed to be acquired and
+        completed by an external worker process using polling.
+      type: Resource
+      api: External Worker
+      endpoint: /acquire/jobs
+
+    - term: acquireJob
+      label: Acquire Job
+      description: >-
+        The act of an external worker client locking an available external job
+        for exclusive processing within a specified lock duration.
+      type: Operation
+      api: External Worker
+
+    - term: bpmnError
+      label: BPMN Error
+      description: >-
+        A signal sent from an external worker indicating a business error
+        occurred during job processing, triggering a BPMN error boundary event.
+      type: Concept
+      api: External Worker
+
+    # Common Cross-API Terms
+    - term: tenantId
+      label: Tenant ID
+      description: >-
+        An identifier that partitions Flowable resources for multi-tenancy,
+        scoping definitions, instances, and queries to a specific tenant.
+      type: Property
+      api: BPMN, CMMN, DMN, Form, Content, IDM
+
+    - term: businessKey
+      label: Business Key
+      description: >-
+        A user-defined identifier on a process or case instance providing a
+        business-meaningful reference independent of the system-generated ID.
+      type: Property
+      api: BPMN, CMMN
+
+    - term: historicProcessInstance
+      label: Historic Process Instance
+      description: >-
+        A completed or terminated process instance record retained in the
+        history tables for audit, reporting, and compliance purposes.
+      type: Resource
+      api: BPMN
+      endpoint: /history/historic-process-instances
+
+    - term: historicTask
+      label: Historic Task
+      description: >-
+        A completed task record stored in history, capturing completion time,
+        assignee, duration, and outcome data.
+      type: Resource
+      api: BPMN
+      endpoint: /history/historic-task-instances

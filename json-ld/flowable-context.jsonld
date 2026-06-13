@@ -1,0 +1,255 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "flowable": "https://www.flowable.com/vocabulary/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+
+    "ProcessDefinition": "flowable:ProcessDefinition",
+    "ProcessInstance": "flowable:ProcessInstance",
+    "Task": "flowable:Task",
+    "Deployment": "flowable:Deployment",
+    "Execution": "flowable:Execution",
+    "Job": "flowable:Job",
+    "DeadLetterJob": "flowable:DeadLetterJob",
+    "CaseDefinition": "flowable:CaseDefinition",
+    "CaseInstance": "flowable:CaseInstance",
+    "PlanItem": "flowable:PlanItem",
+    "Milestone": "flowable:Milestone",
+    "DecisionDefinition": "flowable:DecisionDefinition",
+    "FormDefinition": "flowable:FormDefinition",
+    "FormInstance": "flowable:FormInstance",
+    "ContentItem": "flowable:ContentItem",
+    "User": "flowable:User",
+    "Group": "flowable:Group",
+    "Privilege": "flowable:Privilege",
+    "ExternalWorkerJob": "flowable:ExternalWorkerJob",
+    "HistoricProcessInstance": "flowable:HistoricProcessInstance",
+    "HistoricTask": "flowable:HistoricTask",
+
+    "id": "@id",
+    "type": "@type",
+
+    "processDefinitionId": {
+      "@id": "flowable:processDefinitionId",
+      "@type": "xsd:string"
+    },
+    "processDefinitionKey": {
+      "@id": "flowable:processDefinitionKey",
+      "@type": "xsd:string"
+    },
+    "processDefinitionName": {
+      "@id": "flowable:processDefinitionName",
+      "@type": "xsd:string"
+    },
+    "processInstanceId": {
+      "@id": "flowable:processInstanceId",
+      "@type": "xsd:string"
+    },
+    "businessKey": {
+      "@id": "flowable:businessKey",
+      "@type": "xsd:string"
+    },
+    "tenantId": {
+      "@id": "flowable:tenantId",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "category": {
+      "@id": "flowable:category",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:integer"
+    },
+    "key": {
+      "@id": "flowable:key",
+      "@type": "xsd:string"
+    },
+    "deploymentId": {
+      "@id": "flowable:deploymentId",
+      "@type": "xsd:string"
+    },
+    "resourceName": {
+      "@id": "flowable:resourceName",
+      "@type": "xsd:string"
+    },
+    "suspended": {
+      "@id": "flowable:suspended",
+      "@type": "xsd:boolean"
+    },
+    "ended": {
+      "@id": "flowable:ended",
+      "@type": "xsd:boolean"
+    },
+    "startTime": {
+      "@id": "flowable:startTime",
+      "@type": "xsd:dateTime"
+    },
+    "endTime": {
+      "@id": "flowable:endTime",
+      "@type": "xsd:dateTime"
+    },
+    "dueDate": {
+      "@id": "flowable:dueDate",
+      "@type": "xsd:dateTime"
+    },
+    "createTime": {
+      "@id": "flowable:createTime",
+      "@type": "xsd:dateTime"
+    },
+    "owner": {
+      "@id": "flowable:owner",
+      "@type": "xsd:string"
+    },
+    "assignee": {
+      "@id": "flowable:assignee",
+      "@type": "xsd:string"
+    },
+    "priority": {
+      "@id": "flowable:priority",
+      "@type": "xsd:integer"
+    },
+    "formKey": {
+      "@id": "flowable:formKey",
+      "@type": "xsd:string"
+    },
+    "executionId": {
+      "@id": "flowable:executionId",
+      "@type": "xsd:string"
+    },
+    "parentTaskId": {
+      "@id": "flowable:parentTaskId",
+      "@type": "xsd:string"
+    },
+    "variables": {
+      "@id": "flowable:variables",
+      "@container": "@list"
+    },
+    "variableName": {
+      "@id": "flowable:variableName",
+      "@type": "xsd:string"
+    },
+    "variableValue": {
+      "@id": "flowable:variableValue"
+    },
+    "variableType": {
+      "@id": "flowable:variableType",
+      "@type": "xsd:string"
+    },
+    "caseDefinitionId": {
+      "@id": "flowable:caseDefinitionId",
+      "@type": "xsd:string"
+    },
+    "caseDefinitionKey": {
+      "@id": "flowable:caseDefinitionKey",
+      "@type": "xsd:string"
+    },
+    "caseInstanceId": {
+      "@id": "flowable:caseInstanceId",
+      "@type": "xsd:string"
+    },
+    "planItemDefinitionId": {
+      "@id": "flowable:planItemDefinitionId",
+      "@type": "xsd:string"
+    },
+    "planItemDefinitionType": {
+      "@id": "flowable:planItemDefinitionType",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "flowable:state",
+      "@type": "xsd:string"
+    },
+    "decisionDefinitionId": {
+      "@id": "flowable:decisionDefinitionId",
+      "@type": "xsd:string"
+    },
+    "decisionDefinitionKey": {
+      "@id": "flowable:decisionDefinitionKey",
+      "@type": "xsd:string"
+    },
+    "contentItemId": {
+      "@id": "flowable:contentItemId",
+      "@type": "xsd:string"
+    },
+    "mimeType": {
+      "@id": "flowable:mimeType",
+      "@type": "xsd:string"
+    },
+    "userId": {
+      "@id": "flowable:userId",
+      "@type": "xsd:string"
+    },
+    "groupId": {
+      "@id": "flowable:groupId",
+      "@type": "xsd:string"
+    },
+    "firstName": {
+      "@id": "schema:givenName",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "schema:familyName",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "members": {
+      "@id": "flowable:members",
+      "@container": "@list"
+    },
+    "lockOwner": {
+      "@id": "flowable:lockOwner",
+      "@type": "xsd:string"
+    },
+    "lockExpirationTime": {
+      "@id": "flowable:lockExpirationTime",
+      "@type": "xsd:dateTime"
+    },
+    "retries": {
+      "@id": "flowable:retries",
+      "@type": "xsd:integer"
+    },
+    "exceptionMessage": {
+      "@id": "flowable:exceptionMessage",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "xsd:anyURI"
+    },
+    "links": {
+      "@id": "flowable:links",
+      "@container": "@list"
+    },
+    "data": {
+      "@id": "flowable:data",
+      "@container": "@list"
+    },
+    "total": {
+      "@id": "flowable:total",
+      "@type": "xsd:integer"
+    },
+    "start": {
+      "@id": "flowable:start",
+      "@type": "xsd:integer"
+    },
+    "size": {
+      "@id": "flowable:size",
+      "@type": "xsd:integer"
+    }
+  }
+}

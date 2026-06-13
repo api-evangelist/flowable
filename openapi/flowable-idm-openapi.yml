@@ -1,0 +1,3395 @@
+openapi: 3.0.0
+info:
+  description: Flowable Platform
+  version: v1
+  title: Flowable IDM REST API
+  contact:
+    name: Flowable
+    url: http://www.flowable.com/
+tags:
+- name: Access Tokens
+- name: Accounts
+- name: Contact Filters
+- name: Current User
+- name: Engine
+- name: Groups
+- name: Privileges
+- name: Query
+- name: Tenants
+- name: User Admin
+- name: User Definitions
+- name: Users
+paths:
+  /access-tokens:
+    get:
+      tags:
+      - Access Tokens
+      summary: Query access tokens
+      description: ''
+      operationId: queryAccessTokens
+      parameters:
+      - name: createdAfter
+        in: query
+        description: Only return tokens created after the given ISO 8601 date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: createdBefore
+        in: query
+        description: Only return tokens created before the given ISO 8601 date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: expiresAfter
+        in: query
+        description: Only return tokens expiring after the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: expiresBefore
+        in: query
+        description: Only return tokens expiring before the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: name
+        in: query
+        description: Only return tokens matching the given name.
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'.
+          Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: searchText
+        in: query
+        description: Only return tokens matching the given searching text.
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting
+          from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults
+          to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: tenantId
+        in: query
+        description: Only return tokens for the given tenant. Only super admin users
+          are allowed to use this
+        required: false
+        schema:
+          type: string
+      - name: userId
+        in: query
+        description: Only return tokens for the given user.
+        required: false
+        schema:
+          type: string
+      - name: withoutExpiration
+        in: query
+        description: Only return tokens that do not have an expiration date.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the requested access tokens were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseAccessTokenResponse'
+        '400':
+          description: Indicates the request is invalid
+        '403':
+          description: Indicates the user does not have rights to query for access
+            tokens
+      security:
+      - basicAuth: []
+  /access-tokens/{tokenId}:
+    get:
+      tags:
+      - Access Tokens
+      summary: Get access token
+      description: ''
+      operationId: getAccessToken
+      parameters:
+      - name: tokenId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested access token was returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessTokenResponse'
+        '400':
+          description: Indicates the request is invalid
+        '403':
+          description: Indicates the user does not have rights to view the access
+            token
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Access Tokens
+      summary: Revoke access token
+      description: ''
+      operationId: revokeAccessToken
+      parameters:
+      - name: tokenId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the requested access token was revoked.
+        '400':
+          description: Indicates the request is invalid
+        '403':
+          description: Indicates the user does not have rights to revoke the access
+            token
+      security:
+      - basicAuth: []
+  /contact-filters:
+    get:
+      tags:
+      - Contact Filters
+      summary: List contact filters
+      description: ''
+      operationId: listContactFilter
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactFilterResponse'
+      security:
+      - basicAuth: []
+  /contact-filters/{contactFilterId}:
+    get:
+      tags:
+      - Contact Filters
+      summary: Returns a paged list of users (contacts)
+      description: ''
+      operationId: getContact
+      parameters:
+      - name: contactFilterId
+        in: path
+        description: Unique identifier of contact filter
+        required: true
+        schema:
+          type: string
+      - name: searchText
+        in: query
+        description: Text to search for
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: '"The optional size of results to be returned, defaults to a
+          configurable value (usually 100)'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: start
+        in: query
+        description: The optional start (0 based) to return results from, defaults
+          to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PagePlatformUserResponse'
+      security:
+      - basicAuth: []
+  /current-user:
+    get:
+      tags:
+      - Current User
+      summary: Get current user
+      description: Get the current user information
+      operationId: getCurrentUser
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CurrentUserResponse'
+        '404':
+          description: Indicates the current user was not found.
+      security:
+      - basicAuth: []
+  /current-user/access-tokens:
+    get:
+      tags:
+      - Current User
+      summary: Query the available tokens for the current user
+      description: ''
+      operationId: queryAccessTokens
+      parameters:
+      - name: createdAfter
+        in: query
+        description: Only return tokens created after the given ISO 8601 date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: createdBefore
+        in: query
+        description: Only return tokens created before the given ISO 8601 date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: expiresAfter
+        in: query
+        description: Only return tokens expiring after the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: expiresBefore
+        in: query
+        description: Only return tokens expiring before the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: name
+        in: query
+        description: Only return tokens matching the given name.
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'.
+          Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: searchText
+        in: query
+        description: Only return tokens matching the given searching text.
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting
+          from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults
+          to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: withoutExpiration
+        in: query
+        description: Only return tokens that do not have an expiration date.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DataResponseAccessTokenResponse'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Current User
+      summary: Create an access token for the current user
+      description: ''
+      operationId: createAccessToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccessTokenRequest'
+      responses:
+        '201':
+          description: ''
+      security:
+      - basicAuth: []
+  /current-user/access-tokens/{tokenId}:
+    delete:
+      tags:
+      - Current User
+      summary: Delete the token for the current user
+      description: ''
+      operationId: deleteAccessToken
+      parameters:
+      - name: tokenId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      security:
+      - basicAuth: []
+  /current-user/presence:
+    put:
+      tags:
+      - Current User
+      summary: Update presence
+      description: Set the presence for the current user
+      operationId: updateCurrentUserPresence
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateUserPresenceRequest'
+      responses:
+        '204':
+          description: Indicates the current user presence was updated.
+        '400':
+          description: Indicates the presenceRequest body is incomplete or contains
+            illegal values.
+      security:
+      - basicAuth: []
+  /current-user/snooze:
+    post:
+      tags:
+      - Current User
+      summary: Snooze
+      description: Snooze for the current user
+      operationId: snoozeCurrentUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SnoozeUserRequest'
+        required: true
+      responses:
+        '204':
+          description: Indicates the current user was snoozed.
+        '400':
+          description: Indicates the presenceRequest body is incomplete or contains
+            illegal values.
+      security:
+      - basicAuth: []
+  /groups:
+    get:
+      tags:
+      - Groups
+      summary: List groups
+      description: ''
+      operationId: listGroups
+      parameters:
+      - name: id
+        in: query
+        description: Only return group with the given id
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return groups with the given name
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Only return groups with the given type
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return groups with a name like the given value.
+        required: false
+        schema:
+          type: string
+      - name: nameLikeIgnoreCase
+        in: query
+        description: Only return groups with a name like the given value ignoring
+          case.
+        required: false
+        schema:
+          type: string
+      - name: member
+        in: query
+        description: Only return groups which have a member with the given username.
+        required: false
+        schema:
+          type: string
+      - name: key
+        in: query
+        description: Only return groups with the given key.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return groups with the given tenant ID.
+        required: false
+        schema:
+          type: string
+      - name: includeIdentityInfo
+        in: query
+        description: Include the group identity info in the response.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - name
+          - type
+      responses:
+        '200':
+          description: Indicates the requested groups were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGroupResponse'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Groups
+      summary: Create a group
+      description: ''
+      operationId: createGroup
+      requestBody:
+        $ref: '#/components/requestBodies/GroupRequest'
+      responses:
+        '201':
+          description: Indicates the group was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+        '400':
+          description: Indicates the id of the group was missing.
+      security:
+      - basicAuth: []
+  /groups/{groupId}:
+    get:
+      tags:
+      - Groups
+      summary: Get a single group
+      description: ''
+      operationId: getGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: includeUserInfo
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: includePrivilegeInfo
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: includeIdentityInfo
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the group exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+        '404':
+          description: Indicates the requested group does not exist.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Groups
+      summary: Update a group
+      description: All request values are optional. For example, you can only include
+        the name attribute in the request body JSON-object, only updating the name
+        of the group, leaving all other fields unaffected. When an attribute is explicitly
+        included and is set to null, the group-value will be updated to null.
+      operationId: updateGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/GroupRequest'
+      responses:
+        '200':
+          description: Indicates the group was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+        '404':
+          description: Indicates the requested group was not found.
+        '409':
+          description: Indicates the requested group was updated simultaneously.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Groups
+      summary: Delete a group
+      description: ''
+      operationId: deleteGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the group was found and  has been deleted. Response-body
+            is intentionally empty.
+        '404':
+          description: Indicates the requested group does not exist.
+      security:
+      - basicAuth: []
+  /groups/{groupId}/members:
+    post:
+      tags:
+      - Groups
+      summary: Add a member to a group
+      description: ''
+      operationId: createMembership
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MembershipRequest'
+      responses:
+        '201':
+          description: Indicates the group was found and the member has been added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MembershipResponse'
+        '400':
+          description: Indicates the userId was not included in the request body.
+        '404':
+          description: Indicates the requested group was not found.
+        '409':
+          description: Indicates the requested user is already a member of the group.
+      security:
+      - basicAuth: []
+  /groups/{groupId}/members/{userId}:
+    delete:
+      tags:
+      - Groups
+      summary: Delete a member from a group
+      description: ''
+      operationId: deleteMembership
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the group was found and the member has been deleted.
+            The response body is left empty intentionally.
+        '404':
+          description: Indicates the requested group was not found or that the user
+            is not a member of the group. The status description contains additional
+            information about the error.
+      security:
+      - basicAuth: []
+  /idm-management/engine:
+    get:
+      tags:
+      - Engine
+      summary: Get IDM engine info
+      description: Returns a read-only view of the engine that is used in this REST-service.
+      operationId: getEngineInfo
+      responses:
+        '200':
+          description: Indicates the engine info is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngineInfoResponse'
+      security:
+      - basicAuth: []
+  /privileges:
+    get:
+      tags:
+      - Privileges
+      summary: List privileges
+      description: ''
+      operationId: listPrivileges
+      parameters:
+      - name: groupId
+        in: query
+        description: Only return privileges for the given group.
+        required: false
+        schema:
+          type: string
+      - name: id
+        in: query
+        description: Only return privileges with the given id.
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return privileges with the given name.
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'.
+          Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting
+          from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults
+          to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: userId
+        in: query
+        description: Only return privileges for the given user.
+        required: false
+        schema:
+          type: string
+      - name: id
+        in: query
+        description: Only return privileges with the given id
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return privileges with the given name
+        required: false
+        schema:
+          type: string
+      - name: userId
+        in: query
+        description: Only return privileges with the given userId
+        required: false
+        schema:
+          type: string
+      - name: groupId
+        in: query
+        description: Only return privileges with the given groupId
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested privileges were returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DataResponsePrivilegeResponse'
+      security:
+      - basicAuth: []
+  /privileges/{privilegeId}:
+    get:
+      tags:
+      - Privileges
+      summary: Get a single privilege
+      description: ''
+      operationId: getPrivilege
+      parameters:
+      - name: privilegeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the privilege exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivilegeResponse'
+        '404':
+          description: Indicates the requested privilege does not exist.
+      security:
+      - basicAuth: []
+  /privileges/{privilegeId}/group/{groupId}:
+    delete:
+      tags:
+      - Privileges
+      summary: Deletes a privilege for a group
+      description: ''
+      operationId: deleteGroupPrivilege
+      parameters:
+      - name: privilegeId
+        in: path
+        description: unique identifier of a privilege
+        required: true
+        schema:
+          type: string
+      - name: groupId
+        in: path
+        description: unique identifier of a group
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the group privilege has been deleted
+      security:
+      - basicAuth: []
+  /privileges/{privilegeId}/groups:
+    get:
+      tags:
+      - Privileges
+      summary: List all groups for a given privilege
+      description: ''
+      operationId: listPrivilegeGroups
+      parameters:
+      - name: privilegeId
+        in: path
+        description: unique identifier of a privilege
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the privilege exists and its groups are returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroupResponse'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Privileges
+      summary: Adds a privilege for a group
+      description: ''
+      operationId: addGroupPrivilege
+      parameters:
+      - name: privilegeId
+        in: path
+        description: unique identifier of a privilege
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddGroupPrivilegeRequest'
+        description: group privileges payload
+      responses:
+        '200':
+          description: Indicates the group privilege has been added
+      security:
+      - basicAuth: []
+  /privileges/{privilegeId}/users:
+    get:
+      tags:
+      - Privileges
+      summary: List all users for a given privilege
+      description: ''
+      operationId: listPrivilegeUsers
+      parameters:
+      - name: privilegeId
+        in: path
+        description: unique identifier of a privilege
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the privilege exists and its users are returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserResponse'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Privileges
+      summary: Adds a privilege for a user
+      description: ''
+      operationId: addUserPrivilege
+      parameters:
+      - name: privilegeId
+        in: path
+        description: unique identifier of a privilege
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddUserPrivilegeRequest'
+        description: add user privilege payload
+      responses:
+        '200':
+          description: Indicates the user privilege has been added
+      security:
+      - basicAuth: []
+  /privileges/{privilegeId}/users/{userId}:
+    delete:
+      tags:
+      - Privileges
+      summary: Deletes a privilege for a user
+      description: ''
+      operationId: deleteUserPrivilege
+      parameters:
+      - name: privilegeId
+        in: path
+        description: unique identifier of a privilege
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        description: unique identifier of a user
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the user privilege has been deleted
+      security:
+      - basicAuth: []
+  /query/groups:
+    post:
+      tags:
+      - Groups
+      - Query
+      summary: Query groups
+      description: ''
+      operationId: queryGroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupQueryRequest'
+        description: Group request
+      responses:
+        '200':
+          description: Indicates the requested groups were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGroupResponse'
+      security:
+      - basicAuth: []
+  /query/users:
+    post:
+      tags:
+      - Users
+      - Query
+      summary: Query users
+      description: ''
+      operationId: queryUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserBodyQueryRequest'
+        description: User request
+      responses:
+        '200':
+          description: Indicates the request was successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponsePlatformUserResponse'
+        '400':
+          description: Indicates the request body is incomplete or contains illegal
+            values.
+        '403':
+          description: Indicates the user does not have the rights to view the users.
+      security:
+      - basicAuth: []
+  /search/query-users:
+    get:
+      tags:
+      - Users
+      summary: Search a user
+      description: ''
+      operationId: Search a user index
+      parameters:
+      - name: displayName
+        in: query
+        description: displayName filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: email
+        in: query
+        description: email filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: firstName
+        in: query
+        description: firstName filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: id
+        in: query
+        description: id filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: lastName
+        in: query
+        description: lastName filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'.
+          Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting
+          from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults
+          to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: state
+        in: query
+        description: state filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: tenantId filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: type filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: userDefinitionKey
+        in: query
+        description: userDefinitionKey filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: userDefinitionName
+        in: query
+        description: userDefinitionName filter to return results for.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the request was successful.
+        '201':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponsePlatformUserResponse'
+        '400':
+          description: Indicates the request body is incomplete or contains illegal
+            values.
+        '403':
+          description: Indicates the user does not have the rights to view the users.
+      security:
+      - basicAuth: []
+  /tenants:
+    get:
+      tags:
+      - Tenants
+      summary: Get a list of tenants
+      description: ''
+      operationId: getTenants
+      responses:
+        '200':
+          description: Indicates the tenants are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseTenantResponse'
+      security:
+      - basicAuth: []
+  /user-definitions:
+    get:
+      tags:
+      - User Definitions
+      summary: List user definitions
+      description: ''
+      operationId: listUserDefinitions
+      parameters:
+      - name: id
+        in: query
+        description: Only return user definitions with the given id.
+        required: false
+        schema:
+          type: string
+      - name: key
+        in: query
+        description: Only return user definitions with the given key.
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return user definitions with the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return user definitions with a name like the given value.
+        required: false
+        schema:
+          type: string
+      - name: nameLikeIgnoreCase
+        in: query
+        description: Only return user definitions with a name like the given value
+          (ignoring case).
+        required: false
+        schema:
+          type: string
+      - name: accessibleByUser
+        in: query
+        description: Only return user definitions accessible by user with the given
+          name.
+        required: false
+        schema:
+          type: string
+      - name: accessibleByGroup
+        in: query
+        description: Only return user definitions accessible by group with the given
+          name.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return user definitions with the given tenant id.
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: The order of results. Default is asc
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - key
+          - id
+          - name
+      responses:
+        '200':
+          description: Indicates request was successful and the user definitions are
+            returned
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DataResponseUserDefinitionResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The
+            status-message contains additional information.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - User Definitions
+      summary: Upload a user definition model
+      description: ''
+      operationId: registerUserDefinition
+      parameters:
+      - name: tenantId
+        in: query
+        description: The tenant id for the definition. Only allowed for super admin
+          users
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the user definitions are
+            returned
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDefinitionResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format. The status-message
+            contains additional information.
+      security:
+      - basicAuth: []
+  /user-definitions/key/{userDefinitionKey}:
+    get:
+      tags:
+      - User Definitions
+      summary: Get user by definition key
+      description: ''
+      operationId: getUserDefinitionByKey
+      parameters:
+      - name: userDefinitionKey
+        in: path
+        description: Key  of a user definition
+        required: true
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: The tenant id for the definition. Only allowed for super admin
+          users
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDefinitionResponse'
+      security:
+      - basicAuth: []
+  /user-definitions/{userDefinitionId}:
+    get:
+      tags:
+      - User Definitions
+      summary: Get user definition
+      description: ''
+      operationId: getUserDefinition
+      parameters:
+      - name: userDefinitionId
+        in: path
+        description: Unique identifier of a user definition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDefinitionResponse'
+      security:
+      - basicAuth: []
+  /user-definitions/{userDefinitionId}/model:
+    get:
+      tags:
+      - User Definitions
+      summary: Get user definition model
+      description: ''
+      operationId: getUserDefinitionModel
+      parameters:
+      - name: userDefinitionId
+        in: path
+        description: Unique identifier of a user definition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDefinitionModelResponse'
+      security:
+      - basicAuth: []
+  /users:
+    get:
+      tags:
+      - Users
+      summary: List users
+      description: ''
+      operationId: listUsers
+      parameters:
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'.
+          Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting
+          from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults
+          to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: state
+        in: query
+        description: Only return users with a state like the given value.
+        required: false
+        schema:
+          type: string
+      - name: subState
+        in: query
+        description: Only return users with a sub state like the given value.
+        required: false
+        schema:
+          type: string
+      - name: memberOfGroup
+        in: query
+        description: Only return users which are a member of the given group.
+        required: false
+        schema:
+          type: string
+      - name: memberOfGroupKey
+        in: query
+        description: Only return users which are a member of the group with the given
+          key.
+        required: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - firstName
+          - lastname
+          - email
+          - displayName
+      responses:
+        '200':
+          description: Indicates the request was successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponsePlatformUserResponse'
+        '400':
+          description: Indicates the request body is incomplete or contains illegal
+            values.
+        '403':
+          description: Indicates the user does not have the rights to view the users.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Users
+      summary: Create a user
+      description: ''
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        '201':
+          description: Indicates the user was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformUserResponse'
+        '400':
+          description: Indicates the id of the user was missing.
+      security:
+      - basicAuth: []
+  /users/reindex:
+    post:
+      tags:
+      - User Admin
+      summary: Reindex users
+      description: The user has to have admin rights.
+      operationId: reindexUsers
+      responses:
+        '204':
+          description: Indicates users have been reindex.
+        '403':
+          description: Indicates the user has no admin rights.
+      security:
+      - basicAuth: []
+  /users/{userId}:
+    get:
+      tags:
+      - Users
+      summary: Get a single user
+      description: ''
+      operationId: getUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: includeIdentityInfo
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: includeGroupInfo
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the user exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformUserResponse'
+        '404':
+          description: Indicates the requested user does not exist.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Users
+      summary: Update a user
+      description: 'All request values are optional. For example, you can only include
+        the firstName attribute in the request body JSON-object, only updating the
+        firstName of the user, leaving all other fields unaffected. When an attribute
+        is explicitly included and is set to null, the user-value will be updated
+        to null. Example: {"firstName" : null} will clear the firstName of the user).'
+      operationId: updateUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+      responses:
+        '200':
+          description: Indicates the user was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformUserResponse'
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Users
+      summary: Delete a user
+      description: ''
+      operationId: deleteUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the user was found and  has been deleted. Response-body
+            is intentionally empty.
+        '404':
+          description: Indicates the requested user was not found.
+      security:
+      - basicAuth: []
+  /users/{userId}/accounts:
+    get:
+      tags:
+      - Accounts
+      summary: List user accounts
+      description: ''
+      operationId: listUserAccounts
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'.
+          Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting
+          from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults
+          to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Indicates the request was successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseUserAccountResponse'
+        '400':
+          description: Indicates the request body is incomplete or contains illegal
+            values.
+        '403':
+          description: Indicates the user does not have the rights to view the users.
+      security:
+      - basicAuth: []
+  /users/{userId}/avatar/data:
+    get:
+      tags:
+      - Users
+      summary: Get an user avatar
+      description: ''
+      operationId: getUserAvatar
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: download
+        in: query
+        description: Explicitly request the content to be downloaded or viewed in
+          a browser. By default it would be done based on the content media type
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the avatar exists and is returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Indicates the requested avatar does not exist.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Users
+      summary: Updates a user avatar
+      description: ''
+      operationId: updateUserAvatar
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the avatar exists and is returned.
+        '404':
+          description: Indicates the requested avatar does not exist.
+      security:
+      - basicAuth: []
+  /users/{userId}/avatar/thumbnail:
+    get:
+      tags:
+      - Users
+      summary: Get an user avatar thumbnail
+      description: ''
+      operationId: getUserAvatarThumbnail
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: download
+        in: query
+        description: Explicitly request the content to be downloaded or viewed in
+          a browser. By default it would be done based on the content media type
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the avatar exists and is returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Indicates the requested avatar does not exist.
+      security:
+      - basicAuth: []
+  /users/{userId}/change-language:
+    put:
+      tags:
+      - Users
+      summary: Change user language
+      description: ''
+      operationId: changeUserLanguage
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeUserLanguageRequest'
+      responses:
+        '200':
+          description: Indicates the user language was updated.
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+  /users/{userId}/change-password:
+    put:
+      tags:
+      - Users
+      summary: Change user password
+      description: ''
+      operationId: changeUserPassword
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeUserPasswordRequest'
+      responses:
+        '200':
+          description: Indicates the user password was updated.
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+  /users/{userId}/change-theme:
+    put:
+      tags:
+      - Users
+      summary: Change user theme
+      description: ''
+      operationId: changeUserTheme
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeUserThemeRequest'
+      responses:
+        '204':
+          description: Indicates the user theme was updated.
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+  /users/{userId}/identity-info/{identityInfoName}:
+    delete:
+      tags:
+      - Users
+      summary: Delete a user identity info
+      description: ''
+      operationId: deleteUserIdentityInfo
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identityInfoName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the identity info was found and the identity info
+            has been deleted. Returns updated user.
+        '204':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PlatformUserResponse'
+        '404':
+          description: Indicates the requested identity info was not found.
+      security:
+      - basicAuth: []
+  /users/{userId}/index-document:
+    get:
+      tags:
+      - Users
+      summary: Get user from ElasticSearch
+      description: ''
+      operationId: getUserDocument
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates that the user was found in the ElasticSearch index.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/JsonNode'
+        '404':
+          description: Indicates that the user was not found in the ElasticSearch
+            index.
+      security:
+      - basicAuth: []
+  /users/{userId}/name:
+    get:
+      tags:
+      - Users
+      summary: Get a single user name information
+      description: ''
+      operationId: getUserName
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the user exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserBaseInformationResponse'
+        '404':
+          description: Indicates the requested user does not exist.
+      security:
+      - basicAuth: []
+  /users/{userId}/presence:
+    put:
+      tags:
+      - Users
+      summary: Update presence
+      description: Set the presence and / or status text for a user
+      operationId: updateUserPresence
+      parameters:
+      - name: userId
+        in: path
+        description: The id of the user that should get the presence updated. Only
+          users with admin privileges are allowed to set the presence for other users
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateUserPresenceRequest'
+      responses:
+        '204':
+          description: Indicates the user presence was updated.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal
+            values.
+        '403':
+          description: Indicates the user does not have rights to perform the update.
+      security:
+      - basicAuth: []
+  /users/{userId}/reindex:
+    post:
+      tags:
+      - User Admin
+      summary: Reindex user
+      description: The user has to have admin rights.
+      operationId: reindexUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the user has been reindexed.
+        '403':
+          description: Indicates the user has no admin rights.
+      security:
+      - basicAuth: []
+  /users/{userId}/update-state:
+    put:
+      tags:
+      - Users
+      summary: Update a user state and sub state
+      description: ''
+      operationId: updateUserStateAndSubState
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserStateRequest'
+      responses:
+        '200':
+          description: Indicates the user was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformUserResponse'
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+  /users/{userId}/update-user-definition:
+    put:
+      tags:
+      - Users
+      summary: Update a user definition
+      description: ''
+      operationId: updateUserDefinition
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserDefinitionRequest'
+      responses:
+        '200':
+          description: Indicates the user was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformUserResponse'
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+servers:
+- url: http://localhost:8090/idm-api
+- url: https://localhost:8090/idm-api
+components:
+  requestBodies:
+    GroupRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GroupRequest'
+    UpdateUserPresenceRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateUserPresenceRequest'
+      required: true
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    AccessTokenResponse:
+      type: object
+      required:
+      - creationTime
+      - id
+      - name
+      properties:
+        id:
+          type: string
+          description: The id of the token
+        userId:
+          type: string
+          description: The id of the user that the token belongs to
+        tenantId:
+          type: string
+          description: The id of the tenant that the token belongs to
+        name:
+          type: string
+          description: The name of the token
+        description:
+          type: string
+          description: The description of the token
+        creationTime:
+          type: string
+          description: The creation time of the token in ISO 8601 format
+        expirationTime:
+          type: string
+          description: The expiry time of the token in ISO 8601 format
+      description: Response for an access token
+    AddGroupPrivilegeRequest:
+      type: object
+      properties:
+        groupId:
+          type: string
+    AddUserPrivilegeRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+    Application:
+      type: object
+      required:
+      - id
+      - name
+      - type
+      properties:
+        id:
+          type: string
+          description: The id of the application
+        name:
+          type: string
+          description: The name of the application
+        type:
+          type: string
+          description: The type of the application
+        url:
+          type: string
+          description: The public URL of the application
+      description: The applications that the user has access to
+    BasicPrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    ChangeUserLanguageRequest:
+      type: object
+      properties:
+        newLanguage:
+          type: string
+    ChangeUserPasswordRequest:
+      type: object
+      properties:
+        password:
+          type: string
+        repeatPassword:
+          type: string
+    ChangeUserThemeRequest:
+      type: object
+      properties:
+        newTheme:
+          type: string
+    ContactFilterResponse:
+      type: object
+      required:
+      - defaultFilter
+      - id
+      properties:
+        id:
+          type: string
+          description: The id of the filter
+        labelKey:
+          type: string
+          description: The key for the label of filter
+        defaultLabelName:
+          type: string
+          description: The default name of the filter label
+        defaultFilter:
+          type: boolean
+          description: Flag indicating whether this filter is a default one
+      description: The response for the contact filters
+    CreateAccessTokenRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The name of the token
+        description:
+          type: string
+          description: The description of the token
+        validFor:
+          type: string
+          description: A positive ISO 8601 duration for which the token should be
+            valid for. Mutually exclusive with validFor
+        validUntil:
+          type: string
+          description: The ISO 8601 date until the token should be valid. Mutually
+            exclusive with validFor
+      description: Request for creating an access token for a user
+    CreateAccessTokenResponse:
+      type: object
+      required:
+      - creationTime
+      - id
+      - name
+      - value
+      properties:
+        id:
+          type: string
+          description: The id of the token
+        userId:
+          type: string
+          description: The id of the user that the token belongs to
+        tenantId:
+          type: string
+          description: The id of the tenant that the token belongs to
+        name:
+          type: string
+          description: The name of the token
+        description:
+          type: string
+          description: The description of the token
+        creationTime:
+          type: string
+          description: The creation time of the token in ISO 8601 format
+        expirationTime:
+          type: string
+          description: The expiry time of the token in ISO 8601 format
+        value:
+          type: string
+          description: The value of the token. This is only visible when the token
+            is created. Afterwards it cannot be retrieved.
+      description: Response for a newly created access token
+    CreateUserRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        displayName:
+          type: string
+        loginName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        repeatPassword:
+          type: string
+        type:
+          type: string
+        subType:
+          type: string
+        userDefinitionId:
+          type: string
+        userDefinitionKey:
+          type: string
+        state:
+          type: string
+        subState:
+          type: string
+        avatarId:
+          type: string
+        presence:
+          type: string
+        language:
+          type: string
+        theme:
+          type: string
+        tenantId:
+          type: string
+        identityInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        groups:
+          type: array
+          items:
+            type: string
+        returnIdentityInfo:
+          type: boolean
+    CurrentUserResponse:
+      type: object
+      required:
+      - creationTime
+      - id
+      - state
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+        avatarId:
+          type: string
+          example: CON-111-11-11
+          description: The optional avatar if of the user.
+        type:
+          type: string
+          example: default
+          description: The optional type of the user
+        subType:
+          type: string
+          description: The optional subType of the user
+        state:
+          type: string
+          example: ACTIVE
+          description: The state of the user
+        subState:
+          type: string
+          example: INITIALIZING
+          description: The optional sub state of the user
+        presence:
+          type: string
+          example: available
+          description: 'The optional presence state of the user. Known states: available,
+            away, offline, out-of-office, snoozed'
+        language:
+          type: string
+          example: en
+          description: The optional language for the user
+        theme:
+          type: string
+          example: flowable
+          description: The optional theme for the user
+        userDefinitionId:
+          type: string
+          description: The id of the user definition linked with this user
+        userDefinitionKey:
+          type: string
+          description: The key of the user definition linked with this user
+        userDefinitionName:
+          type: string
+          description: The name of the user definition linked with this user
+        creatorId:
+          type: string
+          description: The id of the user that created this user
+        creationTime:
+          type: string
+          description: The ISO8601 creation time of this user
+        updaterId:
+          type: string
+          description: The id of the user that last updated this user
+        updateTime:
+          type: string
+          description: The ISO8601 last update time of this user
+        groups:
+          type: array
+          description: Collection of all groups the user has a membership of
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the user
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        translations:
+          type: object
+          description: Map of translations for the user info
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        allowedTabs:
+          type: array
+          description: The allowed tabs for the user
+          uniqueItems: true
+          items:
+            type: string
+        allowedFeatures:
+          type: array
+          description: The allowed features for the current user
+          uniqueItems: true
+          items:
+            type: string
+        memberGroups:
+          type: array
+          description: The member groups for the current user
+          uniqueItems: true
+          items:
+            type: string
+        adminType:
+          type: string
+          description: The type of the admin user, if this user is an admin
+          enum:
+          - superAdmin
+          - tenantAdmin
+        themeConfiguration:
+          $ref: '#/components/schemas/CurrentUserThemeConfiguration'
+        originalAuthentication:
+          $ref: '#/components/schemas/OriginalAuthentication'
+        availableApplications:
+          type: object
+          description: The available applications for the current user
+          additionalProperties:
+            $ref: '#/components/schemas/Application'
+      description: The response for a current user
+    CurrentUserThemeConfiguration:
+      type: object
+      required:
+      - name
+      - options
+      properties:
+        name:
+          type: string
+          description: The name of the theme
+        options:
+          type: object
+          description: The options of the theme
+          additionalProperties:
+            type: string
+      description: The response for the current user theme configuration
+    DataResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponseAccessTokenResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessTokenResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponseGroupResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponsePlatformUserResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformUserResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponsePrivilegeResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrivilegeResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponseTenantResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponseUserAccountResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAccountResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponseUserDefinitionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinitionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    EngineInfoResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          example: default
+        resourceUrl:
+          type: string
+          example: file://flowable/flowable.cfg.xml
+        exception:
+          type: string
+          example: 'null'
+        version:
+          type: string
+          example: 6.3.1
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+    FileSystem:
+      type: object
+      properties:
+        open:
+          type: boolean
+        readOnly:
+          type: boolean
+        separator:
+          type: string
+        rootDirectories:
+          $ref: '#/components/schemas/IterablePath'
+        fileStores:
+          $ref: '#/components/schemas/IterableFileStore'
+        userPrincipalLookupService:
+          $ref: '#/components/schemas/UserPrincipalLookupService'
+    GroupQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+          description: Only return groups with the given id.
+        ids:
+          type: array
+          description: Only return groups with the given ids.
+          items:
+            type: string
+        key:
+          type: string
+          description: Only return groups with the given key.
+        keys:
+          type: array
+          description: Only return groups with the given keys.
+          items:
+            type: string
+        name:
+          type: string
+          description: Only return groups with the given name.
+        nameLike:
+          type: string
+          description: Only return groups with a name like the given value.
+        nameLikeIgnoreCase:
+          type: string
+          description: Only return groups with a name like the given value ignoring
+            case.
+        type:
+          type: string
+          description: Only return groups with a name like the given type.
+        member:
+          type: string
+          description: Only return groups which have a member with the given username.
+        members:
+          type: array
+          description: Only return groups which have members with the given usernames.
+          items:
+            type: string
+        includeIdentityInfo:
+          type: boolean
+          description: Include the group identity info in the response.
+        tenantId:
+          type: string
+          description: Only return groups with the given tenant ID.
+      description: Request that is used for querying groups.
+    GroupRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          items:
+            type: string
+        privileges:
+          type: array
+          items:
+            type: string
+        identityInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        returnIdentityInfo:
+          type: boolean
+        nameChanged:
+          type: boolean
+        typeChanged:
+          type: boolean
+    GroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the group
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+    InputStream:
+      type: object
+    Iterable:
+      type: object
+    IterableFileStore:
+      type: object
+    IterablePath:
+      type: object
+    JsonNode:
+      type: object
+      properties:
+        nodeType:
+          type: string
+          enum:
+          - ARRAY
+          - BINARY
+          - BOOLEAN
+          - MISSING
+          - 'NULL'
+          - NUMBER
+          - OBJECT
+          - POJO
+          - STRING
+        array:
+          type: boolean
+        ? ''
+        : type: boolean
+        float:
+          type: boolean
+        number:
+          type: boolean
+        valueNode:
+          type: boolean
+        missingNode:
+          type: boolean
+        object:
+          type: boolean
+        short:
+          type: boolean
+        double:
+          type: boolean
+        bigDecimal:
+          type: boolean
+        bigInteger:
+          type: boolean
+        textual:
+          type: boolean
+        boolean:
+          type: boolean
+        binary:
+          type: boolean
+        int:
+          type: boolean
+        pojo:
+          type: boolean
+        long:
+          type: boolean
+        containerNode:
+          type: boolean
+        integralNumber:
+          type: boolean
+        floatingPointNumber:
+          type: boolean
+    MembershipRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: kermit
+    MembershipResponse:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: kermit
+        url:
+          type: string
+          example: http://localhost:8182/groups/sales/members/userId
+        groupId:
+          type: string
+          example: sales
+    OriginalAuthentication:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: The id of the user doing the impersonation
+      description: The original authentication for a current user.
+    Page:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+        size:
+          type: integer
+          format: int32
+        start:
+          type: integer
+          format: int32
+        total:
+          type: integer
+          format: int64
+        sort:
+          type: string
+        order:
+          type: string
+    PagePlatformUserResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformUserResponse'
+        size:
+          type: integer
+          format: int32
+        start:
+          type: integer
+          format: int32
+        total:
+          type: integer
+          format: int64
+        sort:
+          type: string
+        order:
+          type: string
+    Path:
+      type: object
+      properties:
+        absolute:
+          type: boolean
+        parent:
+          $ref: '#/components/schemas/Path'
+        root:
+          $ref: '#/components/schemas/Path'
+        fileName:
+          $ref: '#/components/schemas/Path'
+        fileSystem:
+          $ref: '#/components/schemas/FileSystem'
+        nameCount:
+          type: integer
+          format: int32
+    PlatformUserResponse:
+      type: object
+      required:
+      - creationTime
+      - id
+      - state
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+        avatarId:
+          type: string
+          example: CON-111-11-11
+          description: The optional avatar if of the user.
+        type:
+          type: string
+          example: default
+          description: The optional type of the user
+        subType:
+          type: string
+          description: The optional subType of the user
+        state:
+          type: string
+          example: ACTIVE
+          description: The state of the user
+        subState:
+          type: string
+          example: INITIALIZING
+          description: The optional sub state of the user
+        presence:
+          type: string
+          example: available
+          description: 'The optional presence state of the user. Known states: available,
+            away, offline, out-of-office, snoozed'
+        language:
+          type: string
+          example: en
+          description: The optional language for the user
+        theme:
+          type: string
+          example: flowable
+          description: The optional theme for the user
+        userDefinitionId:
+          type: string
+          description: The id of the user definition linked with this user
+        userDefinitionKey:
+          type: string
+          description: The key of the user definition linked with this user
+        userDefinitionName:
+          type: string
+          description: The name of the user definition linked with this user
+        creatorId:
+          type: string
+          description: The id of the user that created this user
+        creationTime:
+          type: string
+          description: The ISO8601 creation time of this user
+        updaterId:
+          type: string
+          description: The id of the user that last updated this user
+        updateTime:
+          type: string
+          description: The ISO8601 last update time of this user
+        groups:
+          type: array
+          description: Collection of all groups the user has a membership of
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the user
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        translations:
+          type: object
+          description: Map of translations for the user info
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        allowedTabs:
+          type: array
+          description: The allowed tabs for the user
+          uniqueItems: true
+          items:
+            type: string
+      description: The response for a platform user
+    PrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+    Resource:
+      type: object
+      properties:
+        open:
+          type: boolean
+        file:
+          type: string
+          format: binary
+        readable:
+          type: boolean
+        url:
+          type: string
+          format: url
+        filePath:
+          $ref: '#/components/schemas/Path'
+        filename:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+          format: uri
+        contentAsByteArray:
+          type: array
+          items:
+            type: string
+            format: byte
+        inputStream:
+          $ref: '#/components/schemas/InputStream'
+    SnoozeUserRequest:
+      type: object
+      required:
+      - snoozeUntil
+      properties:
+        snoozeUntil:
+          type: string
+          description: The date until the user should be snoozed in ISO 8601 format
+      description: Request for snoozing the user
+    TenantResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: default
+          description: The id of the tenant
+      description: The response for a tenant
+    UpdateUserDefinitionRequest:
+      type: object
+      properties:
+        userDefinitionId:
+          type: string
+        userDefinitionKey:
+          type: string
+        tenantId:
+          type: string
+    UpdateUserPresenceRequest:
+      type: object
+      required:
+      - presence
+      properties:
+        presence:
+          type: string
+          description: The presence that should be set on the user
+          enum:
+          - available
+          - away
+          - offline
+          - out-of-office
+          - snoozed
+        tenantId:
+          type: string
+          description: The tenant id that should be used for updating the presence.
+            Only admin users can modify this parameter
+      description: Request for updating user presence
+    UpdateUserRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        displayName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        repeatPassword:
+          type: string
+        avatarId:
+          type: string
+        language:
+          type: string
+        theme:
+          type: string
+        identityInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        groups:
+          type: array
+          items:
+            type: string
+        returnIdentityInfo:
+          type: boolean
+    UpdateUserStateRequest:
+      type: object
+      properties:
+        state:
+          type: string
+        subState:
+          type: string
+    UserAccountResponse:
+      type: object
+      required:
+      - creationTime
+      - id
+      - state
+      - subState
+      - subType
+      - type
+      properties:
+        id:
+          type: string
+          description: The unique id for the user account
+        userId:
+          type: string
+          description: The id of the user that this account belongs to
+        tenantId:
+          type: string
+          description: The id of the tenant that this user account belongs to
+        name:
+          type: string
+          description: Readable name of the account
+        type:
+          type: string
+          example: default, messenger
+          description: The type of the account
+        subType:
+          type: string
+          example: Facebook, WeChat, WhatsApp, Telegram, LINE
+          description: The sub-type of the account
+        state:
+          type: string
+          description: The state of the user account
+        subState:
+          type: string
+          description: The sub state of the user account
+        businessAccountId:
+          type: string
+          example: WhatsApp business number xyz or WeChat official account
+          description: The id of the business account id this user account is linked
+            to
+        externalUserId:
+          type: string
+          example: The phone number if it is a WhatsApp account or the user-id for
+            a facebook account, etc)
+          description: The id of the user within the external system
+        userAccountDefinitionId:
+          type: string
+          description: The id of the user account definition for this user account
+        creatorId:
+          type: string
+          description: The id of the user that created this account
+        creationTime:
+          type: string
+          description: The time of creation of this account
+        updaterId:
+          type: string
+          description: The id of the user that last updated the account
+        updateTime:
+          type: string
+          description: The time of the last update of this account
+    UserBaseInformationResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        avatarId:
+          type: string
+      description: The response for the User base information
+    UserBodyQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+          description: Only return users with the given id
+        ids:
+          type: array
+          description: Only return users that match the given ids
+          items:
+            type: string
+        idsNotIn:
+          type: array
+          description: Only return users that do not match the given ids
+          items:
+            type: string
+        firstName:
+          type: string
+          description: Only return users with the given first name
+        firstNameLike:
+          type: string
+          description: Only return users with first name like the given value
+        firstNameLikeIgnoreCase:
+          type: string
+          description: Only return users with first name like the given value ignoring
+            case
+        lastName:
+          type: string
+          description: Only return users with the given last name
+        lastNameLike:
+          type: string
+          description: Only return users with last name like the given value
+        lastNameLikeIgnoreCase:
+          type: string
+          description: Only return users with last name like the given value ignoring
+            case
+        displayName:
+          type: string
+          description: Only return users with the given display name
+        displayNameLike:
+          type: string
+          description: Only return users with display name like the given value
+        displayNameLikeIgnoreCase:
+          type: string
+          description: Only return users with display name like the given value ignoring
+            case
+        fullNameLike:
+          type: string
+          description: Only return users with full name like the given value
+        fullNameLikeIgnoreCase:
+          type: string
+          description: Only return users with full name like the given value ignoring
+            case
+        email:
+          type: string
+          description: Only return users with the given email
+        emailLike:
+          type: string
+          description: Only return users with email like the given value
+        state:
+          type: string
+          description: Only return users with the given state
+        subState:
+          type: string
+          description: Only return users with the given sub state
+        memberOfGroup:
+          type: string
+          description: Only return users that are member of the given group
+        memberOfGroups:
+          type: array
+          description: Only return users that are member of any of the given groups
+          items:
+            type: string
+        memberOfGroupKey:
+          type: string
+          description: Only return users that are member of the group with the given
+            key
+        memberOfGroupKeys:
+          type: array
+          description: Only return users that are member of any of the groups with
+            the given keys
+          items:
+            type: string
+        includeIdentityInfo:
+          type: boolean
+          description: Include the extra identity info for the users.
+        tenantId:
+          type: string
+          description: Only return users within the given tenant. Only super admin
+            users can modify this parameter, otherwise this is the user doing the
+            request.
+        accessibleByUser:
+          type: string
+          description: Only return users accessible by the given user. Only admin
+            users can modify this parameter, otherwise this is the user doing the
+            request.
+        accessibleByUserDefinitionKey:
+          type: string
+          description: Only return users accessible by the given user definition.
+            Only admin users can modify this parameter, otherwise this is the user
+            definition of the user doing the request.
+        usersOrGroups:
+          $ref: '#/components/schemas/UsersOrGroups'
+      description: Request that is used for querying users.
+    UserDefinitionModelResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        key:
+          type: string
+        initialState:
+          type: string
+        initialSubState:
+          type: string
+        initialUserType:
+          type: string
+        initialUserSubType:
+          type: string
+        icon:
+          type: string
+        forms:
+          type: object
+          additionalProperties:
+            type: string
+        memberGroups:
+          type: array
+          items:
+            type: string
+        lookupGroups:
+          type: array
+          items:
+            type: string
+        dynamicLookupVariable:
+          type: string
+        allowedFeatures:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        actionPermissions:
+          type: object
+          additionalProperties:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+        actionHandlers:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: object
+        initialVariables:
+          type: object
+          additionalProperties:
+            type: object
+        restVariables:
+          type: object
+          additionalProperties:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+        conversationFilters:
+          type: array
+          items:
+            type: string
+        contactFilters:
+          type: array
+          items:
+            type: string
+    UserDefinitionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        key:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
+        initFormKey:
+          type: string
+        viewFormKey:
+          type: string
+        editFormKey:
+          type: string
+        allowedFeatures:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        translations:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        tenantId:
+          type: string
+    UserPrincipalLookupService:
+      type: object
+    UserResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+      description: The response for the OSS User
+    UsersOrGroups:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+        groupKeys:
+          type: array
+          items:
+            type: string

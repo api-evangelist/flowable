@@ -1,0 +1,473 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Flowable EXTERNAL-WORKER API Schemas",
+  "description": "JSON Schema definitions extracted from the Flowable EXTERNAL-WORKER OpenAPI specification",
+  "definitions": {
+    "AcquireExternalWorkerJobRequest": {
+      "type": "object",
+      "required": [
+        "lockDuration",
+        "topic",
+        "workerId"
+      ],
+      "properties": {
+        "topic": {
+          "type": "string",
+          "example": "order",
+          "description": "Acquire jobs with the given topic"
+        },
+        "lockDuration": {
+          "type": "string",
+          "example": "PT10M",
+          "description": "The acquired jobs will be locked with this lock duration. ISO-8601 duration format PnDTnHnMn.nS with days considered to be exactly 24 hours."
+        },
+        "numberOfTasks": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "The number of tasks that should be acquired. Default is 1."
+        },
+        "numberOfRetries": {
+          "type": "integer",
+          "format": "int32",
+          "example": 10,
+          "description": "The number of retries if an optimistic lock exception occurs during acquiring. Default is 5"
+        },
+        "workerId": {
+          "type": "string",
+          "example": "orderWorker1",
+          "description": "The id of the external worker that would be used for locking the job"
+        },
+        "scopeType": {
+          "type": "string",
+          "example": "cmmn",
+          "description": "Only acquire jobs with the given scope type"
+        }
+      },
+      "description": "Request that is used for acquiring external worker jobs"
+    },
+    "AcquiredExternalWorkerJobResponse": {
+      "type": "object",
+      "required": [
+        "id",
+        "url"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "8",
+          "description": "The id of the external job"
+        },
+        "url": {
+          "type": "string",
+          "example": "http://localhost:8182/external-job-api/jobs/8",
+          "description": "The url of the external job"
+        },
+        "correlationId": {
+          "type": "string",
+          "example": "50",
+          "description": "The correlation id of the external job"
+        },
+        "processInstanceId": {
+          "type": "string",
+          "example": "5",
+          "description": "The process instance id for the external job"
+        },
+        "processDefinitionId": {
+          "type": "string",
+          "example": "customerProcess:1:4",
+          "description": "The process definition id for the external job"
+        },
+        "executionId": {
+          "type": "string",
+          "example": "7",
+          "description": "The execution id for the external job"
+        },
+        "scopeId": {
+          "type": "string",
+          "example": "20",
+          "description": "The scope id for the external job"
+        },
+        "subScopeId": {
+          "type": "string",
+          "example": "21",
+          "description": "The sub scope id for the external job"
+        },
+        "scopeDefinitionId": {
+          "type": "string",
+          "example": "customerCase:1:39",
+          "description": "The scope definition id for the external job"
+        },
+        "scopeType": {
+          "type": "string",
+          "example": "cmmn",
+          "description": "The scope type for the external job"
+        },
+        "elementId": {
+          "type": "string",
+          "example": "customer",
+          "description": "The id of the element in the model"
+        },
+        "elementName": {
+          "type": "string",
+          "example": "Process Customer Task",
+          "description": "The name of the element in the model"
+        },
+        "retries": {
+          "type": "integer",
+          "format": "int32",
+          "example": 3,
+          "description": "The remaining number of retries"
+        },
+        "exceptionMessage": {
+          "type": "string",
+          "example": "null",
+          "description": "The exception message for the job"
+        },
+        "dueDate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2021-05-04T16:35:10.474Z",
+          "description": "The due date for the job"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2020-05-04T16:35:10.474Z",
+          "description": "The creation time of the job"
+        },
+        "tenantId": {
+          "type": "string",
+          "example": "flowable",
+          "description": "The tenant if of the job"
+        },
+        "lockOwner": {
+          "type": "string",
+          "example": "worker1",
+          "description": "The id of the lock owner. If not set then the job is not locked"
+        },
+        "lockExpirationTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2020-05-04T16:35:10.474Z",
+          "description": "The time when the lock expires"
+        },
+        "variables": {
+          "type": "array",
+          "description": "The variables from the scope of the job",
+          "items": {
+            "$ref": "#/components/schemas/EngineRestVariable"
+          }
+        }
+      }
+    },
+    "DataResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DataResponseExternalWorkerJobResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ExternalWorkerJobResponse"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "EngineRestVariable": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "myVariable",
+          "description": "Name of the variable"
+        },
+        "type": {
+          "type": "string",
+          "example": "string",
+          "description": "Type of the variable."
+        },
+        "value": {
+          "type": "object",
+          "example": "test",
+          "description": "Value of the variable."
+        },
+        "valueUrl": {
+          "type": "string",
+          "example": "http://...."
+        }
+      }
+    },
+    "ExternalWorkerJobCollectionResource": {
+      "type": "object"
+    },
+    "ExternalWorkerJobCompleteRequest": {
+      "type": "object",
+      "required": [
+        "workerId"
+      ],
+      "properties": {
+        "workerId": {
+          "type": "string",
+          "description": "The id of the external worker that executes the action. Must match the id of the worker who has most recently locked the job."
+        },
+        "variables": {
+          "type": "array",
+          "description": "The variables that should be passed to the job scope",
+          "items": {
+            "$ref": "#/components/schemas/EngineRestVariable"
+          }
+        }
+      },
+      "description": "Request that is used for completing external worker jobs"
+    },
+    "ExternalWorkerJobErrorRequest": {
+      "type": "object",
+      "required": [
+        "workerId"
+      ],
+      "properties": {
+        "workerId": {
+          "type": "string",
+          "description": "The id of the external worker that executes the action. Must match the id of the worker who has most recently locked the job."
+        },
+        "variables": {
+          "type": "array",
+          "description": "The variables that should be passed to the job scope",
+          "items": {
+            "$ref": "#/components/schemas/EngineRestVariable"
+          }
+        },
+        "errorCode": {
+          "type": "string",
+          "description": "The BPMN error code"
+        }
+      },
+      "description": "Request that is used for completing external worker jobs with a bpmn error"
+    },
+    "ExternalWorkerJobFailureRequest": {
+      "type": "object",
+      "required": [
+        "workerId"
+      ],
+      "properties": {
+        "workerId": {
+          "type": "string",
+          "description": "The id of the external worker that reports the failure. Must match the id of the worker who has most recently locked the job."
+        },
+        "errorMessage": {
+          "type": "string",
+          "example": "Database not available",
+          "description": "Error message for the failure"
+        },
+        "errorDetails": {
+          "type": "string",
+          "description": "Details for the failure"
+        },
+        "retries": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The new number of retries. If not set it will be reduced by 1. If 0 the job will be moved ot the dead letter table and would no longer be available for acquiring."
+        },
+        "retryTimeout": {
+          "type": "string",
+          "example": "PT20M",
+          "description": "The timeout after which the job should be made available again. ISO-8601 duration format PnDTnHnMn.nS with days considered to be exactly 24 hours."
+        }
+      },
+      "description": "Request that is used for failing external worker jobs"
+    },
+    "ExternalWorkerJobResponse": {
+      "type": "object",
+      "required": [
+        "id",
+        "url"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "8",
+          "description": "The id of the external job"
+        },
+        "url": {
+          "type": "string",
+          "example": "http://localhost:8182/external-job-api/jobs/8",
+          "description": "The url of the external job"
+        },
+        "correlationId": {
+          "type": "string",
+          "example": "50",
+          "description": "The correlation id of the external job"
+        },
+        "processInstanceId": {
+          "type": "string",
+          "example": "5",
+          "description": "The process instance id for the external job"
+        },
+        "processDefinitionId": {
+          "type": "string",
+          "example": "customerProcess:1:4",
+          "description": "The process definition id for the external job"
+        },
+        "executionId": {
+          "type": "string",
+          "example": "7",
+          "description": "The execution id for the external job"
+        },
+        "scopeId": {
+          "type": "string",
+          "example": "20",
+          "description": "The scope id for the external job"
+        },
+        "subScopeId": {
+          "type": "string",
+          "example": "21",
+          "description": "The sub scope id for the external job"
+        },
+        "scopeDefinitionId": {
+          "type": "string",
+          "example": "customerCase:1:39",
+          "description": "The scope definition id for the external job"
+        },
+        "scopeType": {
+          "type": "string",
+          "example": "cmmn",
+          "description": "The scope type for the external job"
+        },
+        "elementId": {
+          "type": "string",
+          "example": "customer",
+          "description": "The id of the element in the model"
+        },
+        "elementName": {
+          "type": "string",
+          "example": "Process Customer Task",
+          "description": "The name of the element in the model"
+        },
+        "retries": {
+          "type": "integer",
+          "format": "int32",
+          "example": 3,
+          "description": "The remaining number of retries"
+        },
+        "exceptionMessage": {
+          "type": "string",
+          "example": "null",
+          "description": "The exception message for the job"
+        },
+        "dueDate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2021-05-04T16:35:10.474Z",
+          "description": "The due date for the job"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2020-05-04T16:35:10.474Z",
+          "description": "The creation time of the job"
+        },
+        "tenantId": {
+          "type": "string",
+          "example": "flowable",
+          "description": "The tenant if of the job"
+        },
+        "lockOwner": {
+          "type": "string",
+          "example": "worker1",
+          "description": "The id of the lock owner. If not set then the job is not locked"
+        },
+        "lockExpirationTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2020-05-04T16:35:10.474Z",
+          "description": "The time when the lock expires"
+        }
+      }
+    },
+    "ExternalWorkerJobTerminateRequest": {
+      "type": "object",
+      "required": [
+        "workerId"
+      ],
+      "properties": {
+        "workerId": {
+          "type": "string",
+          "description": "The id of the external worker that executes the action. Must match the id of the worker who has most recently locked the job."
+        },
+        "variables": {
+          "type": "array",
+          "description": "The variables that should be passed to the job scope",
+          "items": {
+            "$ref": "#/components/schemas/EngineRestVariable"
+          }
+        }
+      },
+      "description": "Request that is used for terminating external worker jobs"
+    },
+    "UnacquireExternalWorkerJobsRequest": {
+      "type": "object",
+      "required": [
+        "workerId"
+      ],
+      "properties": {
+        "workerId": {
+          "type": "string",
+          "example": "orderWorker1",
+          "description": "The worker id for the external worker jobs to unaquire"
+        },
+        "tenantId": {
+          "type": "string",
+          "example": "tenant1",
+          "description": "The tenant id for the external worker jobs to unaquire"
+        }
+      },
+      "description": "Request that is used for unacquiring external worker jobs"
+    }
+  }
+}

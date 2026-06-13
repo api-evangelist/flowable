@@ -1,0 +1,1143 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Flowable DMN API Schemas",
+  "description": "JSON Schema definitions extracted from the Flowable DMN OpenAPI specification",
+  "definitions": {
+    "AuthorityRequirement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "requiredDecision": {
+          "$ref": "#/components/schemas/DmnElementReference"
+        },
+        "requiredInput": {
+          "$ref": "#/components/schemas/DmnElementReference"
+        },
+        "requiredAuthority": {
+          "$ref": "#/components/schemas/DmnElementReference"
+        }
+      }
+    },
+    "DataResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DataResponseDecisionResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DecisionResponse"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DataResponseDmnDeploymentResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DmnDeploymentResponse"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DataResponseHistoricDecisionExecutionResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/HistoricDecisionExecutionResponse"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Decision": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string"
+        },
+        "allowedAnswers": {
+          "type": "string"
+        },
+        "variable": {
+          "$ref": "#/components/schemas/InformationItem"
+        },
+        "requiredDecisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/InformationRequirement"
+          }
+        },
+        "requiredInputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/InformationRequirement"
+          }
+        },
+        "authorityRequirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/AuthorityRequirement"
+          }
+        },
+        "expression": {
+          "$ref": "#/components/schemas/Expression"
+        },
+        "forceDMN11": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DecisionResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "46b0379c-c0a1-11e6-bc93-6ab56fad108a"
+        },
+        "url": {
+          "type": "string",
+          "example": "http://localhost:8080/flowable-rest/dmn-api/dmn-repository/decisions/46b0379c-c0a1-11e6-bc93-6ab56fad108a"
+        },
+        "category": {
+          "type": "string",
+          "example": "dmnTest"
+        },
+        "name": {
+          "type": "string",
+          "example": "Decision Table One"
+        },
+        "key": {
+          "type": "string",
+          "example": "DecisionTableOne"
+        },
+        "description": {
+          "type": "string",
+          "example": "This is a simple description"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32",
+          "example": 3
+        },
+        "resourceName": {
+          "type": "string",
+          "example": "dmn-DecisionTableOne.dmn"
+        },
+        "deploymentId": {
+          "type": "string",
+          "example": "46aa6b3a-c0a1-11e6-bc93-6ab56fad108a"
+        },
+        "tenantId": {
+          "type": "string",
+          "example": "null"
+        },
+        "decisionType": {
+          "type": "string",
+          "example": "decision_table"
+        }
+      }
+    },
+    "DecisionService": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "outputDecisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DmnElementReference"
+          }
+        },
+        "encapsulatedDecisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DmnElementReference"
+          }
+        },
+        "inputDecisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DmnElementReference"
+          }
+        },
+        "inputData": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DmnElementReference"
+          }
+        }
+      }
+    },
+    "DmnDefinition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "expressionLanguage": {
+          "type": "string"
+        },
+        "typeLanguage": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "exporter": {
+          "type": "string"
+        },
+        "exporterVersion": {
+          "type": "string"
+        },
+        "inputData": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/InputData"
+          }
+        },
+        "itemDefinitions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ItemDefinition"
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Decision"
+          }
+        },
+        "decisionServices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DecisionService"
+          }
+        },
+        "locationMap": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/GraphicInfo"
+          }
+        },
+        "locationByDiagramIdMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/GraphicInfo"
+            }
+          }
+        },
+        "labelLocationByDiagramIdMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/GraphicInfo"
+            }
+          }
+        },
+        "flowLocationMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GraphicInfo"
+            }
+          }
+        },
+        "flowLocationByDiagramIdMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/GraphicInfo"
+              }
+            }
+          }
+        },
+        "decisionServiceDividerLocationMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GraphicInfo"
+            }
+          }
+        },
+        "decisionServiceDividerLocationByDiagramIdMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/GraphicInfo"
+              }
+            }
+          }
+        },
+        "namespaces": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "diDiagramMap": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/DmnDiDiagram"
+          }
+        }
+      }
+    },
+    "DmnDeploymentResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "03ab310d-c1de-11e6-a4f4-62ce84ef239e"
+        },
+        "name": {
+          "type": "string",
+          "example": "dmnTest"
+        },
+        "deploymentTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2016-12-14T10:16:37.000+01:00"
+        },
+        "category": {
+          "type": "string",
+          "example": "dmnExamples"
+        },
+        "url": {
+          "type": "string",
+          "example": "http://localhost:8080/flowable-rest/dmn-api/dmn-repository/deployments/03ab310d-c1de-11e6-a4f4-62ce84ef239e"
+        },
+        "parentDeploymentId": {
+          "type": "string",
+          "example": "17510"
+        },
+        "tenantId": {
+          "type": "string",
+          "example": "null"
+        }
+      }
+    },
+    "DmnDiDiagram": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "graphicInfo": {
+          "$ref": "#/components/schemas/GraphicInfo"
+        }
+      }
+    },
+    "DmnElement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        }
+      }
+    },
+    "DmnElementReference": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "parsedId": {
+          "type": "string"
+        }
+      }
+    },
+    "DmnExtensionAttribute": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "namespacePrefix": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        }
+      }
+    },
+    "DmnExtensionElement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespacePrefix": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "elementText": {
+          "type": "string"
+        },
+        "childElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        }
+      }
+    },
+    "DmnRuleServiceRequest": {
+      "type": "object",
+      "properties": {
+        "decisionKey": {
+          "type": "string"
+        },
+        "tenantId": {
+          "type": "string"
+        },
+        "parentDeploymentId": {
+          "type": "string"
+        },
+        "inputVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/EngineRestVariable"
+          }
+        },
+        "disableHistory": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DmnRuleServiceResponse": {
+      "type": "object",
+      "properties": {
+        "resultVariables": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EngineRestVariable"
+            }
+          }
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "DmnRuleServiceSingleResponse": {
+      "type": "object",
+      "properties": {
+        "resultVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/EngineRestVariable"
+          }
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "EngineInfoResponse": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "default"
+        },
+        "resourceUrl": {
+          "type": "string",
+          "example": "file://flowable/flowable.cfg.xml"
+        },
+        "exception": {
+          "type": "string",
+          "example": "null"
+        },
+        "version": {
+          "type": "string",
+          "example": "6.3.1"
+        }
+      }
+    },
+    "EngineRestVariable": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "myVariable",
+          "description": "Name of the variable"
+        },
+        "type": {
+          "type": "string",
+          "example": "string",
+          "description": "Type of the variable."
+        },
+        "value": {
+          "type": "object",
+          "example": "test",
+          "description": "Value of the variable."
+        },
+        "valueUrl": {
+          "type": "string",
+          "example": "http://...."
+        }
+      }
+    },
+    "Expression": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "typeRef": {
+          "type": "string"
+        }
+      }
+    },
+    "GraphicInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "x": {
+          "type": "number",
+          "format": "double"
+        },
+        "y": {
+          "type": "number",
+          "format": "double"
+        },
+        "height": {
+          "type": "number",
+          "format": "double"
+        },
+        "width": {
+          "type": "number",
+          "format": "double"
+        },
+        "element": {
+          "$ref": "#/components/schemas/DmnElement"
+        },
+        "expanded": {
+          "type": "boolean"
+        },
+        "xmlRowNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "xmlColumnNumber": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "HistoricDecisionExecutionResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "decisionDefinitionId": {
+          "type": "string"
+        },
+        "deploymentId": {
+          "type": "string"
+        },
+        "activityId": {
+          "type": "string"
+        },
+        "executionId": {
+          "type": "string"
+        },
+        "instanceId": {
+          "type": "string"
+        },
+        "scopeType": {
+          "type": "string"
+        },
+        "failed": {
+          "type": "boolean"
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "tenantId": {
+          "type": "string"
+        },
+        "decisionKey": {
+          "type": "string"
+        },
+        "decisionName": {
+          "type": "string"
+        },
+        "decisionVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "InformationItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "typeRef": {
+          "type": "string"
+        }
+      }
+    },
+    "InformationRequirement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "requiredDecision": {
+          "$ref": "#/components/schemas/DmnElementReference"
+        },
+        "requiredInput": {
+          "$ref": "#/components/schemas/DmnElementReference"
+        }
+      }
+    },
+    "InputData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "variable": {
+          "$ref": "#/components/schemas/InformationItem"
+        }
+      }
+    },
+    "ItemDefinition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "typeRef": {
+          "type": "string"
+        },
+        "allowedValues": {
+          "$ref": "#/components/schemas/UnaryTests"
+        },
+        "itemComponents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ItemDefinition"
+          }
+        },
+        "typeLanguage": {
+          "type": "string"
+        },
+        "collection": {
+          "type": "boolean"
+        }
+      }
+    },
+    "UnaryTests": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extensionElements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionElement"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DmnExtensionAttribute"
+            }
+          }
+        },
+        "text": {
+          "type": "string"
+        },
+        "textValues": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "expressionLanguage": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

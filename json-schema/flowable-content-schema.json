@@ -1,0 +1,1097 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Flowable CONTENT API Schemas",
+  "description": "JSON Schema definitions extracted from the Flowable CONTENT OpenAPI specification",
+  "definitions": {
+    "ContentItemCollectionResource": {
+      "type": "object"
+    },
+    "ContentItemQueryRequest": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "definitionId": {
+          "type": "string"
+        },
+        "ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameLike": {
+          "type": "string"
+        },
+        "mimeType": {
+          "type": "string"
+        },
+        "mimeTypeLike": {
+          "type": "string"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "taskIdLike": {
+          "type": "string"
+        },
+        "processInstanceId": {
+          "type": "string"
+        },
+        "processInstanceIdLike": {
+          "type": "string"
+        },
+        "scopeId": {
+          "type": "string"
+        },
+        "scopeIdLike": {
+          "type": "string"
+        },
+        "scopeType": {
+          "type": "string"
+        },
+        "contentStoreId": {
+          "type": "string"
+        },
+        "contentStoreIdLike": {
+          "type": "string"
+        },
+        "contentStoreName": {
+          "type": "string"
+        },
+        "contentStoreNameLike": {
+          "type": "string"
+        },
+        "contentSize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "minimumContentSize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maximumContentSize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "contentAvailable": {
+          "type": "boolean"
+        },
+        "field": {
+          "type": "string"
+        },
+        "fieldLike": {
+          "type": "string"
+        },
+        "latest": {
+          "type": "boolean"
+        },
+        "createdOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdBefore": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdAfter": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "createdByLike": {
+          "type": "string"
+        },
+        "lastModifiedOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedBefore": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedAfter": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedBy": {
+          "type": "string"
+        },
+        "lastModifiedByLike": {
+          "type": "string"
+        },
+        "versionParentId": {
+          "type": "string"
+        },
+        "tenantId": {
+          "type": "string"
+        },
+        "tenantIdLike": {
+          "type": "string"
+        },
+        "withoutTenantId": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string"
+        },
+        "subType": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "subState": {
+          "type": "string"
+        },
+        "parentFolderId": {
+          "type": "string"
+        },
+        "queryMetadata": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/QueryMetadata"
+          }
+        }
+      }
+    },
+    "ContentItemRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Simple content item",
+          "description": "Name of the content item"
+        },
+        "versionInfo": {
+          "type": "string",
+          "example": "Version 1a",
+          "description": "Version information of the content item"
+        },
+        "mimeType": {
+          "type": "string",
+          "example": "application/pdf",
+          "description": "Mime type of the content item, optional"
+        },
+        "taskId": {
+          "type": "string",
+          "example": "12345",
+          "description": "Task identifier for the content item, optional"
+        },
+        "processInstanceId": {
+          "type": "string",
+          "example": "1234",
+          "description": "Process instance identifier for the content item, optional"
+        },
+        "scopeType": {
+          "type": "string",
+          "example": "bpmn",
+          "description": "Scope type for the content item, optional"
+        },
+        "scopeId": {
+          "type": "string",
+          "example": "1234",
+          "description": "Scope instance identifier for the content item, optional"
+        },
+        "contentStoreId": {
+          "type": "string",
+          "example": "5678",
+          "description": "The identifier of the content item in an external content store, optional."
+        },
+        "contentStoreName": {
+          "type": "string",
+          "example": "myFileStore",
+          "description": "The name of an external content store, optional"
+        },
+        "field": {
+          "type": "string",
+          "example": "uploadField",
+          "description": "The form field for the content item, optional"
+        },
+        "versionParentId": {
+          "type": "string",
+          "example": "1234",
+          "description": "The version parent id for the content item to create a new version, optional"
+        },
+        "tenantId": {
+          "type": "string",
+          "example": "myTenantId",
+          "description": "The tenant identifier of the content item, optional."
+        },
+        "createdBy": {
+          "type": "string",
+          "example": "johndoe",
+          "description": "The user identifier that created the content item, optional"
+        },
+        "lastModifiedBy": {
+          "type": "string",
+          "example": "johndoe",
+          "description": "The user identifier that last modified the content item, optional"
+        },
+        "type": {
+          "type": "string",
+          "example": "folder",
+          "description": "The type of the content item, optional"
+        },
+        "subType": {
+          "type": "string",
+          "example": "spreadsheet",
+          "description": "The subtype of the content item, optional"
+        },
+        "state": {
+          "type": "string",
+          "example": "active",
+          "description": "The state of the content item, optional"
+        },
+        "subState": {
+          "type": "string",
+          "example": "active",
+          "description": "The substate of the content item, optional"
+        },
+        "parentFolderId": {
+          "type": "string",
+          "example": "myFolderId",
+          "description": "The parent folder id of the content item, optional"
+        }
+      }
+    },
+    "ContentItemResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "versionInfo": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "mimeType": {
+          "type": "string"
+        },
+        "definitionId": {
+          "type": "string"
+        },
+        "definitionName": {
+          "type": "string"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "processInstanceId": {
+          "type": "string"
+        },
+        "scopeId": {
+          "type": "string"
+        },
+        "scopeType": {
+          "type": "string"
+        },
+        "contentStoreId": {
+          "type": "string"
+        },
+        "contentStoreName": {
+          "type": "string"
+        },
+        "contentAvailable": {
+          "type": "boolean"
+        },
+        "versionParentId": {
+          "type": "string"
+        },
+        "tenantId": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedBy": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "subType": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "subState": {
+          "type": "string"
+        },
+        "parentFolderId": {
+          "type": "string"
+        }
+      }
+    },
+    "DataResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DataResponseContentItemResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ContentItemResponse"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DataResponseDocumentDefinitionResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DocumentDefinitionResponse"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DataResponseDocumentDeploymentResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DocumentDeploymentResponse"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DataResponseRenditionItemResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/RenditionItemResponse"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DeploymentResourceResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "test/simple.document"
+        },
+        "url": {
+          "type": "string",
+          "example": "http://localhost:8081/flowable-rest/content-api/document-repository/deployments/10/resources/test%2Fsimple.document",
+          "description": "For a single resource contains the actual URL to use for retrieving the binary resource"
+        },
+        "contentUrl": {
+          "type": "string",
+          "example": "http://localhost:8081/flowable-rest/content-api/document-repository/deployments/10/resourcedata/test%2Fsimple.document"
+        },
+        "mediaType": {
+          "type": "string",
+          "example": "text/xml",
+          "description": "Contains the media-type the resource has. This is resolved using a (pluggable) MediaTypeResolver and contains, by default, a limited number of mime-type mappings."
+        },
+        "type": {
+          "type": "string",
+          "example": "processDefinition",
+          "description": "Type of resource",
+          "enum": [
+            "resource",
+            "documentDefinition"
+          ]
+        }
+      }
+    },
+    "DocumentActionHandlerModel": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "overrideDefaultLogic": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DocumentDefinitionActionRequest": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string"
+        }
+      }
+    },
+    "DocumentDefinitionModel": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "versioning": {
+          "type": "string"
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "initialType": {
+          "type": "string"
+        },
+        "i18n": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        },
+        "forms": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "actionPermissions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "initialState": {
+          "type": "string"
+        },
+        "initialSubState": {
+          "type": "string"
+        },
+        "initialSubType": {
+          "type": "string"
+        },
+        "aiInstructions": {
+          "type": "string"
+        },
+        "actionHandlers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/DocumentActionHandlerModel"
+          }
+        }
+      }
+    },
+    "DocumentDefinitionResponse": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "simple:1:4"
+        },
+        "url": {
+          "type": "string",
+          "example": "http://localhost:8182/document-repository/document-definitions/simple%3A1%3A4"
+        },
+        "key": {
+          "type": "string",
+          "example": "simple"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "Simple document definition"
+        },
+        "description": {
+          "type": "string",
+          "example": "This is a case for testing purposes"
+        },
+        "tenantId": {
+          "type": "string",
+          "example": "null"
+        },
+        "deploymentId": {
+          "type": "string",
+          "example": "2"
+        },
+        "deploymentUrl": {
+          "type": "string",
+          "example": "http://localhost:8081/content-repository/deployments/2"
+        },
+        "resource": {
+          "type": "string",
+          "example": "http://localhost:8182/content-repository/deployments/2/resources/simple.document",
+          "description": "Contains the actual deployed Document JSON."
+        },
+        "category": {
+          "type": "string",
+          "example": "Examples"
+        },
+        "startFormDefined": {
+          "type": "boolean",
+          "example": true
+        },
+        "translations": {
+          "type": "object",
+          "description": "The translations for the document definition. Map having locale as the key and key value pairs for each locale.",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "DocumentDeploymentResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "10"
+        },
+        "name": {
+          "type": "string",
+          "example": "flowable-examples.document"
+        },
+        "deploymentTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2019-10-13T14:54:26.750+02:00"
+        },
+        "category": {
+          "type": "string",
+          "example": "examples"
+        },
+        "parentDeploymentId": {
+          "type": "string",
+          "example": "12"
+        },
+        "url": {
+          "type": "string",
+          "example": "http://localhost:8081/flowable-rest/content-api/content-repository/deployments/10"
+        },
+        "tenantId": {
+          "type": "string"
+        }
+      }
+    },
+    "EngineInfoResponse": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "default"
+        },
+        "resourceUrl": {
+          "type": "string",
+          "example": "file://flowable/flowable.cfg.xml"
+        },
+        "exception": {
+          "type": "string",
+          "example": "null"
+        },
+        "version": {
+          "type": "string",
+          "example": "6.3.1"
+        }
+      }
+    },
+    "EngineRestVariable": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "myVariable",
+          "description": "Name of the variable"
+        },
+        "type": {
+          "type": "string",
+          "example": "string",
+          "description": "Type of the variable."
+        },
+        "value": {
+          "type": "object",
+          "example": "test",
+          "description": "Value of the variable."
+        },
+        "valueUrl": {
+          "type": "string",
+          "example": "http://...."
+        }
+      }
+    },
+    "FileSystem": {
+      "type": "object",
+      "properties": {
+        "open": {
+          "type": "boolean"
+        },
+        "readOnly": {
+          "type": "boolean"
+        },
+        "separator": {
+          "type": "string"
+        },
+        "rootDirectories": {
+          "$ref": "#/components/schemas/IterablePath"
+        },
+        "fileStores": {
+          "$ref": "#/components/schemas/IterableFileStore"
+        },
+        "userPrincipalLookupService": {
+          "$ref": "#/components/schemas/UserPrincipalLookupService"
+        }
+      }
+    },
+    "FormModel": {
+      "type": "object"
+    },
+    "InputStream": {
+      "type": "object"
+    },
+    "Iterable": {
+      "type": "object"
+    },
+    "IterableFileStore": {
+      "type": "object"
+    },
+    "IterablePath": {
+      "type": "object"
+    },
+    "MetadataCollectionResource": {
+      "type": "object"
+    },
+    "MetadataResource": {
+      "type": "object"
+    },
+    "Path": {
+      "type": "object",
+      "properties": {
+        "absolute": {
+          "type": "boolean"
+        },
+        "parent": {
+          "$ref": "#/components/schemas/Path"
+        },
+        "root": {
+          "$ref": "#/components/schemas/Path"
+        },
+        "fileName": {
+          "$ref": "#/components/schemas/Path"
+        },
+        "fileSystem": {
+          "$ref": "#/components/schemas/FileSystem"
+        },
+        "nameCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "QueryMetadata": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "operation": {
+          "type": "string"
+        },
+        "value": {
+          "type": "object"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "RenditionItemQueryRequest": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "contentItemId": {
+          "type": "string"
+        },
+        "contentItemIdLike": {
+          "type": "string"
+        },
+        "contentItemName": {
+          "type": "string"
+        },
+        "contentItemNameLike": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameLike": {
+          "type": "string"
+        },
+        "mimeType": {
+          "type": "string"
+        },
+        "mimeTypeLike": {
+          "type": "string"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "taskIdLike": {
+          "type": "string"
+        },
+        "processInstanceId": {
+          "type": "string"
+        },
+        "processInstanceIdLike": {
+          "type": "string"
+        },
+        "scopeId": {
+          "type": "string"
+        },
+        "scopeIdLike": {
+          "type": "string"
+        },
+        "scopeType": {
+          "type": "string"
+        },
+        "contentStoreId": {
+          "type": "string"
+        },
+        "contentStoreIdLike": {
+          "type": "string"
+        },
+        "contentStoreName": {
+          "type": "string"
+        },
+        "contentStoreNameLike": {
+          "type": "string"
+        },
+        "contentSize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "minimumContentSize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maximumContentSize": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "contentAvailable": {
+          "type": "boolean"
+        },
+        "createdOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdBefore": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdAfter": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedBefore": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModifiedAfter": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "tenantId": {
+          "type": "string"
+        },
+        "tenantIdLike": {
+          "type": "string"
+        },
+        "withoutTenantId": {
+          "type": "boolean"
+        }
+      }
+    },
+    "RenditionItemResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "contentItemId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "mimeType": {
+          "type": "string"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "processInstanceId": {
+          "type": "string"
+        },
+        "contentStoreId": {
+          "type": "string"
+        },
+        "contentStoreName": {
+          "type": "string"
+        },
+        "contentAvailable": {
+          "type": "boolean"
+        },
+        "contentItemName": {
+          "type": "string"
+        },
+        "tenantId": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastModified": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "Resource": {
+      "type": "object",
+      "properties": {
+        "open": {
+          "type": "boolean"
+        },
+        "file": {
+          "type": "string",
+          "format": "binary"
+        },
+        "readable": {
+          "type": "boolean"
+        },
+        "url": {
+          "type": "string",
+          "format": "url"
+        },
+        "filePath": {
+          "$ref": "#/components/schemas/Path"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "contentAsByteArray": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "byte"
+          }
+        },
+        "inputStream": {
+          "$ref": "#/components/schemas/InputStream"
+        }
+      }
+    },
+    "UserPrincipalLookupService": {
+      "type": "object"
+    }
+  }
+}
