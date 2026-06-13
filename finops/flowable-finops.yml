@@ -1,0 +1,107 @@
+name: Flowable FinOps
+description: >-
+  Financial operations guidance for organizations adopting Flowable. Covers
+  cost modeling across the open-source and commercial tiers, key cost drivers,
+  and strategies for optimizing spend on Flowable deployments.
+url: https://www.flowable.com/pricing
+created: '2026-06-13'
+modified: '2026-06-13'
+tiers:
+  - tier: Community Edition
+    costModel: Free / Open Source
+    directAPICost: none
+    infrastructureCost: Operator-borne (self-hosted)
+    licenseCost: None (Apache-2.0)
+    supportCost: None (community forum only)
+    typicalUseCases:
+      - Development and testing environments
+      - Small-scale internal automation
+      - Proof-of-concept and evaluation
+      - Developers learning BPMN/CMMN/DMN
+  - tier: Flowable Platform
+    costModel: Commercial License — Users and RCPI Packages
+    directAPICost: Included in platform license
+    licenseCost: Custom (contact sales)
+    supportCost: >-
+      Included via Silver, Gold, or Platinum SLA tier; cost scales with tier
+      selection and number of named support contacts
+    primaryCostDrivers:
+      - name: Named Users
+        description: >-
+          Licenses are allocated per named user accessing Flowable Work,
+          Design, and Control applications.
+      - name: RCPI (Runtime Case/Process Instances)
+        description: >-
+          Active runtime instances of processes and cases are the primary
+          consumption metric. High-volume automation workloads will require
+          larger RCPI packages.
+      - name: Infrastructure
+        description: >-
+          Self-hosted or cloud-hosted compute, database (H2, MySQL, PostgreSQL,
+          Oracle, MS SQL Server, or MongoDB), and storage costs are
+          operator-borne.
+      - name: Support Tier
+        description: >-
+          Silver (business hours) to Platinum (1-hour Sev1 SLA, 24/7/365)
+          support tiers add cost and include varying numbers of named contacts.
+    costOptimizationTips:
+      - >-
+          Right-size RCPI packages by monitoring completed vs. active instance
+          volumes; archive completed instances regularly to avoid inflated counts.
+      - >-
+          Use Flowable's async executor and job tables housekeeping features to
+          purge historic data and keep database footprint lean.
+      - >-
+          Consolidate multiple automation use cases into a single Flowable
+          deployment to maximize license utilization.
+  - tier: Agentic Case Platform
+    costModel: Commercial License — Users, RCPI, and Agent Packages
+    directAPICost: Included in platform license
+    licenseCost: Custom (contact sales)
+    additionalCostDrivers:
+      - name: Agent Packages
+        description: >-
+          AI agent execution (Orchestrator, Knowledge, Document, Utility agents)
+          is licensed via Agent Packages in addition to Users and RCPIs.
+      - name: LLM API Costs
+        description: >-
+          Flowable integrates with OpenAI, Azure OpenAI, and Anthropic APIs for
+          AI-assisted tasks. LLM API calls are billed directly by the LLM
+          provider at their prevailing rates, separate from the Flowable license.
+      - name: Vector Store / Knowledge Infrastructure
+        description: >-
+          Knowledge agents require a vector database (e.g., pgvector, Pinecone,
+          Weaviate) for retrieval-augmented generation. Infrastructure and
+          indexing costs are operator-borne.
+    costOptimizationTips:
+      - >-
+          Cache LLM responses for repetitive document classification or knowledge
+          queries to reduce per-call LLM API spend.
+      - >-
+          Use Flowable's configurable LLM provider settings to route tasks to
+          lower-cost models where quality thresholds permit.
+      - >-
+          Monitor Agent Package consumption with Flowable Control dashboards and
+          set alerting thresholds before overage discussions with account teams.
+generalFinOpsGuidance:
+  - topic: Deployment Cost Baseline
+    detail: >-
+      A minimal production Flowable deployment requires: application server
+      (2–4 vCPU, 4–8 GB RAM), relational database (PostgreSQL recommended,
+      4 vCPU, 8 GB RAM), and optionally Elasticsearch for historic data queries.
+      Monthly infrastructure cost on AWS/Azure/GCP typically ranges from
+      $200–$800/month for modest workloads before licensing.
+  - topic: Evaluation Strategy
+    detail: >-
+      Start with the Community Edition to validate process models and API
+      integration patterns at zero license cost before committing to commercial
+      tiers. The open-source REST API is functionally equivalent for core
+      BPMN/CMMN/DMN operations.
+  - topic: Contract Negotiation
+    detail: >-
+      Enterprise pricing is negotiated directly with Flowable. Annual
+      commitments typically yield better per-unit pricing than monthly or
+      perpetual arrangements. Request bundled support tier inclusion in initial
+      negotiations.
+contactSales: https://www.flowable.com/contact
+pricingPage: https://www.flowable.com/pricing

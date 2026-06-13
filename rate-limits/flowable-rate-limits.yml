@@ -1,0 +1,69 @@
+name: Flowable Rate Limits
+description: >-
+  Flowable does not publish explicit rate limits for its open-source or
+  enterprise REST APIs. As a self-hosted or privately deployed platform, rate
+  limiting is the responsibility of the operator and can be configured via
+  reverse proxy, API gateway, or application-level throttling. The following
+  documents known configuration patterns and recommendations from Flowable
+  documentation.
+url: https://documentation.flowable.com/latest/developer
+created: '2026-06-13'
+modified: '2026-06-13'
+publishedLimits: false
+notes: >-
+  Flowable does not enforce centralized API rate limits at the product level.
+  All rate limiting is operator-configured for self-hosted deployments, or
+  governed by contract for Flowable Cloud customers.
+authentication:
+  method: HTTP Basic Authentication
+  description: >-
+    The Flowable REST API uses HTTP Basic Authentication by default.
+    Credentials must be included via Authorization header or URL encoding.
+    Flowable recommends pairing Basic Auth with HTTPS/TLS. Enterprise
+    deployments typically integrate with SSO, LDAP, or SAML via the IDM module.
+  privilege: rest-access-api
+  configurationKey: flowable.rest.app.authentication-mode
+pagination:
+  description: >-
+    All collection endpoints support paging parameters to limit response size
+    and avoid large data transfers.
+  parameters:
+    - name: start
+      description: Zero-based index of the first result to return
+      default: 0
+    - name: size
+      description: Number of results per page
+      default: 10
+      maximum: 100
+    - name: sort
+      description: Field to sort results by
+    - name: order
+      description: Sort direction (asc or desc)
+      default: asc
+operatorGuidance:
+  - title: Reverse Proxy Throttling
+    description: >-
+      Operators are advised to place Flowable behind a reverse proxy (NGINX,
+      Apache HTTP Server, AWS ALB) and configure connection rate limits and
+      request throttling at that layer.
+  - title: API Gateway Integration
+    description: >-
+      Enterprise deployments commonly front Flowable REST APIs with an API
+      gateway (Kong, AWS API Gateway, Azure APIM) to enforce per-client rate
+      limits, quotas, and authentication policies.
+  - title: Database Connection Pool
+    description: >-
+      High-throughput REST API usage should be tuned via the underlying database
+      connection pool (HikariCP is the default) and async executor thread pool
+      settings in flowable.cfg.xml or application.properties.
+  - title: Async Executor Tuning
+    description: >-
+      For process execution throughput, the async executor job acquisition
+      interval, batch size, and thread pool size are configurable properties
+      that effectively govern the rate of background job processing.
+cloudOffering:
+  description: >-
+    For Flowable Platform and Agentic Case Platform cloud-hosted deployments,
+    specific rate limits, quotas, and throughput SLAs are defined per contract.
+    Contact Flowable sales for enterprise cloud capacity details.
+  url: https://www.flowable.com/pricing

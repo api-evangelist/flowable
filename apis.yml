@@ -1,0 +1,166 @@
+aid: flowable
+name: Flowable
+description: >-
+  Flowable is an open-source BPM and workflow engine with rich REST APIs for
+  deploying process definitions, starting process instances, managing tasks,
+  querying workflow state, and orchestrating AI agents, people, and processes
+  together. It provides BPMN, CMMN, and DMN automation engines via Java and
+  REST APIs, with enterprise offerings for regulated industries.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/flowable/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - BPM
+  - Business Process Management
+  - Workflow
+  - BPMN
+  - CMMN
+  - DMN
+  - Process Automation
+  - Case Management
+  - Open Source
+  - REST API
+apis:
+  - name: Flowable BPMN API
+    description: >-
+      REST API for the BPMN process engine covering deployments, process
+      definitions, process instances, runtime executions, and user tasks with
+      full lifecycle management including suspend, activate, and variable
+      management.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+    baseURL: https://your-server/process-api
+    tags:
+      - BPMN
+      - Process
+      - Workflow
+    properties:
+      - type: Documentation
+        url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+      - type: Swagger
+        url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - name: Flowable CMMN API
+    description: >-
+      REST API for the CMMN case engine supporting case definitions, case
+      instances, plan items, milestones, and case variables for adaptive,
+      event-driven case management scenarios.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://documentation.flowable.com/latest/develop/core-swagger
+    baseURL: https://your-server/cmmn-api
+    tags:
+      - CMMN
+      - Case Management
+      - Workflow
+    properties:
+      - type: Documentation
+        url: https://documentation.flowable.com/latest/develop/core-swagger
+  - name: Flowable DMN API
+    description: >-
+      REST API for the DMN rules engine enabling deployment and execution of
+      decision tables, single and multi-result decision execution, and
+      management of decision definitions and deployments.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://documentation.flowable.com/latest/develop/core-swagger
+    baseURL: https://your-server/dmn-api
+    tags:
+      - DMN
+      - Rules Engine
+      - Decision Management
+    properties:
+      - type: Documentation
+        url: https://documentation.flowable.com/latest/develop/core-swagger
+  - name: Flowable Form API
+    description: >-
+      REST API for managing form definitions and submissions in Flowable,
+      enabling rendering, completion, and retrieval of forms associated with
+      process and case tasks.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://documentation.flowable.com/latest/develop/core-swagger
+    baseURL: https://your-server/form-api
+    tags:
+      - Forms
+      - Workflow
+    properties:
+      - type: Documentation
+        url: https://documentation.flowable.com/latest/develop/core-swagger
+  - name: Flowable Content API
+    description: >-
+      REST API for managing content items and attachments within Flowable,
+      supporting binary content storage, retrieval, and association with tasks
+      and process instances.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://documentation.flowable.com/latest/develop/core-swagger
+    baseURL: https://your-server/content-api
+    tags:
+      - Content
+      - Attachments
+      - Storage
+    properties:
+      - type: Documentation
+        url: https://documentation.flowable.com/latest/develop/core-swagger
+  - name: Flowable IDM API
+    description: >-
+      REST API for Identity Management in Flowable covering users, groups,
+      privileges, and tokens for authentication and authorization within the
+      platform.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://documentation.flowable.com/latest/develop/core-swagger
+    baseURL: https://your-server/idm-api
+    tags:
+      - Identity
+      - Users
+      - Groups
+      - Authentication
+    properties:
+      - type: Documentation
+        url: https://documentation.flowable.com/latest/develop/core-swagger
+  - name: Flowable External Worker API
+    description: >-
+      REST API enabling external worker clients written in Java, Python,
+      JavaScript/TypeScript, Go, or .NET to acquire and complete external
+      service tasks from a Flowable process engine instance.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://documentation.flowable.com/latest/develop/core-swagger
+    baseURL: https://your-server/external-job-api
+    tags:
+      - External Worker
+      - Integration
+      - Service Tasks
+    properties:
+      - type: Documentation
+        url: https://documentation.flowable.com/latest/develop/core-swagger
+common:
+  - type: Website
+    url: https://www.flowable.com
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/developer
+  - type: OpenSourceDocumentation
+    url: https://www.flowable.com/open-source/docs/
+  - type: GitHubOrg
+    url: https://github.com/flowable
+  - type: GitHubRepository
+    url: https://github.com/flowable/flowable-engine
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/1416054
+  - type: Blog
+    url: https://www.flowable.com/blog
+  - type: Pricing
+    url: https://www.flowable.com/pricing
+  - type: StatusPage
+    url: https://status.flowable.com
+  - type: X
+    url: https://twitter.com/flowablebpm
+  - type: Forum
+    url: https://forum.flowable.org
+  - type: Plans
+    url: plans/flowable-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/flowable-rate-limits.yml
+  - type: FinOps
+    url: finops/flowable-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
