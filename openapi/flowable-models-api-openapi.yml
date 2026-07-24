@@ -1,0 +1,448 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Models API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Models
+paths:
+  /repository/models:
+    get:
+      tags:
+      - Models
+      summary: List models
+      description: ''
+      operationId: listModels
+      parameters:
+      - name: id
+        in: query
+        description: Only return models with the given version.
+        required: false
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: Only return models with the given category.
+        required: false
+        schema:
+          type: string
+      - name: categoryLike
+        in: query
+        description: Only return models with a category like the given name.
+        required: false
+        schema:
+          type: string
+      - name: categoryNotEquals
+        in: query
+        description: Only return models which do not have the given category.
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return models with the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return models with a name like the given name.
+        required: false
+        schema:
+          type: string
+      - name: key
+        in: query
+        description: Only return models with the given key.
+        required: false
+        schema:
+          type: string
+      - name: deploymentId
+        in: query
+        description: Only return models with the given category.
+        required: false
+        schema:
+          type: string
+      - name: version
+        in: query
+        description: Only return models with the given version.
+        required: false
+        schema:
+          type: integer
+      - name: latestVersion
+        in: query
+        description: If true, only return models which are the latest version. Best used in combination with key. If false is passed in as value, this is ignored and all versions are returned.
+        required: false
+        schema:
+          type: boolean
+      - name: deployed
+        in: query
+        description: If true, only deployed models are returned. If false, only undeployed models are returned (deploymentId is null).
+        required: false
+        schema:
+          type: boolean
+      - name: tenantId
+        in: query
+        description: Only return models with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return models with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns models without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - category
+          - createTime
+          - key
+          - lastUpdateTime
+          - name
+          - version
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates request was successful and the models are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseModelResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Models
+      summary: Create a model
+      description: All request values are optional. For example, you can only include the name attribute in the request body JSON-object, only setting the name of the model, leaving all other fields null.
+      operationId: createModel
+      requestBody:
+        $ref: '#/components/requestBodies/ModelRequest'
+      responses:
+        '201':
+          description: Indicates the model was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelResponse'
+      security:
+      - basicAuth: []
+  /repository/models/{modelId}:
+    get:
+      tags:
+      - Models
+      summary: Get a model
+      description: ''
+      operationId: getModel
+      parameters:
+      - name: modelId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the model was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelResponse'
+        '404':
+          description: Indicates the requested model was not found.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Models
+      summary: Update a model
+      description: 'All request values are optional. For example, you can only include the name attribute in the request body JSON-object, only updating the name of the model, leaving all other fields unaffected. When an attribute is explicitly included and is set to null, the model-value will be updated to null. '
+      operationId: updateModel
+      parameters:
+      - name: modelId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ModelRequest'
+      responses:
+        '200':
+          description: Indicates the model was found and updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelResponse'
+        '404':
+          description: Indicates the requested model was not found.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Models
+      summary: Delete a model
+      description: ''
+      operationId: deleteModel
+      parameters:
+      - name: modelId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the model was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested model was not found.
+      security:
+      - basicAuth: []
+  /repository/models/{modelId}/source:
+    get:
+      tags:
+      - Models
+      summary: Get the editor source for a model
+      description: Response body contains the model’s raw editor source. The response’s content-type is set to application/octet-stream, regardless of the content of the source.
+      operationId: getModelBytes
+      parameters:
+      - name: modelId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the model was found and source is returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested model was not found.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Models
+      summary: Set the editor source for a model
+      description: Response body contains the model’s raw editor source. The response’s content-type is set to application/octet-stream, regardless of the content of the source.
+      operationId: setModelSource
+      parameters:
+      - name: modelId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/uploadDeployment'
+      responses:
+        '204':
+          description: Indicates the model was found and the source has been updated.
+        '404':
+          description: Indicates the requested model was not found.
+      security:
+      - basicAuth: []
+  /repository/models/{modelId}/source-extra:
+    get:
+      tags:
+      - Models
+      summary: Get the extra editor source for a model
+      description: Response body contains the model’s raw editor source. The response’s content-type is set to application/octet-stream, regardless of the content of the source.
+      operationId: getExtraEditorSource
+      parameters:
+      - name: modelId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the model was found and source is returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested model was not found.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Models
+      summary: Set the extra editor source for a model
+      description: Response body contains the model’s raw editor source. The response’s content-type is set to application/octet-stream, regardless of the content of the source.
+      operationId: setExtraEditorSource
+      parameters:
+      - name: modelId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/uploadDeployment'
+      responses:
+        '204':
+          description: Indicates the model was found and the extra source has been updated.
+        '404':
+          description: Indicates the requested model was not found.
+      security:
+      - basicAuth: []
+components:
+  requestBodies:
+    uploadDeployment:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+            required:
+            - file
+      required: true
+    ModelRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ModelRequest'
+  schemas:
+    ModelResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Model name
+        key:
+          type: string
+          example: Model key
+        category:
+          type: string
+          example: Model category
+        version:
+          type: integer
+          format: int32
+          example: 2
+        metaInfo:
+          type: string
+          example: Model metainfo
+        deploymentId:
+          type: string
+          example: '7'
+        tenantId:
+          type: string
+          example: 'null'
+        id:
+          type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/repository/models/5
+        createTime:
+          type: string
+          format: date-time
+          example: 2013-06-12T12:31:19.861+0000
+        lastUpdateTime:
+          type: string
+          format: date-time
+          example: 2013-06-12T12:31:19.861+0000
+        deploymentUrl:
+          type: string
+          example: http://localhost:8182/repository/deployments/2
+        sourceUrl:
+          type: string
+        sourceExtraUrl:
+          type: string
+    ModelRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Model name
+        key:
+          type: string
+          example: Model key
+        category:
+          type: string
+          example: Model category
+        version:
+          type: integer
+          format: int32
+          example: 2
+        metaInfo:
+          type: string
+          example: Model metainfo
+        deploymentId:
+          type: string
+          example: '7'
+        tenantId:
+          type: string
+          example: 'null'
+    DataResponseModelResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModelResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,1651 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Process Definitions API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Process Definitions
+paths:
+  /repository/process-definitions:
+    get:
+      tags:
+      - Process Definitions
+      summary: List of process definitions
+      description: ''
+      operationId: listProcessDefinitions
+      parameters:
+      - name: version
+        in: query
+        description: Only return process definitions with the given version.
+        required: false
+        schema:
+          type: integer
+      - name: name
+        in: query
+        description: Only return process definitions with the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return process definitions with a name like the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLikeIgnoreCase
+        in: query
+        description: Only return process definitions with a name like the given name ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: key
+        in: query
+        description: Only return process definitions with the given key.
+        required: false
+        schema:
+          type: string
+      - name: keyLike
+        in: query
+        description: Only return process definitions with a name like the given key.
+        required: false
+        schema:
+          type: string
+      - name: resourceName
+        in: query
+        description: Only return process definitions with the given resource name.
+        required: false
+        schema:
+          type: string
+      - name: resourceNameLike
+        in: query
+        description: Only return process definitions with a name like the given resource name.
+        required: false
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: Only return process definitions with the given category.
+        required: false
+        schema:
+          type: string
+      - name: categoryLike
+        in: query
+        description: Only return process definitions with a category like the given name.
+        required: false
+        schema:
+          type: string
+      - name: categoryNotEquals
+        in: query
+        description: Only return process definitions which do not have the given category.
+        required: false
+        schema:
+          type: string
+      - name: deploymentId
+        in: query
+        description: Only return process definitions which are part of a deployment with the given deployment id.
+        required: false
+        schema:
+          type: string
+      - name: parentDeploymentId
+        in: query
+        description: Only return process definitions which are part of a deployment with the given parent deployment id.
+        required: false
+        schema:
+          type: string
+      - name: startableByUser
+        in: query
+        description: Only return process definitions which are part of a deployment with the given id.
+        required: false
+        schema:
+          type: string
+      - name: latest
+        in: query
+        description: Only return the latest process definition versions. Can only be used together with key and keyLike parameters, using any other parameter will result in a 400-response.
+        required: false
+        schema:
+          type: boolean
+      - name: suspended
+        in: query
+        description: If true, only returns process definitions which are suspended. If false, only active process definitions (which are not suspended) are returned.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - name
+          - id
+          - key
+          - category
+          - deploymentId
+          - version
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates request was successful and the process-definitions are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseProcessDefinitionResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format or that latest is used with other parameters other than key and keyLike. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /repository/process-definitions/{processDefinitionId}:
+    get:
+      tags:
+      - Process Definitions
+      summary: Get a process definition
+      description: ''
+      operationId: getProcessDefinition
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the process-definitions are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessDefinitionResponse'
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Process Definitions
+      summary: Execute actions for a process definition
+      description: Execute actions for a process definition (Update category, Suspend or Activate)
+      operationId: executeProcessDefinitionAction
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessDefinitionActionRequest'
+        required: true
+      responses:
+        '200':
+          description: Indicates action has been executed for the specified process. (category altered, activate or suspend)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessDefinitionResponse'
+        '400':
+          description: Indicates no category was defined in the request body.
+        '404':
+          description: Indicates the requested process definition was not found.
+        '409':
+          description: Indicates the requested process definition is already suspended or active.
+      security:
+      - basicAuth: []
+  /repository/process-definitions/{processDefinitionId}/batch-migrate:
+    post:
+      tags:
+      - Process Definitions
+      summary: Batch migrate all instances of process definition
+      description: ''
+      operationId: batchMigrateInstancesOfProcessDefinition
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/batchMigrateInstancesOfProcessDefinitionBody'
+      responses:
+        '200':
+          description: Indicates process instances were found and batch migration was started.
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+  /repository/process-definitions/{processDefinitionId}/decision-tables:
+    get:
+      tags:
+      - Process Definitions
+      summary: List decision tables for a process-definition
+      description: ''
+      operationId: listProcessDefinitionDecisionTables
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the process definition was found and the decision tables are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DecisionResponse'
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+      deprecated: true
+  /repository/process-definitions/{processDefinitionId}/decisions:
+    get:
+      tags:
+      - Process Definitions
+      summary: List decisions for a process-definition
+      description: ''
+      operationId: listProcessDefinitionDecisions
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the process definition was found and the decisions are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DecisionResponse'
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+  /repository/process-definitions/{processDefinitionId}/form-definitions:
+    get:
+      tags:
+      - Process Definitions
+      summary: List form definitions for a process-definition
+      description: ''
+      operationId: listProcessDefinitionFormDefinitions
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the process definition was found and the form definitions are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FormDefinitionResponse'
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+  /repository/process-definitions/{processDefinitionId}/identitylinks:
+    get:
+      tags:
+      - Process Definitions
+      summary: List candidate starters for a process-definition
+      description: ''
+      operationId: listProcessDefinitionIdentityLinks
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the process definition was found and the requested identity links are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Process Definitions
+      summary: Add a candidate starter to a process definition
+      description: It is possible to add either a user or a group.
+      operationId: createIdentityLink
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/RestIdentityLink'
+      responses:
+        '201':
+          description: Indicates the process definition was found and the identity link was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestIdentityLink'
+        '400':
+          description: Indicates the body does not contain the correct information.
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+  /repository/process-definitions/{processDefinitionId}/identitylinks/{family}/{identityId}:
+    get:
+      tags:
+      - Process Definitions
+      summary: Get a candidate starter from a process definition
+      description: ''
+      operationId: getIdentityLink
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: family
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identityId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the process definition was found and the identity link was returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested process definition was not found or the process definition does not have an identity-link that matches the url.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Process Definitions
+      summary: Delete a candidate starter from a process definition
+      description: ''
+      operationId: deleteIdentityLink
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: family
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identityId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the process definition was found and the identity link was removed. The response body is intentionally empty.
+        '404':
+          description: Indicates the requested process definition was not found or the process definition does not have an identity-link that matches the url.
+      security:
+      - basicAuth: []
+  /repository/process-definitions/{processDefinitionId}/image:
+    get:
+      tags:
+      - Process Definitions
+      summary: Get a process definition image
+      description: ''
+      operationId: getModelResource
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the process-definitions are returned
+          content:
+            image/png:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+  /repository/process-definitions/{processDefinitionId}/migrate:
+    post:
+      tags:
+      - Process Definitions
+      summary: Migrate all instances of process definition
+      description: ''
+      operationId: migrateInstancesOfProcessDefinition
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/batchMigrateInstancesOfProcessDefinitionBody'
+      responses:
+        '200':
+          description: Indicates process instances were found and migration was executed.
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+  /repository/process-definitions/{processDefinitionId}/model:
+    get:
+      tags:
+      - Process Definitions
+      summary: Get a process definition BPMN model
+      description: ''
+      operationId: getBpmnModelResource
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the process definition was found and the model is returned. The response contains the full process definition model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BpmnModel'
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+  /repository/process-definitions/{processDefinitionId}/resourcedata:
+    get:
+      tags:
+      - Process Definitions
+      summary: Get a process definition resource content
+      description: ''
+      operationId: getProcessDefinitionResource
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates both process definition and resource have been found and the resource data has been returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested process definition was not found or there is no resource with the given id present in the process definition. The status-description contains additional information.
+      security:
+      - basicAuth: []
+  /repository/process-definitions/{processDefinitionId}/start-form:
+    get:
+      tags:
+      - Process Definitions
+      summary: Get a process definition start form
+      description: ''
+      operationId: getProcessDefinitionStartForm
+      parameters:
+      - name: processDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the process definition form is returned
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    BpmnModel:
+      type: object
+      properties:
+        definitionsAttributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        processes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Process'
+        locationMap:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GraphicInfo'
+        labelLocationMap:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GraphicInfo'
+        flowLocationMap:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/GraphicInfo'
+        edgeMap:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/BpmnDiEdge'
+        signals:
+          type: array
+          items:
+            $ref: '#/components/schemas/Signal'
+        pools:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pool'
+        imports:
+          type: array
+          items:
+            $ref: '#/components/schemas/Import'
+        interfaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Interface'
+        globalArtifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Artifact'
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        targetNamespace:
+          type: string
+        sourceSystemId:
+          type: string
+        userTaskFormTypes:
+          type: array
+          items:
+            type: string
+        startEventFormTypes:
+          type: array
+          items:
+            type: string
+        exporter:
+          type: string
+        exporterVersion:
+          type: string
+        mainProcess:
+          $ref: '#/components/schemas/Process'
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        errors:
+          type: object
+          additionalProperties:
+            type: string
+        escalations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Escalation'
+        dataStores:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/DataStore'
+        namespaces:
+          type: object
+          additionalProperties:
+            type: string
+        messageFlows:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/MessageFlow'
+        itemDefinitions:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ItemDefinition'
+    DataStore:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        dataState:
+          type: string
+        itemSubjectRef:
+          type: string
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        itemRef:
+          type: string
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+    Pool:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        processRef:
+          type: string
+        executable:
+          type: boolean
+    BaseElement:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+    Import:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        importType:
+          type: string
+        location:
+          type: string
+        namespace:
+          type: string
+    IOSpecification:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        dataInputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSpec'
+        dataOutputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSpec'
+        dataInputRefs:
+          type: array
+          items:
+            type: string
+        dataOutputRefs:
+          type: array
+          items:
+            type: string
+    FieldExtension:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        fieldName:
+          type: string
+        stringValue:
+          type: string
+        expression:
+          type: string
+    RestIdentityLink:
+      type: object
+      properties:
+        url:
+          type: string
+        user:
+          type: string
+          example: kermit
+        group:
+          type: string
+          example: sales
+        type:
+          type: string
+          example: candidate
+    FlowableListener:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        event:
+          type: string
+        implementationType:
+          type: string
+        implementation:
+          type: string
+        fieldExtensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldExtension'
+        onTransaction:
+          type: string
+        customPropertiesResolverImplementationType:
+          type: string
+        customPropertiesResolverImplementation:
+          type: string
+        scriptInfo:
+          $ref: '#/components/schemas/ScriptInfo'
+    FlowElement:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        documentation:
+          type: string
+        executionListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+    ProcessDefinitionActionRequest:
+      type: object
+      required:
+      - action
+      properties:
+        action:
+          type: string
+          example: activate
+          description: 'Action to perform: Either activate or suspend'
+        includeProcessInstances:
+          type: boolean
+          description: Whether or not to suspend/activate running process-instances for this process-definition. If omitted, the process-instances are left in the state they are
+        date:
+          type: string
+          format: date-time
+          description: Date (ISO-8601) when the suspension/activation should be executed. If omitted, the suspend/activation is effective immediately.
+        category:
+          type: string
+    Artifact:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+    ScriptInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        language:
+          type: string
+        resultVariable:
+          type: string
+        script:
+          type: string
+    FormDefinitionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        category:
+          type: string
+        name:
+          type: string
+        key:
+          type: string
+        description:
+          type: string
+        version:
+          type: integer
+          format: int32
+        resourceName:
+          type: string
+        deploymentId:
+          type: string
+        tenantId:
+          type: string
+    Operation:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        implementationRef:
+          type: string
+        inMessageRef:
+          type: string
+        outMessageRef:
+          type: string
+        errorMessageRef:
+          type: array
+          items:
+            type: string
+    Lane:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        parentProcess:
+          $ref: '#/components/schemas/Process'
+        flowReferences:
+          type: array
+          items:
+            type: string
+    Process:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        executable:
+          type: boolean
+        documentation:
+          type: string
+        ioSpecification:
+          $ref: '#/components/schemas/IOSpecification'
+        executionListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+        lanes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Lane'
+        dataObjects:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValuedDataObject'
+        candidateStarterUsers:
+          type: array
+          items:
+            type: string
+        candidateStarterGroups:
+          type: array
+          items:
+            type: string
+        eventListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventListener'
+        flowElementMap:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/FlowElement'
+        artifactMap:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Artifact'
+        initialFlowElement:
+          $ref: '#/components/schemas/FlowElement'
+        enableEagerExecutionTreeFetching:
+          type: boolean
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Artifact'
+        flowElements:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowElement'
+    ExtensionAttribute:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        namespacePrefix:
+          type: string
+        namespace:
+          type: string
+    Escalation:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        escalationCode:
+          type: string
+    BpmnDiEdge:
+      type: object
+      properties:
+        sourceDockerInfo:
+          $ref: '#/components/schemas/GraphicInfo'
+        targetDockerInfo:
+          $ref: '#/components/schemas/GraphicInfo'
+        waypoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/GraphicInfo'
+    ItemDefinition:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        structureRef:
+          type: string
+        itemKind:
+          type: string
+    GraphicInfo:
+      type: object
+      properties:
+        x:
+          type: number
+          format: double
+        y:
+          type: number
+          format: double
+        height:
+          type: number
+          format: double
+        width:
+          type: number
+          format: double
+        element:
+          $ref: '#/components/schemas/BaseElement'
+        expanded:
+          type: boolean
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        rotation:
+          type: number
+          format: double
+    EventListener:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        events:
+          type: string
+        implementationType:
+          type: string
+        implementation:
+          type: string
+        entityType:
+          type: string
+        onTransaction:
+          type: string
+    ProcessDefinitionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: oneTaskProcess:1:4
+        url:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4
+        key:
+          type: string
+          example: oneTaskProcess
+        version:
+          type: integer
+          format: int32
+          example: 1
+        name:
+          type: string
+          example: The One Task Process
+        description:
+          type: string
+          example: This is a process for testing purposes
+        tenantId:
+          type: string
+          example: 'null'
+        deploymentId:
+          type: string
+          example: '2'
+        deploymentUrl:
+          type: string
+          example: http://localhost:8081/repository/deployments/2
+        resource:
+          type: string
+          example: http://localhost:8182/repository/deployments/2/resources/testProcess.xml
+          description: Contains the actual deployed BPMN 2.0 xml.
+        diagramResource:
+          type: string
+          example: http://localhost:8182/repository/deployments/2/resources/testProcess.png
+          description: Contains a graphical representation of the process, null when no diagram is available.
+        category:
+          type: string
+          example: Examples
+        graphicalNotationDefined:
+          type: boolean
+          description: Indicates the process definition contains graphical information (BPMN DI).
+        suspended:
+          type: boolean
+        startFormDefined:
+          type: boolean
+    Signal:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        scope:
+          type: string
+    Interface:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        implementationRef:
+          type: string
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Operation'
+    DataResponseProcessDefinitionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessDefinitionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    ExtensionElement:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        namespacePrefix:
+          type: string
+        namespace:
+          type: string
+        elementText:
+          type: string
+        childElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+    DataSpec:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        itemSubjectRef:
+          type: string
+        collection:
+          type: boolean
+    DecisionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        category:
+          type: string
+        name:
+          type: string
+        key:
+          type: string
+        description:
+          type: string
+        version:
+          type: integer
+          format: int32
+        resourceName:
+          type: string
+        deploymentId:
+          type: string
+        tenantId:
+          type: string
+        url:
+          type: string
+    MessageFlow:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        sourceRef:
+          type: string
+        targetRef:
+          type: string
+        messageRef:
+          type: string
+    ValuedDataObject:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        documentation:
+          type: string
+        executionListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+        itemSubjectRef:
+          $ref: '#/components/schemas/ItemDefinition'
+        value:
+          type: object
+        type:
+          type: string
+  requestBodies:
+    batchMigrateInstancesOfProcessDefinitionBody:
+      content:
+        application/json:
+          schema:
+            type: string
+    RestIdentityLink:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestIdentityLink'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

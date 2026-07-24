@@ -1,0 +1,751 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Groups API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Groups
+paths:
+  /identity/groups:
+    get:
+      tags:
+      - Groups
+      summary: List groups
+      description: ''
+      operationId: listGroups
+      parameters:
+      - name: id
+        in: query
+        description: Only return group with the given id
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return groups with the given name
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Only return groups with the given type
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return groups with a name like the given value. Use % as wildcard-character.
+        required: false
+        schema:
+          type: string
+      - name: member
+        in: query
+        description: Only return groups which have a member with the given username.
+        required: false
+        schema:
+          type: string
+      - name: potentialStarter
+        in: query
+        description: Only return groups which members are potential starters for a process-definition with the given id.
+        required: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - name
+          - type
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested groups were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGroupResponse'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Groups
+      summary: Create a group
+      description: ''
+      operationId: createGroup
+      requestBody:
+        $ref: '#/components/requestBodies/GroupRequest'
+      responses:
+        '201':
+          description: Indicates the group was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+        '400':
+          description: Indicates the id of the group was missing.
+      security:
+      - basicAuth: []
+  /identity/groups/{groupId}:
+    get:
+      tags:
+      - Groups
+      summary: Get a single group
+      description: ''
+      operationId: getGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the group exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+        '404':
+          description: Indicates the requested group does not exist.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Groups
+      summary: Update a group
+      description: All request values are optional. For example, you can only include the name attribute in the request body JSON-object, only updating the name of the group, leaving all other fields unaffected. When an attribute is explicitly included and is set to null, the group-value will be updated to null.
+      operationId: updateGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/GroupRequest'
+      responses:
+        '200':
+          description: Indicates the group was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+        '404':
+          description: Indicates the requested group was not found.
+        '409':
+          description: Indicates the requested group was updated simultaneously.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Groups
+      summary: Delete a group
+      description: ''
+      operationId: deleteGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the group was found and  has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested group does not exist.
+      security:
+      - basicAuth: []
+  /identity/groups/{groupId}/members:
+    post:
+      tags:
+      - Groups
+      summary: Add a member to a group
+      description: ''
+      operationId: createMembership
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MembershipRequest'
+      responses:
+        '201':
+          description: Indicates the group was found and the member has been added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MembershipResponse'
+        '400':
+          description: Indicates the userId was not included in the request body.
+        '404':
+          description: Indicates the requested group was not found.
+        '409':
+          description: Indicates the requested user is already a member of the group.
+      security:
+      - basicAuth: []
+  /identity/groups/{groupId}/members/{userId}:
+    delete:
+      tags:
+      - Groups
+      summary: Delete a member from a group
+      description: ''
+      operationId: deleteMembership
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the group was found and the member has been deleted. The response body is left empty intentionally.
+        '404':
+          description: Indicates the requested group was not found or that the user is not a member of the group. The status description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /groups:
+    get:
+      tags:
+      - Groups
+      summary: List groups
+      description: ''
+      operationId: listGroups
+      parameters:
+      - name: id
+        in: query
+        description: Only return group with the given id
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return groups with the given name
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Only return groups with the given type
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return groups with a name like the given value.
+        required: false
+        schema:
+          type: string
+      - name: nameLikeIgnoreCase
+        in: query
+        description: Only return groups with a name like the given value ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: member
+        in: query
+        description: Only return groups which have a member with the given username.
+        required: false
+        schema:
+          type: string
+      - name: key
+        in: query
+        description: Only return groups with the given key.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return groups with the given tenant ID.
+        required: false
+        schema:
+          type: string
+      - name: includeIdentityInfo
+        in: query
+        description: Include the group identity info in the response.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - name
+          - type
+      responses:
+        '200':
+          description: Indicates the requested groups were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGroupResponse'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Groups
+      summary: Create a group
+      description: ''
+      operationId: createGroup
+      requestBody:
+        $ref: '#/components/requestBodies/GroupRequest'
+      responses:
+        '201':
+          description: Indicates the group was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse_2'
+        '400':
+          description: Indicates the id of the group was missing.
+      security:
+      - basicAuth: []
+  /groups/{groupId}:
+    get:
+      tags:
+      - Groups
+      summary: Get a single group
+      description: ''
+      operationId: getGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: includeUserInfo
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: includePrivilegeInfo
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: includeIdentityInfo
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the group exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse_2'
+        '404':
+          description: Indicates the requested group does not exist.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Groups
+      summary: Update a group
+      description: All request values are optional. For example, you can only include the name attribute in the request body JSON-object, only updating the name of the group, leaving all other fields unaffected. When an attribute is explicitly included and is set to null, the group-value will be updated to null.
+      operationId: updateGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/GroupRequest'
+      responses:
+        '200':
+          description: Indicates the group was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse_2'
+        '404':
+          description: Indicates the requested group was not found.
+        '409':
+          description: Indicates the requested group was updated simultaneously.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Groups
+      summary: Delete a group
+      description: ''
+      operationId: deleteGroup
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the group was found and  has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested group does not exist.
+      security:
+      - basicAuth: []
+  /groups/{groupId}/members:
+    post:
+      tags:
+      - Groups
+      summary: Add a member to a group
+      description: ''
+      operationId: createMembership
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MembershipRequest'
+      responses:
+        '201':
+          description: Indicates the group was found and the member has been added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MembershipResponse_2'
+        '400':
+          description: Indicates the userId was not included in the request body.
+        '404':
+          description: Indicates the requested group was not found.
+        '409':
+          description: Indicates the requested user is already a member of the group.
+      security:
+      - basicAuth: []
+  /groups/{groupId}/members/{userId}:
+    delete:
+      tags:
+      - Groups
+      summary: Delete a member from a group
+      description: ''
+      operationId: deleteMembership
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the group was found and the member has been deleted. The response body is left empty intentionally.
+        '404':
+          description: Indicates the requested group was not found or that the user is not a member of the group. The status description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /query/groups:
+    post:
+      tags:
+      - Groups
+      summary: Query groups
+      description: ''
+      operationId: queryGroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupQueryRequest'
+        description: Group request
+      responses:
+        '200':
+          description: Indicates the requested groups were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGroupResponse'
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    BasicPrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    GroupRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/identity/groups/testgroup
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        nameChanged:
+          type: boolean
+        typeChanged:
+          type: boolean
+    DataResponseGroupResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    MembershipResponse:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: kermit
+        url:
+          type: string
+          example: http://localhost:8182/identity/groups/sales/members/kermit
+        groupId:
+          type: string
+          example: sales
+    GroupResponse_2:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the group
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+    MembershipRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: kermit
+    GroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/identity/groups/testgroup
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+    UserResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+      description: The response for the OSS User
+    GroupQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+          description: Only return groups with the given id.
+        ids:
+          type: array
+          description: Only return groups with the given ids.
+          items:
+            type: string
+        key:
+          type: string
+          description: Only return groups with the given key.
+        keys:
+          type: array
+          description: Only return groups with the given keys.
+          items:
+            type: string
+        name:
+          type: string
+          description: Only return groups with the given name.
+        nameLike:
+          type: string
+          description: Only return groups with a name like the given value.
+        nameLikeIgnoreCase:
+          type: string
+          description: Only return groups with a name like the given value ignoring case.
+        type:
+          type: string
+          description: Only return groups with a name like the given type.
+        member:
+          type: string
+          description: Only return groups which have a member with the given username.
+        members:
+          type: array
+          description: Only return groups which have members with the given usernames.
+          items:
+            type: string
+        includeIdentityInfo:
+          type: boolean
+          description: Include the group identity info in the response.
+        tenantId:
+          type: string
+          description: Only return groups with the given tenant ID.
+      description: Request that is used for querying groups.
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+    MembershipResponse_2:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: kermit
+        url:
+          type: string
+          example: http://localhost:8182/groups/sales/members/userId
+        groupId:
+          type: string
+          example: sales
+  requestBodies:
+    GroupRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GroupRequest'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

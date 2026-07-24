@@ -1,0 +1,404 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Runtime API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Runtime
+paths:
+  /query/activity-instances:
+    post:
+      tags:
+      - Runtime
+      summary: Query for activity instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: queryActivityInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the activities are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseActivityInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryActivityInstances has multiple requestBodies
+  /runtime/signals:
+    post:
+      tags:
+      - Runtime
+      summary: Signal event received
+      description: ''
+      operationId: signalEventReceived
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignalEventReceivedRequest'
+      responses:
+        '202':
+          description: Indicated signal processing is queued as a job, ready to be executed.
+        '204':
+          description: Indicated signal has been processed and no errors occurred.
+        '400':
+          description: Signal not processed. The signal name is missing or variables are used together with async, which is not allowed. Response body contains additional information about the error.
+      security:
+      - basicAuth: []
+  /runtime/variable-instances/{varInstanceId}/data:
+    get:
+      tags:
+      - Runtime
+      summary: Get the binary data for a variable instance
+      description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
+      operationId: getVariableInstanceData
+      parameters:
+      - name: varInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the variable instance was found and the requested variable data is returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested variable instance was not found or the variable instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+  /cmmn-query/variable-instances:
+    post:
+      tags:
+      - Runtime
+      summary: Query for variable instances
+      description: 'All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of variable instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. '
+      operationId: queryVariableInstances
+      parameters:
+      - name: sort
+        in: query
+        description: The field to sort by. Defaults to 'variableName'.
+        required: false
+        schema:
+          type: string
+          enum:
+          - caseInstanceId
+          - variableName
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableInstanceQueryRequest'
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseVariableInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/variable-instances/{varInstanceId}/data:
+    get:
+      tags:
+      - Runtime
+      summary: Get the binary data for a variable instance
+      description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
+      operationId: getVariableInstanceData
+      parameters:
+      - name: varInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the variable instance was found and the requested variable data is returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested variable instance was not found or the variable instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    SignalEventReceivedRequest:
+      type: object
+      properties:
+        signalName:
+          type: string
+          description: Name of the signal
+        variables:
+          type: array
+          description: Array of variables (in the general variables format) to use as payload to pass along with the signal. Cannot be used in case async is set to true, this will result in an error.
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
+          type: string
+          description: ID of the tenant that the signal event should be processed in
+        async:
+          type: boolean
+          description: "If true, handling of the signal will happen asynchronously. Return code will be 202 - Accepted to indicate the request is accepted but not yet executed. If false,\n                    handling the signal will be done immediately and result (200 - OK) will only return after this completed successfully. Defaults to false if omitted."
+    DataResponseVariableInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    ActivityInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        activityId:
+          type: string
+        activityInstanceId:
+          type: string
+        activityName:
+          type: string
+        activityType:
+          type: string
+        executionId:
+          type: string
+        finished:
+          type: boolean
+        taskAssignee:
+          type: string
+        taskCompletedBy:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        processDefinitionId:
+          type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+    ActivityInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        activityId:
+          type: string
+          example: '4'
+        activityName:
+          type: string
+          example: My user task
+        activityType:
+          type: string
+          example: userTask
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess%3A1%3A4
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4
+        processInstanceId:
+          type: string
+          example: '3'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/runtime/process-instances/3
+        executionId:
+          type: string
+          example: '4'
+        taskId:
+          type: string
+          example: '4'
+        calledProcessInstanceId:
+          type: string
+          example: 'null'
+        assignee:
+          type: string
+          example: fozzie
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endTime:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        durationInMillis:
+          type: integer
+          format: int64
+          example: 86400056
+        tenantId:
+          type: string
+          example: 'null'
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    DataResponseActivityInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    VariableInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        excludeTaskVariables:
+          type: boolean
+        taskId:
+          type: string
+        planItemInstanceId:
+          type: string
+        caseInstanceId:
+          type: string
+        variableName:
+          type: string
+        variableNameLike:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        excludeLocalVariables:
+          type: boolean
+        variableScope:
+          type: string
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    VariableInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '14'
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
+        taskId:
+          type: string
+          example: '6'
+        planItemInstanceId:
+          type: string
+        variable:
+          $ref: '#/components/schemas/RestVariable'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

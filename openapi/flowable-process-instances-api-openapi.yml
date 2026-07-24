@@ -1,0 +1,987 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Process Instances API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Process Instances
+paths:
+  /query/process-instances:
+    post:
+      tags:
+      - Process Instances
+      summary: Query process instances
+      description: 'The request body can contain all possible filters that can be used in the List process instances URL query. On top of these, it’s possible to provide an array of variables to include in the query, with their format described here.
+
+
+        The general paging and sorting query-parameters can be used for this URL.'
+      operationId: queryProcessInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the process-instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseProcessInstanceResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryProcessInstances has multiple requestBodies
+  /runtime/process-instances:
+    get:
+      tags:
+      - Process Instances
+      summary: List process instances
+      description: ''
+      operationId: listProcessInstances
+      parameters:
+      - name: id
+        in: query
+        description: Only return process instances with the given version.
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return process instances with the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return process instances like the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLikeIgnoreCase
+        in: query
+        description: Only return process instances like the given name ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionName
+        in: query
+        description: Only return process instances with the given process definition name.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionNameLike
+        in: query
+        description: Only return process instances like the given process definition name.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionNameLikeIgnoreCase
+        in: query
+        description: Only return process instances like the given process definition name ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionKey
+        in: query
+        description: Only return process instances with the given process definition key.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionKeyLike
+        in: query
+        description: Only return process instances like the given process definition key.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionKeyLikeIgnoreCase
+        in: query
+        description: Only return process instances like the given process definition key ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: Only return process instances with the given process definition id.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionCategory
+        in: query
+        description: Only return process instances with the given process definition category.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionCategoryLike
+        in: query
+        description: Only return process instances like the given process definition category.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionCategoryLikeIgnoreCase
+        in: query
+        description: Only return process instances like the given process definition category ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionVersion
+        in: query
+        description: Only return process instances with the given process definition version.
+        required: false
+        schema:
+          type: integer
+      - name: processDefinitionEngineVersion
+        in: query
+        description: Only return process instances with the given process definition engine version.
+        required: false
+        schema:
+          type: string
+      - name: businessKey
+        in: query
+        description: Only return process instances with the given business key.
+        required: false
+        schema:
+          type: string
+      - name: businessKeyLike
+        in: query
+        description: Only return process instances with the business key like the given key.
+        required: false
+        schema:
+          type: string
+      - name: businessKeyLikeIgnoreCase
+        in: query
+        description: Only return process instances with the business key like the given key ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: businessStatus
+        in: query
+        description: Only return process instances with the given business status.
+        required: false
+        schema:
+          type: string
+      - name: businessStatusLike
+        in: query
+        description: Only return process instances with the business status like the given status.
+        required: false
+        schema:
+          type: string
+      - name: businessStatusLikeIgnoreCase
+        in: query
+        description: Only return process instances with the business status like the given status ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: startedBy
+        in: query
+        description: Only return process instances started by the given user.
+        required: false
+        schema:
+          type: string
+      - name: startedBefore
+        in: query
+        description: Only return process instances started before the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: startedAfter
+        in: query
+        description: Only return process instances started after the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: activeActivityId
+        in: query
+        description: Only return process instances which have an active activity instance with the provided activity id.
+        required: false
+        schema:
+          type: string
+      - name: involvedUser
+        in: query
+        description: Only return process instances in which the given user is involved.
+        required: false
+        schema:
+          type: string
+      - name: suspended
+        in: query
+        description: If true, only return process instance which are suspended. If false, only return process instances which are not suspended (active).
+        required: false
+        schema:
+          type: boolean
+      - name: superProcessInstanceId
+        in: query
+        description: Only return process instances which have the given super process-instance id (for processes that have a call-activities).
+        required: false
+        schema:
+          type: string
+      - name: rootScopeId
+        in: query
+        description: Only return process instances which have the given root scope id (that can be a process or case instance ID).
+        required: false
+        schema:
+          type: string
+      - name: parentScopeId
+        in: query
+        description: Only return process instances which have the given parent scope id (that can be a process or case instance ID).
+        required: false
+        schema:
+          type: string
+      - name: subProcessInstanceId
+        in: query
+        description: Only return process instances which have the given sub process-instance id (for processes started as a call-activity).
+        required: false
+        schema:
+          type: string
+      - name: excludeSubprocesses
+        in: query
+        description: Return only process instances which are not sub processes.
+        required: false
+        schema:
+          type: boolean
+      - name: includeProcessVariables
+        in: query
+        description: Indication to include process variables in the result.
+        required: false
+        schema:
+          type: boolean
+      - name: includeProcessVariablesName
+        in: query
+        description: Indication to include process variables with the given names in the result.
+        required: false
+        schema:
+          type: string
+      - name: callbackId
+        in: query
+        description: Only return process instances with the given callbackId.
+        required: false
+        schema:
+          type: string
+      - name: callbackIds
+        in: query
+        description: Only return process instances with the given callbackIds.
+        required: false
+        schema:
+          type: string
+      - name: callbackType
+        in: query
+        description: Only return process instances with the given callbackType.
+        required: false
+        schema:
+          type: string
+      - name: parentCaseInstanceId
+        in: query
+        description: Only return process instances with the given parent case instance id.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return process instances with the given tenant id.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return process instances with a tenant id like the given value.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLikeIgnoreCase
+        in: query
+        description: Only return process instances with a tenant id like the given value ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns process instances without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - processDefinitionId
+          - tenantId
+          - processDefinitionKey
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates request was successful and the process-instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseProcessInstanceResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Process Instances
+      summary: Start a process instance
+      description: "Note that also a *transientVariables* property is accepted as part of this json, that follows the same structure as the *variables* property.\n\nOnly one of *processDefinitionId*, *processDefinitionKey* or *message* can be used in the request body. \n\nParameters *businessKey*, *variables* and *tenantId* are optional.\n\nIf tenantId is omitted, the default tenant will be used.\n\n It is possible to send variables, transientVariables and startFormVariables in one request.\n\nMore information about the variable format can be found in the REST variables section.\n\n Note that the variable-scope that is supplied is ignored, process-variables are always local.\n\n"
+      operationId: createProcessInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessInstanceCreateRequest'
+      responses:
+        '201':
+          description: Indicates the process instance was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessInstanceResponse'
+        '400':
+          description: Indicates either the process-definition was not found (based on id or key), no process is started by sending the given message or an invalid variable has been passed. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /runtime/process-instances/delete:
+    post:
+      tags:
+      - Process Instances
+      summary: Bulk delete process instances
+      description: ''
+      operationId: deleteProcessInstances
+      requestBody:
+        $ref: '#/components/requestBodies/BulkDeleteInstancesRestActionRequest'
+      responses:
+        '204':
+          description: Indicates the bulk of process instances was found and deleted. Response body is left empty intentionally.
+        '404':
+          description: Indicates at least one requested process instance was not found.
+      security:
+      - basicAuth: []
+  /runtime/process-instances/{processInstanceId}:
+    get:
+      tags:
+      - Process Instances
+      summary: Get a process instance
+      description: ''
+      operationId: getProcessInstance
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the process instance was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessInstanceResponse'
+        '404':
+          description: Indicates the requested process instance was not found.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Process Instances
+      summary: Update process instance properties or execute an action on a process instance (body needs to contain an 'action' property for the latter).
+      description: ''
+      operationId: updateProcessInstance
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessInstanceUpdateRequest'
+      responses:
+        '200':
+          description: Indicates the process instance was found and the update/action was executed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessInstanceResponse'
+        '400':
+          description: Indicates a invalid parameters are supplied.
+        '404':
+          description: Indicates the requested process instance was not found.
+        '409':
+          description: Indicates the requested process instance change cannot be executed since the process-instance is in a wrong status which doesn't accept the change
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Process Instances
+      summary: Delete a process instance
+      description: ''
+      operationId: deleteProcessInstance
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: deleteReason
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the process instance was found and deleted. Response body is left empty intentionally.
+        '404':
+          description: Indicates the requested process instance was not found.
+      security:
+      - basicAuth: []
+  /runtime/process-instances/{processInstanceId}/change-state:
+    post:
+      tags:
+      - Process Instances
+      summary: Change the state a process instance
+      description: ''
+      operationId: changeActivityState
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ExecutionChangeActivityStateRequest'
+      responses:
+        '200':
+          description: Indicates the process instance was found and change state activity was executed.
+        '404':
+          description: Indicates the requested process instance was not found.
+        '409':
+          description: Indicates the requested process instance action cannot be executed since the process-instance is already activated/suspended.
+      security:
+      - basicAuth: []
+  /runtime/process-instances/{processInstanceId}/diagram:
+    get:
+      tags:
+      - Process Instances
+      summary: Get diagram for a process instance
+      description: ''
+      operationId: getProcessInstanceDiagram
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the process instance was found and the diagram was returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '400':
+          description: Indicates the requested process instance was not found but the process does not contain any graphical information (BPMN:DI) and no diagram can be created.
+        '404':
+          description: Indicates the requested process instance was not found.
+      security:
+      - basicAuth: []
+  /runtime/process-instances/{processInstanceId}/evaluate-conditions:
+    post:
+      tags:
+      - Process Instances
+      summary: Evaluate the conditions of a process instance
+      description: ''
+      operationId: evaluateConditions
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the process instance was found and the evaluation of the conditions was executed.
+        '404':
+          description: Indicates the requested process instance was not found.
+        '409':
+          description: Indicates the requested process instance action cannot be executed since the process-instance is already activated/suspended.
+      security:
+      - basicAuth: []
+  /runtime/process-instances/{processInstanceId}/inject:
+    post:
+      tags:
+      - Process Instances
+      summary: Inject activity in a process instance
+      description: ''
+      operationId: injectActivityInProcessInstance
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InjectActivityRequest'
+      responses:
+        '200':
+          description: Indicates the process instance was updated and the activity injection was executed.
+        '404':
+          description: Indicates the requested process instance was not found.
+        '409':
+          description: Indicates the requested process instance action cannot be executed since the process-instance is already activated/suspended.
+      security:
+      - basicAuth: []
+  /runtime/process-instances/{processInstanceId}/migrate:
+    post:
+      tags:
+      - Process Instances
+      summary: Migrate process instance
+      description: ''
+      operationId: migrateProcessInstance
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/batchMigrateInstancesOfProcessDefinitionBody'
+      responses:
+        '200':
+          description: Indicates the process instance was found and migration was executed.
+        '404':
+          description: Indicates the requested process instance was not found.
+        '409':
+          description: Indicates the requested process instance action cannot be executed since the process-instance is already activated/suspended.
+      security:
+      - basicAuth: []
+components:
+  requestBodies:
+    ExecutionChangeActivityStateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExecutionChangeActivityStateRequest'
+    batchMigrateInstancesOfProcessDefinitionBody:
+      content:
+        application/json:
+          schema:
+            type: string
+    BulkDeleteInstancesRestActionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BulkDeleteInstancesRestActionRequest'
+  schemas:
+    BulkDeleteInstancesRestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        instanceIds:
+          type: array
+          items:
+            type: string
+        deleteReason:
+          type: string
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    ExecutionChangeActivityStateRequest:
+      type: object
+      properties:
+        cancelActivityIds:
+          type: array
+          description: activityIds to be canceled
+          items:
+            type: string
+        startActivityIds:
+          type: array
+          description: activityIds to be started
+          items:
+            type: string
+    ProcessInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '187'
+        url:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/processOne%3A1%3A4
+        name:
+          type: string
+          example: myProcessInstanceName
+        businessKey:
+          type: string
+          example: myBusinessKey
+        businessStatus:
+          type: string
+          example: myBusinessStatus
+        suspended:
+          type: boolean
+        ended:
+          type: boolean
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess:1:158
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/processOne%3A1%3A4
+        processDefinitionName:
+          type: string
+          example: A process definition name
+        processDefinitionDescription:
+          type: string
+          example: A process definition description
+        activityId:
+          type: string
+          example: processTask
+        startUserId:
+          type: string
+          example: johnDoe
+        startTime:
+          type: string
+          example: 2018-04-17T10:17:43.902+0000
+        superProcessInstanceId:
+          type: string
+          example: '3'
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        callbackId:
+          type: string
+          example: '3'
+        callbackType:
+          type: string
+          example: cmmn
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-bpmn-2.0-process
+        propagatedStageInstanceId:
+          type: string
+          description: The stage plan item instance id this process instance belongs to or null, if it is not part of a case at all or is not a child element of a stage
+        tenantId:
+          type: string
+          example: someTenantId
+        completed:
+          type: boolean
+    ProcessInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        processInstanceName:
+          type: string
+        processInstanceNameLike:
+          type: string
+        processInstanceNameLikeIgnoreCase:
+          type: string
+        processBusinessKey:
+          type: string
+        processBusinessKeyLike:
+          type: string
+        processBusinessKeyLikeIgnoreCase:
+          type: string
+        processBusinessStatus:
+          type: string
+        processBusinessStatusLike:
+          type: string
+        processBusinessStatusLikeIgnoreCase:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        processDefinitionKey:
+          type: string
+        processDefinitionKeyLike:
+          type: string
+        processDefinitionKeyLikeIgnoreCase:
+          type: string
+        processDefinitionKeys:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        excludeProcessDefinitionKeys:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        processDefinitionName:
+          type: string
+        processDefinitionNameLike:
+          type: string
+        processDefinitionNameLikeIgnoreCase:
+          type: string
+        processDefinitionCategory:
+          type: string
+        processDefinitionCategoryLike:
+          type: string
+        processDefinitionCategoryLikeIgnoreCase:
+          type: string
+        processDefinitionVersion:
+          type: integer
+          format: int32
+        processDefinitionEngineVersion:
+          type: string
+        rootScopeId:
+          type: string
+        parentScopeId:
+          type: string
+        deploymentId:
+          type: string
+        deploymentIdIn:
+          type: array
+          items:
+            type: string
+        superProcessInstanceId:
+          type: string
+        subProcessInstanceId:
+          type: string
+        excludeSubprocesses:
+          type: boolean
+        activeActivityId:
+          type: string
+        activeActivityIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        involvedUser:
+          type: string
+        startedBy:
+          type: string
+        startedBefore:
+          type: string
+          format: date-time
+        startedAfter:
+          type: string
+          format: date-time
+        suspended:
+          type: boolean
+        includeProcessVariables:
+          type: boolean
+        includeProcessVariablesNames:
+          type: array
+          items:
+            type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        callbackId:
+          type: string
+        callbackIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        callbackType:
+          type: string
+        parentCaseInstanceId:
+          type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        tenantIdLikeIgnoreCase:
+          type: string
+        withoutTenantId:
+          type: boolean
+    ProcessInstanceCreateRequest:
+      type: object
+      properties:
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess:1:158
+        processDefinitionKey:
+          type: string
+          example: oneTaskProcess
+        message:
+          type: string
+          example: newOrderMessage
+        name:
+          type: string
+          example: myProcessInstanceName
+        businessKey:
+          type: string
+          example: myBusinessKey
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        transientVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        startFormVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        outcome:
+          type: string
+        tenantId:
+          type: string
+          example: tenant1
+        overrideDefinitionTenantId:
+          type: string
+          example: overrideTenant1
+        returnVariables:
+          type: boolean
+      description: Only one of processDefinitionId, processDefinitionKey or message can be used in the request body
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    ProcessInstanceUpdateRequest:
+      type: object
+      required:
+      - action
+      properties:
+        action:
+          type: string
+          example: activate
+          description: 'Action to perform: Either activate or suspend'
+        name:
+          type: string
+        businessKey:
+          type: string
+    InjectActivityRequest:
+      type: object
+      properties:
+        injectionType:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        assignee:
+          type: string
+        taskId:
+          type: string
+        processDefinitionId:
+          type: string
+        joinParallelActivitiesOnComplete:
+          type: boolean
+    DataResponseProcessInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

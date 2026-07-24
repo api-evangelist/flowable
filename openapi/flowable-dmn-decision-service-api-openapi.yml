@@ -1,0 +1,158 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens DMN Decision Service API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: DMN Decision Service
+paths:
+  /dmn-rule/execute-decision:
+    post:
+      tags:
+      - DMN Decision Service
+      summary: Execute a decision
+      description: ''
+      operationId: executeDecision
+      requestBody:
+        $ref: '#/components/requestBodies/DmnRuleServiceRequest'
+      responses:
+        '201':
+          description: Indicates the decision has been executed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DmnRuleServiceResponse'
+      security:
+      - basicAuth: []
+  /dmn-rule/execute-decision-service:
+    post:
+      tags:
+      - DMN Decision Service
+      summary: Execute a decision service
+      description: ''
+      operationId: executeDecisionService
+      requestBody:
+        $ref: '#/components/requestBodies/DmnRuleServiceRequest'
+      responses:
+        '201':
+          description: Indicates the decision service has been executed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DmnRuleServiceResponse'
+      security:
+      - basicAuth: []
+  /dmn-rule/execute-decision-service/single-result:
+    post:
+      tags:
+      - DMN Decision Service
+      summary: Execute a decision service expecting a single result
+      description: ''
+      operationId: executeDecisionServiceWithSingleResult
+      requestBody:
+        $ref: '#/components/requestBodies/DmnRuleServiceRequest'
+      responses:
+        '201':
+          description: Indicates the decision service has been executed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DmnRuleServiceSingleResponse'
+        '500':
+          description: Indicates the decision service returned multiple results
+      security:
+      - basicAuth: []
+  /dmn-rule/execute-decision/single-result:
+    post:
+      tags:
+      - DMN Decision Service
+      summary: Execute a decision expecting a single result
+      description: ''
+      operationId: executeDecisionWithSingleResult
+      requestBody:
+        $ref: '#/components/requestBodies/DmnRuleServiceRequest'
+      responses:
+        '201':
+          description: Indicates the decision or decision service has been executed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DmnRuleServiceSingleResponse'
+        '500':
+          description: Indicates the decision returned multiple results
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    DmnRuleServiceRequest:
+      type: object
+      properties:
+        decisionKey:
+          type: string
+        tenantId:
+          type: string
+        parentDeploymentId:
+          type: string
+        inputVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        disableHistory:
+          type: boolean
+    DmnRuleServiceResponse:
+      type: object
+      properties:
+        resultVariables:
+          type: array
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/EngineRestVariable'
+        url:
+          type: string
+    DmnRuleServiceSingleResponse:
+      type: object
+      properties:
+        resultVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        url:
+          type: string
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+  requestBodies:
+    DmnRuleServiceRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DmnRuleServiceRequest'
+      description: request
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

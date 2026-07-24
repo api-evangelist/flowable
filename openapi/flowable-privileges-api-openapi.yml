@@ -1,0 +1,420 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Privileges API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Privileges
+paths:
+  /privileges:
+    get:
+      tags:
+      - Privileges
+      summary: List privileges
+      description: ''
+      operationId: listPrivileges
+      parameters:
+      - name: groupId
+        in: query
+        description: Only return privileges for the given group.
+        required: false
+        schema:
+          type: string
+      - name: id
+        in: query
+        description: Only return privileges with the given id.
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return privileges with the given name.
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: userId
+        in: query
+        description: Only return privileges for the given user.
+        required: false
+        schema:
+          type: string
+      - name: id
+        in: query
+        description: Only return privileges with the given id
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return privileges with the given name
+        required: false
+        schema:
+          type: string
+      - name: userId
+        in: query
+        description: Only return privileges with the given userId
+        required: false
+        schema:
+          type: string
+      - name: groupId
+        in: query
+        description: Only return privileges with the given groupId
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested privileges were returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DataResponsePrivilegeResponse'
+      security:
+      - basicAuth: []
+  /privileges/{privilegeId}:
+    get:
+      tags:
+      - Privileges
+      summary: Get a single privilege
+      description: ''
+      operationId: getPrivilege
+      parameters:
+      - name: privilegeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the privilege exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivilegeResponse'
+        '404':
+          description: Indicates the requested privilege does not exist.
+      security:
+      - basicAuth: []
+  /privileges/{privilegeId}/group/{groupId}:
+    delete:
+      tags:
+      - Privileges
+      summary: Deletes a privilege for a group
+      description: ''
+      operationId: deleteGroupPrivilege
+      parameters:
+      - name: privilegeId
+        in: path
+        description: unique identifier of a privilege
+        required: true
+        schema:
+          type: string
+      - name: groupId
+        in: path
+        description: unique identifier of a group
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the group privilege has been deleted
+      security:
+      - basicAuth: []
+  /privileges/{privilegeId}/groups:
+    get:
+      tags:
+      - Privileges
+      summary: List all groups for a given privilege
+      description: ''
+      operationId: listPrivilegeGroups
+      parameters:
+      - name: privilegeId
+        in: path
+        description: unique identifier of a privilege
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the privilege exists and its groups are returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroupResponse'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Privileges
+      summary: Adds a privilege for a group
+      description: ''
+      operationId: addGroupPrivilege
+      parameters:
+      - name: privilegeId
+        in: path
+        description: unique identifier of a privilege
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddGroupPrivilegeRequest'
+        description: group privileges payload
+      responses:
+        '200':
+          description: Indicates the group privilege has been added
+      security:
+      - basicAuth: []
+  /privileges/{privilegeId}/users:
+    get:
+      tags:
+      - Privileges
+      summary: List all users for a given privilege
+      description: ''
+      operationId: listPrivilegeUsers
+      parameters:
+      - name: privilegeId
+        in: path
+        description: unique identifier of a privilege
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the privilege exists and its users are returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserResponse'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Privileges
+      summary: Adds a privilege for a user
+      description: ''
+      operationId: addUserPrivilege
+      parameters:
+      - name: privilegeId
+        in: path
+        description: unique identifier of a privilege
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddUserPrivilegeRequest'
+        description: add user privilege payload
+      responses:
+        '200':
+          description: Indicates the user privilege has been added
+      security:
+      - basicAuth: []
+  /privileges/{privilegeId}/users/{userId}:
+    delete:
+      tags:
+      - Privileges
+      summary: Deletes a privilege for a user
+      description: ''
+      operationId: deleteUserPrivilege
+      parameters:
+      - name: privilegeId
+        in: path
+        description: unique identifier of a privilege
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        description: unique identifier of a user
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the user privilege has been deleted
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    BasicPrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    PrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+    AddUserPrivilegeRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+    GroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the group
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+    DataResponsePrivilegeResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrivilegeResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    UserResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+      description: The response for the OSS User
+    AddGroupPrivilegeRequest:
+      type: object
+      properties:
+        groupId:
+          type: string
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

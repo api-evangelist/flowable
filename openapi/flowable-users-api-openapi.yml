@@ -1,0 +1,1804 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Users API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Users
+paths:
+  /identity/users:
+    get:
+      tags:
+      - Users
+      summary: List users
+      description: ''
+      operationId: listUsers
+      parameters:
+      - name: id
+        in: query
+        description: Only return group with the given id
+        required: false
+        schema:
+          type: string
+      - name: firstName
+        in: query
+        description: Only return users with the given firstname
+        required: false
+        schema:
+          type: string
+      - name: lastName
+        in: query
+        description: Only return users with the given lastname
+        required: false
+        schema:
+          type: string
+      - name: displayName
+        in: query
+        description: Only return users with the given displayName
+        required: false
+        schema:
+          type: string
+      - name: email
+        in: query
+        description: Only return users with the given email
+        required: false
+        schema:
+          type: string
+      - name: firstNameLike
+        in: query
+        description: Only return userswith a firstname like the given value. Use % as wildcard-character.
+        required: false
+        schema:
+          type: string
+      - name: lastNameLike
+        in: query
+        description: Only return users with a lastname like the given value. Use % as wildcard-character.
+        required: false
+        schema:
+          type: string
+      - name: displayNameLike
+        in: query
+        description: Only return users with a displayName like the given value. Use % as wildcard-character.
+        required: false
+        schema:
+          type: string
+      - name: emailLike
+        in: query
+        description: Only return users with an email like the given value. Use % as wildcard-character.
+        required: false
+        schema:
+          type: string
+      - name: memberOfGroup
+        in: query
+        description: Only return users which are a member of the given group.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return users which are a members of the given tenant.
+        required: false
+        schema:
+          type: string
+      - name: potentialStarter
+        in: query
+        description: Only return users  which members are potential starters for a process-definition with the given id.
+        required: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - firstName
+          - lastname
+          - email
+          - displayName
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the group exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseUserResponse'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Users
+      summary: Create a user
+      description: ''
+      operationId: createUser
+      requestBody:
+        $ref: '#/components/requestBodies/UserRequest'
+      responses:
+        '201':
+          description: Indicates the user was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Indicates the id of the user was missing.
+      security:
+      - basicAuth: []
+  /identity/users/{userId}:
+    get:
+      tags:
+      - Users
+      summary: Get a single user
+      description: ''
+      operationId: getUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the user exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '404':
+          description: Indicates the requested user does not exist.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Users
+      summary: Update a user
+      description: 'All request values are optional. For example, you can only include the firstName attribute in the request body JSON-object, only updating the firstName of the user, leaving all other fields unaffected. When an attribute is explicitly included and is set to null, the user-value will be updated to null. Example: {"firstName" : null} will clear the firstName of the user).'
+      operationId: updateUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/UserRequest'
+      responses:
+        '200':
+          description: Indicates the user was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Users
+      summary: Delete a user
+      description: ''
+      operationId: deleteUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the user was found and  has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested user was not found.
+      security:
+      - basicAuth: []
+  /identity/users/{userId}/info:
+    get:
+      tags:
+      - Users
+      summary: List user’s info
+      description: ''
+      operationId: listUserInfo
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the user was found and list of info (key and url) is returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserInfoResponse'
+        '404':
+          description: Indicates the requested user was not found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Users
+      summary: Create a new user’s info entry
+      description: ''
+      operationId: createUserInfo
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/UserInfoRequest'
+      responses:
+        '201':
+          description: Indicates the user was found and the info has been created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfoResponse'
+        '400':
+          description: Indicates the key or value was missing from the request body. Status description contains additional information about the error.
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates there is already an info-entry with the given key for the user, update the resource instance (PUT).
+      security:
+      - basicAuth: []
+  /identity/users/{userId}/info/{key}:
+    get:
+      tags:
+      - Users
+      summary: Get a user’s info
+      description: ''
+      operationId: getUserInfo
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the user was found and the user has info for the given key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfoResponse'
+        '404':
+          description: Indicates the requested user was not found or the user does ot have info for the given key. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Users
+      summary: Update a user’s info
+      description: ''
+      operationId: updateUserInfo
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/UserInfoRequest'
+      responses:
+        '200':
+          description: Indicates the user was found and the info has been updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfoResponse'
+        '400':
+          description: Indicates the value was missing from the request body.
+        '404':
+          description: Indicates the requested user was not found or the user does not have info for the given key. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Users
+      summary: Delete a user’s info
+      description: ''
+      operationId: deleteUserInfo
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the user was found and the info for the given key has been deleted. Response body is left empty intentionally.
+        '404':
+          description: Indicates the requested user was not found or the user does not have info for the given key. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /identity/users/{userId}/picture:
+    get:
+      tags:
+      - Users
+      summary: Get a user’s picture
+      description: The response body contains the raw picture data, representing the user’s picture. The Content-type of the response corresponds to the mimeType that was set when creating the picture.
+      operationId: getUserPicture
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the user was found and has a picture, which is returned in the body.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested user was not found or the user does not have a profile picture. Status-description contains additional information about the error.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Users
+      summary: Updating a user’s picture
+      description: 'The request should be of type multipart/form-data. There should be a single file-part included with the binary value of the picture. On top of that, the following additional form-fields can be present:
+
+
+        mimeType: Optional mime-type for the uploaded picture. If omitted, the default of image/jpeg is used as a mime-type for the picture.'
+      operationId: updateUserPicture
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  description: Picture to update
+                  type: string
+                  format: binary
+              required:
+              - file
+        required: true
+      responses:
+        '204':
+          description: Indicates the user was found and the picture has been updated. The response-body is left empty intentionally.
+        '404':
+          description: Indicates the requested user was not found.
+      security:
+      - basicAuth: []
+  /query/users:
+    post:
+      tags:
+      - Users
+      summary: Query users
+      description: ''
+      operationId: queryUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserBodyQueryRequest'
+        description: User request
+      responses:
+        '200':
+          description: Indicates the request was successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponsePlatformUserResponse'
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values.
+        '403':
+          description: Indicates the user does not have the rights to view the users.
+      security:
+      - basicAuth: []
+  /search/query-users:
+    get:
+      tags:
+      - Users
+      summary: Search a user
+      description: ''
+      operationId: Search a user index
+      parameters:
+      - name: displayName
+        in: query
+        description: displayName filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: email
+        in: query
+        description: email filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: firstName
+        in: query
+        description: firstName filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: id
+        in: query
+        description: id filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: lastName
+        in: query
+        description: lastName filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: state
+        in: query
+        description: state filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: tenantId filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: type filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: userDefinitionKey
+        in: query
+        description: userDefinitionKey filter to return results for.
+        required: false
+        schema:
+          type: string
+      - name: userDefinitionName
+        in: query
+        description: userDefinitionName filter to return results for.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the request was successful.
+        '201':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponsePlatformUserResponse'
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values.
+        '403':
+          description: Indicates the user does not have the rights to view the users.
+      security:
+      - basicAuth: []
+  /users:
+    get:
+      tags:
+      - Users
+      summary: List users
+      description: ''
+      operationId: listUsers
+      parameters:
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: state
+        in: query
+        description: Only return users with a state like the given value.
+        required: false
+        schema:
+          type: string
+      - name: subState
+        in: query
+        description: Only return users with a sub state like the given value.
+        required: false
+        schema:
+          type: string
+      - name: memberOfGroup
+        in: query
+        description: Only return users which are a member of the given group.
+        required: false
+        schema:
+          type: string
+      - name: memberOfGroupKey
+        in: query
+        description: Only return users which are a member of the group with the given key.
+        required: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - firstName
+          - lastname
+          - email
+          - displayName
+      responses:
+        '200':
+          description: Indicates the request was successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponsePlatformUserResponse'
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values.
+        '403':
+          description: Indicates the user does not have the rights to view the users.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Users
+      summary: Create a user
+      description: ''
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        '201':
+          description: Indicates the user was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformUserResponse'
+        '400':
+          description: Indicates the id of the user was missing.
+      security:
+      - basicAuth: []
+  /users/{userId}:
+    get:
+      tags:
+      - Users
+      summary: Get a single user
+      description: ''
+      operationId: getUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: includeIdentityInfo
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: includeGroupInfo
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the user exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformUserResponse'
+        '404':
+          description: Indicates the requested user does not exist.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Users
+      summary: Update a user
+      description: 'All request values are optional. For example, you can only include the firstName attribute in the request body JSON-object, only updating the firstName of the user, leaving all other fields unaffected. When an attribute is explicitly included and is set to null, the user-value will be updated to null. Example: {"firstName" : null} will clear the firstName of the user).'
+      operationId: updateUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+      responses:
+        '200':
+          description: Indicates the user was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformUserResponse'
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Users
+      summary: Delete a user
+      description: ''
+      operationId: deleteUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the user was found and  has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested user was not found.
+      security:
+      - basicAuth: []
+  /users/{userId}/avatar/data:
+    get:
+      tags:
+      - Users
+      summary: Get an user avatar
+      description: ''
+      operationId: getUserAvatar
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: download
+        in: query
+        description: Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the avatar exists and is returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Indicates the requested avatar does not exist.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Users
+      summary: Updates a user avatar
+      description: ''
+      operationId: updateUserAvatar
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the avatar exists and is returned.
+        '404':
+          description: Indicates the requested avatar does not exist.
+      security:
+      - basicAuth: []
+  /users/{userId}/avatar/thumbnail:
+    get:
+      tags:
+      - Users
+      summary: Get an user avatar thumbnail
+      description: ''
+      operationId: getUserAvatarThumbnail
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: download
+        in: query
+        description: Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the avatar exists and is returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Indicates the requested avatar does not exist.
+      security:
+      - basicAuth: []
+  /users/{userId}/change-language:
+    put:
+      tags:
+      - Users
+      summary: Change user language
+      description: ''
+      operationId: changeUserLanguage
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeUserLanguageRequest'
+      responses:
+        '200':
+          description: Indicates the user language was updated.
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+  /users/{userId}/change-password:
+    put:
+      tags:
+      - Users
+      summary: Change user password
+      description: ''
+      operationId: changeUserPassword
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeUserPasswordRequest'
+      responses:
+        '200':
+          description: Indicates the user password was updated.
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+  /users/{userId}/change-theme:
+    put:
+      tags:
+      - Users
+      summary: Change user theme
+      description: ''
+      operationId: changeUserTheme
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeUserThemeRequest'
+      responses:
+        '204':
+          description: Indicates the user theme was updated.
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+  /users/{userId}/identity-info/{identityInfoName}:
+    delete:
+      tags:
+      - Users
+      summary: Delete a user identity info
+      description: ''
+      operationId: deleteUserIdentityInfo
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identityInfoName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the identity info was found and the identity info has been deleted. Returns updated user.
+        '204':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PlatformUserResponse'
+        '404':
+          description: Indicates the requested identity info was not found.
+      security:
+      - basicAuth: []
+  /users/{userId}/index-document:
+    get:
+      tags:
+      - Users
+      summary: Get user from ElasticSearch
+      description: ''
+      operationId: getUserDocument
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates that the user was found in the ElasticSearch index.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/JsonNode'
+        '404':
+          description: Indicates that the user was not found in the ElasticSearch index.
+      security:
+      - basicAuth: []
+  /users/{userId}/name:
+    get:
+      tags:
+      - Users
+      summary: Get a single user name information
+      description: ''
+      operationId: getUserName
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the user exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserBaseInformationResponse'
+        '404':
+          description: Indicates the requested user does not exist.
+      security:
+      - basicAuth: []
+  /users/{userId}/presence:
+    put:
+      tags:
+      - Users
+      summary: Update presence
+      description: Set the presence and / or status text for a user
+      operationId: updateUserPresence
+      parameters:
+      - name: userId
+        in: path
+        description: The id of the user that should get the presence updated. Only users with admin privileges are allowed to set the presence for other users
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateUserPresenceRequest'
+      responses:
+        '204':
+          description: Indicates the user presence was updated.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values.
+        '403':
+          description: Indicates the user does not have rights to perform the update.
+      security:
+      - basicAuth: []
+  /users/{userId}/update-state:
+    put:
+      tags:
+      - Users
+      summary: Update a user state and sub state
+      description: ''
+      operationId: updateUserStateAndSubState
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserStateRequest'
+      responses:
+        '200':
+          description: Indicates the user was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformUserResponse'
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+  /users/{userId}/update-user-definition:
+    put:
+      tags:
+      - Users
+      summary: Update a user definition
+      description: ''
+      operationId: updateUserDefinition
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserDefinitionRequest'
+      responses:
+        '200':
+          description: Indicates the user was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformUserResponse'
+        '404':
+          description: Indicates the requested user was not found.
+        '409':
+          description: Indicates the requested user was updated simultaneously.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    UserRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testuser
+        firstName:
+          type: string
+          example: Fred
+        lastName:
+          type: string
+          example: Smith
+        displayName:
+          type: string
+          example: Fred Smith
+        url:
+          type: string
+          example: http://localhost:8182/identity/users/testuser
+        email:
+          type: string
+          example: no-reply@flowable.org
+        tenantId:
+          type: string
+          example: companyTenantId
+        pictureUrl:
+          type: string
+          example: http://localhost:8182/identity/users/testuser/picture
+        password:
+          type: string
+    UserBaseInformationResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        avatarId:
+          type: string
+      description: The response for the User base information
+    UserBodyQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+          description: Only return users with the given id
+        ids:
+          type: array
+          description: Only return users that match the given ids
+          items:
+            type: string
+        idsNotIn:
+          type: array
+          description: Only return users that do not match the given ids
+          items:
+            type: string
+        firstName:
+          type: string
+          description: Only return users with the given first name
+        firstNameLike:
+          type: string
+          description: Only return users with first name like the given value
+        firstNameLikeIgnoreCase:
+          type: string
+          description: Only return users with first name like the given value ignoring case
+        lastName:
+          type: string
+          description: Only return users with the given last name
+        lastNameLike:
+          type: string
+          description: Only return users with last name like the given value
+        lastNameLikeIgnoreCase:
+          type: string
+          description: Only return users with last name like the given value ignoring case
+        displayName:
+          type: string
+          description: Only return users with the given display name
+        displayNameLike:
+          type: string
+          description: Only return users with display name like the given value
+        displayNameLikeIgnoreCase:
+          type: string
+          description: Only return users with display name like the given value ignoring case
+        fullNameLike:
+          type: string
+          description: Only return users with full name like the given value
+        fullNameLikeIgnoreCase:
+          type: string
+          description: Only return users with full name like the given value ignoring case
+        email:
+          type: string
+          description: Only return users with the given email
+        emailLike:
+          type: string
+          description: Only return users with email like the given value
+        state:
+          type: string
+          description: Only return users with the given state
+        subState:
+          type: string
+          description: Only return users with the given sub state
+        memberOfGroup:
+          type: string
+          description: Only return users that are member of the given group
+        memberOfGroups:
+          type: array
+          description: Only return users that are member of any of the given groups
+          items:
+            type: string
+        memberOfGroupKey:
+          type: string
+          description: Only return users that are member of the group with the given key
+        memberOfGroupKeys:
+          type: array
+          description: Only return users that are member of any of the groups with the given keys
+          items:
+            type: string
+        includeIdentityInfo:
+          type: boolean
+          description: Include the extra identity info for the users.
+        tenantId:
+          type: string
+          description: Only return users within the given tenant. Only super admin users can modify this parameter, otherwise this is the user doing the request.
+        accessibleByUser:
+          type: string
+          description: Only return users accessible by the given user. Only admin users can modify this parameter, otherwise this is the user doing the request.
+        accessibleByUserDefinitionKey:
+          type: string
+          description: Only return users accessible by the given user definition. Only admin users can modify this parameter, otherwise this is the user definition of the user doing the request.
+        usersOrGroups:
+          $ref: '#/components/schemas/UsersOrGroups'
+      description: Request that is used for querying users.
+    ChangeUserLanguageRequest:
+      type: object
+      properties:
+        newLanguage:
+          type: string
+    Resource:
+      type: object
+      properties:
+        open:
+          type: boolean
+        file:
+          type: string
+          format: binary
+        readable:
+          type: boolean
+        url:
+          type: string
+          format: url
+        filePath:
+          $ref: '#/components/schemas/Path'
+        filename:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+          format: uri
+        contentAsByteArray:
+          type: array
+          items:
+            type: string
+            format: byte
+        inputStream:
+          $ref: '#/components/schemas/InputStream'
+    Path:
+      type: object
+      properties:
+        absolute:
+          type: boolean
+        parent:
+          $ref: '#/components/schemas/Path'
+        root:
+          $ref: '#/components/schemas/Path'
+        fileName:
+          $ref: '#/components/schemas/Path'
+        fileSystem:
+          $ref: '#/components/schemas/FileSystem'
+        nameCount:
+          type: integer
+          format: int32
+    ChangeUserThemeRequest:
+      type: object
+      properties:
+        newTheme:
+          type: string
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+    UserInfoRequest:
+      type: object
+      properties:
+        key:
+          type: string
+          example: jobTitle
+        value:
+          type: string
+          example: Muppet
+    UserResponse_2:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+      description: The response for the OSS User
+    UpdateUserDefinitionRequest:
+      type: object
+      properties:
+        userDefinitionId:
+          type: string
+        userDefinitionKey:
+          type: string
+        tenantId:
+          type: string
+    GroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse_2'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the group
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+    DataResponsePlatformUserResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformUserResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    ChangeUserPasswordRequest:
+      type: object
+      properties:
+        password:
+          type: string
+        repeatPassword:
+          type: string
+    UpdateUserStateRequest:
+      type: object
+      properties:
+        state:
+          type: string
+        subState:
+          type: string
+    CreateUserRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        displayName:
+          type: string
+        loginName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        repeatPassword:
+          type: string
+        type:
+          type: string
+        subType:
+          type: string
+        userDefinitionId:
+          type: string
+        userDefinitionKey:
+          type: string
+        state:
+          type: string
+        subState:
+          type: string
+        avatarId:
+          type: string
+        presence:
+          type: string
+        language:
+          type: string
+        theme:
+          type: string
+        tenantId:
+          type: string
+        identityInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        groups:
+          type: array
+          items:
+            type: string
+        returnIdentityInfo:
+          type: boolean
+    UserInfoResponse:
+      type: object
+      properties:
+        key:
+          type: string
+          example: jobTitle
+        value:
+          type: string
+          example: Muppet
+        url:
+          type: string
+          example: http://localhost:8080/flowable-rest/service/identity/users/kermit/info/jobTitle
+    UpdateUserPresenceRequest:
+      type: object
+      required:
+      - presence
+      properties:
+        presence:
+          type: string
+          description: The presence that should be set on the user
+          enum:
+          - available
+          - away
+          - offline
+          - out-of-office
+          - snoozed
+        tenantId:
+          type: string
+          description: The tenant id that should be used for updating the presence. Only admin users can modify this parameter
+      description: Request for updating user presence
+    UsersOrGroups:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+        groupKeys:
+          type: array
+          items:
+            type: string
+    InputStream:
+      type: object
+    IterableFileStore:
+      type: object
+    IterablePath:
+      type: object
+    UserPrincipalLookupService:
+      type: object
+    FileSystem:
+      type: object
+      properties:
+        open:
+          type: boolean
+        readOnly:
+          type: boolean
+        separator:
+          type: string
+        rootDirectories:
+          $ref: '#/components/schemas/IterablePath'
+        fileStores:
+          $ref: '#/components/schemas/IterableFileStore'
+        userPrincipalLookupService:
+          $ref: '#/components/schemas/UserPrincipalLookupService'
+    BasicPrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    JsonNode:
+      type: object
+      properties:
+        nodeType:
+          type: string
+          enum:
+          - ARRAY
+          - BINARY
+          - BOOLEAN
+          - MISSING
+          - 'NULL'
+          - NUMBER
+          - OBJECT
+          - POJO
+          - STRING
+        array:
+          type: boolean
+        ? ''
+        : type: boolean
+        float:
+          type: boolean
+        number:
+          type: boolean
+        valueNode:
+          type: boolean
+        missingNode:
+          type: boolean
+        object:
+          type: boolean
+        short:
+          type: boolean
+        double:
+          type: boolean
+        bigDecimal:
+          type: boolean
+        bigInteger:
+          type: boolean
+        textual:
+          type: boolean
+        boolean:
+          type: boolean
+        binary:
+          type: boolean
+        int:
+          type: boolean
+        pojo:
+          type: boolean
+        long:
+          type: boolean
+        containerNode:
+          type: boolean
+        integralNumber:
+          type: boolean
+        floatingPointNumber:
+          type: boolean
+    PlatformUserResponse:
+      type: object
+      required:
+      - creationTime
+      - id
+      - state
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+        avatarId:
+          type: string
+          example: CON-111-11-11
+          description: The optional avatar if of the user.
+        type:
+          type: string
+          example: default
+          description: The optional type of the user
+        subType:
+          type: string
+          description: The optional subType of the user
+        state:
+          type: string
+          example: ACTIVE
+          description: The state of the user
+        subState:
+          type: string
+          example: INITIALIZING
+          description: The optional sub state of the user
+        presence:
+          type: string
+          example: available
+          description: 'The optional presence state of the user. Known states: available, away, offline, out-of-office, snoozed'
+        language:
+          type: string
+          example: en
+          description: The optional language for the user
+        theme:
+          type: string
+          example: flowable
+          description: The optional theme for the user
+        userDefinitionId:
+          type: string
+          description: The id of the user definition linked with this user
+        userDefinitionKey:
+          type: string
+          description: The key of the user definition linked with this user
+        userDefinitionName:
+          type: string
+          description: The name of the user definition linked with this user
+        creatorId:
+          type: string
+          description: The id of the user that created this user
+        creationTime:
+          type: string
+          description: The ISO8601 creation time of this user
+        updaterId:
+          type: string
+          description: The id of the user that last updated this user
+        updateTime:
+          type: string
+          description: The ISO8601 last update time of this user
+        groups:
+          type: array
+          description: Collection of all groups the user has a membership of
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the user
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        translations:
+          type: object
+          description: Map of translations for the user info
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        allowedTabs:
+          type: array
+          description: The allowed tabs for the user
+          uniqueItems: true
+          items:
+            type: string
+      description: The response for a platform user
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testuser
+        firstName:
+          type: string
+          example: Fred
+        lastName:
+          type: string
+          example: Smith
+        displayName:
+          type: string
+          example: Fred Smith
+        url:
+          type: string
+          example: http://localhost:8182/identity/users/testuser
+        email:
+          type: string
+          example: no-reply@flowable.org
+        tenantId:
+          type: string
+          example: companyTenantId
+        pictureUrl:
+          type: string
+          example: http://localhost:8182/identity/users/testuser/picture
+        password:
+          type: string
+    DataResponseUserResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    UpdateUserRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        displayName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        repeatPassword:
+          type: string
+        avatarId:
+          type: string
+        language:
+          type: string
+        theme:
+          type: string
+        identityInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        groups:
+          type: array
+          items:
+            type: string
+        returnIdentityInfo:
+          type: boolean
+  requestBodies:
+    UserRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserRequest'
+    UserInfoRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserInfoRequest'
+    UpdateUserPresenceRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateUserPresenceRequest'
+      required: true
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

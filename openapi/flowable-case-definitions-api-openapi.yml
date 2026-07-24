@@ -1,0 +1,2133 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Case Definitions API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Case Definitions
+paths:
+  /cmmn-repository/case-definitions:
+    get:
+      tags:
+      - Case Definitions
+      summary: List of case definitions
+      description: ''
+      operationId: listCaseDefinitions
+      parameters:
+      - name: version
+        in: query
+        description: Only return case definitions with the given version.
+        required: false
+        schema:
+          type: integer
+      - name: name
+        in: query
+        description: Only return case definitions with the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return case definitions with a name like the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLikeIgnoreCase
+        in: query
+        description: Only return case definitions with a name like the given name ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: key
+        in: query
+        description: Only return case definitions with the given key.
+        required: false
+        schema:
+          type: string
+      - name: keyLike
+        in: query
+        description: Only return case definitions with a name like the given key.
+        required: false
+        schema:
+          type: string
+      - name: resourceName
+        in: query
+        description: Only return case definitions with the given resource name.
+        required: false
+        schema:
+          type: string
+      - name: resourceNameLike
+        in: query
+        description: Only return case definitions with a name like the given resource name.
+        required: false
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: Only return case definitions with the given category.
+        required: false
+        schema:
+          type: string
+      - name: categoryLike
+        in: query
+        description: Only return case definitions with a category like the given name.
+        required: false
+        schema:
+          type: string
+      - name: categoryNotEquals
+        in: query
+        description: Only return case definitions which do not have the given category.
+        required: false
+        schema:
+          type: string
+      - name: deploymentId
+        in: query
+        description: Only return case definitions which are part of a deployment with the given deployment id.
+        required: false
+        schema:
+          type: string
+      - name: parentDeploymentId
+        in: query
+        description: Only return case definitions which are part of a deployment with the given parent deployment id.
+        required: false
+        schema:
+          type: string
+      - name: startableByUser
+        in: query
+        description: Only return case definitions which are part of a deployment with the given id.
+        required: false
+        schema:
+          type: string
+      - name: latest
+        in: query
+        description: Only return the latest case definition versions. Can only be used together with key and keyLike parameters, using any other parameter will result in a 400-response.
+        required: false
+        schema:
+          type: boolean
+      - name: suspended
+        in: query
+        description: If true, only returns case definitions which are suspended. If false, only active process definitions (which are not suspended) are returned.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - name
+          - id
+          - key
+          - category
+          - deploymentId
+          - version
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates request was successful and the case definitions are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseCaseDefinitionResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format or that latest is used with other parameters other than key and keyLike. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}:
+    get:
+      tags:
+      - Case Definitions
+      summary: Get a case definition
+      description: ''
+      operationId: getCaseDefinition
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the case definitions are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseDefinitionResponse'
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Case Definitions
+      summary: Execute actions for a case definition
+      description: Execute actions for a case definition (Update category)
+      operationId: executeCaseDefinitionAction
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaseDefinitionActionRequest'
+        required: true
+      responses:
+        '200':
+          description: Indicates action has been executed for the specified process. (category altered)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseDefinitionResponse'
+        '400':
+          description: Indicates no category was defined in the request body.
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}/batch-migrate:
+    post:
+      tags:
+      - Case Definitions
+      summary: Batch migrate all instances of case definition
+      description: ''
+      operationId: batchMigrateInstancesOfCaseDefinition
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/migrateHistoricCaseInstanceBody'
+      responses:
+        '200':
+          description: Indicates case instances were found and batch migration was started.
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}/batch-migrate-historic-instances:
+    post:
+      tags:
+      - Case Definitions
+      summary: Batch migrate all historic instances of case definition
+      description: ''
+      operationId: batchMigrateHistoricInstancesOfCaseDefinition
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/migrateHistoricCaseInstanceBody'
+      responses:
+        '200':
+          description: Indicates historic case instances were found and batch migration was started.
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}/decision-tables:
+    get:
+      tags:
+      - Case Definitions
+      summary: List decision tables for a case definition
+      description: ''
+      operationId: listCaseDefinitionDecisionTables
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the case definition was found and the decision tables are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DmnDecision'
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+      deprecated: true
+  /cmmn-repository/case-definitions/{caseDefinitionId}/decisions:
+    get:
+      tags:
+      - Case Definitions
+      summary: List decisions for a case definition
+      description: ''
+      operationId: listCaseDefinitionDecisions
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the case definition was found and the decisions are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DmnDecision'
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}/form-definitions:
+    get:
+      tags:
+      - Case Definitions
+      summary: List form definitions for a case definition
+      description: ''
+      operationId: listCaseDefinitionFormDefinitions
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the case definition was found and the form definitions are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FormDefinition'
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}/identitylinks:
+    get:
+      tags:
+      - Case Definitions
+      summary: List candidate starters for a case definition
+      description: ''
+      operationId: listCaseDefinitionIdentityLinks
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the case definition was found and the requested identity links are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Case Definitions
+      summary: Add a candidate starter to a case definition
+      description: It is possible to add either a user or a group.
+      operationId: createIdentityLink
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/RestIdentityLink'
+      responses:
+        '201':
+          description: Indicates the case definition was found and the identity link was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestIdentityLink'
+        '400':
+          description: Indicates the body does not contain the correct information.
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}/identitylinks/{family}/{identityId}:
+    get:
+      tags:
+      - Case Definitions
+      summary: Get a candidate starter from a case definition
+      description: ''
+      operationId: getIdentityLink
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: family
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identityId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the case definition was found and the identity link was returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested case definition was not found or the case definition does not have an identity-link that matches the url.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Case Definitions
+      summary: Delete a candidate starter from a case definition
+      description: ''
+      operationId: deleteIdentityLink
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: family
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identityId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the case definition was found and the identity link was removed. The response body is intentionally empty.
+        '404':
+          description: Indicates the requested case definition was not found or the case definition does not have an identity-link that matches the url.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}/image:
+    get:
+      tags:
+      - Case Definitions
+      summary: Get a case definition image
+      description: ''
+      operationId: getImageResource
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the case definitions are returned
+          content:
+            image/png:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}/migrate:
+    post:
+      tags:
+      - Case Definitions
+      summary: Migrate all instances of case definition
+      description: ''
+      operationId: migrateInstancesOfCaseDefinition
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/migrateHistoricCaseInstanceBody'
+      responses:
+        '200':
+          description: Indicates case instances were found and migration was executed.
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}/migrate-historic-instances:
+    post:
+      tags:
+      - Case Definitions
+      summary: Migrate all historic case instances of case definition
+      description: ''
+      operationId: migrateHistoricInstancesOfCaseDefinition
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/migrateHistoricCaseInstanceBody'
+      responses:
+        '200':
+          description: Indicates historic case instances were found and migration was executed.
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}/model:
+    get:
+      tags:
+      - Case Definitions
+      summary: Get a case definition CMMN model
+      description: ''
+      operationId: getCmmnModelResource
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the process definition was found and the model is returned. The response contains the full process definition model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CmmnModel'
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}/resourcedata:
+    get:
+      tags:
+      - Case Definitions
+      summary: Get a case definition resource content
+      description: ''
+      operationId: getProcessDefinitionResource
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates both case definition and resource have been found and the resource data has been returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested case definition was not found or there is no resource with the given id present in the case definition. The status-description contains additional information.
+      security:
+      - basicAuth: []
+  /cmmn-repository/case-definitions/{caseDefinitionId}/start-form:
+    get:
+      tags:
+      - Case Definitions
+      summary: Get a case definition start form
+      description: ''
+      operationId: getProcessDefinitionStartForm
+      parameters:
+      - name: caseDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the case definition form is returned
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested case definition was not found.
+      security:
+      - basicAuth: []
+  /document-repository/document-definitions/{documentDefinitionId}/resourcedata:
+    get:
+      tags:
+      - Case Definitions
+      summary: Get a document definition resource content
+      description: ''
+      operationId: getDocumentDefinitionResource
+      parameters:
+      - name: documentDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates both document definition and resource have been found and the resource data has been returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested document definition was not found or there is no resource with the given id present in the document definition. The status-description contains additional information.
+      security:
+      - basicAuth: []
+components:
+  requestBodies:
+    migrateHistoricCaseInstanceBody:
+      content:
+        application/json:
+          schema:
+            type: string
+    RestIdentityLink:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestIdentityLink'
+  schemas:
+    TextAnnotation:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        text:
+          type: string
+        textFormat:
+          type: string
+    Criterion:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        technicalId:
+          type: string
+        sentryRef:
+          type: string
+        sentry:
+          $ref: '#/components/schemas/Sentry'
+        attachedToRefId:
+          type: string
+        exitType:
+          type: string
+        exitEventType:
+          type: string
+        incomingAssociations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Association'
+        outgoingAssociations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Association'
+        entryCriterion:
+          type: boolean
+        exitCriterion:
+          type: boolean
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    Decision:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        externalRef:
+          type: string
+        implementationType:
+          type: string
+    CaseDefinitionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: oneTaskCase:1:4
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/oneTaskCase%3A1%3A4
+        key:
+          type: string
+          example: oneTaskCase
+        version:
+          type: integer
+          format: int32
+          example: 1
+        name:
+          type: string
+          example: The One Task Case
+        description:
+          type: string
+          example: This is a case for testing purposes
+        tenantId:
+          type: string
+          example: 'null'
+        deploymentId:
+          type: string
+          example: '2'
+        deploymentUrl:
+          type: string
+          example: http://localhost:8081/cmmn-repository/deployments/2
+        resource:
+          type: string
+          example: http://localhost:8182/cmmn-repository/deployments/2/resources/testCase.cmmn
+          description: Contains the actual deployed CMMN 1.1 xml.
+        diagramResource:
+          type: string
+          example: http://localhost:8182/cmmn-repository/deployments/2/resources/testProcess.png
+          description: Contains a graphical representation of the case, null when no diagram is available.
+        category:
+          type: string
+          example: Examples
+        graphicalNotationDefined:
+          type: boolean
+          description: Indicates the case definition contains graphical information (CMMN DI).
+        startFormDefined:
+          type: boolean
+    PlanItemControl:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        requiredRule:
+          $ref: '#/components/schemas/RequiredRule'
+        repetitionRule:
+          $ref: '#/components/schemas/RepetitionRule'
+        manualActivationRule:
+          $ref: '#/components/schemas/ManualActivationRule'
+        completionNeutralRule:
+          $ref: '#/components/schemas/CompletionNeutralRule'
+        parentCompletionRule:
+          $ref: '#/components/schemas/ParentCompletionRule'
+        reactivationRule:
+          $ref: '#/components/schemas/ReactivationRule'
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    CmmnDiEdge:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        cmmnElementRef:
+          type: string
+        targetCmmnElementRef:
+          type: string
+        sourceDockerInfo:
+          $ref: '#/components/schemas/GraphicInfo'
+        targetDockerInfo:
+          $ref: '#/components/schemas/GraphicInfo'
+        waypoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/GraphicInfo'
+        labelGraphicInfo:
+          $ref: '#/components/schemas/GraphicInfo'
+    BaseElement:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+    ReactivationRule:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        condition:
+          type: string
+        activateCondition:
+          type: string
+        ignoreCondition:
+          type: string
+        defaultCondition:
+          type: string
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    FieldExtension:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        fieldName:
+          type: string
+        stringValue:
+          type: string
+        expression:
+          type: string
+    RestIdentityLink:
+      type: object
+      properties:
+        url:
+          type: string
+        user:
+          type: string
+          example: kermit
+        group:
+          type: string
+          example: sales
+        type:
+          type: string
+          example: candidate
+    FlowableListener:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        event:
+          type: string
+        sourceState:
+          type: string
+        targetState:
+          type: string
+        implementationType:
+          type: string
+        implementation:
+          type: string
+        fieldExtensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldExtension'
+        onTransaction:
+          type: string
+        scriptInfo:
+          $ref: '#/components/schemas/ScriptInfo'
+    SentryIfPart:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        condition:
+          type: string
+    FormDefinition:
+      type: object
+      properties:
+        name:
+          type: string
+        key:
+          type: string
+        id:
+          type: string
+        version:
+          type: integer
+          format: int32
+        category:
+          type: string
+        tenantId:
+          type: string
+        description:
+          type: string
+        resourceName:
+          type: string
+        deploymentId:
+          type: string
+    CompletionNeutralRule:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        condition:
+          type: string
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    ParentCompletionRule:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        condition:
+          type: string
+        type:
+          type: string
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    SentryOnPart:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        sourceRef:
+          type: string
+        source:
+          $ref: '#/components/schemas/PlanItem'
+        standardEvent:
+          type: string
+    RequiredRule:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        condition:
+          type: string
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    Sentry:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        triggerMode:
+          type: string
+        onParts:
+          type: array
+          items:
+            $ref: '#/components/schemas/SentryOnPart'
+        sentryIfPart:
+          $ref: '#/components/schemas/SentryIfPart'
+        defaultTriggerMode:
+          type: boolean
+        onEventTriggerMode:
+          type: boolean
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    ScriptInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        language:
+          type: string
+        resultVariable:
+          type: string
+        script:
+          type: string
+    ReactivateEventListener:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        planItemRef:
+          type: string
+        defaultControl:
+          $ref: '#/components/schemas/PlanItemControl'
+        lifecycleListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+        availableConditionExpression:
+          type: string
+        authorizedRoleRefs:
+          type: array
+          items:
+            type: string
+        defaultReactivationRule:
+          $ref: '#/components/schemas/ReactivationRule'
+        reactivationAvailableConditionExpression:
+          type: string
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    Case:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        initiatorVariableName:
+          type: string
+        planModel:
+          $ref: '#/components/schemas/Stage'
+        startEventType:
+          type: string
+        candidateStarterUsers:
+          type: array
+          items:
+            type: string
+        candidateStarterGroups:
+          type: array
+          items:
+            type: string
+        async:
+          type: boolean
+        allCaseElements:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/CaseElement'
+        lifecycleListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+        reactivateEventListener:
+          $ref: '#/components/schemas/ReactivateEventListener'
+    Stage:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        planItemRef:
+          type: string
+        defaultControl:
+          $ref: '#/components/schemas/PlanItemControl'
+        lifecycleListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+        planItem:
+          $ref: '#/components/schemas/PlanItem'
+        sentries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sentry'
+        exitCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/Criterion'
+        autoComplete:
+          type: boolean
+        autoCompleteCondition:
+          type: string
+        formKey:
+          type: string
+        sameDeployment:
+          type: boolean
+        validateFormFields:
+          type: string
+        displayOrder:
+          type: integer
+          format: int32
+        includeInStageOverview:
+          type: string
+        planItemDefinitionMap:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/PlanItemDefinition'
+        businessStatus:
+          type: string
+        planModel:
+          type: boolean
+        planItemDefinitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItemDefinition'
+        directChildPlanItemsWithLifecycleEnabled:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItem'
+        planItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItem'
+        case:
+          $ref: '#/components/schemas/Case'
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    Process:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        externalRef:
+          type: string
+        implementationType:
+          type: string
+    VariableAggregationDefinitions:
+      type: object
+      properties:
+        aggregations:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableAggregationDefinition'
+        overviewAggregations:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableAggregationDefinition'
+    ExtensionAttribute:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        namespacePrefix:
+          type: string
+        namespace:
+          type: string
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        sourceRef:
+          type: string
+        sourceElement:
+          $ref: '#/components/schemas/BaseElement'
+        targetRef:
+          type: string
+        targetElement:
+          $ref: '#/components/schemas/BaseElement'
+        transitionEvent:
+          type: string
+    ManualActivationRule:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        condition:
+          type: string
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    DataResponseCaseDefinitionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CaseDefinitionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DmnDecision:
+      type: object
+      properties:
+        name:
+          type: string
+        key:
+          type: string
+        id:
+          type: string
+        version:
+          type: integer
+          format: int32
+        category:
+          type: string
+        tenantId:
+          type: string
+        description:
+          type: string
+        resourceName:
+          type: string
+        deploymentId:
+          type: string
+        diagramResourceName:
+          type: string
+        decisionType:
+          type: string
+    RepetitionRule:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        condition:
+          type: string
+        repetitionCounterVariableName:
+          type: string
+        ignoreRepetitionCounterVariable:
+          type: boolean
+        collectionVariableName:
+          type: string
+        elementVariableName:
+          type: string
+        elementIndexVariableName:
+          type: string
+        maxInstanceCount:
+          type: integer
+          format: int32
+        aggregations:
+          $ref: '#/components/schemas/VariableAggregationDefinitions'
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    PlanItemDefinition:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        planItemRef:
+          type: string
+        defaultControl:
+          $ref: '#/components/schemas/PlanItemControl'
+        lifecycleListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    PlanFragment:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        planItemRef:
+          type: string
+        defaultControl:
+          $ref: '#/components/schemas/PlanItemControl'
+        lifecycleListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+        planItem:
+          $ref: '#/components/schemas/PlanItem'
+        sentries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sentry'
+        directChildPlanItemsWithLifecycleEnabled:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItem'
+        planItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItem'
+        case:
+          $ref: '#/components/schemas/Case'
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    GraphicInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        x:
+          type: number
+          format: double
+        y:
+          type: number
+          format: double
+        height:
+          type: number
+          format: double
+        width:
+          type: number
+          format: double
+        element:
+          $ref: '#/components/schemas/BaseElement'
+        expanded:
+          type: boolean
+        rotation:
+          type: number
+          format: double
+    CaseDefinitionActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        category:
+          type: string
+    CmmnModel:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        targetNamespace:
+          type: string
+        expressionLanguage:
+          type: string
+        exporter:
+          type: string
+        exporterVersion:
+          type: string
+        author:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+        definitionsAttributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        cases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Case'
+        processes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Process'
+        decisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Decision'
+        associations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Association'
+        textAnnotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/TextAnnotation'
+        locationMap:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GraphicInfo'
+        labelLocationMap:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GraphicInfo'
+        flowLocationMap:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/GraphicInfo'
+        edgeMap:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/CmmnDiEdge'
+        namespaces:
+          type: object
+          additionalProperties:
+            type: string
+        primaryCase:
+          $ref: '#/components/schemas/Case'
+    PlanItem:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        definitionRef:
+          type: string
+        planItemDefinition:
+          $ref: '#/components/schemas/PlanItemDefinition'
+        instanceLifecycleEnabled:
+          type: boolean
+        itemControl:
+          $ref: '#/components/schemas/PlanItemControl'
+        criteriaRefs:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        entryCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/Criterion'
+        exitCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/Criterion'
+        incomingAssociations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Association'
+        outgoingAssociations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Association'
+        entryDependencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItem'
+        exitDependencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItem'
+        entryDependentPlanItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItem'
+        exitDependentPlanItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItem'
+        behavior:
+          type: object
+        allDependentPlanItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItem'
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    VariableAggregationDefinition:
+      type: object
+      properties:
+        implementationType:
+          type: string
+        implementation:
+          type: string
+        target:
+          type: string
+        targetExpression:
+          type: string
+        definitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Variable'
+        storeAsTransientVariable:
+          type: boolean
+        createOverviewVariable:
+          type: boolean
+    Variable:
+      type: object
+      properties:
+        source:
+          type: string
+        target:
+          type: string
+        targetExpression:
+          type: string
+        sourceExpression:
+          type: string
+    ExtensionElement:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        namespacePrefix:
+          type: string
+        namespace:
+          type: string
+        elementText:
+          type: string
+        childElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+    CaseElement:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

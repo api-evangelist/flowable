@@ -1,0 +1,240 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Forms API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Forms
+paths:
+  /form/form-data:
+    get:
+      tags:
+      - Forms
+      summary: Get form data
+      description: ''
+      operationId: getFormData
+      parameters:
+      - name: taskId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates that form data could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormDataResponse'
+        '404':
+          description: Indicates that form data could not be found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Forms
+      summary: Submit task form data
+      description: ''
+      operationId: submitForm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitFormRequest'
+      responses:
+        '200':
+          description: Indicates request was successful and the form data was submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessInstanceResponse'
+        '204':
+          description: If TaskId has been provided, Indicates request was successful and the form data was submitted. Returns empty
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    ProcessInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '187'
+        url:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/processOne%3A1%3A4
+        name:
+          type: string
+          example: myProcessInstanceName
+        businessKey:
+          type: string
+          example: myBusinessKey
+        businessStatus:
+          type: string
+          example: myBusinessStatus
+        suspended:
+          type: boolean
+        ended:
+          type: boolean
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess:1:158
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/processOne%3A1%3A4
+        processDefinitionName:
+          type: string
+          example: A process definition name
+        processDefinitionDescription:
+          type: string
+          example: A process definition description
+        activityId:
+          type: string
+          example: processTask
+        startUserId:
+          type: string
+          example: johnDoe
+        startTime:
+          type: string
+          example: 2018-04-17T10:17:43.902+0000
+        superProcessInstanceId:
+          type: string
+          example: '3'
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        callbackId:
+          type: string
+          example: '3'
+        callbackType:
+          type: string
+          example: cmmn
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-bpmn-2.0-process
+        propagatedStageInstanceId:
+          type: string
+          description: The stage plan item instance id this process instance belongs to or null, if it is not part of a case at all or is not a child element of a stage
+        tenantId:
+          type: string
+          example: someTenantId
+        completed:
+          type: boolean
+    SubmitFormRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        processDefinitionId:
+          type: string
+        taskId:
+          type: string
+        businessKey:
+          type: string
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestFormProperty'
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    RestEnumFormProperty:
+      type: object
+      properties:
+        id:
+          type: string
+          example: normal
+        name:
+          type: string
+          example: Normal bed
+    FormDataResponse:
+      type: object
+      properties:
+        formKey:
+          type: string
+          example: 'null'
+        deploymentId:
+          type: string
+          example: '2'
+        processDefinitionId:
+          type: string
+          example: '3'
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definition/3
+        taskId:
+          type: string
+          example: '6'
+        taskUrl:
+          type: string
+          example: http://localhost:8182/runtime/task/6
+        formProperties:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestFormProperty'
+    RestFormProperty:
+      type: object
+      properties:
+        id:
+          type: string
+          example: room
+        name:
+          type: string
+          example: Room
+        type:
+          type: string
+          example: string
+        value:
+          type: string
+        readable:
+          type: boolean
+        writable:
+          type: boolean
+        required:
+          type: boolean
+        datePattern:
+          type: string
+        enumValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestEnumFormProperty'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

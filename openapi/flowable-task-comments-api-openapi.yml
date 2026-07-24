@@ -1,0 +1,166 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Task Comments API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Task Comments
+paths:
+  /runtime/tasks/{taskId}/comments:
+    get:
+      tags:
+      - Task Comments
+      summary: List comments on a task
+      description: ''
+      operationId: listTaskComments
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task was found and the comments are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommentResponse'
+        '404':
+          description: Indicates the requested task was not found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Task Comments
+      summary: Create a new comment on a task
+      description: ''
+      operationId: createTaskComments
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentRequest'
+      responses:
+        '201':
+          description: Indicates the comment was created and the result is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+        '400':
+          description: Indicates the comment is missing from the request.
+        '404':
+          description: Indicates the requested task was not found.
+      security:
+      - basicAuth: []
+  /runtime/tasks/{taskId}/comments/{commentId}:
+    get:
+      tags:
+      - Task Comments
+      summary: ' Get a comment on a task'
+      description: ''
+      operationId: getTaskComment
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: commentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task and comment were found and the comment is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+        '404':
+          description: Indicates the requested task was not found or the tasks does not have a comment with the given ID.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Task Comments
+      summary: Delete a comment on a task
+      description: ''
+      operationId: deleteTaskComment
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: commentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the task and comment were found and the comment is deleted. Response body is left empty intentionally.
+        '404':
+          description: Indicates the requested task was not found or the tasks does not have a comment with the given ID.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    CommentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        author:
+          type: string
+        message:
+          type: string
+        time:
+          type: string
+          format: date-time
+        taskId:
+          type: string
+        taskUrl:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceUrl:
+          type: string
+    CommentRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        author:
+          type: string
+        message:
+          type: string
+        type:
+          type: string
+        saveProcessInstanceId:
+          type: boolean
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

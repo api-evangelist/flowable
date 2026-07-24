@@ -1,0 +1,4277 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Query API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Query
+paths:
+  /query/activity-instances:
+    post:
+      tags:
+      - Query
+      summary: Query for activity instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: queryActivityInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the activities are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseActivityInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryActivityInstances has multiple requestBodies
+  /query/executions:
+    post:
+      tags:
+      - Query
+      summary: Query executions
+      description: 'The request body can contain all possible filters that can be used in the List executions URL query. On top of these, it’s possible to provide an array of variables and processInstanceVariables to include in the query, with their format described here.
+
+
+        The general paging and sorting query-parameters can be used for this URL.'
+      operationId: queryExecutions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecutionQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the executions are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseExecutionResponse'
+        '404':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryExecutions has multiple requestBodies
+  /query/historic-activity-instances:
+    post:
+      tags:
+      - Query
+      summary: Query for historic activity instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: queryActivityInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricActivityInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the activities are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricActivityInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryActivityInstances has multiple requestBodies
+  /query/historic-detail:
+    post:
+      tags:
+      - Query
+      summary: Query for historic details
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: queryHistoricDetail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricDetailQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the historic details are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricDetailResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricDetail has multiple requestBodies
+  /query/historic-process-instances:
+    post:
+      tags:
+      - Query
+      summary: Query for historic process instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.
+      operationId: queryHistoricProcessInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricProcessInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the process instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricProcessInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricProcessInstance has multiple requestBodies
+  /query/historic-task-instances:
+    post:
+      tags:
+      - Query
+      summary: Query for historic task instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The taskVariables and processVariables properties are JSON-arrays containing objects with the format as described here.
+      operationId: queryHistoricTaskInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricTaskInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricTaskInstanceResponse'
+        '404':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricTaskInstance has multiple requestBodies
+  /query/historic-variable-instances:
+    post:
+      tags:
+      - Query
+      summary: Query for historic variable instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.
+      operationId: queryVariableInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricVariableInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricVariableInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryVariableInstances has multiple requestBodies
+  /query/process-instances:
+    post:
+      tags:
+      - Query
+      summary: Query process instances
+      description: 'The request body can contain all possible filters that can be used in the List process instances URL query. On top of these, it’s possible to provide an array of variables to include in the query, with their format described here.
+
+
+        The general paging and sorting query-parameters can be used for this URL.'
+      operationId: queryProcessInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the process-instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseProcessInstanceResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryProcessInstances has multiple requestBodies
+  /query/tasks:
+    post:
+      tags:
+      - Query
+      summary: Query for tasks
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of tasks (except for candidateGroupIn which is only available in this POST task query REST service), but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on task and process variables. The taskVariables and processInstanceVariables are both JSON-arrays containing objects with the format as described here.
+      operationId: queryTasks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseTaskResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format or that delegationState has an invalid value (other than pending and resolved). The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryTasks has multiple requestBodies
+  /query/variable-instances:
+    post:
+      tags:
+      - Query
+      summary: Query for variable instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of variable instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: queryVariableInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseVariableInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryVariableInstances has multiple requestBodies
+  /cmmn-query/case-instances:
+    post:
+      tags:
+      - Query
+      summary: Query case instances
+      description: 'The request body can contain all possible filters that can be used in the List case instances URL query. On top of these, it’s possible to provide an array of variables to include in the query, with their format described here.
+
+
+        The general paging and sorting query-parameters can be used for this URL.'
+      operationId: queryCaseInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaseInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the case instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseCaseInstanceResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryCaseInstances has multiple requestBodies
+  /cmmn-query/historic-case-instances:
+    post:
+      tags:
+      - Query
+      summary: Query for historic case instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic case instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.
+      operationId: queryHistoricCaseInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricCaseInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the case instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricCaseInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricCaseInstance has multiple requestBodies
+  /cmmn-query/historic-milestone-instances:
+    post:
+      tags:
+      - Query
+      summary: Query for historic milestone instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic milestone instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: queryHistoricMilestoneInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricMilestoneInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the milestone instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricMilestoneInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricMilestoneInstance has multiple requestBodies
+  /cmmn-query/historic-planitem-instances:
+    post:
+      tags:
+      - Query
+      summary: Query for historic plan item instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic plan item instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: queryHistoricPlanItemInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricPlanItemInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the plan item instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricPlanItemInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricPlanItemInstance has multiple requestBodies
+  /cmmn-query/historic-task-instances:
+    post:
+      tags:
+      - Query
+      summary: Query for historic task instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The taskVariables and processVariables properties are JSON-arrays containing objects with the format as described here.
+      operationId: queryHistoricTaskInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricTaskInstanceQueryRequest_2'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricTaskInstanceResponse'
+        '404':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricTaskInstance has multiple requestBodies
+  /cmmn-query/historic-variable-instances:
+    post:
+      tags:
+      - Query
+      summary: Query for historic variable instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.
+      operationId: queryVariableInstances
+      parameters:
+      - name: sort
+        in: query
+        description: The field to sort by. Defaults to 'variableName'.
+        required: false
+        schema:
+          type: string
+          enum:
+          - caseInstanceId
+          - variableName
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricVariableInstanceQueryRequest_2'
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricVariableInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /cmmn-query/plan-item-instances:
+    post:
+      tags:
+      - Query
+      summary: Query plan item instances
+      description: 'The request body can contain all possible filters that can be used in the List plan item instances URL query. On top of these, it’s possible to provide an array of variables and caseInstanceVariables to include in the query, with their format described here.
+
+
+        The general paging and sorting query-parameters can be used for this URL.'
+      operationId: queryPlanItemInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanItemInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the plan item instances are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponsePlanItemInstanceResponse'
+        '404':
+          description: Indicates a parameter was passed in the wrong format. The status message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryPlanItemInstances has multiple requestBodies
+  /cmmn-query/tasks:
+    post:
+      tags:
+      - Query
+      summary: Query for tasks
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of tasks (except for candidateGroupIn which is only available in this POST task query REST service), but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on task and process variables. The taskVariables and processInstanceVariables are both JSON-arrays containing objects with the format as described here.
+      operationId: queryTasks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskQueryRequest_2'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseTaskResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format or that delegationState has an invalid value (other than pending and resolved). The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryTasks has multiple requestBodies
+  /cmmn-query/variable-instances:
+    post:
+      tags:
+      - Query
+      summary: Query for variable instances
+      description: 'All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of variable instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. '
+      operationId: queryVariableInstances
+      parameters:
+      - name: sort
+        in: query
+        description: The field to sort by. Defaults to 'variableName'.
+        required: false
+        schema:
+          type: string
+          enum:
+          - caseInstanceId
+          - variableName
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableInstanceQueryRequest_2'
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseVariableInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /query/rendition-items:
+    post:
+      tags:
+      - Query
+      summary: Query for rendition items
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of rendition items, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: getQueryResult
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenditionItemQueryRequest'
+      responses:
+        '200':
+          description: Indicates request was successful and the rendition items are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseRenditionItemResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /query/form-instances:
+    post:
+      tags:
+      - Query
+      summary: Query form instances
+      description: 'The request body can contain all possible filters that can be used in the List form instances URL query. On top of these, it’s possible to provide an array of variables to include in the query, with their format described here.
+
+
+        The general paging and sorting query-parameters can be used for this URL.'
+      operationId: queryFormInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormInstanceQueryRequest'
+      responses:
+        '200':
+          description: Indicates request was successful and the form instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseFormInstanceResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /query/groups:
+    post:
+      tags:
+      - Query
+      summary: Query groups
+      description: ''
+      operationId: queryGroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupQueryRequest'
+        description: Group request
+      responses:
+        '200':
+          description: Indicates the requested groups were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseGroupResponse'
+      security:
+      - basicAuth: []
+  /query/users:
+    post:
+      tags:
+      - Query
+      summary: Query users
+      description: ''
+      operationId: queryUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserBodyQueryRequest'
+        description: User request
+      responses:
+        '200':
+          description: Indicates the request was successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponsePlatformUserResponse'
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values.
+        '403':
+          description: Indicates the user does not have the rights to view the users.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    HistoricVariableInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '14'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+        taskId:
+          type: string
+          example: '6'
+        executionId:
+          type: string
+        variable:
+          $ref: '#/components/schemas/RestVariable'
+    UserBodyQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+          description: Only return users with the given id
+        ids:
+          type: array
+          description: Only return users that match the given ids
+          items:
+            type: string
+        idsNotIn:
+          type: array
+          description: Only return users that do not match the given ids
+          items:
+            type: string
+        firstName:
+          type: string
+          description: Only return users with the given first name
+        firstNameLike:
+          type: string
+          description: Only return users with first name like the given value
+        firstNameLikeIgnoreCase:
+          type: string
+          description: Only return users with first name like the given value ignoring case
+        lastName:
+          type: string
+          description: Only return users with the given last name
+        lastNameLike:
+          type: string
+          description: Only return users with last name like the given value
+        lastNameLikeIgnoreCase:
+          type: string
+          description: Only return users with last name like the given value ignoring case
+        displayName:
+          type: string
+          description: Only return users with the given display name
+        displayNameLike:
+          type: string
+          description: Only return users with display name like the given value
+        displayNameLikeIgnoreCase:
+          type: string
+          description: Only return users with display name like the given value ignoring case
+        fullNameLike:
+          type: string
+          description: Only return users with full name like the given value
+        fullNameLikeIgnoreCase:
+          type: string
+          description: Only return users with full name like the given value ignoring case
+        email:
+          type: string
+          description: Only return users with the given email
+        emailLike:
+          type: string
+          description: Only return users with email like the given value
+        state:
+          type: string
+          description: Only return users with the given state
+        subState:
+          type: string
+          description: Only return users with the given sub state
+        memberOfGroup:
+          type: string
+          description: Only return users that are member of the given group
+        memberOfGroups:
+          type: array
+          description: Only return users that are member of any of the given groups
+          items:
+            type: string
+        memberOfGroupKey:
+          type: string
+          description: Only return users that are member of the group with the given key
+        memberOfGroupKeys:
+          type: array
+          description: Only return users that are member of any of the groups with the given keys
+          items:
+            type: string
+        includeIdentityInfo:
+          type: boolean
+          description: Include the extra identity info for the users.
+        tenantId:
+          type: string
+          description: Only return users within the given tenant. Only super admin users can modify this parameter, otherwise this is the user doing the request.
+        accessibleByUser:
+          type: string
+          description: Only return users accessible by the given user. Only admin users can modify this parameter, otherwise this is the user doing the request.
+        accessibleByUserDefinitionKey:
+          type: string
+          description: Only return users accessible by the given user definition. Only admin users can modify this parameter, otherwise this is the user definition of the user doing the request.
+        usersOrGroups:
+          $ref: '#/components/schemas/UsersOrGroups'
+      description: Request that is used for querying users.
+    TaskQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        taskId:
+          type: string
+        name:
+          type: string
+        nameLike:
+          type: string
+        nameLikeIgnoreCase:
+          type: string
+        description:
+          type: string
+        descriptionLike:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        minimumPriority:
+          type: integer
+          format: int32
+        maximumPriority:
+          type: integer
+          format: int32
+        assignee:
+          type: string
+        assigneeLike:
+          type: string
+        owner:
+          type: string
+        ownerLike:
+          type: string
+        unassigned:
+          type: boolean
+        delegationState:
+          type: string
+        candidateUser:
+          type: string
+        candidateGroup:
+          type: string
+        candidateGroupIn:
+          type: array
+          items:
+            type: string
+        ignoreAssignee:
+          type: boolean
+        involvedUser:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIdWithChildren:
+          type: string
+        withoutProcessInstanceId:
+          type: boolean
+        processInstanceBusinessKey:
+          type: string
+        processInstanceBusinessKeyLike:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionKey:
+          type: string
+        processDefinitionName:
+          type: string
+        processDefinitionKeyLike:
+          type: string
+        processDefinitionNameLike:
+          type: string
+        executionId:
+          type: string
+        createdOn:
+          type: string
+          format: date-time
+        createdBefore:
+          type: string
+          format: date-time
+        createdAfter:
+          type: string
+          format: date-time
+        excludeSubTasks:
+          type: boolean
+        taskDefinitionKey:
+          type: string
+        taskDefinitionKeyLike:
+          type: string
+        taskDefinitionKeys:
+          type: array
+          items:
+            type: string
+        dueDate:
+          type: string
+          format: date-time
+        dueBefore:
+          type: string
+          format: date-time
+        dueAfter:
+          type: string
+          format: date-time
+        withoutDueDate:
+          type: boolean
+        active:
+          type: boolean
+        includeTaskLocalVariables:
+          type: boolean
+        includeProcessVariables:
+          type: boolean
+        scopeDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        scopeIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        withoutScopeId:
+          type: boolean
+        scopeType:
+          type: string
+        propagatedStageInstanceId:
+          type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+        candidateOrAssigned:
+          type: string
+        category:
+          type: string
+        categoryIn:
+          type: array
+          items:
+            type: string
+        categoryNotIn:
+          type: array
+          items:
+            type: string
+        withoutCategory:
+          type: boolean
+        rootScopeId:
+          type: string
+        parentScopeId:
+          type: string
+        taskVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        processInstanceVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+    HistoricActivityInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        activityId:
+          type: string
+        activityInstanceId:
+          type: string
+        activityName:
+          type: string
+        activityType:
+          type: string
+        executionId:
+          type: string
+        finished:
+          type: boolean
+        taskAssignee:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        processDefinitionId:
+          type: string
+        calledProcessInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+    DataResponseHistoricProcessInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricProcessInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponseHistoricActivityInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricActivityInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    ExecutionQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        activityId:
+          type: string
+        parentId:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        processBusinessKey:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionKey:
+          type: string
+        signalEventSubscriptionName:
+          type: string
+        messageEventSubscriptionName:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        processInstanceVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+    ProcessInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '187'
+        url:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/processOne%3A1%3A4
+        name:
+          type: string
+          example: myProcessInstanceName
+        businessKey:
+          type: string
+          example: myBusinessKey
+        businessStatus:
+          type: string
+          example: myBusinessStatus
+        suspended:
+          type: boolean
+        ended:
+          type: boolean
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess:1:158
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/processOne%3A1%3A4
+        processDefinitionName:
+          type: string
+          example: A process definition name
+        processDefinitionDescription:
+          type: string
+          example: A process definition description
+        activityId:
+          type: string
+          example: processTask
+        startUserId:
+          type: string
+          example: johnDoe
+        startTime:
+          type: string
+          example: 2018-04-17T10:17:43.902+0000
+        superProcessInstanceId:
+          type: string
+          example: '3'
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        callbackId:
+          type: string
+          example: '3'
+        callbackType:
+          type: string
+          example: cmmn
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-bpmn-2.0-process
+        propagatedStageInstanceId:
+          type: string
+          description: The stage plan item instance id this process instance belongs to or null, if it is not part of a case at all or is not a child element of a stage
+        tenantId:
+          type: string
+          example: someTenantId
+        completed:
+          type: boolean
+    FormInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 48b9ac82-f1d3-11e6-8549-acde48001122
+        formDefinitionId:
+          type: string
+          example: 818e4703-f1d2-11e6-8549-acde48001122
+        taskId:
+          type: string
+          example: '88'
+        processInstanceId:
+          type: string
+          example: '66'
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess:1:158
+        submittedDate:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        submittedBy:
+          type: string
+          example: testUser
+        formValuesId:
+          type: string
+          example: 818e4703-f1d2-11e6-8549-acde48001110
+        tenantId:
+          type: string
+          example: 'null'
+        url:
+          type: string
+          example: http://localhost:8182/form/form-instances/48b9ac82-f1d3-11e6-8549-acde48001122
+        scopeId:
+          type: string
+          example: '66'
+        scopeType:
+          type: string
+          example: CAS-d6d53baa-2618-11e9-895e-aee50c200f02
+        scopeDefinitionId:
+          type: string
+          example: CAS-d6d53baa-2618-11e9-895e-aee50c200f02
+    DataResponseGroupResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    RenditionItemQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        ids:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        contentItemId:
+          type: string
+        contentItemIdLike:
+          type: string
+        contentItemName:
+          type: string
+        contentItemNameLike:
+          type: string
+        name:
+          type: string
+        nameLike:
+          type: string
+        mimeType:
+          type: string
+        mimeTypeLike:
+          type: string
+        taskId:
+          type: string
+        taskIdLike:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIdLike:
+          type: string
+        scopeId:
+          type: string
+        scopeIdLike:
+          type: string
+        scopeType:
+          type: string
+        contentStoreId:
+          type: string
+        contentStoreIdLike:
+          type: string
+        contentStoreName:
+          type: string
+        contentStoreNameLike:
+          type: string
+        contentSize:
+          type: integer
+          format: int64
+        minimumContentSize:
+          type: integer
+          format: int64
+        maximumContentSize:
+          type: integer
+          format: int64
+        contentAvailable:
+          type: boolean
+        createdOn:
+          type: string
+          format: date-time
+        createdBefore:
+          type: string
+          format: date-time
+        createdAfter:
+          type: string
+          format: date-time
+        lastModifiedOn:
+          type: string
+          format: date-time
+        lastModifiedBefore:
+          type: string
+          format: date-time
+        lastModifiedAfter:
+          type: string
+          format: date-time
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+    ActivityInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        activityId:
+          type: string
+        activityInstanceId:
+          type: string
+        activityName:
+          type: string
+        activityType:
+          type: string
+        executionId:
+          type: string
+        finished:
+          type: boolean
+        taskAssignee:
+          type: string
+        taskCompletedBy:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        processDefinitionId:
+          type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+    DataResponseExecutionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExecutionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponseHistoricDetailResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricDetailResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    TaskResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/runtime/tasks/8
+        owner:
+          type: string
+          example: owner
+        assignee:
+          type: string
+          example: kermit
+        delegationState:
+          type: string
+          example: pending
+          description: Delegation-state of the task, can be null, "pending" or "resolved".
+        name:
+          type: string
+          example: My task
+        description:
+          type: string
+          example: Task description
+        createTime:
+          type: string
+          format: date-time
+          example: 2018-04-17T10:17:43.902+0000
+        dueDate:
+          type: string
+          format: date-time
+          example: 2018-04-17T10:17:43.902+0000
+        priority:
+          type: integer
+          format: int32
+          example: 50
+        suspended:
+          type: boolean
+        claimTime:
+          type: string
+          example: 2018-04-17T10:17:43.902+0000
+        taskDefinitionKey:
+          type: string
+          example: theTask
+        scopeDefinitionId:
+          type: string
+          example: '12'
+        scopeId:
+          type: string
+          example: '14'
+        subScopeId:
+          type: string
+          example: '15'
+        scopeType:
+          type: string
+          example: cmmn
+        propagatedStageInstanceId:
+          type: string
+          example: '16'
+        tenantId:
+          type: string
+          example: someTenantId
+        category:
+          type: string
+          example: ExampleCategory
+        formKey:
+          type: string
+        parentTaskId:
+          type: string
+          example: 'null'
+        parentTaskUrl:
+          type: string
+          example: 'null'
+        executionId:
+          type: string
+          example: '5'
+        executionUrl:
+          type: string
+          example: http://localhost:8182/runtime/executions/5
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/runtime/process-instances/5
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess%3A1%3A4
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/runtime/process-definitions/oneTaskProcess%3A1%3A4
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+    VariableInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '14'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+        taskId:
+          type: string
+          example: '6'
+        executionId:
+          type: string
+        variable:
+          $ref: '#/components/schemas/RestVariable'
+    HistoricDetailResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '26'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+        executionId:
+          type: string
+          example: '6'
+        activityInstanceId:
+          type: string
+          example: '10'
+        taskId:
+          type: string
+          example: '6'
+        taskUrl:
+          type: string
+          example: http://localhost:8182/history/historic-task-instances/6
+        time:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        detailType:
+          type: string
+          example: variableUpdate
+        revision:
+          type: integer
+          format: int32
+          example: 2
+        variable:
+          $ref: '#/components/schemas/RestVariable'
+        propertyId:
+          type: string
+          example: 'null'
+        propertyValue:
+          type: string
+          example: 'null'
+    FormInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        formDefinitionId:
+          type: string
+        formDefinitionIdLike:
+          type: string
+        taskId:
+          type: string
+        taskIdLike:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIdLike:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionIdLike:
+          type: string
+        scopeId:
+          type: string
+        scopeType:
+          type: string
+        scopeDefinitionId:
+          type: string
+        submittedBy:
+          type: string
+        submittedByLike:
+          type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+    DataResponseHistoricPlanItemInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricPlanItemInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricTaskInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionUrl:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceUrl:
+          type: string
+        executionId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        deleteReason:
+          type: string
+        owner:
+          type: string
+        assignee:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        durationInMillis:
+          type: integer
+          format: int64
+        workTimeInMillis:
+          type: integer
+          format: int64
+        claimTime:
+          type: string
+          format: date-time
+        taskDefinitionKey:
+          type: string
+        formKey:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        dueDate:
+          type: string
+          format: date-time
+        parentTaskId:
+          type: string
+        url:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        scopeDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        subScopeId:
+          type: string
+        scopeType:
+          type: string
+        propagatedStageInstanceId:
+          type: string
+        tenantId:
+          type: string
+        category:
+          type: string
+    HistoricMilestoneInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        name:
+          type: string
+          example: milestoneName
+        elementId:
+          type: string
+          example: milestonePlanItemId
+        timestamp:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        caseInstanceId:
+          type: string
+          example: '12345'
+        caseDefinitionId:
+          type: string
+          example: oneMilestoneCase%3A1%3A4
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-milestone-instances/5
+        historicCaseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/12345
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/oneMilestoneCase%3A1%3A4
+    UserResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+      description: The response for the OSS User
+    HistoricProcessInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+        name:
+          type: string
+          example: myProcessInstanceName
+        businessKey:
+          type: string
+          example: myKey
+        businessStatus:
+          type: string
+          example: myStatus
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess%3A1%3A4
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4
+        processDefinitionName:
+          type: string
+          example: A process definition name
+        processDefinitionDescription:
+          type: string
+          example: A process definition description
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endTime:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        durationInMillis:
+          type: integer
+          format: int64
+          example: 86400056
+        startUserId:
+          type: string
+          example: kermit
+        endUserId:
+          type: string
+          example: kermit
+        state:
+          type: string
+          example: running
+        startActivityId:
+          type: string
+          example: startEvent
+        endActivityId:
+          type: string
+          example: endEvent
+        deleteReason:
+          type: string
+          example: 'null'
+        superProcessInstanceId:
+          type: string
+          example: '3'
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        callbackId:
+          type: string
+          example: '3'
+        callbackType:
+          type: string
+          example: cmmn
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-bpmn-2.0-process
+        propagatedStageInstanceId:
+          type: string
+          description: The stage plan item instance id this process instance belongs to or null, if it is not part of a case at all or is not a child element of a stage
+        tenantId:
+          type: string
+          example: someTenantId
+    ActivityInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        activityId:
+          type: string
+          example: '4'
+        activityName:
+          type: string
+          example: My user task
+        activityType:
+          type: string
+          example: userTask
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess%3A1%3A4
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4
+        processInstanceId:
+          type: string
+          example: '3'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/runtime/process-instances/3
+        executionId:
+          type: string
+          example: '4'
+        taskId:
+          type: string
+          example: '4'
+        calledProcessInstanceId:
+          type: string
+          example: 'null'
+        assignee:
+          type: string
+          example: fozzie
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endTime:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        durationInMillis:
+          type: integer
+          format: int64
+          example: 86400056
+        tenantId:
+          type: string
+          example: 'null'
+    HistoricVariableInstanceQueryRequest_2:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        excludeTaskVariables:
+          type: boolean
+        taskId:
+          type: string
+        planItemInstanceId:
+          type: string
+        caseInstanceId:
+          type: string
+        variableName:
+          type: string
+        variableNameLike:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        excludeLocalVariables:
+          type: boolean
+    DataResponseHistoricMilestoneInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricMilestoneInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponseHistoricVariableInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricVariableInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    GroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the group
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+    HistoricPlanItemInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        name:
+          type: string
+          example: myPlanItemName
+        state:
+          type: string
+          example: completed
+        caseDefinitionId:
+          type: string
+          example: myCaseId%3A1%3A4
+        derivedCaseDefinitionId:
+          type: string
+        caseInstanceId:
+          type: string
+          example: '12345'
+        stageInstanceId:
+          type: string
+          example: stageId
+        stage:
+          type: boolean
+          example: true
+        elementId:
+          type: string
+          example: someElementId
+        planItemDefinitionId:
+          type: string
+          example: someId
+        planItemDefinitionType:
+          type: string
+          example: timerEventListener
+        createTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        lastAvailableTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        lastEnabledTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        lastDisabledTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        lastStartedTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        lastSuspendedTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        completedTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        occurredTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        terminatedTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        exitTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endedTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        lastUpdatedTime:
+          type: string
+          format: date-time
+        startUserId:
+          type: string
+          example: kermit
+        assignee:
+          type: string
+        completedBy:
+          type: string
+        referenceId:
+          type: string
+          example: referenceId
+        referenceType:
+          type: string
+          example: referenceType
+        entryCriterionId:
+          type: string
+        exitCriterionId:
+          type: string
+        formKey:
+          type: string
+        extraValue:
+          type: string
+        showInOverview:
+          type: boolean
+        tenantId:
+          type: string
+          example: 'null'
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-planitem-instances/5
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/12345
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/myCaseId%3A1%3A4
+        derivedCaseDefinitionUrl:
+          type: string
+        stageInstanceUrl:
+          type: string
+        localVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+    PlanItemInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        elementId:
+          type: string
+        name:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseDefinitionId:
+          type: string
+        stageInstanceId:
+          type: string
+        planItemDefinitionId:
+          type: string
+        planItemDefinitionType:
+          type: string
+        planItemDefinitionTypes:
+          type: array
+          items:
+            type: string
+        state:
+          type: string
+        createdBefore:
+          type: string
+          format: date-time
+        createdAfter:
+          type: string
+          format: date-time
+        startUserId:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        includeEnded:
+          type: boolean
+        includeLocalVariables:
+          type: boolean
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        caseInstanceVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        tenantId:
+          type: string
+        withoutTenantId:
+          type: boolean
+    DataResponsePlatformUserResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformUserResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    CaseInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '187'
+        name:
+          type: string
+          example: processName
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4
+        businessKey:
+          type: string
+          example: myBusinessKey
+        businessStatus:
+          type: string
+          example: myBusinessStatus
+        startTime:
+          type: string
+          format: date-time
+          example: 2019-04-17T10:17:43.902+0000
+        startUserId:
+          type: string
+          example: aUserId
+        state:
+          type: string
+          example: active
+        ended:
+          type: boolean
+        caseDefinitionId:
+          type: string
+          example: oneTaskCase:1:158
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4
+        caseDefinitionName:
+          type: string
+          example: aCaseDefinitionName
+        caseDefinitionDescription:
+          type: string
+          example: A case definition description
+        parentId:
+          type: string
+          example: '123'
+        callbackId:
+          type: string
+          example: '123'
+        callbackType:
+          type: string
+          example: cmmn-1.1-to-cmmn-1.1-child-case
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-cmmn-1.1-case
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
+          type: string
+          example: 'null'
+        completed:
+          type: boolean
+    DataResponseFormInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    RenditionItemResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        contentItemId:
+          type: string
+        name:
+          type: string
+        mimeType:
+          type: string
+        taskId:
+          type: string
+        processInstanceId:
+          type: string
+        contentStoreId:
+          type: string
+        contentStoreName:
+          type: string
+        contentAvailable:
+          type: boolean
+        contentItemName:
+          type: string
+        tenantId:
+          type: string
+        created:
+          type: string
+          format: date-time
+        lastModified:
+          type: string
+          format: date-time
+        url:
+          type: string
+    DataResponseTaskResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    TaskQueryRequest_2:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        taskId:
+          type: string
+        name:
+          type: string
+        nameLike:
+          type: string
+        nameLikeIgnoreCase:
+          type: string
+        description:
+          type: string
+        descriptionLike:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        minimumPriority:
+          type: integer
+          format: int32
+        maximumPriority:
+          type: integer
+          format: int32
+        assignee:
+          type: string
+        assigneeLike:
+          type: string
+        owner:
+          type: string
+        ownerLike:
+          type: string
+        unassigned:
+          type: boolean
+        delegationState:
+          type: string
+        candidateUser:
+          type: string
+        candidateGroup:
+          type: string
+        candidateGroupIn:
+          type: array
+          items:
+            type: string
+        ignoreAssignee:
+          type: boolean
+        involvedUser:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceIdWithChildren:
+          type: string
+        planItemInstanceId:
+          type: string
+        propagatedStageInstanceId:
+          type: string
+        scopeId:
+          type: string
+        scopeIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        withoutScopeId:
+          type: boolean
+        subScopeId:
+          type: string
+        scopeType:
+          type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionKey:
+          type: string
+        caseDefinitionKeyLike:
+          type: string
+        caseDefinitionKeyLikeIgnoreCase:
+          type: string
+        caseDefinitionKeys:
+          type: array
+          items:
+            type: string
+        createdOn:
+          type: string
+          format: date-time
+        createdBefore:
+          type: string
+          format: date-time
+        createdAfter:
+          type: string
+          format: date-time
+        excludeSubTasks:
+          type: boolean
+        taskDefinitionKey:
+          type: string
+        taskDefinitionKeyLike:
+          type: string
+        dueDate:
+          type: string
+          format: date-time
+        dueBefore:
+          type: string
+          format: date-time
+        dueAfter:
+          type: string
+          format: date-time
+        withoutDueDate:
+          type: boolean
+        active:
+          type: boolean
+        includeTaskLocalVariables:
+          type: boolean
+        includeProcessVariables:
+          type: boolean
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+        withoutProcessInstanceId:
+          type: boolean
+        candidateOrAssigned:
+          type: string
+        category:
+          type: string
+        rootScopeId:
+          type: string
+        parentScopeId:
+          type: string
+        taskVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        categoryIn:
+          type: array
+          items:
+            type: string
+        categoryNotIn:
+          type: array
+          items:
+            type: string
+        withoutCategory:
+          type: boolean
+    HistoricVariableInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        excludeTaskVariables:
+          type: boolean
+        taskId:
+          type: string
+        executionId:
+          type: string
+        processInstanceId:
+          type: string
+        variableName:
+          type: string
+        variableNameLike:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        excludeLocalVariables:
+          type: boolean
+    HistoricCaseInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionKey:
+          type: string
+        caseDefinitionKeyLike:
+          type: string
+        caseDefinitionKeyLikeIgnoreCase:
+          type: string
+        caseDefinitionKeys:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        excludeCaseDefinitionKeys:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseDefinitionCategory:
+          type: string
+        caseDefinitionCategoryLike:
+          type: string
+        caseDefinitionCategoryLikeIgnoreCase:
+          type: string
+        caseDefinitionName:
+          type: string
+        caseDefinitionNameLike:
+          type: string
+        caseDefinitionNameLikeIgnoreCase:
+          type: string
+        caseBusinessKey:
+          type: string
+        caseInstanceName:
+          type: string
+        caseInstanceNameLike:
+          type: string
+        caseInstanceNameLikeIgnoreCase:
+          type: string
+        caseInstanceRootScopeId:
+          type: string
+        caseInstanceParentScopeId:
+          type: string
+        caseInstanceBusinessKey:
+          type: string
+        caseInstanceBusinessKeyLike:
+          type: string
+        caseInstanceBusinessKeyLikeIgnoreCase:
+          type: string
+        caseInstanceBusinessStatus:
+          type: string
+        caseInstanceBusinessStatusLike:
+          type: string
+        caseInstanceBusinessStatusLikeIgnoreCase:
+          type: string
+        caseInstanceParentId:
+          type: string
+        caseInstanceState:
+          type: string
+        caseInstanceCallbackId:
+          type: string
+        caseInstanceCallbackIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseInstanceCallbackType:
+          type: string
+        parentCaseInstanceId:
+          type: string
+        caseInstanceReferenceId:
+          type: string
+        caseInstanceReferenceType:
+          type: string
+        finished:
+          type: boolean
+        involvedUser:
+          type: string
+        finishedAfter:
+          type: string
+          format: date-time
+        finishedBefore:
+          type: string
+          format: date-time
+        startedAfter:
+          type: string
+          format: date-time
+        startedBefore:
+          type: string
+          format: date-time
+        startedBy:
+          type: string
+        finishedBy:
+          type: string
+        lastReactivatedBy:
+          type: string
+        lastReactivatedBefore:
+          type: string
+          format: date-time
+        lastReactivatedAfter:
+          type: string
+          format: date-time
+        activePlanItemDefinitionId:
+          type: string
+        activePlanItemDefinitionIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        includeCaseVariables:
+          type: boolean
+        includeCaseVariablesNames:
+          type: array
+          items:
+            type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        tenantIdLikeIgnoreCase:
+          type: string
+        withoutTenantId:
+          type: boolean
+        withoutCaseInstanceParentId:
+          type: boolean
+        withoutCaseInstanceCallbackId:
+          type: boolean
+    HistoricActivityInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        activityId:
+          type: string
+          example: '4'
+        activityName:
+          type: string
+          example: My user task
+        activityType:
+          type: string
+          example: userTask
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess%3A1%3A4
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4
+        processInstanceId:
+          type: string
+          example: '3'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/3
+        executionId:
+          type: string
+          example: '4'
+        taskId:
+          type: string
+          example: '4'
+        calledProcessInstanceId:
+          type: string
+          example: 'null'
+        assignee:
+          type: string
+          example: fozzie
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endTime:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        durationInMillis:
+          type: integer
+          format: int64
+          example: 86400056
+        tenantId:
+          type: string
+          example: 'null'
+    HistoricPlanItemInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        planItemInstanceId:
+          type: string
+        planItemInstanceName:
+          type: string
+        planItemInstanceState:
+          type: string
+        caseDefinitionId:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        stageInstanceId:
+          type: string
+        elementId:
+          type: string
+        planItemDefinitionId:
+          type: string
+        planItemDefinitionType:
+          type: string
+        createdBefore:
+          type: string
+          format: date-time
+        createdAfter:
+          type: string
+          format: date-time
+        lastAvailableBefore:
+          type: string
+          format: date-time
+        lastAvailableAfter:
+          type: string
+          format: date-time
+        lastEnabledBefore:
+          type: string
+          format: date-time
+        lastEnabledAfter:
+          type: string
+          format: date-time
+        lastDisabledBefore:
+          type: string
+          format: date-time
+        lastDisabledAfter:
+          type: string
+          format: date-time
+        lastStartedBefore:
+          type: string
+          format: date-time
+        lastStartedAfter:
+          type: string
+          format: date-time
+        lastSuspendedBefore:
+          type: string
+          format: date-time
+        lastSuspendedAfter:
+          type: string
+          format: date-time
+        completedBefore:
+          type: string
+          format: date-time
+        completedAfter:
+          type: string
+          format: date-time
+        terminatedBefore:
+          type: string
+          format: date-time
+        terminatedAfter:
+          type: string
+          format: date-time
+        occurredBefore:
+          type: string
+          format: date-time
+        occurredAfter:
+          type: string
+          format: date-time
+        exitBefore:
+          type: string
+          format: date-time
+        exitAfter:
+          type: string
+          format: date-time
+        endedBefore:
+          type: string
+          format: date-time
+        endedAfter:
+          type: string
+          format: date-time
+        startUserId:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        tenantId:
+          type: string
+        withoutTenantId:
+          type: boolean
+        includeLocalVariables:
+          type: boolean
+    UsersOrGroups:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+        groupKeys:
+          type: array
+          items:
+            type: string
+    HistoricMilestoneInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        caseInstanceId:
+          type: string
+        caseDefinitionId:
+          type: string
+        reachedBefore:
+          type: string
+          format: date-time
+        reachedAfter:
+          type: string
+          format: date-time
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    CaseInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionKey:
+          type: string
+        caseDefinitionKeyLike:
+          type: string
+        caseDefinitionKeyLikeIgnoreCase:
+          type: string
+        caseDefinitionKeys:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        excludeCaseDefinitionKeys:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseDefinitionCategory:
+          type: string
+        caseDefinitionCategoryLike:
+          type: string
+        caseDefinitionCategoryLikeIgnoreCase:
+          type: string
+        caseDefinitionName:
+          type: string
+        caseDefinitionNameLike:
+          type: string
+        caseDefinitionNameLikeIgnoreCase:
+          type: string
+        caseBusinessKey:
+          type: string
+        caseInstanceName:
+          type: string
+        caseInstanceNameLike:
+          type: string
+        caseInstanceNameLikeIgnoreCase:
+          type: string
+        caseInstanceRootScopeId:
+          type: string
+        caseInstanceParentScopeId:
+          type: string
+        caseInstanceBusinessKey:
+          type: string
+        caseInstanceBusinessKeyLike:
+          type: string
+        caseInstanceBusinessKeyLikeIgnoreCase:
+          type: string
+        caseInstanceBusinessStatus:
+          type: string
+        caseInstanceBusinessStatusLike:
+          type: string
+        caseInstanceBusinessStatusLikeIgnoreCase:
+          type: string
+        caseInstanceParentId:
+          type: string
+        caseInstanceStartedBy:
+          type: string
+        caseInstanceStartedBefore:
+          type: string
+          format: date-time
+        caseInstanceStartedAfter:
+          type: string
+          format: date-time
+        caseInstanceState:
+          type: string
+        involvedUser:
+          type: string
+        caseInstanceCallbackId:
+          type: string
+        caseInstanceCallbackIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseInstanceCallbackType:
+          type: string
+        parentCaseInstanceId:
+          type: string
+        caseInstanceReferenceId:
+          type: string
+        caseInstanceReferenceType:
+          type: string
+        caseInstanceLastReactivatedBy:
+          type: string
+        caseInstanceLastReactivatedBefore:
+          type: string
+          format: date-time
+        caseInstanceLastReactivatedAfter:
+          type: string
+          format: date-time
+        includeCaseVariables:
+          type: boolean
+        includeCaseVariablesNames:
+          type: array
+          items:
+            type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        activePlanItemDefinitionId:
+          type: string
+        activePlanItemDefinitionIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        tenantIdLikeIgnoreCase:
+          type: string
+        withoutTenantId:
+          type: boolean
+    DataResponseCaseInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CaseInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    VariableInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        excludeTaskVariables:
+          type: boolean
+        taskId:
+          type: string
+        executionId:
+          type: string
+        processInstanceId:
+          type: string
+        variableName:
+          type: string
+        variableNameLike:
+          type: string
+        excludeLocalVariables:
+          type: boolean
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+    ExecutionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/runtime/executions/5
+        parentId:
+          type: string
+          example: 'null'
+        parentUrl:
+          type: string
+          example: 'null'
+        superExecutionId:
+          type: string
+          example: 'null'
+        superExecutionUrl:
+          type: string
+          example: 'null'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/runtime/process-instances/5
+        suspended:
+          type: boolean
+        activityId:
+          type: string
+          example: 'null'
+        tenantId:
+          type: string
+          example: 'null'
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    PlanItemInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-runtime/plan-item-instances/5
+        name:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceUrl:
+          type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionUrl:
+          type: string
+        derivedCaseDefinitionId:
+          type: string
+        derivedCaseDefinitionUrl:
+          type: string
+        stageInstanceId:
+          type: string
+        stageInstanceUrl:
+          type: string
+        planItemDefinitionId:
+          type: string
+        planItemDefinitionType:
+          type: string
+        state:
+          type: string
+        stage:
+          type: boolean
+        elementId:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        lastAvailableTime:
+          type: string
+          format: date-time
+        lastEnabledTime:
+          type: string
+          format: date-time
+        lastDisabledTime:
+          type: string
+          format: date-time
+        lastStartedTime:
+          type: string
+          format: date-time
+        lastSuspendedTime:
+          type: string
+          format: date-time
+        completedTime:
+          type: string
+          format: date-time
+        occurredTime:
+          type: string
+          format: date-time
+        terminatedTime:
+          type: string
+          format: date-time
+        exitTime:
+          type: string
+          format: date-time
+        endedTime:
+          type: string
+          format: date-time
+        startUserId:
+          type: string
+        assignee:
+          type: string
+        completedBy:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        completable:
+          type: boolean
+        entryCriterionId:
+          type: string
+        exitCriterionId:
+          type: string
+        formKey:
+          type: string
+        extraValue:
+          type: string
+        tenantId:
+          type: string
+          example: 'null'
+        localVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+    DataResponseProcessInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    VariableInstanceQueryRequest_2:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        excludeTaskVariables:
+          type: boolean
+        taskId:
+          type: string
+        planItemInstanceId:
+          type: string
+        caseInstanceId:
+          type: string
+        variableName:
+          type: string
+        variableNameLike:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        excludeLocalVariables:
+          type: boolean
+        variableScope:
+          type: string
+    DataResponseHistoricTaskInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricTaskInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricTaskInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        taskId:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIdWithChildren:
+          type: string
+        withoutProcessInstanceId:
+          type: boolean
+        processBusinessKey:
+          type: string
+        processBusinessKeyLike:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionKey:
+          type: string
+        processDefinitionKeyLike:
+          type: string
+        processDefinitionName:
+          type: string
+        processDefinitionNameLike:
+          type: string
+        executionId:
+          type: string
+        taskName:
+          type: string
+        taskNameLike:
+          type: string
+        taskNameLikeIgnoreCase:
+          type: string
+        taskDescription:
+          type: string
+        taskDescriptionLike:
+          type: string
+        taskDefinitionKey:
+          type: string
+        taskDefinitionKeyLike:
+          type: string
+        taskDefinitionKeys:
+          type: array
+          items:
+            type: string
+        taskCategory:
+          type: string
+        taskCategoryIn:
+          type: array
+          items:
+            type: string
+        taskCategoryNotIn:
+          type: array
+          items:
+            type: string
+        taskWithoutCategory:
+          type: boolean
+        taskDeleteReason:
+          type: string
+        taskDeleteReasonLike:
+          type: string
+        taskAssignee:
+          type: string
+        taskAssigneeLike:
+          type: string
+        taskOwner:
+          type: string
+        taskOwnerLike:
+          type: string
+        taskInvolvedUser:
+          type: string
+        taskPriority:
+          type: integer
+          format: int32
+        taskMinPriority:
+          type: integer
+          format: int32
+        taskMaxPriority:
+          type: integer
+          format: int32
+        finished:
+          type: boolean
+        processFinished:
+          type: boolean
+        parentTaskId:
+          type: string
+        dueDate:
+          type: string
+          format: date-time
+        dueDateAfter:
+          type: string
+          format: date-time
+        dueDateBefore:
+          type: string
+          format: date-time
+        withoutDueDate:
+          type: boolean
+        taskCreatedOn:
+          type: string
+          format: date-time
+        taskCreatedBefore:
+          type: string
+          format: date-time
+        taskCreatedAfter:
+          type: string
+          format: date-time
+        taskCompletedOn:
+          type: string
+          format: date-time
+        taskCompletedBefore:
+          type: string
+          format: date-time
+        taskCompletedAfter:
+          type: string
+          format: date-time
+        includeTaskLocalVariables:
+          type: boolean
+        includeProcessVariables:
+          type: boolean
+        taskVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        processVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        scopeDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        scopeIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        withoutScopeId:
+          type: boolean
+        scopeType:
+          type: string
+        propagatedStageInstanceId:
+          type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+        withoutDeleteReason:
+          type: boolean
+        taskCandidateGroup:
+          type: string
+        ignoreTaskAssignee:
+          type: boolean
+        rootScopeId:
+          type: string
+        parentScopeId:
+          type: string
+    DataResponseVariableInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    BasicPrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    ProcessInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        processInstanceName:
+          type: string
+        processInstanceNameLike:
+          type: string
+        processInstanceNameLikeIgnoreCase:
+          type: string
+        processBusinessKey:
+          type: string
+        processBusinessKeyLike:
+          type: string
+        processBusinessKeyLikeIgnoreCase:
+          type: string
+        processBusinessStatus:
+          type: string
+        processBusinessStatusLike:
+          type: string
+        processBusinessStatusLikeIgnoreCase:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        processDefinitionKey:
+          type: string
+        processDefinitionKeyLike:
+          type: string
+        processDefinitionKeyLikeIgnoreCase:
+          type: string
+        processDefinitionKeys:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        excludeProcessDefinitionKeys:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        processDefinitionName:
+          type: string
+        processDefinitionNameLike:
+          type: string
+        processDefinitionNameLikeIgnoreCase:
+          type: string
+        processDefinitionCategory:
+          type: string
+        processDefinitionCategoryLike:
+          type: string
+        processDefinitionCategoryLikeIgnoreCase:
+          type: string
+        processDefinitionVersion:
+          type: integer
+          format: int32
+        processDefinitionEngineVersion:
+          type: string
+        rootScopeId:
+          type: string
+        parentScopeId:
+          type: string
+        deploymentId:
+          type: string
+        deploymentIdIn:
+          type: array
+          items:
+            type: string
+        superProcessInstanceId:
+          type: string
+        subProcessInstanceId:
+          type: string
+        excludeSubprocesses:
+          type: boolean
+        activeActivityId:
+          type: string
+        activeActivityIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        involvedUser:
+          type: string
+        startedBy:
+          type: string
+        startedBefore:
+          type: string
+          format: date-time
+        startedAfter:
+          type: string
+          format: date-time
+        suspended:
+          type: boolean
+        includeProcessVariables:
+          type: boolean
+        includeProcessVariablesNames:
+          type: array
+          items:
+            type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        callbackId:
+          type: string
+        callbackIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        callbackType:
+          type: string
+        parentCaseInstanceId:
+          type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        tenantIdLikeIgnoreCase:
+          type: string
+        withoutTenantId:
+          type: boolean
+    DataResponseRenditionItemResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RenditionItemResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricDetailQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        processInstanceId:
+          type: string
+        executionId:
+          type: string
+        activityInstanceId:
+          type: string
+        taskId:
+          type: string
+        selectOnlyFormProperties:
+          type: boolean
+        selectOnlyVariableUpdates:
+          type: boolean
+    PlatformUserResponse:
+      type: object
+      required:
+      - creationTime
+      - id
+      - state
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+        avatarId:
+          type: string
+          example: CON-111-11-11
+          description: The optional avatar if of the user.
+        type:
+          type: string
+          example: default
+          description: The optional type of the user
+        subType:
+          type: string
+          description: The optional subType of the user
+        state:
+          type: string
+          example: ACTIVE
+          description: The state of the user
+        subState:
+          type: string
+          example: INITIALIZING
+          description: The optional sub state of the user
+        presence:
+          type: string
+          example: available
+          description: 'The optional presence state of the user. Known states: available, away, offline, out-of-office, snoozed'
+        language:
+          type: string
+          example: en
+          description: The optional language for the user
+        theme:
+          type: string
+          example: flowable
+          description: The optional theme for the user
+        userDefinitionId:
+          type: string
+          description: The id of the user definition linked with this user
+        userDefinitionKey:
+          type: string
+          description: The key of the user definition linked with this user
+        userDefinitionName:
+          type: string
+          description: The name of the user definition linked with this user
+        creatorId:
+          type: string
+          description: The id of the user that created this user
+        creationTime:
+          type: string
+          description: The ISO8601 creation time of this user
+        updaterId:
+          type: string
+          description: The id of the user that last updated this user
+        updateTime:
+          type: string
+          description: The ISO8601 last update time of this user
+        groups:
+          type: array
+          description: Collection of all groups the user has a membership of
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the user
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        translations:
+          type: object
+          description: Map of translations for the user info
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        allowedTabs:
+          type: array
+          description: The allowed tabs for the user
+          uniqueItems: true
+          items:
+            type: string
+      description: The response for a platform user
+    DataResponsePlanItemInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItemInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponseHistoricCaseInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricCaseInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricTaskInstanceQueryRequest_2:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        taskId:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceIdWithChildren:
+          type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionKey:
+          type: string
+        caseDefinitionKeyLike:
+          type: string
+        caseDefinitionKeyLikeIgnoreCase:
+          type: string
+        caseDefinitionKeys:
+          type: array
+          items:
+            type: string
+        planItemInstanceId:
+          type: string
+        propagatedStageInstanceId:
+          type: string
+        scopeId:
+          type: string
+        scopeIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        withoutScopeId:
+          type: boolean
+        taskName:
+          type: string
+        taskNameLike:
+          type: string
+        taskNameLikeIgnoreCase:
+          type: string
+        taskDescription:
+          type: string
+        taskDescriptionLike:
+          type: string
+        taskDefinitionKey:
+          type: string
+        taskDefinitionKeyLike:
+          type: string
+        taskCategory:
+          type: string
+        taskCategoryIn:
+          type: array
+          items:
+            type: string
+        taskCategoryNotIn:
+          type: array
+          items:
+            type: string
+        taskWithoutCategory:
+          type: boolean
+        taskDeleteReason:
+          type: string
+        taskDeleteReasonLike:
+          type: string
+        taskAssignee:
+          type: string
+        taskAssigneeLike:
+          type: string
+        taskOwner:
+          type: string
+        taskOwnerLike:
+          type: string
+        taskInvolvedUser:
+          type: string
+        taskPriority:
+          type: integer
+          format: int32
+        taskMinPriority:
+          type: integer
+          format: int32
+        taskMaxPriority:
+          type: integer
+          format: int32
+        finished:
+          type: boolean
+        processFinished:
+          type: boolean
+        parentTaskId:
+          type: string
+        dueDate:
+          type: string
+          format: date-time
+        dueDateAfter:
+          type: string
+          format: date-time
+        dueDateBefore:
+          type: string
+          format: date-time
+        withoutDueDate:
+          type: boolean
+        taskCreatedOn:
+          type: string
+          format: date-time
+        taskCreatedBefore:
+          type: string
+          format: date-time
+        taskCreatedAfter:
+          type: string
+          format: date-time
+        taskCompletedOn:
+          type: string
+          format: date-time
+        taskCompletedBefore:
+          type: string
+          format: date-time
+        taskCompletedAfter:
+          type: string
+          format: date-time
+        includeTaskLocalVariables:
+          type: boolean
+        includeProcessVariables:
+          type: boolean
+        taskVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+        withoutProcessInstanceId:
+          type: boolean
+        taskCandidateGroup:
+          type: string
+        ignoreTaskAssignee:
+          type: boolean
+        rootScopeId:
+          type: string
+        parentScopeId:
+          type: string
+    HistoricCaseInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
+        name:
+          type: string
+          example: myName
+        businessKey:
+          type: string
+          example: myKey
+        businessStatus:
+          type: string
+          example: myStatus
+        caseDefinitionId:
+          type: string
+          example: oneTaskCase%3A1%3A4
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/oneTaskCaseProcess%3A1%3A4
+        caseDefinitionName:
+          type: string
+          example: aCaseDefinitionName
+        caseDefinitionDescription:
+          type: string
+          example: A case definition description
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endTime:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        startUserId:
+          type: string
+          example: kermit
+        endUserId:
+          type: string
+          example: kermit
+        superProcessInstanceId:
+          type: string
+          example: '3'
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
+          type: string
+          example: 'null'
+        state:
+          type: string
+          example: active
+        callbackId:
+          type: string
+          example: '123'
+        callbackType:
+          type: string
+          example: cmmn-1.1-to-cmmn-1.1-child-case
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-cmmn-1.1-case
+    DataResponseActivityInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    GroupQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+          description: Only return groups with the given id.
+        ids:
+          type: array
+          description: Only return groups with the given ids.
+          items:
+            type: string
+        key:
+          type: string
+          description: Only return groups with the given key.
+        keys:
+          type: array
+          description: Only return groups with the given keys.
+          items:
+            type: string
+        name:
+          type: string
+          description: Only return groups with the given name.
+        nameLike:
+          type: string
+          description: Only return groups with a name like the given value.
+        nameLikeIgnoreCase:
+          type: string
+          description: Only return groups with a name like the given value ignoring case.
+        type:
+          type: string
+          description: Only return groups with a name like the given type.
+        member:
+          type: string
+          description: Only return groups which have a member with the given username.
+        members:
+          type: array
+          description: Only return groups which have members with the given usernames.
+          items:
+            type: string
+        includeIdentityInfo:
+          type: boolean
+          description: Include the group identity info in the response.
+        tenantId:
+          type: string
+          description: Only return groups with the given tenant ID.
+      description: Request that is used for querying groups.
+    HistoricProcessInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIds:
+          type: array
+          items:
+            type: string
+        processInstanceName:
+          type: string
+        processInstanceNameLike:
+          type: string
+        processInstanceNameLikeIgnoreCase:
+          type: string
+        processBusinessKey:
+          type: string
+        processBusinessKeyLike:
+          type: string
+        processBusinessKeyLikeIgnoreCase:
+          type: string
+        processBusinessStatus:
+          type: string
+        processBusinessStatusLike:
+          type: string
+        processBusinessStatusLikeIgnoreCase:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionKey:
+          type: string
+        processDefinitionKeyLike:
+          type: string
+        processDefinitionKeyLikeIgnoreCase:
+          type: string
+        processDefinitionKeys:
+          type: array
+          items:
+            type: string
+        excludeProcessDefinitionKeys:
+          type: array
+          items:
+            type: string
+        processDefinitionKeyIn:
+          type: array
+          items:
+            type: string
+        processDefinitionKeyNotIn:
+          type: array
+          items:
+            type: string
+        processDefinitionName:
+          type: string
+        processDefinitionNameLike:
+          type: string
+        processDefinitionNameLikeIgnoreCase:
+          type: string
+        processDefinitionVersion:
+          type: integer
+          format: int32
+        processDefinitionCategory:
+          type: string
+        processDefinitionCategoryLike:
+          type: string
+        processDefinitionCategoryLikeIgnoreCase:
+          type: string
+        deploymentId:
+          type: string
+        deploymentIdIn:
+          type: array
+          items:
+            type: string
+        superProcessInstanceId:
+          type: string
+        excludeSubprocesses:
+          type: boolean
+        finished:
+          type: boolean
+        activeActivityId:
+          type: string
+        activeActivityIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        involvedUser:
+          type: string
+        finishedAfter:
+          type: string
+          format: date-time
+        finishedBefore:
+          type: string
+          format: date-time
+        startedAfter:
+          type: string
+          format: date-time
+        startedBefore:
+          type: string
+          format: date-time
+        startedBy:
+          type: string
+        finishedBy:
+          type: string
+        state:
+          type: string
+        includeProcessVariables:
+          type: boolean
+        includeProcessVariablesNames:
+          type: array
+          items:
+            type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        callbackId:
+          type: string
+        callbackIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        callbackType:
+          type: string
+        parentCaseInstanceId:
+          type: string
+        withoutCallbackId:
+          type: boolean
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        tenantIdLikeIgnoreCase:
+          type: string
+        withoutTenantId:
+          type: boolean
+        rootScopeId:
+          type: string
+        parentScopeId:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

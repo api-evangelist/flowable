@@ -1,0 +1,416 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Case Instance Variables API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Case Instance Variables
+paths:
+  /cmmn-runtime/case-instances/{caseInstanceId}/variables:
+    get:
+      tags:
+      - Case Instance Variables
+      summary: List variables for a case instance
+      description: In case the variable is a binary variable or serializable, the valueUrl points to an URL to fetch the raw value. If it’s a plain variable, the value is present in the response. Note that only local scoped variables are returned, as there is no global scope for case-instance variables.
+      operationId: listCaseInstanceVariables
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the case instance was found and variables are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestVariable'
+        '400':
+          description: Indicates the requested case instance was not found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Case Instance Variables
+      summary: Create variables or new binary variable on a case instance
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an array of RestVariable) or by passing a multipart/form-data Object.
+
+        Nonexistent variables are created on the case-instance and existing ones are overridden without any error.
+
+        Any number of variables can be passed into the request body array.
+
+        Note that scope is ignored, only global variables can be set in a case instance.
+
+        NB: Swagger V2 specification doesn''t support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createCaseInstanceVariable
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/CaseInstanceVariableCollectionResource'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                type: object
+        '201':
+          description: Indicates the case instance was found and variable is created.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+        '404':
+          description: Indicates the requested case instance was not found.
+        '409':
+          description: Indicates the case instance was found but already contains a variable with the given name (only thrown when POST method is used). Use the update-method instead.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Case Instance Variables
+      summary: Update a multiple/single (non)binary variable on a case instance
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an array of RestVariable) or by passing a multipart/form-data Object.
+
+        Nonexistent variables are created on the case-instance and existing ones are overridden without any error.
+
+        Any number of variables can be passed into the request body array.
+
+        Note that scope is ignored, only global variables can be set in a case instance.
+
+        NB: Swagger V2 specification doesn''t support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createOrUpdateCaseVariable
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/CaseInstanceVariableCollectionResource'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        '201':
+          description: Indicates the case instance was found and variable is created.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+        '404':
+          description: Indicates the requested case instance was not found.
+        '415':
+          description: Indicates the serializable data contains an object for which no class is present in the JVM running the Flowable engine and therefore cannot be deserialized.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Case Instance Variables
+      summary: Delete all variables
+      description: ''
+      operationId: deleteCaseVariable
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates variables were found and have been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested case instance was not found.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/case-instances/{caseInstanceId}/variables-async:
+    post:
+      tags:
+      - Case Instance Variables
+      summary: Create variables or new binary variable on a case instance asynchronously
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an array of RestVariable) or by passing a multipart/form-data Object.
+
+        Nonexistent variables are created on the case-instance and existing ones are overridden without any error.
+
+        Any number of variables can be passed into the request body array.
+
+        Note that scope is ignored, only global variables can be set in a case instance.
+
+        NB: Swagger V2 specification doesn''t support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createCaseInstanceVariableAsync
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/CaseInstanceVariableCollectionResource'
+      responses:
+        '201':
+          description: Indicates the job to create the variables has been created.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+        '409':
+          description: Indicates the case instance contains a variable with the given name (only thrown when POST method is used). Use the update-method instead.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Case Instance Variables
+      summary: Update a multiple/single (non)binary variable on a case instance asynchronously
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an array of RestVariable) or by passing a multipart/form-data Object.
+
+        Nonexistent variables are created on the case-instance and existing ones are overridden without any error.
+
+        Any number of variables can be passed into the request body array.
+
+        Note that scope is ignored, only global variables can be set in a case instance.
+
+        NB: Swagger V2 specification doesn''t support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createOrUpdateCaseVariableAsync
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/CaseInstanceVariableCollectionResource'
+      responses:
+        '201':
+          description: Indicates the job to update the variables has been created.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+        '415':
+          description: Indicates the serializable data contains an object for which no class is present in the JVM running the Flowable engine and therefore cannot be deserialized.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/case-instances/{caseInstanceId}/variables-async/{variableName}:
+    put:
+      tags:
+      - Case Instance Variables
+      summary: Update a single variable on a case instance asynchronously
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.
+
+        Nonexistent variables are created on the case instance and existing ones are overridden without any error.
+
+        Note that scope is ignored, only global variables can be set in a case instance.
+
+        NB: Swagger V2 specification doesn''t support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: updateCaseInstanceVariableAsync
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/CaseInstanceVariableCollectionResource'
+      responses:
+        '201':
+          description: Indicates the job to update the variable has been created.
+        '404':
+          description: Indicates the case instance does not have a variable with the given name. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/case-instances/{caseInstanceId}/variables/{variableName}:
+    get:
+      tags:
+      - Case Instance Variables
+      summary: Get a variable for a case instance
+      description: ''
+      operationId: getCaseInstanceVariable
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates both the case instance and variable were found and variable is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestVariable'
+        '404':
+          description: Indicates the requested case instance was not found or the case instance does not have a variable with the given name. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Case Instance Variables
+      summary: Update a single variable on a case instance
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.
+
+        Nonexistent variables are created on the case instance and existing ones are overridden without any error.
+
+        Note that scope is ignored, only global variables can be set in a case instance.
+
+        NB: Swagger V2 specification doesn''t support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: updateCaseInstanceVariable
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/CaseInstanceVariableCollectionResource'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestVariable'
+        '201':
+          description: Indicates both the case instance and variable were found and variable is updated.
+        '404':
+          description: Indicates the requested case instance was not found or the case instance does not have a variable with the given name. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Case Instance Variables
+      summary: Delete a variable
+      description: ''
+      operationId: deleteCaseInstanceVariable
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the variable was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested variable was not found.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/case-instances/{caseInstanceId}/variables/{variableName}/data:
+    get:
+      tags:
+      - Case Instance Variables
+      summary: Get the binary data for a variable
+      description: ''
+      operationId: getCaseInstanceVariableData
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the case instance was found and the requested variables are returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested case was not found or the case does not have a variable with the given name (in the given scope). Status message provides additional information.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+  requestBodies:
+    CaseInstanceVariableCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: Simple content item
+                type: string
+              type:
+                example: integer
+                type: string
+      description: Create a variable on a case instance
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

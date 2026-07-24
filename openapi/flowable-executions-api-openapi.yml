@@ -1,0 +1,836 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Executions API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Executions
+paths:
+  /query/executions:
+    post:
+      tags:
+      - Executions
+      summary: Query executions
+      description: 'The request body can contain all possible filters that can be used in the List executions URL query. On top of these, it’s possible to provide an array of variables and processInstanceVariables to include in the query, with their format described here.
+
+
+        The general paging and sorting query-parameters can be used for this URL.'
+      operationId: queryExecutions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecutionQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the executions are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseExecutionResponse'
+        '404':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryExecutions has multiple requestBodies
+  /runtime/executions:
+    get:
+      tags:
+      - Executions
+      summary: List of executions
+      description: ''
+      operationId: listExecutions
+      parameters:
+      - name: id
+        in: query
+        description: Only return models with the given version.
+        required: false
+        schema:
+          type: string
+      - name: activityId
+        in: query
+        description: Only return executions with the given activity id.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionKey
+        in: query
+        description: Only return executions with the given process definition key.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: Only return executions with the given process definition id.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: Only return executions which are part of the process instance with the given id.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceIds
+        in: query
+        description: Only return executions which are part of the process instances with the given ids.
+        required: false
+        schema:
+          type: string
+      - name: messageEventSubscriptionName
+        in: query
+        description: Only return executions which are subscribed to a message with the given name.
+        required: false
+        schema:
+          type: string
+      - name: signalEventSubscriptionName
+        in: query
+        description: Only return executions which are subscribed to a signal with the given name.
+        required: false
+        schema:
+          type: string
+      - name: parentId
+        in: query
+        description: Only return executions which are a direct child of the given execution.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return process instances with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return process instances with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns process instances without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - processInstanceId
+          - processDefinitionId
+          - processDefinitionKey
+          - tenantId
+      responses:
+        '200':
+          description: Indicates request was successful and the executions are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseExecutionResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Executions
+      summary: Signal event received
+      description: ''
+      operationId: executeExecutionAction
+      requestBody:
+        $ref: '#/components/requestBodies/ExecutionActionRequest'
+      responses:
+        '204':
+          description: Indicates request was successful and the executions are returned
+        '404':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /runtime/executions/{executionId}:
+    get:
+      tags:
+      - Executions
+      summary: Get an execution
+      description: ''
+      operationId: getExecution
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the execution was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecutionResponse'
+        '404':
+          description: Indicates the execution was not found.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Executions
+      summary: Execute an action on an execution
+      description: ''
+      operationId: performExecutionAction
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ExecutionActionRequest'
+      responses:
+        '200':
+          description: Indicates the execution was found and the action is performed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecutionResponse'
+        '204':
+          description: Indicates the execution was found, the action was performed and the action caused the execution to end.
+        '400':
+          description: Indicates an illegal action was requested, required parameters are missing in the request body or illegal variables are passed in. Status description contains additional information about the error.
+        '404':
+          description: Indicates the execution was not found.
+      security:
+      - basicAuth: []
+  /runtime/executions/{executionId}/activities:
+    get:
+      tags:
+      - Executions
+      summary: List active activities in an execution
+      description: Returns all activities which are active in the execution and in all child-executions (and their children, recursively), if any.
+      operationId: listExecutionActiveActivities
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the execution was found and activities are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '404':
+          description: Indicates the execution was not found.
+      security:
+      - basicAuth: []
+  /runtime/executions/{executionId}/change-state:
+    post:
+      tags:
+      - Executions
+      summary: Change the state of an execution
+      description: ''
+      operationId: changeExecutionActivityState
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ExecutionChangeActivityStateRequest'
+      responses:
+        '200':
+          description: Indicates the execution was found and the action is performed.
+        '404':
+          description: Indicates the execution was not found.
+      security:
+      - basicAuth: []
+  /runtime/executions/{executionId}/variables:
+    get:
+      tags:
+      - Executions
+      summary: List variables for an execution
+      description: ''
+      operationId: listExecutionVariables
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the execution was found and variables are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestVariable'
+        '404':
+          description: Indicates the requested execution was not found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Executions
+      summary: Create variables on an execution
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (array of RestVariable) or by passing a multipart/form-data Object.
+
+        Any number of variables can be passed into the request body array.
+
+        NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createExecutionVariable
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ExecutionVariableCollectionResource'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        '201':
+          description: Indicates the execution was found and variable is created/updated.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+        '404':
+          description: Indicates the requested execution was not found.
+        '409':
+          description: Indicates the execution was found but already contains a variable with the given name. Use the update-method instead.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Executions
+      summary: Update variables on an execution
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (array of RestVariable) or by passing a multipart/form-data Object.
+
+        Any number of variables can be passed into the request body array.
+
+        NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createOrUpdateExecutionVariable
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ExecutionVariableCollectionResource'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        '201':
+          description: Indicates the execution was found and variable is created/updated.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+        '404':
+          description: Indicates the requested execution was not found.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Executions
+      summary: Delete all variables for an execution
+      description: ''
+      operationId: deleteLocalVariables
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the execution was found and variables have been deleted.
+        '404':
+          description: Indicates the requested execution was not found.
+      security:
+      - basicAuth: []
+  /runtime/executions/{executionId}/variables-async:
+    post:
+      tags:
+      - Executions
+      summary: Create variables on an execution asynchronously
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (array of RestVariable) or by passing a multipart/form-data Object.
+
+        Any number of variables can be passed into the request body array.
+
+        NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createExecutionVariableAsync
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ExecutionVariableCollectionResource'
+      responses:
+        '201':
+          description: Indicates the job to create the variables has been created.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+        '409':
+          description: Indicates the execution already contains a variable with the given name. Use the update-method instead.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Executions
+      summary: Update variables on an execution asynchronously
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (array of RestVariable) or by passing a multipart/form-data Object.
+
+        Any number of variables can be passed into the request body array.
+
+        NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createOrUpdateExecutionVariableAsync
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ExecutionVariableCollectionResource'
+      responses:
+        '201':
+          description: Indicates the job to update the variables has been created.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /runtime/executions/{executionId}/variables-async/{variableName}:
+    put:
+      tags:
+      - Executions
+      summary: Update a variable on an execution asynchronously
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.
+
+        NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: updateExecutionVariableAsync
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ExecutionVariableResource'
+      responses:
+        '200':
+          description: Indicates both the process instance and variable were found and variable is updated.
+        '404':
+          description: Indicates the process instance does not have a variable with the given name. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /runtime/executions/{executionId}/variables/{variableName}:
+    get:
+      tags:
+      - Executions
+      summary: Get a variable for an execution
+      description: ''
+      operationId: getExecutionVariable
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates both the execution and variable were found and variable is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestVariable'
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+        '404':
+          description: Indicates the requested execution was not found or the execution does not have a variable with the given name in the requested scope (in case scope-query parameter was omitted, variable does not exist in local and global scope). Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Executions
+      summary: Update a variable on an execution
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.
+
+        NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: updateExecutionVariable
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ExecutionVariableResource'
+      responses:
+        '200':
+          description: Indicates both the process instance and variable were found and variable is updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestVariable'
+        '404':
+          description: Indicates the requested process instance was not found or the process instance does not have a variable with the given name. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Executions
+      summary: Delete a variable for an execution
+      description: ''
+      operationId: deletedExecutionVariable
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates both the execution and variable were found and variable has been deleted.
+        '404':
+          description: Indicates the requested execution was not found or the execution does not have a variable with the given name in the requested scope. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /runtime/executions/{executionId}/variables/{variableName}/data:
+    get:
+      tags:
+      - Executions
+      summary: Get the binary data for an execution
+      description: ''
+      operationId: getExecutionVariableData
+      parameters:
+      - name: executionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the execution was found and the requested variables are returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested execution was not found or the task does not have a variable with the given name (in the given scope). Status message provides additional information.
+      security:
+      - basicAuth: []
+components:
+  requestBodies:
+    ExecutionChangeActivityStateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExecutionChangeActivityStateRequest'
+    ExecutionActionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExecutionActionRequest'
+    ExecutionVariableCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              name:
+                description: Required name of the variable
+                example: Simple content item
+                type: string
+              type:
+                description: Type of variable that is updated. If omitted, reverts to raw JSON-value type (string, boolean, integer or double)
+                example: integer
+                type: string
+              scope:
+                description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable..
+                example: local
+                type: string
+      description: Update a task variable
+    ExecutionVariableResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: intProcVar
+                type: string
+              type:
+                example: integer
+                type: string
+              scope:
+                example: global
+                type: string
+      description: Update a variable on an execution
+  schemas:
+    ExecutionQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        activityId:
+          type: string
+        parentId:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        processBusinessKey:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionKey:
+          type: string
+        signalEventSubscriptionName:
+          type: string
+        messageEventSubscriptionName:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        processInstanceVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+    ExecutionActionRequest:
+      type: object
+      required:
+      - action
+      properties:
+        action:
+          type: string
+          example: signalEventReceived
+          description: 'Action to perform: Either signal, trigger, signalEventReceived or messageEventReceived'
+        signalName:
+          type: string
+          example: My Signal
+          description: Name of the signal
+        messageName:
+          type: string
+          example: My Signal
+          description: Message of the signal
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        transientVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+    DataResponseExecutionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExecutionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    ExecutionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/runtime/executions/5
+        parentId:
+          type: string
+          example: 'null'
+        parentUrl:
+          type: string
+          example: 'null'
+        superExecutionId:
+          type: string
+          example: 'null'
+        superExecutionUrl:
+          type: string
+          example: 'null'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/runtime/process-instances/5
+        suspended:
+          type: boolean
+        activityId:
+          type: string
+          example: 'null'
+        tenantId:
+          type: string
+          example: 'null'
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    ExecutionChangeActivityStateRequest:
+      type: object
+      properties:
+        cancelActivityIds:
+          type: array
+          description: activityIds to be canceled
+          items:
+            type: string
+        startActivityIds:
+          type: array
+          description: activityIds to be started
+          items:
+            type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,109 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens EngineProperties API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: EngineProperties
+paths:
+  /management/engine-properties:
+    get:
+      tags:
+      - EngineProperties
+      summary: Get all engine properties
+      description: ''
+      operationId: getEngineProperties
+      responses:
+        '200':
+          description: Indicates that engine properties were found and returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - EngineProperties
+      summary: Create a new engine property
+      description: ''
+      operationId: createEngineProperty
+      requestBody:
+        $ref: '#/components/requestBodies/PropertyRequestBody'
+      responses:
+        '201':
+          description: Indicates the property is created
+        '409':
+          description: Indicates the property already exists
+      security:
+      - basicAuth: []
+  /management/engine-properties/{engineProperty}:
+    put:
+      tags:
+      - EngineProperties
+      summary: Update an engine property
+      description: ''
+      operationId: updateEngineProperty
+      parameters:
+      - name: engineProperty
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/PropertyRequestBody'
+      responses:
+        '200':
+          description: Indicates the property is updated
+        '404':
+          description: Indicates the property is not found
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - EngineProperties
+      summary: Delete an engine property
+      description: ''
+      operationId: deleteEngineProperty
+      parameters:
+      - name: engineProperty
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the property was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested property was not found.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    PropertyRequestBody:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+  requestBodies:
+    PropertyRequestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PropertyRequestBody'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

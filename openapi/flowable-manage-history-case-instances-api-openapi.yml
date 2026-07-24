@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Manage History Case Instances API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Manage History Case Instances
+paths:
+  /cmmn-history/historic-case-instances/delete:
+    post:
+      tags:
+      - Manage History Case Instances
+      summary: Post action request to delete a bulk of historic case instances
+      description: ''
+      operationId: bulkDeleteHistoricCaseInstances
+      requestBody:
+        $ref: '#/components/requestBodies/BulkDeleteInstancesRestActionRequest'
+      responses:
+        '204':
+          description: Indicates the bulk of historic case instances was found and deleted. Response body is left empty intentionally.
+        '404':
+          description: Indicates at least one requested case instance was not found.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    BulkDeleteInstancesRestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        instanceIds:
+          type: array
+          items:
+            type: string
+  requestBodies:
+    BulkDeleteInstancesRestActionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BulkDeleteInstancesRestActionRequest'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

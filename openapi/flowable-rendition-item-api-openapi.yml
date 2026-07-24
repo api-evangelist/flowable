@@ -1,0 +1,627 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Rendition item API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Rendition item
+paths:
+  /content-service/rendition-items/{renditionItemId}/data:
+    post:
+      tags:
+      - Rendition item
+      summary: Save the rendition item data
+      description: Save the rendition item data with an attached file. The request should be of type multipart/form-data. There should be a single file-part included with the binary value of the content item.
+      operationId: saveContentItemData
+      parameters:
+      - name: renditionItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/saveContentItemData'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RenditionItemResponse'
+        '201':
+          description: Indicates the rendition item data was saved and the result is returned.
+        '400':
+          description: Indicates required rendition item data is missing from the request.
+      security:
+      - basicAuth: []
+  /query/rendition-items:
+    post:
+      tags:
+      - Rendition item
+      summary: Query for rendition items
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of rendition items, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: getQueryResult
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenditionItemQueryRequest'
+      responses:
+        '200':
+          description: Indicates request was successful and the rendition items are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseRenditionItemResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /rendition-service/rendition-items:
+    get:
+      tags:
+      - Rendition item
+      summary: List rendition items
+      description: ''
+      operationId: listRenditionItems
+      parameters:
+      - name: id
+        in: query
+        description: Only return rendition items with the given id.
+        required: false
+        schema:
+          type: string
+      - name: contentItemId
+        in: query
+        description: Only return rendition items with the given content item id.
+        required: false
+        schema:
+          type: string
+      - name: contentItemIdLike
+        in: query
+        description: Only return rendition items with a content item id like the given value.
+        required: false
+        schema:
+          type: string
+      - name: contentItemName
+        in: query
+        description: Only return rendition items with the given content item name.
+        required: false
+        schema:
+          type: string
+      - name: contentItemNameLike
+        in: query
+        description: Only return rendition items with a content item name like the given value.
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return rendition items with the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return rendition items with a name like the given value.
+        required: false
+        schema:
+          type: string
+      - name: mimeType
+        in: query
+        description: Only return rendition items with the given mime type.
+        required: false
+        schema:
+          type: string
+      - name: mimeTypeLike
+        in: query
+        description: Only return rendition items with a mime type like the given value.
+        required: false
+        schema:
+          type: string
+      - name: taskId
+        in: query
+        description: Only return rendition items with the given task id.
+        required: false
+        schema:
+          type: string
+      - name: taskIdLike
+        in: query
+        description: Only return rendition items with a task like the given value.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: Only return rendition items with the given process instance id.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceIdLike
+        in: query
+        description: Only return rendition items with a process instance like the given value.
+        required: false
+        schema:
+          type: string
+      - name: scopeId
+        in: query
+        description: Only return rendition items with the given scopeId. When this is used then scopeType must also be set.
+        required: false
+        schema:
+          type: string
+      - name: scopeIdLike
+        in: query
+        description: Only return rendition items with a scopeId like the given value. When this is used then scopeType must also be set.
+        required: false
+        schema:
+          type: string
+      - name: scopeType
+        in: query
+        description: Only return rendition items with the given scopeType.
+        required: false
+        schema:
+          type: string
+      - name: contentStoreId
+        in: query
+        description: Only return rendition items with the given rendition store id.
+        required: false
+        schema:
+          type: string
+      - name: contentStoreIdLike
+        in: query
+        description: Only return rendition items with a rendition store id like the given value.
+        required: false
+        schema:
+          type: string
+      - name: contentStoreName
+        in: query
+        description: Only return rendition items with the given rendition store name.
+        required: false
+        schema:
+          type: string
+      - name: contentStoreNameLike
+        in: query
+        description: Only return rendition items with a rendition store name like the given value.
+        required: false
+        schema:
+          type: string
+      - name: contentAvailable
+        in: query
+        description: Only return rendition items with or without rendition available.
+        required: false
+        schema:
+          type: boolean
+      - name: contentSize
+        in: query
+        description: Only return rendition items with the given rendition size.
+        required: false
+        schema:
+          type: number
+          format: int64
+      - name: minimumContentSize
+        in: query
+        description: Only return rendition items with the a minimum rendition size of the given value.
+        required: false
+        schema:
+          type: number
+          format: int64
+      - name: maximumContentSize
+        in: query
+        description: Only return rendition items with the a maximum rendition size of the given value.
+        required: false
+        schema:
+          type: number
+          format: int64
+      - name: createdOn
+        in: query
+        description: Only return rendition items with the given create date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: createdBefore
+        in: query
+        description: Only return rendition items before given create date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: createdAfter
+        in: query
+        description: Only return rendition items after given create date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: lastModifiedOn
+        in: query
+        description: Only return rendition items with the given last modified date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: lastModifiedBefore
+        in: query
+        description: Only return rendition items before given last modified date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: lastModifiedAfter
+        in: query
+        description: Only return rendition items after given last modified date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: tenantId
+        in: query
+        description: Only return rendition items with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return rendition items with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns rendition items without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: The rendition items are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseRenditionItemResponse'
+      security:
+      - basicAuth: []
+  /rendition-service/rendition-items/{renditionItemId}:
+    get:
+      tags:
+      - Rendition item
+      summary: Get a rendition item
+      description: ''
+      operationId: getRenditionItem
+      parameters:
+      - name: renditionItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the rendition item was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RenditionItemResponse'
+        '404':
+          description: Indicates the requested rendition item was not found.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Rendition item
+      summary: Delete a rendition item
+      description: ''
+      operationId: deleteRenditionItem
+      parameters:
+      - name: renditionItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the rendition item was deleted.
+        '404':
+          description: Indicates the rendition item was not found.
+      security:
+      - basicAuth: []
+  /rendition-service/rendition-items/{renditionItemId}/data:
+    get:
+      tags:
+      - Rendition item
+      summary: Get the data of a content item
+      description: The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.
+      operationId: getRenditionItemData
+      parameters:
+      - name: renditionItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: download
+        in: query
+        description: Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the rendition item was found and the requested content is returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Indicates the rendition item was not found or the content item doesn't have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+  /rendition-service/rendition-items/{renditionItemId}/data/latest:
+    get:
+      tags:
+      - Rendition item
+      summary: Get the latest data of a rendition item
+      description: The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.
+      operationId: getLatestRenditionItemData
+      parameters:
+      - name: renditionItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: download
+        in: query
+        description: Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the rendition item was found and the requested content is returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Indicates the rendition item was not found or the content item doesn't have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    FileSystem:
+      type: object
+      properties:
+        open:
+          type: boolean
+        readOnly:
+          type: boolean
+        separator:
+          type: string
+        rootDirectories:
+          $ref: '#/components/schemas/IterablePath'
+        fileStores:
+          $ref: '#/components/schemas/IterableFileStore'
+        userPrincipalLookupService:
+          $ref: '#/components/schemas/UserPrincipalLookupService'
+    RenditionItemQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        ids:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        contentItemId:
+          type: string
+        contentItemIdLike:
+          type: string
+        contentItemName:
+          type: string
+        contentItemNameLike:
+          type: string
+        name:
+          type: string
+        nameLike:
+          type: string
+        mimeType:
+          type: string
+        mimeTypeLike:
+          type: string
+        taskId:
+          type: string
+        taskIdLike:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIdLike:
+          type: string
+        scopeId:
+          type: string
+        scopeIdLike:
+          type: string
+        scopeType:
+          type: string
+        contentStoreId:
+          type: string
+        contentStoreIdLike:
+          type: string
+        contentStoreName:
+          type: string
+        contentStoreNameLike:
+          type: string
+        contentSize:
+          type: integer
+          format: int64
+        minimumContentSize:
+          type: integer
+          format: int64
+        maximumContentSize:
+          type: integer
+          format: int64
+        contentAvailable:
+          type: boolean
+        createdOn:
+          type: string
+          format: date-time
+        createdBefore:
+          type: string
+          format: date-time
+        createdAfter:
+          type: string
+          format: date-time
+        lastModifiedOn:
+          type: string
+          format: date-time
+        lastModifiedBefore:
+          type: string
+          format: date-time
+        lastModifiedAfter:
+          type: string
+          format: date-time
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+    InputStream:
+      type: object
+    IterableFileStore:
+      type: object
+    IterablePath:
+      type: object
+    DataResponseRenditionItemResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RenditionItemResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    Resource:
+      type: object
+      properties:
+        open:
+          type: boolean
+        file:
+          type: string
+          format: binary
+        readable:
+          type: boolean
+        url:
+          type: string
+          format: url
+        filePath:
+          $ref: '#/components/schemas/Path'
+        filename:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+          format: uri
+        contentAsByteArray:
+          type: array
+          items:
+            type: string
+            format: byte
+        inputStream:
+          $ref: '#/components/schemas/InputStream'
+    Path:
+      type: object
+      properties:
+        absolute:
+          type: boolean
+        parent:
+          $ref: '#/components/schemas/Path'
+        root:
+          $ref: '#/components/schemas/Path'
+        fileName:
+          $ref: '#/components/schemas/Path'
+        fileSystem:
+          $ref: '#/components/schemas/FileSystem'
+        nameCount:
+          type: integer
+          format: int32
+    UserPrincipalLookupService:
+      type: object
+    RenditionItemResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        contentItemId:
+          type: string
+        name:
+          type: string
+        mimeType:
+          type: string
+        taskId:
+          type: string
+        processInstanceId:
+          type: string
+        contentStoreId:
+          type: string
+        contentStoreName:
+          type: string
+        contentAvailable:
+          type: boolean
+        contentItemName:
+          type: string
+        tenantId:
+          type: string
+        created:
+          type: string
+          format: date-time
+        lastModified:
+          type: string
+          format: date-time
+        url:
+          type: string
+  requestBodies:
+    saveContentItemData:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+            required:
+            - file
+      required: true
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

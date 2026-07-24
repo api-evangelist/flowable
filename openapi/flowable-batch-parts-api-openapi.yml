@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Batch parts API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Batch parts
+paths:
+  /management/batch-parts/{batchPartId}:
+    get:
+      tags:
+      - Batch parts
+      summary: Get a single batch part
+      description: ''
+      operationId: getBatchPart
+      parameters:
+      - name: batchPartId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the batch part exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchPartResponse'
+        '404':
+          description: Indicates the requested batch part does not exist.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    BatchPartResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/management/batch-parts/8
+        batchId:
+          type: string
+          example: '4'
+        batchUrl:
+          type: string
+          example: http://localhost:8182/management/batch/4
+        batchType:
+          type: string
+          example: processMigration
+        searchKey:
+          type: string
+          example: 1:22:MP
+        searchKey2:
+          type: string
+          example: 1:24:MP
+        scopeId:
+          type: string
+          example: '1'
+        subScopeId:
+          type: string
+          example: '2'
+        scopeType:
+          type: string
+          example: bpmn
+        createTime:
+          type: string
+          format: date-time
+          example: 2020-06-03T22:05:05.474+0000
+        completeTime:
+          type: string
+          format: date-time
+          example: 2020-06-03T22:05:05.474+0000
+        status:
+          type: string
+          example: completed
+        tenantId:
+          type: string
+          example: 'null'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

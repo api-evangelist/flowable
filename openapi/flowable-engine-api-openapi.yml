@@ -1,0 +1,135 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Engine API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Engine
+paths:
+  /management/engine:
+    get:
+      tags:
+      - Engine
+      summary: Get engine info
+      description: ''
+      operationId: getEngineInfo
+      responses:
+        '200':
+          description: Indicates the engine info is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngineInfoResponse'
+      security:
+      - basicAuth: []
+  /management/properties:
+    get:
+      tags:
+      - Engine
+      summary: List engine properties
+      description: ''
+      operationId: getProperties
+      responses:
+        '200':
+          description: Indicates the properties are returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+      security:
+      - basicAuth: []
+  /content-management/engine:
+    get:
+      tags:
+      - Engine
+      summary: Get Content engine info
+      description: ''
+      operationId: getEngineInfo
+      responses:
+        '200':
+          description: Indicates the engine info is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngineInfoResponse'
+      security:
+      - basicAuth: []
+  /dmn-management/engine:
+    get:
+      tags:
+      - Engine
+      summary: Get DMN engine info
+      description: Returns a read-only view of the DMN engine that is used in this REST-service.
+      operationId: getEngineInfo
+      responses:
+        '200':
+          description: Indicates the engine info is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngineInfoResponse'
+      security:
+      - basicAuth: []
+  /form-management/engine:
+    get:
+      tags:
+      - Engine
+      summary: Get form engine info
+      description: Returns a read-only view of the engine that is used in this REST-service.
+      operationId: getEngineInfo
+      responses:
+        '200':
+          description: Indicates the engine info is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngineInfoResponse'
+      security:
+      - basicAuth: []
+  /idm-management/engine:
+    get:
+      tags:
+      - Engine
+      summary: Get IDM engine info
+      description: Returns a read-only view of the engine that is used in this REST-service.
+      operationId: getEngineInfo
+      responses:
+        '200':
+          description: Indicates the engine info is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngineInfoResponse'
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    EngineInfoResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          example: default
+        resourceUrl:
+          type: string
+          example: file://flowable/flowable.cfg.xml
+        exception:
+          type: string
+          example: 'null'
+        version:
+          type: string
+          example: 6.3.1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

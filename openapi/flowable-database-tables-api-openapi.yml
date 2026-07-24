@@ -1,0 +1,186 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Database tables API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Database tables
+paths:
+  /management/tables:
+    get:
+      tags:
+      - Database tables
+      summary: ' List tables'
+      description: ''
+      operationId: listTables
+      responses:
+        '200':
+          description: Indicates the request was successful.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TableResponse'
+      security:
+      - basicAuth: []
+  /management/tables/{tableName}:
+    get:
+      tags:
+      - Database tables
+      summary: Get a single table
+      description: ''
+      operationId: getTable
+      parameters:
+      - name: tableName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the table exists and the table count is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TableResponse'
+        '404':
+          description: Indicates the requested table does not exist.
+      security:
+      - basicAuth: []
+  /management/tables/{tableName}/columns:
+    get:
+      tags:
+      - Database tables
+      summary: Get column info for a single table
+      description: ''
+      operationId: getTableMetaData
+      parameters:
+      - name: tableName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the table exists and the table column info is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TableMetaData'
+        '404':
+          description: Indicates the requested table does not exist.
+      security:
+      - basicAuth: []
+  /management/tables/{tableName}/data:
+    get:
+      tags:
+      - Database tables
+      summary: Get row data for a single table
+      description: ''
+      operationId: getTableData
+      parameters:
+      - name: tableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      - name: orderAscendingColumn
+        in: query
+        description: Name of the column to sort the resulting rows on, ascending.
+        required: false
+        schema:
+          type: string
+      - name: orderDescendingColumn
+        in: query
+        description: Name of the column to sort the resulting rows on, descending.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the table exists and the table row data is returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseListMapStringObject'
+        '404':
+          description: Indicates the requested table does not exist.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    TableMetaData:
+      type: object
+      properties:
+        tableName:
+          type: string
+        columnNames:
+          type: array
+          items:
+            type: string
+        columnTypes:
+          type: array
+          items:
+            type: string
+    DataResponseListMapStringObject:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: array
+            items:
+              type: object
+              additionalProperties:
+                type: object
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    TableResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          example: ACT_RU_VARIABLE
+        url:
+          type: string
+          example: http://localhost:8080/flowable-rest/service/management/tables/ACT_RU_VARIABLE
+        count:
+          type: integer
+          format: int64
+          example: 4528
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

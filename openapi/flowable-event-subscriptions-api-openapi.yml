@@ -1,0 +1,502 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Event subscriptions API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Event subscriptions
+paths:
+  /runtime/event-subscriptions:
+    get:
+      tags:
+      - Event subscriptions
+      summary: List of event subscriptions
+      description: ''
+      operationId: listEventSubscriptions
+      parameters:
+      - name: id
+        in: query
+        description: Only return event subscriptions with the given id
+        required: false
+        schema:
+          type: string
+      - name: eventType
+        in: query
+        description: Only return event subscriptions with the given event type
+        required: false
+        schema:
+          type: string
+      - name: eventName
+        in: query
+        description: Only return event subscriptions with the given event name
+        required: false
+        schema:
+          type: string
+      - name: activityId
+        in: query
+        description: Only return event subscriptions with the given activity id
+        required: false
+        schema:
+          type: string
+      - name: executionId
+        in: query
+        description: Only return event subscriptions with the given execution id
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: Only return event subscriptions part of a process with the given id
+        required: false
+        schema:
+          type: string
+      - name: withoutProcessInstanceId
+        in: query
+        description: Only return event subscriptions that have no process instance id
+        required: false
+        schema:
+          type: boolean
+      - name: processDefinitionId
+        in: query
+        description: Only return event subscriptions with the given process definition id
+        required: false
+        schema:
+          type: string
+      - name: withoutProcessDefinitionId
+        in: query
+        description: Only return event subscriptions that have no process definition id
+        required: false
+        schema:
+          type: boolean
+      - name: scopeId
+        in: query
+        description: Only return event subscriptions part of a scope with the given id
+        required: false
+        schema:
+          type: string
+      - name: subScopeId
+        in: query
+        description: Only return event subscriptions part of a sub scope with the given id
+        required: false
+        schema:
+          type: string
+      - name: withoutScopeId
+        in: query
+        description: Only return event subscriptions that have no scope id
+        required: false
+        schema:
+          type: boolean
+      - name: scopeDefinitionId
+        in: query
+        description: Only return event subscriptions with the given scope definition id
+        required: false
+        schema:
+          type: string
+      - name: withoutScopeDefinitionId
+        in: query
+        description: Only return event subscriptions that have no scope definition id
+        required: false
+        schema:
+          type: boolean
+      - name: createdBefore
+        in: query
+        description: Only return event subscriptions which are created before the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: createdAfter
+        in: query
+        description: Only return event subscriptions which are created after the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: tenantId
+        in: query
+        description: Only return event subscriptions with the given tenant id.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: Only return event subscriptions that have no tenant id
+        required: false
+        schema:
+          type: boolean
+      - name: configuration
+        in: query
+        description: Only return event subscriptions with the given configuration value.
+        required: false
+        schema:
+          type: string
+      - name: withoutConfiguration
+        in: query
+        description: Only return event subscriptions that have no configuration value
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - created
+          - executionId
+          - processInstanceId
+          - processDefinitionId
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested event subscriptions were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseEventSubscriptionResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+  /runtime/event-subscriptions/{eventSubscriptionId}:
+    get:
+      tags:
+      - Event subscriptions
+      summary: Get a single event subscription
+      description: ''
+      operationId: getEventSubscription
+      parameters:
+      - name: eventSubscriptionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the event subscription exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventSubscriptionResponse'
+        '404':
+          description: Indicates the requested event subscription does not exist.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/event-subscriptions:
+    get:
+      tags:
+      - Event subscriptions
+      summary: List of event subscriptions
+      description: ''
+      operationId: listEventSubscriptions
+      parameters:
+      - name: id
+        in: query
+        description: Only return event subscriptions with the given id
+        required: false
+        schema:
+          type: string
+      - name: eventType
+        in: query
+        description: Only return event subscriptions with the given event type
+        required: false
+        schema:
+          type: string
+      - name: eventName
+        in: query
+        description: Only return event subscriptions with the given event name
+        required: false
+        schema:
+          type: string
+      - name: activityId
+        in: query
+        description: Only return event subscriptions with the given activity id
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceId
+        in: query
+        description: Only return event subscriptions part of a process with the given id
+        required: false
+        schema:
+          type: string
+      - name: withoutScopeId
+        in: query
+        description: Only return event subscriptions that have no process instance id
+        required: false
+        schema:
+          type: boolean
+      - name: caseDefinitionId
+        in: query
+        description: Only return event subscriptions with the given process definition id
+        required: false
+        schema:
+          type: string
+      - name: withoutScopeDefinitionId
+        in: query
+        description: Only return event subscriptions that have no process definition id
+        required: false
+        schema:
+          type: boolean
+      - name: planItemInstanceId
+        in: query
+        description: Only return event subscriptions part of a scope with the given id
+        required: false
+        schema:
+          type: string
+      - name: createdBefore
+        in: query
+        description: Only return event subscriptions which are created before the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: createdAfter
+        in: query
+        description: Only return event subscriptions which are created after the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: tenantId
+        in: query
+        description: Only return event subscriptions with the given tenant id.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: Only return event subscriptions that have no tenant id
+        required: false
+        schema:
+          type: boolean
+      - name: configuration
+        in: query
+        description: Only return event subscriptions with the given configuration value.
+        required: false
+        schema:
+          type: string
+      - name: withoutConfiguration
+        in: query
+        description: Only return event subscriptions that have no configuration value
+        required: false
+        schema:
+          type: boolean
+      - name: withoutProcessInstanceId
+        in: query
+        description: Only return event subscriptions that have no process instance id
+        required: false
+        schema:
+          type: boolean
+      - name: withoutProcessDefinitionId
+        in: query
+        description: Only return event subscriptions that have no process definition id
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - created
+          - executionId
+          - processInstanceId
+          - processDefinitionId
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested event subscriptions were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseEventSubscriptionResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/event-subscriptions/{eventSubscriptionId}:
+    get:
+      tags:
+      - Event subscriptions
+      summary: Get a single event subscription
+      description: ''
+      operationId: getEventSubscription
+      parameters:
+      - name: eventSubscriptionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the event subscription exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventSubscriptionResponse_2'
+        '404':
+          description: Indicates the requested event subscription does not exist.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    EventSubscriptionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        eventType:
+          type: string
+        eventName:
+          type: string
+        activityId:
+          type: string
+        executionId:
+          type: string
+        executionUrl:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceUrl:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionUrl:
+          type: string
+        scopeId:
+          type: string
+        scopeType:
+          type: string
+        subScopeId:
+          type: string
+        scopeDefinitionId:
+          type: string
+        created:
+          type: string
+          format: date-time
+        configuration:
+          type: string
+        tenantId:
+          type: string
+    DataResponseEventSubscriptionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventSubscriptionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    EventSubscriptionResponse_2:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        eventType:
+          type: string
+        eventName:
+          type: string
+        activityId:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceUrl:
+          type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionUrl:
+          type: string
+        planItemInstanceId:
+          type: string
+        planItemInstanceUrl:
+          type: string
+        executionId:
+          type: string
+        processInstanceId:
+          type: string
+        processDefinitionId:
+          type: string
+        scopeDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        subScopeId:
+          type: string
+        scopeType:
+          type: string
+        created:
+          type: string
+          format: date-time
+        configuration:
+          type: string
+        tenantId:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

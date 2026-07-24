@@ -1,0 +1,1432 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens History API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: History
+paths:
+  /history/historic-activity-instances:
+    get:
+      tags:
+      - History
+      summary: List historic activity instances
+      description: ''
+      operationId: listHistoricActivityInstances
+      parameters:
+      - name: activityId
+        in: query
+        description: An id of the activity instance.
+        required: false
+        schema:
+          type: string
+      - name: activityInstanceId
+        in: query
+        description: An id of the historic activity instance.
+        required: false
+        schema:
+          type: string
+      - name: activityName
+        in: query
+        description: The name of the historic activity instance.
+        required: false
+        schema:
+          type: string
+      - name: activityType
+        in: query
+        description: The element type of the historic activity instance.
+        required: false
+        schema:
+          type: string
+      - name: executionId
+        in: query
+        description: The execution id of the historic activity instance.
+        required: false
+        schema:
+          type: string
+      - name: finished
+        in: query
+        description: Indication if the historic activity instance is finished.
+        required: false
+        schema:
+          type: boolean
+      - name: taskAssignee
+        in: query
+        description: The assignee of the historic activity instance.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: The process instance id of the historic activity instance.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceIds
+        in: query
+        description: The process instance ids of the historic activity instances.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: The process definition id of the historic activity instance.
+        required: false
+        schema:
+          type: string
+      - name: calledProcessInstanceIds
+        in: query
+        description: The lis of process instance ids that are called by historic activity instances
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return instances with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return instances with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns instances without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates that historic activity instances could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricActivityInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /history/historic-detail:
+    get:
+      tags:
+      - History
+      summary: Get historic detail
+      description: ''
+      operationId: listHistoricDetails
+      parameters:
+      - name: id
+        in: query
+        description: The id of the historic detail.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: The process instance id of the historic detail.
+        required: false
+        schema:
+          type: string
+      - name: executionId
+        in: query
+        description: The execution id of the historic detail.
+        required: false
+        schema:
+          type: string
+      - name: activityInstanceId
+        in: query
+        description: The activity instance id of the historic detail.
+        required: false
+        schema:
+          type: string
+      - name: taskId
+        in: query
+        description: The task id of the historic detail.
+        required: false
+        schema:
+          type: string
+      - name: selectOnlyFormProperties
+        in: query
+        description: Indication to only return form properties in the result.
+        required: false
+        schema:
+          type: boolean
+      - name: selectOnlyVariableUpdates
+        in: query
+        description: Indication to only return variable updates in the result.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates that historic detail could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricDetailResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /history/historic-detail/{detailId}/data:
+    get:
+      tags:
+      - History
+      summary: Get the binary data for a historic detail variable
+      description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
+      operationId: getHistoricDetailVariableData
+      parameters:
+      - name: detailId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the historic detail instance was found and the requested variable data is returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested historic detail instance was not found or the historic detail instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+  /history/historic-task-instances/{taskId}/variables/{variableName}/data:
+    get:
+      tags:
+      - History
+      summary: Get the binary data for a historic task instance variable
+      description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
+      operationId: getHistoricTaskInstanceVariableData
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task instance was found and the requested variable data is returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested task instance was not found or the process instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+  /history/historic-variable-instances:
+    get:
+      tags:
+      - History
+      summary: List of historic variable instances
+      description: ''
+      operationId: listHistoricVariableInstances
+      parameters:
+      - name: processInstanceId
+        in: query
+        description: The process instance id of the historic variable instance.
+        required: false
+        schema:
+          type: string
+      - name: taskId
+        in: query
+        description: The task id of the historic variable instance.
+        required: false
+        schema:
+          type: string
+      - name: excludeTaskVariables
+        in: query
+        description: Indication to exclude the task variables from the result.
+        required: false
+        schema:
+          type: boolean
+      - name: excludeLocalVariables
+        in: query
+        description: Indication to exclude local variables or not.
+        required: false
+        schema:
+          type: boolean
+      - name: variableName
+        in: query
+        description: The variable name of the historic variable instance.
+        required: false
+        schema:
+          type: string
+      - name: variableNameLike
+        in: query
+        description: The variable name using the like operator for the historic variable instance.
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricVariableInstanceCollectionResource'
+        description: The field to sort by. Defaults to 'variableName'.
+      responses:
+        '200':
+          description: Indicates that historic variable instances could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricVariableInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /history/historic-variable-instances/{varInstanceId}/data:
+    get:
+      tags:
+      - History
+      summary: Get the binary data for a historic task instance variable
+      description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
+      operationId: getHistoricInstanceVariableData
+      parameters:
+      - name: varInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the variable instance was found and the requested variable data is returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested variable instance was not found or the variable instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+  /query/historic-activity-instances:
+    post:
+      tags:
+      - History
+      summary: Query for historic activity instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: queryActivityInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricActivityInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the activities are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricActivityInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryActivityInstances has multiple requestBodies
+  /query/historic-detail:
+    post:
+      tags:
+      - History
+      summary: Query for historic details
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: queryHistoricDetail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricDetailQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the historic details are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricDetailResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricDetail has multiple requestBodies
+  /query/historic-variable-instances:
+    post:
+      tags:
+      - History
+      summary: Query for historic variable instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.
+      operationId: queryVariableInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricVariableInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricVariableInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryVariableInstances has multiple requestBodies
+  /query/variable-instances:
+    post:
+      tags:
+      - History
+      summary: Query for variable instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of variable instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: queryVariableInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseVariableInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryVariableInstances has multiple requestBodies
+  /runtime/activity-instances:
+    get:
+      tags:
+      - History
+      summary: List activity instances
+      description: ''
+      operationId: listActivityInstances
+      parameters:
+      - name: activityId
+        in: query
+        description: An id of the activity instance.
+        required: false
+        schema:
+          type: string
+      - name: activityInstanceId
+        in: query
+        description: An id of the activity instance.
+        required: false
+        schema:
+          type: string
+      - name: activityName
+        in: query
+        description: The name of the activity instance.
+        required: false
+        schema:
+          type: string
+      - name: activityType
+        in: query
+        description: The element type of the activity instance.
+        required: false
+        schema:
+          type: string
+      - name: executionId
+        in: query
+        description: The execution id of the activity instance.
+        required: false
+        schema:
+          type: string
+      - name: finished
+        in: query
+        description: Indication if the activity instance is finished.
+        required: false
+        schema:
+          type: boolean
+      - name: taskAssignee
+        in: query
+        description: The assignee of the activity instance.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: The process instance id of the activity instance.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceIds
+        in: query
+        description: The process instance ids of the activity instances.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: The process definition id of the activity instance.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return instances with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return instances with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns instances without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: The field to sort by. Defaults to 'startTime'.
+        required: false
+        schema:
+          type: string
+          enum:
+          - activityId
+          - activityName
+          - activityType
+          - duration
+          - endTime
+          - executionId
+          - activityInstanceId
+          - processDefinitionId
+          - processInstanceId
+          - startTime
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates that activity instances could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseActivityInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /runtime/variable-instances:
+    get:
+      tags:
+      - History
+      summary: List of variable instances
+      description: ''
+      operationId: listVariableInstances
+      parameters:
+      - name: processInstanceId
+        in: query
+        description: The process instance id of the variable instance.
+        required: false
+        schema:
+          type: string
+      - name: taskId
+        in: query
+        description: The task id of the variable instance.
+        required: false
+        schema:
+          type: string
+      - name: excludeTaskVariables
+        in: query
+        description: Indication to exclude the task variables from the result.
+        required: false
+        schema:
+          type: boolean
+      - name: excludeLocalVariables
+        in: query
+        description: Indication to exclude local variables or not.
+        required: false
+        schema:
+          type: boolean
+      - name: variableName
+        in: query
+        description: The variable name of the variable instance.
+        required: false
+        schema:
+          type: string
+      - name: variableNameLike
+        in: query
+        description: The variable name using the like operator for the variable instance.
+        required: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: The field to sort by. Defaults to 'variableName'.
+        required: false
+        schema:
+          type: string
+          enum:
+          - processInstanceId
+          - variableName
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates that variable instances could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseVariableInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /cmmn-history/historic-task-instances/{taskId}/variables/{variableName}/data:
+    get:
+      tags:
+      - History
+      summary: Get the binary data for a historic task instance variable
+      description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
+      operationId: getHistoricTaskInstanceVariableData
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task instance was found and the requested variable data is returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested task instance was not found or the process instance does not have a variable with the given name or the variable does not  have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+  /cmmn-history/historic-variable-instances:
+    get:
+      tags:
+      - History
+      summary: List of historic variable instances
+      description: ''
+      operationId: listHistoricVariableInstances
+      parameters:
+      - name: caseInstanceId
+        in: query
+        description: The case instance id of the historic variable instance.
+        required: false
+        schema:
+          type: string
+      - name: taskId
+        in: query
+        description: The task id of the historic variable instance.
+        required: false
+        schema:
+          type: string
+      - name: excludeTaskVariables
+        in: query
+        description: Indication to exclude the task variables from the result.
+        required: false
+        schema:
+          type: boolean
+      - name: excludeLocalVariables
+        in: query
+        description: Indication to exclude local variables or not.
+        required: false
+        schema:
+          type: boolean
+      - name: variableName
+        in: query
+        description: The variable name of the historic variable instance.
+        required: false
+        schema:
+          type: string
+      - name: variableNameLike
+        in: query
+        description: The variable name using the like operator for the historic variable instance.
+        required: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: The field to sort by. Defaults to 'variableName'.
+        required: false
+        schema:
+          type: string
+          enum:
+          - caseInstanceId
+          - variableName
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates that historic variable instances could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricVariableInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /cmmn-history/historic-variable-instances/{varInstanceId}/data:
+    get:
+      tags:
+      - History
+      summary: Get the binary data for a historic task instance variable
+      description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
+      operationId: getHistoricInstanceVariableData
+      parameters:
+      - name: varInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the variable instance was found and the requested variable data is returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested variable instance was not found or the variable instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+  /cmmn-query/historic-variable-instances:
+    post:
+      tags:
+      - History
+      summary: Query for historic variable instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.
+      operationId: queryVariableInstances
+      parameters:
+      - name: sort
+        in: query
+        description: The field to sort by. Defaults to 'variableName'.
+        required: false
+        schema:
+          type: string
+          enum:
+          - caseInstanceId
+          - variableName
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricVariableInstanceQueryRequest_2'
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricVariableInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/variable-instances:
+    get:
+      tags:
+      - History
+      summary: List of variable instances
+      description: ''
+      operationId: listVariableInstances
+      parameters:
+      - name: caseInstanceId
+        in: query
+        description: The case instance id of the variable instance.
+        required: false
+        schema:
+          type: string
+      - name: taskId
+        in: query
+        description: The task id of the variable instance.
+        required: false
+        schema:
+          type: string
+      - name: excludeTaskVariables
+        in: query
+        description: Indication to exclude the task variables from the result.
+        required: false
+        schema:
+          type: boolean
+      - name: excludeLocalVariables
+        in: query
+        description: Indication to exclude local variables or not.
+        required: false
+        schema:
+          type: boolean
+      - name: variableName
+        in: query
+        description: The variable name of the variable instance.
+        required: false
+        schema:
+          type: string
+      - name: variableNameLike
+        in: query
+        description: The variable name using the like operator for the variable instance.
+        required: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: The field to sort by. Defaults to 'variableName'.
+        required: false
+        schema:
+          type: string
+          enum:
+          - caseInstanceId
+          - variableName
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates that variable instances could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseVariableInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    HistoricVariableInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '14'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+        taskId:
+          type: string
+          example: '6'
+        executionId:
+          type: string
+        variable:
+          $ref: '#/components/schemas/RestVariable'
+    DataResponseHistoricActivityInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricActivityInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricActivityInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        activityId:
+          type: string
+        activityInstanceId:
+          type: string
+        activityName:
+          type: string
+        activityType:
+          type: string
+        executionId:
+          type: string
+        finished:
+          type: boolean
+        taskAssignee:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        processDefinitionId:
+          type: string
+        calledProcessInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+    DataResponseVariableInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricVariableInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        excludeTaskVariables:
+          type: boolean
+        taskId:
+          type: string
+        executionId:
+          type: string
+        processInstanceId:
+          type: string
+        variableName:
+          type: string
+        variableNameLike:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        excludeLocalVariables:
+          type: boolean
+    HistoricActivityInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        activityId:
+          type: string
+          example: '4'
+        activityName:
+          type: string
+          example: My user task
+        activityType:
+          type: string
+          example: userTask
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess%3A1%3A4
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4
+        processInstanceId:
+          type: string
+          example: '3'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/3
+        executionId:
+          type: string
+          example: '4'
+        taskId:
+          type: string
+          example: '4'
+        calledProcessInstanceId:
+          type: string
+          example: 'null'
+        assignee:
+          type: string
+          example: fozzie
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endTime:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        durationInMillis:
+          type: integer
+          format: int64
+          example: 86400056
+        tenantId:
+          type: string
+          example: 'null'
+    ActivityInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        activityId:
+          type: string
+          example: '4'
+        activityName:
+          type: string
+          example: My user task
+        activityType:
+          type: string
+          example: userTask
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess%3A1%3A4
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4
+        processInstanceId:
+          type: string
+          example: '3'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/runtime/process-instances/3
+        executionId:
+          type: string
+          example: '4'
+        taskId:
+          type: string
+          example: '4'
+        calledProcessInstanceId:
+          type: string
+          example: 'null'
+        assignee:
+          type: string
+          example: fozzie
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endTime:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        durationInMillis:
+          type: integer
+          format: int64
+          example: 86400056
+        tenantId:
+          type: string
+          example: 'null'
+    HistoricVariableInstanceQueryRequest_2:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        excludeTaskVariables:
+          type: boolean
+        taskId:
+          type: string
+        planItemInstanceId:
+          type: string
+        caseInstanceId:
+          type: string
+        variableName:
+          type: string
+        variableNameLike:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        excludeLocalVariables:
+          type: boolean
+    HistoricDetailQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        processInstanceId:
+          type: string
+        executionId:
+          type: string
+        activityInstanceId:
+          type: string
+        taskId:
+          type: string
+        selectOnlyFormProperties:
+          type: boolean
+        selectOnlyVariableUpdates:
+          type: boolean
+    DataResponseHistoricVariableInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricVariableInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    VariableInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        excludeTaskVariables:
+          type: boolean
+        taskId:
+          type: string
+        executionId:
+          type: string
+        processInstanceId:
+          type: string
+        variableName:
+          type: string
+        variableNameLike:
+          type: string
+        excludeLocalVariables:
+          type: boolean
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+    DataResponseActivityInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponseHistoricDetailResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricDetailResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricDetailResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '26'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+        executionId:
+          type: string
+          example: '6'
+        activityInstanceId:
+          type: string
+          example: '10'
+        taskId:
+          type: string
+          example: '6'
+        taskUrl:
+          type: string
+          example: http://localhost:8182/history/historic-task-instances/6
+        time:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        detailType:
+          type: string
+          example: variableUpdate
+        revision:
+          type: integer
+          format: int32
+          example: 2
+        variable:
+          $ref: '#/components/schemas/RestVariable'
+        propertyId:
+          type: string
+          example: 'null'
+        propertyValue:
+          type: string
+          example: 'null'
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    HistoricVariableInstanceCollectionResource:
+      type: object
+    VariableInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '14'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+        taskId:
+          type: string
+          example: '6'
+        executionId:
+          type: string
+        variable:
+          $ref: '#/components/schemas/RestVariable'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

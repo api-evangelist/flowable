@@ -1,0 +1,319 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Info and Query API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Info and Query
+paths:
+  /jobs:
+    get:
+      tags:
+      - Info and Query
+      summary: List External Worker Jobs
+      description: ''
+      operationId: listExternalWorkerJobs
+      parameters:
+      - name: elementId
+        in: query
+        description: Only return jobs with the given elementId
+        required: false
+        schema:
+          type: string
+      - name: elementName
+        in: query
+        description: Only return jobs with the given elementName
+        required: false
+        schema:
+          type: string
+      - name: exceptionMessage
+        in: query
+        description: Only return jobs with the given exception message
+        required: false
+        schema:
+          type: string
+      - name: executionId
+        in: query
+        description: Only return jobs with the given executionId
+        required: false
+        schema:
+          type: string
+      - name: id
+        in: query
+        description: Only return job with the given id
+        required: false
+        schema:
+          type: string
+      - name: locked
+        in: query
+        description: Only return jobs that are locked
+        required: false
+        schema:
+          type: boolean
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: Only return jobs with the given processDefinitionId
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: Only return jobs with the processInstanceId
+        required: false
+        schema:
+          type: string
+      - name: scopeDefinitionId
+        in: query
+        description: Only return jobs with the given scopeDefinitionId
+        required: false
+        schema:
+          type: string
+      - name: scopeId
+        in: query
+        description: Only return jobs with the given scopeId
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: subScopeId
+        in: query
+        description: Only return jobs with the given subScopeId
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return jobs with the given tenant id
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return jobs with a tenantId like the given value
+        required: false
+        schema:
+          type: string
+      - name: unlocked
+        in: query
+        description: Only return jobs that are unlocked
+        required: false
+        schema:
+          type: boolean
+      - name: withException
+        in: query
+        description: Only return jobs with an exception
+        required: false
+        schema:
+          type: boolean
+      - name: withoutProcessInstanceId
+        in: query
+        description: Only return jobs without a process instance id
+        required: false
+        schema:
+          type: boolean
+      - name: withoutScopeId
+        in: query
+        description: Only return jobs without a scope id
+        required: false
+        schema:
+          type: boolean
+      - name: withoutScopeType
+        in: query
+        description: Only return jobs without a scope type
+        required: false
+        schema:
+          type: boolean
+      - name: withoutTenantId
+        in: query
+        description: Only return jobs without a tenantId
+        required: false
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalWorkerJobCollectionResource'
+        description: The field to sort by. Defaults to 'id'.
+      responses:
+        '200':
+          description: Indicates the requested jobs were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseExternalWorkerJobResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.
+        '403':
+          description: Indicates the user does not have the rights to query for external worker jobs.
+  /jobs/{jobId}:
+    get:
+      tags:
+      - Info and Query
+      summary: Get a single external worker job
+      description: ''
+      operationId: getExternalWorkerJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested job was returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalWorkerJobResponse'
+        '403':
+          description: Indicates the user does not have the rights access the job.
+        '404':
+          description: Indicates the requested job was not found.
+components:
+  schemas:
+    DataResponseExternalWorkerJobResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalWorkerJobResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    ExternalWorkerJobResponse:
+      type: object
+      required:
+      - id
+      - url
+      properties:
+        id:
+          type: string
+          example: '8'
+          description: The id of the external job
+        url:
+          type: string
+          example: http://localhost:8182/external-job-api/jobs/8
+          description: The url of the external job
+        correlationId:
+          type: string
+          example: '50'
+          description: The correlation id of the external job
+        processInstanceId:
+          type: string
+          example: '5'
+          description: The process instance id for the external job
+        processDefinitionId:
+          type: string
+          example: customerProcess:1:4
+          description: The process definition id for the external job
+        executionId:
+          type: string
+          example: '7'
+          description: The execution id for the external job
+        scopeId:
+          type: string
+          example: '20'
+          description: The scope id for the external job
+        subScopeId:
+          type: string
+          example: '21'
+          description: The sub scope id for the external job
+        scopeDefinitionId:
+          type: string
+          example: customerCase:1:39
+          description: The scope definition id for the external job
+        scopeType:
+          type: string
+          example: cmmn
+          description: The scope type for the external job
+        elementId:
+          type: string
+          example: customer
+          description: The id of the element in the model
+        elementName:
+          type: string
+          example: Process Customer Task
+          description: The name of the element in the model
+        retries:
+          type: integer
+          format: int32
+          example: 3
+          description: The remaining number of retries
+        exceptionMessage:
+          type: string
+          example: 'null'
+          description: The exception message for the job
+        dueDate:
+          type: string
+          format: date-time
+          example: '2021-05-04T16:35:10.474Z'
+          description: The due date for the job
+        createTime:
+          type: string
+          format: date-time
+          example: '2020-05-04T16:35:10.474Z'
+          description: The creation time of the job
+        tenantId:
+          type: string
+          example: flowable
+          description: The tenant if of the job
+        lockOwner:
+          type: string
+          example: worker1
+          description: The id of the lock owner. If not set then the job is not locked
+        lockExpirationTime:
+          type: string
+          format: date-time
+          example: '2020-05-04T16:35:10.474Z'
+          description: The time when the lock expires
+    ExternalWorkerJobCollectionResource:
+      type: object
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

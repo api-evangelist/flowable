@@ -1,0 +1,318 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Contact Filters API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Contact Filters
+paths:
+  /contact-filters:
+    get:
+      tags:
+      - Contact Filters
+      summary: List contact filters
+      description: ''
+      operationId: listContactFilter
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactFilterResponse'
+      security:
+      - basicAuth: []
+  /contact-filters/{contactFilterId}:
+    get:
+      tags:
+      - Contact Filters
+      summary: Returns a paged list of users (contacts)
+      description: ''
+      operationId: getContact
+      parameters:
+      - name: contactFilterId
+        in: path
+        description: Unique identifier of contact filter
+        required: true
+        schema:
+          type: string
+      - name: searchText
+        in: query
+        description: Text to search for
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: '"The optional size of results to be returned, defaults to a configurable value (usually 100)'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: start
+        in: query
+        description: The optional start (0 based) to return results from, defaults to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PagePlatformUserResponse'
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    PagePlatformUserResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformUserResponse'
+        size:
+          type: integer
+          format: int32
+        start:
+          type: integer
+          format: int32
+        total:
+          type: integer
+          format: int64
+        sort:
+          type: string
+        order:
+          type: string
+    BasicPrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    PlatformUserResponse:
+      type: object
+      required:
+      - creationTime
+      - id
+      - state
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+        avatarId:
+          type: string
+          example: CON-111-11-11
+          description: The optional avatar if of the user.
+        type:
+          type: string
+          example: default
+          description: The optional type of the user
+        subType:
+          type: string
+          description: The optional subType of the user
+        state:
+          type: string
+          example: ACTIVE
+          description: The state of the user
+        subState:
+          type: string
+          example: INITIALIZING
+          description: The optional sub state of the user
+        presence:
+          type: string
+          example: available
+          description: 'The optional presence state of the user. Known states: available, away, offline, out-of-office, snoozed'
+        language:
+          type: string
+          example: en
+          description: The optional language for the user
+        theme:
+          type: string
+          example: flowable
+          description: The optional theme for the user
+        userDefinitionId:
+          type: string
+          description: The id of the user definition linked with this user
+        userDefinitionKey:
+          type: string
+          description: The key of the user definition linked with this user
+        userDefinitionName:
+          type: string
+          description: The name of the user definition linked with this user
+        creatorId:
+          type: string
+          description: The id of the user that created this user
+        creationTime:
+          type: string
+          description: The ISO8601 creation time of this user
+        updaterId:
+          type: string
+          description: The id of the user that last updated this user
+        updateTime:
+          type: string
+          description: The ISO8601 last update time of this user
+        groups:
+          type: array
+          description: Collection of all groups the user has a membership of
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the user
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        translations:
+          type: object
+          description: Map of translations for the user info
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        allowedTabs:
+          type: array
+          description: The allowed tabs for the user
+          uniqueItems: true
+          items:
+            type: string
+      description: The response for a platform user
+    GroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the group
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+    ContactFilterResponse:
+      type: object
+      required:
+      - defaultFilter
+      - id
+      properties:
+        id:
+          type: string
+          description: The id of the filter
+        labelKey:
+          type: string
+          description: The key for the label of filter
+        defaultLabelName:
+          type: string
+          description: The default name of the filter label
+        defaultFilter:
+          type: boolean
+          description: Flag indicating whether this filter is a default one
+      description: The response for the contact filters
+    UserResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+      description: The response for the OSS User
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

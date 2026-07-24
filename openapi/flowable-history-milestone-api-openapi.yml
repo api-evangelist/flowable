@@ -1,0 +1,204 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens History Milestone API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: History Milestone
+paths:
+  /cmmn-history/historic-milestone-instances:
+    get:
+      tags:
+      - History Milestone
+      summary: List of historic milestone instances
+      description: ''
+      operationId: listHistoricMilestoneInstances
+      parameters:
+      - name: milestoneId
+        in: query
+        description: An id of the historic milestone instance.
+        required: false
+        schema:
+          type: string
+      - name: milestoneName
+        in: query
+        description: The name of the historic milestone instance
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceId
+        in: query
+        description: The id of the case instance containing the milestone.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionId
+        in: query
+        description: The id of the definition of the case where the milestone is defined.
+        required: false
+        schema:
+          type: string
+      - name: reachedBefore
+        in: query
+        description: Return only historic milestone instances that were reached before this date.
+        required: false
+        schema:
+          type: string
+      - name: reachedAfter
+        in: query
+        description: Return only historic milestone instances that were reached after this date.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates that historic milestone instances could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricMilestoneInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /cmmn-history/historic-milestone-instances/{milestoneInstanceId}:
+    get:
+      tags:
+      - History Milestone
+      summary: Get a historic milestone instance by id
+      description: ''
+      operationId: getHistoricMilestoneInstanceById
+      parameters:
+      - name: milestoneInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates that the historic milestone instances could be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricMilestoneInstanceResponse'
+        '404':
+          description: Indicates that the historic milestone instances could not be found.
+      security:
+      - basicAuth: []
+  /cmmn-query/historic-milestone-instances:
+    post:
+      tags:
+      - History Milestone
+      summary: Query for historic milestone instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic milestone instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: queryHistoricMilestoneInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricMilestoneInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the milestone instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricMilestoneInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricMilestoneInstance has multiple requestBodies
+components:
+  schemas:
+    DataResponseHistoricMilestoneInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricMilestoneInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricMilestoneInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        name:
+          type: string
+          example: milestoneName
+        elementId:
+          type: string
+          example: milestonePlanItemId
+        timestamp:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        caseInstanceId:
+          type: string
+          example: '12345'
+        caseDefinitionId:
+          type: string
+          example: oneMilestoneCase%3A1%3A4
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-milestone-instances/5
+        historicCaseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/12345
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/oneMilestoneCase%3A1%3A4
+    HistoricMilestoneInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        caseInstanceId:
+          type: string
+        caseDefinitionId:
+          type: string
+        reachedBefore:
+          type: string
+          format: date-time
+        reachedAfter:
+          type: string
+          format: date-time
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

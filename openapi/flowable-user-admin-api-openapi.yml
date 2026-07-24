@@ -1,0 +1,55 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens User Admin API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: User Admin
+paths:
+  /users/reindex:
+    post:
+      tags:
+      - User Admin
+      summary: Reindex users
+      description: The user has to have admin rights.
+      operationId: reindexUsers
+      responses:
+        '204':
+          description: Indicates users have been reindex.
+        '403':
+          description: Indicates the user has no admin rights.
+      security:
+      - basicAuth: []
+  /users/{userId}/reindex:
+    post:
+      tags:
+      - User Admin
+      summary: Reindex user
+      description: The user has to have admin rights.
+      operationId: reindexUser
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the user has been reindexed.
+        '403':
+          description: Indicates the user has no admin rights.
+      security:
+      - basicAuth: []
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

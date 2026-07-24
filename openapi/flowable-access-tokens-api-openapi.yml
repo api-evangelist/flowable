@@ -1,0 +1,223 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Access Tokens
+paths:
+  /access-tokens:
+    get:
+      tags:
+      - Access Tokens
+      summary: Query access tokens
+      description: ''
+      operationId: queryAccessTokens
+      parameters:
+      - name: createdAfter
+        in: query
+        description: Only return tokens created after the given ISO 8601 date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: createdBefore
+        in: query
+        description: Only return tokens created before the given ISO 8601 date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: expiresAfter
+        in: query
+        description: Only return tokens expiring after the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: expiresBefore
+        in: query
+        description: Only return tokens expiring before the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: name
+        in: query
+        description: Only return tokens matching the given name.
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: searchText
+        in: query
+        description: Only return tokens matching the given searching text.
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: tenantId
+        in: query
+        description: Only return tokens for the given tenant. Only super admin users are allowed to use this
+        required: false
+        schema:
+          type: string
+      - name: userId
+        in: query
+        description: Only return tokens for the given user.
+        required: false
+        schema:
+          type: string
+      - name: withoutExpiration
+        in: query
+        description: Only return tokens that do not have an expiration date.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the requested access tokens were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseAccessTokenResponse'
+        '400':
+          description: Indicates the request is invalid
+        '403':
+          description: Indicates the user does not have rights to query for access tokens
+      security:
+      - basicAuth: []
+  /access-tokens/{tokenId}:
+    get:
+      tags:
+      - Access Tokens
+      summary: Get access token
+      description: ''
+      operationId: getAccessToken
+      parameters:
+      - name: tokenId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested access token was returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessTokenResponse'
+        '400':
+          description: Indicates the request is invalid
+        '403':
+          description: Indicates the user does not have rights to view the access token
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Access Tokens
+      summary: Revoke access token
+      description: ''
+      operationId: revokeAccessToken
+      parameters:
+      - name: tokenId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the requested access token was revoked.
+        '400':
+          description: Indicates the request is invalid
+        '403':
+          description: Indicates the user does not have rights to revoke the access token
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    AccessTokenResponse:
+      type: object
+      required:
+      - creationTime
+      - id
+      - name
+      properties:
+        id:
+          type: string
+          description: The id of the token
+        userId:
+          type: string
+          description: The id of the user that the token belongs to
+        tenantId:
+          type: string
+          description: The id of the tenant that the token belongs to
+        name:
+          type: string
+          description: The name of the token
+        description:
+          type: string
+          description: The description of the token
+        creationTime:
+          type: string
+          description: The creation time of the token in ISO 8601 format
+        expirationTime:
+          type: string
+          description: The expiry time of the token in ISO 8601 format
+      description: Response for an access token
+    DataResponseAccessTokenResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessTokenResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

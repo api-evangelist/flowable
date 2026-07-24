@@ -1,0 +1,252 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Form Deployments API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Form Deployments
+paths:
+  /form-repository/deployments:
+    get:
+      tags:
+      - Form Deployments
+      summary: List of Form Deployments
+      description: ''
+      operationId: listFormDeployments
+      parameters:
+      - name: name
+        in: query
+        description: Only return form deployments with the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return form deployments with a name like the given name.
+        required: false
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: Only return form deployments with the given category.
+        required: false
+        schema:
+          type: string
+      - name: categoryNotEquals
+        in: query
+        description: Only return form deployments which don’t have the given category.
+        required: false
+        schema:
+          type: string
+      - name: parentDeploymentId
+        in: query
+        description: Only return form deployments with the given parent deployment id.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return form deployments with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return form deployments with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns form deployments without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - name
+          - deployTime
+          - tenantId
+      responses:
+        '200':
+          description: Indicates the request was successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseFormDeploymentResponse'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Form Deployments
+      summary: Create a new form deployment
+      description: The request body should contain data of type multipart/form-data. There should be exactly one file in the request, any additional files will be ignored. The deployment name is the name of the file-field passed in. Make sure the file-name ends with .form or .xml.
+      operationId: uploadDeployment
+      parameters:
+      - name: tenantId
+        in: query
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormDeploymentResponse'
+        '201':
+          description: Indicates the form deployment was created.
+        '400':
+          description: Indicates there was no content present in the request body or the content mime-type is not supported for form deployment. The status-description contains additional information.
+      security:
+      - basicAuth: []
+  /form-repository/deployments/{deploymentId}:
+    get:
+      tags:
+      - Form Deployments
+      summary: Get a form deployment
+      description: ''
+      operationId: getFormDeployment
+      parameters:
+      - name: deploymentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the form deployment was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormDeploymentResponse'
+        '404':
+          description: Indicates the requested form deployment was not found.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Form Deployments
+      summary: Delete a form deployment
+      description: ''
+      operationId: deleteFormDeployment
+      parameters:
+      - name: deploymentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the form deployment was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested form deployment was not found.
+      security:
+      - basicAuth: []
+  /form-repository/deployments/{deploymentId}/resourcedata/{resourceName}:
+    get:
+      tags:
+      - Form Deployments
+      summary: Get a form deployment resource content
+      description: The response body will contain the binary resource-content for the requested resource. The response content-type will be the same as the type returned in the resources mimeType property. Also, a content-disposition header is set, allowing browsers to download the file instead of displaying it.
+      operationId: getFormDeploymentResource
+      parameters:
+      - name: deploymentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: resourceName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates both form deployment and resource have been found and the resource data has been returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested form deployment was not found or there is no resource with the given id present in the form deployment. The status-description contains additional information.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    FormDeploymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '10'
+        name:
+          type: string
+          example: flowable-form-examples
+        deploymentTime:
+          type: string
+          format: date-time
+          example: '2010-10-13T14:54:26.750+02:00'
+        category:
+          type: string
+          example: examples
+        url:
+          type: string
+          example: http://localhost:8081/form-api/form-repository/deployments/10
+        parentDeploymentId:
+          type: string
+          example: '5'
+        tenantId:
+          type: string
+          example: 'null'
+    DataResponseFormDeploymentResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormDeploymentResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

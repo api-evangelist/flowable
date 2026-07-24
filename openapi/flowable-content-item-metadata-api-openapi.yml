@@ -1,0 +1,293 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Content item metadata API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Content item metadata
+paths:
+  /content-service/content-items/{contentItemId}/metadata:
+    get:
+      tags:
+      - Content item metadata
+      summary: List metadata for a content item instance
+      description: ''
+      operationId: listContentMetadata
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the content item was found and metadata is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+        '400':
+          description: Indicates the requested content item was not found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Content item metadata
+      summary: Create variables or new binary variable on a content item
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an array of RestVariable) or by passing a multipart/form-data Object.
+
+        Nonexistent metadata are created on the content item and existing ones are overridden without any error.
+
+        Any number of variables can be passed into the request body array.
+
+        Note that scope is ignored, only local variables can be set in a case instance.
+
+        NB: Swagger V2 specification doesn''t support this use case that''s why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createContentMetadata
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/MetadataCollectionResource'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        '201':
+          description: Indicates the content item was found and metadata is created.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+        '404':
+          description: Indicates the requested content item was not found.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Content item metadata
+      summary: Update a multiple/single (non)binary variable on a content item
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an array of RestVariable) or by passing a multipart/form-data Object.
+
+        Nonexistent variables are created on the content item and existing ones are overridden without any error.
+
+        Any number of variables can be passed into the request body array.
+
+        Note that scope is ignored, only local variables can be set in a case instance.
+
+        NB: Swagger V2 specification doesn''t support this use case that''s why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createOrUpdateContentMetadata
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/MetadataCollectionResource'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        '201':
+          description: Indicates the content item was found and variable is created.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+        '404':
+          description: Indicates the requested content item was not found.
+        '415':
+          description: Indicates the serializable data contains an object for which no class is present in the JVM running the Flowable engine and therefore cannot be deserialized.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Content item metadata
+      summary: Delete all content item metadata
+      description: ''
+      operationId: deleteContentMetadata
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates metadata was found and have been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested content item was not found.
+      security:
+      - basicAuth: []
+  /content-service/content-items/{contentItemId}/metadata/{metadataName}:
+    get:
+      tags:
+      - Content item metadata
+      summary: Get a metadata value for a content item
+      description: ''
+      operationId: getContentItemMetadataValue
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: metadataName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates both the content item and variable were found and variable is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngineRestVariable'
+        '404':
+          description: Indicates the requested content item was not found or the case instance does not have a variable with the given name. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Content item metadata
+      summary: Update a single metadata value on a content item
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.
+
+        Nonexistent variables are created on the case instance and existing ones are overridden without any error.
+
+        Note that scope is ignored, only local variables can be set in a process instance.
+
+        NB: Swagger V2 specification doesn''t support this use case that''s why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: updateContentItemMetadataValue
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: metadataName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                name:
+                  example: Simple content item
+                  type: string
+                type:
+                  example: integer
+                  type: string
+        description: Create a variable on a case instance
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngineRestVariable'
+        '201':
+          description: Indicates both the content item and metadata value were found and variable is updated.
+        '404':
+          description: Indicates the requested content item was not found or the content item does not have a metadata value with the given name. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Content item metadata
+      summary: Delete a metadata value
+      description: ''
+      operationId: deleteContentItemMetadataValue
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: metadataName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the variable was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested variable was not found.
+      security:
+      - basicAuth: []
+components:
+  requestBodies:
+    MetadataCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: Simple content item
+                type: string
+              type:
+                example: integer
+                type: string
+      description: Create metadata on a content item
+  schemas:
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

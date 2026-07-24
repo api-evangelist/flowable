@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Tenants API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Tenants
+paths:
+  /tenants:
+    get:
+      tags:
+      - Tenants
+      summary: Get a list of tenants
+      description: ''
+      operationId: getTenants
+      responses:
+        '200':
+          description: Indicates the tenants are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseTenantResponse'
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    TenantResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: default
+          description: The id of the tenant
+      description: The response for a tenant
+    DataResponseTenantResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

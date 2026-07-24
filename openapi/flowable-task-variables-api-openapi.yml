@@ -1,0 +1,513 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Task Variables API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Task Variables
+paths:
+  /runtime/tasks/{taskId}/variables:
+    get:
+      tags:
+      - Task Variables
+      summary: List variables for a task
+      description: ''
+      operationId: listTaskVariables
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task was found and the requested variables are returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestVariable'
+        '404':
+          description: Indicates the requested task was not found..
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Task Variables
+      summary: Create new variables on a task
+      description: "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an Array of RestVariable) or by passing a multipart/form-data Object.\nIt is possible to create simple (non-binary) variable or list of variables or new binary variable \nAny number of variables can be passed into the request body array.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools."
+      operationId: createTaskVariable
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Required name of the variable
+                  example: Simple content item
+                  type: string
+                type:
+                  description: Type of variable that is created. If omitted, reverts to raw JSON-value type (string, boolean, integer or double)
+                  example: integer
+                  type: string
+                scope:
+                  description: Scope of variable that is created. If omitted, local is assumed.
+                  example: local
+                  type: string
+        description: Create a variable on a task
+      responses:
+        '201':
+          description: Indicates the variables were created and the result is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Indicates the name of a variable to create was missing or that an attempt is done to create a variable on a standalone task (without a process associated) with scope global or an empty array of variables was included in the request or request did not contain an array of variables. Status message provides additional information.
+        '404':
+          description: Indicates the requested task was not found.
+        '409':
+          description: Indicates the task already has a variable with the given name. Use the PUT method to update the task variable instead.
+        '415':
+          description: Indicates the serializable data contains an object for which no class is present in the JVM running the Flowable engine and therefore cannot be deserialized.
+      security:
+      - basicAuth: []
+  /runtime/tasks/{taskId}/variables/{variableName}:
+    get:
+      tags:
+      - Task Variables
+      summary: Get a variable from a task
+      description: ''
+      operationId: getTaskInstanceVariable
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task was found and the requested variables are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestVariable'
+        '404':
+          description: Indicates the requested task was not found or the task does not have a variable with the given name (in the given scope). Status message provides additional information.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Task Variables
+      summary: Update an existing variable on a task
+      description: "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.\nIt is possible to update simple (non-binary) variable or  binary variable \nAny number of variables can be passed into the request body array.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools."
+      operationId: updateTaskInstanceVariable
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ExecutionVariableCollectionResource'
+      responses:
+        '200':
+          description: Indicates the variables was updated and the result is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestVariable'
+        '400':
+          description: Indicates the name of a variable to update was missing or that an attempt is done to update a variable on a standalone task (without a process associated) with scope global. Status message provides additional information.
+        '404':
+          description: Indicates the requested task was not found or the task does not have a variable with the given name in the given scope. Status message contains additional information about the error.
+        '415':
+          description: Indicates the serializable data contains an object for which no class is present in the JVM running the Flowable engine and therefore cannot be deserialized.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Task Variables
+      summary: Delete a variable on a task
+      description: ''
+      operationId: deleteTaskInstanceVariable
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable.
+        required: false
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the task variable was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested task was not found or the task does not have a variable with the given name. Status message contains additional information about the error.
+      security:
+      - basicAuth: []
+  /runtime/tasks/{taskId}/variables/{variableName}/data:
+    get:
+      tags:
+      - Task Variables
+      summary: Get the binary data for a variable
+      description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
+      operationId: getTaskVariableData
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task was found and the requested variables are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested task was not found or the task does not have a variable with the given name (in the given scope). Status message provides additional information.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/tasks/{taskId}/variables:
+    get:
+      tags:
+      - Task Variables
+      summary: List variables for a task
+      description: ''
+      operationId: listTaskVariables
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task was found and the requested variables are returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestVariable'
+        '404':
+          description: Indicates the requested task was not found..
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Task Variables
+      summary: Create new variables on a task
+      description: "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an Array of RestVariable) or by passing a multipart/form-data Object.\nIt is possible to create simple (non-binary) variable or list of variables or new binary variable \nAny number of variables can be passed into the request body array.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools."
+      operationId: createTaskVariable
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Required name of the variable
+                  example: Simple content item
+                  type: string
+                type:
+                  description: Type of variable that is created. If omitted, reverts to raw JSON-value type (string, boolean, integer or double)
+                  example: integer
+                  type: string
+                scope:
+                  description: Scope of variable that is created. If omitted, local is assumed.
+                  example: local
+                  type: string
+        description: Create a variable on a task
+      responses:
+        '201':
+          description: Indicates the variables were created and the result is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Indicates the name of a variable to create was missing or that an attempt is done to create a variable on a standalone task (without a process associated) with scope global or an empty array of variables was included in the request or request did not contain an array of variables. Status message provides additional information.
+        '404':
+          description: Indicates the requested task was not found.
+        '409':
+          description: Indicates the task already has a variable with the given name. Use the PUT method to update the task variable instead.
+        '415':
+          description: Indicates the serializable data contains an object for which no class is present in the JVM running the Flowable engine and therefore cannot be deserialized.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/tasks/{taskId}/variables/{variableName}:
+    get:
+      tags:
+      - Task Variables
+      summary: Get a variable from a task
+      description: ''
+      operationId: getTaskInstanceVariable
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task was found and the requested variables are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestVariable'
+        '404':
+          description: Indicates the requested task was not found or the task does not have a variable with the given name (in the given scope). Status message provides additional information.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Task Variables
+      summary: Update an existing variable on a task
+      description: "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.\nIt is possible to update simple (non-binary) variable or  binary variable \nAny number of variables can be passed into the request body array.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools."
+      operationId: updateTaskInstanceVariable
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Required name of the variable
+                  example: Simple content item
+                  type: string
+                type:
+                  description: Type of variable that is updated. If omitted, reverts to raw JSON-value type (string, boolean, integer or double)
+                  example: integer
+                  type: string
+                scope:
+                  description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable..
+                  example: local
+                  type: string
+        description: Update a task variable
+      responses:
+        '200':
+          description: Indicates the variables was updated and the result is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestVariable'
+        '400':
+          description: Indicates the name of a variable to update was missing or that an attempt is done to update a variable on a standalone task (without a process associated) with scope global. Status message provides additional information.
+        '404':
+          description: Indicates the requested task was not found or the task does not have a variable with the given name in the given scope. Status message contains additional information about the error.
+        '415':
+          description: Indicates the serializable data contains an object for which no class is present in the JVM running the Flowable engine and therefore cannot be deserialized.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Task Variables
+      summary: Delete a variable on a task
+      description: ''
+      operationId: deleteTaskInstanceVariable
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable.
+        required: false
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the task variable was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested task was not found or the task does not have a variable with the given name. Status message contains additional information about the error.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/tasks/{taskId}/variables/{variableName}/data:
+    get:
+      tags:
+      - Task Variables
+      summary: Get the binary data for a variable
+      description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
+      operationId: getTaskVariableData
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task was found and the requested variables are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested task was not found or the task does not have a variable with the given name (in the given scope). Status message provides additional information.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+  requestBodies:
+    ExecutionVariableCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              name:
+                description: Required name of the variable
+                example: Simple content item
+                type: string
+              type:
+                description: Type of variable that is updated. If omitted, reverts to raw JSON-value type (string, boolean, integer or double)
+                example: integer
+                type: string
+              scope:
+                description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable..
+                example: local
+                type: string
+      description: Update a task variable
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

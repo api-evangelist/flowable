@@ -1,0 +1,1707 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens History Task API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: History Task
+paths:
+  /history/historic-task-instances:
+    get:
+      tags:
+      - History Task
+      summary: List historic task instances
+      description: ''
+      operationId: listHistoricTaskInstances
+      parameters:
+      - name: taskId
+        in: query
+        description: An id of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: The process instance id of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceIdWithChildren
+        in: query
+        description: Selects the historic task instances for the process instance and its children.
+        required: false
+        schema:
+          type: string
+      - name: withoutProcessInstanceId
+        in: query
+        description: If true, only returns historic task instances without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: processDefinitionKey
+        in: query
+        description: The process definition key of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionKeyLike
+        in: query
+        description: The process definition key of the historic task instance, which matches the given value.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: The process definition id of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionName
+        in: query
+        description: The process definition name of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionNameLike
+        in: query
+        description: The process definition name of the historic task instance, which matches the given value.
+        required: false
+        schema:
+          type: string
+      - name: processBusinessKey
+        in: query
+        description: The process instance business key of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: processBusinessKeyLike
+        in: query
+        description: The process instance business key of the historic task instance that matches the given value.
+        required: false
+        schema:
+          type: string
+      - name: executionId
+        in: query
+        description: The execution id of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskDefinitionKey
+        in: query
+        description: The task definition key for tasks part of a process
+        required: false
+        schema:
+          type: string
+      - name: taskDefinitionKeys
+        in: query
+        description: The task definition key for tasks part of a process
+        required: false
+        schema:
+          type: string
+      - name: taskName
+        in: query
+        description: The task name of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskNameLike
+        in: query
+        description: The task name with like operator for the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskNameLikeIgnoreCase
+        in: query
+        description: The task name with like operator for the historic task instance ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: taskDescription
+        in: query
+        description: The task description of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskDescriptionLike
+        in: query
+        description: The task description with like operator for the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskCategory
+        in: query
+        description: Select tasks with the given category. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).
+        required: false
+        schema:
+          type: string
+      - name: taskCategoryIn
+        in: query
+        description: Select tasks with the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).
+        required: false
+        schema:
+          type: string
+      - name: taskCategoryNotIn
+        in: query
+        description: Select tasks not assigned to the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).
+        required: false
+        schema:
+          type: string
+      - name: taskWithoutCategory
+        in: query
+        description: Select tasks with no category assigned. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).
+        required: false
+        schema:
+          type: string
+      - name: taskDeleteReason
+        in: query
+        description: The task delete reason of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskDeleteReasonLike
+        in: query
+        description: The task delete reason with like operator for the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskAssignee
+        in: query
+        description: The assignee of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskAssigneeLike
+        in: query
+        description: The assignee with like operator for the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskOwner
+        in: query
+        description: The owner of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskOwnerLike
+        in: query
+        description: The owner with like operator for the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskInvolvedUser
+        in: query
+        description: An involved user of the historic task instance
+        required: false
+        schema:
+          type: string
+      - name: taskCandidateGroup
+        in: query
+        description: Only return tasks that can be claimed by a user in the given group.
+        required: false
+        schema:
+          type: string
+      - name: taskPriority
+        in: query
+        description: The priority of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: finished
+        in: query
+        description: Indication if the historic task instance is finished.
+        required: false
+        schema:
+          type: boolean
+      - name: processFinished
+        in: query
+        description: Indication if the process instance of the historic task instance is finished.
+        required: false
+        schema:
+          type: boolean
+      - name: parentTaskId
+        in: query
+        description: An optional parent task id of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: dueDate
+        in: query
+        description: Return only historic task instances that have a due date equal this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: dueDateAfter
+        in: query
+        description: Return only historic task instances that have a due date after this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: dueDateBefore
+        in: query
+        description: Return only historic task instances that have a due date before this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: withoutDueDate
+        in: query
+        description: Return only historic task instances that have no due-date. When false is provided as value, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: taskCompletedOn
+        in: query
+        description: Return only historic task instances that have been completed on this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: taskCompletedAfter
+        in: query
+        description: Return only historic task instances that have been completed after this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: taskCompletedBefore
+        in: query
+        description: Return only historic task instances that have been completed before this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: taskCreatedOn
+        in: query
+        description: Return only historic task instances that were created on this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: taskCreatedBefore
+        in: query
+        description: Return only historic task instances that were created before this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: taskCreatedAfter
+        in: query
+        description: Return only historic task instances that were created after this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: includeTaskLocalVariables
+        in: query
+        description: An indication if the historic task instance local variables should be returned as well.
+        required: false
+        schema:
+          type: boolean
+      - name: includeProcessVariables
+        in: query
+        description: An indication if the historic task instance global variables should be returned as well.
+        required: false
+        schema:
+          type: boolean
+      - name: scopeDefinitionId
+        in: query
+        description: Only return historic task instances with the given scopeDefinitionId.
+        required: false
+        schema:
+          type: string
+      - name: scopeId
+        in: query
+        description: Only return historic task instances with the given scopeId.
+        required: false
+        schema:
+          type: string
+      - name: scopeIds
+        in: query
+        description: Only return historic task instances of the given scopeIds.
+        required: false
+        schema:
+          type: string
+      - name: withoutScopeId
+        in: query
+        description: If true, only returns historic task instances without a scope id set. If false, the withoutScopeId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: scopeType
+        in: query
+        description: Only return historic task instances with the given scopeType.
+        required: false
+        schema:
+          type: string
+      - name: propagatedStageInstanceId
+        in: query
+        description: Only return tasks which have the given id as propagated stage instance id
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return historic task instances with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return historic task instances with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns historic task instances without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: rootScopeId
+        in: query
+        description: Only return case instances which have the given root scope id (that can be a process or case instance ID).
+        required: false
+        schema:
+          type: string
+      - name: parentScopeId
+        in: query
+        description: Only return case instances which have the given parent scope id (that can be a process or case instance ID).
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates that historic task instances could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricTaskInstanceResponse'
+        '404':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /history/historic-task-instances/{taskId}:
+    get:
+      tags:
+      - History Task
+      summary: Get a single historic task instance
+      description: ''
+      operationId: getTaskInstance
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates that the historic task instances could be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricTaskInstanceResponse'
+        '404':
+          description: Indicates that the historic task instances could not be found.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - History Task
+      summary: Delete a historic task instance
+      description: ''
+      operationId: deleteTaskInstance
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates that the historic task instance was deleted.
+        '404':
+          description: Indicates that the historic task instance could not be found.
+      security:
+      - basicAuth: []
+  /history/historic-task-instances/{taskId}/form:
+    get:
+      tags:
+      - History Task
+      summary: Get a historic task instance form
+      description: ''
+      operationId: getHistoricTaskForm
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the task form is returned
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested task was not found.
+      security:
+      - basicAuth: []
+  /history/historic-task-instances/{taskId}/identitylinks:
+    get:
+      tags:
+      - History Task
+      summary: List identity links of a historic task instance
+      description: ''
+      operationId: listHistoricTaskInstanceIdentityLinks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the identity links are returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoricIdentityLinkResponse'
+        '404':
+          description: Indicates the task instance could not be found.
+      security:
+      - basicAuth: []
+  /history/historic-task-log-entries:
+    get:
+      tags:
+      - History Task
+      summary: List historic task log entries
+      description: ''
+      operationId: getHistoricTaskLogEntries
+      parameters:
+      - name: taskId
+        in: query
+        description: An id of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: The type of the log entry.
+        required: false
+        schema:
+          type: string
+      - name: userId
+        in: query
+        description: The user who produced the task change.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: The process instance id of the historic task log entry.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: The process definition id of the historic task log entry.
+        required: false
+        schema:
+          type: string
+      - name: scopeId
+        in: query
+        description: Only return historic task log entries with the given scopeId.
+        required: false
+        schema:
+          type: string
+      - name: scopeDefinitionId
+        in: query
+        description: Only return historic task log entries with the given scopeDefinitionId.
+        required: false
+        schema:
+          type: string
+      - name: subScopeId
+        in: query
+        description: Only return historic task log entries with the given subScopeId
+        required: false
+        schema:
+          type: string
+      - name: scopeType
+        in: query
+        description: Only return historic task log entries with the given scopeType.
+        required: false
+        schema:
+          type: string
+      - name: from
+        in: query
+        description: Return task log entries starting from a date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        description: Return task log entries up to a date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: tenantId
+        in: query
+        description: Only return historic task log entries with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: fromLogNumber
+        in: query
+        description: Return task log entries starting from a log number
+        required: false
+        schema:
+          type: string
+      - name: toLogNumber
+        in: query
+        description: Return task log entries up to specific a log number
+        required: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - logNumber
+          - timeStamp
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates that historic task log entries could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricTaskLogEntryResponse'
+        '404':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /query/historic-task-instances:
+    post:
+      tags:
+      - History Task
+      summary: Query for historic task instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The taskVariables and processVariables properties are JSON-arrays containing objects with the format as described here.
+      operationId: queryHistoricTaskInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricTaskInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricTaskInstanceResponse'
+        '404':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricTaskInstance has multiple requestBodies
+  /cmmn-history/historic-task-instances:
+    get:
+      tags:
+      - History Task
+      summary: List historic task instances
+      description: ''
+      operationId: listHistoricTaskInstances
+      parameters:
+      - name: taskId
+        in: query
+        description: An id of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceId
+        in: query
+        description: The case instance id of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceIdWithChildren
+        in: query
+        description: Selects the historic task instance of a case instance and its children.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionId
+        in: query
+        description: The case definition id of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: propagatedStageInstanceId
+        in: query
+        description: Only return tasks which have the given id as propagated stage instance id
+        required: false
+        schema:
+          type: string
+      - name: withoutScopeId
+        in: query
+        description: If true, only returns historic task instances without a scope id set. If false, the withoutScopeId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: taskDefinitionKey
+        in: query
+        description: The task definition key for tasks part of a process
+        required: false
+        schema:
+          type: string
+      - name: taskName
+        in: query
+        description: The task name of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskNameLike
+        in: query
+        description: The task name with like operator for the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskNameLikeIgnoreCase
+        in: query
+        description: The task name with like operator for the historic task instance ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: taskDescription
+        in: query
+        description: The task description of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskDescriptionLike
+        in: query
+        description: The task description with like operator for the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskCategory
+        in: query
+        description: Select tasks with the given category. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).
+        required: false
+        schema:
+          type: string
+      - name: taskCategoryIn
+        in: query
+        description: Select tasks with the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).
+        required: false
+        schema:
+          type: string
+      - name: taskCategoryNotIn
+        in: query
+        description: Select tasks not assigned to the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).
+        required: false
+        schema:
+          type: string
+      - name: taskWithoutCategory
+        in: query
+        description: Select tasks with no category assigned. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).
+        required: false
+        schema:
+          type: string
+      - name: taskDeleteReason
+        in: query
+        description: The task delete reason of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskDeleteReasonLike
+        in: query
+        description: The task delete reason with like operator for the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskAssignee
+        in: query
+        description: The assignee of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskAssigneeLike
+        in: query
+        description: The assignee with like operator for the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskOwner
+        in: query
+        description: The owner of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskOwnerLike
+        in: query
+        description: The owner with like operator for the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: taskInvolvedUser
+        in: query
+        description: An involved user of the historic task instance
+        required: false
+        schema:
+          type: string
+      - name: taskCandidateGroup
+        in: query
+        description: Only return tasks that can be claimed by a user in the given group.
+        required: false
+        schema:
+          type: string
+      - name: taskPriority
+        in: query
+        description: The priority of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: finished
+        in: query
+        description: Indication if the historic task instance is finished.
+        required: false
+        schema:
+          type: boolean
+      - name: processFinished
+        in: query
+        description: Indication if the process instance of the historic task instance is finished.
+        required: false
+        schema:
+          type: boolean
+      - name: parentTaskId
+        in: query
+        description: An optional parent task id of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: dueDate
+        in: query
+        description: Return only historic task instances that have a due date equal this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: dueDateAfter
+        in: query
+        description: Return only historic task instances that have a due date after this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: dueDateBefore
+        in: query
+        description: Return only historic task instances that have a due date before this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: withoutDueDate
+        in: query
+        description: Return only historic task instances that have no due-date. When false is provided as value, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: taskCompletedOn
+        in: query
+        description: Return only historic task instances that have been completed on this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: taskCompletedAfter
+        in: query
+        description: Return only historic task instances that have been completed after this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: taskCompletedBefore
+        in: query
+        description: Return only historic task instances that have been completed before this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: taskCreatedOn
+        in: query
+        description: Return only historic task instances that were created on this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: taskCreatedBefore
+        in: query
+        description: Return only historic task instances that were created before this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: taskCreatedAfter
+        in: query
+        description: Return only historic task instances that were created after this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: includeTaskLocalVariables
+        in: query
+        description: An indication if the historic task instance local variables should be returned as well.
+        required: false
+        schema:
+          type: boolean
+      - name: includeProcessVariables
+        in: query
+        description: Indication to include historic process variables in the result.
+        required: false
+        schema:
+          type: boolean
+      - name: tenantId
+        in: query
+        description: Only return historic task instances with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return historic task instances with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns historic task instances without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutProcessInstanceId
+        in: query
+        description: If true, only returns historic task instances without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: planItemInstanceId
+        in: query
+        description: The plan item instance instance id of the historic task instance.
+        required: false
+        schema:
+          type: string
+      - name: rootScopeId
+        in: query
+        description: Only return case instances which have the given root scope id (that can be a process or case instance ID).
+        required: false
+        schema:
+          type: string
+      - name: parentScopeId
+        in: query
+        description: Only return case instances which have the given parent scope id (that can be a process or case instance ID).
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates that historic task instances could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricTaskInstanceResponse'
+        '404':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /cmmn-history/historic-task-instances/{taskId}:
+    get:
+      tags:
+      - History Task
+      summary: Get a single historic task instance
+      description: ''
+      operationId: getTaskInstance
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates that the historic task instances could be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricTaskInstanceResponse_2'
+        '404':
+          description: Indicates that the historic task instances could not be found.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - History Task
+      summary: Delete a historic task instance
+      description: ''
+      operationId: deleteTaskInstance
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates that the historic task instance was deleted.
+        '404':
+          description: Indicates that the historic task instance could not be found.
+      security:
+      - basicAuth: []
+  /cmmn-history/historic-task-instances/{taskId}/form:
+    get:
+      tags:
+      - History Task
+      summary: Get a historic task instance form
+      description: ''
+      operationId: getTaskForm
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the task form is returned
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested task was not found.
+      security:
+      - basicAuth: []
+  /cmmn-history/historic-task-instances/{taskId}/identitylinks:
+    get:
+      tags:
+      - History Task
+      summary: List identity links of a historic task instance
+      description: ''
+      operationId: listHistoricTaskInstanceIdentityLinks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the identity links are returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoricIdentityLinkResponse_2'
+        '404':
+          description: Indicates the task instance could not be found.
+      security:
+      - basicAuth: []
+  /cmmn-query/historic-task-instances:
+    post:
+      tags:
+      - History Task
+      summary: Query for historic task instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The taskVariables and processVariables properties are JSON-arrays containing objects with the format as described here.
+      operationId: queryHistoricTaskInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricTaskInstanceQueryRequest_2'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the tasks are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricTaskInstanceResponse'
+        '404':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricTaskInstance has multiple requestBodies
+components:
+  schemas:
+    HistoricIdentityLinkResponse_2:
+      type: object
+      properties:
+        type:
+          type: string
+          example: participant
+        userId:
+          type: string
+          example: kermit
+        groupId:
+          type: string
+          example: sales
+        taskId:
+          type: string
+          example: 'null'
+        taskUrl:
+          type: string
+          example: 'null'
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
+    HistoricIdentityLinkResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: participant
+        userId:
+          type: string
+          example: kermit
+        groupId:
+          type: string
+          example: sales
+        taskId:
+          type: string
+          example: 'null'
+        taskUrl:
+          type: string
+          example: 'null'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+    HistoricTaskInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionUrl:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceUrl:
+          type: string
+        executionId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        deleteReason:
+          type: string
+        owner:
+          type: string
+        assignee:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        durationInMillis:
+          type: integer
+          format: int64
+        workTimeInMillis:
+          type: integer
+          format: int64
+        claimTime:
+          type: string
+          format: date-time
+        taskDefinitionKey:
+          type: string
+        formKey:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        dueDate:
+          type: string
+          format: date-time
+        parentTaskId:
+          type: string
+        url:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        scopeDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        subScopeId:
+          type: string
+        scopeType:
+          type: string
+        propagatedStageInstanceId:
+          type: string
+        tenantId:
+          type: string
+        category:
+          type: string
+    DataResponseHistoricTaskLogEntryResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricTaskLogEntryResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricTaskInstanceResponse_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        deleteReason:
+          type: string
+        owner:
+          type: string
+        assignee:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        durationInMillis:
+          type: integer
+          format: int64
+        workTimeInMillis:
+          type: integer
+          format: int64
+        claimTime:
+          type: string
+          format: date-time
+        taskDefinitionKey:
+          type: string
+        formKey:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        dueDate:
+          type: string
+          format: date-time
+        parentTaskId:
+          type: string
+        url:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
+          type: string
+        category:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceUrl:
+          type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionUrl:
+          type: string
+        scopeDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        subScopeId:
+          type: string
+        scopeType:
+          type: string
+        propagatedStageInstanceId:
+          type: string
+        executionId:
+          type: string
+        processInstanceId:
+          type: string
+        processDefinitionId:
+          type: string
+    HistoricTaskInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        taskId:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIdWithChildren:
+          type: string
+        withoutProcessInstanceId:
+          type: boolean
+        processBusinessKey:
+          type: string
+        processBusinessKeyLike:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionKey:
+          type: string
+        processDefinitionKeyLike:
+          type: string
+        processDefinitionName:
+          type: string
+        processDefinitionNameLike:
+          type: string
+        executionId:
+          type: string
+        taskName:
+          type: string
+        taskNameLike:
+          type: string
+        taskNameLikeIgnoreCase:
+          type: string
+        taskDescription:
+          type: string
+        taskDescriptionLike:
+          type: string
+        taskDefinitionKey:
+          type: string
+        taskDefinitionKeyLike:
+          type: string
+        taskDefinitionKeys:
+          type: array
+          items:
+            type: string
+        taskCategory:
+          type: string
+        taskCategoryIn:
+          type: array
+          items:
+            type: string
+        taskCategoryNotIn:
+          type: array
+          items:
+            type: string
+        taskWithoutCategory:
+          type: boolean
+        taskDeleteReason:
+          type: string
+        taskDeleteReasonLike:
+          type: string
+        taskAssignee:
+          type: string
+        taskAssigneeLike:
+          type: string
+        taskOwner:
+          type: string
+        taskOwnerLike:
+          type: string
+        taskInvolvedUser:
+          type: string
+        taskPriority:
+          type: integer
+          format: int32
+        taskMinPriority:
+          type: integer
+          format: int32
+        taskMaxPriority:
+          type: integer
+          format: int32
+        finished:
+          type: boolean
+        processFinished:
+          type: boolean
+        parentTaskId:
+          type: string
+        dueDate:
+          type: string
+          format: date-time
+        dueDateAfter:
+          type: string
+          format: date-time
+        dueDateBefore:
+          type: string
+          format: date-time
+        withoutDueDate:
+          type: boolean
+        taskCreatedOn:
+          type: string
+          format: date-time
+        taskCreatedBefore:
+          type: string
+          format: date-time
+        taskCreatedAfter:
+          type: string
+          format: date-time
+        taskCompletedOn:
+          type: string
+          format: date-time
+        taskCompletedBefore:
+          type: string
+          format: date-time
+        taskCompletedAfter:
+          type: string
+          format: date-time
+        includeTaskLocalVariables:
+          type: boolean
+        includeProcessVariables:
+          type: boolean
+        taskVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        processVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        scopeDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        scopeIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        withoutScopeId:
+          type: boolean
+        scopeType:
+          type: string
+        propagatedStageInstanceId:
+          type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+        withoutDeleteReason:
+          type: boolean
+        taskCandidateGroup:
+          type: string
+        ignoreTaskAssignee:
+          type: boolean
+        rootScopeId:
+          type: string
+        parentScopeId:
+          type: string
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    HistoricTaskInstanceQueryRequest_2:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        taskId:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceIdWithChildren:
+          type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionKey:
+          type: string
+        caseDefinitionKeyLike:
+          type: string
+        caseDefinitionKeyLikeIgnoreCase:
+          type: string
+        caseDefinitionKeys:
+          type: array
+          items:
+            type: string
+        planItemInstanceId:
+          type: string
+        propagatedStageInstanceId:
+          type: string
+        scopeId:
+          type: string
+        scopeIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        withoutScopeId:
+          type: boolean
+        taskName:
+          type: string
+        taskNameLike:
+          type: string
+        taskNameLikeIgnoreCase:
+          type: string
+        taskDescription:
+          type: string
+        taskDescriptionLike:
+          type: string
+        taskDefinitionKey:
+          type: string
+        taskDefinitionKeyLike:
+          type: string
+        taskCategory:
+          type: string
+        taskCategoryIn:
+          type: array
+          items:
+            type: string
+        taskCategoryNotIn:
+          type: array
+          items:
+            type: string
+        taskWithoutCategory:
+          type: boolean
+        taskDeleteReason:
+          type: string
+        taskDeleteReasonLike:
+          type: string
+        taskAssignee:
+          type: string
+        taskAssigneeLike:
+          type: string
+        taskOwner:
+          type: string
+        taskOwnerLike:
+          type: string
+        taskInvolvedUser:
+          type: string
+        taskPriority:
+          type: integer
+          format: int32
+        taskMinPriority:
+          type: integer
+          format: int32
+        taskMaxPriority:
+          type: integer
+          format: int32
+        finished:
+          type: boolean
+        processFinished:
+          type: boolean
+        parentTaskId:
+          type: string
+        dueDate:
+          type: string
+          format: date-time
+        dueDateAfter:
+          type: string
+          format: date-time
+        dueDateBefore:
+          type: string
+          format: date-time
+        withoutDueDate:
+          type: boolean
+        taskCreatedOn:
+          type: string
+          format: date-time
+        taskCreatedBefore:
+          type: string
+          format: date-time
+        taskCreatedAfter:
+          type: string
+          format: date-time
+        taskCompletedOn:
+          type: string
+          format: date-time
+        taskCompletedBefore:
+          type: string
+          format: date-time
+        taskCompletedAfter:
+          type: string
+          format: date-time
+        includeTaskLocalVariables:
+          type: boolean
+        includeProcessVariables:
+          type: boolean
+        taskVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+        withoutProcessInstanceId:
+          type: boolean
+        taskCandidateGroup:
+          type: string
+        ignoreTaskAssignee:
+          type: boolean
+        rootScopeId:
+          type: string
+        parentScopeId:
+          type: string
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    HistoricTaskLogEntryResponse:
+      type: object
+      properties:
+        logNumber:
+          type: integer
+          format: int64
+        type:
+          type: string
+        taskId:
+          type: string
+        timeStamp:
+          type: string
+          format: date-time
+        userId:
+          type: string
+        data:
+          type: string
+        executionId:
+          type: string
+        processInstanceId:
+          type: string
+        processDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        scopeDefinitionId:
+          type: string
+        subScopeId:
+          type: string
+        scopeType:
+          type: string
+        tenantId:
+          type: string
+    DataResponseHistoricTaskInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricTaskInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

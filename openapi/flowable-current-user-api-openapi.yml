@@ -1,0 +1,567 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Current User API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Current User
+paths:
+  /current-user:
+    get:
+      tags:
+      - Current User
+      summary: Get current user
+      description: Get the current user information
+      operationId: getCurrentUser
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CurrentUserResponse'
+        '404':
+          description: Indicates the current user was not found.
+      security:
+      - basicAuth: []
+  /current-user/access-tokens:
+    get:
+      tags:
+      - Current User
+      summary: Query the available tokens for the current user
+      description: ''
+      operationId: queryAccessTokens
+      parameters:
+      - name: createdAfter
+        in: query
+        description: Only return tokens created after the given ISO 8601 date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: createdBefore
+        in: query
+        description: Only return tokens created before the given ISO 8601 date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: expiresAfter
+        in: query
+        description: Only return tokens expiring after the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: expiresBefore
+        in: query
+        description: Only return tokens expiring before the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: name
+        in: query
+        description: Only return tokens matching the given name.
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: searchText
+        in: query
+        description: Only return tokens matching the given searching text.
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: withoutExpiration
+        in: query
+        description: Only return tokens that do not have an expiration date.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DataResponseAccessTokenResponse'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Current User
+      summary: Create an access token for the current user
+      description: ''
+      operationId: createAccessToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccessTokenRequest'
+      responses:
+        '201':
+          description: ''
+      security:
+      - basicAuth: []
+  /current-user/access-tokens/{tokenId}:
+    delete:
+      tags:
+      - Current User
+      summary: Delete the token for the current user
+      description: ''
+      operationId: deleteAccessToken
+      parameters:
+      - name: tokenId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      security:
+      - basicAuth: []
+  /current-user/presence:
+    put:
+      tags:
+      - Current User
+      summary: Update presence
+      description: Set the presence for the current user
+      operationId: updateCurrentUserPresence
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateUserPresenceRequest'
+      responses:
+        '204':
+          description: Indicates the current user presence was updated.
+        '400':
+          description: Indicates the presenceRequest body is incomplete or contains illegal values.
+      security:
+      - basicAuth: []
+  /current-user/snooze:
+    post:
+      tags:
+      - Current User
+      summary: Snooze
+      description: Snooze for the current user
+      operationId: snoozeCurrentUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SnoozeUserRequest'
+        required: true
+      responses:
+        '204':
+          description: Indicates the current user was snoozed.
+        '400':
+          description: Indicates the presenceRequest body is incomplete or contains illegal values.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    AccessTokenResponse:
+      type: object
+      required:
+      - creationTime
+      - id
+      - name
+      properties:
+        id:
+          type: string
+          description: The id of the token
+        userId:
+          type: string
+          description: The id of the user that the token belongs to
+        tenantId:
+          type: string
+          description: The id of the tenant that the token belongs to
+        name:
+          type: string
+          description: The name of the token
+        description:
+          type: string
+          description: The description of the token
+        creationTime:
+          type: string
+          description: The creation time of the token in ISO 8601 format
+        expirationTime:
+          type: string
+          description: The expiry time of the token in ISO 8601 format
+      description: Response for an access token
+    SnoozeUserRequest:
+      type: object
+      required:
+      - snoozeUntil
+      properties:
+        snoozeUntil:
+          type: string
+          description: The date until the user should be snoozed in ISO 8601 format
+      description: Request for snoozing the user
+    BasicPrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    UpdateUserPresenceRequest:
+      type: object
+      required:
+      - presence
+      properties:
+        presence:
+          type: string
+          description: The presence that should be set on the user
+          enum:
+          - available
+          - away
+          - offline
+          - out-of-office
+          - snoozed
+        tenantId:
+          type: string
+          description: The tenant id that should be used for updating the presence. Only admin users can modify this parameter
+      description: Request for updating user presence
+    CreateAccessTokenRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The name of the token
+        description:
+          type: string
+          description: The description of the token
+        validFor:
+          type: string
+          description: A positive ISO 8601 duration for which the token should be valid for. Mutually exclusive with validFor
+        validUntil:
+          type: string
+          description: The ISO 8601 date until the token should be valid. Mutually exclusive with validFor
+      description: Request for creating an access token for a user
+    CurrentUserResponse:
+      type: object
+      required:
+      - creationTime
+      - id
+      - state
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+        avatarId:
+          type: string
+          example: CON-111-11-11
+          description: The optional avatar if of the user.
+        type:
+          type: string
+          example: default
+          description: The optional type of the user
+        subType:
+          type: string
+          description: The optional subType of the user
+        state:
+          type: string
+          example: ACTIVE
+          description: The state of the user
+        subState:
+          type: string
+          example: INITIALIZING
+          description: The optional sub state of the user
+        presence:
+          type: string
+          example: available
+          description: 'The optional presence state of the user. Known states: available, away, offline, out-of-office, snoozed'
+        language:
+          type: string
+          example: en
+          description: The optional language for the user
+        theme:
+          type: string
+          example: flowable
+          description: The optional theme for the user
+        userDefinitionId:
+          type: string
+          description: The id of the user definition linked with this user
+        userDefinitionKey:
+          type: string
+          description: The key of the user definition linked with this user
+        userDefinitionName:
+          type: string
+          description: The name of the user definition linked with this user
+        creatorId:
+          type: string
+          description: The id of the user that created this user
+        creationTime:
+          type: string
+          description: The ISO8601 creation time of this user
+        updaterId:
+          type: string
+          description: The id of the user that last updated this user
+        updateTime:
+          type: string
+          description: The ISO8601 last update time of this user
+        groups:
+          type: array
+          description: Collection of all groups the user has a membership of
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the user
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        translations:
+          type: object
+          description: Map of translations for the user info
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        allowedTabs:
+          type: array
+          description: The allowed tabs for the user
+          uniqueItems: true
+          items:
+            type: string
+        allowedFeatures:
+          type: array
+          description: The allowed features for the current user
+          uniqueItems: true
+          items:
+            type: string
+        memberGroups:
+          type: array
+          description: The member groups for the current user
+          uniqueItems: true
+          items:
+            type: string
+        adminType:
+          type: string
+          description: The type of the admin user, if this user is an admin
+          enum:
+          - superAdmin
+          - tenantAdmin
+        themeConfiguration:
+          $ref: '#/components/schemas/CurrentUserThemeConfiguration'
+        originalAuthentication:
+          $ref: '#/components/schemas/OriginalAuthentication'
+        availableApplications:
+          type: object
+          description: The available applications for the current user
+          additionalProperties:
+            $ref: '#/components/schemas/Application'
+      description: The response for a current user
+    GroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the group
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+    DataResponseAccessTokenResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessTokenResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    OriginalAuthentication:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: The id of the user doing the impersonation
+      description: The original authentication for a current user.
+    UserResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+      description: The response for the OSS User
+    Application:
+      type: object
+      required:
+      - id
+      - name
+      - type
+      properties:
+        id:
+          type: string
+          description: The id of the application
+        name:
+          type: string
+          description: The name of the application
+        type:
+          type: string
+          description: The type of the application
+        url:
+          type: string
+          description: The public URL of the application
+      description: The applications that the user has access to
+    CurrentUserThemeConfiguration:
+      type: object
+      required:
+      - name
+      - options
+      properties:
+        name:
+          type: string
+          description: The name of the theme
+        options:
+          type: object
+          description: The options of the theme
+          additionalProperties:
+            type: string
+      description: The response for the current user theme configuration
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+  requestBodies:
+    UpdateUserPresenceRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateUserPresenceRequest'
+      required: true
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

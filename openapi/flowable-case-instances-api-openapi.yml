@@ -1,0 +1,978 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Case Instances API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Case Instances
+paths:
+  /cmmn-query/case-instances:
+    post:
+      tags:
+      - Case Instances
+      summary: Query case instances
+      description: 'The request body can contain all possible filters that can be used in the List case instances URL query. On top of these, it’s possible to provide an array of variables to include in the query, with their format described here.
+
+
+        The general paging and sorting query-parameters can be used for this URL.'
+      operationId: queryCaseInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaseInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the case instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseCaseInstanceResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryCaseInstances has multiple requestBodies
+  /cmmn-runtime/case-instances:
+    get:
+      tags:
+      - Case Instances
+      summary: List case instances
+      description: ''
+      operationId: listCaseInstances
+      parameters:
+      - name: id
+        in: query
+        description: Only return case instances with the given id.
+        required: false
+        schema:
+          type: string
+      - name: ids
+        in: query
+        description: Only return case instances with the given comma-separated ids.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionKey
+        in: query
+        description: Only return case instances with the given case definition key.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionKeyLike
+        in: query
+        description: Only return case instances like given case definition key.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionKeyLikeIgnoreCase
+        in: query
+        description: Only return case instances like given case definition key, ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionId
+        in: query
+        description: Only return case instances with the given case definition id.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionCategory
+        in: query
+        description: Only return case instances with the given case definition category.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionCategoryLike
+        in: query
+        description: Only return case instances like the given case definition category.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionCategoryLikeIgnoreCase
+        in: query
+        description: Only return case instances like the given case definition category, ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionName
+        in: query
+        description: Only return case instances with the given case definition name.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionNameLike
+        in: query
+        description: Only return case instances like the given case definition name.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionNameLikeIgnoreCase
+        in: query
+        description: Only return case instances like the given case definition name, ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return case instances with the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return case instances like the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLikeIgnoreCase
+        in: query
+        description: Only return case instances like the given name ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: rootScopeId
+        in: query
+        description: Only return case instances which have the given root scope id (that can be a process or case instance ID).
+        required: false
+        schema:
+          type: string
+      - name: parentScopeId
+        in: query
+        description: Only return case instances which have the given parent scope id (that can be a process or case instance ID).
+        required: false
+        schema:
+          type: string
+      - name: businessKey
+        in: query
+        description: Only return case instances with the given business key.
+        required: false
+        schema:
+          type: string
+      - name: businessKeyLike
+        in: query
+        description: Only return case instances like the given business key.
+        required: false
+        schema:
+          type: string
+      - name: businessKeyLikeIgnoreCase
+        in: query
+        description: Only return case instances like the given business key, ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: businessStatus
+        in: query
+        description: Only return case instances with the given business status.
+        required: false
+        schema:
+          type: string
+      - name: businessStatusLike
+        in: query
+        description: Only return case instances like the given business status.
+        required: false
+        schema:
+          type: string
+      - name: businessStatusLikeIgnoreCase
+        in: query
+        description: Only return case instances like the given business status, ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceParentId
+        in: query
+        description: Only return case instances with the given parent id.
+        required: false
+        schema:
+          type: string
+      - name: startedBy
+        in: query
+        description: Only return case instances started by the given user.
+        required: false
+        schema:
+          type: string
+      - name: startedBefore
+        in: query
+        description: Only return case instances started before the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: startedAfter
+        in: query
+        description: Only return case instances started after the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: state
+        in: query
+        description: Only return case instances with the given state.
+        required: false
+        schema:
+          type: string
+      - name: callbackId
+        in: query
+        description: Only return case instances which have the given callback id.
+        required: false
+        schema:
+          type: string
+      - name: callbackIds
+        in: query
+        description: Only return case instances which have the given callback ids.
+        required: false
+        schema:
+          type: string
+      - name: callbackType
+        in: query
+        description: Only return case instances which have the given callback type.
+        required: false
+        schema:
+          type: string
+      - name: parentCaseInstanceId
+        in: query
+        description: Only return case instances which have the given parent case instance id.
+        required: false
+        schema:
+          type: string
+      - name: referenceId
+        in: query
+        description: Only return case instances which have the given reference id.
+        required: false
+        schema:
+          type: string
+      - name: referenceType
+        in: query
+        description: Only return case instances which have the given reference type.
+        required: false
+        schema:
+          type: string
+      - name: lastReactivatedBy
+        in: query
+        description: Only return case instances last reactivated by the given user.
+        required: false
+        schema:
+          type: string
+      - name: lastReactivatedBefore
+        in: query
+        description: Only return case instances last reactivated before the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: lastReactivatedAfter
+        in: query
+        description: Only return case instances last reactivated after the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: includeCaseVariables
+        in: query
+        description: Indication to include case variables in the result.
+        required: false
+        schema:
+          type: boolean
+      - name: includeCaseVariablesName
+        in: query
+        description: Indication to include case variables with the given names in the result.
+        required: false
+        schema:
+          type: string
+      - name: activePlanItemDefinitionId
+        in: query
+        description: Only return case instances that have an active plan item instance with the given plan item definition id.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return case instances with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return case instances with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLikeIgnoreCase
+        in: query
+        description: Only return case instances with a tenantId like the given value, ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns case instances without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - caseDefinitionId
+          - tenantId
+          - caseDefinitionKey
+      responses:
+        '200':
+          description: Indicates request was successful and the case instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseCaseInstanceResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The status message contains additional information.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Case Instances
+      summary: Start a case instance
+      description: "Note that also a *transientVariables* property is accepted as part of this json, that follows the same structure as the *variables* property.\n\nOnly one of *caseDefinitionId* or *caseDefinitionKey* an be used in the request body.\n\nParameters *businessKey*, *variables* and *tenantId* are optional.\n\nIf tenantId is omitted, the default tenant will be used.\n\n It is possible to send variables, transientVariables and startFormVariables in one request.\n\nMore information about the variable format can be found in the REST variables section.\n\n Note that the variable-scope that is supplied is ignored, case-variables are always local.\n\n"
+      operationId: createCaseInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaseInstanceCreateRequest'
+      responses:
+        '201':
+          description: Indicates the case instance was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseInstanceResponse'
+        '400':
+          description: Indicates either the case definition was not found (based on id or key), no process is started by sending the given message or an invalid variable has been passed. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/case-instances/delete:
+    post:
+      tags:
+      - Case Instances
+      summary: Post action request to delete/terminate a bulk of case instances
+      description: ''
+      operationId: bulkDeleteCaseInstances
+      requestBody:
+        $ref: '#/components/requestBodies/BulkDeleteInstancesRestActionRequest'
+      responses:
+        '204':
+          description: Indicates the bulk of case instances was found and deleted. Response body is left empty intentionally.
+        '404':
+          description: Indicates at least one requested case instance was not found.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/case-instances/{caseInstanceId}:
+    get:
+      tags:
+      - Case Instances
+      summary: Get a case instance
+      description: ''
+      operationId: getCaseInstance
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the case instance was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseInstanceResponse'
+        '404':
+          description: Indicates the requested case instance was not found.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Case Instances
+      summary: Update case instance properties or execute an action on a case instance (body needs to contain an 'action' property for the latter).
+      description: ''
+      operationId: updateCaseInstance
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaseInstanceUpdateRequest'
+      responses:
+        '200':
+          description: Indicates the case instance was found and the action/update is performed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseInstanceResponse'
+        '204':
+          description: Indicates the case was found, the change was performed and it caused the case instance to end.
+        '400':
+          description: Indicates an illegal parameter was passed, required parameters are missing in the request body or illegal variables are passed in. Status description contains additional information about the error.
+        '404':
+          description: Indicates the case instance was not found.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Case Instances
+      summary: Terminate a case instance
+      description: ''
+      operationId: terminateCaseInstance
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the case instance was found and terminate. Response body is left empty intentionally.
+        '404':
+          description: Indicates the requested case instance was not found.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/case-instances/{caseInstanceId}/change-state:
+    post:
+      tags:
+      - Case Instances
+      summary: Change the state of a case instance
+      description: ''
+      operationId: changePlanItemState
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePlanItemStateRequest'
+      responses:
+        '200':
+          description: Indicates the case instance was found and change state activity was executed.
+        '404':
+          description: Indicates the requested case instance was not found.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/case-instances/{caseInstanceId}/delete:
+    delete:
+      tags:
+      - Case Instances
+      summary: Delete a case instance
+      description: ''
+      operationId: deleteCaseInstance
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the case instance was found and deleted. Response body is left empty intentionally.
+        '404':
+          description: Indicates the requested case instance was not found.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/case-instances/{caseInstanceId}/diagram:
+    get:
+      tags:
+      - Case Instances
+      summary: Get diagram for a case instance
+      description: ''
+      operationId: getCaseInstanceDiagram
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the case instance was found and the diagram was returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '400':
+          description: Indicates the requested case instance was not found but the process does not contain any graphical information (CMMN DI) and no diagram can be created.
+        '404':
+          description: Indicates the requested case instance was not found.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/case-instances/{caseInstanceId}/migrate:
+    post:
+      tags:
+      - Case Instances
+      summary: Migrate case instance
+      description: ''
+      operationId: migrateCaseInstance
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/migrateHistoricCaseInstanceBody'
+      responses:
+        '200':
+          description: Indicates the case instance was found and migration was executed.
+        '404':
+          description: Indicates the requested case instance was not found.
+        '409':
+          description: Indicates the requested case instance action cannot be executed since the case-instance is already activated/suspended.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/case-instances/{caseInstanceId}/stage-overview:
+    get:
+      tags:
+      - Case Instances
+      operationId: getStageOverview
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StageResponse'
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    StageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        ended:
+          type: boolean
+        endTime:
+          type: string
+          format: date-time
+        current:
+          type: boolean
+    ChangePlanItemStateRequest:
+      type: object
+      properties:
+        activatePlanItemDefinitionIds:
+          type: array
+          description: plan item definition ids to be activated
+          items:
+            type: string
+        moveToAvailablePlanItemDefinitionIds:
+          type: array
+          description: plan item definition ids to be moved to available state
+          items:
+            type: string
+        terminatePlanItemDefinitionIds:
+          type: array
+          description: plan item definition ids to be terminated
+          items:
+            type: string
+        addWaitingForRepetitionPlanItemDefinitionIds:
+          type: array
+          description: add waiting for repetition to provided plan item definition ids
+          items:
+            type: string
+        removeWaitingForRepetitionPlanItemDefinitionIds:
+          type: array
+          description: remove waiting for repetition to provided plan item definition ids
+          items:
+            type: string
+        changePlanItemIds:
+          type: object
+          description: map an existing plan item id to new plan item id, this should not be necessary in general, but could be needed when plan item ids change between case definition versions.
+          additionalProperties:
+            type: string
+        changePlanItemIdsWithDefinitionId:
+          type: object
+          description: map an existing plan item id to new plan item id with the plan item definition id, this should not be necessary in general, but could be needed when plan item ids change between case definition versions.
+          additionalProperties:
+            type: string
+        changePlanItemDefinitionsWithNewTargetIds:
+          type: array
+          description: map an existing plan item id to a new plan item id and plan item definition id, this should not be necessary in general, but could be needed when plan item ids change between case definition versions.
+          items:
+            $ref: '#/components/schemas/PlanItemDefinitionWithTargetIdsRequest'
+    BulkDeleteInstancesRestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        instanceIds:
+          type: array
+          items:
+            type: string
+    CaseInstanceUpdateRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        name:
+          type: string
+        businessKey:
+          type: string
+    PlanItemDefinitionWithTargetIdsRequest:
+      type: object
+      properties:
+        existingPlanItemDefinitionId:
+          type: string
+        newPlanItemId:
+          type: string
+        newPlanItemDefinitionId:
+          type: string
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    CaseInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionKey:
+          type: string
+        caseDefinitionKeyLike:
+          type: string
+        caseDefinitionKeyLikeIgnoreCase:
+          type: string
+        caseDefinitionKeys:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        excludeCaseDefinitionKeys:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseDefinitionCategory:
+          type: string
+        caseDefinitionCategoryLike:
+          type: string
+        caseDefinitionCategoryLikeIgnoreCase:
+          type: string
+        caseDefinitionName:
+          type: string
+        caseDefinitionNameLike:
+          type: string
+        caseDefinitionNameLikeIgnoreCase:
+          type: string
+        caseBusinessKey:
+          type: string
+        caseInstanceName:
+          type: string
+        caseInstanceNameLike:
+          type: string
+        caseInstanceNameLikeIgnoreCase:
+          type: string
+        caseInstanceRootScopeId:
+          type: string
+        caseInstanceParentScopeId:
+          type: string
+        caseInstanceBusinessKey:
+          type: string
+        caseInstanceBusinessKeyLike:
+          type: string
+        caseInstanceBusinessKeyLikeIgnoreCase:
+          type: string
+        caseInstanceBusinessStatus:
+          type: string
+        caseInstanceBusinessStatusLike:
+          type: string
+        caseInstanceBusinessStatusLikeIgnoreCase:
+          type: string
+        caseInstanceParentId:
+          type: string
+        caseInstanceStartedBy:
+          type: string
+        caseInstanceStartedBefore:
+          type: string
+          format: date-time
+        caseInstanceStartedAfter:
+          type: string
+          format: date-time
+        caseInstanceState:
+          type: string
+        involvedUser:
+          type: string
+        caseInstanceCallbackId:
+          type: string
+        caseInstanceCallbackIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseInstanceCallbackType:
+          type: string
+        parentCaseInstanceId:
+          type: string
+        caseInstanceReferenceId:
+          type: string
+        caseInstanceReferenceType:
+          type: string
+        caseInstanceLastReactivatedBy:
+          type: string
+        caseInstanceLastReactivatedBefore:
+          type: string
+          format: date-time
+        caseInstanceLastReactivatedAfter:
+          type: string
+          format: date-time
+        includeCaseVariables:
+          type: boolean
+        includeCaseVariablesNames:
+          type: array
+          items:
+            type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        activePlanItemDefinitionId:
+          type: string
+        activePlanItemDefinitionIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        tenantIdLikeIgnoreCase:
+          type: string
+        withoutTenantId:
+          type: boolean
+    DataResponseCaseInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CaseInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    CaseInstanceCreateRequest:
+      type: object
+      properties:
+        caseDefinitionId:
+          type: string
+          example: oneTaskCase:1:158
+        caseDefinitionKey:
+          type: string
+          example: oneTaskCase
+        name:
+          type: string
+          example: My case name
+        businessKey:
+          type: string
+          example: myBusinessKey
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        transientVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        startFormVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        outcome:
+          type: string
+        tenantId:
+          type: string
+          example: tenant1
+        overrideDefinitionTenantId:
+          type: string
+          example: overrideTenant1
+        returnVariables:
+          type: boolean
+      description: Only one of caseDefinitionId or caseDefinitionKey can be used in the request body
+    CaseInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '187'
+        name:
+          type: string
+          example: processName
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4
+        businessKey:
+          type: string
+          example: myBusinessKey
+        businessStatus:
+          type: string
+          example: myBusinessStatus
+        startTime:
+          type: string
+          format: date-time
+          example: 2019-04-17T10:17:43.902+0000
+        startUserId:
+          type: string
+          example: aUserId
+        state:
+          type: string
+          example: active
+        ended:
+          type: boolean
+        caseDefinitionId:
+          type: string
+          example: oneTaskCase:1:158
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4
+        caseDefinitionName:
+          type: string
+          example: aCaseDefinitionName
+        caseDefinitionDescription:
+          type: string
+          example: A case definition description
+        parentId:
+          type: string
+          example: '123'
+        callbackId:
+          type: string
+          example: '123'
+        callbackType:
+          type: string
+          example: cmmn-1.1-to-cmmn-1.1-child-case
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-cmmn-1.1-case
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
+          type: string
+          example: 'null'
+        completed:
+          type: boolean
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+  requestBodies:
+    migrateHistoricCaseInstanceBody:
+      content:
+        application/json:
+          schema:
+            type: string
+    BulkDeleteInstancesRestActionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BulkDeleteInstancesRestActionRequest'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

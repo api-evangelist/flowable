@@ -1,0 +1,681 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Plan Item Instances API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Plan Item Instances
+paths:
+  /cmmn-query/plan-item-instances:
+    post:
+      tags:
+      - Plan Item Instances
+      summary: Query plan item instances
+      description: 'The request body can contain all possible filters that can be used in the List plan item instances URL query. On top of these, it’s possible to provide an array of variables and caseInstanceVariables to include in the query, with their format described here.
+
+
+        The general paging and sorting query-parameters can be used for this URL.'
+      operationId: queryPlanItemInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanItemInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the plan item instances are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponsePlanItemInstanceResponse'
+        '404':
+          description: Indicates a parameter was passed in the wrong format. The status message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryPlanItemInstances has multiple requestBodies
+  /cmmn-runtime/plan-item-instances:
+    get:
+      tags:
+      - Plan Item Instances
+      summary: List of plan item instances
+      description: ''
+      operationId: listPlanItemInstances
+      parameters:
+      - name: id
+        in: query
+        description: Only return models with the given version.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionId
+        in: query
+        description: Only return plan item instances with the given case definition id.
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceId
+        in: query
+        description: Only return plan item instances which are part of the case instance with the given id.
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceIds
+        in: query
+        description: Only return plan item instances which are part of the case instance with the given ids.
+        required: false
+        schema:
+          type: string
+      - name: stageInstanceId
+        in: query
+        description: Only return plan item instances which are part of the given stage instance.
+        required: false
+        schema:
+          type: string
+      - name: planItemDefinitionId
+        in: query
+        description: Only return plan item instances which have the given plan item definition id.
+        required: false
+        schema:
+          type: string
+      - name: planItemDefinitionType
+        in: query
+        description: Only return plan item instances which have the given plan item definition type.
+        required: false
+        schema:
+          type: string
+      - name: planItemDefinitionTypes
+        in: query
+        description: Only return plan item instances which have any of the given plan item definition types. Comma-separated string e.g. humantask, stage
+        required: false
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Only return plan item instances which have the given state.
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return plan item instances which have the given name.
+        required: false
+        schema:
+          type: string
+      - name: elementId
+        in: query
+        description: Only return plan item instances which have the given element id.
+        required: false
+        schema:
+          type: string
+      - name: referenceId
+        in: query
+        description: Only return plan item instances which have the given reference id.
+        required: false
+        schema:
+          type: string
+      - name: referenceType
+        in: query
+        description: Only return plan item instances which have the given reference type.
+        required: false
+        schema:
+          type: string
+      - name: createdBefore
+        in: query
+        description: Only return plan item instances which are created before the given date.
+        required: false
+        schema:
+          type: date
+      - name: createdAfter
+        in: query
+        description: Only return plan item instances which are created after the given date.
+        required: false
+        schema:
+          type: date
+      - name: startUserId
+        in: query
+        description: Only return plan item instances which are started by the given user id.
+        required: false
+        schema:
+          type: string
+      - name: includeEnded
+        in: query
+        description: Define if ended plan item instances should be included.
+        required: false
+        schema:
+          type: boolean
+      - name: includeLocalVariables
+        in: query
+        description: Indication to include local variables in the result.
+        required: false
+        schema:
+          type: boolean
+      - name: tenantId
+        in: query
+        description: Only return plan item instances with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns plan item instances without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - name
+          - createTime
+          - startTime
+      responses:
+        '200':
+          description: Indicates request was successful and the executions are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponsePlanItemInstanceResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/plan-item-instances/{planItemInstanceId}:
+    get:
+      tags:
+      - Plan Item Instances
+      summary: Get an plan item instance
+      description: ''
+      operationId: getPlanItemInstance
+      parameters:
+      - name: planItemInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the plan item instance was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanItemInstanceResponse'
+        '404':
+          description: Indicates the plan item instance was not found.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Plan Item Instances
+      summary: Execute an action on a plan item instance
+      description: ''
+      operationId: performPlanItemInstanceAction
+      parameters:
+      - name: planItemInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/RestActionRequest'
+      responses:
+        '200':
+          description: Indicates the plan item instance was found and the action is performed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanItemInstanceResponse'
+        '204':
+          description: Indicates the plan item instance was found, the action was performed and the action caused the plan item instance to end.
+        '400':
+          description: Indicates an illegal action was requested, required parameters are missing in the request body or illegal variables are passed in. Status description contains additional information about the error.
+        '404':
+          description: Indicates the plan item instance was not found.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/plan-item-instances/{planItemInstanceId}/variables:
+    post:
+      tags:
+      - Plan Item Instances
+      summary: Create a variable on a plan item
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.
+
+        NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createPlanItemInstanceVariable
+      parameters:
+      - name: planItemInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/PlanItemInstanceVariableCollectionResource'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        '201':
+          description: Indicates both the plan item instance and variable were found and variable is created.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+        '404':
+          description: Indicates the requested plan item instance was not found or the plan item instance does not have a variable with the given name. Status description contains additional information about the error.
+        '409':
+          description: Indicates the plan item instance was found but already contains a variable with the given name. Use the update-method instead.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/plan-item-instances/{planItemInstanceId}/variables-async:
+    post:
+      tags:
+      - Plan Item Instances
+      summary: Create a variable on a plan item asynchronously
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.
+
+        NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createPlanItemInstanceVariableAsync
+      parameters:
+      - name: planItemInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/PlanItemInstanceVariableCollectionResource'
+      responses:
+        '201':
+          description: Indicates the job to create a variable is created.
+        '400':
+          description: Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.
+        '404':
+          description: Indicates the plan item instance does not have a variable with the given name. Status description contains additional information about the error.
+        '409':
+          description: Indicates the plan item instance already contains a variable with the given name. Use the update-method instead.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/plan-item-instances/{planItemInstanceId}/variables-async/{variableName}:
+    put:
+      tags:
+      - Plan Item Instances
+      summary: Update a variable on a plan item asynchronously
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.
+
+        NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: updatePlanItemVariableAsync
+      parameters:
+      - name: planItemInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/PlanItemInstanceVariableResource'
+      responses:
+        '200':
+          description: Indicates the job to update a variable is created.
+        '404':
+          description: Indicates the plan item instance does not have a variable with the given name. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/plan-item-instances/{planItemInstanceId}/variables/{variableName}:
+    put:
+      tags:
+      - Plan Item Instances
+      summary: Update a variable on a plan item
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.
+
+        NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: updatePlanItemVariable
+      parameters:
+      - name: planItemInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/PlanItemInstanceVariableResource'
+      responses:
+        '200':
+          description: Indicates both the plan item instance and variable were found and variable is updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestVariable'
+        '404':
+          description: Indicates the requested plan item instance was not found or the plan item instance does not have a variable with the given name. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Plan Item Instances
+      summary: Delete a variable for a plan item instance
+      description: ''
+      operationId: deletePlanItemVariable
+      parameters:
+      - name: planItemInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates both the plan item and variable were found and variable has been deleted.
+        '404':
+          description: Indicates the requested plan item was not found or the plan item does not have a variable with the given name in the requested scope. Status description contains additional information about the error.
+      security:
+      - basicAuth: []
+components:
+  requestBodies:
+    PlanItemInstanceVariableResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: intProcVar
+                type: string
+              type:
+                example: integer
+                type: string
+              scope:
+                example: global
+                type: string
+      description: Update a variable on a plan item instance
+    RestActionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestActionRequest'
+    PlanItemInstanceVariableCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: intProcVar
+                type: string
+              type:
+                example: integer
+                type: string
+              scope:
+                example: global
+                type: string
+      description: Create a variable on a plan item instance
+  schemas:
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    RestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    DataResponsePlanItemInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItemInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    PlanItemInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        elementId:
+          type: string
+        name:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseDefinitionId:
+          type: string
+        stageInstanceId:
+          type: string
+        planItemDefinitionId:
+          type: string
+        planItemDefinitionType:
+          type: string
+        planItemDefinitionTypes:
+          type: array
+          items:
+            type: string
+        state:
+          type: string
+        createdBefore:
+          type: string
+          format: date-time
+        createdAfter:
+          type: string
+          format: date-time
+        startUserId:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        includeEnded:
+          type: boolean
+        includeLocalVariables:
+          type: boolean
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        caseInstanceVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        tenantId:
+          type: string
+        withoutTenantId:
+          type: boolean
+    PlanItemInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-runtime/plan-item-instances/5
+        name:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceUrl:
+          type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionUrl:
+          type: string
+        derivedCaseDefinitionId:
+          type: string
+        derivedCaseDefinitionUrl:
+          type: string
+        stageInstanceId:
+          type: string
+        stageInstanceUrl:
+          type: string
+        planItemDefinitionId:
+          type: string
+        planItemDefinitionType:
+          type: string
+        state:
+          type: string
+        stage:
+          type: boolean
+        elementId:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        lastAvailableTime:
+          type: string
+          format: date-time
+        lastEnabledTime:
+          type: string
+          format: date-time
+        lastDisabledTime:
+          type: string
+          format: date-time
+        lastStartedTime:
+          type: string
+          format: date-time
+        lastSuspendedTime:
+          type: string
+          format: date-time
+        completedTime:
+          type: string
+          format: date-time
+        occurredTime:
+          type: string
+          format: date-time
+        terminatedTime:
+          type: string
+          format: date-time
+        exitTime:
+          type: string
+          format: date-time
+        endedTime:
+          type: string
+          format: date-time
+        startUserId:
+          type: string
+        assignee:
+          type: string
+        completedBy:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        completable:
+          type: boolean
+        entryCriterionId:
+          type: string
+        exitCriterionId:
+          type: string
+        formKey:
+          type: string
+        extraValue:
+          type: string
+        tenantId:
+          type: string
+          example: 'null'
+        localVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Unacquire API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Unacquire
+paths:
+  /unacquire/jobs:
+    post:
+      tags:
+      - Unacquire
+      summary: Unacquire External Worker Jobs
+      description: ''
+      operationId: unacquireJobs
+      requestBody:
+        $ref: '#/components/requestBodies/UnacquireExternalWorkerJobsRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        '204':
+          description: Indicates the jobs were unacquired.
+        '400':
+          description: Indicates the request was invalid.
+        '403':
+          description: Indicates the user does not have the rights to unacquire the jobs.
+  /unacquire/jobs/{jobId}:
+    post:
+      tags:
+      - Unacquire
+      summary: Unaquire an External Worker Job
+      description: ''
+      operationId: unaquireJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/UnacquireExternalWorkerJobsRequest'
+      responses:
+        '204':
+          description: Indicates the job was successfully unaquired.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Indicates the request was invalid.
+        '403':
+          description: Indicates the user does not have the rights to unacquire the job.
+        '404':
+          description: Indicates the job does not exist.
+components:
+  requestBodies:
+    UnacquireExternalWorkerJobsRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnacquireExternalWorkerJobsRequest'
+  schemas:
+    UnacquireExternalWorkerJobsRequest:
+      type: object
+      required:
+      - workerId
+      properties:
+        workerId:
+          type: string
+          example: orderWorker1
+          description: The worker id for the external worker jobs to unaquire
+        tenantId:
+          type: string
+          example: tenant1
+          description: The tenant id for the external worker jobs to unaquire
+      description: Request that is used for unacquiring external worker jobs
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

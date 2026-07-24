@@ -1,0 +1,331 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens User Definitions API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: User Definitions
+paths:
+  /user-definitions:
+    get:
+      tags:
+      - User Definitions
+      summary: List user definitions
+      description: ''
+      operationId: listUserDefinitions
+      parameters:
+      - name: id
+        in: query
+        description: Only return user definitions with the given id.
+        required: false
+        schema:
+          type: string
+      - name: key
+        in: query
+        description: Only return user definitions with the given key.
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return user definitions with the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return user definitions with a name like the given value.
+        required: false
+        schema:
+          type: string
+      - name: nameLikeIgnoreCase
+        in: query
+        description: Only return user definitions with a name like the given value (ignoring case).
+        required: false
+        schema:
+          type: string
+      - name: accessibleByUser
+        in: query
+        description: Only return user definitions accessible by user with the given name.
+        required: false
+        schema:
+          type: string
+      - name: accessibleByGroup
+        in: query
+        description: Only return user definitions accessible by group with the given name.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return user definitions with the given tenant id.
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: The order of results. Default is asc
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - key
+          - id
+          - name
+      responses:
+        '200':
+          description: Indicates request was successful and the user definitions are returned
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DataResponseUserDefinitionResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - User Definitions
+      summary: Upload a user definition model
+      description: ''
+      operationId: registerUserDefinition
+      parameters:
+      - name: tenantId
+        in: query
+        description: The tenant id for the definition. Only allowed for super admin users
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the user definitions are returned
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDefinitionResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /user-definitions/key/{userDefinitionKey}:
+    get:
+      tags:
+      - User Definitions
+      summary: Get user by definition key
+      description: ''
+      operationId: getUserDefinitionByKey
+      parameters:
+      - name: userDefinitionKey
+        in: path
+        description: Key  of a user definition
+        required: true
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: The tenant id for the definition. Only allowed for super admin users
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDefinitionResponse'
+      security:
+      - basicAuth: []
+  /user-definitions/{userDefinitionId}:
+    get:
+      tags:
+      - User Definitions
+      summary: Get user definition
+      description: ''
+      operationId: getUserDefinition
+      parameters:
+      - name: userDefinitionId
+        in: path
+        description: Unique identifier of a user definition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDefinitionResponse'
+      security:
+      - basicAuth: []
+  /user-definitions/{userDefinitionId}/model:
+    get:
+      tags:
+      - User Definitions
+      summary: Get user definition model
+      description: ''
+      operationId: getUserDefinitionModel
+      parameters:
+      - name: userDefinitionId
+        in: path
+        description: Unique identifier of a user definition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDefinitionModelResponse'
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    UserDefinitionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        key:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
+        initFormKey:
+          type: string
+        viewFormKey:
+          type: string
+        editFormKey:
+          type: string
+        allowedFeatures:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        translations:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        tenantId:
+          type: string
+    UserDefinitionModelResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        key:
+          type: string
+        initialState:
+          type: string
+        initialSubState:
+          type: string
+        initialUserType:
+          type: string
+        initialUserSubType:
+          type: string
+        icon:
+          type: string
+        forms:
+          type: object
+          additionalProperties:
+            type: string
+        memberGroups:
+          type: array
+          items:
+            type: string
+        lookupGroups:
+          type: array
+          items:
+            type: string
+        dynamicLookupVariable:
+          type: string
+        allowedFeatures:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        actionPermissions:
+          type: object
+          additionalProperties:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+        actionHandlers:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: object
+        initialVariables:
+          type: object
+          additionalProperties:
+            type: object
+        restVariables:
+          type: object
+          additionalProperties:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+        conversationFilters:
+          type: array
+          items:
+            type: string
+        contactFilters:
+          type: array
+          items:
+            type: string
+    DataResponseUserDefinitionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinitionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

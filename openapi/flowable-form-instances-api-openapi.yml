@@ -1,0 +1,388 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Form Instances API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Form Instances
+paths:
+  /form/form-instance/{formInstanceId}:
+    get:
+      tags:
+      - Form Instances
+      summary: Get a form instance
+      description: ''
+      operationId: getFormInstance
+      parameters:
+      - name: formInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the form instance was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormInstanceResponse'
+        '404':
+          description: Indicates the requested form instance was not found.
+      security:
+      - basicAuth: []
+  /form/form-instance/{formInstanceId}/values:
+    get:
+      tags:
+      - Form Instances
+      summary: Get form instance values
+      description: ''
+      operationId: getFormInstance
+      parameters:
+      - name: formInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the form instance was found and the values returned.
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested form instance was not found.
+      security:
+      - basicAuth: []
+  /form/form-instances:
+    get:
+      tags:
+      - Form Instances
+      summary: List of form instances
+      description: ''
+      operationId: listFormInstances
+      parameters:
+      - name: id
+        in: query
+        description: Only return form instances with the given id.
+        required: false
+        schema:
+          type: string
+      - name: formDefinitionId
+        in: query
+        description: Only return form instances with the given form definition id.
+        required: false
+        schema:
+          type: string
+      - name: formDefinitionIdLike
+        in: query
+        description: Only return form instances with a form definition id like the given value.
+        required: false
+        schema:
+          type: string
+      - name: taskId
+        in: query
+        description: Only return form instances with the given task id.
+        required: false
+        schema:
+          type: string
+      - name: taskIdLike
+        in: query
+        description: Only return form instances with a task id like the given value.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: Only return form instances with the given process instance id.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceIdLike
+        in: query
+        description: Only return form instances with a process instance id like the given value.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: Only return form instances with the given process definition id.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionIdLike
+        in: query
+        description: Only return form instances with a process definition id like the given value.
+        required: false
+        schema:
+          type: string
+      - name: scopeId
+        in: query
+        description: Only return form instances with the given scope id.
+        required: false
+        schema:
+          type: string
+      - name: scopeType
+        in: query
+        description: Only return form instances with a scope type like the given value.
+        required: false
+        schema:
+          type: string
+      - name: scopeDefinitionId
+        in: query
+        description: Only return form instances with the given scope definition id.
+        required: false
+        schema:
+          type: string
+      - name: submittedBy
+        in: query
+        description: Only return form instances submitted by the given value.
+        required: false
+        schema:
+          type: string
+      - name: submittedByLike
+        in: query
+        description: Only return form instances submitted by like the given value.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return form instances with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return form instances with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns form instances without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - submittedDate
+          - tenantId
+      responses:
+        '200':
+          description: Indicates request was successful and the form instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseFormInstanceResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Form Instances
+      summary: Store a form instance
+      description: Provide either a FormDefinitionKey or a FormDefinitionId together with the other properties.
+      operationId: storeFormInstance
+      requestBody:
+        $ref: '#/components/requestBodies/FormRequest'
+      responses:
+        '201':
+          description: Indicates the form instance was stored.
+        '404':
+          description: Indicates the related form model was not found.
+      security:
+      - basicAuth: []
+  /query/form-instances:
+    post:
+      tags:
+      - Form Instances
+      summary: Query form instances
+      description: 'The request body can contain all possible filters that can be used in the List form instances URL query. On top of these, it’s possible to provide an array of variables to include in the query, with their format described here.
+
+
+        The general paging and sorting query-parameters can be used for this URL.'
+      operationId: queryFormInstances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormInstanceQueryRequest'
+      responses:
+        '200':
+          description: Indicates request was successful and the form instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseFormInstanceResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format . The status-message contains additional information.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    FormInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        formDefinitionId:
+          type: string
+        formDefinitionIdLike:
+          type: string
+        taskId:
+          type: string
+        taskIdLike:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIdLike:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionIdLike:
+          type: string
+        scopeId:
+          type: string
+        scopeType:
+          type: string
+        scopeDefinitionId:
+          type: string
+        submittedBy:
+          type: string
+        submittedByLike:
+          type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+    FormRequest:
+      type: object
+      properties:
+        formInstanceId:
+          type: string
+        formDefinitionId:
+          type: string
+        formDefinitionKey:
+          type: string
+        taskId:
+          type: string
+        processInstanceId:
+          type: string
+        processDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        scopeType:
+          type: string
+        scopeDefinitionId:
+          type: string
+        outcome:
+          type: string
+        tenantId:
+          type: string
+        parentDeploymentId:
+          type: string
+        variables:
+          type: object
+          additionalProperties:
+            type: object
+    FormInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 48b9ac82-f1d3-11e6-8549-acde48001122
+        formDefinitionId:
+          type: string
+          example: 818e4703-f1d2-11e6-8549-acde48001122
+        taskId:
+          type: string
+          example: '88'
+        processInstanceId:
+          type: string
+          example: '66'
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess:1:158
+        submittedDate:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        submittedBy:
+          type: string
+          example: testUser
+        formValuesId:
+          type: string
+          example: 818e4703-f1d2-11e6-8549-acde48001110
+        tenantId:
+          type: string
+          example: 'null'
+        url:
+          type: string
+          example: http://localhost:8182/form/form-instances/48b9ac82-f1d3-11e6-8549-acde48001122
+        scopeId:
+          type: string
+          example: '66'
+        scopeType:
+          type: string
+          example: CAS-d6d53baa-2618-11e9-895e-aee50c200f02
+        scopeDefinitionId:
+          type: string
+          example: CAS-d6d53baa-2618-11e9-895e-aee50c200f02
+    DataResponseFormInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+  requestBodies:
+    FormRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FormRequest'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

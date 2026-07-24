@@ -1,0 +1,352 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Task Identity Links API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Task Identity Links
+paths:
+  /runtime/tasks/{taskId}/identitylinks:
+    get:
+      tags:
+      - Task Identity Links
+      summary: List identity links for a task
+      description: ''
+      operationId: listTasksInstanceIdentityLinks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task was found and the requested identity links are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested task was not found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Task Identity Links
+      summary: Create an identity link on a task
+      description: It is possible to add either a user or a group.
+      operationId: createTaskInstanceIdentityLinks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/RestIdentityLink'
+      responses:
+        '201':
+          description: Indicates the task was found and the identity link was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested task was not found or the task does not have the requested identityLink. The status contains additional information about this error.
+      security:
+      - basicAuth: []
+  /runtime/tasks/{taskId}/identitylinks/{family}:
+    get:
+      tags:
+      - Task Identity Links
+      summary: List identity links for a task for either groups or users
+      description: Returns only identity links targeting either users or groups. Response body and status-codes are exactly the same as when getting the full list of identity links for a task.
+      operationId: listIdentityLinksForFamily
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: family
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task was found and the requested identity links are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested task was not found.
+      security:
+      - basicAuth: []
+  /runtime/tasks/{taskId}/identitylinks/{family}/{identityId}/{type}:
+    get:
+      tags:
+      - Task Identity Links
+      summary: Get a single identity link on a task
+      description: ''
+      operationId: getTaskInstanceIdentityLinks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: family
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identityId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task and identity link was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested task was not found or the task does not have the requested identityLink. The status contains additional information about this error.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Task Identity Links
+      summary: Delete an identity link on a task
+      description: ''
+      operationId: deleteTaskInstanceIdentityLinks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: family
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identityId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the task and identity link were found and the link has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested task was not found or the task does not have the requested identityLink. The status contains additional information about this error.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/tasks/{taskId}/identitylinks:
+    get:
+      tags:
+      - Task Identity Links
+      summary: List identity links for a task
+      description: ''
+      operationId: listTasksInstanceIdentityLinks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task was found and the requested identity links are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested task was not found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Task Identity Links
+      summary: Create an identity link on a task
+      description: It is possible to add either a user or a group.
+      operationId: createTaskInstanceIdentityLinks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/RestIdentityLink'
+      responses:
+        '201':
+          description: Indicates the task was found and the identity link was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested task was not found or the task does not have the requested identityLink. The status contains additional information about this error.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/tasks/{taskId}/identitylinks/{family}:
+    get:
+      tags:
+      - Task Identity Links
+      summary: List identity links for a task for either groups or users
+      description: Returns only identity links targeting either users or groups. Response body and status-codes are exactly the same as when getting the full list of identity links for a task.
+      operationId: listIdentityLinksForFamily
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: family
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task was found and the requested identity links are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested task was not found.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/tasks/{taskId}/identitylinks/{family}/{identityId}/{type}:
+    get:
+      tags:
+      - Task Identity Links
+      summary: Get a single identity link on a task
+      description: ''
+      operationId: getTaskInstanceIdentityLinks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: family
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identityId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task and identity link was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested task was not found or the task does not have the requested identityLink. The status contains additional information about this error.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Task Identity Links
+      summary: Delete an identity link on a task
+      description: ''
+      operationId: deleteTaskInstanceIdentityLinks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: family
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identityId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the task and identity link were found and the link has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested task was not found or the task does not have the requested identityLink. The status contains additional information about this error.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    RestIdentityLink:
+      type: object
+      properties:
+        url:
+          type: string
+        user:
+          type: string
+          example: kermit
+        group:
+          type: string
+          example: sales
+        type:
+          type: string
+          example: candidate
+  requestBodies:
+    RestIdentityLink:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestIdentityLink'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

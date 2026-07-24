@@ -1,0 +1,492 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Document Definitions API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Document Definitions
+paths:
+  /document-repository/document-definitions:
+    get:
+      tags:
+      - Document Definitions
+      summary: List of document definitions
+      description: ''
+      operationId: listDocumentDefinitions
+      parameters:
+      - name: accessibleByUser
+        in: query
+        description: Only return document definitions accessible by the given user.
+        required: false
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: Only return document definitions with the given category
+        required: false
+        schema:
+          type: string
+      - name: categoryLike
+        in: query
+        description: Only return document definitions with a category like the given value
+        required: false
+        schema:
+          type: string
+      - name: deploymentId
+        in: query
+        description: Only return document definitions with the given deployment id
+        required: false
+        schema:
+          type: string
+      - name: id
+        in: query
+        description: Only return document definitions with the given id
+        required: false
+        schema:
+          type: string
+      - name: ids
+        in: query
+        description: Only return document definitions with the given ids
+        required: false
+        schema:
+          type: string
+      - name: key
+        in: query
+        description: Only return document definitions with the given key
+        required: false
+        schema:
+          type: string
+      - name: keyLike
+        in: query
+        description: Only return document definitions with a key like the given value
+        required: false
+        schema:
+          type: string
+      - name: keys
+        in: query
+        description: Only return document definitions with the given keys
+        required: false
+        schema:
+          type: string
+      - name: latest
+        in: query
+        description: Only return document definitions with the latest version
+        required: false
+        schema:
+          type: boolean
+      - name: name
+        in: query
+        description: Only return document definitions with the given name
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return document definitions with a name like the given value
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: From the paginate request.  The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: From the paginate request. Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        description: Property to sort the results on
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: From the paginate request. Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: tenantId
+        in: query
+        description: Only return document definitions within the given tenant.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return document definitions with a tenant id like the given value.
+        required: false
+        schema:
+          type: string
+      - name: version
+        in: query
+        description: Only return document definitions with the given version
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: id
+        in: query
+        description: Only return document definitions with the given id.
+        required: false
+        schema:
+          type: string
+      - name: ids
+        in: query
+        description: Only return document definitions with one of the given ids (comma separated).
+        required: false
+        schema:
+          type: string
+      - name: version
+        in: query
+        description: Only return document definitions with the given version.
+        required: false
+        schema:
+          type: integer
+      - name: name
+        in: query
+        description: Only return document definitions with the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return document definitions with a name like the given name.
+        required: false
+        schema:
+          type: string
+      - name: key
+        in: query
+        description: Only return document definitions with the given key.
+        required: false
+        schema:
+          type: string
+      - name: keyLike
+        in: query
+        description: Only return document definitions with a name like the given key.
+        required: false
+        schema:
+          type: string
+      - name: keys
+        in: query
+        description: Only return document definitions with one of the given keys (comma separated).
+        required: false
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: Only return document definitions with the given category.
+        required: false
+        schema:
+          type: string
+      - name: categoryLike
+        in: query
+        description: Only return document definitions with a name like the category key.
+        required: false
+        schema:
+          type: string
+      - name: deploymentId
+        in: query
+        description: Only return document definitions with the given deployment id.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return document definitions with the given tenant id.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return document definitions with a tenant id like the given tenant id.
+        required: false
+        schema:
+          type: string
+      - name: accessibleByUser
+        in: query
+        description: Only return document definitions which are accessible by the provided user.
+        required: false
+        schema:
+          type: string
+      - name: latest
+        in: query
+        description: Only return the latest document definition versions. Can only be used together with key and keyLike parameters, using any other parameter will result in a 400-response.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - name
+          - id
+          - key
+          - category
+          - deploymentId
+          - version
+      responses:
+        '200':
+          description: Indicates request was successful and the document definitions are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseDocumentDefinitionResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format or that latest is used with other parameters other than key and keyLike. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /document-repository/document-definitions/{documentDefinitionId}:
+    get:
+      tags:
+      - Document Definitions
+      summary: Get a document definition
+      description: ''
+      operationId: getDocumentDefinition
+      parameters:
+      - name: documentDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the document definitions are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentDefinitionResponse'
+        '404':
+          description: Indicates the requested document definition was not found.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Document Definitions
+      summary: Execute actions for a document definition
+      description: Execute actions for a document definition (Update category)
+      operationId: executeDocumentDefinitionAction
+      parameters:
+      - name: documentDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentDefinitionActionRequest'
+        required: true
+      responses:
+        '200':
+          description: Indicates action has been executed for the specified document definition. (category altered)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentDefinitionResponse'
+        '400':
+          description: Indicates no category was defined in the request body.
+        '404':
+          description: Indicates the requested document definition was not found.
+      security:
+      - basicAuth: []
+  /document-repository/document-definitions/{documentDefinitionId}/form-model:
+    get:
+      tags:
+      - Document Definitions
+      operationId: getDocumentDefinitionForm
+      parameters:
+      - name: documentDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormModel'
+      security:
+      - basicAuth: []
+  /document-repository/document-definitions/{documentDefinitionId}/model:
+    get:
+      tags:
+      - Document Definitions
+      summary: Get a document definition model
+      description: ''
+      operationId: getCmmnModelResource
+      parameters:
+      - name: documentDefinitionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the document definition was found and the model is returned. The response contains the full definition definition model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentDefinitionModel'
+        '404':
+          description: Indicates the requested process definition was not found.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    DocumentDefinitionResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: simple:1:4
+        url:
+          type: string
+          example: http://localhost:8182/document-repository/document-definitions/simple%3A1%3A4
+        key:
+          type: string
+          example: simple
+        version:
+          type: integer
+          format: int32
+          example: 1
+        name:
+          type: string
+          example: Simple document definition
+        description:
+          type: string
+          example: This is a case for testing purposes
+        tenantId:
+          type: string
+          example: 'null'
+        deploymentId:
+          type: string
+          example: '2'
+        deploymentUrl:
+          type: string
+          example: http://localhost:8081/content-repository/deployments/2
+        resource:
+          type: string
+          example: http://localhost:8182/content-repository/deployments/2/resources/simple.document
+          description: Contains the actual deployed Document JSON.
+        category:
+          type: string
+          example: Examples
+        startFormDefined:
+          type: boolean
+          example: true
+        translations:
+          type: object
+          description: The translations for the document definition. Map having locale as the key and key value pairs for each locale.
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+    DocumentDefinitionModel:
+      type: object
+      properties:
+        name:
+          type: string
+        key:
+          type: string
+        description:
+          type: string
+        versioning:
+          type: string
+        variables:
+          type: object
+          additionalProperties:
+            type: string
+        initialType:
+          type: string
+        i18n:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        forms:
+          type: object
+          additionalProperties:
+            type: string
+        actionPermissions:
+          type: object
+          additionalProperties:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+        initialState:
+          type: string
+        initialSubState:
+          type: string
+        initialSubType:
+          type: string
+        aiInstructions:
+          type: string
+        actionHandlers:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/DocumentActionHandlerModel'
+    DocumentActionHandlerModel:
+      type: object
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+        overrideDefaultLogic:
+          type: boolean
+    DocumentDefinitionActionRequest:
+      type: object
+      properties:
+        category:
+          type: string
+    FormModel:
+      type: object
+    DataResponseDocumentDefinitionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentDefinitionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

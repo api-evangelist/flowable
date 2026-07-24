@@ -1,0 +1,925 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens History Process API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: History Process
+paths:
+  /history/historic-process-instances:
+    get:
+      tags:
+      - History Process
+      summary: List of historic process instances
+      description: ''
+      operationId: listHistoricProcessInstances
+      parameters:
+      - name: processInstanceId
+        in: query
+        description: An id of the historic process instance.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceName
+        in: query
+        description: A name of the historic process instance.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceNameLike
+        in: query
+        description: A name of the historic process instance used in a like query.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceNameLikeIgnoreCase
+        in: query
+        description: A name of the historic process instance used in a like query ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionKey
+        in: query
+        description: The process definition key of the historic process instance.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionKeyLike
+        in: query
+        description: The process definition key used in a like query.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionKeyLikeIgnoreCase
+        in: query
+        description: The process definition key used in a like query ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: The process definition id of the historic process instance.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionName
+        in: query
+        description: The process definition name of the historic process instance.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionNameLike
+        in: query
+        description: The process definition name used in a like query.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionNameLikeIgnoreCase
+        in: query
+        description: The process definition name used in a like query ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionCategory
+        in: query
+        description: The process definition category of the historic process instance.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionCategoryLike
+        in: query
+        description: The process definition category used in a like query.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionCategoryLikeIgnoreCase
+        in: query
+        description: The process definition category used in a like query ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionVersion
+        in: query
+        description: The process definition version of the historic process instance.
+        required: false
+        schema:
+          type: string
+      - name: deploymentId
+        in: query
+        description: The deployment id of the historic process instance.
+        required: false
+        schema:
+          type: string
+      - name: rootScopeId
+        in: query
+        description: Only return process instances which have the given root scope id (that can be a process or case instance ID).
+        required: false
+        schema:
+          type: string
+      - name: parentScopeId
+        in: query
+        description: Only return process instances which have the given parent scope id (that can be a process or case instance ID).
+        required: false
+        schema:
+          type: string
+      - name: businessKey
+        in: query
+        description: The business key of the historic process instance.
+        required: false
+        schema:
+          type: string
+      - name: businessKeyLike
+        in: query
+        description: Only return instances with a business key like this key.
+        required: false
+        schema:
+          type: string
+      - name: businessKeyLikeIgnoreCase
+        in: query
+        description: Only return instances with a business key like this key ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: businessStatus
+        in: query
+        description: The business status of the historic process instance.
+        required: false
+        schema:
+          type: string
+      - name: businessStatusLike
+        in: query
+        description: Only return instances with a business status like this status.
+        required: false
+        schema:
+          type: string
+      - name: businessStatusLikeIgnoreCase
+        in: query
+        description: Only return instances with a business status like this status ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: activeActivityId
+        in: query
+        description: Only return instances which have an active activity instance with the provided activity id.
+        required: false
+        schema:
+          type: string
+      - name: involvedUser
+        in: query
+        description: An involved user of the historic process instance.
+        required: false
+        schema:
+          type: string
+      - name: finished
+        in: query
+        description: Indication if the historic process instance is finished.
+        required: false
+        schema:
+          type: boolean
+      - name: superProcessInstanceId
+        in: query
+        description: An optional parent process id of the historic process instance.
+        required: false
+        schema:
+          type: string
+      - name: excludeSubprocesses
+        in: query
+        description: Return only historic process instances which are not sub processes.
+        required: false
+        schema:
+          type: boolean
+      - name: finishedAfter
+        in: query
+        description: Return only historic process instances that were finished after this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: finishedBefore
+        in: query
+        description: Return only historic process instances that were finished before this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: startedAfter
+        in: query
+        description: Return only historic process instances that were started after this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: startedBefore
+        in: query
+        description: Return only historic process instances that were started before this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: startedBy
+        in: query
+        description: Return only historic process instances that were started by this user.
+        required: false
+        schema:
+          type: string
+      - name: includeProcessVariables
+        in: query
+        description: An indication if the historic process instance variables should be returned as well.
+        required: false
+        schema:
+          type: boolean
+      - name: includeProcessVariablesName
+        in: query
+        description: Indication to include process variables with the given names in the result.
+        required: false
+        schema:
+          type: string
+      - name: callbackId
+        in: query
+        description: Only return instances with the given callbackId.
+        required: false
+        schema:
+          type: string
+      - name: callbackIds
+        in: query
+        description: Only return instances with the given callbackIds.
+        required: false
+        schema:
+          type: string
+      - name: callbackType
+        in: query
+        description: Only return instances with the given callbackType.
+        required: false
+        schema:
+          type: string
+      - name: parentCaseInstanceId
+        in: query
+        description: Only return instances with the given parent case instance id.
+        required: false
+        schema:
+          type: string
+      - name: withoutCallbackId
+        in: query
+        description: Only return instances that do not have a callbackId.
+        required: false
+        schema:
+          type: boolean
+      - name: tenantId
+        in: query
+        description: Only return instances with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return instances with a tenant id like the given value.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLikeIgnoreCase
+        in: query
+        description: Only return instances with a tenant id like the given value ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: 'If true, only returns instances without a tenantId set. If false, the withoutTenantId parameter is ignored.
+
+          '
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates that historic process instances could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricProcessInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /history/historic-process-instances/{processInstanceId}:
+    get:
+      tags:
+      - History Process
+      summary: Get a historic process instance
+      description: ''
+      operationId: getHistoricProcessInstance
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates that the historic process instances could be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricProcessInstanceResponse'
+        '404':
+          description: Indicates that the historic process instances could not be found.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - History Process
+      summary: ' Delete a historic process instance'
+      description: ''
+      operationId: deleteHistoricProcessInstance
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates that the historic process instance was deleted.
+        '404':
+          description: Indicates that the historic process instance could not be found.
+      security:
+      - basicAuth: []
+  /history/historic-process-instances/{processInstanceId}/comments:
+    get:
+      tags:
+      - History Process
+      summary: List comments on a historic process instance
+      description: ''
+      operationId: listHistoricProcessInstanceComments
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the process instance was found and the comments are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommentResponse'
+        '404':
+          description: Indicates that the historic process instance could not be found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - History Process
+      summary: Create a new comment on a historic process instance
+      description: Parameter saveProcessInstanceId is optional, if true save process instance id of task with comment.
+      operationId: createComment
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentResponse'
+      responses:
+        '201':
+          description: Indicates the comment was created and the result is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+        '400':
+          description: Indicates the comment is missing from the request.
+        '404':
+          description: Indicates that the historic process instance could not be found.
+      security:
+      - basicAuth: []
+  /history/historic-process-instances/{processInstanceId}/comments/{commentId}:
+    get:
+      tags:
+      - History Process
+      summary: Get a comment on a historic process instance
+      description: ''
+      operationId: getComment
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: commentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the historic process instance and comment were found and the comment is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+        '404':
+          description: Indicates the requested historic process instance was not found or the historic process instance does not have a comment with the given ID.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - History Process
+      summary: Delete a comment on a historic process instance
+      description: ''
+      operationId: deleteComment
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: commentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the historic process instance and comment were found and the comment is deleted. Response body is left empty intentionally.
+        '404':
+          description: Indicates the requested historic process instance was not found or the historic process instance does not have a comment with the given ID.
+      security:
+      - basicAuth: []
+  /history/historic-process-instances/{processInstanceId}/identitylinks:
+    get:
+      tags:
+      - History Process
+      summary: List identity links of a historic process instance
+      description: ''
+      operationId: listHistoricProcessInstanceIdentityLinks
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the identity links are returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoricIdentityLinkResponse'
+        '404':
+          description: Indicates the process instance could not be found..
+      security:
+      - basicAuth: []
+  /history/historic-process-instances/{processInstanceId}/variables/{variableName}/data:
+    get:
+      tags:
+      - History Process
+      summary: Get the binary data for a historic process instance variable
+      description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
+      operationId: getHistoricProcessInstanceVariableData
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the process instance was found and the requested variable data is returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested process instance was not found or the process instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+  /query/historic-process-instances:
+    post:
+      tags:
+      - History Process
+      summary: Query for historic process instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.
+      operationId: queryHistoricProcessInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricProcessInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the process instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricProcessInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricProcessInstance has multiple requestBodies
+  /cmmn-history/historic-case-instances/{caseInstanceId}/variables/{variableName}/data:
+    get:
+      tags:
+      - History Process
+      summary: Get the binary data for a historic case instance variable
+      description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
+      operationId: getHistoricCaseInstanceVariableData
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the case instance was found and the requested variable data is returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested case instance was not found or the process instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    DataResponseHistoricProcessInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricProcessInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricIdentityLinkResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: participant
+        userId:
+          type: string
+          example: kermit
+        groupId:
+          type: string
+          example: sales
+        taskId:
+          type: string
+          example: 'null'
+        taskUrl:
+          type: string
+          example: 'null'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+    HistoricProcessInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+        name:
+          type: string
+          example: myProcessInstanceName
+        businessKey:
+          type: string
+          example: myKey
+        businessStatus:
+          type: string
+          example: myStatus
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess%3A1%3A4
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4
+        processDefinitionName:
+          type: string
+          example: A process definition name
+        processDefinitionDescription:
+          type: string
+          example: A process definition description
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endTime:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        durationInMillis:
+          type: integer
+          format: int64
+          example: 86400056
+        startUserId:
+          type: string
+          example: kermit
+        endUserId:
+          type: string
+          example: kermit
+        state:
+          type: string
+          example: running
+        startActivityId:
+          type: string
+          example: startEvent
+        endActivityId:
+          type: string
+          example: endEvent
+        deleteReason:
+          type: string
+          example: 'null'
+        superProcessInstanceId:
+          type: string
+          example: '3'
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        callbackId:
+          type: string
+          example: '3'
+        callbackType:
+          type: string
+          example: cmmn
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-bpmn-2.0-process
+        propagatedStageInstanceId:
+          type: string
+          description: The stage plan item instance id this process instance belongs to or null, if it is not part of a case at all or is not a child element of a stage
+        tenantId:
+          type: string
+          example: someTenantId
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    CommentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        author:
+          type: string
+        message:
+          type: string
+        time:
+          type: string
+          format: date-time
+        taskId:
+          type: string
+        taskUrl:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceUrl:
+          type: string
+    HistoricProcessInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIds:
+          type: array
+          items:
+            type: string
+        processInstanceName:
+          type: string
+        processInstanceNameLike:
+          type: string
+        processInstanceNameLikeIgnoreCase:
+          type: string
+        processBusinessKey:
+          type: string
+        processBusinessKeyLike:
+          type: string
+        processBusinessKeyLikeIgnoreCase:
+          type: string
+        processBusinessStatus:
+          type: string
+        processBusinessStatusLike:
+          type: string
+        processBusinessStatusLikeIgnoreCase:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionKey:
+          type: string
+        processDefinitionKeyLike:
+          type: string
+        processDefinitionKeyLikeIgnoreCase:
+          type: string
+        processDefinitionKeys:
+          type: array
+          items:
+            type: string
+        excludeProcessDefinitionKeys:
+          type: array
+          items:
+            type: string
+        processDefinitionKeyIn:
+          type: array
+          items:
+            type: string
+        processDefinitionKeyNotIn:
+          type: array
+          items:
+            type: string
+        processDefinitionName:
+          type: string
+        processDefinitionNameLike:
+          type: string
+        processDefinitionNameLikeIgnoreCase:
+          type: string
+        processDefinitionVersion:
+          type: integer
+          format: int32
+        processDefinitionCategory:
+          type: string
+        processDefinitionCategoryLike:
+          type: string
+        processDefinitionCategoryLikeIgnoreCase:
+          type: string
+        deploymentId:
+          type: string
+        deploymentIdIn:
+          type: array
+          items:
+            type: string
+        superProcessInstanceId:
+          type: string
+        excludeSubprocesses:
+          type: boolean
+        finished:
+          type: boolean
+        activeActivityId:
+          type: string
+        activeActivityIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        involvedUser:
+          type: string
+        finishedAfter:
+          type: string
+          format: date-time
+        finishedBefore:
+          type: string
+          format: date-time
+        startedAfter:
+          type: string
+          format: date-time
+        startedBefore:
+          type: string
+          format: date-time
+        startedBy:
+          type: string
+        finishedBy:
+          type: string
+        state:
+          type: string
+        includeProcessVariables:
+          type: boolean
+        includeProcessVariablesNames:
+          type: array
+          items:
+            type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        callbackId:
+          type: string
+        callbackIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        callbackType:
+          type: string
+        parentCaseInstanceId:
+          type: string
+        withoutCallbackId:
+          type: boolean
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        tenantIdLikeIgnoreCase:
+          type: string
+        withoutTenantId:
+          type: boolean
+        rootScopeId:
+          type: string
+        parentScopeId:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

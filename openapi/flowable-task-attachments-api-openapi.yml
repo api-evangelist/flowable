@@ -1,0 +1,211 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Task Attachments API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Task Attachments
+paths:
+  /runtime/tasks/{taskId}/attachments:
+    get:
+      tags:
+      - Task Attachments
+      summary: List attachments on a task
+      description: ''
+      operationId: listTaskAttachments
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task was found and the attachments are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttachmentResponse'
+        '404':
+          description: Indicates the requested task was not found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Task Attachments
+      summary: Create a new attachment on a task, containing a link to an external resource or an attached file
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (AttachmentRequest) to link an external resource or by passing a multipart/form-data Object to attach a file.
+
+        NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createAttachment
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  description: Attachment file
+                  type: string
+                  format: binary
+                name:
+                  description: Required name of the variable
+                  example: Simple attachment
+                  type: string
+                description:
+                  description: Description of the attachment, optional
+                  example: Simple attachment description
+                  type: string
+                type:
+                  description: Type of attachment, optional. Supports any arbitrary string or a valid HTTP content-type.
+                  example: simpleType
+                  type: string
+        description: create an attachment containing a link to an external resource
+      responses:
+        '201':
+          description: Indicates the attachment was created and the result is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttachmentResponse'
+        '400':
+          description: Indicates the attachment name is missing from the request.
+        '404':
+          description: Indicates the requested task was not found.
+      security:
+      - basicAuth: []
+  /runtime/tasks/{taskId}/attachments/{attachmentId}:
+    get:
+      tags:
+      - Task Attachments
+      summary: Get an attachment on a task
+      description: ''
+      operationId: getAttachment
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: attachmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task and attachment were found and the attachment is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttachmentResponse'
+        '404':
+          description: Indicates the requested task was not found or the tasks does not have a attachment with the given ID.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Task Attachments
+      summary: Delete an attachment on a task
+      description: ''
+      operationId: deleteAttachment
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: attachmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the task and attachment were found and the attachment is deleted. Response body is left empty intentionally.
+        '404':
+          description: Indicates the requested task was not found or the tasks does not have a attachment with the given ID.
+      security:
+      - basicAuth: []
+  /runtime/tasks/{taskId}/attachments/{attachmentId}/content:
+    get:
+      tags:
+      - Task Attachments
+      summary: Get the content for an attachment
+      description: The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the attachment type contains a valid Content-type.
+      operationId: getAttachmentContent
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: attachmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the task and attachment was found and the requested content is returned.
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '404':
+          description: Indicates the requested task was not found or the task does not have an attachment with the given id or the attachment does not have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    AttachmentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          description: Can be any arbitrary value. When a valid formatted media-type (e.g. application/xml, text/plain) is included, the binary content HTTP response content-type will be set the given value.
+        taskUrl:
+          type: string
+        processInstanceUrl:
+          type: string
+        externalUrl:
+          type: string
+          description: contentUrl:In case the attachment is a link to an external resource, the externalUrl contains the URL to the external content. If the attachment content is present in the Flowable engine, the contentUrl will contain an URL where the binary content can be streamed from.
+        contentUrl:
+          type: string
+        time:
+          type: string
+          format: date-time
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

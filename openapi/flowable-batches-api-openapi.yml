@@ -1,0 +1,339 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Batches API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Batches
+paths:
+  /management/batch-parts/{batchPartId}/batch-part-document:
+    get:
+      tags:
+      - Batches
+      summary: Get the batch part document
+      description: ''
+      operationId: getBatchPartDocument
+      parameters:
+      - name: batchPartId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested batch part was found and the batch part document has been returned. The response contains the raw batch part document and always has a Content-type of application/json.
+          content:
+            '*/*':
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested batch part was not found or the job does not have a batch part document. Status-description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /management/batches:
+    get:
+      tags:
+      - Batches
+      summary: List batches
+      description: ''
+      operationId: listBatches
+      parameters:
+      - name: id
+        in: query
+        description: Only return batch with the given id
+        required: false
+        schema:
+          type: string
+      - name: batchType
+        in: query
+        description: Only return batches for the given type
+        required: false
+        schema:
+          type: string
+      - name: searchKey
+        in: query
+        description: Only return batches for the given search key
+        required: false
+        schema:
+          type: string
+      - name: searchKey2
+        in: query
+        description: Only return batches for the given search key2
+        required: false
+        schema:
+          type: string
+      - name: createTimeBefore
+        in: query
+        description: Only return batches created before the given date
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: createTimeAfter
+        in: query
+        description: Only batches batches created after the given date
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: completeTimeBefore
+        in: query
+        description: Only return batches completed before the given date
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: completeTimeAfter
+        in: query
+        description: Only batches batches completed after the given date
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: status
+        in: query
+        description: Only return batches for the given status
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return batches for the given tenant id
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return batches like given search key
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns batches without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the requested batches were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseBatchResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+  /management/batches/{batchId}:
+    get:
+      tags:
+      - Batches
+      summary: Get a single batch
+      description: ''
+      operationId: getBatch
+      parameters:
+      - name: batchId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the batch exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchResponse'
+        '404':
+          description: Indicates the requested batch does not exist.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Batches
+      summary: Delete a batch
+      description: ''
+      operationId: deleteBatch
+      parameters:
+      - name: batchId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the batch was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested batch was not found.
+      security:
+      - basicAuth: []
+  /management/batches/{batchId}/batch-document:
+    get:
+      tags:
+      - Batches
+      summary: Get the batch document
+      description: ''
+      operationId: getBatchDocument
+      parameters:
+      - name: batchId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested batch was found and the batch document has been returned. The response contains the raw batch document and always has a Content-type of application/json.
+          content:
+            '*/*':
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested batch was not found or the job does not have a batch document. Status-description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /management/batches/{batchId}/batch-parts:
+    get:
+      tags:
+      - Batches
+      summary: List batch parts
+      description: ''
+      operationId: listBatchesPart
+      parameters:
+      - name: batchId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Only return batch parts for the given status
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested batch parts were returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BatchPartResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    DataResponseBatchResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    BatchPartResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/management/batch-parts/8
+        batchId:
+          type: string
+          example: '4'
+        batchUrl:
+          type: string
+          example: http://localhost:8182/management/batch/4
+        batchType:
+          type: string
+          example: processMigration
+        searchKey:
+          type: string
+          example: 1:22:MP
+        searchKey2:
+          type: string
+          example: 1:24:MP
+        scopeId:
+          type: string
+          example: '1'
+        subScopeId:
+          type: string
+          example: '2'
+        scopeType:
+          type: string
+          example: bpmn
+        createTime:
+          type: string
+          format: date-time
+          example: 2020-06-03T22:05:05.474+0000
+        completeTime:
+          type: string
+          format: date-time
+          example: 2020-06-03T22:05:05.474+0000
+        status:
+          type: string
+          example: completed
+        tenantId:
+          type: string
+          example: 'null'
+    BatchResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/management/batches/8
+        batchType:
+          type: string
+          example: processMigration
+        searchKey:
+          type: string
+          example: 1:22:MP
+        searchKey2:
+          type: string
+          example: 1:24:MP
+        createTime:
+          type: string
+          format: date-time
+          example: 2020-06-03T22:05:05.474+0000
+        completeTime:
+          type: string
+          format: date-time
+          example: 2020-06-03T22:05:05.474+0000
+        status:
+          type: string
+          example: completed
+        tenantId:
+          type: string
+          example: 'null'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

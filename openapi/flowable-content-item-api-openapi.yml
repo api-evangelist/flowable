@@ -1,0 +1,1127 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Content item API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Content item
+paths:
+  /content-service/content-items:
+    get:
+      tags:
+      - Content item
+      summary: List content items
+      description: ''
+      operationId: listContentItems
+      parameters:
+      - name: id
+        in: query
+        description: Only return content items with the given id.
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return content items with the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return content items with a name like the given value.
+        required: false
+        schema:
+          type: string
+      - name: mimeType
+        in: query
+        description: Only return content items with the given mime type.
+        required: false
+        schema:
+          type: string
+      - name: mimeTypeLike
+        in: query
+        description: Only return content items with a mime type like the given value.
+        required: false
+        schema:
+          type: string
+      - name: taskId
+        in: query
+        description: Only return content items with the given task id.
+        required: false
+        schema:
+          type: string
+      - name: taskIdLike
+        in: query
+        description: Only return content items with a task like the given value.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: Only return content items with the given process instance id.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceIdLike
+        in: query
+        description: Only return content items with a process instance like the given value.
+        required: false
+        schema:
+          type: string
+      - name: scopeId
+        in: query
+        description: Only return content items with the given scopeId. When this is used then scopeType must also be set.
+        required: false
+        schema:
+          type: string
+      - name: scopeIdLike
+        in: query
+        description: Only return content items with s scopeId like the given value. When this is used then scopeType must also be set.
+        required: false
+        schema:
+          type: string
+      - name: scopeType
+        in: query
+        description: Only return content items with the given scopeType.
+        required: false
+        schema:
+          type: string
+      - name: contentStoreId
+        in: query
+        description: Only return content items with the given content store id.
+        required: false
+        schema:
+          type: string
+      - name: contentStoreIdLike
+        in: query
+        description: Only return content items with a content store id like the given value.
+        required: false
+        schema:
+          type: string
+      - name: contentStoreName
+        in: query
+        description: Only return content items with the given content store name.
+        required: false
+        schema:
+          type: string
+      - name: contentStoreNameLike
+        in: query
+        description: Only return content items with a content store name like the given value.
+        required: false
+        schema:
+          type: string
+      - name: contentAvailable
+        in: query
+        description: Only return content items with or without content available.
+        required: false
+        schema:
+          type: boolean
+      - name: contentSize
+        in: query
+        description: Only return content items with the given content size.
+        required: false
+        schema:
+          type: number
+          format: int64
+      - name: minimumContentSize
+        in: query
+        description: Only return content items with the a minimum content size of the given value.
+        required: false
+        schema:
+          type: number
+          format: int64
+      - name: maximumContentSize
+        in: query
+        description: Only return content items with the a maximum content size of the given value.
+        required: false
+        schema:
+          type: number
+          format: int64
+      - name: field
+        in: query
+        description: Only return content items with the given field.
+        required: false
+        schema:
+          type: string
+      - name: fieldLike
+        in: query
+        description: Only return content items with a field like the given value.
+        required: false
+        schema:
+          type: string
+      - name: latest
+        in: query
+        description: Only return content items with the highest available version.
+        required: false
+        schema:
+          type: boolean
+      - name: createdOn
+        in: query
+        description: Only return content items with the given create date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: createdBefore
+        in: query
+        description: Only return content items before given create date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: createdAfter
+        in: query
+        description: Only return content items after given create date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: createdBy
+        in: query
+        description: Only return content items with the given created by.
+        required: false
+        schema:
+          type: string
+      - name: createdByLike
+        in: query
+        description: Only return content items with a created by like the given value.
+        required: false
+        schema:
+          type: string
+      - name: lastModifiedOn
+        in: query
+        description: Only return content items with the given last modified date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: lastModifiedBefore
+        in: query
+        description: Only return content items before given last modified date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: lastModifiedAfter
+        in: query
+        description: Only return content items after given last modified date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: lastModifiedBy
+        in: query
+        description: Only return content items with the given last modified by.
+        required: false
+        schema:
+          type: string
+      - name: lastModifiedByLike
+        in: query
+        description: Only return content items with a last modified by like the given value.
+        required: false
+        schema:
+          type: string
+      - name: versionParentId
+        in: query
+        description: Only return content items with a given version parent id.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return content items with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return content items with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns content items without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: type
+        in: query
+        description: Only return content items with the given type.
+        required: false
+        schema:
+          type: string
+      - name: subType
+        in: query
+        description: Only return content items with the given subType.
+        required: false
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Only return content items with the given state.
+        required: false
+        schema:
+          type: string
+      - name: subState
+        in: query
+        description: Only return content items with the given subState.
+        required: false
+        schema:
+          type: string
+      - name: parentFolderId
+        in: query
+        description: Only return content items with the given folder parent id.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The content items are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseContentItemResponse'
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Content item
+      summary: Create a new content item, with content item information and an optional attached file
+      description: 'This endpoint can be used in 2 ways: By passing a JSON Body (ContentItemRequest) to link an external resource or by passing a multipart/form-data Object to attach a file.
+
+        NB: Swagger V2 specification doesn''t support this use case that''s why this endpoint might be buggy/incomplete if used with other tools.'
+      operationId: createContentItem
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  description: Attachment file
+                  type: string
+                  format: binary
+                name:
+                  description: Required name of the variable
+                  example: Simple content item
+                  type: string
+                versionInfo:
+                  description: A version identifier for the content item, optional
+                  example: Simple content item
+                  type: string
+                mimeType:
+                  description: Mime type of the content item, optional
+                  example: application/pdf
+                  type: string
+                taskId:
+                  description: Task identifier for the content item, optional
+                  example: '12345'
+                  type: string
+                processInstanceId:
+                  description: Process instance identifier for the content item, optional
+                  example: '1234'
+                  type: string
+                scopeType:
+                  description: Scope type of the content item, optional
+                  example: cmmn or bpmn
+                  type: string
+                scopeId:
+                  description: Scope id for the content item, optional
+                  example: '12345'
+                  type: string
+                contentStoreId:
+                  description: The identifier of the content item in an external content store, optional
+                  example: '5678'
+                  type: string
+                contentStoreName:
+                  description: The name of an external content store, optional
+                  example: myFileStore
+                  type: string
+                field:
+                  description: The form field for the content item, optional
+                  example: uploadField
+                  type: string
+                createdBy:
+                  description: The user identifier that created the content item, optional
+                  example: johndoe
+                  type: string
+                lastModifiedBy:
+                  description: The user identifier that last modified the content item, optional
+                  example: johndoe
+                  type: string
+                versionParentId:
+                  description: Parent version identifier to create a new version for the content item, optional
+                  example: '1234'
+                  type: string
+                tenantId:
+                  description: The tenant identifier of the content item, optional
+                  example: myTenantId
+                  type: string
+        description: Create a new content item, with content item information
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentItemResponse'
+        '201':
+          description: Indicates the content item was created and the result is returned.
+        '400':
+          description: Indicates required content item info is missing from the request.
+      security:
+      - basicAuth: []
+  /content-service/content-items/{contentItemId}:
+    get:
+      tags:
+      - Content item
+      summary: Get a content item
+      description: ''
+      operationId: getContentItem
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the content item was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentItemResponse'
+        '404':
+          description: Indicates the requested content item was not found.
+      security:
+      - basicAuth: []
+    put:
+      tags:
+      - Content item
+      summary: Updates a content item, with the provided content item information
+      description: ''
+      operationId: updateContentItem
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ContentItemRequest'
+      responses:
+        '200':
+          description: Indicates the content item was updated and the result is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentItemResponse'
+        '404':
+          description: Indicates content item could not be found.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Content item
+      summary: Delete a content item
+      description: ''
+      operationId: deleteContentItem
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the content item was deleted.
+        '404':
+          description: Indicates the content item was not found.
+      security:
+      - basicAuth: []
+  /content-service/content-items/{contentItemId}/copy:
+    post:
+      tags:
+      - Content item
+      summary: Copy a content item to the parent folder
+      description: ''
+      operationId: copyContentItem
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ContentItemRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentItemResponse'
+        '201':
+          description: Indicates the content item was copied and the result is returned.
+        '404':
+          description: Indicates content item could not be found.
+      security:
+      - basicAuth: []
+  /content-service/content-items/{contentItemId}/data:
+    get:
+      tags:
+      - Content item
+      summary: Get the data of a content item
+      description: The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.
+      operationId: getContentItemData
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: download
+        in: query
+        description: Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the content item was found and the requested content is returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Indicates the content item was not found or the content item does not have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Content item
+      summary: Save the content item data
+      description: Save the content item data with an attached file. The request should be of type multipart/form-data. There should be a single file-part included with the binary value of the content item.
+      operationId: saveContentItemData
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/saveContentItemData'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentItemResponse'
+        '201':
+          description: Indicates the content item data was saved and the result is returned.
+        '400':
+          description: Indicates required content item data is missing from the request.
+      security:
+      - basicAuth: []
+  /content-service/content-items/{contentItemId}/data/latest:
+    get:
+      tags:
+      - Content item
+      summary: Get the latest data of a content item
+      description: The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.
+      operationId: getLatestContentItemData
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: download
+        in: query
+        description: Explicitly request the latest content to be downloaded or viewed in a browser. By default it would be done based on the content media type
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the latest content item was found and the requested content is returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Indicates the latest content item was not found or the latest content item does not have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+  /content-service/content-items/{contentItemId}/rendition/{renditionType}:
+    get:
+      tags:
+      - Content item
+      summary: Get a rendition item (data) with a rendition type related to a content item
+      description: Rendition type can be 'thumbnail' or 'pdf'The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.
+      operationId: getRenditionForContentItem
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: renditionType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: download
+        in: query
+        description: Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the rendition item was found and returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Indicates the requested rendition item was not found.
+      security:
+      - basicAuth: []
+  /content-service/content-items/{contentItemId}/rendition/{renditionType}/latest:
+    get:
+      tags:
+      - Content item
+      summary: Get the latest rendition item (data) with a rendition type related to a content item
+      description: Rendition type can be 'thumbnail' or 'pdf'The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.
+      operationId: getLatestRenditionForContentItem
+      parameters:
+      - name: contentItemId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: renditionType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: download
+        in: query
+        description: Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the rendition item was found and returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Indicates the requested rendition item was not found.
+      security:
+      - basicAuth: []
+  /content-service/version-parent-items/{versionParentId}:
+    get:
+      tags:
+      - Content item
+      summary: Get a content item
+      description: ''
+      operationId: getContentItem
+      parameters:
+      - name: versionParentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the content item was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentItemResponse'
+        '404':
+          description: Indicates the requested content item was not found.
+      security:
+      - basicAuth: []
+  /content-service/version-parent-items/{versionParentId}/data:
+    get:
+      tags:
+      - Content item
+      summary: Get the data of a content item
+      description: The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.
+      operationId: getContentItemData
+      parameters:
+      - name: versionParentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: download
+        in: query
+        description: Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the content item was found and the requested content is returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Indicates the content item was not found or the content item does not have a binary stream available. Status message provides additional information.
+      security:
+      - basicAuth: []
+  /content-service/version-parent-items/{versionParentId}/rendition/{renditionType}:
+    get:
+      tags:
+      - Content item
+      summary: Get a rendition item (data) with a rendition type related to a content item
+      description: Rendition type can be 'thumbnail' or 'pdf'The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.
+      operationId: getRenditionForContentItem
+      parameters:
+      - name: versionParentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: renditionType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: download
+        in: query
+        description: Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates the rendition item was found and returned.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Indicates the requested rendition item was not found.
+      security:
+      - basicAuth: []
+  /query/content-items:
+    post:
+      tags:
+      - Content item
+      summary: Query for content items
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of content items, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
+      operationId: getQueryResult
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentItemQueryRequest'
+      responses:
+        '200':
+          description: Indicates request was successful and the content items are returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseContentItemResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    QueryMetadata:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+        value:
+          type: object
+        type:
+          type: string
+    FileSystem:
+      type: object
+      properties:
+        open:
+          type: boolean
+        readOnly:
+          type: boolean
+        separator:
+          type: string
+        rootDirectories:
+          $ref: '#/components/schemas/IterablePath'
+        fileStores:
+          $ref: '#/components/schemas/IterableFileStore'
+        userPrincipalLookupService:
+          $ref: '#/components/schemas/UserPrincipalLookupService'
+    ContentItemRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Simple content item
+          description: Name of the content item
+        versionInfo:
+          type: string
+          example: Version 1a
+          description: Version information of the content item
+        mimeType:
+          type: string
+          example: application/pdf
+          description: Mime type of the content item, optional
+        taskId:
+          type: string
+          example: '12345'
+          description: Task identifier for the content item, optional
+        processInstanceId:
+          type: string
+          example: '1234'
+          description: Process instance identifier for the content item, optional
+        scopeType:
+          type: string
+          example: bpmn
+          description: Scope type for the content item, optional
+        scopeId:
+          type: string
+          example: '1234'
+          description: Scope instance identifier for the content item, optional
+        contentStoreId:
+          type: string
+          example: '5678'
+          description: The identifier of the content item in an external content store, optional.
+        contentStoreName:
+          type: string
+          example: myFileStore
+          description: The name of an external content store, optional
+        field:
+          type: string
+          example: uploadField
+          description: The form field for the content item, optional
+        versionParentId:
+          type: string
+          example: '1234'
+          description: The version parent id for the content item to create a new version, optional
+        tenantId:
+          type: string
+          example: myTenantId
+          description: The tenant identifier of the content item, optional.
+        createdBy:
+          type: string
+          example: johndoe
+          description: The user identifier that created the content item, optional
+        lastModifiedBy:
+          type: string
+          example: johndoe
+          description: The user identifier that last modified the content item, optional
+        type:
+          type: string
+          example: folder
+          description: The type of the content item, optional
+        subType:
+          type: string
+          example: spreadsheet
+          description: The subtype of the content item, optional
+        state:
+          type: string
+          example: active
+          description: The state of the content item, optional
+        subState:
+          type: string
+          example: active
+          description: The substate of the content item, optional
+        parentFolderId:
+          type: string
+          example: myFolderId
+          description: The parent folder id of the content item, optional
+    DataResponseContentItemResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentItemResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    InputStream:
+      type: object
+    IterableFileStore:
+      type: object
+    IterablePath:
+      type: object
+    Resource:
+      type: object
+      properties:
+        open:
+          type: boolean
+        file:
+          type: string
+          format: binary
+        readable:
+          type: boolean
+        url:
+          type: string
+          format: url
+        filePath:
+          $ref: '#/components/schemas/Path'
+        filename:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+          format: uri
+        contentAsByteArray:
+          type: array
+          items:
+            type: string
+            format: byte
+        inputStream:
+          $ref: '#/components/schemas/InputStream'
+    ContentItemResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        version:
+          type: integer
+          format: int32
+        versionInfo:
+          type: string
+        size:
+          type: integer
+          format: int64
+        mimeType:
+          type: string
+        definitionId:
+          type: string
+        definitionName:
+          type: string
+        taskId:
+          type: string
+        processInstanceId:
+          type: string
+        scopeId:
+          type: string
+        scopeType:
+          type: string
+        contentStoreId:
+          type: string
+        contentStoreName:
+          type: string
+        contentAvailable:
+          type: boolean
+        versionParentId:
+          type: string
+        tenantId:
+          type: string
+        created:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        lastModified:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        url:
+          type: string
+        type:
+          type: string
+        subType:
+          type: string
+        state:
+          type: string
+        subState:
+          type: string
+        parentFolderId:
+          type: string
+    Path:
+      type: object
+      properties:
+        absolute:
+          type: boolean
+        parent:
+          $ref: '#/components/schemas/Path'
+        root:
+          $ref: '#/components/schemas/Path'
+        fileName:
+          $ref: '#/components/schemas/Path'
+        fileSystem:
+          $ref: '#/components/schemas/FileSystem'
+        nameCount:
+          type: integer
+          format: int32
+    UserPrincipalLookupService:
+      type: object
+    ContentItemQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        definitionId:
+          type: string
+        ids:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        name:
+          type: string
+        nameLike:
+          type: string
+        mimeType:
+          type: string
+        mimeTypeLike:
+          type: string
+        taskId:
+          type: string
+        taskIdLike:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceIdLike:
+          type: string
+        scopeId:
+          type: string
+        scopeIdLike:
+          type: string
+        scopeType:
+          type: string
+        contentStoreId:
+          type: string
+        contentStoreIdLike:
+          type: string
+        contentStoreName:
+          type: string
+        contentStoreNameLike:
+          type: string
+        contentSize:
+          type: integer
+          format: int64
+        minimumContentSize:
+          type: integer
+          format: int64
+        maximumContentSize:
+          type: integer
+          format: int64
+        contentAvailable:
+          type: boolean
+        field:
+          type: string
+        fieldLike:
+          type: string
+        latest:
+          type: boolean
+        createdOn:
+          type: string
+          format: date-time
+        createdBefore:
+          type: string
+          format: date-time
+        createdAfter:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        createdByLike:
+          type: string
+        lastModifiedOn:
+          type: string
+          format: date-time
+        lastModifiedBefore:
+          type: string
+          format: date-time
+        lastModifiedAfter:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedByLike:
+          type: string
+        versionParentId:
+          type: string
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        withoutTenantId:
+          type: boolean
+        type:
+          type: string
+        subType:
+          type: string
+        state:
+          type: string
+        subState:
+          type: string
+        parentFolderId:
+          type: string
+        queryMetadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryMetadata'
+  requestBodies:
+    ContentItemRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ContentItemRequest'
+    saveContentItemData:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+            required:
+            - file
+      required: true
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

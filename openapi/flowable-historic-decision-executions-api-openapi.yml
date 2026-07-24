@@ -1,0 +1,256 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Historic Decision Executions API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Historic Decision Executions
+paths:
+  /dmn-history/historic-decision-executions:
+    get:
+      tags:
+      - Historic Decision Executions
+      summary: List of historic decision executions
+      description: ''
+      operationId: listHistoricDecisionExecutions
+      parameters:
+      - name: id
+        in: query
+        description: Only return historic decision executions with the given id.
+        required: false
+        schema:
+          type: string
+      - name: decisionDefinitionId
+        in: query
+        description: Only return historic decision executions with the given definition id.
+        required: false
+        schema:
+          type: string
+      - name: deploymentId
+        in: query
+        description: Only return historic decision executions with the given deployment id.
+        required: false
+        schema:
+          type: string
+      - name: decisionKey
+        in: query
+        description: Only return historic decision executions with the given decision key.
+        required: false
+        schema:
+          type: string
+      - name: activityId
+        in: query
+        description: Only return historic decision executions with the given activity id.
+        required: false
+        schema:
+          type: string
+      - name: executionId
+        in: query
+        description: Only return historic decision executions with the given execution id.
+        required: false
+        schema:
+          type: string
+      - name: instanceId
+        in: query
+        description: Only return historic decision executions with the given instance id.
+        required: false
+        schema:
+          type: string
+      - name: scopeType
+        in: query
+        description: Only return historic decision executions with the given scope type.
+        required: false
+        schema:
+          type: string
+      - name: withoutScopeType
+        in: query
+        description: Only return historic decision executions without a scope type.
+        required: false
+        schema:
+          type: string
+      - name: processInstanceIdWithChildren
+        in: query
+        description: Return all historic decision executions with the given process instance id or its entity link children.
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceIdWithChildren
+        in: query
+        description: Return all historic decision executions with the given case instance id or its entity link children.
+        required: false
+        schema:
+          type: string
+      - name: failed
+        in: query
+        description: Only return historic decision executions with the failed state.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return historic decision executions with the given tenant id.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return historic decision executions like the given tenant id.
+        required: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - startTime
+          - endTime
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates request was successful and the historic decision executions are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricDecisionExecutionResponse'
+        '400':
+          description: Indicates a parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /dmn-history/historic-decision-executions/{historicDecisionExecutionId}:
+    get:
+      tags:
+      - Historic Decision Executions
+      summary: Get a historic decision execution
+      description: ''
+      operationId: getHistoricDecisionExecution
+      parameters:
+      - name: historicDecisionExecutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the historic decision execution is returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricDecisionExecutionResponse'
+        '404':
+          description: Indicates the requested historic decision execution was not found.
+      security:
+      - basicAuth: []
+  /dmn-history/historic-decision-executions/{historicDecisionExecutionId}/auditdata:
+    get:
+      tags:
+      - Historic Decision Executions
+      summary: Get a historic decision execution audit content
+      description: ''
+      operationId: getHistoricDecisionExecutionAuditData
+      parameters:
+      - name: historicDecisionExecutionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the historic decision execution has been found and the audit data has been returned.
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested historic decision execution was not found. The status-description contains additional information.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    DataResponseHistoricDecisionExecutionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricDecisionExecutionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricDecisionExecutionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        decisionDefinitionId:
+          type: string
+        deploymentId:
+          type: string
+        activityId:
+          type: string
+        executionId:
+          type: string
+        instanceId:
+          type: string
+        scopeType:
+          type: string
+        failed:
+          type: boolean
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        tenantId:
+          type: string
+        decisionKey:
+          type: string
+        decisionName:
+          type: string
+        decisionVersion:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

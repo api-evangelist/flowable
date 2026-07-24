@@ -1,0 +1,2841 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Jobs API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Jobs
+paths:
+  /management/deadletter-jobs:
+    get:
+      tags:
+      - Jobs
+      summary: List deadletter jobs
+      description: ''
+      operationId: listDeadLetterJobs
+      parameters:
+      - name: id
+        in: query
+        description: Only return job with the given id
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: Only return jobs part of a process with the given id
+        required: false
+        schema:
+          type: string
+      - name: withoutProcessInstanceId
+        in: query
+        description: If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: executionId
+        in: query
+        description: Only return jobs part of an execution with the given id
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: Only return jobs with the given process definition id
+        required: false
+        schema:
+          type: string
+      - name: elementId
+        in: query
+        description: Only return jobs with the given element id
+        required: false
+        schema:
+          type: string
+      - name: elementName
+        in: query
+        description: Only return jobs with the given element name
+        required: false
+        schema:
+          type: string
+      - name: handlerType
+        in: query
+        description: Only return jobs with the given handler type
+        required: false
+        schema:
+          type: string
+      - name: handlerTypes
+        in: query
+        description: Only return jobs which have one of the given job handler type
+        required: false
+        schema:
+          type: string
+      - name: executable
+        in: query
+        description: If true, only return jobs which are executable. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: timersOnly
+        in: query
+        description: If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'.
+        required: false
+        schema:
+          type: boolean
+      - name: messagesOnly
+        in: query
+        description: If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'
+        required: false
+        schema:
+          type: boolean
+      - name: withException
+        in: query
+        description: If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: dueBefore
+        in: query
+        description: Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: dueAfter
+        in: query
+        description: Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: exceptionMessage
+        in: query
+        description: Only return jobs with the given exception message
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return jobs with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return jobs with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: locked
+        in: query
+        description: If true, only return jobs which are locked.  If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: unlocked
+        in: query
+        description: If true, only return jobs which are unlocked. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutScopeId
+        in: query
+        description: If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutScopeType
+        in: query
+        description: If true, only returns jobs without a scope type set. If false, the withoutScopeType parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - dueDate
+          - executionId
+          - processInstanceId
+          - retries
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested jobs were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseJobResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Jobs
+      summary: Move a bulk of deadletter jobs. Accepts 'move' and 'moveToHistoryJob' as action.
+      description: ''
+      operationId: executeDeadLetterJobAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkMoveDeadLetterActionRequest'
+      responses:
+        '204':
+          description: Indicates the dead letter jobs where moved. Response-body is intentionally empty.
+        '500':
+          description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
+      security:
+      - basicAuth: []
+  /management/deadletter-jobs/{jobId}:
+    get:
+      tags:
+      - Jobs
+      summary: Get a single deadletter job
+      description: ''
+      operationId: getDeadletterJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the suspended job exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse'
+        '404':
+          description: Indicates the requested job does not exist.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Jobs
+      summary: Move a single deadletter job. Accepts 'move' and 'moveToHistoryJob' as action.
+      description: ''
+      operationId: executeDeadLetterJobAction
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/RestActionRequest'
+      responses:
+        '204':
+          description: Indicates the dead letter job was moved. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+        '500':
+          description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Jobs
+      summary: Delete a deadletter job
+      description: ''
+      operationId: deleteDeadLetterJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the job was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+      security:
+      - basicAuth: []
+  /management/deadletter-jobs/{jobId}/exception-stacktrace:
+    get:
+      tags:
+      - Jobs
+      summary: Get the exception stacktrace for a deadletter job
+      description: ''
+      operationId: getDeadLetterJobStacktrace
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested job was not found and the stacktrace has been returned. The response contains the raw stacktrace and always has a Content-type of text/plain.
+          content:
+            '*/*':
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /management/history-jobs:
+    get:
+      tags:
+      - Jobs
+      summary: List history jobs
+      description: ''
+      operationId: listDeadLetterJobs
+      parameters:
+      - name: id
+        in: query
+        description: Only return the job with the given id
+        required: false
+        schema:
+          type: string
+      - name: withException
+        in: query
+        description: If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: exceptionMessage
+        in: query
+        description: Only return jobs with the given exception message
+        required: false
+        schema:
+          type: string
+      - name: scopeType
+        in: query
+        description: Only return jobs with the given scope type
+        required: false
+        schema:
+          type: string
+      - name: handlerType
+        in: query
+        description: Only return jobs with the given handler type
+        required: false
+        schema:
+          type: string
+      - name: handlerTypes
+        in: query
+        description: Only return jobs which have one of the given job handler type
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return jobs with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return jobs with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: lockOwner
+        in: query
+        description: If true, only return jobs which are owned by the given lockOwner.
+        required: false
+        schema:
+          type: string
+      - name: locked
+        in: query
+        description: If true, only return jobs which are locked.  If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: unlocked
+        in: query
+        description: If true, only return jobs which are unlocked. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - retries
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested jobs were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoryJobResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+  /management/history-jobs/{jobId}:
+    get:
+      tags:
+      - Jobs
+      summary: Get a single history job job
+      description: ''
+      operationId: getHistoryJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the history job exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoryJobResponse'
+        '404':
+          description: Indicates the requested job does not exist.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Jobs
+      summary: Execute a history job
+      description: ''
+      operationId: executeHistoryJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/RestActionRequest'
+      responses:
+        '204':
+          description: Indicates the job was executed. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+        '500':
+          description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Jobs
+      summary: Delete a history job
+      description: ''
+      operationId: deleteHistoryJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the history job was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+      security:
+      - basicAuth: []
+  /management/jobs:
+    get:
+      tags:
+      - Jobs
+      summary: List jobs
+      description: ''
+      operationId: listJobs
+      parameters:
+      - name: id
+        in: query
+        description: Only return job with the given id
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: Only return jobs part of a process with the given id
+        required: false
+        schema:
+          type: string
+      - name: withoutProcessInstanceId
+        in: query
+        description: If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: executionId
+        in: query
+        description: Only return jobs part of an execution with the given id
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: Only return jobs with the given process definition id
+        required: false
+        schema:
+          type: string
+      - name: elementId
+        in: query
+        description: Only return jobs with the given element id
+        required: false
+        schema:
+          type: string
+      - name: elementName
+        in: query
+        description: Only return jobs with the given element name
+        required: false
+        schema:
+          type: string
+      - name: handlerType
+        in: query
+        description: Only return jobs with the given handler type
+        required: false
+        schema:
+          type: string
+      - name: handlerTypes
+        in: query
+        description: Only return jobs which have one of the given job handler type
+        required: false
+        schema:
+          type: string
+      - name: timersOnly
+        in: query
+        description: If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'.
+        required: false
+        schema:
+          type: boolean
+      - name: messagesOnly
+        in: query
+        description: If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'
+        required: false
+        schema:
+          type: boolean
+      - name: withException
+        in: query
+        description: If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: dueBefore
+        in: query
+        description: Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: dueAfter
+        in: query
+        description: Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: exceptionMessage
+        in: query
+        description: Only return jobs with the given exception message
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return jobs with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return jobs with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: locked
+        in: query
+        description: If true, only return jobs which are locked.  If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: unlocked
+        in: query
+        description: If true, only return jobs which are unlocked. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutScopeId
+        in: query
+        description: If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutScopeType
+        in: query
+        description: If true, only returns jobs without a scope type set. If false, the withoutScopeType parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - dueDate
+          - executionId
+          - processInstanceId
+          - retries
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested jobs were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseJobResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+  /management/jobs/{jobId}:
+    get:
+      tags:
+      - Jobs
+      summary: Get a single job
+      description: ''
+      operationId: getJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the job exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse'
+        '404':
+          description: Indicates the requested job does not exist.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Jobs
+      summary: Execute a single job
+      description: ''
+      operationId: executeJobAction
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/RestActionRequest'
+      responses:
+        '204':
+          description: Indicates the job was executed. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+        '500':
+          description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Jobs
+      summary: Delete a job
+      description: ''
+      operationId: deleteJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the job was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+      security:
+      - basicAuth: []
+  /management/jobs/{jobId}/exception-stacktrace:
+    get:
+      tags:
+      - Jobs
+      summary: Get the exception stacktrace for a job
+      description: ''
+      operationId: getJobStacktrace
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested job was not found and the stacktrace has been returned. The response contains the raw stacktrace and always has a Content-type of text/plain.
+          content:
+            '*/*':
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /management/suspended-jobs:
+    get:
+      tags:
+      - Jobs
+      summary: List suspended jobs
+      description: ''
+      operationId: listSuspendedJobs
+      parameters:
+      - name: id
+        in: query
+        description: Only return job with the given id
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: Only return jobs part of a process with the given id
+        required: false
+        schema:
+          type: string
+      - name: withoutProcessInstanceId
+        in: query
+        description: If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: executionId
+        in: query
+        description: Only return jobs part of an execution with the given id
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: Only return jobs with the given process definition id
+        required: false
+        schema:
+          type: string
+      - name: elementId
+        in: query
+        description: Only return jobs with the given element id
+        required: false
+        schema:
+          type: string
+      - name: elementName
+        in: query
+        description: Only return jobs with the given element name
+        required: false
+        schema:
+          type: string
+      - name: handlerType
+        in: query
+        description: Only return jobs with the given handler type
+        required: false
+        schema:
+          type: string
+      - name: handlerTypes
+        in: query
+        description: Only return jobs which have one of the given job handler type
+        required: false
+        schema:
+          type: string
+      - name: executable
+        in: query
+        description: If true, only return jobs which are executable. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: timersOnly
+        in: query
+        description: If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'.
+        required: false
+        schema:
+          type: boolean
+      - name: messagesOnly
+        in: query
+        description: If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'
+        required: false
+        schema:
+          type: boolean
+      - name: withException
+        in: query
+        description: If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: dueBefore
+        in: query
+        description: Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: dueAfter
+        in: query
+        description: Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: exceptionMessage
+        in: query
+        description: Only return jobs with the given exception message
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return jobs with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return jobs with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: locked
+        in: query
+        description: If true, only return jobs which are locked.  If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: unlocked
+        in: query
+        description: If true, only return jobs which are unlocked. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutScopeId
+        in: query
+        description: If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutScopeType
+        in: query
+        description: If true, only returns jobs without a scope type set. If false, the withoutScopeType parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - dueDate
+          - executionId
+          - processInstanceId
+          - retries
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested jobs were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseJobResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+  /management/suspended-jobs/{jobId}:
+    get:
+      tags:
+      - Jobs
+      summary: Get a single suspended job
+      description: ''
+      operationId: getSuspendedJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the suspended job exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse'
+        '404':
+          description: Indicates the requested job does not exist.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Jobs
+      summary: Delete a suspended job
+      description: ''
+      operationId: deleteSuspendedJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the job was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+      security:
+      - basicAuth: []
+  /management/suspended-jobs/{jobId}/exception-stacktrace:
+    get:
+      tags:
+      - Jobs
+      summary: Get the exception stacktrace for a suspended job
+      description: ''
+      operationId: getSuspendedJobStacktrace
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested job was not found and the stacktrace has been returned. The response contains the raw stacktrace and always has a Content-type of text/plain.
+          content:
+            '*/*':
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /management/timer-jobs:
+    get:
+      tags:
+      - Jobs
+      summary: List timer jobs
+      description: ''
+      operationId: listTimerJobs
+      parameters:
+      - name: id
+        in: query
+        description: Only return job with the given id
+        required: false
+        schema:
+          type: string
+      - name: processInstanceId
+        in: query
+        description: Only return jobs part of a process with the given id
+        required: false
+        schema:
+          type: string
+      - name: withoutProcessInstanceId
+        in: query
+        description: If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: executionId
+        in: query
+        description: Only return jobs part of an execution with the given id
+        required: false
+        schema:
+          type: string
+      - name: processDefinitionId
+        in: query
+        description: Only return jobs with the given process definition id
+        required: false
+        schema:
+          type: string
+      - name: elementId
+        in: query
+        description: Only return jobs with the given element id
+        required: false
+        schema:
+          type: string
+      - name: elementName
+        in: query
+        description: Only return jobs with the given element name
+        required: false
+        schema:
+          type: string
+      - name: handlerType
+        in: query
+        description: Only return jobs with the given handler type
+        required: false
+        schema:
+          type: string
+      - name: handlerTypes
+        in: query
+        description: Only return jobs which have one of the given job handler type
+        required: false
+        schema:
+          type: string
+      - name: executable
+        in: query
+        description: If true, only return jobs which are executable. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: timersOnly
+        in: query
+        description: If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'.
+        required: false
+        schema:
+          type: boolean
+      - name: messagesOnly
+        in: query
+        description: If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'
+        required: false
+        schema:
+          type: boolean
+      - name: withException
+        in: query
+        description: If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: dueBefore
+        in: query
+        description: Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: dueAfter
+        in: query
+        description: Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: exceptionMessage
+        in: query
+        description: Only return jobs with the given exception message
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return jobs with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return jobs with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: locked
+        in: query
+        description: If true, only return jobs which are locked.  If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: unlocked
+        in: query
+        description: If true, only return jobs which are unlocked. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutScopeId
+        in: query
+        description: If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutScopeType
+        in: query
+        description: If true, only returns jobs without a scope type set. If false, the withoutScopeType parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - dueDate
+          - executionId
+          - processInstanceId
+          - retries
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested jobs were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseJobResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+  /management/timer-jobs/{jobId}:
+    get:
+      tags:
+      - Jobs
+      summary: Get a single timer job
+      description: ''
+      operationId: getTimerJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the timer job exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse'
+        '404':
+          description: Indicates the requested job does not exist.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Jobs
+      summary: Execute a single job action (move or reschedule)
+      description: ''
+      operationId: executeTimerJobAction
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimerJobActionRequest'
+      responses:
+        '204':
+          description: Indicates the timer job action was executed. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+        '500':
+          description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Jobs
+      summary: Delete a timer job
+      description: ''
+      operationId: deleteTimerJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the job was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+      security:
+      - basicAuth: []
+  /management/timer-jobs/{jobId}/exception-stacktrace:
+    get:
+      tags:
+      - Jobs
+      summary: Get the exception stacktrace for a timer job
+      description: ''
+      operationId: getTimerJobStacktrace
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested job was not found and the stacktrace has been returned. The response contains the raw stacktrace and always has a Content-type of text/plain.
+          content:
+            '*/*':
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /cmmn-management/deadletter-jobs:
+    get:
+      tags:
+      - Jobs
+      summary: List deadletter jobs
+      description: ''
+      operationId: listDeadLetterJobs
+      parameters:
+      - name: id
+        in: query
+        description: Only return job with the given id
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceId
+        in: query
+        description: Only return jobs part of a case with the given id
+        required: false
+        schema:
+          type: string
+      - name: withoutScopeId
+        in: query
+        description: If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: planItemInstanceId
+        in: query
+        description: Only return jobs part of a plan item instance with the given id
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionId
+        in: query
+        description: Only return jobs with the given case definition id
+        required: false
+        schema:
+          type: string
+      - name: scopeDefinitionId
+        in: query
+        description: Only return jobs with the given scope definition id
+        required: false
+        schema:
+          type: string
+      - name: scopeType
+        in: query
+        description: Only return jobs with the given scope type
+        required: false
+        schema:
+          type: string
+      - name: elementId
+        in: query
+        description: Only return jobs with the given element id
+        required: false
+        schema:
+          type: string
+      - name: elementName
+        in: query
+        description: Only return jobs with the given element name
+        required: false
+        schema:
+          type: string
+      - name: timersOnly
+        in: query
+        description: If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'.
+        required: false
+        schema:
+          type: boolean
+      - name: messagesOnly
+        in: query
+        description: If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'
+        required: false
+        schema:
+          type: boolean
+      - name: withException
+        in: query
+        description: If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: dueBefore
+        in: query
+        description: Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: dueAfter
+        in: query
+        description: Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: exceptionMessage
+        in: query
+        description: Only return jobs with the given exception message
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return jobs with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return jobs with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: locked
+        in: query
+        description: If true, only return jobs which are locked.  If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: unlocked
+        in: query
+        description: If true, only return jobs which are unlocked. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutProcessInstanceId
+        in: query
+        description: If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - dueDate
+          - executionId
+          - processInstanceId
+          - retries
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested jobs were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseJobResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Jobs
+      summary: Move a bulk of deadletter jobs. Accepts 'move' and 'moveToHistoryJob' as action.
+      description: ''
+      operationId: executeDeadLetterJobAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkMoveDeadLetterActionRequest'
+      responses:
+        '204':
+          description: Indicates the dead letter jobs where moved. Response-body is intentionally empty.
+        '500':
+          description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
+      security:
+      - basicAuth: []
+  /cmmn-management/deadletter-jobs/{jobId}:
+    get:
+      tags:
+      - Jobs
+      summary: Get a single deadletter job
+      description: ''
+      operationId: getDeadletterJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the suspended job exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse_2'
+        '404':
+          description: Indicates the requested job does not exist.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Jobs
+      summary: Move a single deadletter job. Accepts 'move' and 'moveToHistoryJob' as action.
+      description: ''
+      operationId: executeDeadLetterJobAction
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/RestActionRequest'
+      responses:
+        '204':
+          description: Indicates the dead letter job was moved. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+        '500':
+          description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Jobs
+      summary: Delete a deadletter job
+      description: ''
+      operationId: deleteDeadLetterJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the job was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+      security:
+      - basicAuth: []
+  /cmmn-management/deadletter-jobs/{jobId}/exception-stacktrace:
+    get:
+      tags:
+      - Jobs
+      summary: Get the exception stacktrace for a deadletter job
+      description: ''
+      operationId: getDeadLetterJobStacktrace
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested job was not found and the stacktrace has been returned. The response contains the raw stacktrace and always has a Content-type of text/plain.
+          content:
+            '*/*':
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /cmmn-management/history-jobs:
+    get:
+      tags:
+      - Jobs
+      summary: List history jobs
+      description: ''
+      operationId: listDeadLetterJobs
+      parameters:
+      - name: id
+        in: query
+        description: Only return the job with the given id
+        required: false
+        schema:
+          type: string
+      - name: withException
+        in: query
+        description: If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: exceptionMessage
+        in: query
+        description: Only return jobs with the given exception message
+        required: false
+        schema:
+          type: string
+      - name: scopeType
+        in: query
+        description: Only return jobs with the given scope type
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return jobs with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return jobs with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: lockOwner
+        in: query
+        description: If true, only return jobs which are owned by the given lockOwner.
+        required: false
+        schema:
+          type: string
+      - name: locked
+        in: query
+        description: If true, only return jobs which are locked.  If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: unlocked
+        in: query
+        description: If true, only return jobs which are unlocked. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - retries
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested jobs were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoryJobResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+  /cmmn-management/history-jobs/{jobId}:
+    get:
+      tags:
+      - Jobs
+      summary: Get a single history job job
+      description: ''
+      operationId: getHistoryJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the history job exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoryJobResponse_2'
+        '404':
+          description: Indicates the requested job does not exist.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Jobs
+      summary: Execute a history job
+      description: ''
+      operationId: executeHistoryJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/RestActionRequest'
+      responses:
+        '204':
+          description: Indicates the job was executed. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+        '500':
+          description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Jobs
+      summary: Delete a history job
+      description: ''
+      operationId: deleteHistoryJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the history job was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+      security:
+      - basicAuth: []
+  /cmmn-management/jobs:
+    get:
+      tags:
+      - Jobs
+      summary: List jobs
+      description: ''
+      operationId: listJobs
+      parameters:
+      - name: id
+        in: query
+        description: Only return job with the given id
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceId
+        in: query
+        description: Only return jobs part of a case with the given id
+        required: false
+        schema:
+          type: string
+      - name: withoutScopeId
+        in: query
+        description: If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: planItemInstanceId
+        in: query
+        description: Only return jobs part of a plan item instance with the given id
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionId
+        in: query
+        description: Only return jobs with the given case definition id
+        required: false
+        schema:
+          type: string
+      - name: scopeDefinitionId
+        in: query
+        description: Only return jobs with the given scope definition id
+        required: false
+        schema:
+          type: string
+      - name: scopeType
+        in: query
+        description: Only return jobs with the given scope type
+        required: false
+        schema:
+          type: string
+      - name: elementId
+        in: query
+        description: Only return jobs with the given element id
+        required: false
+        schema:
+          type: string
+      - name: elementName
+        in: query
+        description: Only return jobs with the given element name
+        required: false
+        schema:
+          type: string
+      - name: timersOnly
+        in: query
+        description: If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'.
+        required: false
+        schema:
+          type: boolean
+      - name: messagesOnly
+        in: query
+        description: If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'
+        required: false
+        schema:
+          type: boolean
+      - name: withException
+        in: query
+        description: If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: dueBefore
+        in: query
+        description: Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: dueAfter
+        in: query
+        description: Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: exceptionMessage
+        in: query
+        description: Only return jobs with the given exception message
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return jobs with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return jobs with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: locked
+        in: query
+        description: If true, only return jobs which are locked.  If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: unlocked
+        in: query
+        description: If true, only return jobs which are unlocked. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutProcessInstanceId
+        in: query
+        description: If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - dueDate
+          - executionId
+          - processInstanceId
+          - retries
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested jobs were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseJobResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+  /cmmn-management/jobs/{jobId}:
+    get:
+      tags:
+      - Jobs
+      summary: Get a single job
+      description: ''
+      operationId: getJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the job exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse_2'
+        '404':
+          description: Indicates the requested job does not exist.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Jobs
+      summary: Execute a single job
+      description: ''
+      operationId: executeJobAction
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/RestActionRequest'
+      responses:
+        '204':
+          description: Indicates the job was executed. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+        '500':
+          description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Jobs
+      summary: Delete a job
+      description: ''
+      operationId: deleteJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the job was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found..
+      security:
+      - basicAuth: []
+  /cmmn-management/jobs/{jobId}/exception-stacktrace:
+    get:
+      tags:
+      - Jobs
+      summary: Get the exception stacktrace for a job
+      description: ''
+      operationId: getJobStacktrace
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested job was not found and the stacktrace has been returned. The response contains the raw stacktrace and always has a Content-type of text/plain.
+          content:
+            '*/*':
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /cmmn-management/suspended-jobs:
+    get:
+      tags:
+      - Jobs
+      summary: List suspended jobs
+      description: ''
+      operationId: listSuspendedJobs
+      parameters:
+      - name: id
+        in: query
+        description: Only return job with the given id
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceId
+        in: query
+        description: Only return jobs part of a case with the given id
+        required: false
+        schema:
+          type: string
+      - name: withoutScopeId
+        in: query
+        description: If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: planItemInstanceId
+        in: query
+        description: Only return jobs part of a plan item instance with the given id
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionId
+        in: query
+        description: Only return jobs with the given case definition id
+        required: false
+        schema:
+          type: string
+      - name: scopeDefinitionId
+        in: query
+        description: Only return jobs with the given scope definition id
+        required: false
+        schema:
+          type: string
+      - name: scopeType
+        in: query
+        description: Only return jobs with the given scope type
+        required: false
+        schema:
+          type: string
+      - name: elementId
+        in: query
+        description: Only return jobs with the given element id
+        required: false
+        schema:
+          type: string
+      - name: elementName
+        in: query
+        description: Only return jobs with the given element name
+        required: false
+        schema:
+          type: string
+      - name: timersOnly
+        in: query
+        description: If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'.
+        required: false
+        schema:
+          type: boolean
+      - name: messagesOnly
+        in: query
+        description: If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'
+        required: false
+        schema:
+          type: boolean
+      - name: withException
+        in: query
+        description: If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: dueBefore
+        in: query
+        description: Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: dueAfter
+        in: query
+        description: Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: exceptionMessage
+        in: query
+        description: Only return jobs with the given exception message
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return jobs with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return jobs with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: locked
+        in: query
+        description: If true, only return jobs which are locked.  If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: unlocked
+        in: query
+        description: If true, only return jobs which are unlocked. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutProcessInstanceId
+        in: query
+        description: If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - dueDate
+          - executionId
+          - processInstanceId
+          - retries
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested jobs were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseJobResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+  /cmmn-management/suspended-jobs/{jobId}:
+    get:
+      tags:
+      - Jobs
+      summary: Get a single suspended job
+      description: ''
+      operationId: getSuspendedJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the suspended job exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse_2'
+        '404':
+          description: Indicates the requested job does not exist.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Jobs
+      summary: Delete a suspended job
+      description: ''
+      operationId: deleteSuspendedJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the job was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+      security:
+      - basicAuth: []
+  /cmmn-management/suspended-jobs/{jobId}/exception-stacktrace:
+    get:
+      tags:
+      - Jobs
+      summary: Get the exception stacktrace for a suspended job
+      description: ''
+      operationId: getSuspendedJobStacktrace
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested job was not found and the stacktrace has been returned. The response contains the raw stacktrace and always has a Content-type of text/plain.
+          content:
+            '*/*':
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
+      security:
+      - basicAuth: []
+  /cmmn-management/timer-jobs:
+    get:
+      tags:
+      - Jobs
+      summary: List timer jobs
+      description: ''
+      operationId: listTimerJobs
+      parameters:
+      - name: id
+        in: query
+        description: Only return job with the given id
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceId
+        in: query
+        description: Only return jobs part of a case with the given id
+        required: false
+        schema:
+          type: string
+      - name: withoutScopeId
+        in: query
+        description: If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: planItemInstanceId
+        in: query
+        description: Only return jobs part of a plan item instance with the given id
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionId
+        in: query
+        description: Only return jobs with the given case definition id
+        required: false
+        schema:
+          type: string
+      - name: scopeDefinitionId
+        in: query
+        description: (Deprecated; use caseDefinitionId instead) Only return jobs with the given scope definition id
+        required: false
+        schema:
+          type: string
+      - name: scopeType
+        in: query
+        description: Only return jobs with the given scope type
+        required: false
+        schema:
+          type: string
+      - name: elementId
+        in: query
+        description: Only return jobs with the given element id
+        required: false
+        schema:
+          type: string
+      - name: elementName
+        in: query
+        description: Only return jobs with the given element name
+        required: false
+        schema:
+          type: string
+      - name: timersOnly
+        in: query
+        description: If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'.
+        required: false
+        schema:
+          type: boolean
+      - name: messagesOnly
+        in: query
+        description: If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'
+        required: false
+        schema:
+          type: boolean
+      - name: withException
+        in: query
+        description: If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: dueBefore
+        in: query
+        description: Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: dueAfter
+        in: query
+        description: Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: exceptionMessage
+        in: query
+        description: Only return jobs with the given exception message
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return jobs with the given tenantId.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return jobs with a tenantId like the given value.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: locked
+        in: query
+        description: If true, only return jobs which are locked.  If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: unlocked
+        in: query
+        description: If true, only return jobs which are unlocked. If false, this parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: withoutProcessInstanceId
+        in: query
+        description: If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored.
+        required: false
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        description: Property to sort on, to be used together with the order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - dueDate
+          - executionId
+          - processInstanceId
+          - retries
+          - tenantId
+      - name: order
+        in: query
+        description: The sort order, either 'asc' or 'desc'. Defaults to 'asc'.
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Index of the first row to fetch. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Number of rows to fetch, starting from start. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Indicates the requested jobs were returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseJobResponse'
+        '400':
+          description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
+      security:
+      - basicAuth: []
+  /cmmn-management/timer-jobs/{jobId}:
+    get:
+      tags:
+      - Jobs
+      summary: Get a single timer job
+      description: ''
+      operationId: getTimerJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the timer job exists and is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse_2'
+        '404':
+          description: Indicates the requested job does not exist.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Jobs
+      summary: Execute a single job action (move or reschedule)
+      description: ''
+      operationId: executeTimerJobAction
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimerJobActionRequest'
+      responses:
+        '204':
+          description: Indicates the timer job action was executed. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+        '500':
+          description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Jobs
+      summary: Delete a timer job
+      description: ''
+      operationId: deleteTimerJob
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the job was found and has been deleted. Response-body is intentionally empty.
+        '404':
+          description: Indicates the requested job was not found.
+      security:
+      - basicAuth: []
+  /cmmn-management/timer-jobs/{jobId}/exception-stacktrace:
+    get:
+      tags:
+      - Jobs
+      summary: Get the exception stacktrace for a timer job
+      description: ''
+      operationId: getTimerJobStacktrace
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the requested job was not found and the stacktrace has been returned. The response contains the raw stacktrace and always has a Content-type of text/plain.
+          content:
+            '*/*':
+              schema:
+                type: string
+        '404':
+          description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    JobResponse_2:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/management/jobs/8
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-runtime/case-instances/5
+        caseDefinitionId:
+          type: string
+          example: timerCase:1:4
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/timerCase%3A1%3A4
+        planItemInstanceId:
+          type: string
+          example: '7'
+        elementId:
+          type: string
+          example: scriptTask1
+        elementName:
+          type: string
+          example: Script task
+        handlerType:
+          type: string
+          example: cmmn-trigger-timer
+        retries:
+          type: integer
+          format: int32
+          example: 3
+        exceptionMessage:
+          type: string
+          example: 'null'
+        dueDate:
+          type: string
+          format: date-time
+          example: 2023-06-04T22:05:05.474+0000
+        createTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+        lockOwner:
+          type: string
+          example: node1
+        lockExpirationTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+        tenantId:
+          type: string
+          example: 'null'
+    HistoryJobResponse_2:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/management/jobs/8
+        scopeType:
+          type: string
+          example: cmmn
+        retries:
+          type: integer
+          format: int32
+          example: 3
+        exceptionMessage:
+          type: string
+          example: 'null'
+        jobHandlerType:
+          type: string
+          example: async-history
+        jobHandlerConfiguration:
+          type: string
+          example: myCfg
+        advancedJobHandlerConfiguration:
+          type: string
+          example: myAdvancedCfg
+        tenantId:
+          type: string
+          example: 'null'
+        customValues:
+          type: string
+          example: custom value
+        createTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+        lockOwner:
+          type: string
+          example: node1
+        lockExpirationTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+    HistoryJobResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/management/jobs/8
+        scopeType:
+          type: string
+          example: cmmn
+        retries:
+          type: integer
+          format: int32
+          example: 3
+        exceptionMessage:
+          type: string
+          example: 'null'
+        jobHandlerType:
+          type: string
+          example: async-history
+        jobHandlerConfiguration:
+          type: string
+          example: myCfg
+        advancedJobHandlerConfiguration:
+          type: string
+          example: myAdvancedCfg
+        tenantId:
+          type: string
+          example: 'null'
+        customValues:
+          type: string
+          example: custom value
+        createTime:
+          type: string
+          format: date-time
+          example: 2013-06-03T22:05:05.474+0000
+        lockOwner:
+          type: string
+          example: node1
+        lockExpirationTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+    RestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+    JobResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/management/jobs/8
+        correlationId:
+          type: string
+          example: '50'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/runtime/process-instances/5
+        processDefinitionId:
+          type: string
+          example: timerProcess:1:4
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/timerProcess%3A1%3A4
+        executionId:
+          type: string
+          example: '7'
+        executionUrl:
+          type: string
+          example: http://localhost:8182/runtime/executions/7
+        elementId:
+          type: string
+          example: timer
+        elementName:
+          type: string
+          example: Timer task
+        handlerType:
+          type: string
+          example: trigger-timer
+        retries:
+          type: integer
+          format: int32
+          example: 3
+        exceptionMessage:
+          type: string
+          example: 'null'
+        dueDate:
+          type: string
+          format: date-time
+          example: 2023-06-04T22:05:05.474+0000
+        createTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+        lockOwner:
+          type: string
+          example: node1
+        lockExpirationTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+        tenantId:
+          type: string
+          example: 'null'
+    DataResponseHistoryJobResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoryJobResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponseJobResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    TimerJobActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        dueDate:
+          type: string
+    BulkMoveDeadLetterActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        jobIds:
+          type: array
+          items:
+            type: string
+  requestBodies:
+    RestActionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestActionRequest'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

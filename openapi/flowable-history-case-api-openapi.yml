@@ -1,0 +1,810 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens History Case API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: History Case
+paths:
+  /cmmn-history/historic-case-instances:
+    get:
+      tags:
+      - History Case
+      summary: List of historic case instances
+      description: ''
+      operationId: listHistoricCaseInstances
+      parameters:
+      - name: caseInstanceId
+        in: query
+        description: An id of the historic case instance.
+        required: false
+        schema:
+          type: string
+      - name: caseInstanceIds
+        in: query
+        description: Only return historic case instances with the given comma-separated ids.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionKey
+        in: query
+        description: The case definition key of the historic case instance.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionKeyLike
+        in: query
+        description: Only return historic case instances like the given case definition key.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionKeyLikeIgnoreCase
+        in: query
+        description: Only return historic case instances like the given case definition key, ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionId
+        in: query
+        description: The case definition id of the historic case instance.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionCategory
+        in: query
+        description: Only return historic case instances with the given case definition category.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionCategoryLike
+        in: query
+        description: Only return historic case instances like the given case definition category.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionCategoryLikeIgnoreCase
+        in: query
+        description: Only return historic case instances like the given case definition category, ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionName
+        in: query
+        description: Only return historic case instances with the given case definition name.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionNameLike
+        in: query
+        description: Only return historic case instances like the given case definition name.
+        required: false
+        schema:
+          type: string
+      - name: caseDefinitionNameLikeIgnoreCase
+        in: query
+        description: Only return historic case instances like the given case definition name, ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Only return historic case instances with the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLike
+        in: query
+        description: Only return historic case instances like the given name.
+        required: false
+        schema:
+          type: string
+      - name: nameLikeIgnoreCase
+        in: query
+        description: Only return historic case instances like the given name ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: rootScopeId
+        in: query
+        description: Only return case instances which have the given root scope id (that can be a process or case instance ID).
+        required: false
+        schema:
+          type: string
+      - name: parentScopeId
+        in: query
+        description: Only return case instances which have the given parent scope id (that can be a process or case instance ID).
+        required: false
+        schema:
+          type: string
+      - name: businessKey
+        in: query
+        description: The business key of the historic case instance.
+        required: false
+        schema:
+          type: string
+      - name: businessKeyLike
+        in: query
+        description: Only return historic case instances like the given business key.
+        required: false
+        schema:
+          type: string
+      - name: businessKeyLikeIgnoreCase
+        in: query
+        description: Only return historic case instances like the given business key, ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: businessStatus
+        in: query
+        description: The business status of the historic case instance.
+        required: false
+        schema:
+          type: string
+      - name: businessStatusLike
+        in: query
+        description: Only return historic case instances like the given business status.
+        required: false
+        schema:
+          type: string
+      - name: businessStatusLikeIgnoreCase
+        in: query
+        description: Only return historic case instances like the given business status, ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: involvedUser
+        in: query
+        description: An involved user of the historic case instance.
+        required: false
+        schema:
+          type: string
+      - name: finished
+        in: query
+        description: Indication if the historic case instance is finished.
+        required: false
+        schema:
+          type: boolean
+      - name: finishedAfter
+        in: query
+        description: Return only historic case instances that were finished after this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: finishedBefore
+        in: query
+        description: Return only historic case instances that were finished before this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: startedAfter
+        in: query
+        description: Return only historic case instances that were started after this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: startedBefore
+        in: query
+        description: Return only historic case instances that were started before this date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: startedBy
+        in: query
+        description: Return only historic case instances that were started by this user.
+        required: false
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: Only return historic case instances with the given state.
+        required: false
+        schema:
+          type: string
+      - name: callbackId
+        in: query
+        description: Only return historic case instances which have the given callback id.
+        required: false
+        schema:
+          type: string
+      - name: callbackType
+        in: query
+        description: Only return historic case instances which have the given callback type.
+        required: false
+        schema:
+          type: string
+      - name: parentCaseInstanceId
+        in: query
+        description: Only return historic case instances which have the given parent case instance id.
+        required: false
+        schema:
+          type: string
+      - name: referenceId
+        in: query
+        description: Only return historic case instances which have the given reference id.
+        required: false
+        schema:
+          type: string
+      - name: referenceType
+        in: query
+        description: Only return historic case instances which have the given reference type.
+        required: false
+        schema:
+          type: string
+      - name: lastReactivatedBy
+        in: query
+        description: Only return historic case instances last reactived by the given user.
+        required: false
+        schema:
+          type: string
+      - name: lastReactivatedBefore
+        in: query
+        description: Only return historic case instances last reactivated before the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: lastReactivatedAfter
+        in: query
+        description: Only return historic case instances last reactivated after the given date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: activePlanItemDefinitionId
+        in: query
+        description: Only return historic case instances that have an active plan item instance with the given plan item definition id.
+        required: false
+        schema:
+          type: string
+      - name: includeCaseVariables
+        in: query
+        description: An indication if the historic case instance variables should be returned as well.
+        required: false
+        schema:
+          type: boolean
+      - name: includeCaseVariablesName
+        in: query
+        description: Indication to include case variables with the given names in the result.
+        required: false
+        schema:
+          type: string
+      - name: tenantId
+        in: query
+        description: Only return instances with the given tenant id.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLike
+        in: query
+        description: Only return instances like the given tenant id.
+        required: false
+        schema:
+          type: string
+      - name: tenantIdLikeIgnoreCase
+        in: query
+        description: Only return instances like the given tenant id, ignoring case.
+        required: false
+        schema:
+          type: string
+      - name: withoutTenantId
+        in: query
+        description: 'If true, only returns instances without a tenantId set. If false, the withoutTenantId parameter is ignored.
+
+          '
+        required: false
+        schema:
+          type: boolean
+      - name: withoutCaseInstanceParentId
+        in: query
+        description: 'If true, only returns instances without a parent set. If false, the withoutCaseInstanceParentId parameter is ignored.
+
+          '
+        required: false
+        schema:
+          type: boolean
+      - name: withoutCaseInstanceCallbackId
+        in: query
+        description: 'If true, only returns instances without a callbackId set. If false, the withoutCaseInstanceCallbackId parameter is ignored.
+
+          '
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Indicates that historic case instances could be queried.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricCaseInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+  /cmmn-history/historic-case-instances/{caseInstanceId}:
+    get:
+      tags:
+      - History Case
+      summary: Get a historic case instance
+      description: ''
+      operationId: getHistoricCaseInstance
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates that the historic process instances could be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricCaseInstanceResponse'
+        '404':
+          description: Indicates that the historic process instances could not be found.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - History Case
+      summary: ' Delete a historic case instance'
+      description: ''
+      operationId: deleteHistoricCaseInstance
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates that the historic process instance was deleted.
+        '404':
+          description: Indicates that the historic process instance could not be found.
+      security:
+      - basicAuth: []
+  /cmmn-history/historic-case-instances/{caseInstanceId}/identitylinks:
+    get:
+      tags:
+      - History Case
+      summary: List identity links of a historic case instance
+      description: ''
+      operationId: listHistoricCaseInstanceIdentityLinks
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates request was successful and the identity links are returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoricIdentityLinkResponse'
+        '404':
+          description: Indicates the process instance could not be found..
+      security:
+      - basicAuth: []
+  /cmmn-history/historic-case-instances/{caseInstanceId}/migrate:
+    post:
+      tags:
+      - History Case
+      summary: Migrate historic case instance
+      description: ''
+      operationId: migrateHistoricCaseInstance
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/migrateHistoricCaseInstanceBody'
+      responses:
+        '200':
+          description: Indicates the historiccase instance was found and migration was executed.
+        '404':
+          description: Indicates the requested historic case instance was not found.
+      security:
+      - basicAuth: []
+  /cmmn-history/historic-case-instances/{caseInstanceId}/stage-overview:
+    get:
+      tags:
+      - History Case
+      summary: Get a stage overview of historic case instance
+      description: ''
+      operationId: getHistoricStageOverview
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates that the historic case instance was found.
+        '204':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StageResponse'
+        '404':
+          description: Indicates that the historic case instance could not be found.
+      security:
+      - basicAuth: []
+  /cmmn-query/historic-case-instances:
+    post:
+      tags:
+      - History Case
+      summary: Query for historic case instances
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic case instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.
+      operationId: queryHistoricCaseInstance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricCaseInstanceQueryRequest'
+        x-s2o-overloaded: true
+      responses:
+        '200':
+          description: Indicates request was successful and the case instances are returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponseHistoricCaseInstanceResponse'
+        '400':
+          description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
+      security:
+      - basicAuth: []
+      x-s2o-warning: Operation queryHistoricCaseInstance has multiple requestBodies
+components:
+  schemas:
+    StageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        ended:
+          type: boolean
+        endTime:
+          type: string
+          format: date-time
+        current:
+          type: boolean
+    HistoricIdentityLinkResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: participant
+        userId:
+          type: string
+          example: kermit
+        groupId:
+          type: string
+          example: sales
+        taskId:
+          type: string
+          example: 'null'
+        taskUrl:
+          type: string
+          example: 'null'
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
+    HistoricCaseInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionKey:
+          type: string
+        caseDefinitionKeyLike:
+          type: string
+        caseDefinitionKeyLikeIgnoreCase:
+          type: string
+        caseDefinitionKeys:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        excludeCaseDefinitionKeys:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseDefinitionCategory:
+          type: string
+        caseDefinitionCategoryLike:
+          type: string
+        caseDefinitionCategoryLikeIgnoreCase:
+          type: string
+        caseDefinitionName:
+          type: string
+        caseDefinitionNameLike:
+          type: string
+        caseDefinitionNameLikeIgnoreCase:
+          type: string
+        caseBusinessKey:
+          type: string
+        caseInstanceName:
+          type: string
+        caseInstanceNameLike:
+          type: string
+        caseInstanceNameLikeIgnoreCase:
+          type: string
+        caseInstanceRootScopeId:
+          type: string
+        caseInstanceParentScopeId:
+          type: string
+        caseInstanceBusinessKey:
+          type: string
+        caseInstanceBusinessKeyLike:
+          type: string
+        caseInstanceBusinessKeyLikeIgnoreCase:
+          type: string
+        caseInstanceBusinessStatus:
+          type: string
+        caseInstanceBusinessStatusLike:
+          type: string
+        caseInstanceBusinessStatusLikeIgnoreCase:
+          type: string
+        caseInstanceParentId:
+          type: string
+        caseInstanceState:
+          type: string
+        caseInstanceCallbackId:
+          type: string
+        caseInstanceCallbackIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseInstanceCallbackType:
+          type: string
+        parentCaseInstanceId:
+          type: string
+        caseInstanceReferenceId:
+          type: string
+        caseInstanceReferenceType:
+          type: string
+        finished:
+          type: boolean
+        involvedUser:
+          type: string
+        finishedAfter:
+          type: string
+          format: date-time
+        finishedBefore:
+          type: string
+          format: date-time
+        startedAfter:
+          type: string
+          format: date-time
+        startedBefore:
+          type: string
+          format: date-time
+        startedBy:
+          type: string
+        finishedBy:
+          type: string
+        lastReactivatedBy:
+          type: string
+        lastReactivatedBefore:
+          type: string
+          format: date-time
+        lastReactivatedAfter:
+          type: string
+          format: date-time
+        activePlanItemDefinitionId:
+          type: string
+        activePlanItemDefinitionIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        includeCaseVariables:
+          type: boolean
+        includeCaseVariablesNames:
+          type: array
+          items:
+            type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        tenantId:
+          type: string
+        tenantIdLike:
+          type: string
+        tenantIdLikeIgnoreCase:
+          type: string
+        withoutTenantId:
+          type: boolean
+        withoutCaseInstanceParentId:
+          type: boolean
+        withoutCaseInstanceCallbackId:
+          type: boolean
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    DataResponseHistoricCaseInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricCaseInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricCaseInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
+        name:
+          type: string
+          example: myName
+        businessKey:
+          type: string
+          example: myKey
+        businessStatus:
+          type: string
+          example: myStatus
+        caseDefinitionId:
+          type: string
+          example: oneTaskCase%3A1%3A4
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/oneTaskCaseProcess%3A1%3A4
+        caseDefinitionName:
+          type: string
+          example: aCaseDefinitionName
+        caseDefinitionDescription:
+          type: string
+          example: A case definition description
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endTime:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        startUserId:
+          type: string
+          example: kermit
+        endUserId:
+          type: string
+          example: kermit
+        superProcessInstanceId:
+          type: string
+          example: '3'
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
+          type: string
+          example: 'null'
+        state:
+          type: string
+          example: active
+        callbackId:
+          type: string
+          example: '123'
+        callbackType:
+          type: string
+          example: cmmn-1.1-to-cmmn-1.1-child-case
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-cmmn-1.1-case
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+  requestBodies:
+    migrateHistoricCaseInstanceBody:
+      content:
+        application/json:
+          schema:
+            type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

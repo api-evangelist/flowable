@@ -1,0 +1,158 @@
+openapi: 3.0.0
+info:
+  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  version: v1
+  title: Flowable REST Access Tokens Case Instance Identity Links API
+  contact:
+    name: Flowable
+    url: http://www.flowable.org/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: /flowable-rest/service
+tags:
+- name: Case Instance Identity Links
+paths:
+  /cmmn-runtime/case-instances/{caseInstanceId}/identitylinks:
+    get:
+      tags:
+      - Case Instance Identity Links
+      summary: Get involved people for case instance
+      description: Note that the groupId in Response Body will always be null, as it’s only possible to involve users with a case instance.
+      operationId: listCaseInstanceIdentityLinks
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the case instance was found and links are returned.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested case instance was not found.
+      security:
+      - basicAuth: []
+    post:
+      tags:
+      - Case Instance Identity Links
+      summary: Add an involved user to a case instance
+      description: Note that the groupId in Response Body will always be null, as it’s only possible to involve users with a case instance.
+      operationId: createCaseInstanceIdentityLinks
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/RestIdentityLink'
+      responses:
+        '201':
+          description: Indicates the case instance was found and the link is created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestIdentityLink'
+        '400':
+          description: Indicates the requested body did not contain a userId or a type.
+        '404':
+          description: Indicates the requested case instance was not found.
+      security:
+      - basicAuth: []
+  /cmmn-runtime/case-instances/{caseInstanceId}/identitylinks/users/{identityId}/{type}:
+    get:
+      tags:
+      - Case Instance Identity Links
+      summary: Get a specific involved people from case instance
+      description: ''
+      operationId: getCaseInstanceIdentityLinks
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identityId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicates the case instance was found and the specified link is retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestIdentityLink'
+        '404':
+          description: Indicates the requested case instance was not found or the link to delete does not exist. The response status contains additional information about the error.
+      security:
+      - basicAuth: []
+    delete:
+      tags:
+      - Case Instance Identity Links
+      summary: Remove an involved user to from case instance
+      description: ''
+      operationId: deleteCaseInstanceIdentityLinks
+      parameters:
+      - name: caseInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: identityId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates the case instance was found and the link has been deleted. Response body is left empty intentionally.
+        '404':
+          description: Indicates the requested case instance was not found or the link to delete does not exist. The response status contains additional information about the error.
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    RestIdentityLink:
+      type: object
+      properties:
+        url:
+          type: string
+        user:
+          type: string
+          example: kermit
+        group:
+          type: string
+          example: sales
+        type:
+          type: string
+          example: candidate
+  requestBodies:
+    RestIdentityLink:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestIdentityLink'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
