@@ -7,7 +7,20 @@ description: >-
   together. It provides BPMN, CMMN, and DMN automation engines via Java and
   REST APIs, with enterprise offerings for regulated industries.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/flowable.png
 url: https://raw.githubusercontent.com/api-evangelist/flowable/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -24,128 +37,1040 @@ tags:
   - Open Source
   - REST API
 apis:
-  - name: Flowable BPMN API
-    description: >-
-      REST API for the BPMN process engine covering deployments, process
-      definitions, process instances, runtime executions, and user tasks with
-      full lifecycle management including suspend, activate, and variable
-      management.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
-    baseURL: https://your-server/process-api
-    tags:
-      - BPMN
-      - Process
-      - Workflow
-    properties:
-      - type: Documentation
-        url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
-      - type: Swagger
-        url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
-      - type: OpenAPI
-        url: openapi/flowable-bpmn-openapi.yml
-  - name: Flowable CMMN API
-    description: >-
-      REST API for the CMMN case engine supporting case definitions, case
-      instances, plan items, milestones, and case variables for adaptive,
-      event-driven case management scenarios.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://documentation.flowable.com/latest/develop/core-swagger
-    baseURL: https://your-server/cmmn-api
-    tags:
-      - CMMN
-      - Case Management
-      - Workflow
-    properties:
-      - type: Documentation
-        url: https://documentation.flowable.com/latest/develop/core-swagger
-      - type: OpenAPI
-        url: openapi/flowable-cmmn-openapi.yml
-  - name: Flowable DMN API
-    description: >-
-      REST API for the DMN rules engine enabling deployment and execution of
-      decision tables, single and multi-result decision execution, and
-      management of decision definitions and deployments.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://documentation.flowable.com/latest/develop/core-swagger
-    baseURL: https://your-server/dmn-api
-    tags:
-      - DMN
-      - Rules Engine
-      - Decision Management
-    properties:
-      - type: Documentation
-        url: https://documentation.flowable.com/latest/develop/core-swagger
-      - type: OpenAPI
-        url: openapi/flowable-dmn-openapi.yml
-  - name: Flowable Form API
-    description: >-
-      REST API for managing form definitions and submissions in Flowable,
-      enabling rendering, completion, and retrieval of forms associated with
-      process and case tasks.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://documentation.flowable.com/latest/develop/core-swagger
-    baseURL: https://your-server/form-api
-    tags:
-      - Forms
-      - Workflow
-    properties:
-      - type: Documentation
-        url: https://documentation.flowable.com/latest/develop/core-swagger
-      - type: OpenAPI
-        url: openapi/flowable-form-openapi.yml
-  - name: Flowable Content API
-    description: >-
-      REST API for managing content items and attachments within Flowable,
-      supporting binary content storage, retrieval, and association with tasks
-      and process instances.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://documentation.flowable.com/latest/develop/core-swagger
-    baseURL: https://your-server/content-api
-    tags:
-      - Content
-      - Attachments
-      - Storage
-    properties:
-      - type: Documentation
-        url: https://documentation.flowable.com/latest/develop/core-swagger
-      - type: OpenAPI
-        url: openapi/flowable-content-openapi.yml
-  - name: Flowable IDM API
-    description: >-
-      REST API for Identity Management in Flowable covering users, groups,
-      privileges, and tokens for authentication and authorization within the
-      platform.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://documentation.flowable.com/latest/develop/core-swagger
-    baseURL: https://your-server/idm-api
-    tags:
-      - Identity
-      - Users
-      - Groups
-      - Authentication
-    properties:
-      - type: Documentation
-        url: https://documentation.flowable.com/latest/develop/core-swagger
-      - type: OpenAPI
-        url: openapi/flowable-idm-openapi.yml
-  - name: Flowable External Worker API
-    description: >-
-      REST API enabling external worker clients written in Java, Python,
-      JavaScript/TypeScript, Go, or .NET to acquire and complete external
-      service tasks from a Flowable process engine instance.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://documentation.flowable.com/latest/develop/core-swagger
-    baseURL: https://your-server/external-job-api
-    tags:
-      - External Worker
-      - Integration
-      - Service Tasks
-    properties:
-      - type: Documentation
-        url: https://documentation.flowable.com/latest/develop/core-swagger
-      - type: OpenAPI
-        url: openapi/flowable-external-worker-openapi.yml
+- aid: flowable:flowable-access-tokens-api
+  name: Flowable Access Tokens API
+  description: The Access Tokens API from Flowable — 2 operation(s) for access tokens.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Access Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-access-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-accounts-api
+  name: Flowable Accounts API
+  description: The Accounts API from Flowable — 1 operation(s) for accounts.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-acquire-and-execute-api
+  name: Flowable Acquire and Execute API
+  description: The Acquire and Execute API from Flowable — 5 operation(s) for acquire and execute.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Acquire and Execute
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-acquire-and-execute-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-batch-parts-api
+  name: Flowable Batch parts API
+  description: The Batch parts API from Flowable — 1 operation(s) for batch parts.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Batch parts
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-batch-parts-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-batches-api
+  name: Flowable Batches API
+  description: The Batches API from Flowable — 5 operation(s) for batches.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Batches
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-batches-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-case-definitions-api
+  name: Flowable Case Definitions API
+  description: The Case Definitions API from Flowable — 16 operation(s) for case definitions.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Case Definitions
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-case-definitions-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-case-instance-identity-links-api
+  name: Flowable Case Instance Identity Links API
+  description: >-
+    The Case Instance Identity Links API from Flowable — 2 operation(s) for case instance identity links.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Case Instance Identity Links
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-case-instance-identity-links-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-case-instance-variables-api
+  name: Flowable Case Instance Variables API
+  description: >-
+    The Case Instance Variables API from Flowable — 5 operation(s) for case instance variables.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Case Instance Variables
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-case-instance-variables-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-case-instances-api
+  name: Flowable Case Instances API
+  description: The Case Instances API from Flowable — 9 operation(s) for case instances.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Case Instances
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-case-instances-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-cmmn-engine-api
+  name: Flowable Cmmn Engine API
+  description: The Cmmn Engine API from Flowable — 1 operation(s) for cmmn engine.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Cmmn Engine
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-cmmn-engine-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-contact-filters-api
+  name: Flowable Contact Filters API
+  description: The Contact Filters API from Flowable — 2 operation(s) for contact filters.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Contact Filters
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-contact-filters-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-content-item-api
+  name: Flowable Content item API
+  description: The Content item API from Flowable — 11 operation(s) for content item.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Content item
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-content-item-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-content-item-metadata-api
+  name: Flowable Content item metadata API
+  description: The Content item metadata API from Flowable — 2 operation(s) for content item metadata.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Content item metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-content-item-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-current-user-api
+  name: Flowable Current User API
+  description: The Current User API from Flowable — 5 operation(s) for current user.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Current User
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-current-user-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-database-tables-api
+  name: Flowable Database tables API
+  description: The Database tables API from Flowable — 4 operation(s) for database tables.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Database tables
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-database-tables-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-decision-tables-api
+  name: Flowable Decision Tables API
+  description: The Decision Tables API from Flowable — 4 operation(s) for decision tables.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Decision Tables
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-decision-tables-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-decisions-api
+  name: Flowable Decisions API
+  description: The Decisions API from Flowable — 5 operation(s) for decisions.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Decisions
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-decisions-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-deployment-api
+  name: Flowable Deployment API
+  description: The Deployment API from Flowable — 18 operation(s) for deployment.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Deployment
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-deployment-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-dmn-decision-service-api
+  name: Flowable DMN Decision Service API
+  description: The DMN Decision Service API from Flowable — 4 operation(s) for dmn decision service.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - DMN Decision Service
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-dmn-decision-service-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-dmn-rule-service-api
+  name: Flowable DMN Rule Service API
+  description: The DMN Rule Service API from Flowable — 2 operation(s) for dmn rule service.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - DMN Rule Service
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-dmn-rule-service-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-document-definitions-api
+  name: Flowable Document Definitions API
+  description: The Document Definitions API from Flowable — 4 operation(s) for document definitions.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Document Definitions
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-document-definitions-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-engine-api
+  name: Flowable Engine API
+  description: The Engine API from Flowable — 6 operation(s) for engine.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Engine
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-engine-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-engineproperties-api
+  name: Flowable EngineProperties API
+  description: The EngineProperties API from Flowable — 2 operation(s) for engineproperties.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - EngineProperties
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-engineproperties-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-event-subscriptions-api
+  name: Flowable Event subscriptions API
+  description: The Event subscriptions API from Flowable — 4 operation(s) for event subscriptions.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Event subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-event-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-executions-api
+  name: Flowable Executions API
+  description: The Executions API from Flowable — 10 operation(s) for executions.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Executions
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-executions-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-form-definitions-api
+  name: Flowable Form Definitions API
+  description: The Form Definitions API from Flowable — 6 operation(s) for form definitions.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Form Definitions
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-form-definitions-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-form-deployments-api
+  name: Flowable Form Deployments API
+  description: The Form Deployments API from Flowable — 3 operation(s) for form deployments.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Form Deployments
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-form-deployments-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-form-instance-models-api
+  name: Flowable Form Instance Models API
+  description: The Form Instance Models API from Flowable — 1 operation(s) for form instance models.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Form Instance Models
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-form-instance-models-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-form-instances-api
+  name: Flowable Form Instances API
+  description: The Form Instances API from Flowable — 4 operation(s) for form instances.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Form Instances
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-form-instances-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-form-models-api
+  name: Flowable Form Models API
+  description: The Form Models API from Flowable — 1 operation(s) for form models.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Form Models
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-form-models-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-forms-api
+  name: Flowable Forms API
+  description: The Forms API from Flowable — 1 operation(s) for forms.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Forms
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-forms-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-groups-api
+  name: Flowable Groups API
+  description: The Groups API from Flowable — 9 operation(s) for groups.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-groups-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-historic-decision-executions-api
+  name: Flowable Historic Decision Executions API
+  description: >-
+    The Historic Decision Executions API from Flowable — 3 operation(s) for historic decision executions.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Historic Decision Executions
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-historic-decision-executions-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-history-api
+  name: Flowable History API
+  description: The History API from Flowable — 17 operation(s) for history.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - History
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-history-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-history-case-api
+  name: Flowable History Case API
+  description: The History Case API from Flowable — 6 operation(s) for history case.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - History Case
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-history-case-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-history-milestone-api
+  name: Flowable History Milestone API
+  description: The History Milestone API from Flowable — 3 operation(s) for history milestone.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - History Milestone
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-history-milestone-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-history-planitem-api
+  name: Flowable History PlanItem API
+  description: The History PlanItem API from Flowable — 3 operation(s) for history planitem.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - History PlanItem
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-history-planitem-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-history-process-api
+  name: Flowable History Process API
+  description: The History Process API from Flowable — 8 operation(s) for history process.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - History Process
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-history-process-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-history-task-api
+  name: Flowable History Task API
+  description: The History Task API from Flowable — 11 operation(s) for history task.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - History Task
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-history-task-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-info-and-query-api
+  name: Flowable Info and Query API
+  description: The Info and Query API from Flowable — 2 operation(s) for info and query.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Info and Query
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-info-and-query-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-jobs-api
+  name: Flowable Jobs API
+  description: The Jobs API from Flowable — 28 operation(s) for jobs.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-manage-history-case-instances-api
+  name: Flowable Manage History Case Instances API
+  description: >-
+    The Manage History Case Instances API from Flowable — 1 operation(s) for manage history case instances.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Manage History Case Instances
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-manage-history-case-instances-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-manage-history-process-instances-api
+  name: Flowable Manage History Process Instances API
+  description: >-
+    The Manage History Process Instances API from Flowable — 1 operation(s) for manage history process
+    instances.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Manage History Process Instances
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-manage-history-process-instances-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-models-api
+  name: Flowable Models API
+  description: The Models API from Flowable — 4 operation(s) for models.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-models-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-plan-item-instance-variables-api
+  name: Flowable Plan Item Instance Variables API
+  description: >-
+    The Plan Item Instance Variables API from Flowable — 1 operation(s) for plan item instance variables.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Plan Item Instance Variables
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-plan-item-instance-variables-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-plan-item-instances-api
+  name: Flowable Plan Item Instances API
+  description: The Plan Item Instances API from Flowable — 7 operation(s) for plan item instances.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Plan Item Instances
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-plan-item-instances-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-privileges-api
+  name: Flowable Privileges API
+  description: The Privileges API from Flowable — 6 operation(s) for privileges.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Privileges
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-privileges-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-process-definitions-api
+  name: Flowable Process Definitions API
+  description: The Process Definitions API from Flowable — 13 operation(s) for process definitions.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Process Definitions
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-process-definitions-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-process-instance-identity-links-api
+  name: Flowable Process Instance Identity Links API
+  description: >-
+    The Process Instance Identity Links API from Flowable — 2 operation(s) for process instance identity
+    links.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Process Instance Identity Links
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-process-instance-identity-links-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-process-instance-variables-api
+  name: Flowable Process Instance Variables API
+  description: >-
+    The Process Instance Variables API from Flowable — 5 operation(s) for process instance variables.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Process Instance Variables
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-process-instance-variables-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-process-instances-api
+  name: Flowable Process Instances API
+  description: The Process Instances API from Flowable — 9 operation(s) for process instances.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Process Instances
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-process-instances-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-query-api
+  name: Flowable Query API
+  description: The Query API from Flowable — 23 operation(s) for query.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Query
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-query-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-rendition-item-api
+  name: Flowable Rendition item API
+  description: The Rendition item API from Flowable — 6 operation(s) for rendition item.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Rendition item
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-rendition-item-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-runtime-api
+  name: Flowable Runtime API
+  description: The Runtime API from Flowable — 5 operation(s) for runtime.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Runtime
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-runtime-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-task-attachments-api
+  name: Flowable Task Attachments API
+  description: The Task Attachments API from Flowable — 3 operation(s) for task attachments.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Task Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-task-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-task-comments-api
+  name: Flowable Task Comments API
+  description: The Task Comments API from Flowable — 2 operation(s) for task comments.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Task Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-task-comments-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-task-identity-links-api
+  name: Flowable Task Identity Links API
+  description: The Task Identity Links API from Flowable — 6 operation(s) for task identity links.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Task Identity Links
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-task-identity-links-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-task-variables-api
+  name: Flowable Task Variables API
+  description: The Task Variables API from Flowable — 6 operation(s) for task variables.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Task Variables
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-task-variables-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-tasks-api
+  name: Flowable Tasks API
+  description: The Tasks API from Flowable — 14 operation(s) for tasks.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-tenants-api
+  name: Flowable Tenants API
+  description: The Tenants API from Flowable — 1 operation(s) for tenants.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Tenants
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-tenants-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-unacquire-api
+  name: Flowable Unacquire API
+  description: The Unacquire API from Flowable — 2 operation(s) for unacquire.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Unacquire
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-unacquire-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-user-admin-api
+  name: Flowable User Admin API
+  description: The User Admin API from Flowable — 2 operation(s) for user admin.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - User Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-user-admin-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-user-definitions-api
+  name: Flowable User Definitions API
+  description: The User Definitions API from Flowable — 4 operation(s) for user definitions.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - User Definitions
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-user-definitions-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
+- aid: flowable:flowable-users-api
+  name: Flowable Users API
+  description: The Users API from Flowable — 20 operation(s) for users.
+  humanURL: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  baseURL: https://your-server/process-api
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/flowable-users-api-openapi.yml
+  - type: Documentation
+    url: https://www.flowable.com/open-source/docs/bpmn/ch14-REST
+  - type: Swagger
+    url: https://documentation.flowable.com/latest/assets/core-swagger/bpmn.html
+  - type: Documentation
+    url: https://documentation.flowable.com/latest/develop/core-swagger
 common:
   - type: AgenticAccess
     url: agentic-access/flowable-agentic-access.yml
