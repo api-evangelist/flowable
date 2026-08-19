@@ -1,0 +1,583 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Process Instances API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Process Instances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query process instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/query/process-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The request body can contain all possible filters that can be used in the List process instances URL query. On top of these, it’s possible to provide an array of variables to include in the query, with their format described here.\n\nThe general paging and sorting query-parameters can be used for this URL."
+        },
+        {
+          "info": {
+            "name": "List process instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/process-instances",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given version."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given name."
+              },
+              {
+                "name": "nameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances like the given name."
+              },
+              {
+                "name": "nameLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances like the given name ignoring case."
+              },
+              {
+                "name": "processDefinitionName",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given process definition name."
+              },
+              {
+                "name": "processDefinitionNameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances like the given process definition name."
+              },
+              {
+                "name": "processDefinitionNameLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances like the given process definition name ignoring case."
+              },
+              {
+                "name": "processDefinitionKey",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given process definition key."
+              },
+              {
+                "name": "processDefinitionKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances like the given process definition key."
+              },
+              {
+                "name": "processDefinitionKeyLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances like the given process definition key ignoring case."
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given process definition id."
+              },
+              {
+                "name": "processDefinitionCategory",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given process definition category."
+              },
+              {
+                "name": "processDefinitionCategoryLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances like the given process definition category."
+              },
+              {
+                "name": "processDefinitionCategoryLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances like the given process definition category ignoring case."
+              },
+              {
+                "name": "processDefinitionVersion",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given process definition version."
+              },
+              {
+                "name": "processDefinitionEngineVersion",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given process definition engine version."
+              },
+              {
+                "name": "businessKey",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given business key."
+              },
+              {
+                "name": "businessKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the business key like the given key."
+              },
+              {
+                "name": "businessKeyLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the business key like the given key ignoring case."
+              },
+              {
+                "name": "businessStatus",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given business status."
+              },
+              {
+                "name": "businessStatusLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the business status like the given status."
+              },
+              {
+                "name": "businessStatusLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the business status like the given status ignoring case."
+              },
+              {
+                "name": "startedBy",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances started by the given user."
+              },
+              {
+                "name": "startedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances started before the given date."
+              },
+              {
+                "name": "startedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances started after the given date."
+              },
+              {
+                "name": "activeActivityId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances which have an active activity instance with the provided activity id."
+              },
+              {
+                "name": "involvedUser",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances in which the given user is involved."
+              },
+              {
+                "name": "suspended",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return process instance which are suspended. If false, only return process instances which are not suspended (active)."
+              },
+              {
+                "name": "superProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances which have the given super process-instance id (for processes that have a call-activities)."
+              },
+              {
+                "name": "rootScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances which have the given root scope id (that can be a process or case instance ID)."
+              },
+              {
+                "name": "parentScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances which have the given parent scope id (that can be a process or case instance ID)."
+              },
+              {
+                "name": "subProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances which have the given sub process-instance id (for processes started as a call-activity)."
+              },
+              {
+                "name": "excludeSubprocesses",
+                "value": "",
+                "type": "query",
+                "description": "Return only process instances which are not sub processes."
+              },
+              {
+                "name": "includeProcessVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to include process variables in the result."
+              },
+              {
+                "name": "includeProcessVariablesName",
+                "value": "",
+                "type": "query",
+                "description": "Indication to include process variables with the given names in the result."
+              },
+              {
+                "name": "callbackId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given callbackId."
+              },
+              {
+                "name": "callbackIds",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given callbackIds."
+              },
+              {
+                "name": "callbackType",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given callbackType."
+              },
+              {
+                "name": "parentCaseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given parent case instance id."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with the given tenant id."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with a tenant id like the given value."
+              },
+              {
+                "name": "tenantIdLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances with a tenant id like the given value ignoring case."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns process instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List process instances"
+        },
+        {
+          "info": {
+            "name": "Start a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/runtime/process-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Note that also a *transientVariables* property is accepted as part of this json, that follows the same structure as the *variables* property.\n\nOnly one of *processDefinitionId*, *processDefinitionKey* or *message* can be used in the request body. \n\nParameters *businessKey*, *variables* and *tenantId* are optional.\n\nIf tenantId is omitted, the default tenant will be used.\n\n It is possible to send variables, transientVariables and startFormVariables in one request.\n\nMore information about the vari"
+        },
+        {
+          "info": {
+            "name": "Bulk delete process instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/runtime/process-instances/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Bulk delete process instances"
+        },
+        {
+          "info": {
+            "name": "Get a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a process instance"
+        },
+        {
+          "info": {
+            "name": "Update process instance properties or execute an action on a process instance (body needs to contain an 'action' property for the latter).",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Update process instance properties or execute an action on a process instance (body needs to contain an 'action' property for the latter)."
+        },
+        {
+          "info": {
+            "name": "Delete a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deleteReason",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a process instance"
+        },
+        {
+          "info": {
+            "name": "Change the state a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/change-state",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Change the state a process instance"
+        },
+        {
+          "info": {
+            "name": "Get diagram for a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/diagram",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get diagram for a process instance"
+        },
+        {
+          "info": {
+            "name": "Evaluate the conditions of a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/evaluate-conditions",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Evaluate the conditions of a process instance"
+        },
+        {
+          "info": {
+            "name": "Inject activity in a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/inject",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Inject activity in a process instance"
+        },
+        {
+          "info": {
+            "name": "Migrate process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/migrate",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Migrate process instance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

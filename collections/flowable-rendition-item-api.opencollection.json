@@ -1,0 +1,391 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Rendition item API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rendition item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Save the rendition item data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/content-service/rendition-items/:renditionItemId/data",
+            "params": [
+              {
+                "name": "renditionItemId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Save the rendition item data with an attached file. The request should be of type multipart/form-data. There should be a single file-part included with the binary value of the content item."
+        },
+        {
+          "info": {
+            "name": "Query for rendition items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/query/rendition-items",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of rendition items, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long."
+        },
+        {
+          "info": {
+            "name": "List rendition items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/rendition-service/rendition-items",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given id."
+              },
+              {
+                "name": "contentItemId",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given content item id."
+              },
+              {
+                "name": "contentItemIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with a content item id like the given value."
+              },
+              {
+                "name": "contentItemName",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given content item name."
+              },
+              {
+                "name": "contentItemNameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with a content item name like the given value."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given name."
+              },
+              {
+                "name": "nameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with a name like the given value."
+              },
+              {
+                "name": "mimeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given mime type."
+              },
+              {
+                "name": "mimeTypeLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with a mime type like the given value."
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given task id."
+              },
+              {
+                "name": "taskIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with a task like the given value."
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given process instance id."
+              },
+              {
+                "name": "processInstanceIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with a process instance like the given value."
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given scopeId. When this is used then scopeType must also be set."
+              },
+              {
+                "name": "scopeIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with a scopeId like the given value. When this is used then scopeType must also be set."
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given scopeType."
+              },
+              {
+                "name": "contentStoreId",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given rendition store id."
+              },
+              {
+                "name": "contentStoreIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with a rendition store id like the given value."
+              },
+              {
+                "name": "contentStoreName",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given rendition store name."
+              },
+              {
+                "name": "contentStoreNameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with a rendition store name like the given value."
+              },
+              {
+                "name": "contentAvailable",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with or without rendition available."
+              },
+              {
+                "name": "contentSize",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given rendition size."
+              },
+              {
+                "name": "minimumContentSize",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the a minimum rendition size of the given value."
+              },
+              {
+                "name": "maximumContentSize",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the a maximum rendition size of the given value."
+              },
+              {
+                "name": "createdOn",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given create date."
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items before given create date."
+              },
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items after given create date."
+              },
+              {
+                "name": "lastModifiedOn",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given last modified date."
+              },
+              {
+                "name": "lastModifiedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items before given last modified date."
+              },
+              {
+                "name": "lastModifiedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items after given last modified date."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return rendition items with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns rendition items without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List rendition items"
+        },
+        {
+          "info": {
+            "name": "Get a rendition item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/rendition-service/rendition-items/:renditionItemId",
+            "params": [
+              {
+                "name": "renditionItemId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a rendition item"
+        },
+        {
+          "info": {
+            "name": "Delete a rendition item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/rendition-service/rendition-items/:renditionItemId",
+            "params": [
+              {
+                "name": "renditionItemId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a rendition item"
+        },
+        {
+          "info": {
+            "name": "Get the data of a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/rendition-service/rendition-items/:renditionItemId/data",
+            "params": [
+              {
+                "name": "renditionItemId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type."
+        },
+        {
+          "info": {
+            "name": "Get the latest data of a rendition item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/rendition-service/rendition-items/:renditionItemId/data/latest",
+            "params": [
+              {
+                "name": "renditionItemId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

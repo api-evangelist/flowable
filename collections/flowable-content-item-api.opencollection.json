@@ -1,0 +1,749 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Content item API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List content items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/content-service/content-items",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given id."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given name."
+              },
+              {
+                "name": "nameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with a name like the given value."
+              },
+              {
+                "name": "mimeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given mime type."
+              },
+              {
+                "name": "mimeTypeLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with a mime type like the given value."
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given task id."
+              },
+              {
+                "name": "taskIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with a task like the given value."
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given process instance id."
+              },
+              {
+                "name": "processInstanceIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with a process instance like the given value."
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given scopeId. When this is used then scopeType must also be set."
+              },
+              {
+                "name": "scopeIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with s scopeId like the given value. When this is used then scopeType must also be set."
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given scopeType."
+              },
+              {
+                "name": "contentStoreId",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given content store id."
+              },
+              {
+                "name": "contentStoreIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with a content store id like the given value."
+              },
+              {
+                "name": "contentStoreName",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given content store name."
+              },
+              {
+                "name": "contentStoreNameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with a content store name like the given value."
+              },
+              {
+                "name": "contentAvailable",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with or without content available."
+              },
+              {
+                "name": "contentSize",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given content size."
+              },
+              {
+                "name": "minimumContentSize",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the a minimum content size of the given value."
+              },
+              {
+                "name": "maximumContentSize",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the a maximum content size of the given value."
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given field."
+              },
+              {
+                "name": "fieldLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with a field like the given value."
+              },
+              {
+                "name": "latest",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the highest available version."
+              },
+              {
+                "name": "createdOn",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given create date."
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items before given create date."
+              },
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items after given create date."
+              },
+              {
+                "name": "createdBy",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given created by."
+              },
+              {
+                "name": "createdByLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with a created by like the given value."
+              },
+              {
+                "name": "lastModifiedOn",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given last modified date."
+              },
+              {
+                "name": "lastModifiedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items before given last modified date."
+              },
+              {
+                "name": "lastModifiedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items after given last modified date."
+              },
+              {
+                "name": "lastModifiedBy",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given last modified by."
+              },
+              {
+                "name": "lastModifiedByLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with a last modified by like the given value."
+              },
+              {
+                "name": "versionParentId",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with a given version parent id."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns content items without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given type."
+              },
+              {
+                "name": "subType",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given subType."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given state."
+              },
+              {
+                "name": "subState",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given subState."
+              },
+              {
+                "name": "parentFolderId",
+                "value": "",
+                "type": "query",
+                "description": "Only return content items with the given folder parent id."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List content items"
+        },
+        {
+          "info": {
+            "name": "Create a new content item, with content item information and an optional attached file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/content-service/content-items",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "versionInfo",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "mimeType",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "taskId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "processInstanceId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "scopeType",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "scopeId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "contentStoreId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "contentStoreName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "field",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "createdBy",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "lastModifiedBy",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "versionParentId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "tenantId",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (ContentItemRequest) to link an external resource or by passing a multipart/form-data Object to attach a file.\nNB: Swagger V2 specification doesn't support this use case that's why this endpoint might be buggy/incomplete if used with other tools."
+        },
+        {
+          "info": {
+            "name": "Get a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/content-service/content-items/:contentItemId",
+            "params": [
+              {
+                "name": "contentItemId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a content item"
+        },
+        {
+          "info": {
+            "name": "Updates a content item, with the provided content item information",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/content-service/content-items/:contentItemId",
+            "params": [
+              {
+                "name": "contentItemId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Updates a content item, with the provided content item information"
+        },
+        {
+          "info": {
+            "name": "Delete a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/content-service/content-items/:contentItemId",
+            "params": [
+              {
+                "name": "contentItemId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a content item"
+        },
+        {
+          "info": {
+            "name": "Copy a content item to the parent folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/content-service/content-items/:contentItemId/copy",
+            "params": [
+              {
+                "name": "contentItemId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Copy a content item to the parent folder"
+        },
+        {
+          "info": {
+            "name": "Get the data of a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/content-service/content-items/:contentItemId/data",
+            "params": [
+              {
+                "name": "contentItemId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type."
+        },
+        {
+          "info": {
+            "name": "Save the content item data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/content-service/content-items/:contentItemId/data",
+            "params": [
+              {
+                "name": "contentItemId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Save the content item data with an attached file. The request should be of type multipart/form-data. There should be a single file-part included with the binary value of the content item."
+        },
+        {
+          "info": {
+            "name": "Get the latest data of a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/content-service/content-items/:contentItemId/data/latest",
+            "params": [
+              {
+                "name": "contentItemId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "Explicitly request the latest content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type."
+        },
+        {
+          "info": {
+            "name": "Get a rendition item (data) with a rendition type related to a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/content-service/content-items/:contentItemId/rendition/:renditionType",
+            "params": [
+              {
+                "name": "contentItemId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "renditionType",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Rendition type can be 'thumbnail' or 'pdf'The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type."
+        },
+        {
+          "info": {
+            "name": "Get the latest rendition item (data) with a rendition type related to a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/content-service/content-items/:contentItemId/rendition/:renditionType/latest",
+            "params": [
+              {
+                "name": "contentItemId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "renditionType",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Rendition type can be 'thumbnail' or 'pdf'The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type."
+        },
+        {
+          "info": {
+            "name": "Get a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/content-service/version-parent-items/:versionParentId",
+            "params": [
+              {
+                "name": "versionParentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a content item"
+        },
+        {
+          "info": {
+            "name": "Get the data of a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/content-service/version-parent-items/:versionParentId/data",
+            "params": [
+              {
+                "name": "versionParentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type."
+        },
+        {
+          "info": {
+            "name": "Get a rendition item (data) with a rendition type related to a content item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/content-service/version-parent-items/:versionParentId/rendition/:renditionType",
+            "params": [
+              {
+                "name": "versionParentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "renditionType",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Rendition type can be 'thumbnail' or 'pdf'The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type."
+        },
+        {
+          "info": {
+            "name": "Query for content items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/query/content-items",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of content items, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

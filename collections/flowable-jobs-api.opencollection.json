@@ -1,0 +1,2520 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Jobs API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List deadletter jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/deadletter-jobs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return job with the given id"
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of a process with the given id"
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of an execution with the given id"
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given process definition id"
+              },
+              {
+                "name": "elementId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element id"
+              },
+              {
+                "name": "elementName",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element name"
+              },
+              {
+                "name": "handlerType",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given handler type"
+              },
+              {
+                "name": "handlerTypes",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which have one of the given job handler type"
+              },
+              {
+                "name": "executable",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are executable. If false, this parameter is ignored."
+              },
+              {
+                "name": "timersOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'."
+              },
+              {
+                "name": "messagesOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'"
+              },
+              {
+                "name": "withException",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored."
+              },
+              {
+                "name": "dueBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "dueAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "exceptionMessage",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given exception message"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "locked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are locked.  If false, this parameter is ignored."
+              },
+              {
+                "name": "unlocked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are unlocked. If false, this parameter is ignored."
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored."
+              },
+              {
+                "name": "withoutScopeType",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a scope type set. If false, the withoutScopeType parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List deadletter jobs"
+        },
+        {
+          "info": {
+            "name": "Move a bulk of deadletter jobs. Accepts 'move' and 'moveToHistoryJob' as action.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/management/deadletter-jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Move a bulk of deadletter jobs. Accepts 'move' and 'moveToHistoryJob' as action."
+        },
+        {
+          "info": {
+            "name": "Get a single deadletter job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/deadletter-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single deadletter job"
+        },
+        {
+          "info": {
+            "name": "Move a single deadletter job. Accepts 'move' and 'moveToHistoryJob' as action.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/management/deadletter-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Move a single deadletter job. Accepts 'move' and 'moveToHistoryJob' as action."
+        },
+        {
+          "info": {
+            "name": "Delete a deadletter job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/management/deadletter-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a deadletter job"
+        },
+        {
+          "info": {
+            "name": "Get the exception stacktrace for a deadletter job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/deadletter-jobs/:jobId/exception-stacktrace",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the exception stacktrace for a deadletter job"
+        },
+        {
+          "info": {
+            "name": "List history jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/history-jobs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return the job with the given id"
+              },
+              {
+                "name": "withException",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored."
+              },
+              {
+                "name": "exceptionMessage",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given exception message"
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given scope type"
+              },
+              {
+                "name": "handlerType",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given handler type"
+              },
+              {
+                "name": "handlerTypes",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which have one of the given job handler type"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "lockOwner",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are owned by the given lockOwner."
+              },
+              {
+                "name": "locked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are locked.  If false, this parameter is ignored."
+              },
+              {
+                "name": "unlocked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are unlocked. If false, this parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List history jobs"
+        },
+        {
+          "info": {
+            "name": "Get a single history job job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/history-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single history job job"
+        },
+        {
+          "info": {
+            "name": "Execute a history job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/management/history-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Execute a history job"
+        },
+        {
+          "info": {
+            "name": "Delete a history job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/management/history-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a history job"
+        },
+        {
+          "info": {
+            "name": "List jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/jobs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return job with the given id"
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of a process with the given id"
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of an execution with the given id"
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given process definition id"
+              },
+              {
+                "name": "elementId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element id"
+              },
+              {
+                "name": "elementName",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element name"
+              },
+              {
+                "name": "handlerType",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given handler type"
+              },
+              {
+                "name": "handlerTypes",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which have one of the given job handler type"
+              },
+              {
+                "name": "timersOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'."
+              },
+              {
+                "name": "messagesOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'"
+              },
+              {
+                "name": "withException",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored."
+              },
+              {
+                "name": "dueBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "dueAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "exceptionMessage",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given exception message"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "locked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are locked.  If false, this parameter is ignored."
+              },
+              {
+                "name": "unlocked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are unlocked. If false, this parameter is ignored."
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored."
+              },
+              {
+                "name": "withoutScopeType",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a scope type set. If false, the withoutScopeType parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List jobs"
+        },
+        {
+          "info": {
+            "name": "Get a single job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single job"
+        },
+        {
+          "info": {
+            "name": "Execute a single job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/management/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Execute a single job"
+        },
+        {
+          "info": {
+            "name": "Delete a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/management/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a job"
+        },
+        {
+          "info": {
+            "name": "Get the exception stacktrace for a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/jobs/:jobId/exception-stacktrace",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the exception stacktrace for a job"
+        },
+        {
+          "info": {
+            "name": "List suspended jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/suspended-jobs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return job with the given id"
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of a process with the given id"
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of an execution with the given id"
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given process definition id"
+              },
+              {
+                "name": "elementId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element id"
+              },
+              {
+                "name": "elementName",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element name"
+              },
+              {
+                "name": "handlerType",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given handler type"
+              },
+              {
+                "name": "handlerTypes",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which have one of the given job handler type"
+              },
+              {
+                "name": "executable",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are executable. If false, this parameter is ignored."
+              },
+              {
+                "name": "timersOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'."
+              },
+              {
+                "name": "messagesOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'"
+              },
+              {
+                "name": "withException",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored."
+              },
+              {
+                "name": "dueBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "dueAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "exceptionMessage",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given exception message"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "locked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are locked.  If false, this parameter is ignored."
+              },
+              {
+                "name": "unlocked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are unlocked. If false, this parameter is ignored."
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored."
+              },
+              {
+                "name": "withoutScopeType",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a scope type set. If false, the withoutScopeType parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List suspended jobs"
+        },
+        {
+          "info": {
+            "name": "Get a single suspended job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/suspended-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single suspended job"
+        },
+        {
+          "info": {
+            "name": "Delete a suspended job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/management/suspended-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a suspended job"
+        },
+        {
+          "info": {
+            "name": "Get the exception stacktrace for a suspended job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/suspended-jobs/:jobId/exception-stacktrace",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the exception stacktrace for a suspended job"
+        },
+        {
+          "info": {
+            "name": "List timer jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/timer-jobs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return job with the given id"
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of a process with the given id"
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of an execution with the given id"
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given process definition id"
+              },
+              {
+                "name": "elementId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element id"
+              },
+              {
+                "name": "elementName",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element name"
+              },
+              {
+                "name": "handlerType",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given handler type"
+              },
+              {
+                "name": "handlerTypes",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which have one of the given job handler type"
+              },
+              {
+                "name": "executable",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are executable. If false, this parameter is ignored."
+              },
+              {
+                "name": "timersOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'."
+              },
+              {
+                "name": "messagesOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'"
+              },
+              {
+                "name": "withException",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored."
+              },
+              {
+                "name": "dueBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "dueAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "exceptionMessage",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given exception message"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "locked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are locked.  If false, this parameter is ignored."
+              },
+              {
+                "name": "unlocked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are unlocked. If false, this parameter is ignored."
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored."
+              },
+              {
+                "name": "withoutScopeType",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a scope type set. If false, the withoutScopeType parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List timer jobs"
+        },
+        {
+          "info": {
+            "name": "Get a single timer job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/timer-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single timer job"
+        },
+        {
+          "info": {
+            "name": "Execute a single job action (move or reschedule)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/management/timer-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Execute a single job action (move or reschedule)"
+        },
+        {
+          "info": {
+            "name": "Delete a timer job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/management/timer-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a timer job"
+        },
+        {
+          "info": {
+            "name": "Get the exception stacktrace for a timer job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/timer-jobs/:jobId/exception-stacktrace",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the exception stacktrace for a timer job"
+        },
+        {
+          "info": {
+            "name": "List deadletter jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/deadletter-jobs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return job with the given id"
+              },
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of a case with the given id"
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored."
+              },
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of a plan item instance with the given id"
+              },
+              {
+                "name": "caseDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given case definition id"
+              },
+              {
+                "name": "scopeDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given scope definition id"
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given scope type"
+              },
+              {
+                "name": "elementId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element id"
+              },
+              {
+                "name": "elementName",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element name"
+              },
+              {
+                "name": "timersOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'."
+              },
+              {
+                "name": "messagesOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'"
+              },
+              {
+                "name": "withException",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored."
+              },
+              {
+                "name": "dueBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "dueAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "exceptionMessage",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given exception message"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "locked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are locked.  If false, this parameter is ignored."
+              },
+              {
+                "name": "unlocked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are unlocked. If false, this parameter is ignored."
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List deadletter jobs"
+        },
+        {
+          "info": {
+            "name": "Move a bulk of deadletter jobs. Accepts 'move' and 'moveToHistoryJob' as action.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-management/deadletter-jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Move a bulk of deadletter jobs. Accepts 'move' and 'moveToHistoryJob' as action."
+        },
+        {
+          "info": {
+            "name": "Get a single deadletter job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/deadletter-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single deadletter job"
+        },
+        {
+          "info": {
+            "name": "Move a single deadletter job. Accepts 'move' and 'moveToHistoryJob' as action.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-management/deadletter-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Move a single deadletter job. Accepts 'move' and 'moveToHistoryJob' as action."
+        },
+        {
+          "info": {
+            "name": "Delete a deadletter job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/cmmn-management/deadletter-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a deadletter job"
+        },
+        {
+          "info": {
+            "name": "Get the exception stacktrace for a deadletter job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/deadletter-jobs/:jobId/exception-stacktrace",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the exception stacktrace for a deadletter job"
+        },
+        {
+          "info": {
+            "name": "List history jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/history-jobs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return the job with the given id"
+              },
+              {
+                "name": "withException",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored."
+              },
+              {
+                "name": "exceptionMessage",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given exception message"
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given scope type"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "lockOwner",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are owned by the given lockOwner."
+              },
+              {
+                "name": "locked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are locked.  If false, this parameter is ignored."
+              },
+              {
+                "name": "unlocked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are unlocked. If false, this parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List history jobs"
+        },
+        {
+          "info": {
+            "name": "Get a single history job job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/history-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single history job job"
+        },
+        {
+          "info": {
+            "name": "Execute a history job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-management/history-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Execute a history job"
+        },
+        {
+          "info": {
+            "name": "Delete a history job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/cmmn-management/history-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a history job"
+        },
+        {
+          "info": {
+            "name": "List jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/jobs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return job with the given id"
+              },
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of a case with the given id"
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored."
+              },
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of a plan item instance with the given id"
+              },
+              {
+                "name": "caseDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given case definition id"
+              },
+              {
+                "name": "scopeDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given scope definition id"
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given scope type"
+              },
+              {
+                "name": "elementId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element id"
+              },
+              {
+                "name": "elementName",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element name"
+              },
+              {
+                "name": "timersOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'."
+              },
+              {
+                "name": "messagesOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'"
+              },
+              {
+                "name": "withException",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored."
+              },
+              {
+                "name": "dueBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "dueAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "exceptionMessage",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given exception message"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "locked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are locked.  If false, this parameter is ignored."
+              },
+              {
+                "name": "unlocked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are unlocked. If false, this parameter is ignored."
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List jobs"
+        },
+        {
+          "info": {
+            "name": "Get a single job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single job"
+        },
+        {
+          "info": {
+            "name": "Execute a single job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-management/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Execute a single job"
+        },
+        {
+          "info": {
+            "name": "Delete a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/cmmn-management/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a job"
+        },
+        {
+          "info": {
+            "name": "Get the exception stacktrace for a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/jobs/:jobId/exception-stacktrace",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the exception stacktrace for a job"
+        },
+        {
+          "info": {
+            "name": "List suspended jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/suspended-jobs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return job with the given id"
+              },
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of a case with the given id"
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored."
+              },
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of a plan item instance with the given id"
+              },
+              {
+                "name": "caseDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given case definition id"
+              },
+              {
+                "name": "scopeDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given scope definition id"
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given scope type"
+              },
+              {
+                "name": "elementId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element id"
+              },
+              {
+                "name": "elementName",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element name"
+              },
+              {
+                "name": "timersOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'."
+              },
+              {
+                "name": "messagesOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'"
+              },
+              {
+                "name": "withException",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored."
+              },
+              {
+                "name": "dueBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "dueAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "exceptionMessage",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given exception message"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "locked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are locked.  If false, this parameter is ignored."
+              },
+              {
+                "name": "unlocked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are unlocked. If false, this parameter is ignored."
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List suspended jobs"
+        },
+        {
+          "info": {
+            "name": "Get a single suspended job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/suspended-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single suspended job"
+        },
+        {
+          "info": {
+            "name": "Delete a suspended job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/cmmn-management/suspended-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a suspended job"
+        },
+        {
+          "info": {
+            "name": "Get the exception stacktrace for a suspended job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/suspended-jobs/:jobId/exception-stacktrace",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the exception stacktrace for a suspended job"
+        },
+        {
+          "info": {
+            "name": "List timer jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/timer-jobs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return job with the given id"
+              },
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of a case with the given id"
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a scope id set. If false, the withoutScopeId parameter is ignored."
+              },
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs part of a plan item instance with the given id"
+              },
+              {
+                "name": "caseDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given case definition id"
+              },
+              {
+                "name": "scopeDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "(Deprecated; use caseDefinitionId instead) Only return jobs with the given scope definition id"
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given scope type"
+              },
+              {
+                "name": "elementId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element id"
+              },
+              {
+                "name": "elementName",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given element name"
+              },
+              {
+                "name": "timersOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are timers. If false, this parameter is ignored. Cannot be used together with 'messagesOnly'."
+              },
+              {
+                "name": "messagesOnly",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are messages. If false, this parameter is ignored. Cannot be used together with 'timersOnly'"
+              },
+              {
+                "name": "withException",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs for which an exception occurred while executing it. If false, this parameter is ignored."
+              },
+              {
+                "name": "dueBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed before the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "dueAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs which are due to be executed after the given date. Jobs without duedate are never returned using this parameter."
+              },
+              {
+                "name": "exceptionMessage",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given exception message"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "locked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are locked.  If false, this parameter is ignored."
+              },
+              {
+                "name": "unlocked",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return jobs which are unlocked. If false, this parameter is ignored."
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns jobs without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List timer jobs"
+        },
+        {
+          "info": {
+            "name": "Get a single timer job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/timer-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single timer job"
+        },
+        {
+          "info": {
+            "name": "Execute a single job action (move or reschedule)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-management/timer-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Execute a single job action (move or reschedule)"
+        },
+        {
+          "info": {
+            "name": "Delete a timer job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/cmmn-management/timer-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a timer job"
+        },
+        {
+          "info": {
+            "name": "Get the exception stacktrace for a timer job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/timer-jobs/:jobId/exception-stacktrace",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the exception stacktrace for a timer job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

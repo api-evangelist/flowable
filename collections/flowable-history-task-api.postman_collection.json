@@ -1,0 +1,3745 @@
+{
+  "item": [
+    {
+      "id": "9646e1db-312d-4594-8a06-e74445b2170b",
+      "name": "History Task",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b5976589-8abd-44d7-8cd0-06dfcde2afaa",
+          "name": "List historic task instances",
+          "request": {
+            "name": "List historic task instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-task-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "taskId",
+                  "value": "<string>",
+                  "description": "An id of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "description": "The process instance id of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceIdWithChildren",
+                  "value": "<string>",
+                  "description": "Selects the historic task instances for the process instance and its children."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutProcessInstanceId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns historic task instances without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionKey",
+                  "value": "<string>",
+                  "description": "The process definition key of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionKeyLike",
+                  "value": "<string>",
+                  "description": "The process definition key of the historic task instance, which matches the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionId",
+                  "value": "<string>",
+                  "description": "The process definition id of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionName",
+                  "value": "<string>",
+                  "description": "The process definition name of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionNameLike",
+                  "value": "<string>",
+                  "description": "The process definition name of the historic task instance, which matches the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "processBusinessKey",
+                  "value": "<string>",
+                  "description": "The process instance business key of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processBusinessKeyLike",
+                  "value": "<string>",
+                  "description": "The process instance business key of the historic task instance that matches the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "executionId",
+                  "value": "<string>",
+                  "description": "The execution id of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskDefinitionKey",
+                  "value": "<string>",
+                  "description": "The task definition key for tasks part of a process"
+                },
+                {
+                  "disabled": false,
+                  "key": "taskDefinitionKeys",
+                  "value": "<string>",
+                  "description": "The task definition key for tasks part of a process"
+                },
+                {
+                  "disabled": false,
+                  "key": "taskName",
+                  "value": "<string>",
+                  "description": "The task name of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskNameLike",
+                  "value": "<string>",
+                  "description": "The task name with like operator for the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskNameLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "The task name with like operator for the historic task instance ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskDescription",
+                  "value": "<string>",
+                  "description": "The task description of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskDescriptionLike",
+                  "value": "<string>",
+                  "description": "The task description with like operator for the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCategory",
+                  "value": "<string>",
+                  "description": "Select tasks with the given category. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCategoryIn",
+                  "value": "<string>",
+                  "description": "Select tasks with the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCategoryNotIn",
+                  "value": "<string>",
+                  "description": "Select tasks not assigned to the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskWithoutCategory",
+                  "value": "<string>",
+                  "description": "Select tasks with no category assigned. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskDeleteReason",
+                  "value": "<string>",
+                  "description": "The task delete reason of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskDeleteReasonLike",
+                  "value": "<string>",
+                  "description": "The task delete reason with like operator for the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskAssignee",
+                  "value": "<string>",
+                  "description": "The assignee of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskAssigneeLike",
+                  "value": "<string>",
+                  "description": "The assignee with like operator for the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskOwner",
+                  "value": "<string>",
+                  "description": "The owner of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskOwnerLike",
+                  "value": "<string>",
+                  "description": "The owner with like operator for the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskInvolvedUser",
+                  "value": "<string>",
+                  "description": "An involved user of the historic task instance"
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCandidateGroup",
+                  "value": "<string>",
+                  "description": "Only return tasks that can be claimed by a user in the given group."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskPriority",
+                  "value": "<string>",
+                  "description": "The priority of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "finished",
+                  "value": "<boolean>",
+                  "description": "Indication if the historic task instance is finished."
+                },
+                {
+                  "disabled": false,
+                  "key": "processFinished",
+                  "value": "<boolean>",
+                  "description": "Indication if the process instance of the historic task instance is finished."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentTaskId",
+                  "value": "<string>",
+                  "description": "An optional parent task id of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "dueDate",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that have a due date equal this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "dueDateAfter",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that have a due date after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "dueDateBefore",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that have a due date before this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutDueDate",
+                  "value": "<boolean>",
+                  "description": "Return only historic task instances that have no due-date. When false is provided as value, this parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCompletedOn",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that have been completed on this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCompletedAfter",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that have been completed after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCompletedBefore",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that have been completed before this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCreatedOn",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that were created on this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCreatedBefore",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that were created before this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCreatedAfter",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that were created after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeTaskLocalVariables",
+                  "value": "<boolean>",
+                  "description": "An indication if the historic task instance local variables should be returned as well."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeProcessVariables",
+                  "value": "<boolean>",
+                  "description": "An indication if the historic task instance global variables should be returned as well."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return historic task instances with the given scopeDefinitionId."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeId",
+                  "value": "<string>",
+                  "description": "Only return historic task instances with the given scopeId."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeIds",
+                  "value": "<string>",
+                  "description": "Only return historic task instances of the given scopeIds."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutScopeId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns historic task instances without a scope id set. If false, the withoutScopeId parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeType",
+                  "value": "<string>",
+                  "description": "Only return historic task instances with the given scopeType."
+                },
+                {
+                  "disabled": false,
+                  "key": "propagatedStageInstanceId",
+                  "value": "<string>",
+                  "description": "Only return tasks which have the given id as propagated stage instance id"
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return historic task instances with the given tenantId."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLike",
+                  "value": "<string>",
+                  "description": "Only return historic task instances with a tenantId like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns historic task instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "rootScopeId",
+                  "value": "<string>",
+                  "description": "Only return case instances which have the given root scope id (that can be a process or case instance ID)."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentScopeId",
+                  "value": "<string>",
+                  "description": "Only return case instances which have the given parent scope id (that can be a process or case instance ID)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8937c6c0-aa1e-4dce-b22d-1faba9d76b95",
+              "name": "Indicates that historic task instances could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceIdWithChildren",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutProcessInstanceId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "processDefinitionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processBusinessKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processBusinessKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDefinitionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDefinitionKeys",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskNameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDescription",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDescriptionLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCategoryIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCategoryNotIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskWithoutCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDeleteReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDeleteReasonLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskAssignee",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskAssigneeLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskOwner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskOwnerLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskInvolvedUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCandidateGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskPriority",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "processFinished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "parentTaskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dueDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "dueDateAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "dueDateBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "withoutDueDate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "taskCompletedOn",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCompletedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCompletedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCreatedOn",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCreatedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCreatedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "includeTaskLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeProcessVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "scopeDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "propagatedStageInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "rootScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentScopeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"processDefinitionUrl\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processInstanceUrl\": \"string\",\n      \"executionId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"deleteReason\": \"string\",\n      \"owner\": \"string\",\n      \"assignee\": \"string\",\n      \"startTime\": \"1988-01-06T08:03:10.304Z\",\n      \"endTime\": \"2022-05-20T17:33:31.817Z\",\n      \"durationInMillis\": 3287,\n      \"workTimeInMillis\": 9104,\n      \"claimTime\": \"2016-11-03T01:49:50.755Z\",\n      \"taskDefinitionKey\": \"string\",\n      \"formKey\": \"string\",\n      \"priority\": 5726,\n      \"dueDate\": \"1953-12-03T11:16:25.997Z\",\n      \"parentTaskId\": \"string\",\n      \"url\": \"string\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"scopeDefinitionId\": \"string\",\n      \"scopeId\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"string\",\n      \"category\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"processDefinitionUrl\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processInstanceUrl\": \"string\",\n      \"executionId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"deleteReason\": \"string\",\n      \"owner\": \"string\",\n      \"assignee\": \"string\",\n      \"startTime\": \"1997-07-20T17:15:17.728Z\",\n      \"endTime\": \"1993-10-15T17:59:06.475Z\",\n      \"durationInMillis\": 1682,\n      \"workTimeInMillis\": 5206,\n      \"claimTime\": \"1971-05-27T06:08:29.614Z\",\n      \"taskDefinitionKey\": \"string\",\n      \"formKey\": \"string\",\n      \"priority\": 5234,\n      \"dueDate\": \"2004-06-07T07:13:19.248Z\",\n      \"parentTaskId\": \"string\",\n      \"url\": \"string\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"scopeDefinitionId\": \"string\",\n      \"scopeId\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"string\",\n      \"category\": \"string\"\n    }\n  ],\n  \"total\": 5909,\n  \"start\": 7180,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 6809\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "299b7395-5359-452f-a3a1-a0930c0bba58",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceIdWithChildren",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutProcessInstanceId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "processDefinitionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processBusinessKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processBusinessKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDefinitionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDefinitionKeys",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskNameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDescription",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDescriptionLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCategoryIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCategoryNotIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskWithoutCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDeleteReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDeleteReasonLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskAssignee",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskAssigneeLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskOwner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskOwnerLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskInvolvedUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCandidateGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskPriority",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "processFinished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "parentTaskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dueDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "dueDateAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "dueDateBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "withoutDueDate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "taskCompletedOn",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCompletedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCompletedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCreatedOn",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCreatedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCreatedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "includeTaskLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeProcessVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "scopeDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "propagatedStageInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "rootScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentScopeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36ccacd8-13ac-4560-9e6c-f491f245b1fc",
+          "name": "Get a single historic task instance",
+          "request": {
+            "name": "Get a single historic task instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-task-instances",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6470e9bc-7b37-4bec-92fe-fc72f9fe73a8",
+              "name": "Indicates that the historic task instances could be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-instances",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"processDefinitionId\": \"string\",\n  \"processDefinitionUrl\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"processInstanceUrl\": \"string\",\n  \"executionId\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"deleteReason\": \"string\",\n  \"owner\": \"string\",\n  \"assignee\": \"string\",\n  \"startTime\": \"1975-10-22T09:42:29.546Z\",\n  \"endTime\": \"1974-06-14T03:12:03.742Z\",\n  \"durationInMillis\": 7209,\n  \"workTimeInMillis\": 6904,\n  \"claimTime\": \"1979-11-01T15:24:28.632Z\",\n  \"taskDefinitionKey\": \"string\",\n  \"formKey\": \"string\",\n  \"priority\": 2706,\n  \"dueDate\": \"2024-12-22T21:05:10.580Z\",\n  \"parentTaskId\": \"string\",\n  \"url\": \"string\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"string\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"string\"\n    }\n  ],\n  \"scopeDefinitionId\": \"string\",\n  \"scopeId\": \"string\",\n  \"subScopeId\": \"string\",\n  \"scopeType\": \"string\",\n  \"propagatedStageInstanceId\": \"string\",\n  \"tenantId\": \"string\",\n  \"category\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f46c6b6-7baa-4583-b252-141dbd2464c8",
+              "name": "Indicates that the historic task instances could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-instances",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d04bd54-3424-433c-811d-d41aa378b21c",
+          "name": "Delete a historic task instance",
+          "request": {
+            "name": "Delete a historic task instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-task-instances",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e4ced599-e2d6-4c2d-8866-d10713287f03",
+              "name": "Indicates that the historic task instance was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-instances",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2233d664-16cf-43ca-a73c-c6bbc0f8ec2b",
+              "name": "Indicates that the historic task instance could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-instances",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07c84eef-e64f-49b1-b308-bcc1ee1edc12",
+          "name": "Get a historic task instance form",
+          "request": {
+            "name": "Get a historic task instance form",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-task-instances",
+                ":taskId",
+                "form"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "115dcd76-a979-4ad9-bae1-4b507ad38381",
+              "name": "Indicates request was successful and the task form is returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-instances",
+                    ":taskId",
+                    "form"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7217777-2164-4acd-8996-c9871d72ed0c",
+              "name": "Indicates the requested task was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-instances",
+                    ":taskId",
+                    "form"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be23e80f-d8bb-4966-9087-2f3aaa0f5965",
+          "name": "List identity links of a historic task instance",
+          "request": {
+            "name": "List identity links of a historic task instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-task-instances",
+                ":taskId",
+                "identitylinks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "edb3265b-c56c-4888-9155-f1012f2d4c47",
+              "name": "Indicates request was successful and the identity links are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-instances",
+                    ":taskId",
+                    "identitylinks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"participant\",\n    \"userId\": \"kermit\",\n    \"groupId\": \"sales\",\n    \"taskId\": \"null\",\n    \"taskUrl\": \"null\",\n    \"processInstanceId\": \"5\",\n    \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\"\n  },\n  {\n    \"type\": \"participant\",\n    \"userId\": \"kermit\",\n    \"groupId\": \"sales\",\n    \"taskId\": \"null\",\n    \"taskUrl\": \"null\",\n    \"processInstanceId\": \"5\",\n    \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5083eba8-9dad-459a-954c-a0b92b70e99e",
+              "name": "Indicates the task instance could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-instances",
+                    ":taskId",
+                    "identitylinks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16d92b95-d7cc-4a84-a742-e16121b1fb42",
+          "name": "List historic task log entries",
+          "request": {
+            "name": "List historic task log entries",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-task-log-entries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "taskId",
+                  "value": "<string>",
+                  "description": "An id of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "The type of the log entry."
+                },
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "The user who produced the task change."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "description": "The process instance id of the historic task log entry."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionId",
+                  "value": "<string>",
+                  "description": "The process definition id of the historic task log entry."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeId",
+                  "value": "<string>",
+                  "description": "Only return historic task log entries with the given scopeId."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return historic task log entries with the given scopeDefinitionId."
+                },
+                {
+                  "disabled": false,
+                  "key": "subScopeId",
+                  "value": "<string>",
+                  "description": "Only return historic task log entries with the given subScopeId"
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeType",
+                  "value": "<string>",
+                  "description": "Only return historic task log entries with the given scopeType."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "Return task log entries starting from a date."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "Return task log entries up to a date."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return historic task log entries with the given tenantId."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromLogNumber",
+                  "value": "<string>",
+                  "description": "Return task log entries starting from a log number"
+                },
+                {
+                  "disabled": false,
+                  "key": "toLogNumber",
+                  "value": "<string>",
+                  "description": "Return task log entries up to specific a log number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Property to sort on, to be used together with the order."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Index of the first row to fetch. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of rows to fetch, starting from start. Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "55a856d6-b093-4dba-841c-f660fbd18f54",
+              "name": "Indicates that historic task log entries could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-log-entries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromLogNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toLogNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"logNumber\": 849,\n      \"type\": \"string\",\n      \"taskId\": \"string\",\n      \"timeStamp\": \"1975-11-30T01:54:26.467Z\",\n      \"userId\": \"string\",\n      \"data\": \"string\",\n      \"executionId\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"scopeId\": \"string\",\n      \"scopeDefinitionId\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"tenantId\": \"string\"\n    },\n    {\n      \"logNumber\": 4507,\n      \"type\": \"string\",\n      \"taskId\": \"string\",\n      \"timeStamp\": \"1958-07-12T11:23:56.244Z\",\n      \"userId\": \"string\",\n      \"data\": \"string\",\n      \"executionId\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"scopeId\": \"string\",\n      \"scopeDefinitionId\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"tenantId\": \"string\"\n    }\n  ],\n  \"total\": 8665,\n  \"start\": 4840,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 2179\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10c108c5-1fe0-48e4-a23a-244e9ee6ba12",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-log-entries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromLogNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toLogNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9dac9945-cb41-4d5e-a53a-5ea4da7750da",
+          "name": "Query for historic task instances",
+          "request": {
+            "name": "Query for historic task instances",
+            "description": {
+              "content": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The taskVariables and processVariables properties are JSON-arrays containing objects with the format as described here.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "historic-task-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIdWithChildren\": \"<string>\",\n  \"withoutProcessInstanceId\": \"<boolean>\",\n  \"processBusinessKey\": \"<string>\",\n  \"processBusinessKeyLike\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"processDefinitionKey\": \"<string>\",\n  \"processDefinitionKeyLike\": \"<string>\",\n  \"processDefinitionName\": \"<string>\",\n  \"processDefinitionNameLike\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"taskName\": \"<string>\",\n  \"taskNameLike\": \"<string>\",\n  \"taskNameLikeIgnoreCase\": \"<string>\",\n  \"taskDescription\": \"<string>\",\n  \"taskDescriptionLike\": \"<string>\",\n  \"taskDefinitionKey\": \"<string>\",\n  \"taskDefinitionKeyLike\": \"<string>\",\n  \"taskDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskCategory\": \"<string>\",\n  \"taskCategoryIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskCategoryNotIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskWithoutCategory\": \"<boolean>\",\n  \"taskDeleteReason\": \"<string>\",\n  \"taskDeleteReasonLike\": \"<string>\",\n  \"taskAssignee\": \"<string>\",\n  \"taskAssigneeLike\": \"<string>\",\n  \"taskOwner\": \"<string>\",\n  \"taskOwnerLike\": \"<string>\",\n  \"taskInvolvedUser\": \"<string>\",\n  \"taskPriority\": \"<integer>\",\n  \"taskMinPriority\": \"<integer>\",\n  \"taskMaxPriority\": \"<integer>\",\n  \"finished\": \"<boolean>\",\n  \"processFinished\": \"<boolean>\",\n  \"parentTaskId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"dueDateAfter\": \"<dateTime>\",\n  \"dueDateBefore\": \"<dateTime>\",\n  \"withoutDueDate\": \"<boolean>\",\n  \"taskCreatedOn\": \"<dateTime>\",\n  \"taskCreatedBefore\": \"<dateTime>\",\n  \"taskCreatedAfter\": \"<dateTime>\",\n  \"taskCompletedOn\": \"<dateTime>\",\n  \"taskCompletedBefore\": \"<dateTime>\",\n  \"taskCompletedAfter\": \"<dateTime>\",\n  \"includeTaskLocalVariables\": \"<boolean>\",\n  \"includeProcessVariables\": \"<boolean>\",\n  \"taskVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"processVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"scopeDefinitionId\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"withoutScopeId\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"propagatedStageInstanceId\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\",\n  \"withoutDeleteReason\": \"<boolean>\",\n  \"taskCandidateGroup\": \"<string>\",\n  \"ignoreTaskAssignee\": \"<boolean>\",\n  \"rootScopeId\": \"<string>\",\n  \"parentScopeId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c32a533a-b5b0-4400-b724-c347577dc805",
+              "name": "Indicates request was successful and the tasks are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "historic-task-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIdWithChildren\": \"<string>\",\n  \"withoutProcessInstanceId\": \"<boolean>\",\n  \"processBusinessKey\": \"<string>\",\n  \"processBusinessKeyLike\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"processDefinitionKey\": \"<string>\",\n  \"processDefinitionKeyLike\": \"<string>\",\n  \"processDefinitionName\": \"<string>\",\n  \"processDefinitionNameLike\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"taskName\": \"<string>\",\n  \"taskNameLike\": \"<string>\",\n  \"taskNameLikeIgnoreCase\": \"<string>\",\n  \"taskDescription\": \"<string>\",\n  \"taskDescriptionLike\": \"<string>\",\n  \"taskDefinitionKey\": \"<string>\",\n  \"taskDefinitionKeyLike\": \"<string>\",\n  \"taskDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskCategory\": \"<string>\",\n  \"taskCategoryIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskCategoryNotIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskWithoutCategory\": \"<boolean>\",\n  \"taskDeleteReason\": \"<string>\",\n  \"taskDeleteReasonLike\": \"<string>\",\n  \"taskAssignee\": \"<string>\",\n  \"taskAssigneeLike\": \"<string>\",\n  \"taskOwner\": \"<string>\",\n  \"taskOwnerLike\": \"<string>\",\n  \"taskInvolvedUser\": \"<string>\",\n  \"taskPriority\": \"<integer>\",\n  \"taskMinPriority\": \"<integer>\",\n  \"taskMaxPriority\": \"<integer>\",\n  \"finished\": \"<boolean>\",\n  \"processFinished\": \"<boolean>\",\n  \"parentTaskId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"dueDateAfter\": \"<dateTime>\",\n  \"dueDateBefore\": \"<dateTime>\",\n  \"withoutDueDate\": \"<boolean>\",\n  \"taskCreatedOn\": \"<dateTime>\",\n  \"taskCreatedBefore\": \"<dateTime>\",\n  \"taskCreatedAfter\": \"<dateTime>\",\n  \"taskCompletedOn\": \"<dateTime>\",\n  \"taskCompletedBefore\": \"<dateTime>\",\n  \"taskCompletedAfter\": \"<dateTime>\",\n  \"includeTaskLocalVariables\": \"<boolean>\",\n  \"includeProcessVariables\": \"<boolean>\",\n  \"taskVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"processVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"scopeDefinitionId\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeIds\": [\n    \"<string>\"\n  ],\n  \"withoutScopeId\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"propagatedStageInstanceId\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\",\n  \"withoutDeleteReason\": \"<boolean>\",\n  \"taskCandidateGroup\": \"<string>\",\n  \"ignoreTaskAssignee\": \"<boolean>\",\n  \"rootScopeId\": \"<string>\",\n  \"parentScopeId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"processDefinitionUrl\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processInstanceUrl\": \"string\",\n      \"executionId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"deleteReason\": \"string\",\n      \"owner\": \"string\",\n      \"assignee\": \"string\",\n      \"startTime\": \"1947-01-23T10:01:54.980Z\",\n      \"endTime\": \"1997-06-14T09:05:44.058Z\",\n      \"durationInMillis\": 153,\n      \"workTimeInMillis\": 1636,\n      \"claimTime\": \"1971-11-23T11:09:16.667Z\",\n      \"taskDefinitionKey\": \"string\",\n      \"formKey\": \"string\",\n      \"priority\": 4695,\n      \"dueDate\": \"2002-04-24T12:54:45.528Z\",\n      \"parentTaskId\": \"string\",\n      \"url\": \"string\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"scopeDefinitionId\": \"string\",\n      \"scopeId\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"string\",\n      \"category\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"processDefinitionUrl\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processInstanceUrl\": \"string\",\n      \"executionId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"deleteReason\": \"string\",\n      \"owner\": \"string\",\n      \"assignee\": \"string\",\n      \"startTime\": \"1971-08-15T05:18:00.322Z\",\n      \"endTime\": \"2019-03-04T03:27:20.766Z\",\n      \"durationInMillis\": 8897,\n      \"workTimeInMillis\": 4894,\n      \"claimTime\": \"2016-05-31T13:17:27.134Z\",\n      \"taskDefinitionKey\": \"string\",\n      \"formKey\": \"string\",\n      \"priority\": 1153,\n      \"dueDate\": \"1981-04-15T15:32:00.096Z\",\n      \"parentTaskId\": \"string\",\n      \"url\": \"string\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"scopeDefinitionId\": \"string\",\n      \"scopeId\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"string\",\n      \"category\": \"string\"\n    }\n  ],\n  \"total\": 6871,\n  \"start\": 4351,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 6569\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea4af455-fdf8-4f43-9597-5e0064ea70dd",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "historic-task-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIdWithChildren\": \"<string>\",\n  \"withoutProcessInstanceId\": \"<boolean>\",\n  \"processBusinessKey\": \"<string>\",\n  \"processBusinessKeyLike\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"processDefinitionKey\": \"<string>\",\n  \"processDefinitionKeyLike\": \"<string>\",\n  \"processDefinitionName\": \"<string>\",\n  \"processDefinitionNameLike\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"taskName\": \"<string>\",\n  \"taskNameLike\": \"<string>\",\n  \"taskNameLikeIgnoreCase\": \"<string>\",\n  \"taskDescription\": \"<string>\",\n  \"taskDescriptionLike\": \"<string>\",\n  \"taskDefinitionKey\": \"<string>\",\n  \"taskDefinitionKeyLike\": \"<string>\",\n  \"taskDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskCategory\": \"<string>\",\n  \"taskCategoryIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskCategoryNotIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskWithoutCategory\": \"<boolean>\",\n  \"taskDeleteReason\": \"<string>\",\n  \"taskDeleteReasonLike\": \"<string>\",\n  \"taskAssignee\": \"<string>\",\n  \"taskAssigneeLike\": \"<string>\",\n  \"taskOwner\": \"<string>\",\n  \"taskOwnerLike\": \"<string>\",\n  \"taskInvolvedUser\": \"<string>\",\n  \"taskPriority\": \"<integer>\",\n  \"taskMinPriority\": \"<integer>\",\n  \"taskMaxPriority\": \"<integer>\",\n  \"finished\": \"<boolean>\",\n  \"processFinished\": \"<boolean>\",\n  \"parentTaskId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"dueDateAfter\": \"<dateTime>\",\n  \"dueDateBefore\": \"<dateTime>\",\n  \"withoutDueDate\": \"<boolean>\",\n  \"taskCreatedOn\": \"<dateTime>\",\n  \"taskCreatedBefore\": \"<dateTime>\",\n  \"taskCreatedAfter\": \"<dateTime>\",\n  \"taskCompletedOn\": \"<dateTime>\",\n  \"taskCompletedBefore\": \"<dateTime>\",\n  \"taskCompletedAfter\": \"<dateTime>\",\n  \"includeTaskLocalVariables\": \"<boolean>\",\n  \"includeProcessVariables\": \"<boolean>\",\n  \"taskVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"processVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"scopeDefinitionId\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeIds\": [\n    \"<string>\"\n  ],\n  \"withoutScopeId\": \"<boolean>\",\n  \"scopeType\": \"<string>\",\n  \"propagatedStageInstanceId\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\",\n  \"withoutDeleteReason\": \"<boolean>\",\n  \"taskCandidateGroup\": \"<string>\",\n  \"ignoreTaskAssignee\": \"<boolean>\",\n  \"rootScopeId\": \"<string>\",\n  \"parentScopeId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cd7c121-f476-45a5-80b7-3f89ce4a59bc",
+          "name": "List historic task instances",
+          "request": {
+            "name": "List historic task instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-history",
+                "historic-task-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "taskId",
+                  "value": "<string>",
+                  "description": "An id of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseInstanceId",
+                  "value": "<string>",
+                  "description": "The case instance id of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseInstanceIdWithChildren",
+                  "value": "<string>",
+                  "description": "Selects the historic task instance of a case instance and its children."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionId",
+                  "value": "<string>",
+                  "description": "The case definition id of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "propagatedStageInstanceId",
+                  "value": "<string>",
+                  "description": "Only return tasks which have the given id as propagated stage instance id"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutScopeId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns historic task instances without a scope id set. If false, the withoutScopeId parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskDefinitionKey",
+                  "value": "<string>",
+                  "description": "The task definition key for tasks part of a process"
+                },
+                {
+                  "disabled": false,
+                  "key": "taskName",
+                  "value": "<string>",
+                  "description": "The task name of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskNameLike",
+                  "value": "<string>",
+                  "description": "The task name with like operator for the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskNameLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "The task name with like operator for the historic task instance ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskDescription",
+                  "value": "<string>",
+                  "description": "The task description of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskDescriptionLike",
+                  "value": "<string>",
+                  "description": "The task description with like operator for the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCategory",
+                  "value": "<string>",
+                  "description": "Select tasks with the given category. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCategoryIn",
+                  "value": "<string>",
+                  "description": "Select tasks with the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCategoryNotIn",
+                  "value": "<string>",
+                  "description": "Select tasks not assigned to the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskWithoutCategory",
+                  "value": "<string>",
+                  "description": "Select tasks with no category assigned. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskDeleteReason",
+                  "value": "<string>",
+                  "description": "The task delete reason of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskDeleteReasonLike",
+                  "value": "<string>",
+                  "description": "The task delete reason with like operator for the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskAssignee",
+                  "value": "<string>",
+                  "description": "The assignee of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskAssigneeLike",
+                  "value": "<string>",
+                  "description": "The assignee with like operator for the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskOwner",
+                  "value": "<string>",
+                  "description": "The owner of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskOwnerLike",
+                  "value": "<string>",
+                  "description": "The owner with like operator for the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskInvolvedUser",
+                  "value": "<string>",
+                  "description": "An involved user of the historic task instance"
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCandidateGroup",
+                  "value": "<string>",
+                  "description": "Only return tasks that can be claimed by a user in the given group."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskPriority",
+                  "value": "<string>",
+                  "description": "The priority of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "finished",
+                  "value": "<boolean>",
+                  "description": "Indication if the historic task instance is finished."
+                },
+                {
+                  "disabled": false,
+                  "key": "processFinished",
+                  "value": "<boolean>",
+                  "description": "Indication if the process instance of the historic task instance is finished."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentTaskId",
+                  "value": "<string>",
+                  "description": "An optional parent task id of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "dueDate",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that have a due date equal this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "dueDateAfter",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that have a due date after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "dueDateBefore",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that have a due date before this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutDueDate",
+                  "value": "<boolean>",
+                  "description": "Return only historic task instances that have no due-date. When false is provided as value, this parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCompletedOn",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that have been completed on this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCompletedAfter",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that have been completed after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCompletedBefore",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that have been completed before this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCreatedOn",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that were created on this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCreatedBefore",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that were created before this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskCreatedAfter",
+                  "value": "<dateTime>",
+                  "description": "Return only historic task instances that were created after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeTaskLocalVariables",
+                  "value": "<boolean>",
+                  "description": "An indication if the historic task instance local variables should be returned as well."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeProcessVariables",
+                  "value": "<boolean>",
+                  "description": "Indication to include historic process variables in the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return historic task instances with the given tenantId."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLike",
+                  "value": "<string>",
+                  "description": "Only return historic task instances with a tenantId like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns historic task instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutProcessInstanceId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns historic task instances without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "planItemInstanceId",
+                  "value": "<string>",
+                  "description": "The plan item instance instance id of the historic task instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "rootScopeId",
+                  "value": "<string>",
+                  "description": "Only return case instances which have the given root scope id (that can be a process or case instance ID)."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentScopeId",
+                  "value": "<string>",
+                  "description": "Only return case instances which have the given parent scope id (that can be a process or case instance ID)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8e9a8e24-5fba-44a8-a4ea-73eec58b72bc",
+              "name": "Indicates that historic task instances could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-task-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceIdWithChildren",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "propagatedStageInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "taskDefinitionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskNameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDescription",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDescriptionLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCategoryIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCategoryNotIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskWithoutCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDeleteReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDeleteReasonLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskAssignee",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskAssigneeLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskOwner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskOwnerLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskInvolvedUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCandidateGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskPriority",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "processFinished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "parentTaskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dueDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "dueDateAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "dueDateBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "withoutDueDate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "taskCompletedOn",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCompletedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCompletedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCreatedOn",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCreatedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCreatedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "includeTaskLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeProcessVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutProcessInstanceId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "planItemInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rootScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentScopeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"processDefinitionUrl\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processInstanceUrl\": \"string\",\n      \"executionId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"deleteReason\": \"string\",\n      \"owner\": \"string\",\n      \"assignee\": \"string\",\n      \"startTime\": \"1947-01-23T10:01:54.980Z\",\n      \"endTime\": \"1997-06-14T09:05:44.058Z\",\n      \"durationInMillis\": 153,\n      \"workTimeInMillis\": 1636,\n      \"claimTime\": \"1971-11-23T11:09:16.667Z\",\n      \"taskDefinitionKey\": \"string\",\n      \"formKey\": \"string\",\n      \"priority\": 4695,\n      \"dueDate\": \"2002-04-24T12:54:45.528Z\",\n      \"parentTaskId\": \"string\",\n      \"url\": \"string\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"scopeDefinitionId\": \"string\",\n      \"scopeId\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"string\",\n      \"category\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"processDefinitionUrl\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processInstanceUrl\": \"string\",\n      \"executionId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"deleteReason\": \"string\",\n      \"owner\": \"string\",\n      \"assignee\": \"string\",\n      \"startTime\": \"1971-08-15T05:18:00.322Z\",\n      \"endTime\": \"2019-03-04T03:27:20.766Z\",\n      \"durationInMillis\": 8897,\n      \"workTimeInMillis\": 4894,\n      \"claimTime\": \"2016-05-31T13:17:27.134Z\",\n      \"taskDefinitionKey\": \"string\",\n      \"formKey\": \"string\",\n      \"priority\": 1153,\n      \"dueDate\": \"1981-04-15T15:32:00.096Z\",\n      \"parentTaskId\": \"string\",\n      \"url\": \"string\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"scopeDefinitionId\": \"string\",\n      \"scopeId\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"string\",\n      \"category\": \"string\"\n    }\n  ],\n  \"total\": 6871,\n  \"start\": 4351,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 6569\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ac8e132-d4fb-4d83-ad8e-73a18f1903d8",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-task-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceIdWithChildren",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "propagatedStageInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "taskDefinitionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskNameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDescription",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDescriptionLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCategoryIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCategoryNotIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskWithoutCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDeleteReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskDeleteReasonLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskAssignee",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskAssigneeLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskOwner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskOwnerLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskInvolvedUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskCandidateGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskPriority",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "processFinished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "parentTaskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dueDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "dueDateAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "dueDateBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "withoutDueDate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "taskCompletedOn",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCompletedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCompletedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCreatedOn",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCreatedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "taskCreatedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "includeTaskLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeProcessVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutProcessInstanceId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "planItemInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rootScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentScopeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "739e14f5-2387-4dbf-98d7-884fb8c050e4",
+          "name": "Get a single historic task instance",
+          "request": {
+            "name": "Get a single historic task instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-history",
+                "historic-task-instances",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fd1153e9-a2ec-44d6-8d52-271fab29282e",
+              "name": "Indicates that the historic task instances could be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-task-instances",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"deleteReason\": \"string\",\n  \"owner\": \"string\",\n  \"assignee\": \"string\",\n  \"startTime\": \"1973-11-10T11:02:33.564Z\",\n  \"endTime\": \"1974-09-19T06:56:35.679Z\",\n  \"durationInMillis\": 7649,\n  \"workTimeInMillis\": 7795,\n  \"claimTime\": \"1957-12-27T04:23:05.832Z\",\n  \"taskDefinitionKey\": \"string\",\n  \"formKey\": \"string\",\n  \"priority\": 213,\n  \"dueDate\": \"1951-07-14T10:52:17.105Z\",\n  \"parentTaskId\": \"string\",\n  \"url\": \"string\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"string\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"string\"\n    }\n  ],\n  \"tenantId\": \"string\",\n  \"category\": \"string\",\n  \"caseInstanceId\": \"string\",\n  \"caseInstanceUrl\": \"string\",\n  \"caseDefinitionId\": \"string\",\n  \"caseDefinitionUrl\": \"string\",\n  \"scopeDefinitionId\": \"string\",\n  \"scopeId\": \"string\",\n  \"subScopeId\": \"string\",\n  \"scopeType\": \"string\",\n  \"propagatedStageInstanceId\": \"string\",\n  \"executionId\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"processDefinitionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78653d44-1445-4b9f-82d3-f857376f36ac",
+              "name": "Indicates that the historic task instances could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-task-instances",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc8af972-5b78-47ee-a12c-2189573fed39",
+          "name": "Delete a historic task instance",
+          "request": {
+            "name": "Delete a historic task instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-history",
+                "historic-task-instances",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "56ea39e7-d6c3-4704-8ce1-0e3831c13f04",
+              "name": "Indicates that the historic task instance was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-task-instances",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f4a0834-8f57-475b-834b-09991494e0f2",
+              "name": "Indicates that the historic task instance could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-task-instances",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08cda762-3604-4278-b175-0d03b305f086",
+          "name": "Get a historic task instance form",
+          "request": {
+            "name": "Get a historic task instance form",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-history",
+                "historic-task-instances",
+                ":taskId",
+                "form"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bdcb297b-9e6b-4bf6-afb7-dac2d205aa53",
+              "name": "Indicates request was successful and the task form is returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-task-instances",
+                    ":taskId",
+                    "form"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b69c7aa-c252-49a6-8d7d-6065b31350d7",
+              "name": "Indicates the requested task was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-task-instances",
+                    ":taskId",
+                    "form"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2d7d2ec-b25b-4566-9be2-e4c03d10aa73",
+          "name": "List identity links of a historic task instance",
+          "request": {
+            "name": "List identity links of a historic task instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-history",
+                "historic-task-instances",
+                ":taskId",
+                "identitylinks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5b576cea-9f67-4e86-812d-ee66f8e789fd",
+              "name": "Indicates request was successful and the identity links are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-task-instances",
+                    ":taskId",
+                    "identitylinks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"participant\",\n    \"userId\": \"kermit\",\n    \"groupId\": \"sales\",\n    \"taskId\": \"null\",\n    \"taskUrl\": \"null\",\n    \"caseInstanceId\": \"5\",\n    \"caseInstanceUrl\": \"http://localhost:8182/cmmn-history/historic-case-instances/5\"\n  },\n  {\n    \"type\": \"participant\",\n    \"userId\": \"kermit\",\n    \"groupId\": \"sales\",\n    \"taskId\": \"null\",\n    \"taskUrl\": \"null\",\n    \"caseInstanceId\": \"5\",\n    \"caseInstanceUrl\": \"http://localhost:8182/cmmn-history/historic-case-instances/5\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4af34f89-11f7-4021-b20c-f1760596ee22",
+              "name": "Indicates the task instance could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-task-instances",
+                    ":taskId",
+                    "identitylinks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01e2434f-3a3e-44d0-9380-9d8c211c4e82",
+          "name": "Query for historic task instances",
+          "request": {
+            "name": "Query for historic task instances",
+            "description": {
+              "content": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The taskVariables and processVariables properties are JSON-arrays containing objects with the format as described here.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-query",
+                "historic-task-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"caseInstanceIdWithChildren\": \"<string>\",\n  \"caseDefinitionId\": \"<string>\",\n  \"caseDefinitionKey\": \"<string>\",\n  \"caseDefinitionKeyLike\": \"<string>\",\n  \"caseDefinitionKeyLikeIgnoreCase\": \"<string>\",\n  \"caseDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planItemInstanceId\": \"<string>\",\n  \"propagatedStageInstanceId\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"withoutScopeId\": \"<boolean>\",\n  \"taskName\": \"<string>\",\n  \"taskNameLike\": \"<string>\",\n  \"taskNameLikeIgnoreCase\": \"<string>\",\n  \"taskDescription\": \"<string>\",\n  \"taskDescriptionLike\": \"<string>\",\n  \"taskDefinitionKey\": \"<string>\",\n  \"taskDefinitionKeyLike\": \"<string>\",\n  \"taskCategory\": \"<string>\",\n  \"taskCategoryIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskCategoryNotIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskWithoutCategory\": \"<boolean>\",\n  \"taskDeleteReason\": \"<string>\",\n  \"taskDeleteReasonLike\": \"<string>\",\n  \"taskAssignee\": \"<string>\",\n  \"taskAssigneeLike\": \"<string>\",\n  \"taskOwner\": \"<string>\",\n  \"taskOwnerLike\": \"<string>\",\n  \"taskInvolvedUser\": \"<string>\",\n  \"taskPriority\": \"<integer>\",\n  \"taskMinPriority\": \"<integer>\",\n  \"taskMaxPriority\": \"<integer>\",\n  \"finished\": \"<boolean>\",\n  \"processFinished\": \"<boolean>\",\n  \"parentTaskId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"dueDateAfter\": \"<dateTime>\",\n  \"dueDateBefore\": \"<dateTime>\",\n  \"withoutDueDate\": \"<boolean>\",\n  \"taskCreatedOn\": \"<dateTime>\",\n  \"taskCreatedBefore\": \"<dateTime>\",\n  \"taskCreatedAfter\": \"<dateTime>\",\n  \"taskCompletedOn\": \"<dateTime>\",\n  \"taskCompletedBefore\": \"<dateTime>\",\n  \"taskCompletedAfter\": \"<dateTime>\",\n  \"includeTaskLocalVariables\": \"<boolean>\",\n  \"includeProcessVariables\": \"<boolean>\",\n  \"taskVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\",\n  \"withoutProcessInstanceId\": \"<boolean>\",\n  \"taskCandidateGroup\": \"<string>\",\n  \"ignoreTaskAssignee\": \"<boolean>\",\n  \"rootScopeId\": \"<string>\",\n  \"parentScopeId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0bfe55d2-a40a-4712-8323-0f7a430eb5da",
+              "name": "Indicates request was successful and the tasks are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-query",
+                    "historic-task-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"caseInstanceIdWithChildren\": \"<string>\",\n  \"caseDefinitionId\": \"<string>\",\n  \"caseDefinitionKey\": \"<string>\",\n  \"caseDefinitionKeyLike\": \"<string>\",\n  \"caseDefinitionKeyLikeIgnoreCase\": \"<string>\",\n  \"caseDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planItemInstanceId\": \"<string>\",\n  \"propagatedStageInstanceId\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeIds\": [\n    \"<string>\"\n  ],\n  \"withoutScopeId\": \"<boolean>\",\n  \"taskName\": \"<string>\",\n  \"taskNameLike\": \"<string>\",\n  \"taskNameLikeIgnoreCase\": \"<string>\",\n  \"taskDescription\": \"<string>\",\n  \"taskDescriptionLike\": \"<string>\",\n  \"taskDefinitionKey\": \"<string>\",\n  \"taskDefinitionKeyLike\": \"<string>\",\n  \"taskCategory\": \"<string>\",\n  \"taskCategoryIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskCategoryNotIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskWithoutCategory\": \"<boolean>\",\n  \"taskDeleteReason\": \"<string>\",\n  \"taskDeleteReasonLike\": \"<string>\",\n  \"taskAssignee\": \"<string>\",\n  \"taskAssigneeLike\": \"<string>\",\n  \"taskOwner\": \"<string>\",\n  \"taskOwnerLike\": \"<string>\",\n  \"taskInvolvedUser\": \"<string>\",\n  \"taskPriority\": \"<integer>\",\n  \"taskMinPriority\": \"<integer>\",\n  \"taskMaxPriority\": \"<integer>\",\n  \"finished\": \"<boolean>\",\n  \"processFinished\": \"<boolean>\",\n  \"parentTaskId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"dueDateAfter\": \"<dateTime>\",\n  \"dueDateBefore\": \"<dateTime>\",\n  \"withoutDueDate\": \"<boolean>\",\n  \"taskCreatedOn\": \"<dateTime>\",\n  \"taskCreatedBefore\": \"<dateTime>\",\n  \"taskCreatedAfter\": \"<dateTime>\",\n  \"taskCompletedOn\": \"<dateTime>\",\n  \"taskCompletedBefore\": \"<dateTime>\",\n  \"taskCompletedAfter\": \"<dateTime>\",\n  \"includeTaskLocalVariables\": \"<boolean>\",\n  \"includeProcessVariables\": \"<boolean>\",\n  \"taskVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\",\n  \"withoutProcessInstanceId\": \"<boolean>\",\n  \"taskCandidateGroup\": \"<string>\",\n  \"ignoreTaskAssignee\": \"<boolean>\",\n  \"rootScopeId\": \"<string>\",\n  \"parentScopeId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"processDefinitionUrl\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processInstanceUrl\": \"string\",\n      \"executionId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"deleteReason\": \"string\",\n      \"owner\": \"string\",\n      \"assignee\": \"string\",\n      \"startTime\": \"1947-01-23T10:01:54.980Z\",\n      \"endTime\": \"1997-06-14T09:05:44.058Z\",\n      \"durationInMillis\": 153,\n      \"workTimeInMillis\": 1636,\n      \"claimTime\": \"1971-11-23T11:09:16.667Z\",\n      \"taskDefinitionKey\": \"string\",\n      \"formKey\": \"string\",\n      \"priority\": 4695,\n      \"dueDate\": \"2002-04-24T12:54:45.528Z\",\n      \"parentTaskId\": \"string\",\n      \"url\": \"string\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"scopeDefinitionId\": \"string\",\n      \"scopeId\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"string\",\n      \"category\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"processDefinitionUrl\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processInstanceUrl\": \"string\",\n      \"executionId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"deleteReason\": \"string\",\n      \"owner\": \"string\",\n      \"assignee\": \"string\",\n      \"startTime\": \"1971-08-15T05:18:00.322Z\",\n      \"endTime\": \"2019-03-04T03:27:20.766Z\",\n      \"durationInMillis\": 8897,\n      \"workTimeInMillis\": 4894,\n      \"claimTime\": \"2016-05-31T13:17:27.134Z\",\n      \"taskDefinitionKey\": \"string\",\n      \"formKey\": \"string\",\n      \"priority\": 1153,\n      \"dueDate\": \"1981-04-15T15:32:00.096Z\",\n      \"parentTaskId\": \"string\",\n      \"url\": \"string\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"scopeDefinitionId\": \"string\",\n      \"scopeId\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"string\",\n      \"category\": \"string\"\n    }\n  ],\n  \"total\": 6871,\n  \"start\": 4351,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 6569\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94a08974-dc53-4801-b2a7-e5330c048452",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-query",
+                    "historic-task-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"caseInstanceIdWithChildren\": \"<string>\",\n  \"caseDefinitionId\": \"<string>\",\n  \"caseDefinitionKey\": \"<string>\",\n  \"caseDefinitionKeyLike\": \"<string>\",\n  \"caseDefinitionKeyLikeIgnoreCase\": \"<string>\",\n  \"caseDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planItemInstanceId\": \"<string>\",\n  \"propagatedStageInstanceId\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeIds\": [\n    \"<string>\"\n  ],\n  \"withoutScopeId\": \"<boolean>\",\n  \"taskName\": \"<string>\",\n  \"taskNameLike\": \"<string>\",\n  \"taskNameLikeIgnoreCase\": \"<string>\",\n  \"taskDescription\": \"<string>\",\n  \"taskDescriptionLike\": \"<string>\",\n  \"taskDefinitionKey\": \"<string>\",\n  \"taskDefinitionKeyLike\": \"<string>\",\n  \"taskCategory\": \"<string>\",\n  \"taskCategoryIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskCategoryNotIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"taskWithoutCategory\": \"<boolean>\",\n  \"taskDeleteReason\": \"<string>\",\n  \"taskDeleteReasonLike\": \"<string>\",\n  \"taskAssignee\": \"<string>\",\n  \"taskAssigneeLike\": \"<string>\",\n  \"taskOwner\": \"<string>\",\n  \"taskOwnerLike\": \"<string>\",\n  \"taskInvolvedUser\": \"<string>\",\n  \"taskPriority\": \"<integer>\",\n  \"taskMinPriority\": \"<integer>\",\n  \"taskMaxPriority\": \"<integer>\",\n  \"finished\": \"<boolean>\",\n  \"processFinished\": \"<boolean>\",\n  \"parentTaskId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"dueDateAfter\": \"<dateTime>\",\n  \"dueDateBefore\": \"<dateTime>\",\n  \"withoutDueDate\": \"<boolean>\",\n  \"taskCreatedOn\": \"<dateTime>\",\n  \"taskCreatedBefore\": \"<dateTime>\",\n  \"taskCreatedAfter\": \"<dateTime>\",\n  \"taskCompletedOn\": \"<dateTime>\",\n  \"taskCompletedBefore\": \"<dateTime>\",\n  \"taskCompletedAfter\": \"<dateTime>\",\n  \"includeTaskLocalVariables\": \"<boolean>\",\n  \"includeProcessVariables\": \"<boolean>\",\n  \"taskVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\",\n  \"withoutProcessInstanceId\": \"<boolean>\",\n  \"taskCandidateGroup\": \"<string>\",\n  \"ignoreTaskAssignee\": \"<boolean>\",\n  \"rootScopeId\": \"<string>\",\n  \"parentScopeId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b4b2ad08-0aba-4436-913b-976d420f9442",
+    "name": "Flowable REST Access Tokens History Task API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

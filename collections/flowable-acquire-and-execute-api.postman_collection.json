@@ -1,0 +1,1229 @@
+{
+  "item": [
+    {
+      "id": "40f483d1-a215-40dd-971f-9700e7150eef",
+      "name": "Acquire and Execute",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0b6e4a34-dfe4-4767-898f-868768687c81",
+          "name": "Acquire External Worker Jobs",
+          "request": {
+            "name": "Acquire External Worker Jobs",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "acquire",
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lockDuration\": \"<string>\",\n  \"topic\": \"<string>\",\n  \"workerId\": \"<string>\",\n  \"numberOfTasks\": \"<integer>\",\n  \"numberOfRetries\": \"<integer>\",\n  \"scopeType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cd8f759e-f8c9-4c0f-9ef0-d99354f3f381",
+              "name": "Indicates the jobs were acquired and locked.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lockDuration\": \"PT10M\",\n  \"topic\": \"order\",\n  \"workerId\": \"orderWorker1\",\n  \"numberOfTasks\": 1,\n  \"numberOfRetries\": 10,\n  \"scopeType\": \"cmmn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"8\",\n    \"url\": \"http://localhost:8182/external-job-api/jobs/8\",\n    \"correlationId\": \"50\",\n    \"processInstanceId\": \"5\",\n    \"processDefinitionId\": \"customerProcess:1:4\",\n    \"executionId\": \"7\",\n    \"scopeId\": \"20\",\n    \"subScopeId\": \"21\",\n    \"scopeDefinitionId\": \"customerCase:1:39\",\n    \"scopeType\": \"cmmn\",\n    \"elementId\": \"customer\",\n    \"elementName\": \"Process Customer Task\",\n    \"retries\": 3,\n    \"exceptionMessage\": \"null\",\n    \"dueDate\": \"2021-05-04T16:35:10.474Z\",\n    \"createTime\": \"2020-05-04T16:35:10.474Z\",\n    \"tenantId\": \"flowable\",\n    \"lockOwner\": \"worker1\",\n    \"lockExpirationTime\": \"2020-05-04T16:35:10.474Z\",\n    \"variables\": [\n      {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\"\n      },\n      {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\"\n      }\n    ]\n  },\n  {\n    \"id\": \"8\",\n    \"url\": \"http://localhost:8182/external-job-api/jobs/8\",\n    \"correlationId\": \"50\",\n    \"processInstanceId\": \"5\",\n    \"processDefinitionId\": \"customerProcess:1:4\",\n    \"executionId\": \"7\",\n    \"scopeId\": \"20\",\n    \"subScopeId\": \"21\",\n    \"scopeDefinitionId\": \"customerCase:1:39\",\n    \"scopeType\": \"cmmn\",\n    \"elementId\": \"customer\",\n    \"elementName\": \"Process Customer Task\",\n    \"retries\": 3,\n    \"exceptionMessage\": \"null\",\n    \"dueDate\": \"2021-05-04T16:35:10.474Z\",\n    \"createTime\": \"2020-05-04T16:35:10.474Z\",\n    \"tenantId\": \"flowable\",\n    \"lockOwner\": \"worker1\",\n    \"lockExpirationTime\": \"2020-05-04T16:35:10.474Z\",\n    \"variables\": [\n      {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\"\n      },\n      {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6bad7dd0-313c-4e25-b93b-13df9fedb79b",
+              "name": "Indicates the request was invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lockDuration\": \"PT10M\",\n  \"topic\": \"order\",\n  \"workerId\": \"orderWorker1\",\n  \"numberOfTasks\": 1,\n  \"numberOfRetries\": 10,\n  \"scopeType\": \"cmmn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8ca38e5a-7d65-4d5e-b7cc-0eea53a6bd1f",
+              "name": "Indicates the user does not have the rights acquire the jobs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lockDuration\": \"PT10M\",\n  \"topic\": \"order\",\n  \"workerId\": \"orderWorker1\",\n  \"numberOfTasks\": 1,\n  \"numberOfRetries\": 10,\n  \"scopeType\": \"cmmn\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc156468-95fe-476c-b6a5-bf7f05ebfbea",
+          "name": "Complete an External Worker Job with a BPMN Error",
+          "request": {
+            "name": "Complete an External Worker Job with a BPMN Error",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "acquire",
+                "jobs",
+                ":jobId",
+                "bpmnError"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\"\n    }\n  ],\n  \"errorCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9268204c-79df-45f2-944c-e15c0d715f41",
+              "name": "Indicates the job was successfully completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "bpmnError"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ],\n  \"errorCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a229f746-a1d7-4263-8676-56d16e046629",
+              "name": "Indicates the request was invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "bpmnError"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ],\n  \"errorCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "477be460-96de-44d8-87f1-fd859bee940c",
+              "name": "Indicates the user does not have the rights complete the job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "bpmnError"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ],\n  \"errorCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8b1e161-2e12-42c7-972c-818d2521ba1f",
+              "name": "Indicates the job does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "bpmnError"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ],\n  \"errorCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f99356e-2544-4ea5-ae25-29f5e64e48f2",
+          "name": "Complete an External Worker Job with a cmmn terminate transition",
+          "request": {
+            "name": "Complete an External Worker Job with a cmmn terminate transition",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "acquire",
+                "jobs",
+                ":jobId",
+                "cmmnTerminate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "76af5c4a-245f-4cbd-bee3-0ee86d660415",
+              "name": "Indicates the job was successfully transitioned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "cmmnTerminate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58359a21-2e5c-4909-b7fb-ea8ae003530a",
+              "name": "Indicates the request was invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "cmmnTerminate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "00768123-a197-4917-9626-c8a9598e83f5",
+              "name": "Indicates the user does not have the rights complete the job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "cmmnTerminate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "af79c74a-1918-42f2-8146-f5660bdae834",
+              "name": "Indicates the job does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "cmmnTerminate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7130cbb-1883-42d7-a8db-e7f79ff3a80f",
+          "name": "Complete an External Worker Jobs",
+          "request": {
+            "name": "Complete an External Worker Jobs",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "acquire",
+                "jobs",
+                ":jobId",
+                "complete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2338c7fa-effc-4925-851a-3255ce6ef2a8",
+              "name": "Indicates the job was successfully completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "complete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cc3ecc8-e5d4-476d-9dc4-5be1a87b900b",
+              "name": "Indicates the request was invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "complete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9ea1c783-5713-4c44-9232-79ae7eeba1b7",
+              "name": "Indicates the user does not have the rights complete the job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "complete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3ec48517-e259-442c-a324-c9738f97e222",
+              "name": "Indicates the job does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "complete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a32ff978-2522-46cb-b321-8c304688c2a1",
+          "name": "Fail an External Worker Job",
+          "request": {
+            "name": "Fail an External Worker Job",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "acquire",
+                "jobs",
+                ":jobId",
+                "fail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workerId\": \"<string>\",\n  \"errorMessage\": \"<string>\",\n  \"errorDetails\": \"<string>\",\n  \"retries\": \"<integer>\",\n  \"retryTimeout\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2aee0d2-a43d-4686-adea-6a4ab8e2fe0e",
+              "name": "Indicates the job was successfully completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "fail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"errorMessage\": \"Database not available\",\n  \"errorDetails\": \"<string>\",\n  \"retries\": \"<integer>\",\n  \"retryTimeout\": \"PT20M\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c9fa995-14e1-4860-9fbe-afccd208dcd1",
+              "name": "Indicates the request was invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "fail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"errorMessage\": \"Database not available\",\n  \"errorDetails\": \"<string>\",\n  \"retries\": \"<integer>\",\n  \"retryTimeout\": \"PT20M\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a72e1f74-f44e-48e3-b2bb-633f87d446c6",
+              "name": "Indicates the user does not have the rights complete the job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "fail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"errorMessage\": \"Database not available\",\n  \"errorDetails\": \"<string>\",\n  \"retries\": \"<integer>\",\n  \"retryTimeout\": \"PT20M\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "20028fc8-111e-4ab9-8d70-9eed220a36e4",
+              "name": "Indicates the job does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "acquire",
+                    "jobs",
+                    ":jobId",
+                    "fail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workerId\": \"<string>\",\n  \"errorMessage\": \"Database not available\",\n  \"errorDetails\": \"<string>\",\n  \"retries\": \"<integer>\",\n  \"retryTimeout\": \"PT20M\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "915c0650-61e1-4df4-9020-cd5183bf2cb9",
+    "name": "Flowable REST Access Tokens Acquire and Execute API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

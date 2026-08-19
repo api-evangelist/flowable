@@ -1,0 +1,3802 @@
+{
+  "item": [
+    {
+      "id": "acab7309-5e7e-46e2-8dcb-e6edff1aa82f",
+      "name": "History",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4b6b485-5b7f-49ee-8a4e-8edb98b12697",
+          "name": "List historic activity instances",
+          "request": {
+            "name": "List historic activity instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-activity-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "activityId",
+                  "value": "<string>",
+                  "description": "An id of the activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "activityInstanceId",
+                  "value": "<string>",
+                  "description": "An id of the historic activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "activityName",
+                  "value": "<string>",
+                  "description": "The name of the historic activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "activityType",
+                  "value": "<string>",
+                  "description": "The element type of the historic activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "executionId",
+                  "value": "<string>",
+                  "description": "The execution id of the historic activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "finished",
+                  "value": "<boolean>",
+                  "description": "Indication if the historic activity instance is finished."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskAssignee",
+                  "value": "<string>",
+                  "description": "The assignee of the historic activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "description": "The process instance id of the historic activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceIds",
+                  "value": "<string>",
+                  "description": "The process instance ids of the historic activity instances."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionId",
+                  "value": "<string>",
+                  "description": "The process definition id of the historic activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "calledProcessInstanceIds",
+                  "value": "<string>",
+                  "description": "The lis of process instance ids that are called by historic activity instances"
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return instances with the given tenantId."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLike",
+                  "value": "<string>",
+                  "description": "Only return instances with a tenantId like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b01c92e5-cc83-49fe-931d-f5220a22bcb9",
+              "name": "Indicates that historic activity instances could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-activity-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "activityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "taskAssignee",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "calledProcessInstanceIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"5\",\n      \"activityId\": \"4\",\n      \"activityName\": \"My user task\",\n      \"activityType\": \"userTask\",\n      \"processDefinitionId\": \"oneTaskProcess%3A1%3A4\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4\",\n      \"processInstanceId\": \"3\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/3\",\n      \"executionId\": \"4\",\n      \"taskId\": \"4\",\n      \"calledProcessInstanceId\": \"null\",\n      \"assignee\": \"fozzie\",\n      \"startTime\": \"2013-04-17T10:17:43.902+0000\",\n      \"endTime\": \"2013-04-18T14:06:32.715+0000\",\n      \"durationInMillis\": 86400056,\n      \"tenantId\": \"null\"\n    },\n    {\n      \"id\": \"5\",\n      \"activityId\": \"4\",\n      \"activityName\": \"My user task\",\n      \"activityType\": \"userTask\",\n      \"processDefinitionId\": \"oneTaskProcess%3A1%3A4\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4\",\n      \"processInstanceId\": \"3\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/3\",\n      \"executionId\": \"4\",\n      \"taskId\": \"4\",\n      \"calledProcessInstanceId\": \"null\",\n      \"assignee\": \"fozzie\",\n      \"startTime\": \"2013-04-17T10:17:43.902+0000\",\n      \"endTime\": \"2013-04-18T14:06:32.715+0000\",\n      \"durationInMillis\": 86400056,\n      \"tenantId\": \"null\"\n    }\n  ],\n  \"total\": 1818,\n  \"start\": 2109,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 1897\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c49f542b-c57c-4a8b-8dfc-778e02f87d3f",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-activity-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "activityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "taskAssignee",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "calledProcessInstanceIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76bbd98c-5fe8-42b2-9430-5cb582c96937",
+          "name": "Get historic detail",
+          "request": {
+            "name": "Get historic detail",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "The id of the historic detail."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "description": "The process instance id of the historic detail."
+                },
+                {
+                  "disabled": false,
+                  "key": "executionId",
+                  "value": "<string>",
+                  "description": "The execution id of the historic detail."
+                },
+                {
+                  "disabled": false,
+                  "key": "activityInstanceId",
+                  "value": "<string>",
+                  "description": "The activity instance id of the historic detail."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskId",
+                  "value": "<string>",
+                  "description": "The task id of the historic detail."
+                },
+                {
+                  "disabled": false,
+                  "key": "selectOnlyFormProperties",
+                  "value": "<boolean>",
+                  "description": "Indication to only return form properties in the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "selectOnlyVariableUpdates",
+                  "value": "<boolean>",
+                  "description": "Indication to only return variable updates in the result."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "31136627-1bd3-4d92-b7d8-d36a58fc0226",
+              "name": "Indicates that historic detail could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "selectOnlyFormProperties",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "selectOnlyVariableUpdates",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"26\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"executionId\": \"6\",\n      \"activityInstanceId\": \"10\",\n      \"taskId\": \"6\",\n      \"taskUrl\": \"http://localhost:8182/history/historic-task-instances/6\",\n      \"time\": \"2013-04-17T10:17:43.902+0000\",\n      \"detailType\": \"variableUpdate\",\n      \"revision\": 2,\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      },\n      \"propertyId\": \"null\",\n      \"propertyValue\": \"null\"\n    },\n    {\n      \"id\": \"26\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"executionId\": \"6\",\n      \"activityInstanceId\": \"10\",\n      \"taskId\": \"6\",\n      \"taskUrl\": \"http://localhost:8182/history/historic-task-instances/6\",\n      \"time\": \"2013-04-17T10:17:43.902+0000\",\n      \"detailType\": \"variableUpdate\",\n      \"revision\": 2,\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      },\n      \"propertyId\": \"null\",\n      \"propertyValue\": \"null\"\n    }\n  ],\n  \"total\": 5585,\n  \"start\": 1427,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 4908\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19d53c16-c016-4e7e-b826-1613a3888899",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "selectOnlyFormProperties",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "selectOnlyVariableUpdates",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5511e6dc-38e4-44ae-bba7-749a9a4de20e",
+          "name": "Get the binary data for a historic detail variable",
+          "request": {
+            "name": "Get the binary data for a historic detail variable",
+            "description": {
+              "content": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-detail",
+                ":detailId",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "detailId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "201b744c-4af5-4da7-ad85-ff7dcb7ba0ed",
+              "name": "Indicates the historic detail instance was found and the requested variable data is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-detail",
+                    ":detailId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detailId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc53ca29-2e74-4f72-afec-cbb1b54ee146",
+              "name": "Indicates the requested historic detail instance was not found or the historic detail instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-detail",
+                    ":detailId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detailId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26261f96-417c-4999-adde-287ee347c842",
+          "name": "Get the binary data for a historic task instance variable",
+          "request": {
+            "name": "Get the binary data for a historic task instance variable",
+            "description": {
+              "content": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-task-instances",
+                ":taskId",
+                "variables",
+                ":variableName",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "variableName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a76b837a-becf-454d-898e-16d5fe8e78c5",
+              "name": "Indicates the task instance was found and the requested variable data is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-instances",
+                    ":taskId",
+                    "variables",
+                    ":variableName",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26d0f7ff-1813-4620-b192-8a040ab81b6d",
+              "name": "Indicates the requested task instance was not found or the process instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-task-instances",
+                    ":taskId",
+                    "variables",
+                    ":variableName",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6a4f6b1-60e6-4a3b-a9e7-37bd3e38aaff",
+          "name": "List of historic variable instances",
+          "request": {
+            "name": "List of historic variable instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-variable-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "description": "The process instance id of the historic variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskId",
+                  "value": "<string>",
+                  "description": "The task id of the historic variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeTaskVariables",
+                  "value": "<boolean>",
+                  "description": "Indication to exclude the task variables from the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeLocalVariables",
+                  "value": "<boolean>",
+                  "description": "Indication to exclude local variables or not."
+                },
+                {
+                  "disabled": false,
+                  "key": "variableName",
+                  "value": "<string>",
+                  "description": "The variable name of the historic variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "variableNameLike",
+                  "value": "<string>",
+                  "description": "The variable name using the like operator for the historic variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Index of the first row to fetch. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of rows to fetch, starting from start. Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9f262e10-3715-45e4-88f0-c0e4c6c511a4",
+              "name": "Indicates that historic variable instances could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeTaskVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "excludeLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "variableName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "variableNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    },\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    }\n  ],\n  \"total\": 8849,\n  \"start\": 9553,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 2053\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f40786f-cd33-4cb9-b7b9-c66fb15851c9",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeTaskVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "excludeLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "variableName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "variableNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a78ed1a-6986-450e-8fd4-03c3e25a8dfb",
+          "name": "Get the binary data for a historic task instance variable",
+          "request": {
+            "name": "Get the binary data for a historic task instance variable",
+            "description": {
+              "content": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-variable-instances",
+                ":varInstanceId",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "varInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fb605712-131c-448f-8394-2cebcc520b7f",
+              "name": "Indicates the variable instance was found and the requested variable data is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-variable-instances",
+                    ":varInstanceId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "varInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "528b438c-4854-43e6-8e95-2e19666fe65b",
+              "name": "Indicates the requested variable instance was not found or the variable instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-variable-instances",
+                    ":varInstanceId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "varInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e08b131-0327-484b-b4e2-794ab2d6f191",
+          "name": "Query for historic activity instances",
+          "request": {
+            "name": "Query for historic activity instances",
+            "description": {
+              "content": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "historic-activity-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"activityId\": \"<string>\",\n  \"activityInstanceId\": \"<string>\",\n  \"activityName\": \"<string>\",\n  \"activityType\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"finished\": \"<boolean>\",\n  \"taskAssignee\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processDefinitionId\": \"<string>\",\n  \"calledProcessInstanceIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "520ff6d4-ca91-47e8-a02a-cae6276ae0f6",
+              "name": "Indicates request was successful and the activities are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "historic-activity-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"activityId\": \"<string>\",\n  \"activityInstanceId\": \"<string>\",\n  \"activityName\": \"<string>\",\n  \"activityType\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"finished\": \"<boolean>\",\n  \"taskAssignee\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIds\": [\n    \"<string>\"\n  ],\n  \"processDefinitionId\": \"<string>\",\n  \"calledProcessInstanceIds\": [\n    \"<string>\"\n  ],\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"5\",\n      \"activityId\": \"4\",\n      \"activityName\": \"My user task\",\n      \"activityType\": \"userTask\",\n      \"processDefinitionId\": \"oneTaskProcess%3A1%3A4\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4\",\n      \"processInstanceId\": \"3\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/3\",\n      \"executionId\": \"4\",\n      \"taskId\": \"4\",\n      \"calledProcessInstanceId\": \"null\",\n      \"assignee\": \"fozzie\",\n      \"startTime\": \"2013-04-17T10:17:43.902+0000\",\n      \"endTime\": \"2013-04-18T14:06:32.715+0000\",\n      \"durationInMillis\": 86400056,\n      \"tenantId\": \"null\"\n    },\n    {\n      \"id\": \"5\",\n      \"activityId\": \"4\",\n      \"activityName\": \"My user task\",\n      \"activityType\": \"userTask\",\n      \"processDefinitionId\": \"oneTaskProcess%3A1%3A4\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4\",\n      \"processInstanceId\": \"3\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/3\",\n      \"executionId\": \"4\",\n      \"taskId\": \"4\",\n      \"calledProcessInstanceId\": \"null\",\n      \"assignee\": \"fozzie\",\n      \"startTime\": \"2013-04-17T10:17:43.902+0000\",\n      \"endTime\": \"2013-04-18T14:06:32.715+0000\",\n      \"durationInMillis\": 86400056,\n      \"tenantId\": \"null\"\n    }\n  ],\n  \"total\": 5619,\n  \"start\": 2569,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 1501\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "832060ae-1e5f-4315-bfa0-32ff41ed3d93",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "historic-activity-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"activityId\": \"<string>\",\n  \"activityInstanceId\": \"<string>\",\n  \"activityName\": \"<string>\",\n  \"activityType\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"finished\": \"<boolean>\",\n  \"taskAssignee\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIds\": [\n    \"<string>\"\n  ],\n  \"processDefinitionId\": \"<string>\",\n  \"calledProcessInstanceIds\": [\n    \"<string>\"\n  ],\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a11f31cd-92f7-47e7-bb9f-3b40441000c3",
+          "name": "Query for historic details",
+          "request": {
+            "name": "Query for historic details",
+            "description": {
+              "content": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "historic-detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"activityInstanceId\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"selectOnlyFormProperties\": \"<boolean>\",\n  \"selectOnlyVariableUpdates\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ba078098-7f19-41fd-be1f-541652ccc91a",
+              "name": "Indicates request was successful and the historic details are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "historic-detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"activityInstanceId\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"selectOnlyFormProperties\": \"<boolean>\",\n  \"selectOnlyVariableUpdates\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"26\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"executionId\": \"6\",\n      \"activityInstanceId\": \"10\",\n      \"taskId\": \"6\",\n      \"taskUrl\": \"http://localhost:8182/history/historic-task-instances/6\",\n      \"time\": \"2013-04-17T10:17:43.902+0000\",\n      \"detailType\": \"variableUpdate\",\n      \"revision\": 2,\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      },\n      \"propertyId\": \"null\",\n      \"propertyValue\": \"null\"\n    },\n    {\n      \"id\": \"26\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"executionId\": \"6\",\n      \"activityInstanceId\": \"10\",\n      \"taskId\": \"6\",\n      \"taskUrl\": \"http://localhost:8182/history/historic-task-instances/6\",\n      \"time\": \"2013-04-17T10:17:43.902+0000\",\n      \"detailType\": \"variableUpdate\",\n      \"revision\": 2,\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      },\n      \"propertyId\": \"null\",\n      \"propertyValue\": \"null\"\n    }\n  ],\n  \"total\": 5737,\n  \"start\": 553,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 4684\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e2f6b60-8eec-4c5a-a62e-387642703cc6",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "historic-detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"activityInstanceId\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"selectOnlyFormProperties\": \"<boolean>\",\n  \"selectOnlyVariableUpdates\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe5e392a-bb1b-47bc-ab85-10a11173abd2",
+          "name": "Query for historic variable instances",
+          "request": {
+            "name": "Query for historic variable instances",
+            "description": {
+              "content": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "historic-variable-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"excludeTaskVariables\": \"<boolean>\",\n  \"taskId\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"variableName\": \"<string>\",\n  \"variableNameLike\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"excludeLocalVariables\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dd8163ca-fa76-45f6-bde4-5907e9bb14e6",
+              "name": "Indicates request was successful and the tasks are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "historic-variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"excludeTaskVariables\": \"<boolean>\",\n  \"taskId\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"variableName\": \"<string>\",\n  \"variableNameLike\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"excludeLocalVariables\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    },\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    }\n  ],\n  \"total\": 3934,\n  \"start\": 2116,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 4482\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7968360c-0161-4288-ad43-484fd99d5665",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "historic-variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"excludeTaskVariables\": \"<boolean>\",\n  \"taskId\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"variableName\": \"<string>\",\n  \"variableNameLike\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"excludeLocalVariables\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c93f3588-5965-44ed-8916-f126cb149a51",
+          "name": "Query for variable instances",
+          "request": {
+            "name": "Query for variable instances",
+            "description": {
+              "content": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of variable instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "variable-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"excludeTaskVariables\": \"<boolean>\",\n  \"taskId\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"variableName\": \"<string>\",\n  \"variableNameLike\": \"<string>\",\n  \"excludeLocalVariables\": \"<boolean>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b5de8e55-046d-447a-9793-bf574d978731",
+              "name": "Indicates request was successful and the tasks are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"excludeTaskVariables\": \"<boolean>\",\n  \"taskId\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"variableName\": \"<string>\",\n  \"variableNameLike\": \"<string>\",\n  \"excludeLocalVariables\": \"<boolean>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    },\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    }\n  ],\n  \"total\": 8849,\n  \"start\": 9553,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 2053\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5e28385-1ab2-4fef-a809-57310355c1c8",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"excludeTaskVariables\": \"<boolean>\",\n  \"taskId\": \"<string>\",\n  \"executionId\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"variableName\": \"<string>\",\n  \"variableNameLike\": \"<string>\",\n  \"excludeLocalVariables\": \"<boolean>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98a222a8-009e-48d7-9247-d7176e5fb3a6",
+          "name": "List activity instances",
+          "request": {
+            "name": "List activity instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "activity-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "activityId",
+                  "value": "<string>",
+                  "description": "An id of the activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "activityInstanceId",
+                  "value": "<string>",
+                  "description": "An id of the activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "activityName",
+                  "value": "<string>",
+                  "description": "The name of the activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "activityType",
+                  "value": "<string>",
+                  "description": "The element type of the activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "executionId",
+                  "value": "<string>",
+                  "description": "The execution id of the activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "finished",
+                  "value": "<boolean>",
+                  "description": "Indication if the activity instance is finished."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskAssignee",
+                  "value": "<string>",
+                  "description": "The assignee of the activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "description": "The process instance id of the activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceIds",
+                  "value": "<string>",
+                  "description": "The process instance ids of the activity instances."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionId",
+                  "value": "<string>",
+                  "description": "The process definition id of the activity instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return instances with the given tenantId."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLike",
+                  "value": "<string>",
+                  "description": "Only return instances with a tenantId like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The field to sort by. Defaults to 'startTime'."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Index of the first row to fetch. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of rows to fetch, starting from start. Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a163fb6d-2a13-4fc1-b0aa-43a7548e8a7b",
+              "name": "Indicates that activity instances could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "activity-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "activityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "taskAssignee",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"5\",\n      \"activityId\": \"4\",\n      \"activityName\": \"My user task\",\n      \"activityType\": \"userTask\",\n      \"processDefinitionId\": \"oneTaskProcess%3A1%3A4\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4\",\n      \"processInstanceId\": \"3\",\n      \"processInstanceUrl\": \"http://localhost:8182/runtime/process-instances/3\",\n      \"executionId\": \"4\",\n      \"taskId\": \"4\",\n      \"calledProcessInstanceId\": \"null\",\n      \"assignee\": \"fozzie\",\n      \"startTime\": \"2013-04-17T10:17:43.902+0000\",\n      \"endTime\": \"2013-04-18T14:06:32.715+0000\",\n      \"durationInMillis\": 86400056,\n      \"tenantId\": \"null\"\n    },\n    {\n      \"id\": \"5\",\n      \"activityId\": \"4\",\n      \"activityName\": \"My user task\",\n      \"activityType\": \"userTask\",\n      \"processDefinitionId\": \"oneTaskProcess%3A1%3A4\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4\",\n      \"processInstanceId\": \"3\",\n      \"processInstanceUrl\": \"http://localhost:8182/runtime/process-instances/3\",\n      \"executionId\": \"4\",\n      \"taskId\": \"4\",\n      \"calledProcessInstanceId\": \"null\",\n      \"assignee\": \"fozzie\",\n      \"startTime\": \"2013-04-17T10:17:43.902+0000\",\n      \"endTime\": \"2013-04-18T14:06:32.715+0000\",\n      \"durationInMillis\": 86400056,\n      \"tenantId\": \"null\"\n    }\n  ],\n  \"total\": 277,\n  \"start\": 3556,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 5841\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2dff1179-6af1-4f08-89ab-17e7f66dd59e",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "activity-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "activityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "taskAssignee",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ba90f37-e19f-4625-9620-8b558ef17844",
+          "name": "List of variable instances",
+          "request": {
+            "name": "List of variable instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "variable-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "description": "The process instance id of the variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskId",
+                  "value": "<string>",
+                  "description": "The task id of the variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeTaskVariables",
+                  "value": "<boolean>",
+                  "description": "Indication to exclude the task variables from the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeLocalVariables",
+                  "value": "<boolean>",
+                  "description": "Indication to exclude local variables or not."
+                },
+                {
+                  "disabled": false,
+                  "key": "variableName",
+                  "value": "<string>",
+                  "description": "The variable name of the variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "variableNameLike",
+                  "value": "<string>",
+                  "description": "The variable name using the like operator for the variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The field to sort by. Defaults to 'variableName'."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Index of the first row to fetch. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of rows to fetch, starting from start. Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e6d18a15-9e6a-42ef-b476-b844ff73ef80",
+              "name": "Indicates that variable instances could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeTaskVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "excludeLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "variableName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "variableNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    },\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    }\n  ],\n  \"total\": 3934,\n  \"start\": 2116,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 4482\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1e39e9e-3fa2-42d0-9cb7-7cf619afe19a",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeTaskVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "excludeLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "variableName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "variableNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ab332d4-1ea2-497f-8fc7-f5a3d19c0fbb",
+          "name": "Get the binary data for a historic task instance variable",
+          "request": {
+            "name": "Get the binary data for a historic task instance variable",
+            "description": {
+              "content": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-history",
+                "historic-task-instances",
+                ":taskId",
+                "variables",
+                ":variableName",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "variableName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5c1476af-c7ae-4eb4-b5f8-6bf9eb55e150",
+              "name": "Indicates the task instance was found and the requested variable data is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-task-instances",
+                    ":taskId",
+                    "variables",
+                    ":variableName",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5e3764f-0d5a-49f0-863f-6cb3ca433f9b",
+              "name": "Indicates the requested task instance was not found or the process instance does not have a variable with the given name or the variable does not  have a binary stream available. Status message provides additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-task-instances",
+                    ":taskId",
+                    "variables",
+                    ":variableName",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e2ff9bf-024a-42b7-a260-5b556576eaf5",
+          "name": "List of historic variable instances",
+          "request": {
+            "name": "List of historic variable instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-history",
+                "historic-variable-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "caseInstanceId",
+                  "value": "<string>",
+                  "description": "The case instance id of the historic variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskId",
+                  "value": "<string>",
+                  "description": "The task id of the historic variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeTaskVariables",
+                  "value": "<boolean>",
+                  "description": "Indication to exclude the task variables from the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeLocalVariables",
+                  "value": "<boolean>",
+                  "description": "Indication to exclude local variables or not."
+                },
+                {
+                  "disabled": false,
+                  "key": "variableName",
+                  "value": "<string>",
+                  "description": "The variable name of the historic variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "variableNameLike",
+                  "value": "<string>",
+                  "description": "The variable name using the like operator for the historic variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The field to sort by. Defaults to 'variableName'."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Index of the first row to fetch. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of rows to fetch, starting from start. Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2bfe9373-d175-4b9a-9e36-68b61f580ed3",
+              "name": "Indicates that historic variable instances could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "caseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeTaskVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "excludeLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "variableName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "variableNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    },\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    }\n  ],\n  \"total\": 3934,\n  \"start\": 2116,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 4482\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "321d5261-233c-4f0d-b94b-8dd8d889935a",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "caseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeTaskVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "excludeLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "variableName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "variableNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35c34f67-0075-4350-8bba-f10044896557",
+          "name": "Get the binary data for a historic task instance variable",
+          "request": {
+            "name": "Get the binary data for a historic task instance variable",
+            "description": {
+              "content": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-history",
+                "historic-variable-instances",
+                ":varInstanceId",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "varInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1918a5eb-cde1-4c0d-b26d-11dc3cb1f659",
+              "name": "Indicates the variable instance was found and the requested variable data is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-variable-instances",
+                    ":varInstanceId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "varInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54bf0b74-55cd-4013-9c90-14080474b110",
+              "name": "Indicates the requested variable instance was not found or the variable instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-variable-instances",
+                    ":varInstanceId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "varInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d104758d-f9ef-41e1-a05b-64d6f74eeb04",
+          "name": "Query for historic variable instances",
+          "request": {
+            "name": "Query for historic variable instances",
+            "description": {
+              "content": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-query",
+                "historic-variable-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The field to sort by. Defaults to 'variableName'."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"excludeTaskVariables\": \"<boolean>\",\n  \"taskId\": \"<string>\",\n  \"planItemInstanceId\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"variableName\": \"<string>\",\n  \"variableNameLike\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"excludeLocalVariables\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a6e30de8-afaf-495c-87f6-a384924b85b0",
+              "name": "Indicates request was successful and the tasks are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-query",
+                    "historic-variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"excludeTaskVariables\": \"<boolean>\",\n  \"taskId\": \"<string>\",\n  \"planItemInstanceId\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"variableName\": \"<string>\",\n  \"variableNameLike\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"excludeLocalVariables\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    },\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    }\n  ],\n  \"total\": 3934,\n  \"start\": 2116,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 4482\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b41fcc2-0156-48b8-bc41-a9377abde33e",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-query",
+                    "historic-variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"excludeTaskVariables\": \"<boolean>\",\n  \"taskId\": \"<string>\",\n  \"planItemInstanceId\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"variableName\": \"<string>\",\n  \"variableNameLike\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"excludeLocalVariables\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c3922d9-e8a2-4ef1-819a-5b3c0ce8e2d4",
+          "name": "List of variable instances",
+          "request": {
+            "name": "List of variable instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "variable-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "caseInstanceId",
+                  "value": "<string>",
+                  "description": "The case instance id of the variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskId",
+                  "value": "<string>",
+                  "description": "The task id of the variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeTaskVariables",
+                  "value": "<boolean>",
+                  "description": "Indication to exclude the task variables from the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeLocalVariables",
+                  "value": "<boolean>",
+                  "description": "Indication to exclude local variables or not."
+                },
+                {
+                  "disabled": false,
+                  "key": "variableName",
+                  "value": "<string>",
+                  "description": "The variable name of the variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "variableNameLike",
+                  "value": "<string>",
+                  "description": "The variable name using the like operator for the variable instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The field to sort by. Defaults to 'variableName'."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Index of the first row to fetch. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of rows to fetch, starting from start. Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d8374441-cedc-4dff-be8d-f12c868f0b47",
+              "name": "Indicates that variable instances could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "caseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeTaskVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "excludeLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "variableName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "variableNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    },\n    {\n      \"id\": \"14\",\n      \"processInstanceId\": \"5\",\n      \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"taskId\": \"6\",\n      \"executionId\": \"string\",\n      \"variable\": {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": {},\n        \"valueUrl\": \"http://....\",\n        \"scope\": \"string\"\n      }\n    }\n  ],\n  \"total\": 3934,\n  \"start\": 2116,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 4482\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eca7c6ca-0086-4cad-bfe1-3f3dfb36e609",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "variable-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "caseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeTaskVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "excludeLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "variableName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "variableNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d64ee8eb-1fca-4412-8c45-bb08798a54e1",
+    "name": "Flowable REST Access Tokens History API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

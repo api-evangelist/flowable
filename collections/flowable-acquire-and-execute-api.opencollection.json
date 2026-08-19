@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Acquire and Execute API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Acquire and Execute",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Acquire External Worker Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/acquire/jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Acquire External Worker Jobs"
+        },
+        {
+          "info": {
+            "name": "Complete an External Worker Job with a BPMN Error",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/acquire/jobs/:jobId/bpmnError",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Complete an External Worker Job with a BPMN Error"
+        },
+        {
+          "info": {
+            "name": "Complete an External Worker Job with a cmmn terminate transition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/acquire/jobs/:jobId/cmmnTerminate",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Complete an External Worker Job with a cmmn terminate transition"
+        },
+        {
+          "info": {
+            "name": "Complete an External Worker Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/acquire/jobs/:jobId/complete",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Complete an External Worker Jobs"
+        },
+        {
+          "info": {
+            "name": "Fail an External Worker Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/acquire/jobs/:jobId/fail",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fail an External Worker Job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

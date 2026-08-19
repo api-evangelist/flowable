@@ -1,0 +1,177 @@
+{
+  "item": [
+    {
+      "id": "8030fe45-e436-42a4-924a-cf921ec819d2",
+      "name": "Form Instance Models",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9285d2ba-ff2c-4182-9b8d-3514bbc28900",
+          "name": "Get a form instance model",
+          "request": {
+            "name": "Get a form instance model",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "form",
+                "form-instance-model"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"formInstanceId\": \"<string>\",\n  \"formDefinitionId\": \"<string>\",\n  \"formDefinitionKey\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"scopeDefinitionId\": \"<string>\",\n  \"outcome\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"parentDeploymentId\": \"<string>\",\n  \"variables\": {\n    \"key_0\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2a8960e1-aedc-481d-97b6-dce324866218",
+              "name": "Indicates the form instance was found and the model is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "form",
+                    "form-instance-model"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"key\": \"string\",\n  \"version\": 6522,\n  \"formInstanceId\": \"string\",\n  \"submittedBy\": \"string\",\n  \"submittedDate\": \"1954-01-02T04:10:25.500Z\",\n  \"selectedOutcome\": \"string\",\n  \"taskId\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"processDefinitionId\": \"string\",\n  \"tenantId\": \"string\",\n  \"url\": \"string\",\n  \"formKey\": \"string\",\n  \"dialogSize\": \"string\",\n  \"dialogTitle\": \"string\",\n  \"dialogDescription\": \"string\",\n  \"forceValidation\": true,\n  \"defaultDateFormat\": \"string\",\n  \"defaultNumberFormat\": \"string\",\n  \"rows\": [\n    {\n      \"cols\": [\n        {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        {\n          \"key_0\": {}\n        }\n      ]\n    },\n    {\n      \"cols\": [\n        {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        {\n          \"key_0\": {}\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"key\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"version\": \"string\",\n    \"modelType\": \"string\",\n    \"flowableDesignVersion\": 8371\n  },\n  \"section\": {\n    \"name\": \"string\",\n    \"visibility\": \"string\"\n  },\n  \"outcomes\": [\n    {\n      \"label\": \"string\",\n      \"value\": \"string\",\n      \"visible\": \"string\",\n      \"enabled\": \"string\",\n      \"primary\": \"string\",\n      \"ignorePayload\": false,\n      \"ignoreValidation\": true,\n      \"hideErrors\": false,\n      \"styleClass\": \"string\",\n      \"navigationUrl\": \"string\",\n      \"outcomeFormKey\": \"string\",\n      \"i18n\": {\n        \"key_0\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"key_1\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      }\n    },\n    {\n      \"label\": \"string\",\n      \"value\": \"string\",\n      \"visible\": \"string\",\n      \"enabled\": \"string\",\n      \"primary\": \"string\",\n      \"ignorePayload\": false,\n      \"ignoreValidation\": true,\n      \"hideErrors\": true,\n      \"styleClass\": \"string\",\n      \"navigationUrl\": \"string\",\n      \"outcomeFormKey\": \"string\",\n      \"i18n\": {\n        \"key_0\": {\n          \"key_0\": \"string\"\n        },\n        \"key_1\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    }\n  ],\n  \"customValidations\": [\n    {\n      \"expression\": \"string\",\n      \"errorMsg\": \"string\",\n      \"i18n\": {\n        \"key_0\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"key_1\": {\n          \"key_0\": \"string\"\n        }\n      }\n    },\n    {\n      \"expression\": \"string\",\n      \"errorMsg\": \"string\",\n      \"i18n\": {\n        \"key_0\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"key_1\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"key_2\": {\n          \"key_0\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11030e34-b793-4023-bf71-5b1deb6470cd",
+              "name": "Indicates the form instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "form",
+                    "form-instance-model"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a84dd421-0d9c-4d0c-acb0-12724c19736d",
+    "name": "Flowable REST Access Tokens Form Instance Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

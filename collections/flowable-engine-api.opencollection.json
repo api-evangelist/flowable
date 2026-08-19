@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Engine API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Engine",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get engine info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/engine",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get engine info"
+        },
+        {
+          "info": {
+            "name": "List engine properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/properties",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List engine properties"
+        },
+        {
+          "info": {
+            "name": "Get Content engine info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/content-management/engine",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get Content engine info"
+        },
+        {
+          "info": {
+            "name": "Get DMN engine info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-management/engine",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Returns a read-only view of the DMN engine that is used in this REST-service."
+        },
+        {
+          "info": {
+            "name": "Get form engine info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/form-management/engine",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Returns a read-only view of the engine that is used in this REST-service."
+        },
+        {
+          "info": {
+            "name": "Get IDM engine info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/idm-management/engine",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Returns a read-only view of the engine that is used in this REST-service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

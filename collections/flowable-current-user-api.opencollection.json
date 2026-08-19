@@ -1,0 +1,201 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Current User API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Current User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/current-user",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the current user information"
+        },
+        {
+          "info": {
+            "name": "Query the available tokens for the current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/current-user/access-tokens",
+            "params": [
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens created after the given ISO 8601 date."
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens created before the given ISO 8601 date."
+              },
+              {
+                "name": "expiresAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens expiring after the given date."
+              },
+              {
+                "name": "expiresBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens expiring before the given date."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens matching the given name."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "From the paginate request.  The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "searchText",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens matching the given searching text."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "From the paginate request. Number of rows to fetch, starting from start. Defaults to 10."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort the results on"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "From the paginate request. Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "withoutExpiration",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens that do not have an expiration date."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Query the available tokens for the current user"
+        },
+        {
+          "info": {
+            "name": "Create an access token for the current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/current-user/access-tokens",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Create an access token for the current user"
+        },
+        {
+          "info": {
+            "name": "Delete the token for the current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/current-user/access-tokens/:tokenId",
+            "params": [
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete the token for the current user"
+        },
+        {
+          "info": {
+            "name": "Update presence",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/current-user/presence",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Set the presence for the current user"
+        },
+        {
+          "info": {
+            "name": "Snooze",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/current-user/snooze",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Snooze for the current user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

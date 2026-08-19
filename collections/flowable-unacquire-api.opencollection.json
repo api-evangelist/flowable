@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Unacquire API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Unacquire",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Unacquire External Worker Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/unacquire/jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unacquire External Worker Jobs"
+        },
+        {
+          "info": {
+            "name": "Unaquire an External Worker Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/unacquire/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unaquire an External Worker Job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1034 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens History Task API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "History Task",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List historic task instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-task-instances",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "An id of the historic task instance."
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The process instance id of the historic task instance."
+              },
+              {
+                "name": "processInstanceIdWithChildren",
+                "value": "",
+                "type": "query",
+                "description": "Selects the historic task instances for the process instance and its children."
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns historic task instances without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+              },
+              {
+                "name": "processDefinitionKey",
+                "value": "",
+                "type": "query",
+                "description": "The process definition key of the historic task instance."
+              },
+              {
+                "name": "processDefinitionKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "The process definition key of the historic task instance, which matches the given value."
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "The process definition id of the historic task instance."
+              },
+              {
+                "name": "processDefinitionName",
+                "value": "",
+                "type": "query",
+                "description": "The process definition name of the historic task instance."
+              },
+              {
+                "name": "processDefinitionNameLike",
+                "value": "",
+                "type": "query",
+                "description": "The process definition name of the historic task instance, which matches the given value."
+              },
+              {
+                "name": "processBusinessKey",
+                "value": "",
+                "type": "query",
+                "description": "The process instance business key of the historic task instance."
+              },
+              {
+                "name": "processBusinessKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "The process instance business key of the historic task instance that matches the given value."
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "query",
+                "description": "The execution id of the historic task instance."
+              },
+              {
+                "name": "taskDefinitionKey",
+                "value": "",
+                "type": "query",
+                "description": "The task definition key for tasks part of a process"
+              },
+              {
+                "name": "taskDefinitionKeys",
+                "value": "",
+                "type": "query",
+                "description": "The task definition key for tasks part of a process"
+              },
+              {
+                "name": "taskName",
+                "value": "",
+                "type": "query",
+                "description": "The task name of the historic task instance."
+              },
+              {
+                "name": "taskNameLike",
+                "value": "",
+                "type": "query",
+                "description": "The task name with like operator for the historic task instance."
+              },
+              {
+                "name": "taskNameLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "The task name with like operator for the historic task instance ignoring case."
+              },
+              {
+                "name": "taskDescription",
+                "value": "",
+                "type": "query",
+                "description": "The task description of the historic task instance."
+              },
+              {
+                "name": "taskDescriptionLike",
+                "value": "",
+                "type": "query",
+                "description": "The task description with like operator for the historic task instance."
+              },
+              {
+                "name": "taskCategory",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks with the given category. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+              },
+              {
+                "name": "taskCategoryIn",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks with the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+              },
+              {
+                "name": "taskCategoryNotIn",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks not assigned to the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+              },
+              {
+                "name": "taskWithoutCategory",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks with no category assigned. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+              },
+              {
+                "name": "taskDeleteReason",
+                "value": "",
+                "type": "query",
+                "description": "The task delete reason of the historic task instance."
+              },
+              {
+                "name": "taskDeleteReasonLike",
+                "value": "",
+                "type": "query",
+                "description": "The task delete reason with like operator for the historic task instance."
+              },
+              {
+                "name": "taskAssignee",
+                "value": "",
+                "type": "query",
+                "description": "The assignee of the historic task instance."
+              },
+              {
+                "name": "taskAssigneeLike",
+                "value": "",
+                "type": "query",
+                "description": "The assignee with like operator for the historic task instance."
+              },
+              {
+                "name": "taskOwner",
+                "value": "",
+                "type": "query",
+                "description": "The owner of the historic task instance."
+              },
+              {
+                "name": "taskOwnerLike",
+                "value": "",
+                "type": "query",
+                "description": "The owner with like operator for the historic task instance."
+              },
+              {
+                "name": "taskInvolvedUser",
+                "value": "",
+                "type": "query",
+                "description": "An involved user of the historic task instance"
+              },
+              {
+                "name": "taskCandidateGroup",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that can be claimed by a user in the given group."
+              },
+              {
+                "name": "taskPriority",
+                "value": "",
+                "type": "query",
+                "description": "The priority of the historic task instance."
+              },
+              {
+                "name": "finished",
+                "value": "",
+                "type": "query",
+                "description": "Indication if the historic task instance is finished."
+              },
+              {
+                "name": "processFinished",
+                "value": "",
+                "type": "query",
+                "description": "Indication if the process instance of the historic task instance is finished."
+              },
+              {
+                "name": "parentTaskId",
+                "value": "",
+                "type": "query",
+                "description": "An optional parent task id of the historic task instance."
+              },
+              {
+                "name": "dueDate",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have a due date equal this date."
+              },
+              {
+                "name": "dueDateAfter",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have a due date after this date."
+              },
+              {
+                "name": "dueDateBefore",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have a due date before this date."
+              },
+              {
+                "name": "withoutDueDate",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have no due-date. When false is provided as value, this parameter is ignored."
+              },
+              {
+                "name": "taskCompletedOn",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have been completed on this date."
+              },
+              {
+                "name": "taskCompletedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have been completed after this date."
+              },
+              {
+                "name": "taskCompletedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have been completed before this date."
+              },
+              {
+                "name": "taskCreatedOn",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that were created on this date."
+              },
+              {
+                "name": "taskCreatedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that were created before this date."
+              },
+              {
+                "name": "taskCreatedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that were created after this date."
+              },
+              {
+                "name": "includeTaskLocalVariables",
+                "value": "",
+                "type": "query",
+                "description": "An indication if the historic task instance local variables should be returned as well."
+              },
+              {
+                "name": "includeProcessVariables",
+                "value": "",
+                "type": "query",
+                "description": "An indication if the historic task instance global variables should be returned as well."
+              },
+              {
+                "name": "scopeDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task instances with the given scopeDefinitionId."
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task instances with the given scopeId."
+              },
+              {
+                "name": "scopeIds",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task instances of the given scopeIds."
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns historic task instances without a scope id set. If false, the withoutScopeId parameter is ignored."
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task instances with the given scopeType."
+              },
+              {
+                "name": "propagatedStageInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which have the given id as propagated stage instance id"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task instances with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task instances with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns historic task instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "rootScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return case instances which have the given root scope id (that can be a process or case instance ID)."
+              },
+              {
+                "name": "parentScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return case instances which have the given parent scope id (that can be a process or case instance ID)."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List historic task instances"
+        },
+        {
+          "info": {
+            "name": "Get a single historic task instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-task-instances/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single historic task instance"
+        },
+        {
+          "info": {
+            "name": "Delete a historic task instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/history/historic-task-instances/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a historic task instance"
+        },
+        {
+          "info": {
+            "name": "Get a historic task instance form",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-task-instances/:taskId/form",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a historic task instance form"
+        },
+        {
+          "info": {
+            "name": "List identity links of a historic task instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-task-instances/:taskId/identitylinks",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List identity links of a historic task instance"
+        },
+        {
+          "info": {
+            "name": "List historic task log entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-task-log-entries",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "An id of the historic task instance."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the log entry."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The user who produced the task change."
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The process instance id of the historic task log entry."
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "The process definition id of the historic task log entry."
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task log entries with the given scopeId."
+              },
+              {
+                "name": "scopeDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task log entries with the given scopeDefinitionId."
+              },
+              {
+                "name": "subScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task log entries with the given subScopeId"
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task log entries with the given scopeType."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Return task log entries starting from a date."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Return task log entries up to a date."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task log entries with the given tenantId."
+              },
+              {
+                "name": "fromLogNumber",
+                "value": "",
+                "type": "query",
+                "description": "Return task log entries starting from a log number"
+              },
+              {
+                "name": "toLogNumber",
+                "value": "",
+                "type": "query",
+                "description": "Return task log entries up to specific a log number"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List historic task log entries"
+        },
+        {
+          "info": {
+            "name": "Query for historic task instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/query/historic-task-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The taskVariables and processVariables properties are JSON-arrays containing objects with the format as described here."
+        },
+        {
+          "info": {
+            "name": "List historic task instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-task-instances",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "An id of the historic task instance."
+              },
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The case instance id of the historic task instance."
+              },
+              {
+                "name": "caseInstanceIdWithChildren",
+                "value": "",
+                "type": "query",
+                "description": "Selects the historic task instance of a case instance and its children."
+              },
+              {
+                "name": "caseDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "The case definition id of the historic task instance."
+              },
+              {
+                "name": "propagatedStageInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which have the given id as propagated stage instance id"
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns historic task instances without a scope id set. If false, the withoutScopeId parameter is ignored."
+              },
+              {
+                "name": "taskDefinitionKey",
+                "value": "",
+                "type": "query",
+                "description": "The task definition key for tasks part of a process"
+              },
+              {
+                "name": "taskName",
+                "value": "",
+                "type": "query",
+                "description": "The task name of the historic task instance."
+              },
+              {
+                "name": "taskNameLike",
+                "value": "",
+                "type": "query",
+                "description": "The task name with like operator for the historic task instance."
+              },
+              {
+                "name": "taskNameLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "The task name with like operator for the historic task instance ignoring case."
+              },
+              {
+                "name": "taskDescription",
+                "value": "",
+                "type": "query",
+                "description": "The task description of the historic task instance."
+              },
+              {
+                "name": "taskDescriptionLike",
+                "value": "",
+                "type": "query",
+                "description": "The task description with like operator for the historic task instance."
+              },
+              {
+                "name": "taskCategory",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks with the given category. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+              },
+              {
+                "name": "taskCategoryIn",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks with the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+              },
+              {
+                "name": "taskCategoryNotIn",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks not assigned to the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+              },
+              {
+                "name": "taskWithoutCategory",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks with no category assigned. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml)."
+              },
+              {
+                "name": "taskDeleteReason",
+                "value": "",
+                "type": "query",
+                "description": "The task delete reason of the historic task instance."
+              },
+              {
+                "name": "taskDeleteReasonLike",
+                "value": "",
+                "type": "query",
+                "description": "The task delete reason with like operator for the historic task instance."
+              },
+              {
+                "name": "taskAssignee",
+                "value": "",
+                "type": "query",
+                "description": "The assignee of the historic task instance."
+              },
+              {
+                "name": "taskAssigneeLike",
+                "value": "",
+                "type": "query",
+                "description": "The assignee with like operator for the historic task instance."
+              },
+              {
+                "name": "taskOwner",
+                "value": "",
+                "type": "query",
+                "description": "The owner of the historic task instance."
+              },
+              {
+                "name": "taskOwnerLike",
+                "value": "",
+                "type": "query",
+                "description": "The owner with like operator for the historic task instance."
+              },
+              {
+                "name": "taskInvolvedUser",
+                "value": "",
+                "type": "query",
+                "description": "An involved user of the historic task instance"
+              },
+              {
+                "name": "taskCandidateGroup",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that can be claimed by a user in the given group."
+              },
+              {
+                "name": "taskPriority",
+                "value": "",
+                "type": "query",
+                "description": "The priority of the historic task instance."
+              },
+              {
+                "name": "finished",
+                "value": "",
+                "type": "query",
+                "description": "Indication if the historic task instance is finished."
+              },
+              {
+                "name": "processFinished",
+                "value": "",
+                "type": "query",
+                "description": "Indication if the process instance of the historic task instance is finished."
+              },
+              {
+                "name": "parentTaskId",
+                "value": "",
+                "type": "query",
+                "description": "An optional parent task id of the historic task instance."
+              },
+              {
+                "name": "dueDate",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have a due date equal this date."
+              },
+              {
+                "name": "dueDateAfter",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have a due date after this date."
+              },
+              {
+                "name": "dueDateBefore",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have a due date before this date."
+              },
+              {
+                "name": "withoutDueDate",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have no due-date. When false is provided as value, this parameter is ignored."
+              },
+              {
+                "name": "taskCompletedOn",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have been completed on this date."
+              },
+              {
+                "name": "taskCompletedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have been completed after this date."
+              },
+              {
+                "name": "taskCompletedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that have been completed before this date."
+              },
+              {
+                "name": "taskCreatedOn",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that were created on this date."
+              },
+              {
+                "name": "taskCreatedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that were created before this date."
+              },
+              {
+                "name": "taskCreatedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic task instances that were created after this date."
+              },
+              {
+                "name": "includeTaskLocalVariables",
+                "value": "",
+                "type": "query",
+                "description": "An indication if the historic task instance local variables should be returned as well."
+              },
+              {
+                "name": "includeProcessVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to include historic process variables in the result."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task instances with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic task instances with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns historic task instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns historic task instances without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+              },
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The plan item instance instance id of the historic task instance."
+              },
+              {
+                "name": "rootScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return case instances which have the given root scope id (that can be a process or case instance ID)."
+              },
+              {
+                "name": "parentScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return case instances which have the given parent scope id (that can be a process or case instance ID)."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List historic task instances"
+        },
+        {
+          "info": {
+            "name": "Get a single historic task instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-task-instances/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single historic task instance"
+        },
+        {
+          "info": {
+            "name": "Delete a historic task instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/cmmn-history/historic-task-instances/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a historic task instance"
+        },
+        {
+          "info": {
+            "name": "Get a historic task instance form",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-task-instances/:taskId/form",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a historic task instance form"
+        },
+        {
+          "info": {
+            "name": "List identity links of a historic task instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-task-instances/:taskId/identitylinks",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List identity links of a historic task instance"
+        },
+        {
+          "info": {
+            "name": "Query for historic task instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-query/historic-task-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The taskVariables and processVariables properties are JSON-arrays containing objects with the format as described here."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

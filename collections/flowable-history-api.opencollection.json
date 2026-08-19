@@ -1,0 +1,853 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens History API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List historic activity instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-activity-instances",
+            "params": [
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "query",
+                "description": "An id of the activity instance."
+              },
+              {
+                "name": "activityInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "An id of the historic activity instance."
+              },
+              {
+                "name": "activityName",
+                "value": "",
+                "type": "query",
+                "description": "The name of the historic activity instance."
+              },
+              {
+                "name": "activityType",
+                "value": "",
+                "type": "query",
+                "description": "The element type of the historic activity instance."
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "query",
+                "description": "The execution id of the historic activity instance."
+              },
+              {
+                "name": "finished",
+                "value": "",
+                "type": "query",
+                "description": "Indication if the historic activity instance is finished."
+              },
+              {
+                "name": "taskAssignee",
+                "value": "",
+                "type": "query",
+                "description": "The assignee of the historic activity instance."
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The process instance id of the historic activity instance."
+              },
+              {
+                "name": "processInstanceIds",
+                "value": "",
+                "type": "query",
+                "description": "The process instance ids of the historic activity instances."
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "The process definition id of the historic activity instance."
+              },
+              {
+                "name": "calledProcessInstanceIds",
+                "value": "",
+                "type": "query",
+                "description": "The lis of process instance ids that are called by historic activity instances"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List historic activity instances"
+        },
+        {
+          "info": {
+            "name": "Get historic detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-detail",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the historic detail."
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The process instance id of the historic detail."
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "query",
+                "description": "The execution id of the historic detail."
+              },
+              {
+                "name": "activityInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The activity instance id of the historic detail."
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "The task id of the historic detail."
+              },
+              {
+                "name": "selectOnlyFormProperties",
+                "value": "",
+                "type": "query",
+                "description": "Indication to only return form properties in the result."
+              },
+              {
+                "name": "selectOnlyVariableUpdates",
+                "value": "",
+                "type": "query",
+                "description": "Indication to only return variable updates in the result."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get historic detail"
+        },
+        {
+          "info": {
+            "name": "Get the binary data for a historic detail variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-detail/:detailId/data",
+            "params": [
+              {
+                "name": "detailId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type."
+        },
+        {
+          "info": {
+            "name": "Get the binary data for a historic task instance variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-task-instances/:taskId/variables/:variableName/data",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type."
+        },
+        {
+          "info": {
+            "name": "List of historic variable instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-variable-instances",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The process instance id of the historic variable instance."
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "The task id of the historic variable instance."
+              },
+              {
+                "name": "excludeTaskVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to exclude the task variables from the result."
+              },
+              {
+                "name": "excludeLocalVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to exclude local variables or not."
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "query",
+                "description": "The variable name of the historic variable instance."
+              },
+              {
+                "name": "variableNameLike",
+                "value": "",
+                "type": "query",
+                "description": "The variable name using the like operator for the historic variable instance."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of historic variable instances"
+        },
+        {
+          "info": {
+            "name": "Get the binary data for a historic task instance variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-variable-instances/:varInstanceId/data",
+            "params": [
+              {
+                "name": "varInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type."
+        },
+        {
+          "info": {
+            "name": "Query for historic activity instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/query/historic-activity-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long."
+        },
+        {
+          "info": {
+            "name": "Query for historic details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/query/historic-detail",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long."
+        },
+        {
+          "info": {
+            "name": "Query for historic variable instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/query/historic-variable-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here."
+        },
+        {
+          "info": {
+            "name": "Query for variable instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/query/variable-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of variable instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long."
+        },
+        {
+          "info": {
+            "name": "List activity instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/activity-instances",
+            "params": [
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "query",
+                "description": "An id of the activity instance."
+              },
+              {
+                "name": "activityInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "An id of the activity instance."
+              },
+              {
+                "name": "activityName",
+                "value": "",
+                "type": "query",
+                "description": "The name of the activity instance."
+              },
+              {
+                "name": "activityType",
+                "value": "",
+                "type": "query",
+                "description": "The element type of the activity instance."
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "query",
+                "description": "The execution id of the activity instance."
+              },
+              {
+                "name": "finished",
+                "value": "",
+                "type": "query",
+                "description": "Indication if the activity instance is finished."
+              },
+              {
+                "name": "taskAssignee",
+                "value": "",
+                "type": "query",
+                "description": "The assignee of the activity instance."
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The process instance id of the activity instance."
+              },
+              {
+                "name": "processInstanceIds",
+                "value": "",
+                "type": "query",
+                "description": "The process instance ids of the activity instances."
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "The process definition id of the activity instance."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The field to sort by. Defaults to 'startTime'."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List activity instances"
+        },
+        {
+          "info": {
+            "name": "List of variable instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/variable-instances",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The process instance id of the variable instance."
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "The task id of the variable instance."
+              },
+              {
+                "name": "excludeTaskVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to exclude the task variables from the result."
+              },
+              {
+                "name": "excludeLocalVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to exclude local variables or not."
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "query",
+                "description": "The variable name of the variable instance."
+              },
+              {
+                "name": "variableNameLike",
+                "value": "",
+                "type": "query",
+                "description": "The variable name using the like operator for the variable instance."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The field to sort by. Defaults to 'variableName'."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of variable instances"
+        },
+        {
+          "info": {
+            "name": "Get the binary data for a historic task instance variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-task-instances/:taskId/variables/:variableName/data",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type."
+        },
+        {
+          "info": {
+            "name": "List of historic variable instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-variable-instances",
+            "params": [
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The case instance id of the historic variable instance."
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "The task id of the historic variable instance."
+              },
+              {
+                "name": "excludeTaskVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to exclude the task variables from the result."
+              },
+              {
+                "name": "excludeLocalVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to exclude local variables or not."
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "query",
+                "description": "The variable name of the historic variable instance."
+              },
+              {
+                "name": "variableNameLike",
+                "value": "",
+                "type": "query",
+                "description": "The variable name using the like operator for the historic variable instance."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The field to sort by. Defaults to 'variableName'."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of historic variable instances"
+        },
+        {
+          "info": {
+            "name": "Get the binary data for a historic task instance variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-variable-instances/:varInstanceId/data",
+            "params": [
+              {
+                "name": "varInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type."
+        },
+        {
+          "info": {
+            "name": "Query for historic variable instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-query/historic-variable-instances",
+            "params": [
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The field to sort by. Defaults to 'variableName'."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here."
+        },
+        {
+          "info": {
+            "name": "List of variable instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-runtime/variable-instances",
+            "params": [
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The case instance id of the variable instance."
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "The task id of the variable instance."
+              },
+              {
+                "name": "excludeTaskVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to exclude the task variables from the result."
+              },
+              {
+                "name": "excludeLocalVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to exclude local variables or not."
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "query",
+                "description": "The variable name of the variable instance."
+              },
+              {
+                "name": "variableNameLike",
+                "value": "",
+                "type": "query",
+                "description": "The variable name using the like operator for the variable instance."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The field to sort by. Defaults to 'variableName'."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of variable instances"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

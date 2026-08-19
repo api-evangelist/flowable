@@ -1,0 +1,230 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Form Instances API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Form Instances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a form instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/form/form-instance/:formInstanceId",
+            "params": [
+              {
+                "name": "formInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a form instance"
+        },
+        {
+          "info": {
+            "name": "Get form instance values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/form/form-instance/:formInstanceId/values",
+            "params": [
+              {
+                "name": "formInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get form instance values"
+        },
+        {
+          "info": {
+            "name": "List of form instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/form/form-instances",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with the given id."
+              },
+              {
+                "name": "formDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with the given form definition id."
+              },
+              {
+                "name": "formDefinitionIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with a form definition id like the given value."
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with the given task id."
+              },
+              {
+                "name": "taskIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with a task id like the given value."
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with the given process instance id."
+              },
+              {
+                "name": "processInstanceIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with a process instance id like the given value."
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with the given process definition id."
+              },
+              {
+                "name": "processDefinitionIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with a process definition id like the given value."
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with the given scope id."
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with a scope type like the given value."
+              },
+              {
+                "name": "scopeDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with the given scope definition id."
+              },
+              {
+                "name": "submittedBy",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances submitted by the given value."
+              },
+              {
+                "name": "submittedByLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances submitted by like the given value."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return form instances with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns form instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of form instances"
+        },
+        {
+          "info": {
+            "name": "Store a form instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/form/form-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Provide either a FormDefinitionKey or a FormDefinitionId together with the other properties."
+        },
+        {
+          "info": {
+            "name": "Query form instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/query/form-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The request body can contain all possible filters that can be used in the List form instances URL query. On top of these, it’s possible to provide an array of variables to include in the query, with their format described here.\n\nThe general paging and sorting query-parameters can be used for this URL."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,190 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Historic Decision Executions API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Historic Decision Executions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of historic decision executions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-history/historic-decision-executions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic decision executions with the given id."
+              },
+              {
+                "name": "decisionDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic decision executions with the given definition id."
+              },
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic decision executions with the given deployment id."
+              },
+              {
+                "name": "decisionKey",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic decision executions with the given decision key."
+              },
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic decision executions with the given activity id."
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic decision executions with the given execution id."
+              },
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic decision executions with the given instance id."
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic decision executions with the given scope type."
+              },
+              {
+                "name": "withoutScopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic decision executions without a scope type."
+              },
+              {
+                "name": "processInstanceIdWithChildren",
+                "value": "",
+                "type": "query",
+                "description": "Return all historic decision executions with the given process instance id or its entity link children."
+              },
+              {
+                "name": "caseInstanceIdWithChildren",
+                "value": "",
+                "type": "query",
+                "description": "Return all historic decision executions with the given case instance id or its entity link children."
+              },
+              {
+                "name": "failed",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic decision executions with the failed state."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic decision executions with the given tenant id."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic decision executions like the given tenant id."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of historic decision executions"
+        },
+        {
+          "info": {
+            "name": "Get a historic decision execution",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-history/historic-decision-executions/:historicDecisionExecutionId",
+            "params": [
+              {
+                "name": "historicDecisionExecutionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a historic decision execution"
+        },
+        {
+          "info": {
+            "name": "Get a historic decision execution audit content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-history/historic-decision-executions/:historicDecisionExecutionId/auditdata",
+            "params": [
+              {
+                "name": "historicDecisionExecutionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a historic decision execution audit content"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

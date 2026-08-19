@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Database tables API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Database tables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": " List tables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/tables",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": " List tables"
+        },
+        {
+          "info": {
+            "name": "Get a single table",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/tables/:tableName",
+            "params": [
+              {
+                "name": "tableName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single table"
+        },
+        {
+          "info": {
+            "name": "Get column info for a single table",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/tables/:tableName/columns",
+            "params": [
+              {
+                "name": "tableName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get column info for a single table"
+        },
+        {
+          "info": {
+            "name": "Get row data for a single table",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/tables/:tableName/data",
+            "params": [
+              {
+                "name": "tableName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              },
+              {
+                "name": "orderAscendingColumn",
+                "value": "",
+                "type": "query",
+                "description": "Name of the column to sort the resulting rows on, ascending."
+              },
+              {
+                "name": "orderDescendingColumn",
+                "value": "",
+                "type": "query",
+                "description": "Name of the column to sort the resulting rows on, descending."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get row data for a single table"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

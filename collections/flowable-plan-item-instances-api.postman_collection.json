@@ -1,0 +1,2302 @@
+{
+  "item": [
+    {
+      "id": "8b2aad9f-4e7c-408e-a127-7a5890cea82e",
+      "name": "Plan Item Instances",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cfb2f286-fb56-4ded-903c-bb35320425cb",
+          "name": "Query plan item instances",
+          "request": {
+            "name": "Query plan item instances",
+            "description": {
+              "content": "The request body can contain all possible filters that can be used in the List plan item instances URL query. On top of these, it’s possible to provide an array of variables and caseInstanceVariables to include in the query, with their format described here.\n\nThe general paging and sorting query-parameters can be used for this URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-query",
+                "plan-item-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"elementId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"caseInstanceIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseDefinitionId\": \"<string>\",\n  \"stageInstanceId\": \"<string>\",\n  \"planItemDefinitionId\": \"<string>\",\n  \"planItemDefinitionType\": \"<string>\",\n  \"planItemDefinitionTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"state\": \"<string>\",\n  \"createdBefore\": \"<dateTime>\",\n  \"createdAfter\": \"<dateTime>\",\n  \"startUserId\": \"<string>\",\n  \"referenceId\": \"<string>\",\n  \"referenceType\": \"<string>\",\n  \"includeEnded\": \"<boolean>\",\n  \"includeLocalVariables\": \"<boolean>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"caseInstanceVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"tenantId\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66a30d07-4f68-44f4-b75a-3ddc8d3c33c5",
+              "name": "Indicates request was successful and the plan item instances are returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-query",
+                    "plan-item-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"elementId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"caseInstanceIds\": [\n    \"<string>\"\n  ],\n  \"caseDefinitionId\": \"<string>\",\n  \"stageInstanceId\": \"<string>\",\n  \"planItemDefinitionId\": \"<string>\",\n  \"planItemDefinitionType\": \"<string>\",\n  \"planItemDefinitionTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"state\": \"<string>\",\n  \"createdBefore\": \"<dateTime>\",\n  \"createdAfter\": \"<dateTime>\",\n  \"startUserId\": \"<string>\",\n  \"referenceId\": \"<string>\",\n  \"referenceType\": \"<string>\",\n  \"includeEnded\": \"<boolean>\",\n  \"includeLocalVariables\": \"<boolean>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"caseInstanceVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"tenantId\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"5\",\n      \"url\": \"http://localhost:8182/cmmn-runtime/plan-item-instances/5\",\n      \"name\": \"string\",\n      \"caseInstanceId\": \"string\",\n      \"caseInstanceUrl\": \"string\",\n      \"caseDefinitionId\": \"string\",\n      \"caseDefinitionUrl\": \"string\",\n      \"derivedCaseDefinitionId\": \"string\",\n      \"derivedCaseDefinitionUrl\": \"string\",\n      \"stageInstanceId\": \"string\",\n      \"stageInstanceUrl\": \"string\",\n      \"planItemDefinitionId\": \"string\",\n      \"planItemDefinitionType\": \"string\",\n      \"state\": \"string\",\n      \"stage\": true,\n      \"elementId\": \"string\",\n      \"createTime\": \"2007-06-02T10:13:44.623Z\",\n      \"lastAvailableTime\": \"2018-02-08T00:49:49.292Z\",\n      \"lastEnabledTime\": \"1999-08-22T06:53:05.979Z\",\n      \"lastDisabledTime\": \"1965-04-28T15:36:47.917Z\",\n      \"lastStartedTime\": \"1953-09-23T12:16:25.430Z\",\n      \"lastSuspendedTime\": \"1968-01-13T16:31:21.344Z\",\n      \"completedTime\": \"1947-01-04T13:10:28.873Z\",\n      \"occurredTime\": \"2008-03-15T15:55:01.370Z\",\n      \"terminatedTime\": \"1953-05-10T18:11:11.961Z\",\n      \"exitTime\": \"1988-12-07T09:35:54.464Z\",\n      \"endedTime\": \"1963-11-08T17:28:12.666Z\",\n      \"startUserId\": \"string\",\n      \"assignee\": \"string\",\n      \"completedBy\": \"string\",\n      \"referenceId\": \"string\",\n      \"referenceType\": \"string\",\n      \"completable\": true,\n      \"entryCriterionId\": \"string\",\n      \"exitCriterionId\": \"string\",\n      \"formKey\": \"string\",\n      \"extraValue\": \"string\",\n      \"tenantId\": \"null\",\n      \"localVariables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"5\",\n      \"url\": \"http://localhost:8182/cmmn-runtime/plan-item-instances/5\",\n      \"name\": \"string\",\n      \"caseInstanceId\": \"string\",\n      \"caseInstanceUrl\": \"string\",\n      \"caseDefinitionId\": \"string\",\n      \"caseDefinitionUrl\": \"string\",\n      \"derivedCaseDefinitionId\": \"string\",\n      \"derivedCaseDefinitionUrl\": \"string\",\n      \"stageInstanceId\": \"string\",\n      \"stageInstanceUrl\": \"string\",\n      \"planItemDefinitionId\": \"string\",\n      \"planItemDefinitionType\": \"string\",\n      \"state\": \"string\",\n      \"stage\": true,\n      \"elementId\": \"string\",\n      \"createTime\": \"2010-09-26T01:31:37.009Z\",\n      \"lastAvailableTime\": \"1993-11-05T18:56:01.189Z\",\n      \"lastEnabledTime\": \"1997-06-14T04:26:32.475Z\",\n      \"lastDisabledTime\": \"2023-01-06T08:52:42.573Z\",\n      \"lastStartedTime\": \"2006-04-08T04:13:39.954Z\",\n      \"lastSuspendedTime\": \"2019-10-11T08:35:22.168Z\",\n      \"completedTime\": \"1974-03-13T08:51:46.473Z\",\n      \"occurredTime\": \"2021-03-12T20:48:18.913Z\",\n      \"terminatedTime\": \"2019-02-01T17:46:33.755Z\",\n      \"exitTime\": \"1960-11-20T04:34:47.539Z\",\n      \"endedTime\": \"1982-01-18T03:09:03.197Z\",\n      \"startUserId\": \"string\",\n      \"assignee\": \"string\",\n      \"completedBy\": \"string\",\n      \"referenceId\": \"string\",\n      \"referenceType\": \"string\",\n      \"completable\": true,\n      \"entryCriterionId\": \"string\",\n      \"exitCriterionId\": \"string\",\n      \"formKey\": \"string\",\n      \"extraValue\": \"string\",\n      \"tenantId\": \"null\",\n      \"localVariables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"total\": 1400,\n  \"start\": 8699,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 3516\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "436700c1-67e1-4989-b47e-b8c32570d92f",
+              "name": "Indicates a parameter was passed in the wrong format. The status message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-query",
+                    "plan-item-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"elementId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"caseInstanceIds\": [\n    \"<string>\"\n  ],\n  \"caseDefinitionId\": \"<string>\",\n  \"stageInstanceId\": \"<string>\",\n  \"planItemDefinitionId\": \"<string>\",\n  \"planItemDefinitionType\": \"<string>\",\n  \"planItemDefinitionTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"state\": \"<string>\",\n  \"createdBefore\": \"<dateTime>\",\n  \"createdAfter\": \"<dateTime>\",\n  \"startUserId\": \"<string>\",\n  \"referenceId\": \"<string>\",\n  \"referenceType\": \"<string>\",\n  \"includeEnded\": \"<boolean>\",\n  \"includeLocalVariables\": \"<boolean>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"caseInstanceVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"tenantId\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "061fe2c4-6671-45b6-ac29-991f88d671a2",
+          "name": "List of plan item instances",
+          "request": {
+            "name": "List of plan item instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "plan-item-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Only return models with the given version."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return plan item instances with the given case definition id."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseInstanceId",
+                  "value": "<string>",
+                  "description": "Only return plan item instances which are part of the case instance with the given id."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseInstanceIds",
+                  "value": "<string>",
+                  "description": "Only return plan item instances which are part of the case instance with the given ids."
+                },
+                {
+                  "disabled": false,
+                  "key": "stageInstanceId",
+                  "value": "<string>",
+                  "description": "Only return plan item instances which are part of the given stage instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "planItemDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return plan item instances which have the given plan item definition id."
+                },
+                {
+                  "disabled": false,
+                  "key": "planItemDefinitionType",
+                  "value": "<string>",
+                  "description": "Only return plan item instances which have the given plan item definition type."
+                },
+                {
+                  "disabled": false,
+                  "key": "planItemDefinitionTypes",
+                  "value": "<string>",
+                  "description": "Only return plan item instances which have any of the given plan item definition types. Comma-separated string e.g. humantask, stage"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Only return plan item instances which have the given state."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Only return plan item instances which have the given name."
+                },
+                {
+                  "disabled": false,
+                  "key": "elementId",
+                  "value": "<string>",
+                  "description": "Only return plan item instances which have the given element id."
+                },
+                {
+                  "disabled": false,
+                  "key": "referenceId",
+                  "value": "<string>",
+                  "description": "Only return plan item instances which have the given reference id."
+                },
+                {
+                  "disabled": false,
+                  "key": "referenceType",
+                  "value": "<string>",
+                  "description": "Only return plan item instances which have the given reference type."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBefore",
+                  "value": "<date>",
+                  "description": "Only return plan item instances which are created before the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAfter",
+                  "value": "<date>",
+                  "description": "Only return plan item instances which are created after the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "startUserId",
+                  "value": "<string>",
+                  "description": "Only return plan item instances which are started by the given user id."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeEnded",
+                  "value": "<boolean>",
+                  "description": "Define if ended plan item instances should be included."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeLocalVariables",
+                  "value": "<boolean>",
+                  "description": "Indication to include local variables in the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return plan item instances with the given tenantId."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns plan item instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Property to sort on, to be used together with the order."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "19c92324-fdf3-4ae5-8089-bc6f15349129",
+              "name": "Indicates request was successful and the executions are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stageInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "planItemDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "planItemDefinitionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "planItemDefinitionTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "elementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referenceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referenceType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "startUserId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeEnded",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"5\",\n      \"url\": \"http://localhost:8182/cmmn-runtime/plan-item-instances/5\",\n      \"name\": \"string\",\n      \"caseInstanceId\": \"string\",\n      \"caseInstanceUrl\": \"string\",\n      \"caseDefinitionId\": \"string\",\n      \"caseDefinitionUrl\": \"string\",\n      \"derivedCaseDefinitionId\": \"string\",\n      \"derivedCaseDefinitionUrl\": \"string\",\n      \"stageInstanceId\": \"string\",\n      \"stageInstanceUrl\": \"string\",\n      \"planItemDefinitionId\": \"string\",\n      \"planItemDefinitionType\": \"string\",\n      \"state\": \"string\",\n      \"stage\": false,\n      \"elementId\": \"string\",\n      \"createTime\": \"1953-01-03T23:06:20.279Z\",\n      \"lastAvailableTime\": \"1993-09-04T23:06:59.164Z\",\n      \"lastEnabledTime\": \"1995-07-04T07:23:53.619Z\",\n      \"lastDisabledTime\": \"1969-02-17T14:51:40.003Z\",\n      \"lastStartedTime\": \"1968-05-26T14:36:47.519Z\",\n      \"lastSuspendedTime\": \"1977-12-02T02:31:53.211Z\",\n      \"completedTime\": \"2014-11-01T01:30:56.429Z\",\n      \"occurredTime\": \"1956-06-02T08:49:05.720Z\",\n      \"terminatedTime\": \"2008-02-19T03:38:59.074Z\",\n      \"exitTime\": \"1955-06-24T00:05:12.290Z\",\n      \"endedTime\": \"2000-09-11T16:20:05.843Z\",\n      \"startUserId\": \"string\",\n      \"assignee\": \"string\",\n      \"completedBy\": \"string\",\n      \"referenceId\": \"string\",\n      \"referenceType\": \"string\",\n      \"completable\": true,\n      \"entryCriterionId\": \"string\",\n      \"exitCriterionId\": \"string\",\n      \"formKey\": \"string\",\n      \"extraValue\": \"string\",\n      \"tenantId\": \"null\",\n      \"localVariables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"5\",\n      \"url\": \"http://localhost:8182/cmmn-runtime/plan-item-instances/5\",\n      \"name\": \"string\",\n      \"caseInstanceId\": \"string\",\n      \"caseInstanceUrl\": \"string\",\n      \"caseDefinitionId\": \"string\",\n      \"caseDefinitionUrl\": \"string\",\n      \"derivedCaseDefinitionId\": \"string\",\n      \"derivedCaseDefinitionUrl\": \"string\",\n      \"stageInstanceId\": \"string\",\n      \"stageInstanceUrl\": \"string\",\n      \"planItemDefinitionId\": \"string\",\n      \"planItemDefinitionType\": \"string\",\n      \"state\": \"string\",\n      \"stage\": false,\n      \"elementId\": \"string\",\n      \"createTime\": \"1989-09-11T05:30:42.130Z\",\n      \"lastAvailableTime\": \"1978-01-27T00:15:25.884Z\",\n      \"lastEnabledTime\": \"1983-10-10T10:13:27.198Z\",\n      \"lastDisabledTime\": \"1953-09-22T07:11:36.916Z\",\n      \"lastStartedTime\": \"2013-11-01T04:51:59.285Z\",\n      \"lastSuspendedTime\": \"1971-05-06T12:31:16.172Z\",\n      \"completedTime\": \"1969-12-15T17:38:25.501Z\",\n      \"occurredTime\": \"2005-11-01T14:32:43.416Z\",\n      \"terminatedTime\": \"2000-07-31T06:12:38.447Z\",\n      \"exitTime\": \"1971-04-18T05:38:20.902Z\",\n      \"endedTime\": \"2000-04-14T23:25:32.782Z\",\n      \"startUserId\": \"string\",\n      \"assignee\": \"string\",\n      \"completedBy\": \"string\",\n      \"referenceId\": \"string\",\n      \"referenceType\": \"string\",\n      \"completable\": true,\n      \"entryCriterionId\": \"string\",\n      \"exitCriterionId\": \"string\",\n      \"formKey\": \"string\",\n      \"extraValue\": \"string\",\n      \"tenantId\": \"null\",\n      \"localVariables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"total\": 8993,\n  \"start\": 9100,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 5750\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61a2f48a-b272-4356-a08f-f77438895591",
+              "name": "Indicates a parameter was passed in the wrong format . The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stageInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "planItemDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "planItemDefinitionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "planItemDefinitionTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "elementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referenceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referenceType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "startUserId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeEnded",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeLocalVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6ae8f89-73a2-45d5-9d60-145e01e0c450",
+          "name": "Get an plan item instance",
+          "request": {
+            "name": "Get an plan item instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "plan-item-instances",
+                ":planItemInstanceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planItemInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "137b431b-4af7-4a94-a85e-520d18ef988a",
+              "name": "Indicates the plan item instance was found and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"5\",\n  \"url\": \"http://localhost:8182/cmmn-runtime/plan-item-instances/5\",\n  \"name\": \"string\",\n  \"caseInstanceId\": \"string\",\n  \"caseInstanceUrl\": \"string\",\n  \"caseDefinitionId\": \"string\",\n  \"caseDefinitionUrl\": \"string\",\n  \"derivedCaseDefinitionId\": \"string\",\n  \"derivedCaseDefinitionUrl\": \"string\",\n  \"stageInstanceId\": \"string\",\n  \"stageInstanceUrl\": \"string\",\n  \"planItemDefinitionId\": \"string\",\n  \"planItemDefinitionType\": \"string\",\n  \"state\": \"string\",\n  \"stage\": false,\n  \"elementId\": \"string\",\n  \"createTime\": \"1957-10-30T17:08:44.495Z\",\n  \"lastAvailableTime\": \"2015-12-05T20:45:58.468Z\",\n  \"lastEnabledTime\": \"1996-08-18T04:21:54.023Z\",\n  \"lastDisabledTime\": \"2007-04-04T07:18:58.414Z\",\n  \"lastStartedTime\": \"1984-07-11T03:11:55.710Z\",\n  \"lastSuspendedTime\": \"1948-06-10T03:50:51.172Z\",\n  \"completedTime\": \"1980-07-19T01:38:08.201Z\",\n  \"occurredTime\": \"2011-03-30T06:19:03.597Z\",\n  \"terminatedTime\": \"2000-05-12T01:32:53.148Z\",\n  \"exitTime\": \"2015-05-04T03:05:40.449Z\",\n  \"endedTime\": \"2014-07-11T12:33:53.526Z\",\n  \"startUserId\": \"string\",\n  \"assignee\": \"string\",\n  \"completedBy\": \"string\",\n  \"referenceId\": \"string\",\n  \"referenceType\": \"string\",\n  \"completable\": false,\n  \"entryCriterionId\": \"string\",\n  \"exitCriterionId\": \"string\",\n  \"formKey\": \"string\",\n  \"extraValue\": \"string\",\n  \"tenantId\": \"null\",\n  \"localVariables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"string\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7b9c8fb-3688-44c9-bf20-2724596d947e",
+              "name": "Indicates the plan item instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a14dc479-c0e0-438c-b5a5-cda4469cf940",
+          "name": "Execute an action on a plan item instance",
+          "request": {
+            "name": "Execute an action on a plan item instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "plan-item-instances",
+                ":planItemInstanceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planItemInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5b4f8d48-5a34-4c89-a5f0-2f8f4b1048d4",
+              "name": "Indicates the plan item instance was found and the action is performed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"5\",\n  \"url\": \"http://localhost:8182/cmmn-runtime/plan-item-instances/5\",\n  \"name\": \"string\",\n  \"caseInstanceId\": \"string\",\n  \"caseInstanceUrl\": \"string\",\n  \"caseDefinitionId\": \"string\",\n  \"caseDefinitionUrl\": \"string\",\n  \"derivedCaseDefinitionId\": \"string\",\n  \"derivedCaseDefinitionUrl\": \"string\",\n  \"stageInstanceId\": \"string\",\n  \"stageInstanceUrl\": \"string\",\n  \"planItemDefinitionId\": \"string\",\n  \"planItemDefinitionType\": \"string\",\n  \"state\": \"string\",\n  \"stage\": false,\n  \"elementId\": \"string\",\n  \"createTime\": \"1957-10-30T17:08:44.495Z\",\n  \"lastAvailableTime\": \"2015-12-05T20:45:58.468Z\",\n  \"lastEnabledTime\": \"1996-08-18T04:21:54.023Z\",\n  \"lastDisabledTime\": \"2007-04-04T07:18:58.414Z\",\n  \"lastStartedTime\": \"1984-07-11T03:11:55.710Z\",\n  \"lastSuspendedTime\": \"1948-06-10T03:50:51.172Z\",\n  \"completedTime\": \"1980-07-19T01:38:08.201Z\",\n  \"occurredTime\": \"2011-03-30T06:19:03.597Z\",\n  \"terminatedTime\": \"2000-05-12T01:32:53.148Z\",\n  \"exitTime\": \"2015-05-04T03:05:40.449Z\",\n  \"endedTime\": \"2014-07-11T12:33:53.526Z\",\n  \"startUserId\": \"string\",\n  \"assignee\": \"string\",\n  \"completedBy\": \"string\",\n  \"referenceId\": \"string\",\n  \"referenceType\": \"string\",\n  \"completable\": false,\n  \"entryCriterionId\": \"string\",\n  \"exitCriterionId\": \"string\",\n  \"formKey\": \"string\",\n  \"extraValue\": \"string\",\n  \"tenantId\": \"null\",\n  \"localVariables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"string\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c87008a-84b7-46df-96d2-967455a8fe87",
+              "name": "Indicates the plan item instance was found, the action was performed and the action caused the plan item instance to end.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99a12db1-6a7c-4bbd-9882-44a0cd723508",
+              "name": "Indicates an illegal action was requested, required parameters are missing in the request body or illegal variables are passed in. Status description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "736779eb-59ab-42df-bfd1-0e0376e670ac",
+              "name": "Indicates the plan item instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66f06d14-4b28-49c4-acb1-11fba13749e1",
+          "name": "Create a variable on a plan item",
+          "request": {
+            "name": "Create a variable on a plan item",
+            "description": {
+              "content": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "plan-item-instances",
+                ":planItemInstanceId",
+                "variables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planItemInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "scope",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e0c43b6b-cb41-4260-a82e-49ff2b933be7",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "000b5629-bc35-4586-8892-14f93a1b123f",
+              "name": "Indicates both the plan item instance and variable were found and variable is created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "402f3247-8017-456e-b79a-0e02b674c571",
+              "name": "Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b60a5e1-295e-4a35-956c-57535b8d6493",
+              "name": "Indicates the requested plan item instance was not found or the plan item instance does not have a variable with the given name. Status description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f696bd8-33d9-4d6f-ac68-254cf4d6899e",
+              "name": "Indicates the plan item instance was found but already contains a variable with the given name. Use the update-method instead.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e8863ac-bbf4-4ea1-970e-e4fd3142d245",
+          "name": "Create a variable on a plan item asynchronously",
+          "request": {
+            "name": "Create a variable on a plan item asynchronously",
+            "description": {
+              "content": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "plan-item-instances",
+                ":planItemInstanceId",
+                "variables-async"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planItemInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "value": "<binary>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "scope",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0f6f2d8d-11b9-4c65-b4c7-6c85c0af7ae6",
+              "name": "Indicates the job to create a variable is created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables-async"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24537bc6-50a5-4a84-b6b0-526958f20f91",
+              "name": "Indicates the request body is incomplete or contains illegal values. The status description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables-async"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c40e616f-4fdc-4a17-9461-b60d8f9f03f4",
+              "name": "Indicates the plan item instance does not have a variable with the given name. Status description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables-async"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de6997a1-c781-4f4b-a49d-ca6b4876512a",
+              "name": "Indicates the plan item instance already contains a variable with the given name. Use the update-method instead.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables-async"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55eaa4a7-a068-41ee-bcb8-9735d57b09ae",
+          "name": "Update a variable on a plan item asynchronously",
+          "request": {
+            "name": "Update a variable on a plan item asynchronously",
+            "description": {
+              "content": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "plan-item-instances",
+                ":planItemInstanceId",
+                "variables-async",
+                ":variableName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planItemInstanceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "variableName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "scope",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6b9897f0-c193-4550-8a2f-e2be999cb135",
+              "name": "Indicates the job to update a variable is created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables-async",
+                    ":variableName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "057a50b0-9a33-4c39-a580-35b65eb5dc3f",
+              "name": "Indicates the plan item instance does not have a variable with the given name. Status description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables-async",
+                    ":variableName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81d1f5af-1e67-46c7-8223-319b783e84e5",
+          "name": "Update a variable on a plan item",
+          "request": {
+            "name": "Update a variable on a plan item",
+            "description": {
+              "content": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "plan-item-instances",
+                ":planItemInstanceId",
+                "variables",
+                ":variableName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planItemInstanceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "variableName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "scope",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1b519927-3551-482e-9c2d-ab4e5629daa2",
+              "name": "Indicates both the plan item instance and variable were found and variable is updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables",
+                    ":variableName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"myVariable\",\n  \"type\": \"string\",\n  \"value\": {},\n  \"valueUrl\": \"http://....\",\n  \"scope\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3752c298-ad68-4d63-a950-57d946faef5a",
+              "name": "Indicates the requested plan item instance was not found or the plan item instance does not have a variable with the given name. Status description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables",
+                    ":variableName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f56b296d-d395-4295-8ec3-c204fb6a1af9",
+          "name": "Delete a variable for a plan item instance",
+          "request": {
+            "name": "Delete a variable for a plan item instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "plan-item-instances",
+                ":planItemInstanceId",
+                "variables",
+                ":variableName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planItemInstanceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "variableName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6b1a504d-c6d3-4e5e-940e-09d475fee2b8",
+              "name": "Indicates both the plan item and variable were found and variable has been deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables",
+                    ":variableName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d6a698e9-a24f-4ab2-aafd-f7dd275edc82",
+              "name": "Indicates the requested plan item was not found or the plan item does not have a variable with the given name in the requested scope. Status description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "plan-item-instances",
+                    ":planItemInstanceId",
+                    "variables",
+                    ":variableName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planItemInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3a3d0150-777d-4de5-86ef-4c8aa74cc623",
+    "name": "Flowable REST Access Tokens Plan Item Instances API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

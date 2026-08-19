@@ -1,0 +1,1146 @@
+{
+  "item": [
+    {
+      "id": "8bef093f-07de-432d-bb9c-4077291f1f19",
+      "name": "Batches",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a4e78c99-4b76-4138-9605-0bd18b8e7634",
+          "name": "Get the batch part document",
+          "request": {
+            "name": "Get the batch part document",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "management",
+                "batch-parts",
+                ":batchPartId",
+                "batch-part-document"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "batchPartId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a4350e1d-549d-4386-b6f2-dd3a13eaf74d",
+              "name": "Indicates the requested batch part was found and the batch part document has been returned. The response contains the raw batch part document and always has a Content-type of application/json.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "management",
+                    "batch-parts",
+                    ":batchPartId",
+                    "batch-part-document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batchPartId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "173b7914-3439-43ff-b75c-81ebd657f236",
+              "name": "Indicates the requested batch part was not found or the job does not have a batch part document. Status-description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "management",
+                    "batch-parts",
+                    ":batchPartId",
+                    "batch-part-document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batchPartId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65702758-51dc-4e48-92dc-7e81a5728335",
+          "name": "List batches",
+          "request": {
+            "name": "List batches",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "management",
+                "batches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Only return batch with the given id"
+                },
+                {
+                  "disabled": false,
+                  "key": "batchType",
+                  "value": "<string>",
+                  "description": "Only return batches for the given type"
+                },
+                {
+                  "disabled": false,
+                  "key": "searchKey",
+                  "value": "<string>",
+                  "description": "Only return batches for the given search key"
+                },
+                {
+                  "disabled": false,
+                  "key": "searchKey2",
+                  "value": "<string>",
+                  "description": "Only return batches for the given search key2"
+                },
+                {
+                  "disabled": false,
+                  "key": "createTimeBefore",
+                  "value": "<dateTime>",
+                  "description": "Only return batches created before the given date"
+                },
+                {
+                  "disabled": false,
+                  "key": "createTimeAfter",
+                  "value": "<dateTime>",
+                  "description": "Only batches batches created after the given date"
+                },
+                {
+                  "disabled": false,
+                  "key": "completeTimeBefore",
+                  "value": "<dateTime>",
+                  "description": "Only return batches completed before the given date"
+                },
+                {
+                  "disabled": false,
+                  "key": "completeTimeAfter",
+                  "value": "<dateTime>",
+                  "description": "Only batches batches completed after the given date"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Only return batches for the given status"
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return batches for the given tenant id"
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLike",
+                  "value": "<string>",
+                  "description": "Only return batches like given search key"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns batches without a tenantId set. If false, the withoutTenantId parameter is ignored."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6c8b093c-de47-48cc-b86c-9ecb16b44db1",
+              "name": "Indicates the requested batches were returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "management",
+                    "batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "batchType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchKey2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createTimeBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createTimeAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completeTimeBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completeTimeAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"8\",\n      \"url\": \"http://localhost:8182/management/batches/8\",\n      \"batchType\": \"processMigration\",\n      \"searchKey\": \"1:22:MP\",\n      \"searchKey2\": \"1:24:MP\",\n      \"createTime\": \"2020-06-03T22:05:05.474+0000\",\n      \"completeTime\": \"2020-06-03T22:05:05.474+0000\",\n      \"status\": \"completed\",\n      \"tenantId\": \"null\"\n    },\n    {\n      \"id\": \"8\",\n      \"url\": \"http://localhost:8182/management/batches/8\",\n      \"batchType\": \"processMigration\",\n      \"searchKey\": \"1:22:MP\",\n      \"searchKey2\": \"1:24:MP\",\n      \"createTime\": \"2020-06-03T22:05:05.474+0000\",\n      \"completeTime\": \"2020-06-03T22:05:05.474+0000\",\n      \"status\": \"completed\",\n      \"tenantId\": \"null\"\n    }\n  ],\n  \"total\": 4504,\n  \"start\": 8765,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 918\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2478369-406a-44a7-99f7-41e4f0dee281",
+              "name": "Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "management",
+                    "batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "batchType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchKey2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createTimeBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createTimeAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completeTimeBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completeTimeAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e627ff00-8132-4e82-ba96-66dff1acb4cd",
+          "name": "Get a single batch",
+          "request": {
+            "name": "Get a single batch",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "management",
+                "batches",
+                ":batchId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "batchId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bdf4f71e-0ab3-4912-b194-aee2c9ed3665",
+              "name": "Indicates the batch exists and is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "management",
+                    "batches",
+                    ":batchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8\",\n  \"url\": \"http://localhost:8182/management/batches/8\",\n  \"batchType\": \"processMigration\",\n  \"searchKey\": \"1:22:MP\",\n  \"searchKey2\": \"1:24:MP\",\n  \"createTime\": \"2020-06-03T22:05:05.474+0000\",\n  \"completeTime\": \"2020-06-03T22:05:05.474+0000\",\n  \"status\": \"completed\",\n  \"tenantId\": \"null\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e786d0b0-1ab9-4066-9c50-d4af376748f9",
+              "name": "Indicates the requested batch does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "management",
+                    "batches",
+                    ":batchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3017cce-bdaf-4c75-aad9-bcabe975fb19",
+          "name": "Delete a batch",
+          "request": {
+            "name": "Delete a batch",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "management",
+                "batches",
+                ":batchId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "batchId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cd31e279-565e-4140-ab6a-253bf6fbb3d3",
+              "name": "Indicates the batch was found and has been deleted. Response-body is intentionally empty.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "management",
+                    "batches",
+                    ":batchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e1fbf4fd-e65d-4fb3-9ced-af3b87af0608",
+              "name": "Indicates the requested batch was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "management",
+                    "batches",
+                    ":batchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4349f95-fe15-4c2a-ab04-775fd2d21fab",
+          "name": "Get the batch document",
+          "request": {
+            "name": "Get the batch document",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "management",
+                "batches",
+                ":batchId",
+                "batch-document"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "batchId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "054f47c9-1c72-4982-81e3-b05fc4584ab0",
+              "name": "Indicates the requested batch was found and the batch document has been returned. The response contains the raw batch document and always has a Content-type of application/json.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "management",
+                    "batches",
+                    ":batchId",
+                    "batch-document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "241fa0c2-b263-44e3-a932-12a27e74428c",
+              "name": "Indicates the requested batch was not found or the job does not have a batch document. Status-description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "management",
+                    "batches",
+                    ":batchId",
+                    "batch-document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86c67948-f78e-42ab-9ea7-df318a4af3f6",
+          "name": "List batch parts",
+          "request": {
+            "name": "List batch parts",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "management",
+                "batches",
+                ":batchId",
+                "batch-parts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Only return batch parts for the given status"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "batchId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4a36e943-d482-46b2-a073-2f350f1a6598",
+              "name": "Indicates the requested batch parts were returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "management",
+                    "batches",
+                    ":batchId",
+                    "batch-parts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"8\",\n    \"url\": \"http://localhost:8182/management/batch-parts/8\",\n    \"batchId\": \"4\",\n    \"batchUrl\": \"http://localhost:8182/management/batch/4\",\n    \"batchType\": \"processMigration\",\n    \"searchKey\": \"1:22:MP\",\n    \"searchKey2\": \"1:24:MP\",\n    \"scopeId\": \"1\",\n    \"subScopeId\": \"2\",\n    \"scopeType\": \"bpmn\",\n    \"createTime\": \"2020-06-03T22:05:05.474+0000\",\n    \"completeTime\": \"2020-06-03T22:05:05.474+0000\",\n    \"status\": \"completed\",\n    \"tenantId\": \"null\"\n  },\n  {\n    \"id\": \"8\",\n    \"url\": \"http://localhost:8182/management/batch-parts/8\",\n    \"batchId\": \"4\",\n    \"batchUrl\": \"http://localhost:8182/management/batch/4\",\n    \"batchType\": \"processMigration\",\n    \"searchKey\": \"1:22:MP\",\n    \"searchKey2\": \"1:24:MP\",\n    \"scopeId\": \"1\",\n    \"subScopeId\": \"2\",\n    \"scopeType\": \"bpmn\",\n    \"createTime\": \"2020-06-03T22:05:05.474+0000\",\n    \"completeTime\": \"2020-06-03T22:05:05.474+0000\",\n    \"status\": \"completed\",\n    \"tenantId\": \"null\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0289c438-ee32-4e52-b8c7-7d9798a41423",
+              "name": "Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "management",
+                    "batches",
+                    ":batchId",
+                    "batch-parts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "32439d79-9b33-4d9a-b387-433898595832",
+    "name": "Flowable REST Access Tokens Batches API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

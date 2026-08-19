@@ -1,0 +1,198 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens User Definitions API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Definitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List user definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/user-definitions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return user definitions with the given id."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Only return user definitions with the given key."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return user definitions with the given name."
+              },
+              {
+                "name": "nameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return user definitions with a name like the given value."
+              },
+              {
+                "name": "nameLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return user definitions with a name like the given value (ignoring case)."
+              },
+              {
+                "name": "accessibleByUser",
+                "value": "",
+                "type": "query",
+                "description": "Only return user definitions accessible by user with the given name."
+              },
+              {
+                "name": "accessibleByGroup",
+                "value": "",
+                "type": "query",
+                "description": "Only return user definitions accessible by group with the given name."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return user definitions with the given tenant id."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The order of results. Default is asc"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List user definitions"
+        },
+        {
+          "info": {
+            "name": "Upload a user definition model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/user-definitions",
+            "params": [
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "The tenant id for the definition. Only allowed for super admin users"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Upload a user definition model"
+        },
+        {
+          "info": {
+            "name": "Get user by definition key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/user-definitions/key/:userDefinitionKey",
+            "params": [
+              {
+                "name": "userDefinitionKey",
+                "value": "",
+                "type": "path",
+                "description": "Key  of a user definition"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "The tenant id for the definition. Only allowed for super admin users"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get user by definition key"
+        },
+        {
+          "info": {
+            "name": "Get user definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/user-definitions/:userDefinitionId",
+            "params": [
+              {
+                "name": "userDefinitionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of a user definition"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get user definition"
+        },
+        {
+          "info": {
+            "name": "Get user definition model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/user-definitions/:userDefinitionId/model",
+            "params": [
+              {
+                "name": "userDefinitionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of a user definition"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get user definition model"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

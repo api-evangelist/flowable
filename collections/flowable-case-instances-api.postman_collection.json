@@ -1,0 +1,2742 @@
+{
+  "item": [
+    {
+      "id": "8a5d07aa-ead7-41f5-96de-096d2c2e80ca",
+      "name": "Case Instances",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0b406c93-4da8-4589-a34a-f753ff456cee",
+          "name": "Query case instances",
+          "request": {
+            "name": "Query case instances",
+            "description": {
+              "content": "The request body can contain all possible filters that can be used in the List case instances URL query. On top of these, it’s possible to provide an array of variables to include in the query, with their format described here.\n\nThe general paging and sorting query-parameters can be used for this URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-query",
+                "case-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"caseInstanceIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseDefinitionId\": \"<string>\",\n  \"caseDefinitionKey\": \"<string>\",\n  \"caseDefinitionKeyLike\": \"<string>\",\n  \"caseDefinitionKeyLikeIgnoreCase\": \"<string>\",\n  \"caseDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"excludeCaseDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseDefinitionCategory\": \"<string>\",\n  \"caseDefinitionCategoryLike\": \"<string>\",\n  \"caseDefinitionCategoryLikeIgnoreCase\": \"<string>\",\n  \"caseDefinitionName\": \"<string>\",\n  \"caseDefinitionNameLike\": \"<string>\",\n  \"caseDefinitionNameLikeIgnoreCase\": \"<string>\",\n  \"caseBusinessKey\": \"<string>\",\n  \"caseInstanceName\": \"<string>\",\n  \"caseInstanceNameLike\": \"<string>\",\n  \"caseInstanceNameLikeIgnoreCase\": \"<string>\",\n  \"caseInstanceRootScopeId\": \"<string>\",\n  \"caseInstanceParentScopeId\": \"<string>\",\n  \"caseInstanceBusinessKey\": \"<string>\",\n  \"caseInstanceBusinessKeyLike\": \"<string>\",\n  \"caseInstanceBusinessKeyLikeIgnoreCase\": \"<string>\",\n  \"caseInstanceBusinessStatus\": \"<string>\",\n  \"caseInstanceBusinessStatusLike\": \"<string>\",\n  \"caseInstanceBusinessStatusLikeIgnoreCase\": \"<string>\",\n  \"caseInstanceParentId\": \"<string>\",\n  \"caseInstanceStartedBy\": \"<string>\",\n  \"caseInstanceStartedBefore\": \"<dateTime>\",\n  \"caseInstanceStartedAfter\": \"<dateTime>\",\n  \"caseInstanceState\": \"<string>\",\n  \"involvedUser\": \"<string>\",\n  \"caseInstanceCallbackId\": \"<string>\",\n  \"caseInstanceCallbackIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseInstanceCallbackType\": \"<string>\",\n  \"parentCaseInstanceId\": \"<string>\",\n  \"caseInstanceReferenceId\": \"<string>\",\n  \"caseInstanceReferenceType\": \"<string>\",\n  \"caseInstanceLastReactivatedBy\": \"<string>\",\n  \"caseInstanceLastReactivatedBefore\": \"<dateTime>\",\n  \"caseInstanceLastReactivatedAfter\": \"<dateTime>\",\n  \"includeCaseVariables\": \"<boolean>\",\n  \"includeCaseVariablesNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"activePlanItemDefinitionId\": \"<string>\",\n  \"activePlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"tenantIdLikeIgnoreCase\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a818888-e2b1-4787-968e-695cdf3c50e2",
+              "name": "Indicates request was successful and the case instances are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-query",
+                    "case-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"caseInstanceIds\": [\n    \"<string>\"\n  ],\n  \"caseDefinitionId\": \"<string>\",\n  \"caseDefinitionKey\": \"<string>\",\n  \"caseDefinitionKeyLike\": \"<string>\",\n  \"caseDefinitionKeyLikeIgnoreCase\": \"<string>\",\n  \"caseDefinitionKeys\": [\n    \"<string>\"\n  ],\n  \"excludeCaseDefinitionKeys\": [\n    \"<string>\"\n  ],\n  \"caseDefinitionCategory\": \"<string>\",\n  \"caseDefinitionCategoryLike\": \"<string>\",\n  \"caseDefinitionCategoryLikeIgnoreCase\": \"<string>\",\n  \"caseDefinitionName\": \"<string>\",\n  \"caseDefinitionNameLike\": \"<string>\",\n  \"caseDefinitionNameLikeIgnoreCase\": \"<string>\",\n  \"caseBusinessKey\": \"<string>\",\n  \"caseInstanceName\": \"<string>\",\n  \"caseInstanceNameLike\": \"<string>\",\n  \"caseInstanceNameLikeIgnoreCase\": \"<string>\",\n  \"caseInstanceRootScopeId\": \"<string>\",\n  \"caseInstanceParentScopeId\": \"<string>\",\n  \"caseInstanceBusinessKey\": \"<string>\",\n  \"caseInstanceBusinessKeyLike\": \"<string>\",\n  \"caseInstanceBusinessKeyLikeIgnoreCase\": \"<string>\",\n  \"caseInstanceBusinessStatus\": \"<string>\",\n  \"caseInstanceBusinessStatusLike\": \"<string>\",\n  \"caseInstanceBusinessStatusLikeIgnoreCase\": \"<string>\",\n  \"caseInstanceParentId\": \"<string>\",\n  \"caseInstanceStartedBy\": \"<string>\",\n  \"caseInstanceStartedBefore\": \"<dateTime>\",\n  \"caseInstanceStartedAfter\": \"<dateTime>\",\n  \"caseInstanceState\": \"<string>\",\n  \"involvedUser\": \"<string>\",\n  \"caseInstanceCallbackId\": \"<string>\",\n  \"caseInstanceCallbackIds\": [\n    \"<string>\"\n  ],\n  \"caseInstanceCallbackType\": \"<string>\",\n  \"parentCaseInstanceId\": \"<string>\",\n  \"caseInstanceReferenceId\": \"<string>\",\n  \"caseInstanceReferenceType\": \"<string>\",\n  \"caseInstanceLastReactivatedBy\": \"<string>\",\n  \"caseInstanceLastReactivatedBefore\": \"<dateTime>\",\n  \"caseInstanceLastReactivatedAfter\": \"<dateTime>\",\n  \"includeCaseVariables\": \"<boolean>\",\n  \"includeCaseVariablesNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"activePlanItemDefinitionId\": \"<string>\",\n  \"activePlanItemDefinitionIds\": [\n    \"<string>\"\n  ],\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"tenantIdLikeIgnoreCase\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"187\",\n      \"name\": \"processName\",\n      \"url\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n      \"businessKey\": \"myBusinessKey\",\n      \"businessStatus\": \"myBusinessStatus\",\n      \"startTime\": \"2019-04-17T10:17:43.902+0000\",\n      \"startUserId\": \"aUserId\",\n      \"state\": \"active\",\n      \"ended\": false,\n      \"caseDefinitionId\": \"oneTaskCase:1:158\",\n      \"caseDefinitionUrl\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n      \"caseDefinitionName\": \"aCaseDefinitionName\",\n      \"caseDefinitionDescription\": \"A case definition description\",\n      \"parentId\": \"123\",\n      \"callbackId\": \"123\",\n      \"callbackType\": \"cmmn-1.1-to-cmmn-1.1-child-case\",\n      \"referenceId\": \"123\",\n      \"referenceType\": \"event-to-cmmn-1.1-case\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"tenantId\": \"null\",\n      \"completed\": true\n    },\n    {\n      \"id\": \"187\",\n      \"name\": \"processName\",\n      \"url\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n      \"businessKey\": \"myBusinessKey\",\n      \"businessStatus\": \"myBusinessStatus\",\n      \"startTime\": \"2019-04-17T10:17:43.902+0000\",\n      \"startUserId\": \"aUserId\",\n      \"state\": \"active\",\n      \"ended\": false,\n      \"caseDefinitionId\": \"oneTaskCase:1:158\",\n      \"caseDefinitionUrl\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n      \"caseDefinitionName\": \"aCaseDefinitionName\",\n      \"caseDefinitionDescription\": \"A case definition description\",\n      \"parentId\": \"123\",\n      \"callbackId\": \"123\",\n      \"callbackType\": \"cmmn-1.1-to-cmmn-1.1-child-case\",\n      \"referenceId\": \"123\",\n      \"referenceType\": \"event-to-cmmn-1.1-case\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"tenantId\": \"null\",\n      \"completed\": true\n    }\n  ],\n  \"total\": 9813,\n  \"start\": 8949,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 4677\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bd336a5-db34-47cd-99ff-b75c40865282",
+              "name": "Indicates a parameter was passed in the wrong format . The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-query",
+                    "case-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"caseInstanceIds\": [\n    \"<string>\"\n  ],\n  \"caseDefinitionId\": \"<string>\",\n  \"caseDefinitionKey\": \"<string>\",\n  \"caseDefinitionKeyLike\": \"<string>\",\n  \"caseDefinitionKeyLikeIgnoreCase\": \"<string>\",\n  \"caseDefinitionKeys\": [\n    \"<string>\"\n  ],\n  \"excludeCaseDefinitionKeys\": [\n    \"<string>\"\n  ],\n  \"caseDefinitionCategory\": \"<string>\",\n  \"caseDefinitionCategoryLike\": \"<string>\",\n  \"caseDefinitionCategoryLikeIgnoreCase\": \"<string>\",\n  \"caseDefinitionName\": \"<string>\",\n  \"caseDefinitionNameLike\": \"<string>\",\n  \"caseDefinitionNameLikeIgnoreCase\": \"<string>\",\n  \"caseBusinessKey\": \"<string>\",\n  \"caseInstanceName\": \"<string>\",\n  \"caseInstanceNameLike\": \"<string>\",\n  \"caseInstanceNameLikeIgnoreCase\": \"<string>\",\n  \"caseInstanceRootScopeId\": \"<string>\",\n  \"caseInstanceParentScopeId\": \"<string>\",\n  \"caseInstanceBusinessKey\": \"<string>\",\n  \"caseInstanceBusinessKeyLike\": \"<string>\",\n  \"caseInstanceBusinessKeyLikeIgnoreCase\": \"<string>\",\n  \"caseInstanceBusinessStatus\": \"<string>\",\n  \"caseInstanceBusinessStatusLike\": \"<string>\",\n  \"caseInstanceBusinessStatusLikeIgnoreCase\": \"<string>\",\n  \"caseInstanceParentId\": \"<string>\",\n  \"caseInstanceStartedBy\": \"<string>\",\n  \"caseInstanceStartedBefore\": \"<dateTime>\",\n  \"caseInstanceStartedAfter\": \"<dateTime>\",\n  \"caseInstanceState\": \"<string>\",\n  \"involvedUser\": \"<string>\",\n  \"caseInstanceCallbackId\": \"<string>\",\n  \"caseInstanceCallbackIds\": [\n    \"<string>\"\n  ],\n  \"caseInstanceCallbackType\": \"<string>\",\n  \"parentCaseInstanceId\": \"<string>\",\n  \"caseInstanceReferenceId\": \"<string>\",\n  \"caseInstanceReferenceType\": \"<string>\",\n  \"caseInstanceLastReactivatedBy\": \"<string>\",\n  \"caseInstanceLastReactivatedBefore\": \"<dateTime>\",\n  \"caseInstanceLastReactivatedAfter\": \"<dateTime>\",\n  \"includeCaseVariables\": \"<boolean>\",\n  \"includeCaseVariablesNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"activePlanItemDefinitionId\": \"<string>\",\n  \"activePlanItemDefinitionIds\": [\n    \"<string>\"\n  ],\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"tenantIdLikeIgnoreCase\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afc5251b-6019-476e-b80a-8a02ee1d3514",
+          "name": "List case instances",
+          "request": {
+            "name": "List case instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "case-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Only return case instances with the given id."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Only return case instances with the given comma-separated ids."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionKey",
+                  "value": "<string>",
+                  "description": "Only return case instances with the given case definition key."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionKeyLike",
+                  "value": "<string>",
+                  "description": "Only return case instances like given case definition key."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionKeyLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return case instances like given case definition key, ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return case instances with the given case definition id."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionCategory",
+                  "value": "<string>",
+                  "description": "Only return case instances with the given case definition category."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionCategoryLike",
+                  "value": "<string>",
+                  "description": "Only return case instances like the given case definition category."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionCategoryLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return case instances like the given case definition category, ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionName",
+                  "value": "<string>",
+                  "description": "Only return case instances with the given case definition name."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionNameLike",
+                  "value": "<string>",
+                  "description": "Only return case instances like the given case definition name."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionNameLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return case instances like the given case definition name, ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Only return case instances with the given name."
+                },
+                {
+                  "disabled": false,
+                  "key": "nameLike",
+                  "value": "<string>",
+                  "description": "Only return case instances like the given name."
+                },
+                {
+                  "disabled": false,
+                  "key": "nameLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return case instances like the given name ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "rootScopeId",
+                  "value": "<string>",
+                  "description": "Only return case instances which have the given root scope id (that can be a process or case instance ID)."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentScopeId",
+                  "value": "<string>",
+                  "description": "Only return case instances which have the given parent scope id (that can be a process or case instance ID)."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessKey",
+                  "value": "<string>",
+                  "description": "Only return case instances with the given business key."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessKeyLike",
+                  "value": "<string>",
+                  "description": "Only return case instances like the given business key."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessKeyLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return case instances like the given business key, ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessStatus",
+                  "value": "<string>",
+                  "description": "Only return case instances with the given business status."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessStatusLike",
+                  "value": "<string>",
+                  "description": "Only return case instances like the given business status."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessStatusLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return case instances like the given business status, ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseInstanceParentId",
+                  "value": "<string>",
+                  "description": "Only return case instances with the given parent id."
+                },
+                {
+                  "disabled": false,
+                  "key": "startedBy",
+                  "value": "<string>",
+                  "description": "Only return case instances started by the given user."
+                },
+                {
+                  "disabled": false,
+                  "key": "startedBefore",
+                  "value": "<dateTime>",
+                  "description": "Only return case instances started before the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "startedAfter",
+                  "value": "<dateTime>",
+                  "description": "Only return case instances started after the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Only return case instances with the given state."
+                },
+                {
+                  "disabled": false,
+                  "key": "callbackId",
+                  "value": "<string>",
+                  "description": "Only return case instances which have the given callback id."
+                },
+                {
+                  "disabled": false,
+                  "key": "callbackIds",
+                  "value": "<string>",
+                  "description": "Only return case instances which have the given callback ids."
+                },
+                {
+                  "disabled": false,
+                  "key": "callbackType",
+                  "value": "<string>",
+                  "description": "Only return case instances which have the given callback type."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentCaseInstanceId",
+                  "value": "<string>",
+                  "description": "Only return case instances which have the given parent case instance id."
+                },
+                {
+                  "disabled": false,
+                  "key": "referenceId",
+                  "value": "<string>",
+                  "description": "Only return case instances which have the given reference id."
+                },
+                {
+                  "disabled": false,
+                  "key": "referenceType",
+                  "value": "<string>",
+                  "description": "Only return case instances which have the given reference type."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastReactivatedBy",
+                  "value": "<string>",
+                  "description": "Only return case instances last reactivated by the given user."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastReactivatedBefore",
+                  "value": "<dateTime>",
+                  "description": "Only return case instances last reactivated before the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastReactivatedAfter",
+                  "value": "<dateTime>",
+                  "description": "Only return case instances last reactivated after the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeCaseVariables",
+                  "value": "<boolean>",
+                  "description": "Indication to include case variables in the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeCaseVariablesName",
+                  "value": "<string>",
+                  "description": "Indication to include case variables with the given names in the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "activePlanItemDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return case instances that have an active plan item instance with the given plan item definition id."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return case instances with the given tenantId."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLike",
+                  "value": "<string>",
+                  "description": "Only return case instances with a tenantId like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return case instances with a tenantId like the given value, ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns case instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Property to sort on, to be used together with the order."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8b7d16bf-608c-4a36-af80-2faa18e07c76",
+              "name": "Indicates request was successful and the case instances are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionKeyLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionCategoryLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionCategoryLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionNameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rootScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKeyLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatusLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatusLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceParentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startedBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentCaseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referenceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referenceType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastReactivatedBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastReactivatedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastReactivatedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "includeCaseVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeCaseVariablesName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activePlanItemDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"187\",\n      \"name\": \"processName\",\n      \"url\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n      \"businessKey\": \"myBusinessKey\",\n      \"businessStatus\": \"myBusinessStatus\",\n      \"startTime\": \"2019-04-17T10:17:43.902+0000\",\n      \"startUserId\": \"aUserId\",\n      \"state\": \"active\",\n      \"ended\": true,\n      \"caseDefinitionId\": \"oneTaskCase:1:158\",\n      \"caseDefinitionUrl\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n      \"caseDefinitionName\": \"aCaseDefinitionName\",\n      \"caseDefinitionDescription\": \"A case definition description\",\n      \"parentId\": \"123\",\n      \"callbackId\": \"123\",\n      \"callbackType\": \"cmmn-1.1-to-cmmn-1.1-child-case\",\n      \"referenceId\": \"123\",\n      \"referenceType\": \"event-to-cmmn-1.1-case\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"tenantId\": \"null\",\n      \"completed\": false\n    },\n    {\n      \"id\": \"187\",\n      \"name\": \"processName\",\n      \"url\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n      \"businessKey\": \"myBusinessKey\",\n      \"businessStatus\": \"myBusinessStatus\",\n      \"startTime\": \"2019-04-17T10:17:43.902+0000\",\n      \"startUserId\": \"aUserId\",\n      \"state\": \"active\",\n      \"ended\": false,\n      \"caseDefinitionId\": \"oneTaskCase:1:158\",\n      \"caseDefinitionUrl\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n      \"caseDefinitionName\": \"aCaseDefinitionName\",\n      \"caseDefinitionDescription\": \"A case definition description\",\n      \"parentId\": \"123\",\n      \"callbackId\": \"123\",\n      \"callbackType\": \"cmmn-1.1-to-cmmn-1.1-child-case\",\n      \"referenceId\": \"123\",\n      \"referenceType\": \"event-to-cmmn-1.1-case\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"tenantId\": \"null\",\n      \"completed\": false\n    }\n  ],\n  \"total\": 4474,\n  \"start\": 7473,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 7900\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b667c42-6c32-484b-928a-d174bfc868bb",
+              "name": "Indicates a parameter was passed in the wrong format . The status message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionKeyLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionCategoryLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionCategoryLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionNameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rootScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKeyLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatusLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatusLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceParentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startedBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentCaseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referenceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referenceType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastReactivatedBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastReactivatedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastReactivatedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "includeCaseVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeCaseVariablesName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activePlanItemDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "805a6fe6-8cb5-461c-8212-b7ac9d3ef619",
+          "name": "Start a case instance",
+          "request": {
+            "name": "Start a case instance",
+            "description": {
+              "content": "Note that also a *transientVariables* property is accepted as part of this json, that follows the same structure as the *variables* property.\n\nOnly one of *caseDefinitionId* or *caseDefinitionKey* an be used in the request body.\n\nParameters *businessKey*, *variables* and *tenantId* are optional.\n\nIf tenantId is omitted, the default tenant will be used.\n\n It is possible to send variables, transientVariables and startFormVariables in one request.\n\nMore information about the variable format can be found in the REST variables section.\n\n Note that the variable-scope that is supplied is ignored, case-variables are always local.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "case-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"caseDefinitionId\": \"<string>\",\n  \"caseDefinitionKey\": \"<string>\",\n  \"name\": \"<string>\",\n  \"businessKey\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"transientVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"startFormVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"outcome\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"overrideDefinitionTenantId\": \"<string>\",\n  \"returnVariables\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d862eee-e7f1-486b-b1e7-686154b7306c",
+              "name": "Indicates the case instance was created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caseDefinitionId\": \"oneTaskCase:1:158\",\n  \"caseDefinitionKey\": \"oneTaskCase\",\n  \"name\": \"My case name\",\n  \"businessKey\": \"myBusinessKey\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"transientVariables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"startFormVariables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"outcome\": \"<string>\",\n  \"tenantId\": \"tenant1\",\n  \"overrideDefinitionTenantId\": \"overrideTenant1\",\n  \"returnVariables\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"187\",\n  \"name\": \"processName\",\n  \"url\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n  \"businessKey\": \"myBusinessKey\",\n  \"businessStatus\": \"myBusinessStatus\",\n  \"startTime\": \"2019-04-17T10:17:43.902+0000\",\n  \"startUserId\": \"aUserId\",\n  \"state\": \"active\",\n  \"ended\": true,\n  \"caseDefinitionId\": \"oneTaskCase:1:158\",\n  \"caseDefinitionUrl\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n  \"caseDefinitionName\": \"aCaseDefinitionName\",\n  \"caseDefinitionDescription\": \"A case definition description\",\n  \"parentId\": \"123\",\n  \"callbackId\": \"123\",\n  \"callbackType\": \"cmmn-1.1-to-cmmn-1.1-child-case\",\n  \"referenceId\": \"123\",\n  \"referenceType\": \"event-to-cmmn-1.1-case\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"tenantId\": \"null\",\n  \"completed\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b08364a5-f8a3-47c5-854d-2ba22906d872",
+              "name": "Indicates either the case definition was not found (based on id or key), no process is started by sending the given message or an invalid variable has been passed. Status description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caseDefinitionId\": \"oneTaskCase:1:158\",\n  \"caseDefinitionKey\": \"oneTaskCase\",\n  \"name\": \"My case name\",\n  \"businessKey\": \"myBusinessKey\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"transientVariables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"startFormVariables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"outcome\": \"<string>\",\n  \"tenantId\": \"tenant1\",\n  \"overrideDefinitionTenantId\": \"overrideTenant1\",\n  \"returnVariables\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aeee0ef0-cb2e-4b62-8021-0364eab25503",
+          "name": "Post action request to delete/terminate a bulk of case instances",
+          "request": {
+            "name": "Post action request to delete/terminate a bulk of case instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "case-instances",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"instanceIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5baff6a1-9d86-4cfb-a199-836e7c8878bd",
+              "name": "Indicates the bulk of case instances was found and deleted. Response body is left empty intentionally.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c86d8903-fd1e-45fe-89e3-718c17139d07",
+              "name": "Indicates at least one requested case instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2a4d1e8-c6ff-47e7-815f-2a561408db3c",
+          "name": "Get a case instance",
+          "request": {
+            "name": "Get a case instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "case-instances",
+                ":caseInstanceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8e5f3c95-1701-4031-8a46-12d798babb85",
+              "name": "Indicates the case instance was found and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"187\",\n  \"name\": \"processName\",\n  \"url\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n  \"businessKey\": \"myBusinessKey\",\n  \"businessStatus\": \"myBusinessStatus\",\n  \"startTime\": \"2019-04-17T10:17:43.902+0000\",\n  \"startUserId\": \"aUserId\",\n  \"state\": \"active\",\n  \"ended\": true,\n  \"caseDefinitionId\": \"oneTaskCase:1:158\",\n  \"caseDefinitionUrl\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n  \"caseDefinitionName\": \"aCaseDefinitionName\",\n  \"caseDefinitionDescription\": \"A case definition description\",\n  \"parentId\": \"123\",\n  \"callbackId\": \"123\",\n  \"callbackType\": \"cmmn-1.1-to-cmmn-1.1-child-case\",\n  \"referenceId\": \"123\",\n  \"referenceType\": \"event-to-cmmn-1.1-case\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"tenantId\": \"null\",\n  \"completed\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2da17573-d505-4181-811f-d93fbfe738f6",
+              "name": "Indicates the requested case instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8335cd7-9135-4a38-bf91-c30101450a82",
+          "name": "Update case instance properties or execute an action on a case instance (body needs to contain an 'action' property for the latter).",
+          "request": {
+            "name": "Update case instance properties or execute an action on a case instance (body needs to contain an 'action' property for the latter).",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "case-instances",
+                ":caseInstanceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"name\": \"<string>\",\n  \"businessKey\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2aee9cb4-42ce-4135-b704-c39bd10bcec2",
+              "name": "Indicates the case instance was found and the action/update is performed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"name\": \"<string>\",\n  \"businessKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"187\",\n  \"name\": \"processName\",\n  \"url\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n  \"businessKey\": \"myBusinessKey\",\n  \"businessStatus\": \"myBusinessStatus\",\n  \"startTime\": \"2019-04-17T10:17:43.902+0000\",\n  \"startUserId\": \"aUserId\",\n  \"state\": \"active\",\n  \"ended\": true,\n  \"caseDefinitionId\": \"oneTaskCase:1:158\",\n  \"caseDefinitionUrl\": \"http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4\",\n  \"caseDefinitionName\": \"aCaseDefinitionName\",\n  \"caseDefinitionDescription\": \"A case definition description\",\n  \"parentId\": \"123\",\n  \"callbackId\": \"123\",\n  \"callbackType\": \"cmmn-1.1-to-cmmn-1.1-child-case\",\n  \"referenceId\": \"123\",\n  \"referenceType\": \"event-to-cmmn-1.1-case\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"tenantId\": \"null\",\n  \"completed\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "383e06b1-e861-4a10-961a-b689e27d526f",
+              "name": "Indicates the case was found, the change was performed and it caused the case instance to end.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"name\": \"<string>\",\n  \"businessKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f63e0c1-53a0-43c0-9dac-6d8a99231efd",
+              "name": "Indicates an illegal parameter was passed, required parameters are missing in the request body or illegal variables are passed in. Status description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"name\": \"<string>\",\n  \"businessKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd6d6052-4b69-4786-a939-92d2cfa6e694",
+              "name": "Indicates the case instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"name\": \"<string>\",\n  \"businessKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e686e31a-8f59-4a38-9014-709299c3893c",
+          "name": "Terminate a case instance",
+          "request": {
+            "name": "Terminate a case instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "case-instances",
+                ":caseInstanceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2bc0c87d-0e3f-46bc-b5cc-a71efd7897ba",
+              "name": "Indicates the case instance was found and terminate. Response body is left empty intentionally.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "52a6d541-9d26-444c-b27c-4cc0dff548ed",
+              "name": "Indicates the requested case instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc2ec865-6b51-4d11-8a58-9d9a3d3a6be6",
+          "name": "Change the state of a case instance",
+          "request": {
+            "name": "Change the state of a case instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "case-instances",
+                ":caseInstanceId",
+                "change-state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activatePlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"moveToAvailablePlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"terminatePlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addWaitingForRepetitionPlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeWaitingForRepetitionPlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"changePlanItemIds\": {\n    \"key_0\": \"<string>\"\n  },\n  \"changePlanItemIdsWithDefinitionId\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"changePlanItemDefinitionsWithNewTargetIds\": [\n    {\n      \"existingPlanItemDefinitionId\": \"<string>\",\n      \"newPlanItemId\": \"<string>\",\n      \"newPlanItemDefinitionId\": \"<string>\"\n    },\n    {\n      \"existingPlanItemDefinitionId\": \"<string>\",\n      \"newPlanItemId\": \"<string>\",\n      \"newPlanItemDefinitionId\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "260804fb-55bf-4190-8525-a0ae5156036b",
+              "name": "Indicates the case instance was found and change state activity was executed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId",
+                    "change-state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activatePlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"moveToAvailablePlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"terminatePlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addWaitingForRepetitionPlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeWaitingForRepetitionPlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"changePlanItemIds\": {\n    \"key_0\": \"<string>\"\n  },\n  \"changePlanItemIdsWithDefinitionId\": {\n    \"key_0\": \"<string>\"\n  },\n  \"changePlanItemDefinitionsWithNewTargetIds\": [\n    {\n      \"existingPlanItemDefinitionId\": \"<string>\",\n      \"newPlanItemId\": \"<string>\",\n      \"newPlanItemDefinitionId\": \"<string>\"\n    },\n    {\n      \"existingPlanItemDefinitionId\": \"<string>\",\n      \"newPlanItemId\": \"<string>\",\n      \"newPlanItemDefinitionId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cccc2a78-dd30-4eda-8988-3865f4bb2f58",
+              "name": "Indicates the requested case instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId",
+                    "change-state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activatePlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"moveToAvailablePlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"terminatePlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addWaitingForRepetitionPlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeWaitingForRepetitionPlanItemDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"changePlanItemIds\": {\n    \"key_0\": \"<string>\"\n  },\n  \"changePlanItemIdsWithDefinitionId\": {\n    \"key_0\": \"<string>\"\n  },\n  \"changePlanItemDefinitionsWithNewTargetIds\": [\n    {\n      \"existingPlanItemDefinitionId\": \"<string>\",\n      \"newPlanItemId\": \"<string>\",\n      \"newPlanItemDefinitionId\": \"<string>\"\n    },\n    {\n      \"existingPlanItemDefinitionId\": \"<string>\",\n      \"newPlanItemId\": \"<string>\",\n      \"newPlanItemDefinitionId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40e27531-1b5f-494b-89e9-74a301c2d6f7",
+          "name": "Delete a case instance",
+          "request": {
+            "name": "Delete a case instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "case-instances",
+                ":caseInstanceId",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c44e28a9-c5c0-4e48-9cd8-23e5337defa3",
+              "name": "Indicates the case instance was found and deleted. Response body is left empty intentionally.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ba939d11-1787-40e4-8297-5746ad3c93c3",
+              "name": "Indicates the requested case instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f68efc36-ce70-4c52-84c5-d21bdc4b64db",
+          "name": "Get diagram for a case instance",
+          "request": {
+            "name": "Get diagram for a case instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "case-instances",
+                ":caseInstanceId",
+                "diagram"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d42fc3d3-782e-4396-911f-1061051657a6",
+              "name": "Indicates the case instance was found and the diagram was returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId",
+                    "diagram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3480326-6f7a-4077-b660-497f15037bbe",
+              "name": "Indicates the requested case instance was not found but the process does not contain any graphical information (CMMN DI) and no diagram can be created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId",
+                    "diagram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ec720b3-77e2-484b-856f-6b4c7f0f02a8",
+              "name": "Indicates the requested case instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId",
+                    "diagram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6ac0d61-84fe-4345-a0fa-c674aeb0d797",
+          "name": "Migrate case instance",
+          "request": {
+            "name": "Migrate case instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "case-instances",
+                ":caseInstanceId",
+                "migrate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<string>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e453dfa-8cf1-4fb5-b79e-ca6ead73a664",
+              "name": "Indicates the case instance was found and migration was executed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId",
+                    "migrate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "abdaec71-9c47-49b1-aa88-999b05f0e9b0",
+              "name": "Indicates the requested case instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId",
+                    "migrate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e73982df-50b5-4291-ac69-2140c1994afd",
+              "name": "Indicates the requested case instance action cannot be executed since the case-instance is already activated/suspended.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId",
+                    "migrate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c143a0a-c509-42ea-bd01-12a75c5163d0",
+          "name": "get Stage Overview",
+          "request": {
+            "name": "get Stage Overview",
+            "description": {},
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "case-instances",
+                ":caseInstanceId",
+                "stage-overview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c12457bf-ab28-4ff7-a568-4935765dccb5",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "case-instances",
+                    ":caseInstanceId",
+                    "stage-overview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"ended\": true,\n    \"endTime\": \"1988-12-16T05:32:44.903Z\",\n    \"current\": false\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"ended\": true,\n    \"endTime\": \"1999-01-14T12:14:02.472Z\",\n    \"current\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "13c84bb4-8683-4bca-808f-ee314f05a021",
+    "name": "Flowable REST Access Tokens Case Instances API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

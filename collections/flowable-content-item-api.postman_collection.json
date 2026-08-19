@@ -1,0 +1,3636 @@
+{
+  "item": [
+    {
+      "id": "24e7d21e-8a28-489d-a47f-36b6a7fd24b4",
+      "name": "Content item",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aa6cd80c-21e8-47c5-894d-5ccff2cfa5e6",
+          "name": "List content items",
+          "request": {
+            "name": "List content items",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "content-items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Only return content items with the given id."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Only return content items with the given name."
+                },
+                {
+                  "disabled": false,
+                  "key": "nameLike",
+                  "value": "<string>",
+                  "description": "Only return content items with a name like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "mimeType",
+                  "value": "<string>",
+                  "description": "Only return content items with the given mime type."
+                },
+                {
+                  "disabled": false,
+                  "key": "mimeTypeLike",
+                  "value": "<string>",
+                  "description": "Only return content items with a mime type like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskId",
+                  "value": "<string>",
+                  "description": "Only return content items with the given task id."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskIdLike",
+                  "value": "<string>",
+                  "description": "Only return content items with a task like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "description": "Only return content items with the given process instance id."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceIdLike",
+                  "value": "<string>",
+                  "description": "Only return content items with a process instance like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeId",
+                  "value": "<string>",
+                  "description": "Only return content items with the given scopeId. When this is used then scopeType must also be set."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeIdLike",
+                  "value": "<string>",
+                  "description": "Only return content items with s scopeId like the given value. When this is used then scopeType must also be set."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeType",
+                  "value": "<string>",
+                  "description": "Only return content items with the given scopeType."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentStoreId",
+                  "value": "<string>",
+                  "description": "Only return content items with the given content store id."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentStoreIdLike",
+                  "value": "<string>",
+                  "description": "Only return content items with a content store id like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentStoreName",
+                  "value": "<string>",
+                  "description": "Only return content items with the given content store name."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentStoreNameLike",
+                  "value": "<string>",
+                  "description": "Only return content items with a content store name like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentAvailable",
+                  "value": "<boolean>",
+                  "description": "Only return content items with or without content available."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentSize",
+                  "value": "<int64>",
+                  "description": "Only return content items with the given content size."
+                },
+                {
+                  "disabled": false,
+                  "key": "minimumContentSize",
+                  "value": "<int64>",
+                  "description": "Only return content items with the a minimum content size of the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "maximumContentSize",
+                  "value": "<int64>",
+                  "description": "Only return content items with the a maximum content size of the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "field",
+                  "value": "<string>",
+                  "description": "Only return content items with the given field."
+                },
+                {
+                  "disabled": false,
+                  "key": "fieldLike",
+                  "value": "<string>",
+                  "description": "Only return content items with a field like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "latest",
+                  "value": "<boolean>",
+                  "description": "Only return content items with the highest available version."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdOn",
+                  "value": "<dateTime>",
+                  "description": "Only return content items with the given create date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBefore",
+                  "value": "<dateTime>",
+                  "description": "Only return content items before given create date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAfter",
+                  "value": "<dateTime>",
+                  "description": "Only return content items after given create date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBy",
+                  "value": "<string>",
+                  "description": "Only return content items with the given created by."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdByLike",
+                  "value": "<string>",
+                  "description": "Only return content items with a created by like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModifiedOn",
+                  "value": "<dateTime>",
+                  "description": "Only return content items with the given last modified date."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModifiedBefore",
+                  "value": "<dateTime>",
+                  "description": "Only return content items before given last modified date."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModifiedAfter",
+                  "value": "<dateTime>",
+                  "description": "Only return content items after given last modified date."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModifiedBy",
+                  "value": "<string>",
+                  "description": "Only return content items with the given last modified by."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModifiedByLike",
+                  "value": "<string>",
+                  "description": "Only return content items with a last modified by like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "versionParentId",
+                  "value": "<string>",
+                  "description": "Only return content items with a given version parent id."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return content items with the given tenantId."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLike",
+                  "value": "<string>",
+                  "description": "Only return content items with a tenantId like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns content items without a tenantId set. If false, the withoutTenantId parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Only return content items with the given type."
+                },
+                {
+                  "disabled": false,
+                  "key": "subType",
+                  "value": "<string>",
+                  "description": "Only return content items with the given subType."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Only return content items with the given state."
+                },
+                {
+                  "disabled": false,
+                  "key": "subState",
+                  "value": "<string>",
+                  "description": "Only return content items with the given subState."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentFolderId",
+                  "value": "<string>",
+                  "description": "Only return content items with the given folder parent id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eef9d56f-de60-4b36-aa43-4e2e56f0f2a9",
+              "name": "The content items are returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mimeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mimeTypeLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentStoreId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentStoreIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentStoreName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentStoreNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentAvailable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "contentSize",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "minimumContentSize",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "maximumContentSize",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "field",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fieldLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latest",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "createdOn",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdByLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastModifiedOn",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastModifiedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastModifiedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastModifiedBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastModifiedByLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "versionParentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentFolderId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"version\": 8885,\n      \"versionInfo\": \"string\",\n      \"size\": 2022,\n      \"mimeType\": \"string\",\n      \"definitionId\": \"string\",\n      \"definitionName\": \"string\",\n      \"taskId\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"scopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"contentStoreId\": \"string\",\n      \"contentStoreName\": \"string\",\n      \"contentAvailable\": false,\n      \"versionParentId\": \"string\",\n      \"tenantId\": \"string\",\n      \"created\": \"1978-10-15T12:57:44.175Z\",\n      \"createdBy\": \"string\",\n      \"lastModified\": \"1959-10-29T18:36:17.960Z\",\n      \"lastModifiedBy\": \"string\",\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"subType\": \"string\",\n      \"state\": \"string\",\n      \"subState\": \"string\",\n      \"parentFolderId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"version\": 6701,\n      \"versionInfo\": \"string\",\n      \"size\": 9573,\n      \"mimeType\": \"string\",\n      \"definitionId\": \"string\",\n      \"definitionName\": \"string\",\n      \"taskId\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"scopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"contentStoreId\": \"string\",\n      \"contentStoreName\": \"string\",\n      \"contentAvailable\": true,\n      \"versionParentId\": \"string\",\n      \"tenantId\": \"string\",\n      \"created\": \"1989-12-13T06:28:39.593Z\",\n      \"createdBy\": \"string\",\n      \"lastModified\": \"1986-04-23T16:59:47.696Z\",\n      \"lastModifiedBy\": \"string\",\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"subType\": \"string\",\n      \"state\": \"string\",\n      \"subState\": \"string\",\n      \"parentFolderId\": \"string\"\n    }\n  ],\n  \"total\": 7874,\n  \"start\": 4744,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 4826\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d8e5e5e-9ab0-43ca-b798-06344bc97947",
+          "name": "Create a new content item, with content item information and an optional attached file",
+          "request": {
+            "name": "Create a new content item, with content item information and an optional attached file",
+            "description": {
+              "content": "This endpoint can be used in 2 ways: By passing a JSON Body (ContentItemRequest) to link an external resource or by passing a multipart/form-data Object to attach a file.\nNB: Swagger V2 specification doesn't support this use case that's why this endpoint might be buggy/incomplete if used with other tools.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "content-items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Attachment file"
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Required name of the variable"
+                },
+                {
+                  "key": "versionInfo",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "A version identifier for the content item, optional"
+                },
+                {
+                  "key": "mimeType",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Mime type of the content item, optional"
+                },
+                {
+                  "key": "taskId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Task identifier for the content item, optional"
+                },
+                {
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Process instance identifier for the content item, optional"
+                },
+                {
+                  "key": "scopeType",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Scope type of the content item, optional"
+                },
+                {
+                  "key": "scopeId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Scope id for the content item, optional"
+                },
+                {
+                  "key": "contentStoreId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The identifier of the content item in an external content store, optional"
+                },
+                {
+                  "key": "contentStoreName",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The name of an external content store, optional"
+                },
+                {
+                  "key": "field",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The form field for the content item, optional"
+                },
+                {
+                  "key": "createdBy",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The user identifier that created the content item, optional"
+                },
+                {
+                  "key": "lastModifiedBy",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The user identifier that last modified the content item, optional"
+                },
+                {
+                  "key": "versionParentId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Parent version identifier to create a new version for the content item, optional"
+                },
+                {
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The tenant identifier of the content item, optional"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f50115c7-14ae-48b8-8b55-b3ca2695a5ec",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Attachment file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required name of the variable",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "Simple content item",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A version identifier for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "versionInfo",
+                      "value": "Simple content item",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Mime type of the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "mimeType",
+                      "value": "application/pdf",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Task identifier for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "taskId",
+                      "value": "12345",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Process instance identifier for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "processInstanceId",
+                      "value": "1234",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Scope type of the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "scopeType",
+                      "value": "cmmn or bpmn",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Scope id for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "scopeId",
+                      "value": "12345",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The identifier of the content item in an external content store, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "contentStoreId",
+                      "value": "5678",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The name of an external content store, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "contentStoreName",
+                      "value": "myFileStore",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The form field for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "field",
+                      "value": "uploadField",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The user identifier that created the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "createdBy",
+                      "value": "johndoe",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The user identifier that last modified the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "lastModifiedBy",
+                      "value": "johndoe",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Parent version identifier to create a new version for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "versionParentId",
+                      "value": "1234",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The tenant identifier of the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "tenantId",
+                      "value": "myTenantId",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"version\": 439,\n  \"versionInfo\": \"string\",\n  \"size\": 9002,\n  \"mimeType\": \"string\",\n  \"definitionId\": \"string\",\n  \"definitionName\": \"string\",\n  \"taskId\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"scopeId\": \"string\",\n  \"scopeType\": \"string\",\n  \"contentStoreId\": \"string\",\n  \"contentStoreName\": \"string\",\n  \"contentAvailable\": true,\n  \"versionParentId\": \"string\",\n  \"tenantId\": \"string\",\n  \"created\": \"1986-02-14T04:12:21.851Z\",\n  \"createdBy\": \"string\",\n  \"lastModified\": \"1964-10-21T03:08:37.952Z\",\n  \"lastModifiedBy\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"subType\": \"string\",\n  \"state\": \"string\",\n  \"subState\": \"string\",\n  \"parentFolderId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2b00324-1449-48a7-8a06-7fc73f731a3d",
+              "name": "Indicates the content item was created and the result is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Attachment file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required name of the variable",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "Simple content item",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A version identifier for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "versionInfo",
+                      "value": "Simple content item",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Mime type of the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "mimeType",
+                      "value": "application/pdf",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Task identifier for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "taskId",
+                      "value": "12345",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Process instance identifier for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "processInstanceId",
+                      "value": "1234",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Scope type of the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "scopeType",
+                      "value": "cmmn or bpmn",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Scope id for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "scopeId",
+                      "value": "12345",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The identifier of the content item in an external content store, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "contentStoreId",
+                      "value": "5678",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The name of an external content store, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "contentStoreName",
+                      "value": "myFileStore",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The form field for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "field",
+                      "value": "uploadField",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The user identifier that created the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "createdBy",
+                      "value": "johndoe",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The user identifier that last modified the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "lastModifiedBy",
+                      "value": "johndoe",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Parent version identifier to create a new version for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "versionParentId",
+                      "value": "1234",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The tenant identifier of the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "tenantId",
+                      "value": "myTenantId",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b4fe410-70e7-4baf-ab35-a498bac76673",
+              "name": "Indicates required content item info is missing from the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Attachment file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required name of the variable",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "Simple content item",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A version identifier for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "versionInfo",
+                      "value": "Simple content item",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Mime type of the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "mimeType",
+                      "value": "application/pdf",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Task identifier for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "taskId",
+                      "value": "12345",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Process instance identifier for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "processInstanceId",
+                      "value": "1234",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Scope type of the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "scopeType",
+                      "value": "cmmn or bpmn",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Scope id for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "scopeId",
+                      "value": "12345",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The identifier of the content item in an external content store, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "contentStoreId",
+                      "value": "5678",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The name of an external content store, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "contentStoreName",
+                      "value": "myFileStore",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The form field for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "field",
+                      "value": "uploadField",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The user identifier that created the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "createdBy",
+                      "value": "johndoe",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The user identifier that last modified the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "lastModifiedBy",
+                      "value": "johndoe",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Parent version identifier to create a new version for the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "versionParentId",
+                      "value": "1234",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The tenant identifier of the content item, optional",
+                        "type": "text/plain"
+                      },
+                      "key": "tenantId",
+                      "value": "myTenantId",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "879ba1cf-382b-4589-b71c-4b7d83a4638c",
+          "name": "Get a content item",
+          "request": {
+            "name": "Get a content item",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "content-items",
+                ":contentItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentItemId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9e8555d4-7138-4313-ba1c-82c6b2e8525e",
+              "name": "Indicates the content item was found and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"version\": 439,\n  \"versionInfo\": \"string\",\n  \"size\": 9002,\n  \"mimeType\": \"string\",\n  \"definitionId\": \"string\",\n  \"definitionName\": \"string\",\n  \"taskId\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"scopeId\": \"string\",\n  \"scopeType\": \"string\",\n  \"contentStoreId\": \"string\",\n  \"contentStoreName\": \"string\",\n  \"contentAvailable\": true,\n  \"versionParentId\": \"string\",\n  \"tenantId\": \"string\",\n  \"created\": \"1986-02-14T04:12:21.851Z\",\n  \"createdBy\": \"string\",\n  \"lastModified\": \"1964-10-21T03:08:37.952Z\",\n  \"lastModifiedBy\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"subType\": \"string\",\n  \"state\": \"string\",\n  \"subState\": \"string\",\n  \"parentFolderId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ebcb981-7652-4ea1-a0ba-b674aae4c9ea",
+              "name": "Indicates the requested content item was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4297ee0-0e69-4748-816a-b98b53ffb5e1",
+          "name": "Updates a content item, with the provided content item information",
+          "request": {
+            "name": "Updates a content item, with the provided content item information",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "content-items",
+                ":contentItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentItemId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"versionInfo\": \"<string>\",\n  \"mimeType\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"contentStoreId\": \"<string>\",\n  \"contentStoreName\": \"<string>\",\n  \"field\": \"<string>\",\n  \"versionParentId\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"type\": \"<string>\",\n  \"subType\": \"<string>\",\n  \"state\": \"<string>\",\n  \"subState\": \"<string>\",\n  \"parentFolderId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b808f1f4-90fe-4991-ab02-673864986c29",
+              "name": "Indicates the content item was updated and the result is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"version\": 439,\n  \"versionInfo\": \"string\",\n  \"size\": 9002,\n  \"mimeType\": \"string\",\n  \"definitionId\": \"string\",\n  \"definitionName\": \"string\",\n  \"taskId\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"scopeId\": \"string\",\n  \"scopeType\": \"string\",\n  \"contentStoreId\": \"string\",\n  \"contentStoreName\": \"string\",\n  \"contentAvailable\": true,\n  \"versionParentId\": \"string\",\n  \"tenantId\": \"string\",\n  \"created\": \"1986-02-14T04:12:21.851Z\",\n  \"createdBy\": \"string\",\n  \"lastModified\": \"1964-10-21T03:08:37.952Z\",\n  \"lastModifiedBy\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"subType\": \"string\",\n  \"state\": \"string\",\n  \"subState\": \"string\",\n  \"parentFolderId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01d7e33c-c023-4ed2-8cd3-858f6bbf531b",
+              "name": "Indicates content item could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "515f97d1-9dbe-45a5-9b73-ba45e167c27b",
+          "name": "Delete a content item",
+          "request": {
+            "name": "Delete a content item",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "content-items",
+                ":contentItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentItemId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "44c3037c-8250-4a64-9481-03769c70f2e7",
+              "name": "Indicates the content item was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de2ef63f-1c06-42e7-a473-59e34e56da16",
+              "name": "Indicates the content item was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "388b7eb9-45c4-4953-9917-d4a3fa14e337",
+          "name": "Copy a content item to the parent folder",
+          "request": {
+            "name": "Copy a content item to the parent folder",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "content-items",
+                ":contentItemId",
+                "copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentItemId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"versionInfo\": \"<string>\",\n  \"mimeType\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"contentStoreId\": \"<string>\",\n  \"contentStoreName\": \"<string>\",\n  \"field\": \"<string>\",\n  \"versionParentId\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"type\": \"<string>\",\n  \"subType\": \"<string>\",\n  \"state\": \"<string>\",\n  \"subState\": \"<string>\",\n  \"parentFolderId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f47df81a-00f7-4b17-9fe7-c0e7e2f39553",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"version\": 439,\n  \"versionInfo\": \"string\",\n  \"size\": 9002,\n  \"mimeType\": \"string\",\n  \"definitionId\": \"string\",\n  \"definitionName\": \"string\",\n  \"taskId\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"scopeId\": \"string\",\n  \"scopeType\": \"string\",\n  \"contentStoreId\": \"string\",\n  \"contentStoreName\": \"string\",\n  \"contentAvailable\": true,\n  \"versionParentId\": \"string\",\n  \"tenantId\": \"string\",\n  \"created\": \"1986-02-14T04:12:21.851Z\",\n  \"createdBy\": \"string\",\n  \"lastModified\": \"1964-10-21T03:08:37.952Z\",\n  \"lastModifiedBy\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"subType\": \"string\",\n  \"state\": \"string\",\n  \"subState\": \"string\",\n  \"parentFolderId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6434c25-b2c0-4e37-9892-6a00e83c6787",
+              "name": "Indicates the content item was copied and the result is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "335204c6-91d9-40dd-b47e-33007a224427",
+              "name": "Indicates content item could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f949906c-3800-4181-89a5-6baf8b2a7b1c",
+          "name": "Get the data of a content item",
+          "request": {
+            "name": "Get the data of a content item",
+            "description": {
+              "content": "The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "content-items",
+                ":contentItemId",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "download",
+                  "value": "<boolean>",
+                  "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentItemId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6c7c73ff-e226-4259-9821-82746ae37709",
+              "name": "Indicates the content item was found and the requested content is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"open\": true,\n  \"file\": \"string\",\n  \"readable\": true,\n  \"url\": \"string\",\n  \"filePath\": {\n    \"absolute\": false,\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"root\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileName\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileSystem\": {\n      \"open\": false,\n      \"readOnly\": false,\n      \"separator\": \"string\",\n      \"rootDirectories\": {},\n      \"fileStores\": {},\n      \"userPrincipalLookupService\": {}\n    },\n    \"nameCount\": 8132\n  },\n  \"filename\": \"string\",\n  \"description\": \"string\",\n  \"uri\": \"https://YFtLNDJJQPbpzKP.dskyqxM2-jVAZ4y8CBNP0qEM79yhA2-WPoGoYhA1pLbQ4TbHg7N5qkp6zptdFFEhOF6QC-zAv9.XDWZs2Y4N\",\n  \"contentAsByteArray\": [\n    \"string\",\n    \"string\"\n  ],\n  \"inputStream\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9119c011-0390-4f0c-aebe-ef10c7b49ac1",
+              "name": "Indicates the content item was not found or the content item does not have a binary stream available. Status message provides additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab60fbe4-5daa-4698-9685-7320f2d82a7d",
+          "name": "Save the content item data",
+          "request": {
+            "name": "Save the content item data",
+            "description": {
+              "content": "Save the content item data with an attached file. The request should be of type multipart/form-data. There should be a single file-part included with the binary value of the content item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "content-items",
+                ":contentItemId",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentItemId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0c402c6d-d8c9-453f-95cd-bee3e2136f7a",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"version\": 439,\n  \"versionInfo\": \"string\",\n  \"size\": 9002,\n  \"mimeType\": \"string\",\n  \"definitionId\": \"string\",\n  \"definitionName\": \"string\",\n  \"taskId\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"scopeId\": \"string\",\n  \"scopeType\": \"string\",\n  \"contentStoreId\": \"string\",\n  \"contentStoreName\": \"string\",\n  \"contentAvailable\": true,\n  \"versionParentId\": \"string\",\n  \"tenantId\": \"string\",\n  \"created\": \"1986-02-14T04:12:21.851Z\",\n  \"createdBy\": \"string\",\n  \"lastModified\": \"1964-10-21T03:08:37.952Z\",\n  \"lastModifiedBy\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"subType\": \"string\",\n  \"state\": \"string\",\n  \"subState\": \"string\",\n  \"parentFolderId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d53b0da-ecb7-4b69-bcd3-917535a6d3b7",
+              "name": "Indicates the content item data was saved and the result is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b3a5cb59-88d0-4075-8012-6d4f8080325c",
+              "name": "Indicates required content item data is missing from the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fafc6e3e-56d2-4c05-913e-001e5a53e5d6",
+          "name": "Get the latest data of a content item",
+          "request": {
+            "name": "Get the latest data of a content item",
+            "description": {
+              "content": "The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "content-items",
+                ":contentItemId",
+                "data",
+                "latest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "download",
+                  "value": "<boolean>",
+                  "description": "Explicitly request the latest content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentItemId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d4784fa4-cd09-4695-9188-aff7d8181278",
+              "name": "Indicates the latest content item was found and the requested content is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "data",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"open\": false,\n  \"file\": \"string\",\n  \"readable\": true,\n  \"url\": \"string\",\n  \"filePath\": {\n    \"absolute\": true,\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"root\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileName\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileSystem\": {\n      \"open\": false,\n      \"readOnly\": false,\n      \"separator\": \"string\",\n      \"rootDirectories\": {},\n      \"fileStores\": {},\n      \"userPrincipalLookupService\": {}\n    },\n    \"nameCount\": 5972\n  },\n  \"filename\": \"string\",\n  \"description\": \"string\",\n  \"uri\": \"http://DvKUCdqTPhcfxRYk.zbxcyQgX1KIkpsQoin,J6hp.kW72oKAOCOZiqbM,pCFrvAZOzNNHZ-AV7\",\n  \"contentAsByteArray\": [\n    \"string\",\n    \"string\"\n  ],\n  \"inputStream\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c89c130b-5431-460e-a5b8-7840bd8e63db",
+              "name": "Indicates the latest content item was not found or the latest content item does not have a binary stream available. Status message provides additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "data",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2bed0ba9-0752-4dc5-b543-ee6f49a42bf4",
+          "name": "Get a rendition item (data) with a rendition type related to a content item",
+          "request": {
+            "name": "Get a rendition item (data) with a rendition type related to a content item",
+            "description": {
+              "content": "Rendition type can be 'thumbnail' or 'pdf'The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "content-items",
+                ":contentItemId",
+                "rendition",
+                ":renditionType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "download",
+                  "value": "<boolean>",
+                  "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentItemId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "renditionType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "11f1a292-3262-4dc4-b92e-18f9a8042341",
+              "name": "Indicates the rendition item was found and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "rendition",
+                    ":renditionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"open\": false,\n  \"file\": \"string\",\n  \"readable\": true,\n  \"url\": \"string\",\n  \"filePath\": {\n    \"absolute\": true,\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"root\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileName\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileSystem\": {\n      \"open\": false,\n      \"readOnly\": false,\n      \"separator\": \"string\",\n      \"rootDirectories\": {},\n      \"fileStores\": {},\n      \"userPrincipalLookupService\": {}\n    },\n    \"nameCount\": 5972\n  },\n  \"filename\": \"string\",\n  \"description\": \"string\",\n  \"uri\": \"http://DvKUCdqTPhcfxRYk.zbxcyQgX1KIkpsQoin,J6hp.kW72oKAOCOZiqbM,pCFrvAZOzNNHZ-AV7\",\n  \"contentAsByteArray\": [\n    \"string\",\n    \"string\"\n  ],\n  \"inputStream\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2065aead-1b00-449a-9baf-b8559ca919ad",
+              "name": "Indicates the requested rendition item was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "rendition",
+                    ":renditionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59b9f0ba-e2a0-4822-b705-f3fe83eb3353",
+          "name": "Get the latest rendition item (data) with a rendition type related to a content item",
+          "request": {
+            "name": "Get the latest rendition item (data) with a rendition type related to a content item",
+            "description": {
+              "content": "Rendition type can be 'thumbnail' or 'pdf'The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "content-items",
+                ":contentItemId",
+                "rendition",
+                ":renditionType",
+                "latest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "download",
+                  "value": "<boolean>",
+                  "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentItemId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "renditionType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eaac4d7a-6867-4d46-a9cc-70a04c867972",
+              "name": "Indicates the rendition item was found and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "rendition",
+                    ":renditionType",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"open\": false,\n  \"file\": \"string\",\n  \"readable\": true,\n  \"url\": \"string\",\n  \"filePath\": {\n    \"absolute\": true,\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"root\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileName\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileSystem\": {\n      \"open\": false,\n      \"readOnly\": false,\n      \"separator\": \"string\",\n      \"rootDirectories\": {},\n      \"fileStores\": {},\n      \"userPrincipalLookupService\": {}\n    },\n    \"nameCount\": 5972\n  },\n  \"filename\": \"string\",\n  \"description\": \"string\",\n  \"uri\": \"http://DvKUCdqTPhcfxRYk.zbxcyQgX1KIkpsQoin,J6hp.kW72oKAOCOZiqbM,pCFrvAZOzNNHZ-AV7\",\n  \"contentAsByteArray\": [\n    \"string\",\n    \"string\"\n  ],\n  \"inputStream\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aad2434a-c8bd-4297-9044-8fb296b7aa34",
+              "name": "Indicates the requested rendition item was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "content-items",
+                    ":contentItemId",
+                    "rendition",
+                    ":renditionType",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentItemId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bcec971-da7a-432b-850c-b7696b6db13d",
+          "name": "Get a content item",
+          "request": {
+            "name": "Get a content item",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "version-parent-items",
+                ":versionParentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "versionParentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7778107a-205b-4ce5-ab84-1b71dc84628e",
+              "name": "Indicates the content item was found and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "version-parent-items",
+                    ":versionParentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionParentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"version\": 439,\n  \"versionInfo\": \"string\",\n  \"size\": 9002,\n  \"mimeType\": \"string\",\n  \"definitionId\": \"string\",\n  \"definitionName\": \"string\",\n  \"taskId\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"scopeId\": \"string\",\n  \"scopeType\": \"string\",\n  \"contentStoreId\": \"string\",\n  \"contentStoreName\": \"string\",\n  \"contentAvailable\": true,\n  \"versionParentId\": \"string\",\n  \"tenantId\": \"string\",\n  \"created\": \"1986-02-14T04:12:21.851Z\",\n  \"createdBy\": \"string\",\n  \"lastModified\": \"1964-10-21T03:08:37.952Z\",\n  \"lastModifiedBy\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"subType\": \"string\",\n  \"state\": \"string\",\n  \"subState\": \"string\",\n  \"parentFolderId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cb3cdc7-0962-4ca8-8ea1-1680fd2b08b4",
+              "name": "Indicates the requested content item was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "version-parent-items",
+                    ":versionParentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionParentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec700024-2465-4f54-860d-0947e36eb597",
+          "name": "Get the data of a content item",
+          "request": {
+            "name": "Get the data of a content item",
+            "description": {
+              "content": "The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "version-parent-items",
+                ":versionParentId",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "download",
+                  "value": "<boolean>",
+                  "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "versionParentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "60d141af-26b6-44dc-bf38-13d31e0a19f5",
+              "name": "Indicates the content item was found and the requested content is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "version-parent-items",
+                    ":versionParentId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionParentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"open\": false,\n  \"file\": \"string\",\n  \"readable\": true,\n  \"url\": \"string\",\n  \"filePath\": {\n    \"absolute\": true,\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"root\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileName\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileSystem\": {\n      \"open\": false,\n      \"readOnly\": false,\n      \"separator\": \"string\",\n      \"rootDirectories\": {},\n      \"fileStores\": {},\n      \"userPrincipalLookupService\": {}\n    },\n    \"nameCount\": 5972\n  },\n  \"filename\": \"string\",\n  \"description\": \"string\",\n  \"uri\": \"http://DvKUCdqTPhcfxRYk.zbxcyQgX1KIkpsQoin,J6hp.kW72oKAOCOZiqbM,pCFrvAZOzNNHZ-AV7\",\n  \"contentAsByteArray\": [\n    \"string\",\n    \"string\"\n  ],\n  \"inputStream\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a2e84a9-c152-484b-8e05-68be59de3edb",
+              "name": "Indicates the content item was not found or the content item does not have a binary stream available. Status message provides additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "version-parent-items",
+                    ":versionParentId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionParentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92482173-ef02-4a6d-8802-27cdebfa2592",
+          "name": "Get a rendition item (data) with a rendition type related to a content item",
+          "request": {
+            "name": "Get a rendition item (data) with a rendition type related to a content item",
+            "description": {
+              "content": "Rendition type can be 'thumbnail' or 'pdf'The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "version-parent-items",
+                ":versionParentId",
+                "rendition",
+                ":renditionType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "download",
+                  "value": "<boolean>",
+                  "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "versionParentId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "renditionType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4b02391e-6def-4d65-a6d1-efd867a4ed31",
+              "name": "Indicates the rendition item was found and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "version-parent-items",
+                    ":versionParentId",
+                    "rendition",
+                    ":renditionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionParentId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"open\": false,\n  \"file\": \"string\",\n  \"readable\": true,\n  \"url\": \"string\",\n  \"filePath\": {\n    \"absolute\": true,\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"root\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileName\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileSystem\": {\n      \"open\": false,\n      \"readOnly\": false,\n      \"separator\": \"string\",\n      \"rootDirectories\": {},\n      \"fileStores\": {},\n      \"userPrincipalLookupService\": {}\n    },\n    \"nameCount\": 5972\n  },\n  \"filename\": \"string\",\n  \"description\": \"string\",\n  \"uri\": \"http://DvKUCdqTPhcfxRYk.zbxcyQgX1KIkpsQoin,J6hp.kW72oKAOCOZiqbM,pCFrvAZOzNNHZ-AV7\",\n  \"contentAsByteArray\": [\n    \"string\",\n    \"string\"\n  ],\n  \"inputStream\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f11ce9d-8080-4914-8a89-6c93b9273623",
+              "name": "Indicates the requested rendition item was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "version-parent-items",
+                    ":versionParentId",
+                    "rendition",
+                    ":renditionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionParentId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5788862-5d4e-4997-ad20-6601057c6bd7",
+          "name": "Query for content items",
+          "request": {
+            "name": "Query for content items",
+            "description": {
+              "content": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of content items, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "content-items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"definitionId\": \"<string>\",\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"nameLike\": \"<string>\",\n  \"mimeType\": \"<string>\",\n  \"mimeTypeLike\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"taskIdLike\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIdLike\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeIdLike\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"contentStoreId\": \"<string>\",\n  \"contentStoreIdLike\": \"<string>\",\n  \"contentStoreName\": \"<string>\",\n  \"contentStoreNameLike\": \"<string>\",\n  \"contentSize\": \"<long>\",\n  \"minimumContentSize\": \"<long>\",\n  \"maximumContentSize\": \"<long>\",\n  \"contentAvailable\": \"<boolean>\",\n  \"field\": \"<string>\",\n  \"fieldLike\": \"<string>\",\n  \"latest\": \"<boolean>\",\n  \"createdOn\": \"<dateTime>\",\n  \"createdBefore\": \"<dateTime>\",\n  \"createdAfter\": \"<dateTime>\",\n  \"createdBy\": \"<string>\",\n  \"createdByLike\": \"<string>\",\n  \"lastModifiedOn\": \"<dateTime>\",\n  \"lastModifiedBefore\": \"<dateTime>\",\n  \"lastModifiedAfter\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedByLike\": \"<string>\",\n  \"versionParentId\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"subType\": \"<string>\",\n  \"state\": \"<string>\",\n  \"subState\": \"<string>\",\n  \"parentFolderId\": \"<string>\",\n  \"queryMetadata\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "590c2853-861c-44b8-820c-f8bafba6a144",
+              "name": "Indicates request was successful and the content items are returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "content-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"definitionId\": \"<string>\",\n  \"ids\": [\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"nameLike\": \"<string>\",\n  \"mimeType\": \"<string>\",\n  \"mimeTypeLike\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"taskIdLike\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIdLike\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeIdLike\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"contentStoreId\": \"<string>\",\n  \"contentStoreIdLike\": \"<string>\",\n  \"contentStoreName\": \"<string>\",\n  \"contentStoreNameLike\": \"<string>\",\n  \"contentSize\": \"<long>\",\n  \"minimumContentSize\": \"<long>\",\n  \"maximumContentSize\": \"<long>\",\n  \"contentAvailable\": \"<boolean>\",\n  \"field\": \"<string>\",\n  \"fieldLike\": \"<string>\",\n  \"latest\": \"<boolean>\",\n  \"createdOn\": \"<dateTime>\",\n  \"createdBefore\": \"<dateTime>\",\n  \"createdAfter\": \"<dateTime>\",\n  \"createdBy\": \"<string>\",\n  \"createdByLike\": \"<string>\",\n  \"lastModifiedOn\": \"<dateTime>\",\n  \"lastModifiedBefore\": \"<dateTime>\",\n  \"lastModifiedAfter\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedByLike\": \"<string>\",\n  \"versionParentId\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"subType\": \"<string>\",\n  \"state\": \"<string>\",\n  \"subState\": \"<string>\",\n  \"parentFolderId\": \"<string>\",\n  \"queryMetadata\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"version\": 4902,\n      \"versionInfo\": \"string\",\n      \"size\": 7072,\n      \"mimeType\": \"string\",\n      \"definitionId\": \"string\",\n      \"definitionName\": \"string\",\n      \"taskId\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"scopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"contentStoreId\": \"string\",\n      \"contentStoreName\": \"string\",\n      \"contentAvailable\": true,\n      \"versionParentId\": \"string\",\n      \"tenantId\": \"string\",\n      \"created\": \"1977-09-21T11:14:04.110Z\",\n      \"createdBy\": \"string\",\n      \"lastModified\": \"1984-10-06T14:36:16.008Z\",\n      \"lastModifiedBy\": \"string\",\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"subType\": \"string\",\n      \"state\": \"string\",\n      \"subState\": \"string\",\n      \"parentFolderId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"version\": 7940,\n      \"versionInfo\": \"string\",\n      \"size\": 9593,\n      \"mimeType\": \"string\",\n      \"definitionId\": \"string\",\n      \"definitionName\": \"string\",\n      \"taskId\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"scopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"contentStoreId\": \"string\",\n      \"contentStoreName\": \"string\",\n      \"contentAvailable\": true,\n      \"versionParentId\": \"string\",\n      \"tenantId\": \"string\",\n      \"created\": \"2002-07-23T04:03:04.043Z\",\n      \"createdBy\": \"string\",\n      \"lastModified\": \"1985-09-11T08:17:50.279Z\",\n      \"lastModifiedBy\": \"string\",\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"subType\": \"string\",\n      \"state\": \"string\",\n      \"subState\": \"string\",\n      \"parentFolderId\": \"string\"\n    }\n  ],\n  \"total\": 7180,\n  \"start\": 9607,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 7248\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2cd50626-6617-445f-9c46-79cd751eb3e1",
+              "name": "Indicates a parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "content-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"definitionId\": \"<string>\",\n  \"ids\": [\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"nameLike\": \"<string>\",\n  \"mimeType\": \"<string>\",\n  \"mimeTypeLike\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"taskIdLike\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIdLike\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeIdLike\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"contentStoreId\": \"<string>\",\n  \"contentStoreIdLike\": \"<string>\",\n  \"contentStoreName\": \"<string>\",\n  \"contentStoreNameLike\": \"<string>\",\n  \"contentSize\": \"<long>\",\n  \"minimumContentSize\": \"<long>\",\n  \"maximumContentSize\": \"<long>\",\n  \"contentAvailable\": \"<boolean>\",\n  \"field\": \"<string>\",\n  \"fieldLike\": \"<string>\",\n  \"latest\": \"<boolean>\",\n  \"createdOn\": \"<dateTime>\",\n  \"createdBefore\": \"<dateTime>\",\n  \"createdAfter\": \"<dateTime>\",\n  \"createdBy\": \"<string>\",\n  \"createdByLike\": \"<string>\",\n  \"lastModifiedOn\": \"<dateTime>\",\n  \"lastModifiedBefore\": \"<dateTime>\",\n  \"lastModifiedAfter\": \"<dateTime>\",\n  \"lastModifiedBy\": \"<string>\",\n  \"lastModifiedByLike\": \"<string>\",\n  \"versionParentId\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"subType\": \"<string>\",\n  \"state\": \"<string>\",\n  \"subState\": \"<string>\",\n  \"parentFolderId\": \"<string>\",\n  \"queryMetadata\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4ddb3c53-4162-4a1b-8ad0-ec25e5ac81c0",
+    "name": "Flowable REST Access Tokens Content item API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

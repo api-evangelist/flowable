@@ -1,0 +1,248 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Decisions API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Decisions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of decision",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-repository/decisions",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision with the given category."
+              },
+              {
+                "name": "categoryLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision with a category like the given name."
+              },
+              {
+                "name": "categoryNotEquals",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision which do not have the given category."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision with the given key."
+              },
+              {
+                "name": "keyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision with a name like the given key."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision with the given name."
+              },
+              {
+                "name": "nameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision with a name like the given name."
+              },
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision with the given resource name."
+              },
+              {
+                "name": "resourceNameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision with a name like the given resource name."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision with the given version."
+              },
+              {
+                "name": "latest",
+                "value": "",
+                "type": "query",
+                "description": "Only return the latest decision versions. Can only be used together with key and keyLike parameters, using any other parameter will result in a 400-response."
+              },
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "query",
+                "description": "Only return decisions which are part of a deployment with the given deployment id."
+              },
+              {
+                "name": "parentDeploymentId",
+                "value": "",
+                "type": "query",
+                "description": "Only return decisions which are part of a deployment with the given parent deployment id."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision with the given tenant ID."
+              },
+              {
+                "name": "decisionType",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision with the given type."
+              },
+              {
+                "name": "decisionTypeLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision like the given type."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of decision"
+        },
+        {
+          "info": {
+            "name": "Get a decision",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-repository/decisions/:decisionId",
+            "params": [
+              {
+                "name": "decisionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a decision"
+        },
+        {
+          "info": {
+            "name": "Get a decision requirements diagram image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-repository/decisions/:decisionId/image",
+            "params": [
+              {
+                "name": "decisionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a decision requirements diagram image"
+        },
+        {
+          "info": {
+            "name": "Get a decision DMN (definition) model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-repository/decisions/:decisionId/model",
+            "params": [
+              {
+                "name": "decisionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a decision DMN (definition) model"
+        },
+        {
+          "info": {
+            "name": "Get a decision resource content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-repository/decisions/:decisionId/resourcedata",
+            "params": [
+              {
+                "name": "decisionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a decision resource content"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

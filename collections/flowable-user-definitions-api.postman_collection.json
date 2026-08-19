@@ -1,0 +1,790 @@
+{
+  "item": [
+    {
+      "id": "ca7683d2-176e-4bb0-ac97-d7a64eee2376",
+      "name": "User Definitions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2e764b32-0e29-419d-b78a-74a4760a7da5",
+          "name": "List user definitions",
+          "request": {
+            "name": "List user definitions",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user-definitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Only return user definitions with the given id."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "Only return user definitions with the given key."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Only return user definitions with the given name."
+                },
+                {
+                  "disabled": false,
+                  "key": "nameLike",
+                  "value": "<string>",
+                  "description": "Only return user definitions with a name like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "nameLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return user definitions with a name like the given value (ignoring case)."
+                },
+                {
+                  "disabled": false,
+                  "key": "accessibleByUser",
+                  "value": "<string>",
+                  "description": "Only return user definitions accessible by user with the given name."
+                },
+                {
+                  "disabled": false,
+                  "key": "accessibleByGroup",
+                  "value": "<string>",
+                  "description": "Only return user definitions accessible by group with the given name."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return user definitions with the given tenant id."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The order of results. Default is asc"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Property to sort on, to be used together with the order."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0502d52c-1af6-4a70-8269-de44c6c32e5d",
+              "name": "Indicates request was successful and the user definitions are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accessibleByUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accessibleByGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"key\": \"string\",\n      \"description\": \"string\",\n      \"icon\": \"string\",\n      \"initFormKey\": \"string\",\n      \"viewFormKey\": \"string\",\n      \"editFormKey\": \"string\",\n      \"allowedFeatures\": [\n        \"string\"\n      ],\n      \"translations\": {\n        \"key_0\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      },\n      \"tenantId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"key\": \"string\",\n      \"description\": \"string\",\n      \"icon\": \"string\",\n      \"initFormKey\": \"string\",\n      \"viewFormKey\": \"string\",\n      \"editFormKey\": \"string\",\n      \"allowedFeatures\": [\n        \"string\"\n      ],\n      \"translations\": {\n        \"key_0\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      },\n      \"tenantId\": \"string\"\n    }\n  ],\n  \"total\": 1806,\n  \"start\": 3295,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 836\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca3feeb4-f5b6-445e-94a5-914f2d6c9622",
+              "name": "Indicates a parameter was passed in the wrong format . The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accessibleByUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accessibleByGroup",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2702995-6af1-46b4-bbb0-3c9bf56e45ab",
+          "name": "Upload a user definition model",
+          "request": {
+            "name": "Upload a user definition model",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user-definitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "The tenant id for the definition. Only allowed for super admin users"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c1099f73-8030-4bb8-9c68-3e659c1be7a0",
+              "name": "Indicates request was successful and the user definitions are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"key\": \"string\",\n    \"description\": \"string\",\n    \"icon\": \"string\",\n    \"initFormKey\": \"string\",\n    \"viewFormKey\": \"string\",\n    \"editFormKey\": \"string\",\n    \"allowedFeatures\": [\n      \"string\"\n    ],\n    \"translations\": {\n      \"key_0\": {\n        \"key_0\": \"string\"\n      },\n      \"key_1\": {\n        \"key_0\": \"string\"\n      }\n    },\n    \"tenantId\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"key\": \"string\",\n    \"description\": \"string\",\n    \"icon\": \"string\",\n    \"initFormKey\": \"string\",\n    \"viewFormKey\": \"string\",\n    \"editFormKey\": \"string\",\n    \"allowedFeatures\": [\n      \"string\"\n    ],\n    \"translations\": {\n      \"key_0\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"key_1\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"key_2\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"key_3\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    \"tenantId\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21516d44-8684-4ad2-9fa3-8dd2015d5908",
+              "name": "Indicates a parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "853d3ce5-115e-4998-9392-0800788f4075",
+          "name": "Get user by definition key",
+          "request": {
+            "name": "Get user by definition key",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user-definitions",
+                "key",
+                ":userDefinitionKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "The tenant id for the definition. Only allowed for super admin users"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userDefinitionKey",
+                  "description": "(Required) Key  of a user definition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4dc788dc-8b75-4c58-b253-943ab25ce9d3",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-definitions",
+                    "key",
+                    ":userDefinitionKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userDefinitionKey",
+                      "description": "(Required) Key  of a user definition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"key\": \"string\",\n  \"description\": \"string\",\n  \"icon\": \"string\",\n  \"initFormKey\": \"string\",\n  \"viewFormKey\": \"string\",\n  \"editFormKey\": \"string\",\n  \"allowedFeatures\": [\n    \"string\"\n  ],\n  \"translations\": {\n    \"key_0\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"key_1\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  },\n  \"tenantId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4248b270-be92-4974-b889-ff3e37cf1451",
+          "name": "Get user definition",
+          "request": {
+            "name": "Get user definition",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user-definitions",
+                ":userDefinitionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userDefinitionId",
+                  "description": "(Required) Unique identifier of a user definition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fda9069d-8067-43b4-9a84-cf49ba3ce6bb",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-definitions",
+                    ":userDefinitionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userDefinitionId",
+                      "description": "(Required) Unique identifier of a user definition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"key\": \"string\",\n  \"description\": \"string\",\n  \"icon\": \"string\",\n  \"initFormKey\": \"string\",\n  \"viewFormKey\": \"string\",\n  \"editFormKey\": \"string\",\n  \"allowedFeatures\": [\n    \"string\"\n  ],\n  \"translations\": {\n    \"key_0\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"key_1\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  },\n  \"tenantId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5b1284a-df53-4d3e-9d18-2b63c123586d",
+          "name": "Get user definition model",
+          "request": {
+            "name": "Get user definition model",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user-definitions",
+                ":userDefinitionId",
+                "model"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userDefinitionId",
+                  "description": "(Required) Unique identifier of a user definition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d6646eea-ae25-4db2-9cfa-1d4a3ca38f8e",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-definitions",
+                    ":userDefinitionId",
+                    "model"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userDefinitionId",
+                      "description": "(Required) Unique identifier of a user definition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"key\": \"string\",\n  \"initialState\": \"string\",\n  \"initialSubState\": \"string\",\n  \"initialUserType\": \"string\",\n  \"initialUserSubType\": \"string\",\n  \"icon\": \"string\",\n  \"forms\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"memberGroups\": [\n    \"string\",\n    \"string\"\n  ],\n  \"lookupGroups\": [\n    \"string\",\n    \"string\"\n  ],\n  \"dynamicLookupVariable\": \"string\",\n  \"allowedFeatures\": [\n    \"string\"\n  ],\n  \"actionPermissions\": {\n    \"key_0\": [\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\"\n    ]\n  },\n  \"actionHandlers\": {\n    \"key_0\": {\n      \"key_0\": {}\n    }\n  },\n  \"initialVariables\": {\n    \"key_0\": {}\n  },\n  \"restVariables\": {\n    \"key_0\": [\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\"\n    ]\n  },\n  \"conversationFilters\": [\n    \"string\",\n    \"string\"\n  ],\n  \"contactFilters\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "44b80bff-ddaf-4b2c-ad8c-6aa2a449570b",
+    "name": "Flowable REST Access Tokens User Definitions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

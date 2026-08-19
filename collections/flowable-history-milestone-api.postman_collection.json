@@ -1,0 +1,571 @@
+{
+  "item": [
+    {
+      "id": "51ed7dc6-63f7-41ea-b70c-a2037f61de04",
+      "name": "History Milestone",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ff75f036-c863-434b-ac13-f4b926b280ea",
+          "name": "List of historic milestone instances",
+          "request": {
+            "name": "List of historic milestone instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-history",
+                "historic-milestone-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "milestoneId",
+                  "value": "<string>",
+                  "description": "An id of the historic milestone instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "milestoneName",
+                  "value": "<string>",
+                  "description": "The name of the historic milestone instance"
+                },
+                {
+                  "disabled": false,
+                  "key": "caseInstanceId",
+                  "value": "<string>",
+                  "description": "The id of the case instance containing the milestone."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionId",
+                  "value": "<string>",
+                  "description": "The id of the definition of the case where the milestone is defined."
+                },
+                {
+                  "disabled": false,
+                  "key": "reachedBefore",
+                  "value": "<string>",
+                  "description": "Return only historic milestone instances that were reached before this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "reachedAfter",
+                  "value": "<string>",
+                  "description": "Return only historic milestone instances that were reached after this date."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "056c9a48-16b8-46a6-a1ea-2213e82160fc",
+              "name": "Indicates that historic milestone instances could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-milestone-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "milestoneId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "milestoneName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reachedBefore",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reachedAfter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"5\",\n      \"name\": \"milestoneName\",\n      \"elementId\": \"milestonePlanItemId\",\n      \"timestamp\": \"2013-04-18T14:06:32.715+0000\",\n      \"caseInstanceId\": \"12345\",\n      \"caseDefinitionId\": \"oneMilestoneCase%3A1%3A4\",\n      \"url\": \"http://localhost:8182/cmmn-history/historic-milestone-instances/5\",\n      \"historicCaseInstanceUrl\": \"http://localhost:8182/cmmn-history/historic-case-instances/12345\",\n      \"caseDefinitionUrl\": \"http://localhost:8182/cmmn-repository/case-definitions/oneMilestoneCase%3A1%3A4\"\n    },\n    {\n      \"id\": \"5\",\n      \"name\": \"milestoneName\",\n      \"elementId\": \"milestonePlanItemId\",\n      \"timestamp\": \"2013-04-18T14:06:32.715+0000\",\n      \"caseInstanceId\": \"12345\",\n      \"caseDefinitionId\": \"oneMilestoneCase%3A1%3A4\",\n      \"url\": \"http://localhost:8182/cmmn-history/historic-milestone-instances/5\",\n      \"historicCaseInstanceUrl\": \"http://localhost:8182/cmmn-history/historic-case-instances/12345\",\n      \"caseDefinitionUrl\": \"http://localhost:8182/cmmn-repository/case-definitions/oneMilestoneCase%3A1%3A4\"\n    }\n  ],\n  \"total\": 7417,\n  \"start\": 3762,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 6825\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "042532d4-1d61-4227-aaf0-5e58736f5e19",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-milestone-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "milestoneId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "milestoneName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reachedBefore",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reachedAfter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4da5e5e-44bb-4ce2-8f0f-57d77bf10c1e",
+          "name": "Get a historic milestone instance by id",
+          "request": {
+            "name": "Get a historic milestone instance by id",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-history",
+                "historic-milestone-instances",
+                ":milestoneInstanceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "milestoneInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e2e91ddd-14c1-4e65-96c4-02e8dd3de550",
+              "name": "Indicates that the historic milestone instances could be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-milestone-instances",
+                    ":milestoneInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "milestoneInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"5\",\n  \"name\": \"milestoneName\",\n  \"elementId\": \"milestonePlanItemId\",\n  \"timestamp\": \"2013-04-18T14:06:32.715+0000\",\n  \"caseInstanceId\": \"12345\",\n  \"caseDefinitionId\": \"oneMilestoneCase%3A1%3A4\",\n  \"url\": \"http://localhost:8182/cmmn-history/historic-milestone-instances/5\",\n  \"historicCaseInstanceUrl\": \"http://localhost:8182/cmmn-history/historic-case-instances/12345\",\n  \"caseDefinitionUrl\": \"http://localhost:8182/cmmn-repository/case-definitions/oneMilestoneCase%3A1%3A4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5ede205-1f84-44e9-91ef-26a3f2471194",
+              "name": "Indicates that the historic milestone instances could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-milestone-instances",
+                    ":milestoneInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "milestoneInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9209a7f1-6c16-4edf-a11d-41abf70b777b",
+          "name": "Query for historic milestone instances",
+          "request": {
+            "name": "Query for historic milestone instances",
+            "description": {
+              "content": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic milestone instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-query",
+                "historic-milestone-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"caseDefinitionId\": \"<string>\",\n  \"reachedBefore\": \"<dateTime>\",\n  \"reachedAfter\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2e1020a8-df9c-452a-88cc-a5cd527bdf73",
+              "name": "Indicates request was successful and the milestone instances are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-query",
+                    "historic-milestone-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"caseDefinitionId\": \"<string>\",\n  \"reachedBefore\": \"<dateTime>\",\n  \"reachedAfter\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"5\",\n      \"name\": \"milestoneName\",\n      \"elementId\": \"milestonePlanItemId\",\n      \"timestamp\": \"2013-04-18T14:06:32.715+0000\",\n      \"caseInstanceId\": \"12345\",\n      \"caseDefinitionId\": \"oneMilestoneCase%3A1%3A4\",\n      \"url\": \"http://localhost:8182/cmmn-history/historic-milestone-instances/5\",\n      \"historicCaseInstanceUrl\": \"http://localhost:8182/cmmn-history/historic-case-instances/12345\",\n      \"caseDefinitionUrl\": \"http://localhost:8182/cmmn-repository/case-definitions/oneMilestoneCase%3A1%3A4\"\n    },\n    {\n      \"id\": \"5\",\n      \"name\": \"milestoneName\",\n      \"elementId\": \"milestonePlanItemId\",\n      \"timestamp\": \"2013-04-18T14:06:32.715+0000\",\n      \"caseInstanceId\": \"12345\",\n      \"caseDefinitionId\": \"oneMilestoneCase%3A1%3A4\",\n      \"url\": \"http://localhost:8182/cmmn-history/historic-milestone-instances/5\",\n      \"historicCaseInstanceUrl\": \"http://localhost:8182/cmmn-history/historic-case-instances/12345\",\n      \"caseDefinitionUrl\": \"http://localhost:8182/cmmn-repository/case-definitions/oneMilestoneCase%3A1%3A4\"\n    }\n  ],\n  \"total\": 1516,\n  \"start\": 2138,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 940\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b592e1a1-21c5-4cdb-ac44-22718e1c7b5d",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-query",
+                    "historic-milestone-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"caseInstanceId\": \"<string>\",\n  \"caseDefinitionId\": \"<string>\",\n  \"reachedBefore\": \"<dateTime>\",\n  \"reachedAfter\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "de9034b5-da18-4a50-8c77-f32256fbdd02",
+    "name": "Flowable REST Access Tokens History Milestone API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

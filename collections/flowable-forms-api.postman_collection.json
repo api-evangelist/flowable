@@ -1,0 +1,402 @@
+{
+  "item": [
+    {
+      "id": "66a9101a-cce4-4fd0-b53d-18fdbec210f6",
+      "name": "Forms",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fc01baec-fa5a-462b-a8d0-374f0095f3aa",
+          "name": "Get form data",
+          "request": {
+            "name": "Get form data",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "form",
+                "form-data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "taskId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "afe0ccea-57a6-4c5c-b891-a3bd06ed1bba",
+              "name": "Indicates that form data could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "form",
+                    "form-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"formKey\": \"null\",\n  \"deploymentId\": \"2\",\n  \"processDefinitionId\": \"3\",\n  \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definition/3\",\n  \"taskId\": \"6\",\n  \"taskUrl\": \"http://localhost:8182/runtime/task/6\",\n  \"formProperties\": [\n    {\n      \"id\": \"room\",\n      \"name\": \"Room\",\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"readable\": false,\n      \"writable\": true,\n      \"required\": true,\n      \"datePattern\": \"string\",\n      \"enumValues\": [\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        },\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        }\n      ]\n    },\n    {\n      \"id\": \"room\",\n      \"name\": \"Room\",\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"readable\": false,\n      \"writable\": false,\n      \"required\": false,\n      \"datePattern\": \"string\",\n      \"enumValues\": [\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        },\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b2715df-2f1b-40fb-83d3-7b6853db0202",
+              "name": "Indicates that form data could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "form",
+                    "form-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd815a82-5b52-4219-a7c9-b87ab935154a",
+          "name": "Submit task form data",
+          "request": {
+            "name": "Submit task form data",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "form",
+                "form-data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"businessKey\": \"<string>\",\n  \"properties\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<string>\",\n      \"readable\": \"<boolean>\",\n      \"writable\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"datePattern\": \"<string>\",\n      \"enumValues\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<string>\",\n      \"readable\": \"<boolean>\",\n      \"writable\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"datePattern\": \"<string>\",\n      \"enumValues\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d75a5b38-e6a7-41de-9bf4-e5545d16f3a5",
+              "name": "Indicates request was successful and the form data was submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "form",
+                    "form-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"businessKey\": \"<string>\",\n  \"properties\": [\n    {\n      \"id\": \"room\",\n      \"name\": \"Room\",\n      \"type\": \"string\",\n      \"value\": \"<string>\",\n      \"readable\": \"<boolean>\",\n      \"writable\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"datePattern\": \"<string>\",\n      \"enumValues\": [\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        },\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        }\n      ]\n    },\n    {\n      \"id\": \"room\",\n      \"name\": \"Room\",\n      \"type\": \"string\",\n      \"value\": \"<string>\",\n      \"readable\": \"<boolean>\",\n      \"writable\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"datePattern\": \"<string>\",\n      \"enumValues\": [\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        },\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"187\",\n  \"url\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n  \"name\": \"myProcessInstanceName\",\n  \"businessKey\": \"myBusinessKey\",\n  \"businessStatus\": \"myBusinessStatus\",\n  \"suspended\": false,\n  \"ended\": false,\n  \"processDefinitionId\": \"oneTaskProcess:1:158\",\n  \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n  \"processDefinitionName\": \"A process definition name\",\n  \"processDefinitionDescription\": \"A process definition description\",\n  \"activityId\": \"processTask\",\n  \"startUserId\": \"johnDoe\",\n  \"startTime\": \"2018-04-17T10:17:43.902+0000\",\n  \"superProcessInstanceId\": \"3\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"string\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"string\"\n    }\n  ],\n  \"callbackId\": \"3\",\n  \"callbackType\": \"cmmn\",\n  \"referenceId\": \"123\",\n  \"referenceType\": \"event-to-bpmn-2.0-process\",\n  \"propagatedStageInstanceId\": \"string\",\n  \"tenantId\": \"someTenantId\",\n  \"completed\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b985e6d-7007-4589-8167-039b688ceab0",
+              "name": "If TaskId has been provided, Indicates request was successful and the form data was submitted. Returns empty",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "form",
+                    "form-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"businessKey\": \"<string>\",\n  \"properties\": [\n    {\n      \"id\": \"room\",\n      \"name\": \"Room\",\n      \"type\": \"string\",\n      \"value\": \"<string>\",\n      \"readable\": \"<boolean>\",\n      \"writable\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"datePattern\": \"<string>\",\n      \"enumValues\": [\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        },\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        }\n      ]\n    },\n    {\n      \"id\": \"room\",\n      \"name\": \"Room\",\n      \"type\": \"string\",\n      \"value\": \"<string>\",\n      \"readable\": \"<boolean>\",\n      \"writable\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"datePattern\": \"<string>\",\n      \"enumValues\": [\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        },\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9ac3ad5c-d22d-4e77-8f54-6e03f7ebc3ff",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "form",
+                    "form-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"businessKey\": \"<string>\",\n  \"properties\": [\n    {\n      \"id\": \"room\",\n      \"name\": \"Room\",\n      \"type\": \"string\",\n      \"value\": \"<string>\",\n      \"readable\": \"<boolean>\",\n      \"writable\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"datePattern\": \"<string>\",\n      \"enumValues\": [\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        },\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        }\n      ]\n    },\n    {\n      \"id\": \"room\",\n      \"name\": \"Room\",\n      \"type\": \"string\",\n      \"value\": \"<string>\",\n      \"readable\": \"<boolean>\",\n      \"writable\": \"<boolean>\",\n      \"required\": \"<boolean>\",\n      \"datePattern\": \"<string>\",\n      \"enumValues\": [\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        },\n        {\n          \"id\": \"normal\",\n          \"name\": \"Normal bed\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "78341fc6-d1be-4918-b959-9785f458ee9a",
+    "name": "Flowable REST Access Tokens Forms API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

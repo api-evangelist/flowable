@@ -1,0 +1,557 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens History Process API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "History Process",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of historic process instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-process-instances",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "An id of the historic process instance."
+              },
+              {
+                "name": "processInstanceName",
+                "value": "",
+                "type": "query",
+                "description": "A name of the historic process instance."
+              },
+              {
+                "name": "processInstanceNameLike",
+                "value": "",
+                "type": "query",
+                "description": "A name of the historic process instance used in a like query."
+              },
+              {
+                "name": "processInstanceNameLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "A name of the historic process instance used in a like query ignoring case."
+              },
+              {
+                "name": "processDefinitionKey",
+                "value": "",
+                "type": "query",
+                "description": "The process definition key of the historic process instance."
+              },
+              {
+                "name": "processDefinitionKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "The process definition key used in a like query."
+              },
+              {
+                "name": "processDefinitionKeyLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "The process definition key used in a like query ignoring case."
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "The process definition id of the historic process instance."
+              },
+              {
+                "name": "processDefinitionName",
+                "value": "",
+                "type": "query",
+                "description": "The process definition name of the historic process instance."
+              },
+              {
+                "name": "processDefinitionNameLike",
+                "value": "",
+                "type": "query",
+                "description": "The process definition name used in a like query."
+              },
+              {
+                "name": "processDefinitionNameLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "The process definition name used in a like query ignoring case."
+              },
+              {
+                "name": "processDefinitionCategory",
+                "value": "",
+                "type": "query",
+                "description": "The process definition category of the historic process instance."
+              },
+              {
+                "name": "processDefinitionCategoryLike",
+                "value": "",
+                "type": "query",
+                "description": "The process definition category used in a like query."
+              },
+              {
+                "name": "processDefinitionCategoryLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "The process definition category used in a like query ignoring case."
+              },
+              {
+                "name": "processDefinitionVersion",
+                "value": "",
+                "type": "query",
+                "description": "The process definition version of the historic process instance."
+              },
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "query",
+                "description": "The deployment id of the historic process instance."
+              },
+              {
+                "name": "rootScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances which have the given root scope id (that can be a process or case instance ID)."
+              },
+              {
+                "name": "parentScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process instances which have the given parent scope id (that can be a process or case instance ID)."
+              },
+              {
+                "name": "businessKey",
+                "value": "",
+                "type": "query",
+                "description": "The business key of the historic process instance."
+              },
+              {
+                "name": "businessKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with a business key like this key."
+              },
+              {
+                "name": "businessKeyLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with a business key like this key ignoring case."
+              },
+              {
+                "name": "businessStatus",
+                "value": "",
+                "type": "query",
+                "description": "The business status of the historic process instance."
+              },
+              {
+                "name": "businessStatusLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with a business status like this status."
+              },
+              {
+                "name": "businessStatusLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with a business status like this status ignoring case."
+              },
+              {
+                "name": "activeActivityId",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances which have an active activity instance with the provided activity id."
+              },
+              {
+                "name": "involvedUser",
+                "value": "",
+                "type": "query",
+                "description": "An involved user of the historic process instance."
+              },
+              {
+                "name": "finished",
+                "value": "",
+                "type": "query",
+                "description": "Indication if the historic process instance is finished."
+              },
+              {
+                "name": "superProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "An optional parent process id of the historic process instance."
+              },
+              {
+                "name": "excludeSubprocesses",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic process instances which are not sub processes."
+              },
+              {
+                "name": "finishedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic process instances that were finished after this date."
+              },
+              {
+                "name": "finishedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic process instances that were finished before this date."
+              },
+              {
+                "name": "startedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic process instances that were started after this date."
+              },
+              {
+                "name": "startedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic process instances that were started before this date."
+              },
+              {
+                "name": "startedBy",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic process instances that were started by this user."
+              },
+              {
+                "name": "includeProcessVariables",
+                "value": "",
+                "type": "query",
+                "description": "An indication if the historic process instance variables should be returned as well."
+              },
+              {
+                "name": "includeProcessVariablesName",
+                "value": "",
+                "type": "query",
+                "description": "Indication to include process variables with the given names in the result."
+              },
+              {
+                "name": "callbackId",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with the given callbackId."
+              },
+              {
+                "name": "callbackIds",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with the given callbackIds."
+              },
+              {
+                "name": "callbackType",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with the given callbackType."
+              },
+              {
+                "name": "parentCaseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with the given parent case instance id."
+              },
+              {
+                "name": "withoutCallbackId",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances that do not have a callbackId."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with a tenant id like the given value."
+              },
+              {
+                "name": "tenantIdLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with a tenant id like the given value ignoring case."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns instances without a tenantId set. If false, the withoutTenantId parameter is ignored.\n"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of historic process instances"
+        },
+        {
+          "info": {
+            "name": "Get a historic process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-process-instances/:processInstanceId",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a historic process instance"
+        },
+        {
+          "info": {
+            "name": " Delete a historic process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/history/historic-process-instances/:processInstanceId",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": " Delete a historic process instance"
+        },
+        {
+          "info": {
+            "name": "List comments on a historic process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-process-instances/:processInstanceId/comments",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List comments on a historic process instance"
+        },
+        {
+          "info": {
+            "name": "Create a new comment on a historic process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/history/historic-process-instances/:processInstanceId/comments",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Parameter saveProcessInstanceId is optional, if true save process instance id of task with comment."
+        },
+        {
+          "info": {
+            "name": "Get a comment on a historic process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-process-instances/:processInstanceId/comments/:commentId",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a comment on a historic process instance"
+        },
+        {
+          "info": {
+            "name": "Delete a comment on a historic process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/history/historic-process-instances/:processInstanceId/comments/:commentId",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a comment on a historic process instance"
+        },
+        {
+          "info": {
+            "name": "List identity links of a historic process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-process-instances/:processInstanceId/identitylinks",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List identity links of a historic process instance"
+        },
+        {
+          "info": {
+            "name": "Get the binary data for a historic process instance variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/history/historic-process-instances/:processInstanceId/variables/:variableName/data",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type."
+        },
+        {
+          "info": {
+            "name": "Query for historic process instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/query/historic-process-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here."
+        },
+        {
+          "info": {
+            "name": "Get the binary data for a historic case instance variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-case-instances/:caseInstanceId/variables/:variableName/data",
+            "params": [
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

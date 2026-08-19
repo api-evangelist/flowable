@@ -1,0 +1,34 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Cmmn Engine API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cmmn Engine",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get engine info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-management/engine",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get engine info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Access Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query access tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/access-tokens",
+            "params": [
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens created after the given ISO 8601 date."
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens created before the given ISO 8601 date."
+              },
+              {
+                "name": "expiresAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens expiring after the given date."
+              },
+              {
+                "name": "expiresBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens expiring before the given date."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens matching the given name."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "From the paginate request.  The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "searchText",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens matching the given searching text."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "From the paginate request. Number of rows to fetch, starting from start. Defaults to 10."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort the results on"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "From the paginate request. Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens for the given tenant. Only super admin users are allowed to use this"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens for the given user."
+              },
+              {
+                "name": "withoutExpiration",
+                "value": "",
+                "type": "query",
+                "description": "Only return tokens that do not have an expiration date."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Query access tokens"
+        },
+        {
+          "info": {
+            "name": "Get access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/access-tokens/:tokenId",
+            "params": [
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get access token"
+        },
+        {
+          "info": {
+            "name": "Revoke access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/access-tokens/:tokenId",
+            "params": [
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Revoke access token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

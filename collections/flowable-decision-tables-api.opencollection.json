@@ -1,0 +1,207 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Decision Tables API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Decision Tables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of decision tables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-repository/decision-tables",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision tables with the given category."
+              },
+              {
+                "name": "categoryLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision tables with a category like the given name."
+              },
+              {
+                "name": "categoryNotEquals",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision tables which do not have the given category."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision tables with the given key."
+              },
+              {
+                "name": "keyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision tables with a name like the given key."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision tables with the given name."
+              },
+              {
+                "name": "nameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision tables with a name like the given name."
+              },
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision tables with the given resource name."
+              },
+              {
+                "name": "resourceNameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision tables with a name like the given resource name."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision tables with the given version."
+              },
+              {
+                "name": "latest",
+                "value": "",
+                "type": "query",
+                "description": "Only return the latest decision tables versions. Can only be used together with key and keyLike parameters, using any other parameter will result in a 400-response."
+              },
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision tables with the given category."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return decision tables with the given tenant ID."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of decision tables"
+        },
+        {
+          "info": {
+            "name": "Get a decision table",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-repository/decision-tables/:decisionTableId",
+            "params": [
+              {
+                "name": "decisionTableId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a decision table"
+        },
+        {
+          "info": {
+            "name": "Get a decision table DMN (definition) model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-repository/decision-tables/:decisionTableId/model",
+            "params": [
+              {
+                "name": "decisionTableId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a decision table DMN (definition) model"
+        },
+        {
+          "info": {
+            "name": "Get a decision table resource content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/dmn-repository/decision-tables/:decisionTableId/resourcedata",
+            "params": [
+              {
+                "name": "decisionTableId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a decision table resource content"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Plan Item Instance Variables API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plan Item Instance Variables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the binary data for a variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-runtime/plan-item-instances/:planItemInstanceId/variables/:variableName/data",
+            "params": [
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the binary data for a variable"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

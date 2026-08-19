@@ -1,0 +1,271 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Privileges API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Privileges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List privileges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/privileges",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "query",
+                "description": "Only return privileges for the given group."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return privileges with the given id."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return privileges with the given name."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "From the paginate request.  The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "From the paginate request. Number of rows to fetch, starting from start. Defaults to 10."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort the results on"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "From the paginate request. Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "Only return privileges for the given user."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List privileges"
+        },
+        {
+          "info": {
+            "name": "Get a single privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/privileges/:privilegeId",
+            "params": [
+              {
+                "name": "privilegeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single privilege"
+        },
+        {
+          "info": {
+            "name": "Deletes a privilege for a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/privileges/:privilegeId/group/:groupId",
+            "params": [
+              {
+                "name": "privilegeId",
+                "value": "",
+                "type": "path",
+                "description": "unique identifier of a privilege"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "unique identifier of a group"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Deletes a privilege for a group"
+        },
+        {
+          "info": {
+            "name": "List all groups for a given privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/privileges/:privilegeId/groups",
+            "params": [
+              {
+                "name": "privilegeId",
+                "value": "",
+                "type": "path",
+                "description": "unique identifier of a privilege"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List all groups for a given privilege"
+        },
+        {
+          "info": {
+            "name": "Adds a privilege for a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/privileges/:privilegeId/groups",
+            "params": [
+              {
+                "name": "privilegeId",
+                "value": "",
+                "type": "path",
+                "description": "unique identifier of a privilege"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Adds a privilege for a group"
+        },
+        {
+          "info": {
+            "name": "List all users for a given privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/privileges/:privilegeId/users",
+            "params": [
+              {
+                "name": "privilegeId",
+                "value": "",
+                "type": "path",
+                "description": "unique identifier of a privilege"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List all users for a given privilege"
+        },
+        {
+          "info": {
+            "name": "Adds a privilege for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/privileges/:privilegeId/users",
+            "params": [
+              {
+                "name": "privilegeId",
+                "value": "",
+                "type": "path",
+                "description": "unique identifier of a privilege"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Adds a privilege for a user"
+        },
+        {
+          "info": {
+            "name": "Deletes a privilege for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/privileges/:privilegeId/users/:userId",
+            "params": [
+              {
+                "name": "privilegeId",
+                "value": "",
+                "type": "path",
+                "description": "unique identifier of a privilege"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "unique identifier of a user"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Deletes a privilege for a user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

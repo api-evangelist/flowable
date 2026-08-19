@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Process Instance Identity Links API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Process Instance Identity Links",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get involved people for process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/identitylinks",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Note that the groupId in Response Body will always be null, as it’s only possible to involve users with a process-instance."
+        },
+        {
+          "info": {
+            "name": "Add an involved user to a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/identitylinks",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Note that the groupId in Response Body will always be null, as it’s only possible to involve users with a process-instance."
+        },
+        {
+          "info": {
+            "name": "Get a specific involved people from process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/identitylinks/users/:identityId/:type",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identityId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a specific involved people from process instance"
+        },
+        {
+          "info": {
+            "name": "Remove an involved user to from process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/identitylinks/users/:identityId/:type",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identityId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Remove an involved user to from process instance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

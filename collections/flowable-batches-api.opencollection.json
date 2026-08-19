@@ -1,0 +1,229 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Batches API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Batches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the batch part document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/batch-parts/:batchPartId/batch-part-document",
+            "params": [
+              {
+                "name": "batchPartId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the batch part document"
+        },
+        {
+          "info": {
+            "name": "List batches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/batches",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return batch with the given id"
+              },
+              {
+                "name": "batchType",
+                "value": "",
+                "type": "query",
+                "description": "Only return batches for the given type"
+              },
+              {
+                "name": "searchKey",
+                "value": "",
+                "type": "query",
+                "description": "Only return batches for the given search key"
+              },
+              {
+                "name": "searchKey2",
+                "value": "",
+                "type": "query",
+                "description": "Only return batches for the given search key2"
+              },
+              {
+                "name": "createTimeBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return batches created before the given date"
+              },
+              {
+                "name": "createTimeAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only batches batches created after the given date"
+              },
+              {
+                "name": "completeTimeBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return batches completed before the given date"
+              },
+              {
+                "name": "completeTimeAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only batches batches completed after the given date"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Only return batches for the given status"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return batches for the given tenant id"
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return batches like given search key"
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns batches without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List batches"
+        },
+        {
+          "info": {
+            "name": "Get a single batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/batches/:batchId",
+            "params": [
+              {
+                "name": "batchId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single batch"
+        },
+        {
+          "info": {
+            "name": "Delete a batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/management/batches/:batchId",
+            "params": [
+              {
+                "name": "batchId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a batch"
+        },
+        {
+          "info": {
+            "name": "Get the batch document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/batches/:batchId/batch-document",
+            "params": [
+              {
+                "name": "batchId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the batch document"
+        },
+        {
+          "info": {
+            "name": "List batch parts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/batches/:batchId/batch-parts",
+            "params": [
+              {
+                "name": "batchId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Only return batch parts for the given status"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List batch parts"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

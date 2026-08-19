@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens User Admin API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Reindex users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/users/reindex",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The user has to have admin rights."
+        },
+        {
+          "info": {
+            "name": "Reindex user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/users/:userId/reindex",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The user has to have admin rights."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

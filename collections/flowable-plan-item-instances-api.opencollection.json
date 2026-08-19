@@ -1,0 +1,467 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Plan Item Instances API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plan Item Instances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query plan item instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-query/plan-item-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "The request body can contain all possible filters that can be used in the List plan item instances URL query. On top of these, it’s possible to provide an array of variables and caseInstanceVariables to include in the query, with their format described here.\n\nThe general paging and sorting query-parameters can be used for this URL."
+        },
+        {
+          "info": {
+            "name": "List of plan item instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-runtime/plan-item-instances",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return models with the given version."
+              },
+              {
+                "name": "caseDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances with the given case definition id."
+              },
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which are part of the case instance with the given id."
+              },
+              {
+                "name": "caseInstanceIds",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which are part of the case instance with the given ids."
+              },
+              {
+                "name": "stageInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which are part of the given stage instance."
+              },
+              {
+                "name": "planItemDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which have the given plan item definition id."
+              },
+              {
+                "name": "planItemDefinitionType",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which have the given plan item definition type."
+              },
+              {
+                "name": "planItemDefinitionTypes",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which have any of the given plan item definition types. Comma-separated string e.g. humantask, stage"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which have the given state."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which have the given name."
+              },
+              {
+                "name": "elementId",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which have the given element id."
+              },
+              {
+                "name": "referenceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which have the given reference id."
+              },
+              {
+                "name": "referenceType",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which have the given reference type."
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which are created before the given date."
+              },
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which are created after the given date."
+              },
+              {
+                "name": "startUserId",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances which are started by the given user id."
+              },
+              {
+                "name": "includeEnded",
+                "value": "",
+                "type": "query",
+                "description": "Define if ended plan item instances should be included."
+              },
+              {
+                "name": "includeLocalVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to include local variables in the result."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return plan item instances with the given tenantId."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns plan item instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of plan item instances"
+        },
+        {
+          "info": {
+            "name": "Get an plan item instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-runtime/plan-item-instances/:planItemInstanceId",
+            "params": [
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get an plan item instance"
+        },
+        {
+          "info": {
+            "name": "Execute an action on a plan item instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/cmmn-runtime/plan-item-instances/:planItemInstanceId",
+            "params": [
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Execute an action on a plan item instance"
+        },
+        {
+          "info": {
+            "name": "Create a variable on a plan item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-runtime/plan-item-instances/:planItemInstanceId/variables",
+            "params": [
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "scope",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools."
+        },
+        {
+          "info": {
+            "name": "Create a variable on a plan item asynchronously",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-runtime/plan-item-instances/:planItemInstanceId/variables-async",
+            "params": [
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "scope",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools."
+        },
+        {
+          "info": {
+            "name": "Update a variable on a plan item asynchronously",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/cmmn-runtime/plan-item-instances/:planItemInstanceId/variables-async/:variableName",
+            "params": [
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "scope",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools."
+        },
+        {
+          "info": {
+            "name": "Update a variable on a plan item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/cmmn-runtime/plan-item-instances/:planItemInstanceId/variables/:variableName",
+            "params": [
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "scope",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools."
+        },
+        {
+          "info": {
+            "name": "Delete a variable for a plan item instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/cmmn-runtime/plan-item-instances/:planItemInstanceId/variables/:variableName",
+            "params": [
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a variable for a plan item instance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

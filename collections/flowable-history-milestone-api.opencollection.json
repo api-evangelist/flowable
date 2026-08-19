@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens History Milestone API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "History Milestone",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of historic milestone instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-milestone-instances",
+            "params": [
+              {
+                "name": "milestoneId",
+                "value": "",
+                "type": "query",
+                "description": "An id of the historic milestone instance."
+              },
+              {
+                "name": "milestoneName",
+                "value": "",
+                "type": "query",
+                "description": "The name of the historic milestone instance"
+              },
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "The id of the case instance containing the milestone."
+              },
+              {
+                "name": "caseDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "The id of the definition of the case where the milestone is defined."
+              },
+              {
+                "name": "reachedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic milestone instances that were reached before this date."
+              },
+              {
+                "name": "reachedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic milestone instances that were reached after this date."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of historic milestone instances"
+        },
+        {
+          "info": {
+            "name": "Get a historic milestone instance by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-milestone-instances/:milestoneInstanceId",
+            "params": [
+              {
+                "name": "milestoneInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a historic milestone instance by id"
+        },
+        {
+          "info": {
+            "name": "Query for historic milestone instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-query/historic-milestone-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic milestone instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

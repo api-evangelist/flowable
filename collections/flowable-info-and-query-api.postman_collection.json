@@ -1,0 +1,779 @@
+{
+  "item": [
+    {
+      "id": "ceaf20c6-283f-4dd2-b5f2-cc9735a2ac8f",
+      "name": "Info and Query",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a414e734-6faf-4f8b-8024-4f815dfe5f0d",
+          "name": "List External Worker Jobs",
+          "request": {
+            "name": "List External Worker Jobs",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "elementId",
+                  "value": "<string>",
+                  "description": "Only return jobs with the given elementId"
+                },
+                {
+                  "disabled": false,
+                  "key": "elementName",
+                  "value": "<string>",
+                  "description": "Only return jobs with the given elementName"
+                },
+                {
+                  "disabled": false,
+                  "key": "exceptionMessage",
+                  "value": "<string>",
+                  "description": "Only return jobs with the given exception message"
+                },
+                {
+                  "disabled": false,
+                  "key": "executionId",
+                  "value": "<string>",
+                  "description": "Only return jobs with the given executionId"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Only return job with the given id"
+                },
+                {
+                  "disabled": false,
+                  "key": "locked",
+                  "value": "<boolean>",
+                  "description": "Only return jobs that are locked"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "From the paginate request.  The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return jobs with the given processDefinitionId"
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "description": "Only return jobs with the processInstanceId"
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return jobs with the given scopeDefinitionId"
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeId",
+                  "value": "<string>",
+                  "description": "Only return jobs with the given scopeId"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "From the paginate request. Number of rows to fetch, starting from start. Defaults to 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Property to sort the results on"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "From the paginate request. Index of the first row to fetch. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "subScopeId",
+                  "value": "<string>",
+                  "description": "Only return jobs with the given subScopeId"
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return jobs with the given tenant id"
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLike",
+                  "value": "<string>",
+                  "description": "Only return jobs with a tenantId like the given value"
+                },
+                {
+                  "disabled": false,
+                  "key": "unlocked",
+                  "value": "<boolean>",
+                  "description": "Only return jobs that are unlocked"
+                },
+                {
+                  "disabled": false,
+                  "key": "withException",
+                  "value": "<boolean>",
+                  "description": "Only return jobs with an exception"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutProcessInstanceId",
+                  "value": "<boolean>",
+                  "description": "Only return jobs without a process instance id"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutScopeId",
+                  "value": "<boolean>",
+                  "description": "Only return jobs without a scope id"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutScopeType",
+                  "value": "<boolean>",
+                  "description": "Only return jobs without a scope type"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "Only return jobs without a tenantId"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "72dd831c-739a-4e3c-8eb6-0ef0f40eb2ae",
+              "name": "Indicates the requested jobs were returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "elementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "elementName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exceptionMessage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locked",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "subScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unlocked",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withException",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutProcessInstanceId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutScopeId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutScopeType",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"8\",\n      \"url\": \"http://localhost:8182/external-job-api/jobs/8\",\n      \"correlationId\": \"50\",\n      \"processInstanceId\": \"5\",\n      \"processDefinitionId\": \"customerProcess:1:4\",\n      \"executionId\": \"7\",\n      \"scopeId\": \"20\",\n      \"subScopeId\": \"21\",\n      \"scopeDefinitionId\": \"customerCase:1:39\",\n      \"scopeType\": \"cmmn\",\n      \"elementId\": \"customer\",\n      \"elementName\": \"Process Customer Task\",\n      \"retries\": 3,\n      \"exceptionMessage\": \"null\",\n      \"dueDate\": \"2021-05-04T16:35:10.474Z\",\n      \"createTime\": \"2020-05-04T16:35:10.474Z\",\n      \"tenantId\": \"flowable\",\n      \"lockOwner\": \"worker1\",\n      \"lockExpirationTime\": \"2020-05-04T16:35:10.474Z\"\n    },\n    {\n      \"id\": \"8\",\n      \"url\": \"http://localhost:8182/external-job-api/jobs/8\",\n      \"correlationId\": \"50\",\n      \"processInstanceId\": \"5\",\n      \"processDefinitionId\": \"customerProcess:1:4\",\n      \"executionId\": \"7\",\n      \"scopeId\": \"20\",\n      \"subScopeId\": \"21\",\n      \"scopeDefinitionId\": \"customerCase:1:39\",\n      \"scopeType\": \"cmmn\",\n      \"elementId\": \"customer\",\n      \"elementName\": \"Process Customer Task\",\n      \"retries\": 3,\n      \"exceptionMessage\": \"null\",\n      \"dueDate\": \"2021-05-04T16:35:10.474Z\",\n      \"createTime\": \"2020-05-04T16:35:10.474Z\",\n      \"tenantId\": \"flowable\",\n      \"lockOwner\": \"worker1\",\n      \"lockExpirationTime\": \"2020-05-04T16:35:10.474Z\"\n    }\n  ],\n  \"total\": 7621,\n  \"start\": 2855,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 9086\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e0ad17b-418e-4952-a789-fa2894f72bfc",
+              "name": "Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "elementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "elementName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exceptionMessage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locked",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "subScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unlocked",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withException",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutProcessInstanceId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutScopeId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutScopeType",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6973105-cf24-4c0f-a172-35114989227b",
+              "name": "Indicates the user does not have the rights to query for external worker jobs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "elementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "elementName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exceptionMessage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locked",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "subScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unlocked",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withException",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutProcessInstanceId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutScopeId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutScopeType",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00f6899c-86bf-49c6-81ec-d6e32018cc7d",
+          "name": "Get a single external worker job",
+          "request": {
+            "name": "Get a single external worker job",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                ":jobId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f731d1c0-28e0-45bb-b262-94b2202caa52",
+              "name": "Indicates the requested job was returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8\",\n  \"url\": \"http://localhost:8182/external-job-api/jobs/8\",\n  \"correlationId\": \"50\",\n  \"processInstanceId\": \"5\",\n  \"processDefinitionId\": \"customerProcess:1:4\",\n  \"executionId\": \"7\",\n  \"scopeId\": \"20\",\n  \"subScopeId\": \"21\",\n  \"scopeDefinitionId\": \"customerCase:1:39\",\n  \"scopeType\": \"cmmn\",\n  \"elementId\": \"customer\",\n  \"elementName\": \"Process Customer Task\",\n  \"retries\": 3,\n  \"exceptionMessage\": \"null\",\n  \"dueDate\": \"2021-05-04T16:35:10.474Z\",\n  \"createTime\": \"2020-05-04T16:35:10.474Z\",\n  \"tenantId\": \"flowable\",\n  \"lockOwner\": \"worker1\",\n  \"lockExpirationTime\": \"2020-05-04T16:35:10.474Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3688df35-2875-4f75-9698-1e1ab04db3bc",
+              "name": "Indicates the user does not have the rights access the job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "692f75f2-6d7e-4d11-959a-d4c4aa5e1917",
+              "name": "Indicates the requested job was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "09504efb-8d94-4874-8449-8759c8e2dcd2",
+    "name": "Flowable REST Access Tokens Info and Query API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

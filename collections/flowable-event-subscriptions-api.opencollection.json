@@ -1,0 +1,370 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Event subscriptions API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Event subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of event subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/event-subscriptions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given id"
+              },
+              {
+                "name": "eventType",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given event type"
+              },
+              {
+                "name": "eventName",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given event name"
+              },
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given activity id"
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given execution id"
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions part of a process with the given id"
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions that have no process instance id"
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given process definition id"
+              },
+              {
+                "name": "withoutProcessDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions that have no process definition id"
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions part of a scope with the given id"
+              },
+              {
+                "name": "subScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions part of a sub scope with the given id"
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions that have no scope id"
+              },
+              {
+                "name": "scopeDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given scope definition id"
+              },
+              {
+                "name": "withoutScopeDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions that have no scope definition id"
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions which are created before the given date."
+              },
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions which are created after the given date."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given tenant id."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions that have no tenant id"
+              },
+              {
+                "name": "configuration",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given configuration value."
+              },
+              {
+                "name": "withoutConfiguration",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions that have no configuration value"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of event subscriptions"
+        },
+        {
+          "info": {
+            "name": "Get a single event subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/event-subscriptions/:eventSubscriptionId",
+            "params": [
+              {
+                "name": "eventSubscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single event subscription"
+        },
+        {
+          "info": {
+            "name": "List of event subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-runtime/event-subscriptions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given id"
+              },
+              {
+                "name": "eventType",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given event type"
+              },
+              {
+                "name": "eventName",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given event name"
+              },
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given activity id"
+              },
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions part of a process with the given id"
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions that have no process instance id"
+              },
+              {
+                "name": "caseDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given process definition id"
+              },
+              {
+                "name": "withoutScopeDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions that have no process definition id"
+              },
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions part of a scope with the given id"
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions which are created before the given date."
+              },
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions which are created after the given date."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given tenant id."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions that have no tenant id"
+              },
+              {
+                "name": "configuration",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions with the given configuration value."
+              },
+              {
+                "name": "withoutConfiguration",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions that have no configuration value"
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions that have no process instance id"
+              },
+              {
+                "name": "withoutProcessDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return event subscriptions that have no process definition id"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of event subscriptions"
+        },
+        {
+          "info": {
+            "name": "Get a single event subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-runtime/event-subscriptions/:eventSubscriptionId",
+            "params": [
+              {
+                "name": "eventSubscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single event subscription"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

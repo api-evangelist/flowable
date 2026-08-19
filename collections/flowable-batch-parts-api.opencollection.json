@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Batch parts API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Batch parts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a single batch part",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/management/batch-parts/:batchPartId",
+            "params": [
+              {
+                "name": "batchPartId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a single batch part"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

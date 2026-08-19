@@ -1,0 +1,463 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens History Case API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "History Case",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of historic case instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-case-instances",
+            "params": [
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "An id of the historic case instance."
+              },
+              {
+                "name": "caseInstanceIds",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances with the given comma-separated ids."
+              },
+              {
+                "name": "caseDefinitionKey",
+                "value": "",
+                "type": "query",
+                "description": "The case definition key of the historic case instance."
+              },
+              {
+                "name": "caseDefinitionKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances like the given case definition key."
+              },
+              {
+                "name": "caseDefinitionKeyLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances like the given case definition key, ignoring case."
+              },
+              {
+                "name": "caseDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "The case definition id of the historic case instance."
+              },
+              {
+                "name": "caseDefinitionCategory",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances with the given case definition category."
+              },
+              {
+                "name": "caseDefinitionCategoryLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances like the given case definition category."
+              },
+              {
+                "name": "caseDefinitionCategoryLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances like the given case definition category, ignoring case."
+              },
+              {
+                "name": "caseDefinitionName",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances with the given case definition name."
+              },
+              {
+                "name": "caseDefinitionNameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances like the given case definition name."
+              },
+              {
+                "name": "caseDefinitionNameLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances like the given case definition name, ignoring case."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances with the given name."
+              },
+              {
+                "name": "nameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances like the given name."
+              },
+              {
+                "name": "nameLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances like the given name ignoring case."
+              },
+              {
+                "name": "rootScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return case instances which have the given root scope id (that can be a process or case instance ID)."
+              },
+              {
+                "name": "parentScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return case instances which have the given parent scope id (that can be a process or case instance ID)."
+              },
+              {
+                "name": "businessKey",
+                "value": "",
+                "type": "query",
+                "description": "The business key of the historic case instance."
+              },
+              {
+                "name": "businessKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances like the given business key."
+              },
+              {
+                "name": "businessKeyLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances like the given business key, ignoring case."
+              },
+              {
+                "name": "businessStatus",
+                "value": "",
+                "type": "query",
+                "description": "The business status of the historic case instance."
+              },
+              {
+                "name": "businessStatusLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances like the given business status."
+              },
+              {
+                "name": "businessStatusLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances like the given business status, ignoring case."
+              },
+              {
+                "name": "involvedUser",
+                "value": "",
+                "type": "query",
+                "description": "An involved user of the historic case instance."
+              },
+              {
+                "name": "finished",
+                "value": "",
+                "type": "query",
+                "description": "Indication if the historic case instance is finished."
+              },
+              {
+                "name": "finishedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic case instances that were finished after this date."
+              },
+              {
+                "name": "finishedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic case instances that were finished before this date."
+              },
+              {
+                "name": "startedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic case instances that were started after this date."
+              },
+              {
+                "name": "startedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic case instances that were started before this date."
+              },
+              {
+                "name": "startedBy",
+                "value": "",
+                "type": "query",
+                "description": "Return only historic case instances that were started by this user."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances with the given state."
+              },
+              {
+                "name": "callbackId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances which have the given callback id."
+              },
+              {
+                "name": "callbackType",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances which have the given callback type."
+              },
+              {
+                "name": "parentCaseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances which have the given parent case instance id."
+              },
+              {
+                "name": "referenceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances which have the given reference id."
+              },
+              {
+                "name": "referenceType",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances which have the given reference type."
+              },
+              {
+                "name": "lastReactivatedBy",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances last reactived by the given user."
+              },
+              {
+                "name": "lastReactivatedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances last reactivated before the given date."
+              },
+              {
+                "name": "lastReactivatedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances last reactivated after the given date."
+              },
+              {
+                "name": "activePlanItemDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return historic case instances that have an active plan item instance with the given plan item definition id."
+              },
+              {
+                "name": "includeCaseVariables",
+                "value": "",
+                "type": "query",
+                "description": "An indication if the historic case instance variables should be returned as well."
+              },
+              {
+                "name": "includeCaseVariablesName",
+                "value": "",
+                "type": "query",
+                "description": "Indication to include case variables with the given names in the result."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances with the given tenant id."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances like the given tenant id."
+              },
+              {
+                "name": "tenantIdLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return instances like the given tenant id, ignoring case."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns instances without a tenantId set. If false, the withoutTenantId parameter is ignored.\n"
+              },
+              {
+                "name": "withoutCaseInstanceParentId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns instances without a parent set. If false, the withoutCaseInstanceParentId parameter is ignored.\n"
+              },
+              {
+                "name": "withoutCaseInstanceCallbackId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns instances without a callbackId set. If false, the withoutCaseInstanceCallbackId parameter is ignored.\n"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of historic case instances"
+        },
+        {
+          "info": {
+            "name": "Get a historic case instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-case-instances/:caseInstanceId",
+            "params": [
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a historic case instance"
+        },
+        {
+          "info": {
+            "name": " Delete a historic case instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/cmmn-history/historic-case-instances/:caseInstanceId",
+            "params": [
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": " Delete a historic case instance"
+        },
+        {
+          "info": {
+            "name": "List identity links of a historic case instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-case-instances/:caseInstanceId/identitylinks",
+            "params": [
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List identity links of a historic case instance"
+        },
+        {
+          "info": {
+            "name": "Migrate historic case instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-history/historic-case-instances/:caseInstanceId/migrate",
+            "params": [
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Migrate historic case instance"
+        },
+        {
+          "info": {
+            "name": "Get a stage overview of historic case instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-history/historic-case-instances/:caseInstanceId/stage-overview",
+            "params": [
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a stage overview of historic case instance"
+        },
+        {
+          "info": {
+            "name": "Query for historic case instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-query/historic-case-instances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic case instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

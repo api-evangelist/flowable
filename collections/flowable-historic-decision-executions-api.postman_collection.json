@@ -1,0 +1,740 @@
+{
+  "item": [
+    {
+      "id": "ead13e1b-d59f-4989-95e3-ecf5df0ea608",
+      "name": "Historic Decision Executions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8962c413-f714-4b7c-914e-d052928be37a",
+          "name": "List of historic decision executions",
+          "request": {
+            "name": "List of historic decision executions",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dmn-history",
+                "historic-decision-executions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Only return historic decision executions with the given id."
+                },
+                {
+                  "disabled": false,
+                  "key": "decisionDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return historic decision executions with the given definition id."
+                },
+                {
+                  "disabled": false,
+                  "key": "deploymentId",
+                  "value": "<string>",
+                  "description": "Only return historic decision executions with the given deployment id."
+                },
+                {
+                  "disabled": false,
+                  "key": "decisionKey",
+                  "value": "<string>",
+                  "description": "Only return historic decision executions with the given decision key."
+                },
+                {
+                  "disabled": false,
+                  "key": "activityId",
+                  "value": "<string>",
+                  "description": "Only return historic decision executions with the given activity id."
+                },
+                {
+                  "disabled": false,
+                  "key": "executionId",
+                  "value": "<string>",
+                  "description": "Only return historic decision executions with the given execution id."
+                },
+                {
+                  "disabled": false,
+                  "key": "instanceId",
+                  "value": "<string>",
+                  "description": "Only return historic decision executions with the given instance id."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeType",
+                  "value": "<string>",
+                  "description": "Only return historic decision executions with the given scope type."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutScopeType",
+                  "value": "<string>",
+                  "description": "Only return historic decision executions without a scope type."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceIdWithChildren",
+                  "value": "<string>",
+                  "description": "Return all historic decision executions with the given process instance id or its entity link children."
+                },
+                {
+                  "disabled": false,
+                  "key": "caseInstanceIdWithChildren",
+                  "value": "<string>",
+                  "description": "Return all historic decision executions with the given case instance id or its entity link children."
+                },
+                {
+                  "disabled": false,
+                  "key": "failed",
+                  "value": "<string>",
+                  "description": "Only return historic decision executions with the failed state."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return historic decision executions with the given tenant id."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLike",
+                  "value": "<string>",
+                  "description": "Only return historic decision executions like the given tenant id."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Property to sort on, to be used together with the order."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Index of the first row to fetch. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of rows to fetch, starting from start. Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bb1dd043-2b7f-41b0-b4df-ea5b6cc6d498",
+              "name": "Indicates request was successful and the historic decision executions are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmn-history",
+                    "historic-decision-executions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "decisionDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deploymentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "decisionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "instanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceIdWithChildren",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceIdWithChildren",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "failed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"url\": \"string\",\n      \"decisionDefinitionId\": \"string\",\n      \"deploymentId\": \"string\",\n      \"activityId\": \"string\",\n      \"executionId\": \"string\",\n      \"instanceId\": \"string\",\n      \"scopeType\": \"string\",\n      \"failed\": true,\n      \"startTime\": \"1964-01-15T17:49:40.208Z\",\n      \"endTime\": \"1989-07-01T14:09:09.215Z\",\n      \"tenantId\": \"string\",\n      \"decisionKey\": \"string\",\n      \"decisionName\": \"string\",\n      \"decisionVersion\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"url\": \"string\",\n      \"decisionDefinitionId\": \"string\",\n      \"deploymentId\": \"string\",\n      \"activityId\": \"string\",\n      \"executionId\": \"string\",\n      \"instanceId\": \"string\",\n      \"scopeType\": \"string\",\n      \"failed\": true,\n      \"startTime\": \"2014-07-09T03:59:49.002Z\",\n      \"endTime\": \"2017-03-26T01:03:03.075Z\",\n      \"tenantId\": \"string\",\n      \"decisionKey\": \"string\",\n      \"decisionName\": \"string\",\n      \"decisionVersion\": \"string\"\n    }\n  ],\n  \"total\": 6176,\n  \"start\": 6418,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 6093\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6456bb0-b525-463a-bb36-87fec9ff74f7",
+              "name": "Indicates a parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmn-history",
+                    "historic-decision-executions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "decisionDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deploymentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "decisionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "instanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceIdWithChildren",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceIdWithChildren",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "failed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6bbe6eb-b01d-4e8f-8786-09c8c179bf7b",
+          "name": "Get a historic decision execution",
+          "request": {
+            "name": "Get a historic decision execution",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dmn-history",
+                "historic-decision-executions",
+                ":historicDecisionExecutionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "historicDecisionExecutionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b0253c8c-17d1-4008-8a6b-877696f9ccdc",
+              "name": "Indicates request was successful and the historic decision execution is returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmn-history",
+                    "historic-decision-executions",
+                    ":historicDecisionExecutionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "historicDecisionExecutionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"decisionDefinitionId\": \"string\",\n  \"deploymentId\": \"string\",\n  \"activityId\": \"string\",\n  \"executionId\": \"string\",\n  \"instanceId\": \"string\",\n  \"scopeType\": \"string\",\n  \"failed\": false,\n  \"startTime\": \"1976-04-21T02:24:42.325Z\",\n  \"endTime\": \"1957-09-25T16:14:33.520Z\",\n  \"tenantId\": \"string\",\n  \"decisionKey\": \"string\",\n  \"decisionName\": \"string\",\n  \"decisionVersion\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4af498a2-ec2a-4f8e-aadf-c885bdf419be",
+              "name": "Indicates the requested historic decision execution was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmn-history",
+                    "historic-decision-executions",
+                    ":historicDecisionExecutionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "historicDecisionExecutionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4195839-3b80-43a9-b0ff-8cc5498a4d4c",
+          "name": "Get a historic decision execution audit content",
+          "request": {
+            "name": "Get a historic decision execution audit content",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dmn-history",
+                "historic-decision-executions",
+                ":historicDecisionExecutionId",
+                "auditdata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "historicDecisionExecutionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9dd81f48-b89c-4379-8765-b532cd6c9caa",
+              "name": "Indicates the historic decision execution has been found and the audit data has been returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmn-history",
+                    "historic-decision-executions",
+                    ":historicDecisionExecutionId",
+                    "auditdata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "historicDecisionExecutionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62bd45dc-2735-4d89-87fd-30b88532a9f0",
+              "name": "Indicates the requested historic decision execution was not found. The status-description contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmn-history",
+                    "historic-decision-executions",
+                    ":historicDecisionExecutionId",
+                    "auditdata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "historicDecisionExecutionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7b9757c7-3996-4f3e-8848-4e187a834b9e",
+    "name": "Flowable REST Access Tokens Historic Decision Executions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

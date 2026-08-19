@@ -1,0 +1,2579 @@
+{
+  "item": [
+    {
+      "id": "27b76194-09d9-4630-8c73-ebe6a7c01a49",
+      "name": "History Process",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d550f2b0-99ae-4aa4-84b3-5eb9fe483490",
+          "name": "List of historic process instances",
+          "request": {
+            "name": "List of historic process instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-process-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "description": "An id of the historic process instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceName",
+                  "value": "<string>",
+                  "description": "A name of the historic process instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceNameLike",
+                  "value": "<string>",
+                  "description": "A name of the historic process instance used in a like query."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceNameLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "A name of the historic process instance used in a like query ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionKey",
+                  "value": "<string>",
+                  "description": "The process definition key of the historic process instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionKeyLike",
+                  "value": "<string>",
+                  "description": "The process definition key used in a like query."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionKeyLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "The process definition key used in a like query ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionId",
+                  "value": "<string>",
+                  "description": "The process definition id of the historic process instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionName",
+                  "value": "<string>",
+                  "description": "The process definition name of the historic process instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionNameLike",
+                  "value": "<string>",
+                  "description": "The process definition name used in a like query."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionNameLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "The process definition name used in a like query ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionCategory",
+                  "value": "<string>",
+                  "description": "The process definition category of the historic process instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionCategoryLike",
+                  "value": "<string>",
+                  "description": "The process definition category used in a like query."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionCategoryLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "The process definition category used in a like query ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionVersion",
+                  "value": "<string>",
+                  "description": "The process definition version of the historic process instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "deploymentId",
+                  "value": "<string>",
+                  "description": "The deployment id of the historic process instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "rootScopeId",
+                  "value": "<string>",
+                  "description": "Only return process instances which have the given root scope id (that can be a process or case instance ID)."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentScopeId",
+                  "value": "<string>",
+                  "description": "Only return process instances which have the given parent scope id (that can be a process or case instance ID)."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessKey",
+                  "value": "<string>",
+                  "description": "The business key of the historic process instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessKeyLike",
+                  "value": "<string>",
+                  "description": "Only return instances with a business key like this key."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessKeyLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return instances with a business key like this key ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessStatus",
+                  "value": "<string>",
+                  "description": "The business status of the historic process instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessStatusLike",
+                  "value": "<string>",
+                  "description": "Only return instances with a business status like this status."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessStatusLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return instances with a business status like this status ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "activeActivityId",
+                  "value": "<string>",
+                  "description": "Only return instances which have an active activity instance with the provided activity id."
+                },
+                {
+                  "disabled": false,
+                  "key": "involvedUser",
+                  "value": "<string>",
+                  "description": "An involved user of the historic process instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "finished",
+                  "value": "<boolean>",
+                  "description": "Indication if the historic process instance is finished."
+                },
+                {
+                  "disabled": false,
+                  "key": "superProcessInstanceId",
+                  "value": "<string>",
+                  "description": "An optional parent process id of the historic process instance."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeSubprocesses",
+                  "value": "<boolean>",
+                  "description": "Return only historic process instances which are not sub processes."
+                },
+                {
+                  "disabled": false,
+                  "key": "finishedAfter",
+                  "value": "<dateTime>",
+                  "description": "Return only historic process instances that were finished after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "finishedBefore",
+                  "value": "<dateTime>",
+                  "description": "Return only historic process instances that were finished before this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "startedAfter",
+                  "value": "<dateTime>",
+                  "description": "Return only historic process instances that were started after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "startedBefore",
+                  "value": "<dateTime>",
+                  "description": "Return only historic process instances that were started before this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "startedBy",
+                  "value": "<string>",
+                  "description": "Return only historic process instances that were started by this user."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeProcessVariables",
+                  "value": "<boolean>",
+                  "description": "An indication if the historic process instance variables should be returned as well."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeProcessVariablesName",
+                  "value": "<string>",
+                  "description": "Indication to include process variables with the given names in the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "callbackId",
+                  "value": "<string>",
+                  "description": "Only return instances with the given callbackId."
+                },
+                {
+                  "disabled": false,
+                  "key": "callbackIds",
+                  "value": "<string>",
+                  "description": "Only return instances with the given callbackIds."
+                },
+                {
+                  "disabled": false,
+                  "key": "callbackType",
+                  "value": "<string>",
+                  "description": "Only return instances with the given callbackType."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentCaseInstanceId",
+                  "value": "<string>",
+                  "description": "Only return instances with the given parent case instance id."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutCallbackId",
+                  "value": "<boolean>",
+                  "description": "Only return instances that do not have a callbackId."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return instances with the given tenantId."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLike",
+                  "value": "<string>",
+                  "description": "Only return instances with a tenant id like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return instances with a tenant id like the given value ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns instances without a tenantId set. If false, the withoutTenantId parameter is ignored.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c94fadce-ec33-4f53-8d61-9ef9058f5057",
+              "name": "Indicates that historic process instances could be queried.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceNameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKeyLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionNameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionCategoryLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionCategoryLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deploymentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rootScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKeyLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatusLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatusLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activeActivityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "involvedUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "superProcessInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeSubprocesses",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "finishedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "finishedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startedBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeProcessVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeProcessVariablesName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentCaseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutCallbackId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"5\",\n      \"url\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"name\": \"myProcessInstanceName\",\n      \"businessKey\": \"myKey\",\n      \"businessStatus\": \"myStatus\",\n      \"processDefinitionId\": \"oneTaskProcess%3A1%3A4\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4\",\n      \"processDefinitionName\": \"A process definition name\",\n      \"processDefinitionDescription\": \"A process definition description\",\n      \"startTime\": \"2013-04-17T10:17:43.902+0000\",\n      \"endTime\": \"2013-04-18T14:06:32.715+0000\",\n      \"durationInMillis\": 86400056,\n      \"startUserId\": \"kermit\",\n      \"endUserId\": \"kermit\",\n      \"state\": \"running\",\n      \"startActivityId\": \"startEvent\",\n      \"endActivityId\": \"endEvent\",\n      \"deleteReason\": \"null\",\n      \"superProcessInstanceId\": \"3\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"callbackId\": \"3\",\n      \"callbackType\": \"cmmn\",\n      \"referenceId\": \"123\",\n      \"referenceType\": \"event-to-bpmn-2.0-process\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"someTenantId\"\n    },\n    {\n      \"id\": \"5\",\n      \"url\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"name\": \"myProcessInstanceName\",\n      \"businessKey\": \"myKey\",\n      \"businessStatus\": \"myStatus\",\n      \"processDefinitionId\": \"oneTaskProcess%3A1%3A4\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4\",\n      \"processDefinitionName\": \"A process definition name\",\n      \"processDefinitionDescription\": \"A process definition description\",\n      \"startTime\": \"2013-04-17T10:17:43.902+0000\",\n      \"endTime\": \"2013-04-18T14:06:32.715+0000\",\n      \"durationInMillis\": 86400056,\n      \"startUserId\": \"kermit\",\n      \"endUserId\": \"kermit\",\n      \"state\": \"running\",\n      \"startActivityId\": \"startEvent\",\n      \"endActivityId\": \"endEvent\",\n      \"deleteReason\": \"null\",\n      \"superProcessInstanceId\": \"3\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"callbackId\": \"3\",\n      \"callbackType\": \"cmmn\",\n      \"referenceId\": \"123\",\n      \"referenceType\": \"event-to-bpmn-2.0-process\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"someTenantId\"\n    }\n  ],\n  \"total\": 4937,\n  \"start\": 8435,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 8811\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8be36ab4-11e0-4bb8-aba1-cda48ed26f05",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceNameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKeyLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionNameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionCategoryLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionCategoryLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deploymentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rootScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKeyLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatusLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatusLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activeActivityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "involvedUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finished",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "superProcessInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeSubprocesses",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "finishedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "finishedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startedBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeProcessVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeProcessVariablesName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentCaseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutCallbackId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0173de4e-f16c-43f9-89e7-abdf54f18992",
+          "name": "Get a historic process instance",
+          "request": {
+            "name": "Get a historic process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-process-instances",
+                ":processInstanceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e76188da-4393-471e-ae99-1576b9457c05",
+              "name": "Indicates that the historic process instances could be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"5\",\n  \"url\": \"http://localhost:8182/history/historic-process-instances/5\",\n  \"name\": \"myProcessInstanceName\",\n  \"businessKey\": \"myKey\",\n  \"businessStatus\": \"myStatus\",\n  \"processDefinitionId\": \"oneTaskProcess%3A1%3A4\",\n  \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4\",\n  \"processDefinitionName\": \"A process definition name\",\n  \"processDefinitionDescription\": \"A process definition description\",\n  \"startTime\": \"2013-04-17T10:17:43.902+0000\",\n  \"endTime\": \"2013-04-18T14:06:32.715+0000\",\n  \"durationInMillis\": 86400056,\n  \"startUserId\": \"kermit\",\n  \"endUserId\": \"kermit\",\n  \"state\": \"running\",\n  \"startActivityId\": \"startEvent\",\n  \"endActivityId\": \"endEvent\",\n  \"deleteReason\": \"null\",\n  \"superProcessInstanceId\": \"3\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"string\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"string\"\n    }\n  ],\n  \"callbackId\": \"3\",\n  \"callbackType\": \"cmmn\",\n  \"referenceId\": \"123\",\n  \"referenceType\": \"event-to-bpmn-2.0-process\",\n  \"propagatedStageInstanceId\": \"string\",\n  \"tenantId\": \"someTenantId\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "465f6eb3-0578-4ee8-8388-9471eee23c5e",
+              "name": "Indicates that the historic process instances could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6fcf08f-0986-46d5-92e1-126074c17e16",
+          "name": " Delete a historic process instance",
+          "request": {
+            "name": " Delete a historic process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-process-instances",
+                ":processInstanceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "aef25439-b405-4d01-8fd2-90215106d904",
+              "name": "Indicates that the historic process instance was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f138139-9e53-4ae0-b485-7bc3a80ed2fd",
+              "name": "Indicates that the historic process instance could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9892e20a-d65e-427a-9a4e-6cbf9a00cd7d",
+          "name": "List comments on a historic process instance",
+          "request": {
+            "name": "List comments on a historic process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-process-instances",
+                ":processInstanceId",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3543d581-22ed-472b-868f-f29be0ae2d0b",
+              "name": "Indicates the process instance was found and the comments are returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"author\": \"string\",\n    \"message\": \"string\",\n    \"time\": \"1978-11-05T08:27:07.716Z\",\n    \"taskId\": \"string\",\n    \"taskUrl\": \"string\",\n    \"processInstanceId\": \"string\",\n    \"processInstanceUrl\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"author\": \"string\",\n    \"message\": \"string\",\n    \"time\": \"1966-12-24T05:01:38.013Z\",\n    \"taskId\": \"string\",\n    \"taskUrl\": \"string\",\n    \"processInstanceId\": \"string\",\n    \"processInstanceUrl\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d83d2fb-4a8d-472b-b667-4d4f98710652",
+              "name": "Indicates that the historic process instance could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4de49de1-f5a7-4bce-adf4-23682d88a29a",
+          "name": "Create a new comment on a historic process instance",
+          "request": {
+            "name": "Create a new comment on a historic process instance",
+            "description": {
+              "content": "Parameter saveProcessInstanceId is optional, if true save process instance id of task with comment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-process-instances",
+                ":processInstanceId",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"author\": \"<string>\",\n  \"message\": \"<string>\",\n  \"time\": \"<dateTime>\",\n  \"taskId\": \"<string>\",\n  \"taskUrl\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceUrl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d706fc7b-c800-40b9-9c3a-56818fc0f8cc",
+              "name": "Indicates the comment was created and the result is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"author\": \"<string>\",\n  \"message\": \"<string>\",\n  \"time\": \"<dateTime>\",\n  \"taskId\": \"<string>\",\n  \"taskUrl\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"author\": \"<string>\",\n  \"message\": \"<string>\",\n  \"time\": \"<dateTime>\",\n  \"taskId\": \"<string>\",\n  \"taskUrl\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceUrl\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0b889ab-eeca-419f-a42d-3a93842a3e0a",
+              "name": "Indicates the comment is missing from the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"author\": \"<string>\",\n  \"message\": \"<string>\",\n  \"time\": \"<dateTime>\",\n  \"taskId\": \"<string>\",\n  \"taskUrl\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1919d958-5d89-4553-8ffe-792b700008e9",
+              "name": "Indicates that the historic process instance could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"author\": \"<string>\",\n  \"message\": \"<string>\",\n  \"time\": \"<dateTime>\",\n  \"taskId\": \"<string>\",\n  \"taskUrl\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f5972db-232b-4d6d-9380-47f1e10526d6",
+          "name": "Get a comment on a historic process instance",
+          "request": {
+            "name": "Get a comment on a historic process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-process-instances",
+                ":processInstanceId",
+                "comments",
+                ":commentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "commentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1ffb67cf-cfa1-46e4-b81b-9e77e281b7a1",
+              "name": "Indicates the historic process instance and comment were found and the comment is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "comments",
+                    ":commentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"author\": \"<string>\",\n  \"message\": \"<string>\",\n  \"time\": \"<dateTime>\",\n  \"taskId\": \"<string>\",\n  \"taskUrl\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceUrl\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed3b965c-3265-46c4-bbed-f119f2f0a535",
+              "name": "Indicates the requested historic process instance was not found or the historic process instance does not have a comment with the given ID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "comments",
+                    ":commentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bec2ed0-77ac-4d71-b722-eec4bb411beb",
+          "name": "Delete a comment on a historic process instance",
+          "request": {
+            "name": "Delete a comment on a historic process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-process-instances",
+                ":processInstanceId",
+                "comments",
+                ":commentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "commentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "00c75518-bdd0-4742-942a-246277be0d56",
+              "name": "Indicates the historic process instance and comment were found and the comment is deleted. Response body is left empty intentionally.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "comments",
+                    ":commentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1d0e8df3-5c66-4ac1-8ff8-1010acaecda4",
+              "name": "Indicates the requested historic process instance was not found or the historic process instance does not have a comment with the given ID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "comments",
+                    ":commentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8451380e-6c41-46bb-ab3d-eb2dfbdacbd2",
+          "name": "List identity links of a historic process instance",
+          "request": {
+            "name": "List identity links of a historic process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-process-instances",
+                ":processInstanceId",
+                "identitylinks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e2e35e5c-6334-44e8-bff6-47c8a1aedfb7",
+              "name": "Indicates request was successful and the identity links are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "identitylinks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"participant\",\n    \"userId\": \"kermit\",\n    \"groupId\": \"sales\",\n    \"taskId\": \"null\",\n    \"taskUrl\": \"null\",\n    \"processInstanceId\": \"5\",\n    \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\"\n  },\n  {\n    \"type\": \"participant\",\n    \"userId\": \"kermit\",\n    \"groupId\": \"sales\",\n    \"taskId\": \"null\",\n    \"taskUrl\": \"null\",\n    \"processInstanceId\": \"5\",\n    \"processInstanceUrl\": \"http://localhost:8182/history/historic-process-instances/5\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "221a2e73-64c1-4684-b2ca-34235817f8e2",
+              "name": "Indicates the process instance could not be found..",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "identitylinks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a137c9b4-e49d-4c10-b46d-623a894cd5f6",
+          "name": "Get the binary data for a historic process instance variable",
+          "request": {
+            "name": "Get the binary data for a historic process instance variable",
+            "description": {
+              "content": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "historic-process-instances",
+                ":processInstanceId",
+                "variables",
+                ":variableName",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "variableName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d52c19c8-15da-4ebf-8f41-344232cea6db",
+              "name": "Indicates the process instance was found and the requested variable data is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "variables",
+                    ":variableName",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb975f0c-e26f-4e9f-bd47-9548fd6fa540",
+              "name": "Indicates the requested process instance was not found or the process instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "historic-process-instances",
+                    ":processInstanceId",
+                    "variables",
+                    ":variableName",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "382f501d-5804-4c9d-b81d-751fa0742b62",
+          "name": "Query for historic process instances",
+          "request": {
+            "name": "Query for historic process instances",
+            "description": {
+              "content": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "historic-process-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processInstanceName\": \"<string>\",\n  \"processInstanceNameLike\": \"<string>\",\n  \"processInstanceNameLikeIgnoreCase\": \"<string>\",\n  \"processBusinessKey\": \"<string>\",\n  \"processBusinessKeyLike\": \"<string>\",\n  \"processBusinessKeyLikeIgnoreCase\": \"<string>\",\n  \"processBusinessStatus\": \"<string>\",\n  \"processBusinessStatusLike\": \"<string>\",\n  \"processBusinessStatusLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"processDefinitionKey\": \"<string>\",\n  \"processDefinitionKeyLike\": \"<string>\",\n  \"processDefinitionKeyLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"excludeProcessDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processDefinitionKeyIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processDefinitionKeyNotIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processDefinitionName\": \"<string>\",\n  \"processDefinitionNameLike\": \"<string>\",\n  \"processDefinitionNameLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionVersion\": \"<integer>\",\n  \"processDefinitionCategory\": \"<string>\",\n  \"processDefinitionCategoryLike\": \"<string>\",\n  \"processDefinitionCategoryLikeIgnoreCase\": \"<string>\",\n  \"deploymentId\": \"<string>\",\n  \"deploymentIdIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"superProcessInstanceId\": \"<string>\",\n  \"excludeSubprocesses\": \"<boolean>\",\n  \"finished\": \"<boolean>\",\n  \"activeActivityId\": \"<string>\",\n  \"activeActivityIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"involvedUser\": \"<string>\",\n  \"finishedAfter\": \"<dateTime>\",\n  \"finishedBefore\": \"<dateTime>\",\n  \"startedAfter\": \"<dateTime>\",\n  \"startedBefore\": \"<dateTime>\",\n  \"startedBy\": \"<string>\",\n  \"finishedBy\": \"<string>\",\n  \"state\": \"<string>\",\n  \"includeProcessVariables\": \"<boolean>\",\n  \"includeProcessVariablesNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"callbackId\": \"<string>\",\n  \"callbackIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"callbackType\": \"<string>\",\n  \"parentCaseInstanceId\": \"<string>\",\n  \"withoutCallbackId\": \"<boolean>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"tenantIdLikeIgnoreCase\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\",\n  \"rootScopeId\": \"<string>\",\n  \"parentScopeId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b23e0f15-75f4-4c63-a155-96f696133a35",
+              "name": "Indicates request was successful and the process instances are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "historic-process-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processInstanceName\": \"<string>\",\n  \"processInstanceNameLike\": \"<string>\",\n  \"processInstanceNameLikeIgnoreCase\": \"<string>\",\n  \"processBusinessKey\": \"<string>\",\n  \"processBusinessKeyLike\": \"<string>\",\n  \"processBusinessKeyLikeIgnoreCase\": \"<string>\",\n  \"processBusinessStatus\": \"<string>\",\n  \"processBusinessStatusLike\": \"<string>\",\n  \"processBusinessStatusLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"processDefinitionKey\": \"<string>\",\n  \"processDefinitionKeyLike\": \"<string>\",\n  \"processDefinitionKeyLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"excludeProcessDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processDefinitionKeyIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processDefinitionKeyNotIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processDefinitionName\": \"<string>\",\n  \"processDefinitionNameLike\": \"<string>\",\n  \"processDefinitionNameLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionVersion\": \"<integer>\",\n  \"processDefinitionCategory\": \"<string>\",\n  \"processDefinitionCategoryLike\": \"<string>\",\n  \"processDefinitionCategoryLikeIgnoreCase\": \"<string>\",\n  \"deploymentId\": \"<string>\",\n  \"deploymentIdIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"superProcessInstanceId\": \"<string>\",\n  \"excludeSubprocesses\": \"<boolean>\",\n  \"finished\": \"<boolean>\",\n  \"activeActivityId\": \"<string>\",\n  \"activeActivityIds\": [\n    \"<string>\"\n  ],\n  \"involvedUser\": \"<string>\",\n  \"finishedAfter\": \"<dateTime>\",\n  \"finishedBefore\": \"<dateTime>\",\n  \"startedAfter\": \"<dateTime>\",\n  \"startedBefore\": \"<dateTime>\",\n  \"startedBy\": \"<string>\",\n  \"finishedBy\": \"<string>\",\n  \"state\": \"<string>\",\n  \"includeProcessVariables\": \"<boolean>\",\n  \"includeProcessVariablesNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"callbackId\": \"<string>\",\n  \"callbackIds\": [\n    \"<string>\"\n  ],\n  \"callbackType\": \"<string>\",\n  \"parentCaseInstanceId\": \"<string>\",\n  \"withoutCallbackId\": \"<boolean>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"tenantIdLikeIgnoreCase\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\",\n  \"rootScopeId\": \"<string>\",\n  \"parentScopeId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"5\",\n      \"url\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"name\": \"myProcessInstanceName\",\n      \"businessKey\": \"myKey\",\n      \"businessStatus\": \"myStatus\",\n      \"processDefinitionId\": \"oneTaskProcess%3A1%3A4\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4\",\n      \"processDefinitionName\": \"A process definition name\",\n      \"processDefinitionDescription\": \"A process definition description\",\n      \"startTime\": \"2013-04-17T10:17:43.902+0000\",\n      \"endTime\": \"2013-04-18T14:06:32.715+0000\",\n      \"durationInMillis\": 86400056,\n      \"startUserId\": \"kermit\",\n      \"endUserId\": \"kermit\",\n      \"state\": \"running\",\n      \"startActivityId\": \"startEvent\",\n      \"endActivityId\": \"endEvent\",\n      \"deleteReason\": \"null\",\n      \"superProcessInstanceId\": \"3\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"callbackId\": \"3\",\n      \"callbackType\": \"cmmn\",\n      \"referenceId\": \"123\",\n      \"referenceType\": \"event-to-bpmn-2.0-process\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"someTenantId\"\n    },\n    {\n      \"id\": \"5\",\n      \"url\": \"http://localhost:8182/history/historic-process-instances/5\",\n      \"name\": \"myProcessInstanceName\",\n      \"businessKey\": \"myKey\",\n      \"businessStatus\": \"myStatus\",\n      \"processDefinitionId\": \"oneTaskProcess%3A1%3A4\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4\",\n      \"processDefinitionName\": \"A process definition name\",\n      \"processDefinitionDescription\": \"A process definition description\",\n      \"startTime\": \"2013-04-17T10:17:43.902+0000\",\n      \"endTime\": \"2013-04-18T14:06:32.715+0000\",\n      \"durationInMillis\": 86400056,\n      \"startUserId\": \"kermit\",\n      \"endUserId\": \"kermit\",\n      \"state\": \"running\",\n      \"startActivityId\": \"startEvent\",\n      \"endActivityId\": \"endEvent\",\n      \"deleteReason\": \"null\",\n      \"superProcessInstanceId\": \"3\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"callbackId\": \"3\",\n      \"callbackType\": \"cmmn\",\n      \"referenceId\": \"123\",\n      \"referenceType\": \"event-to-bpmn-2.0-process\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"someTenantId\"\n    }\n  ],\n  \"total\": 5406,\n  \"start\": 455,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 5956\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f42f6b03-3ec3-4ead-a51d-d9c585ae7ed0",
+              "name": "Indicates an parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "historic-process-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processInstanceName\": \"<string>\",\n  \"processInstanceNameLike\": \"<string>\",\n  \"processInstanceNameLikeIgnoreCase\": \"<string>\",\n  \"processBusinessKey\": \"<string>\",\n  \"processBusinessKeyLike\": \"<string>\",\n  \"processBusinessKeyLikeIgnoreCase\": \"<string>\",\n  \"processBusinessStatus\": \"<string>\",\n  \"processBusinessStatusLike\": \"<string>\",\n  \"processBusinessStatusLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"processDefinitionKey\": \"<string>\",\n  \"processDefinitionKeyLike\": \"<string>\",\n  \"processDefinitionKeyLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"excludeProcessDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processDefinitionKeyIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processDefinitionKeyNotIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processDefinitionName\": \"<string>\",\n  \"processDefinitionNameLike\": \"<string>\",\n  \"processDefinitionNameLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionVersion\": \"<integer>\",\n  \"processDefinitionCategory\": \"<string>\",\n  \"processDefinitionCategoryLike\": \"<string>\",\n  \"processDefinitionCategoryLikeIgnoreCase\": \"<string>\",\n  \"deploymentId\": \"<string>\",\n  \"deploymentIdIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"superProcessInstanceId\": \"<string>\",\n  \"excludeSubprocesses\": \"<boolean>\",\n  \"finished\": \"<boolean>\",\n  \"activeActivityId\": \"<string>\",\n  \"activeActivityIds\": [\n    \"<string>\"\n  ],\n  \"involvedUser\": \"<string>\",\n  \"finishedAfter\": \"<dateTime>\",\n  \"finishedBefore\": \"<dateTime>\",\n  \"startedAfter\": \"<dateTime>\",\n  \"startedBefore\": \"<dateTime>\",\n  \"startedBy\": \"<string>\",\n  \"finishedBy\": \"<string>\",\n  \"state\": \"<string>\",\n  \"includeProcessVariables\": \"<boolean>\",\n  \"includeProcessVariablesNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"callbackId\": \"<string>\",\n  \"callbackIds\": [\n    \"<string>\"\n  ],\n  \"callbackType\": \"<string>\",\n  \"parentCaseInstanceId\": \"<string>\",\n  \"withoutCallbackId\": \"<boolean>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"tenantIdLikeIgnoreCase\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\",\n  \"rootScopeId\": \"<string>\",\n  \"parentScopeId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fc72d47-ba10-4886-9ce9-d89b1b3be375",
+          "name": "Get the binary data for a historic case instance variable",
+          "request": {
+            "name": "Get the binary data for a historic case instance variable",
+            "description": {
+              "content": "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-history",
+                "historic-case-instances",
+                ":caseInstanceId",
+                "variables",
+                ":variableName",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseInstanceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "variableName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ac45252b-cf61-400c-9fc3-f19fb9278a5e",
+              "name": "Indicates the case instance was found and the requested variable data is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-case-instances",
+                    ":caseInstanceId",
+                    "variables",
+                    ":variableName",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81be6237-00d0-455b-bda8-adab2d2b9ccd",
+              "name": "Indicates the requested case instance was not found or the process instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-history",
+                    "historic-case-instances",
+                    ":caseInstanceId",
+                    "variables",
+                    ":variableName",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseInstanceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "variableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3f977535-7627-46b1-8441-4327d7aa4e85",
+    "name": "Flowable REST Access Tokens History Process API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Info and Query API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Info and Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List External Worker Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/jobs",
+            "params": [
+              {
+                "name": "elementId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given elementId"
+              },
+              {
+                "name": "elementName",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given elementName"
+              },
+              {
+                "name": "exceptionMessage",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given exception message"
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given executionId"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Only return job with the given id"
+              },
+              {
+                "name": "locked",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs that are locked"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "From the paginate request.  The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given processDefinitionId"
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the processInstanceId"
+              },
+              {
+                "name": "scopeDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given scopeDefinitionId"
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given scopeId"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "From the paginate request. Number of rows to fetch, starting from start. Defaults to 10."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort the results on"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "From the paginate request. Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "subScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given subScopeId"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with the given tenant id"
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with a tenantId like the given value"
+              },
+              {
+                "name": "unlocked",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs that are unlocked"
+              },
+              {
+                "name": "withException",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs with an exception"
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs without a process instance id"
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs without a scope id"
+              },
+              {
+                "name": "withoutScopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs without a scope type"
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return jobs without a tenantId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List External Worker Jobs"
+        },
+        {
+          "info": {
+            "name": "Get a single external worker job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single external worker job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

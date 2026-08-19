@@ -1,0 +1,436 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Process Instance Variables API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Process Instance Variables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List variables for a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/variables",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "In case the variable is a binary variable or serializable, the valueUrl points to an URL to fetch the raw value. If it’s a plain variable, the value is present in the response. Note that only local scoped variables are returned, as there is no global scope for process-instance variables."
+        },
+        {
+          "info": {
+            "name": "Create variables or new binary variable on a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/variables",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an array of RestVariable) or by passing a multipart/form-data Object.\nNonexistent variables are created on the process-instance and existing ones are overridden without any error.\nAny number of variables can be passed into the request body array.\nNote that scope is ignored, only local variables can be set in a process instance.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might b"
+        },
+        {
+          "info": {
+            "name": "Update a multiple/single (non)binary variable on a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/variables",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an array of RestVariable) or by passing a multipart/form-data Object.\nNonexistent variables are created on the process-instance and existing ones are overridden without any error.\nAny number of variables can be passed into the request body array.\nNote that scope is ignored, only local variables can be set in a process instance.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might b"
+        },
+        {
+          "info": {
+            "name": "Delete all variables",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/variables",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete all variables"
+        },
+        {
+          "info": {
+            "name": "Create variables or new binary variable on a process instance asynchronously",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/variables-async",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an array of RestVariable) or by passing a multipart/form-data Object.\nNonexistent variables are created on the process-instance and existing ones are overridden without any error.\nAny number of variables can be passed into the request body array.\nNote that scope is ignored, only local variables can be set in a process instance.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might b"
+        },
+        {
+          "info": {
+            "name": "Update multiple/single (non)binary variables on a process instance asynchronously",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/variables-async",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an array of RestVariable) or by passing a multipart/form-data Object.\nNonexistent variables are created on the process-instance and existing ones are overridden without any error.\nAny number of variables can be passed into the request body array.\nNote that scope is ignored, only local variables can be set in a process instance.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might b"
+        },
+        {
+          "info": {
+            "name": "Update a single variable on a process instance asynchronously",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/variables-async/:variableName",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.\nNonexistent variables are created on the process-instance and existing ones are overridden without any error.\nNote that scope is ignored, only local variables can be set in a process instance.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools."
+        },
+        {
+          "info": {
+            "name": "Get a variable for a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/variables/:variableName",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a variable for a process instance"
+        },
+        {
+          "info": {
+            "name": "Update a single variable on a process instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/variables/:variableName",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable) or by passing a multipart/form-data Object.\nNonexistent variables are created on the process-instance and existing ones are overridden without any error.\nNote that scope is ignored, only local variables can be set in a process instance.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools."
+        },
+        {
+          "info": {
+            "name": "Delete a variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/variables/:variableName",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a variable"
+        },
+        {
+          "info": {
+            "name": "Get the binary data for a variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/process-instances/:processInstanceId/variables/:variableName/data",
+            "params": [
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get the binary data for a variable"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

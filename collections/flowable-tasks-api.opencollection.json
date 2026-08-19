@@ -1,0 +1,1409 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Tasks API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query for tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/query/tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of tasks (except for candidateGroupIn which is only available in this POST task query REST service), but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on task and process variables. The taskVariables and processInstanceVari"
+        },
+        {
+          "info": {
+            "name": "List of tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/tasks",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given id."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given version."
+              },
+              {
+                "name": "nameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with a name like the given name."
+              },
+              {
+                "name": "nameLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with a name like the given name ignoring case."
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given description."
+              },
+              {
+                "name": "priority",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given priority."
+              },
+              {
+                "name": "minimumPriority",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with a priority greater than the given value."
+              },
+              {
+                "name": "maximumPriority",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with a priority lower than the given value."
+              },
+              {
+                "name": "assignee",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks assigned to the given user."
+              },
+              {
+                "name": "assigneeLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks assigned with an assignee like the given value."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks owned by the given user."
+              },
+              {
+                "name": "ownerLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks assigned with an owner like the given value."
+              },
+              {
+                "name": "unassigned",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that are not assigned to anyone. If false is passed, the value is ignored."
+              },
+              {
+                "name": "delegationState",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that have the given delegation state. Possible values are pending and resolved."
+              },
+              {
+                "name": "candidateUser",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that can be claimed by the given user. This includes both tasks where the user is an explicit candidate for and task that are claimable by a group that the user is a member of."
+              },
+              {
+                "name": "candidateGroup",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that can be claimed by a user in the given group."
+              },
+              {
+                "name": "candidateGroups",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that can be claimed by a user in the given groups. Values split by comma."
+              },
+              {
+                "name": "involvedUser",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks in which the given user is involved."
+              },
+              {
+                "name": "taskDefinitionKey",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given task definition id."
+              },
+              {
+                "name": "taskDefinitionKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with a given task definition id like the given value."
+              },
+              {
+                "name": "taskDefinitionKeys",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given task definition ids."
+              },
+              {
+                "name": "processInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of the process instance with the given id."
+              },
+              {
+                "name": "processInstanceIdWithChildren",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of the process instance and its children with the given id."
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns tasks without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+              },
+              {
+                "name": "processInstanceBusinessKey",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of the process instance with the given business key."
+              },
+              {
+                "name": "processInstanceBusinessKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of the process instance which has a business key like the given value."
+              },
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of a process instance which has a process definition with the given id."
+              },
+              {
+                "name": "processDefinitionKey",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of a process instance which has a process definition with the given key."
+              },
+              {
+                "name": "processDefinitionKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of a process instance which has a process definition with a key like the given value."
+              },
+              {
+                "name": "processDefinitionName",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of a process instance which has a process definition with the given name."
+              },
+              {
+                "name": "processDefinitionNameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of a process instance which has a process definition with a name like the given value."
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of the execution with the given id."
+              },
+              {
+                "name": "createdOn",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are created on the given date."
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are created before the given date."
+              },
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are created after the given date."
+              },
+              {
+                "name": "dueDate",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are due on the given date."
+              },
+              {
+                "name": "dueBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are due before the given date."
+              },
+              {
+                "name": "dueAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are due after the given date."
+              },
+              {
+                "name": "withoutDueDate",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which do not have a due date. The property is ignored if the value is false."
+              },
+              {
+                "name": "excludeSubTasks",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that are not a subtask of another task."
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return tasks that are not suspended (either part of a process that is not suspended or not part of a process at all). If false, only tasks that are part of suspended process instances are returned."
+              },
+              {
+                "name": "includeTaskLocalVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to include task local variables in the result."
+              },
+              {
+                "name": "includeProcessVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to include process variables in the result."
+              },
+              {
+                "name": "scopeDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given scopeDefinitionId."
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given scopeId."
+              },
+              {
+                "name": "scopeIds",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with one of the given scopeIds."
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns tasks without a scope id set. If false, the withoutScopeId parameter is ignored."
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given scopeType."
+              },
+              {
+                "name": "propagatedStageInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which have the given id as propagated stage instance id"
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns tasks without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "candidateOrAssigned",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks that has been claimed or assigned to user or waiting to claim by user (candidate user or groups)."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks with the given category. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).\n"
+              },
+              {
+                "name": "categoryIn",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks for the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).\n"
+              },
+              {
+                "name": "categoryNotIn",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks which are not assigned to the given categories. Does not return tasks without categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).\n"
+              },
+              {
+                "name": "withoutCategory",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks without a category assigned. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).\n"
+              },
+              {
+                "name": "rootScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which have the given root scope id (that can be a process or case instance ID)."
+              },
+              {
+                "name": "parentScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which have the given parent scope id (that can be a process or case instance ID)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The field to sort by. Defaults to 'id'."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of tasks"
+        },
+        {
+          "info": {
+            "name": "Create Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/runtime/tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Create Task"
+        },
+        {
+          "info": {
+            "name": "Update Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/runtime/tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Update Tasks"
+        },
+        {
+          "info": {
+            "name": "Get a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a task"
+        },
+        {
+          "info": {
+            "name": "Tasks actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/runtime/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Tasks actions"
+        },
+        {
+          "info": {
+            "name": "Update a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/runtime/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All request values are optional. For example, you can only include the assignee attribute in the request body JSON-object, only updating the assignee of the task, leaving all other fields unaffected. When an attribute is explicitly included and is set to null, the task-value will be updated to null. Example: {\"dueDate\" : null} will clear the duedate of the task)."
+        },
+        {
+          "info": {
+            "name": "Delete a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/runtime/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cascadeHistory",
+                "value": "",
+                "type": "query",
+                "description": "Whether or not to delete the HistoricTask instance when deleting the task (if applicable). If not provided, this value defaults to false."
+              },
+              {
+                "name": "deleteReason",
+                "value": "",
+                "type": "query",
+                "description": "Reason why the task is deleted. This value is ignored when cascadeHistory is true."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a task"
+        },
+        {
+          "info": {
+            "name": "List events for a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/tasks/:taskId/events",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List events for a task"
+        },
+        {
+          "info": {
+            "name": "Get an event on a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/tasks/:taskId/events/:eventId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get an event on a task"
+        },
+        {
+          "info": {
+            "name": "Delete an event on a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/runtime/tasks/:taskId/events/:eventId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete an event on a task"
+        },
+        {
+          "info": {
+            "name": "Get a task form",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/tasks/:taskId/form",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a task form"
+        },
+        {
+          "info": {
+            "name": "List of sub tasks for a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/runtime/tasks/:taskId/subtasks",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of sub tasks for a task"
+        },
+        {
+          "info": {
+            "name": "Create new variables on a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/runtime/tasks/:taskId/variables",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "scope",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an Array of RestVariable) or by passing a multipart/form-data Object.\nIt is possible to create simple (non-binary) variable or list of variables or new binary variable \nAny number of variables can be passed into the request body array.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools."
+        },
+        {
+          "info": {
+            "name": "Delete all local variables on a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/runtime/tasks/:taskId/variables",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete all local variables on a task"
+        },
+        {
+          "info": {
+            "name": "Query for tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-query/tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of tasks (except for candidateGroupIn which is only available in this POST task query REST service), but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on task and process variables. The taskVariables and processInstanceVari"
+        },
+        {
+          "info": {
+            "name": "List of tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-runtime/tasks",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given id."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given version."
+              },
+              {
+                "name": "nameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with a name like the given name."
+              },
+              {
+                "name": "nameLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with a name like the given name ignoring case."
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given description."
+              },
+              {
+                "name": "priority",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given priority."
+              },
+              {
+                "name": "minimumPriority",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with a priority greater than the given value."
+              },
+              {
+                "name": "maximumPriority",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with a priority lower than the given value."
+              },
+              {
+                "name": "assignee",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks assigned to the given user."
+              },
+              {
+                "name": "assigneeLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks assigned with an assignee like the given value."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks owned by the given user."
+              },
+              {
+                "name": "ownerLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks assigned with an owner like the given value."
+              },
+              {
+                "name": "unassigned",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that are not assigned to anyone. If false is passed, the value is ignored."
+              },
+              {
+                "name": "delegationState",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that have the given delegation state. Possible values are pending and resolved."
+              },
+              {
+                "name": "candidateUser",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that can be claimed by the given user. This includes both tasks where the user is an explicit candidate for and task that are claimable by a group that the user is a member of."
+              },
+              {
+                "name": "candidateGroup",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that can be claimed by a user in the given group."
+              },
+              {
+                "name": "candidateGroups",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that can be claimed by a user in the given groups. Values split by comma."
+              },
+              {
+                "name": "involvedUser",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks in which the given user is involved."
+              },
+              {
+                "name": "taskDefinitionKey",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given task definition id."
+              },
+              {
+                "name": "taskDefinitionKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with a given task definition id like the given value."
+              },
+              {
+                "name": "caseInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of the case instance with the given id."
+              },
+              {
+                "name": "caseInstanceIdWithChildren",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of the case instance and its children with the given id."
+              },
+              {
+                "name": "caseDefinitionId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of a case instance which has a case definition with the given id."
+              },
+              {
+                "name": "caseDefinitionKey",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of a case instance which has a case definition with the given key."
+              },
+              {
+                "name": "caseDefinitionKeyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of a case instance which has a case definition with the given key like the passed parameter."
+              },
+              {
+                "name": "caseDefinitionKeyLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of a case instance which has a case definition with the given key like the passed parameter."
+              },
+              {
+                "name": "planItemInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are associated with the a plan item instance with the given id"
+              },
+              {
+                "name": "propagatedStageInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which have the given id as propagated stage instance id"
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of the scope (e.g. case instance) with the given id."
+              },
+              {
+                "name": "scopeIds",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of the scope (e.g. case instance) with the given ids."
+              },
+              {
+                "name": "withoutScopeId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns tasks without a scope id set. If false, the withoutScopeId parameter is ignored."
+              },
+              {
+                "name": "subScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of the sub scope (e.g. plan item instance) with the given id."
+              },
+              {
+                "name": "scopeType",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are part of the scope type (e.g. bpmn, cmmn, etc)."
+              },
+              {
+                "name": "createdOn",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are created on the given date."
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are created before the given date."
+              },
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are created after the given date."
+              },
+              {
+                "name": "dueOn",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are due on the given date."
+              },
+              {
+                "name": "dueBefore",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are due before the given date."
+              },
+              {
+                "name": "dueAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which are due after the given date."
+              },
+              {
+                "name": "withoutDueDate",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which do not have a due date. The property is ignored if the value is false."
+              },
+              {
+                "name": "excludeSubTasks",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks that are not a subtask of another task."
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return tasks that are not suspended (either part of a process that is not suspended or not part of a process at all). If false, only tasks that are part of suspended process instances are returned."
+              },
+              {
+                "name": "includeTaskLocalVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to include task local variables in the result."
+              },
+              {
+                "name": "includeProcessVariables",
+                "value": "",
+                "type": "query",
+                "description": "Indication to include process variables in the result."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with the given tenantId."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks with a tenantId like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns tasks without a tenantId set. If false, the withoutTenantId parameter is ignored."
+              },
+              {
+                "name": "withoutProcessInstanceId",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns tasks without a process instance id set. If false, the withoutProcessInstanceId parameter is ignored."
+              },
+              {
+                "name": "candidateOrAssigned",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks that has been claimed or assigned to user or waiting to claim by user (candidate user or groups)."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks with the given category. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).\n"
+              },
+              {
+                "name": "categoryIn",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks for the given categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).\n"
+              },
+              {
+                "name": "categoryNotIn",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks which are not assigned to the given categories. Does not return tasks without categories. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).\n"
+              },
+              {
+                "name": "withoutCategory",
+                "value": "",
+                "type": "query",
+                "description": "Select tasks without a category assigned. Note that this is the task category, not the category of the process definition (namespace within the BPMN Xml).\n"
+              },
+              {
+                "name": "rootScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which have the given root scope id (that can be a process or case instance ID)."
+              },
+              {
+                "name": "parentScopeId",
+                "value": "",
+                "type": "query",
+                "description": "Only return tasks which have the given parent scope id (that can be a process or case instance ID)."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of tasks"
+        },
+        {
+          "info": {
+            "name": "Create Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-runtime/tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Create Task"
+        },
+        {
+          "info": {
+            "name": "Update Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/cmmn-runtime/tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Update Tasks"
+        },
+        {
+          "info": {
+            "name": "Get a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-runtime/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a task"
+        },
+        {
+          "info": {
+            "name": "Tasks actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-runtime/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Tasks actions"
+        },
+        {
+          "info": {
+            "name": "Update a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/cmmn-runtime/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "All request values are optional. For example, you can only include the assignee attribute in the request body JSON-object, only updating the assignee of the task, leaving all other fields unaffected. When an attribute is explicitly included and is set to null, the task-value will be updated to null. Example: {\"dueDate\" : null} will clear the duedate of the task)."
+        },
+        {
+          "info": {
+            "name": "Delete a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/cmmn-runtime/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cascadeHistory",
+                "value": "",
+                "type": "query",
+                "description": "Whether or not to delete the HistoricTask instance when deleting the task (if applicable). If not provided, this value defaults to false."
+              },
+              {
+                "name": "deleteReason",
+                "value": "",
+                "type": "query",
+                "description": "Reason why the task is deleted. This value is ignored when cascadeHistory is true."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a task"
+        },
+        {
+          "info": {
+            "name": "Get a task form",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-runtime/tasks/:taskId/form",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a task form"
+        },
+        {
+          "info": {
+            "name": "List of sub tasks for a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/cmmn-runtime/tasks/:taskId/subtasks",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of sub tasks for a task"
+        },
+        {
+          "info": {
+            "name": "Create new variables on a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/cmmn-runtime/tasks/:taskId/variables",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "scope",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an Array of RestVariable) or by passing a multipart/form-data Object.\nIt is possible to create simple (non-binary) variable or list of variables or new binary variable \nAny number of variables can be passed into the request body array.\nNB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools."
+        },
+        {
+          "info": {
+            "name": "Delete all local variables on a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/cmmn-runtime/tasks/:taskId/variables",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete all local variables on a task"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

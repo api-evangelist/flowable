@@ -1,0 +1,1250 @@
+{
+  "item": [
+    {
+      "id": "efb414c1-ddf8-4ea4-ae1e-094c61b9f18a",
+      "name": "Event subscriptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9df8163a-fdf1-4dc3-897f-2e04f4c1bf6e",
+          "name": "List of event subscriptions",
+          "request": {
+            "name": "List of event subscriptions",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "event-subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given id"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventType",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given event type"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventName",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given event name"
+                },
+                {
+                  "disabled": false,
+                  "key": "activityId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given activity id"
+                },
+                {
+                  "disabled": false,
+                  "key": "executionId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given execution id"
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions part of a process with the given id"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutProcessInstanceId",
+                  "value": "<boolean>",
+                  "description": "Only return event subscriptions that have no process instance id"
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given process definition id"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutProcessDefinitionId",
+                  "value": "<boolean>",
+                  "description": "Only return event subscriptions that have no process definition id"
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions part of a scope with the given id"
+                },
+                {
+                  "disabled": false,
+                  "key": "subScopeId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions part of a sub scope with the given id"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutScopeId",
+                  "value": "<boolean>",
+                  "description": "Only return event subscriptions that have no scope id"
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given scope definition id"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutScopeDefinitionId",
+                  "value": "<boolean>",
+                  "description": "Only return event subscriptions that have no scope definition id"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBefore",
+                  "value": "<dateTime>",
+                  "description": "Only return event subscriptions which are created before the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAfter",
+                  "value": "<dateTime>",
+                  "description": "Only return event subscriptions which are created after the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given tenant id."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "Only return event subscriptions that have no tenant id"
+                },
+                {
+                  "disabled": false,
+                  "key": "configuration",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given configuration value."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutConfiguration",
+                  "value": "<boolean>",
+                  "description": "Only return event subscriptions that have no configuration value"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Property to sort on, to be used together with the order."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Index of the first row to fetch. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of rows to fetch, starting from start. Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "573bc033-ac2e-47ff-a97f-b8caff378fd3",
+              "name": "Indicates the requested event subscriptions were returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "event-subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutProcessInstanceId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutProcessDefinitionId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "scopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "scopeDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeDefinitionId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "configuration",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutConfiguration",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"url\": \"string\",\n      \"eventType\": \"string\",\n      \"eventName\": \"string\",\n      \"activityId\": \"string\",\n      \"executionId\": \"string\",\n      \"executionUrl\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processInstanceUrl\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"processDefinitionUrl\": \"string\",\n      \"scopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeDefinitionId\": \"string\",\n      \"created\": \"2003-04-01T11:36:28.556Z\",\n      \"configuration\": \"string\",\n      \"tenantId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"url\": \"string\",\n      \"eventType\": \"string\",\n      \"eventName\": \"string\",\n      \"activityId\": \"string\",\n      \"executionId\": \"string\",\n      \"executionUrl\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processInstanceUrl\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"processDefinitionUrl\": \"string\",\n      \"scopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeDefinitionId\": \"string\",\n      \"created\": \"1974-03-15T11:03:52.350Z\",\n      \"configuration\": \"string\",\n      \"tenantId\": \"string\"\n    }\n  ],\n  \"total\": 1251,\n  \"start\": 8096,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 1676\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "baabc737-adec-4d8c-b6bd-229ec1bc8bd9",
+              "name": "Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "event-subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutProcessInstanceId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutProcessDefinitionId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "scopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "scopeDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeDefinitionId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "configuration",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutConfiguration",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "089f8d56-07ca-46e9-b04a-66c7c43736df",
+          "name": "Get a single event subscription",
+          "request": {
+            "name": "Get a single event subscription",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "event-subscriptions",
+                ":eventSubscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "eventSubscriptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "44b79980-e981-400d-bf08-22b36f9db25d",
+              "name": "Indicates the event subscription exists and is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "event-subscriptions",
+                    ":eventSubscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventSubscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"eventType\": \"string\",\n  \"eventName\": \"string\",\n  \"activityId\": \"string\",\n  \"executionId\": \"string\",\n  \"executionUrl\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"processInstanceUrl\": \"string\",\n  \"processDefinitionId\": \"string\",\n  \"processDefinitionUrl\": \"string\",\n  \"scopeId\": \"string\",\n  \"scopeType\": \"string\",\n  \"subScopeId\": \"string\",\n  \"scopeDefinitionId\": \"string\",\n  \"created\": \"1996-09-13T16:10:33.155Z\",\n  \"configuration\": \"string\",\n  \"tenantId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5d11edc-86bf-426a-b323-92a4d5e47a73",
+              "name": "Indicates the requested event subscription does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "event-subscriptions",
+                    ":eventSubscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventSubscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cada31f6-b944-469c-b71b-f96048dc6f1e",
+          "name": "List of event subscriptions",
+          "request": {
+            "name": "List of event subscriptions",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "event-subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given id"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventType",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given event type"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventName",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given event name"
+                },
+                {
+                  "disabled": false,
+                  "key": "activityId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given activity id"
+                },
+                {
+                  "disabled": false,
+                  "key": "caseInstanceId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions part of a process with the given id"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutScopeId",
+                  "value": "<boolean>",
+                  "description": "Only return event subscriptions that have no process instance id"
+                },
+                {
+                  "disabled": false,
+                  "key": "caseDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given process definition id"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutScopeDefinitionId",
+                  "value": "<boolean>",
+                  "description": "Only return event subscriptions that have no process definition id"
+                },
+                {
+                  "disabled": false,
+                  "key": "planItemInstanceId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions part of a scope with the given id"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBefore",
+                  "value": "<dateTime>",
+                  "description": "Only return event subscriptions which are created before the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAfter",
+                  "value": "<dateTime>",
+                  "description": "Only return event subscriptions which are created after the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given tenant id."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "Only return event subscriptions that have no tenant id"
+                },
+                {
+                  "disabled": false,
+                  "key": "configuration",
+                  "value": "<string>",
+                  "description": "Only return event subscriptions with the given configuration value."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutConfiguration",
+                  "value": "<boolean>",
+                  "description": "Only return event subscriptions that have no configuration value"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutProcessInstanceId",
+                  "value": "<boolean>",
+                  "description": "Only return event subscriptions that have no process instance id"
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutProcessDefinitionId",
+                  "value": "<boolean>",
+                  "description": "Only return event subscriptions that have no process definition id"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Property to sort on, to be used together with the order."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Index of the first row to fetch. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of rows to fetch, starting from start. Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8bf73fc5-ed65-4d24-a602-821120a97229",
+              "name": "Indicates the requested event subscriptions were returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "event-subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "caseDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeDefinitionId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "planItemInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "configuration",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutConfiguration",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutProcessInstanceId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutProcessDefinitionId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"url\": \"string\",\n      \"eventType\": \"string\",\n      \"eventName\": \"string\",\n      \"activityId\": \"string\",\n      \"executionId\": \"string\",\n      \"executionUrl\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processInstanceUrl\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"processDefinitionUrl\": \"string\",\n      \"scopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeDefinitionId\": \"string\",\n      \"created\": \"1981-06-09T12:00:54.723Z\",\n      \"configuration\": \"string\",\n      \"tenantId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"url\": \"string\",\n      \"eventType\": \"string\",\n      \"eventName\": \"string\",\n      \"activityId\": \"string\",\n      \"executionId\": \"string\",\n      \"executionUrl\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"processInstanceUrl\": \"string\",\n      \"processDefinitionId\": \"string\",\n      \"processDefinitionUrl\": \"string\",\n      \"scopeId\": \"string\",\n      \"scopeType\": \"string\",\n      \"subScopeId\": \"string\",\n      \"scopeDefinitionId\": \"string\",\n      \"created\": \"2017-09-16T17:40:58.140Z\",\n      \"configuration\": \"string\",\n      \"tenantId\": \"string\"\n    }\n  ],\n  \"total\": 282,\n  \"start\": 2027,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 8505\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2350a320-4da5-4da6-bf0b-fd85202e44e7",
+              "name": "Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "event-subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "activityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "caseDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutScopeDefinitionId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "planItemInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "configuration",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutConfiguration",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutProcessInstanceId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "withoutProcessDefinitionId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0befbd85-f45a-4c7a-95d8-4b6bd1a5fd2f",
+          "name": "Get a single event subscription",
+          "request": {
+            "name": "Get a single event subscription",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cmmn-runtime",
+                "event-subscriptions",
+                ":eventSubscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "eventSubscriptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "86f4511a-cd37-4d04-b5f1-c2b9c5c4d33c",
+              "name": "Indicates the event subscription exists and is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "event-subscriptions",
+                    ":eventSubscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventSubscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"eventType\": \"string\",\n  \"eventName\": \"string\",\n  \"activityId\": \"string\",\n  \"caseInstanceId\": \"string\",\n  \"caseInstanceUrl\": \"string\",\n  \"caseDefinitionId\": \"string\",\n  \"caseDefinitionUrl\": \"string\",\n  \"planItemInstanceId\": \"string\",\n  \"planItemInstanceUrl\": \"string\",\n  \"executionId\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"processDefinitionId\": \"string\",\n  \"scopeDefinitionId\": \"string\",\n  \"scopeId\": \"string\",\n  \"subScopeId\": \"string\",\n  \"scopeType\": \"string\",\n  \"created\": \"1978-03-18T18:55:24.901Z\",\n  \"configuration\": \"string\",\n  \"tenantId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7057b39c-1eae-4652-860d-e520fa7cb5bd",
+              "name": "Indicates the requested event subscription does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cmmn-runtime",
+                    "event-subscriptions",
+                    ":eventSubscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventSubscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ae9983f5-f26c-4f7e-b450-2ca5bf501f65",
+    "name": "Flowable REST Access Tokens Event subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

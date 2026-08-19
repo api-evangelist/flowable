@@ -1,0 +1,537 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Process Definitions API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Process Definitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of process definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/repository/process-definitions",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions with the given version."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions with the given name."
+              },
+              {
+                "name": "nameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions with a name like the given name."
+              },
+              {
+                "name": "nameLikeIgnoreCase",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions with a name like the given name ignoring case."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions with the given key."
+              },
+              {
+                "name": "keyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions with a name like the given key."
+              },
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions with the given resource name."
+              },
+              {
+                "name": "resourceNameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions with a name like the given resource name."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions with the given category."
+              },
+              {
+                "name": "categoryLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions with a category like the given name."
+              },
+              {
+                "name": "categoryNotEquals",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions which do not have the given category."
+              },
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions which are part of a deployment with the given deployment id."
+              },
+              {
+                "name": "parentDeploymentId",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions which are part of a deployment with the given parent deployment id."
+              },
+              {
+                "name": "startableByUser",
+                "value": "",
+                "type": "query",
+                "description": "Only return process definitions which are part of a deployment with the given id."
+              },
+              {
+                "name": "latest",
+                "value": "",
+                "type": "query",
+                "description": "Only return the latest process definition versions. Can only be used together with key and keyLike parameters, using any other parameter will result in a 400-response."
+              },
+              {
+                "name": "suspended",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns process definitions which are suspended. If false, only active process definitions (which are not suspended) are returned."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Index of the first row to fetch. Defaults to 0."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to fetch, starting from start. Defaults to 10."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of process definitions"
+        },
+        {
+          "info": {
+            "name": "Get a process definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a process definition"
+        },
+        {
+          "info": {
+            "name": "Execute actions for a process definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Execute actions for a process definition (Update category, Suspend or Activate)"
+        },
+        {
+          "info": {
+            "name": "Batch migrate all instances of process definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/batch-migrate",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Batch migrate all instances of process definition"
+        },
+        {
+          "info": {
+            "name": "List decision tables for a process-definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/decision-tables",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List decision tables for a process-definition"
+        },
+        {
+          "info": {
+            "name": "List decisions for a process-definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/decisions",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List decisions for a process-definition"
+        },
+        {
+          "info": {
+            "name": "List form definitions for a process-definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/form-definitions",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List form definitions for a process-definition"
+        },
+        {
+          "info": {
+            "name": "List candidate starters for a process-definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/identitylinks",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List candidate starters for a process-definition"
+        },
+        {
+          "info": {
+            "name": "Add a candidate starter to a process definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/identitylinks",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "It is possible to add either a user or a group."
+        },
+        {
+          "info": {
+            "name": "Get a candidate starter from a process definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/identitylinks/:family/:identityId",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "family",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identityId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a candidate starter from a process definition"
+        },
+        {
+          "info": {
+            "name": "Delete a candidate starter from a process definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/identitylinks/:family/:identityId",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "family",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "identityId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete a candidate starter from a process definition"
+        },
+        {
+          "info": {
+            "name": "Get a process definition image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/image",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a process definition image"
+        },
+        {
+          "info": {
+            "name": "Migrate all instances of process definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/migrate",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Migrate all instances of process definition"
+        },
+        {
+          "info": {
+            "name": "Get a process definition BPMN model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/model",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a process definition BPMN model"
+        },
+        {
+          "info": {
+            "name": "Get a process definition resource content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/resourcedata",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a process definition resource content"
+        },
+        {
+          "info": {
+            "name": "Get a process definition start form",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/repository/process-definitions/:processDefinitionId/start-form",
+            "params": [
+              {
+                "name": "processDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a process definition start form"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

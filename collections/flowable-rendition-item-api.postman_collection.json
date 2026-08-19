@@ -1,0 +1,1512 @@
+{
+  "item": [
+    {
+      "id": "a933a360-2ebd-445f-a66b-ea515499171a",
+      "name": "Rendition item",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b7dc84b7-e845-4906-a0f8-97c345498f2c",
+          "name": "Save the rendition item data",
+          "request": {
+            "name": "Save the rendition item data",
+            "description": {
+              "content": "Save the rendition item data with an attached file. The request should be of type multipart/form-data. There should be a single file-part included with the binary value of the content item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-service",
+                "rendition-items",
+                ":renditionItemId",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "renditionItemId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "49160ed3-b9ec-45c5-ae92-bf427d6b51aa",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "rendition-items",
+                    ":renditionItemId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"contentItemId\": \"string\",\n  \"name\": \"string\",\n  \"mimeType\": \"string\",\n  \"taskId\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"contentStoreId\": \"string\",\n  \"contentStoreName\": \"string\",\n  \"contentAvailable\": true,\n  \"contentItemName\": \"string\",\n  \"tenantId\": \"string\",\n  \"created\": \"1956-10-29T12:17:13.717Z\",\n  \"lastModified\": \"2025-11-16T17:27:47.528Z\",\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ef150b7-6950-4601-9ae2-973bed601333",
+              "name": "Indicates the rendition item data was saved and the result is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "rendition-items",
+                    ":renditionItemId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ebe33f6-ca7e-4f55-8f6b-d558eca33483",
+              "name": "Indicates required rendition item data is missing from the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-service",
+                    "rendition-items",
+                    ":renditionItemId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e22a07c3-28e5-42a8-b657-73ed78f38fb7",
+          "name": "Query for rendition items",
+          "request": {
+            "name": "Query for rendition items",
+            "description": {
+              "content": "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of rendition items, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "rendition-items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"contentItemId\": \"<string>\",\n  \"contentItemIdLike\": \"<string>\",\n  \"contentItemName\": \"<string>\",\n  \"contentItemNameLike\": \"<string>\",\n  \"name\": \"<string>\",\n  \"nameLike\": \"<string>\",\n  \"mimeType\": \"<string>\",\n  \"mimeTypeLike\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"taskIdLike\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIdLike\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeIdLike\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"contentStoreId\": \"<string>\",\n  \"contentStoreIdLike\": \"<string>\",\n  \"contentStoreName\": \"<string>\",\n  \"contentStoreNameLike\": \"<string>\",\n  \"contentSize\": \"<long>\",\n  \"minimumContentSize\": \"<long>\",\n  \"maximumContentSize\": \"<long>\",\n  \"contentAvailable\": \"<boolean>\",\n  \"createdOn\": \"<dateTime>\",\n  \"createdBefore\": \"<dateTime>\",\n  \"createdAfter\": \"<dateTime>\",\n  \"lastModifiedOn\": \"<dateTime>\",\n  \"lastModifiedBefore\": \"<dateTime>\",\n  \"lastModifiedAfter\": \"<dateTime>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6aa3030-2367-404e-b5b9-9c5f0bae3d17",
+              "name": "Indicates request was successful and the rendition items are returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "rendition-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"ids\": [\n    \"<string>\"\n  ],\n  \"contentItemId\": \"<string>\",\n  \"contentItemIdLike\": \"<string>\",\n  \"contentItemName\": \"<string>\",\n  \"contentItemNameLike\": \"<string>\",\n  \"name\": \"<string>\",\n  \"nameLike\": \"<string>\",\n  \"mimeType\": \"<string>\",\n  \"mimeTypeLike\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"taskIdLike\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIdLike\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeIdLike\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"contentStoreId\": \"<string>\",\n  \"contentStoreIdLike\": \"<string>\",\n  \"contentStoreName\": \"<string>\",\n  \"contentStoreNameLike\": \"<string>\",\n  \"contentSize\": \"<long>\",\n  \"minimumContentSize\": \"<long>\",\n  \"maximumContentSize\": \"<long>\",\n  \"contentAvailable\": \"<boolean>\",\n  \"createdOn\": \"<dateTime>\",\n  \"createdBefore\": \"<dateTime>\",\n  \"createdAfter\": \"<dateTime>\",\n  \"lastModifiedOn\": \"<dateTime>\",\n  \"lastModifiedBefore\": \"<dateTime>\",\n  \"lastModifiedAfter\": \"<dateTime>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"contentItemId\": \"string\",\n      \"name\": \"string\",\n      \"mimeType\": \"string\",\n      \"taskId\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"contentStoreId\": \"string\",\n      \"contentStoreName\": \"string\",\n      \"contentAvailable\": false,\n      \"contentItemName\": \"string\",\n      \"tenantId\": \"string\",\n      \"created\": \"1949-08-03T07:52:40.680Z\",\n      \"lastModified\": \"1991-07-31T17:26:47.614Z\",\n      \"url\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"contentItemId\": \"string\",\n      \"name\": \"string\",\n      \"mimeType\": \"string\",\n      \"taskId\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"contentStoreId\": \"string\",\n      \"contentStoreName\": \"string\",\n      \"contentAvailable\": false,\n      \"contentItemName\": \"string\",\n      \"tenantId\": \"string\",\n      \"created\": \"1947-11-08T20:59:01.190Z\",\n      \"lastModified\": \"1986-04-14T14:01:41.243Z\",\n      \"url\": \"string\"\n    }\n  ],\n  \"total\": 9826,\n  \"start\": 2046,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 3049\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "361afbac-546c-47d2-b9e0-f1150ed1b17a",
+              "name": "Indicates a parameter was passed in the wrong format. The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "rendition-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"id\": \"<string>\",\n  \"ids\": [\n    \"<string>\"\n  ],\n  \"contentItemId\": \"<string>\",\n  \"contentItemIdLike\": \"<string>\",\n  \"contentItemName\": \"<string>\",\n  \"contentItemNameLike\": \"<string>\",\n  \"name\": \"<string>\",\n  \"nameLike\": \"<string>\",\n  \"mimeType\": \"<string>\",\n  \"mimeTypeLike\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"taskIdLike\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIdLike\": \"<string>\",\n  \"scopeId\": \"<string>\",\n  \"scopeIdLike\": \"<string>\",\n  \"scopeType\": \"<string>\",\n  \"contentStoreId\": \"<string>\",\n  \"contentStoreIdLike\": \"<string>\",\n  \"contentStoreName\": \"<string>\",\n  \"contentStoreNameLike\": \"<string>\",\n  \"contentSize\": \"<long>\",\n  \"minimumContentSize\": \"<long>\",\n  \"maximumContentSize\": \"<long>\",\n  \"contentAvailable\": \"<boolean>\",\n  \"createdOn\": \"<dateTime>\",\n  \"createdBefore\": \"<dateTime>\",\n  \"createdAfter\": \"<dateTime>\",\n  \"lastModifiedOn\": \"<dateTime>\",\n  \"lastModifiedBefore\": \"<dateTime>\",\n  \"lastModifiedAfter\": \"<dateTime>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e1851ce-2063-4741-9c1d-1139e05bf853",
+          "name": "List rendition items",
+          "request": {
+            "name": "List rendition items",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rendition-service",
+                "rendition-items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Only return rendition items with the given id."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentItemId",
+                  "value": "<string>",
+                  "description": "Only return rendition items with the given content item id."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentItemIdLike",
+                  "value": "<string>",
+                  "description": "Only return rendition items with a content item id like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentItemName",
+                  "value": "<string>",
+                  "description": "Only return rendition items with the given content item name."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentItemNameLike",
+                  "value": "<string>",
+                  "description": "Only return rendition items with a content item name like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Only return rendition items with the given name."
+                },
+                {
+                  "disabled": false,
+                  "key": "nameLike",
+                  "value": "<string>",
+                  "description": "Only return rendition items with a name like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "mimeType",
+                  "value": "<string>",
+                  "description": "Only return rendition items with the given mime type."
+                },
+                {
+                  "disabled": false,
+                  "key": "mimeTypeLike",
+                  "value": "<string>",
+                  "description": "Only return rendition items with a mime type like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskId",
+                  "value": "<string>",
+                  "description": "Only return rendition items with the given task id."
+                },
+                {
+                  "disabled": false,
+                  "key": "taskIdLike",
+                  "value": "<string>",
+                  "description": "Only return rendition items with a task like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceId",
+                  "value": "<string>",
+                  "description": "Only return rendition items with the given process instance id."
+                },
+                {
+                  "disabled": false,
+                  "key": "processInstanceIdLike",
+                  "value": "<string>",
+                  "description": "Only return rendition items with a process instance like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeId",
+                  "value": "<string>",
+                  "description": "Only return rendition items with the given scopeId. When this is used then scopeType must also be set."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeIdLike",
+                  "value": "<string>",
+                  "description": "Only return rendition items with a scopeId like the given value. When this is used then scopeType must also be set."
+                },
+                {
+                  "disabled": false,
+                  "key": "scopeType",
+                  "value": "<string>",
+                  "description": "Only return rendition items with the given scopeType."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentStoreId",
+                  "value": "<string>",
+                  "description": "Only return rendition items with the given rendition store id."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentStoreIdLike",
+                  "value": "<string>",
+                  "description": "Only return rendition items with a rendition store id like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentStoreName",
+                  "value": "<string>",
+                  "description": "Only return rendition items with the given rendition store name."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentStoreNameLike",
+                  "value": "<string>",
+                  "description": "Only return rendition items with a rendition store name like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentAvailable",
+                  "value": "<boolean>",
+                  "description": "Only return rendition items with or without rendition available."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentSize",
+                  "value": "<int64>",
+                  "description": "Only return rendition items with the given rendition size."
+                },
+                {
+                  "disabled": false,
+                  "key": "minimumContentSize",
+                  "value": "<int64>",
+                  "description": "Only return rendition items with the a minimum rendition size of the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "maximumContentSize",
+                  "value": "<int64>",
+                  "description": "Only return rendition items with the a maximum rendition size of the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdOn",
+                  "value": "<dateTime>",
+                  "description": "Only return rendition items with the given create date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBefore",
+                  "value": "<dateTime>",
+                  "description": "Only return rendition items before given create date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAfter",
+                  "value": "<dateTime>",
+                  "description": "Only return rendition items after given create date."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModifiedOn",
+                  "value": "<dateTime>",
+                  "description": "Only return rendition items with the given last modified date."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModifiedBefore",
+                  "value": "<dateTime>",
+                  "description": "Only return rendition items before given last modified date."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModifiedAfter",
+                  "value": "<dateTime>",
+                  "description": "Only return rendition items after given last modified date."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return rendition items with the given tenantId."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLike",
+                  "value": "<string>",
+                  "description": "Only return rendition items with a tenantId like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns rendition items without a tenantId set. If false, the withoutTenantId parameter is ignored."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "de819d2b-911c-445d-aa86-3f9e2082303f",
+              "name": "The rendition items are returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rendition-service",
+                    "rendition-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentItemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentItemIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentItemName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentItemNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mimeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mimeTypeLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "taskIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processInstanceIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scopeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentStoreId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentStoreIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentStoreName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentStoreNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentAvailable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "contentSize",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "minimumContentSize",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "maximumContentSize",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "createdOn",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastModifiedOn",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastModifiedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastModifiedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"contentItemId\": \"string\",\n      \"name\": \"string\",\n      \"mimeType\": \"string\",\n      \"taskId\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"contentStoreId\": \"string\",\n      \"contentStoreName\": \"string\",\n      \"contentAvailable\": true,\n      \"contentItemName\": \"string\",\n      \"tenantId\": \"string\",\n      \"created\": \"1975-12-16T18:25:54.539Z\",\n      \"lastModified\": \"2022-06-11T03:02:09.999Z\",\n      \"url\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"contentItemId\": \"string\",\n      \"name\": \"string\",\n      \"mimeType\": \"string\",\n      \"taskId\": \"string\",\n      \"processInstanceId\": \"string\",\n      \"contentStoreId\": \"string\",\n      \"contentStoreName\": \"string\",\n      \"contentAvailable\": true,\n      \"contentItemName\": \"string\",\n      \"tenantId\": \"string\",\n      \"created\": \"1975-01-18T17:08:13.666Z\",\n      \"lastModified\": \"1991-04-21T21:00:19.083Z\",\n      \"url\": \"string\"\n    }\n  ],\n  \"total\": 5190,\n  \"start\": 252,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 1335\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e9ba307-febc-43a7-88f2-7bd1cf9f0ab9",
+          "name": "Get a rendition item",
+          "request": {
+            "name": "Get a rendition item",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rendition-service",
+                "rendition-items",
+                ":renditionItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "renditionItemId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b5421e2b-fdf9-412c-b6f0-cd54bc9ef8ec",
+              "name": "Indicates the rendition item was found and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rendition-service",
+                    "rendition-items",
+                    ":renditionItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"contentItemId\": \"string\",\n  \"name\": \"string\",\n  \"mimeType\": \"string\",\n  \"taskId\": \"string\",\n  \"processInstanceId\": \"string\",\n  \"contentStoreId\": \"string\",\n  \"contentStoreName\": \"string\",\n  \"contentAvailable\": true,\n  \"contentItemName\": \"string\",\n  \"tenantId\": \"string\",\n  \"created\": \"1956-10-29T12:17:13.717Z\",\n  \"lastModified\": \"2025-11-16T17:27:47.528Z\",\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7713821-dbc1-4e03-bc50-22b61e2925aa",
+              "name": "Indicates the requested rendition item was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rendition-service",
+                    "rendition-items",
+                    ":renditionItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ced03db-807c-4f10-9951-3e1667cb61e5",
+          "name": "Delete a rendition item",
+          "request": {
+            "name": "Delete a rendition item",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rendition-service",
+                "rendition-items",
+                ":renditionItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "renditionItemId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "78071d28-0e3f-4dc7-8546-987ad4cc285b",
+              "name": "Indicates the rendition item was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rendition-service",
+                    "rendition-items",
+                    ":renditionItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dd4f7abc-d226-4c49-9b36-f8d19cb3bf3f",
+              "name": "Indicates the rendition item was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rendition-service",
+                    "rendition-items",
+                    ":renditionItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d2e29c3-f4a1-40e2-ba08-475f0b061c86",
+          "name": "Get the data of a content item",
+          "request": {
+            "name": "Get the data of a content item",
+            "description": {
+              "content": "The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rendition-service",
+                "rendition-items",
+                ":renditionItemId",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "download",
+                  "value": "<boolean>",
+                  "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "renditionItemId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fe774a39-be12-482c-b92f-16d37d313e2d",
+              "name": "Indicates the rendition item was found and the requested content is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rendition-service",
+                    "rendition-items",
+                    ":renditionItemId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"open\": true,\n  \"file\": \"string\",\n  \"readable\": true,\n  \"url\": \"string\",\n  \"filePath\": {\n    \"absolute\": true,\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"root\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileName\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileSystem\": {\n      \"open\": false,\n      \"readOnly\": false,\n      \"separator\": \"string\",\n      \"rootDirectories\": {},\n      \"fileStores\": {},\n      \"userPrincipalLookupService\": {}\n    },\n    \"nameCount\": 4974\n  },\n  \"filename\": \"string\",\n  \"description\": \"string\",\n  \"uri\": \"http://hBybOAREKVXkQzAwjwKIqgmDrqXBLy.brxhyus0pgpkCtjT+joj1-0fIoZflrw\",\n  \"contentAsByteArray\": [\n    \"string\",\n    \"string\"\n  ],\n  \"inputStream\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0c7e535-2e0e-4ae6-9945-9362a1d81083",
+              "name": "Indicates the rendition item was not found or the content item doesn't have a binary stream available. Status message provides additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rendition-service",
+                    "rendition-items",
+                    ":renditionItemId",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e57436e-b3b3-4095-afb8-bc7038466d59",
+          "name": "Get the latest data of a rendition item",
+          "request": {
+            "name": "Get the latest data of a rendition item",
+            "description": {
+              "content": "The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rendition-service",
+                "rendition-items",
+                ":renditionItemId",
+                "data",
+                "latest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "download",
+                  "value": "<boolean>",
+                  "description": "Explicitly request the content to be downloaded or viewed in a browser. By default it would be done based on the content media type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "renditionItemId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "602c3c62-9941-46ab-adf7-109bb35bac75",
+              "name": "Indicates the rendition item was found and the requested content is returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rendition-service",
+                    "rendition-items",
+                    ":renditionItemId",
+                    "data",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"open\": false,\n  \"file\": \"string\",\n  \"readable\": false,\n  \"url\": \"string\",\n  \"filePath\": {\n    \"absolute\": true,\n    \"parent\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"root\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileName\": {\n      \"value\": \"<Circular reference to #/components/schemas/Path detected>\"\n    },\n    \"fileSystem\": {\n      \"open\": false,\n      \"readOnly\": false,\n      \"separator\": \"string\",\n      \"rootDirectories\": {},\n      \"fileStores\": {},\n      \"userPrincipalLookupService\": {}\n    },\n    \"nameCount\": 8687\n  },\n  \"filename\": \"string\",\n  \"description\": \"string\",\n  \"uri\": \"https://bbpAfQpzqAXArYFlZIlarPquasjkLc.gjbYPqmZlWdlqQm01OOpYvkJjBaPMEz8ucksz9yC8k99H6XcqKYNpfRKQiOWgQFKGRVlj+dASBm7RE\",\n  \"contentAsByteArray\": [\n    \"string\",\n    \"string\"\n  ],\n  \"inputStream\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7a3b3c0-a37f-4aed-bda7-38b9c5b0924d",
+              "name": "Indicates the rendition item was not found or the content item doesn't have a binary stream available. Status message provides additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rendition-service",
+                    "rendition-items",
+                    ":renditionItemId",
+                    "data",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "renditionItemId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2ac1ddb0-6a68-40f6-8758-68d75422e33b",
+    "name": "Flowable REST Access Tokens Rendition item API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

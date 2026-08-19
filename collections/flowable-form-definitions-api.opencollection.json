@@ -1,0 +1,277 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flowable REST Access Tokens Form Definitions API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Form Definitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a form definition Form model by form definition key with only buttons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/form-repository/button-definitions/key/:formDefinitionKey/model",
+            "params": [
+              {
+                "name": "formDefinitionKey",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a form definition Form model by form definition key with only buttons"
+        },
+        {
+          "info": {
+            "name": "List of form definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/form-repository/form-definitions",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with the given category."
+              },
+              {
+                "name": "categoryLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with a category like the given value."
+              },
+              {
+                "name": "categoryNotEquals",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions not with the given category."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with the given key."
+              },
+              {
+                "name": "keyLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with a key like the given value."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with the given name."
+              },
+              {
+                "name": "nameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with a name like the given value."
+              },
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with the given resource name."
+              },
+              {
+                "name": "resourceNameLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions a resource name like the given value."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with the given version."
+              },
+              {
+                "name": "versionGreaterThan",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with a version greater than the given value."
+              },
+              {
+                "name": "versionGreaterThanOrEquals",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with a version greater than or equal to the given value."
+              },
+              {
+                "name": "versionLowerThan",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with a version lower than the given value."
+              },
+              {
+                "name": "versionLowerThanOrEquals",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with a version lower than or equal to the given value."
+              },
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with the given deployment id."
+              },
+              {
+                "name": "parentDeploymentId",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with the given parent deployment id."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with the given tenant id."
+              },
+              {
+                "name": "tenantIdLike",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions with a tenant id like the given value."
+              },
+              {
+                "name": "withoutTenantId",
+                "value": "",
+                "type": "query",
+                "description": "Only return form definitions without a tenant id."
+              },
+              {
+                "name": "latest",
+                "value": "",
+                "type": "query",
+                "description": "If true; only the latest versions will be returned."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort on, to be used together with the order."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "List of form definitions"
+        },
+        {
+          "info": {
+            "name": "Get a form definition Form model by form definition key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/form-repository/form-definitions/key/:formDefinitionKey/model",
+            "params": [
+              {
+                "name": "formDefinitionKey",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a form definition Form model by form definition key"
+        },
+        {
+          "info": {
+            "name": "Get a form definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/form-repository/form-definitions/:formDefinitionId",
+            "params": [
+              {
+                "name": "formDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a form definition"
+        },
+        {
+          "info": {
+            "name": "Get a form definition Form model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/form-repository/form-definitions/:formDefinitionId/model",
+            "params": [
+              {
+                "name": "formDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a form definition Form model"
+        },
+        {
+          "info": {
+            "name": "Get a form definition resource content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/flowable-rest/service/form-repository/form-definitions/:formDefinitionId/resourcedata",
+            "params": [
+              {
+                "name": "formDefinitionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Get a form definition resource content"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,285 @@
+{
+  "item": [
+    {
+      "id": "2590e53d-2d77-46a2-8b04-245681eb3374",
+      "name": "DMN Rule Service",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "78501022-900e-451e-856d-304bc599a732",
+          "name": "Execute a Decision",
+          "request": {
+            "name": "Execute a Decision",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dmn-rule",
+                "execute"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"decisionKey\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"parentDeploymentId\": \"<string>\",\n  \"inputVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\"\n    }\n  ],\n  \"disableHistory\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5198bb5b-f568-4534-879e-60e118a41071",
+              "name": "Indicates the Decision has been executed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmn-rule",
+                    "execute"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultVariables\": [\n    [\n      {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": \"<object>\",\n        \"valueUrl\": \"http://....\"\n      },\n      {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": \"<object>\",\n        \"valueUrl\": \"http://....\"\n      }\n    ],\n    [\n      {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": \"<object>\",\n        \"valueUrl\": \"http://....\"\n      },\n      {\n        \"name\": \"myVariable\",\n        \"type\": \"string\",\n        \"value\": \"<object>\",\n        \"valueUrl\": \"http://....\"\n      }\n    ]\n  ],\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "315b19ae-3c79-460f-9054-2d730faab4c8",
+          "name": "Execute a decision or a decision service expecting a single result",
+          "request": {
+            "name": "Execute a decision or a decision service expecting a single result",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dmn-rule",
+                "execute",
+                "single-result"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"decisionKey\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"parentDeploymentId\": \"<string>\",\n  \"inputVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\"\n    }\n  ],\n  \"disableHistory\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d88e49a-83e6-416d-8e78-dcaf292f421b",
+              "name": "Indicates the decision or decision service has been executed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmn-rule",
+                    "execute",
+                    "single-result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultVariables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\"\n    }\n  ],\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2d02e0f-5bc0-4de0-b1b8-192b6884cd39",
+              "name": "Indicates the decision or decision service returned multiple results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmn-rule",
+                    "execute",
+                    "single-result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e64c7274-24b5-48a5-b66b-e0e60e9521b3",
+    "name": "Flowable REST Access Tokens DMN Rule Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}

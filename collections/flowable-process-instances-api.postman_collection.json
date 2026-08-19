@@ -1,0 +1,3002 @@
+{
+  "item": [
+    {
+      "id": "98cb0a16-117f-4158-a87b-8cff4ca92c5c",
+      "name": "Process Instances",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8882f08b-3dc2-4f85-b521-0786e2fdf18b",
+          "name": "Query process instances",
+          "request": {
+            "name": "Query process instances",
+            "description": {
+              "content": "The request body can contain all possible filters that can be used in the List process instances URL query. On top of these, it’s possible to provide an array of variables to include in the query, with their format described here.\n\nThe general paging and sorting query-parameters can be used for this URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query",
+                "process-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processInstanceName\": \"<string>\",\n  \"processInstanceNameLike\": \"<string>\",\n  \"processInstanceNameLikeIgnoreCase\": \"<string>\",\n  \"processBusinessKey\": \"<string>\",\n  \"processBusinessKeyLike\": \"<string>\",\n  \"processBusinessKeyLikeIgnoreCase\": \"<string>\",\n  \"processBusinessStatus\": \"<string>\",\n  \"processBusinessStatusLike\": \"<string>\",\n  \"processBusinessStatusLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"processDefinitionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processDefinitionKey\": \"<string>\",\n  \"processDefinitionKeyLike\": \"<string>\",\n  \"processDefinitionKeyLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"excludeProcessDefinitionKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"processDefinitionName\": \"<string>\",\n  \"processDefinitionNameLike\": \"<string>\",\n  \"processDefinitionNameLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionCategory\": \"<string>\",\n  \"processDefinitionCategoryLike\": \"<string>\",\n  \"processDefinitionCategoryLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionVersion\": \"<integer>\",\n  \"processDefinitionEngineVersion\": \"<string>\",\n  \"rootScopeId\": \"<string>\",\n  \"parentScopeId\": \"<string>\",\n  \"deploymentId\": \"<string>\",\n  \"deploymentIdIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"superProcessInstanceId\": \"<string>\",\n  \"subProcessInstanceId\": \"<string>\",\n  \"excludeSubprocesses\": \"<boolean>\",\n  \"activeActivityId\": \"<string>\",\n  \"activeActivityIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"involvedUser\": \"<string>\",\n  \"startedBy\": \"<string>\",\n  \"startedBefore\": \"<dateTime>\",\n  \"startedAfter\": \"<dateTime>\",\n  \"suspended\": \"<boolean>\",\n  \"includeProcessVariables\": \"<boolean>\",\n  \"includeProcessVariablesNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"callbackId\": \"<string>\",\n  \"callbackIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"callbackType\": \"<string>\",\n  \"parentCaseInstanceId\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"tenantIdLikeIgnoreCase\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1cf2fd5a-18e7-449f-996c-354c62a763a3",
+              "name": "Indicates request was successful and the process-instances are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "process-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIds\": [\n    \"<string>\"\n  ],\n  \"processInstanceName\": \"<string>\",\n  \"processInstanceNameLike\": \"<string>\",\n  \"processInstanceNameLikeIgnoreCase\": \"<string>\",\n  \"processBusinessKey\": \"<string>\",\n  \"processBusinessKeyLike\": \"<string>\",\n  \"processBusinessKeyLikeIgnoreCase\": \"<string>\",\n  \"processBusinessStatus\": \"<string>\",\n  \"processBusinessStatusLike\": \"<string>\",\n  \"processBusinessStatusLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"processDefinitionIds\": [\n    \"<string>\"\n  ],\n  \"processDefinitionKey\": \"<string>\",\n  \"processDefinitionKeyLike\": \"<string>\",\n  \"processDefinitionKeyLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionKeys\": [\n    \"<string>\"\n  ],\n  \"excludeProcessDefinitionKeys\": [\n    \"<string>\"\n  ],\n  \"processDefinitionName\": \"<string>\",\n  \"processDefinitionNameLike\": \"<string>\",\n  \"processDefinitionNameLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionCategory\": \"<string>\",\n  \"processDefinitionCategoryLike\": \"<string>\",\n  \"processDefinitionCategoryLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionVersion\": \"<integer>\",\n  \"processDefinitionEngineVersion\": \"<string>\",\n  \"rootScopeId\": \"<string>\",\n  \"parentScopeId\": \"<string>\",\n  \"deploymentId\": \"<string>\",\n  \"deploymentIdIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"superProcessInstanceId\": \"<string>\",\n  \"subProcessInstanceId\": \"<string>\",\n  \"excludeSubprocesses\": \"<boolean>\",\n  \"activeActivityId\": \"<string>\",\n  \"activeActivityIds\": [\n    \"<string>\"\n  ],\n  \"involvedUser\": \"<string>\",\n  \"startedBy\": \"<string>\",\n  \"startedBefore\": \"<dateTime>\",\n  \"startedAfter\": \"<dateTime>\",\n  \"suspended\": \"<boolean>\",\n  \"includeProcessVariables\": \"<boolean>\",\n  \"includeProcessVariablesNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"callbackId\": \"<string>\",\n  \"callbackIds\": [\n    \"<string>\"\n  ],\n  \"callbackType\": \"<string>\",\n  \"parentCaseInstanceId\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"tenantIdLikeIgnoreCase\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"187\",\n      \"url\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n      \"name\": \"myProcessInstanceName\",\n      \"businessKey\": \"myBusinessKey\",\n      \"businessStatus\": \"myBusinessStatus\",\n      \"suspended\": true,\n      \"ended\": true,\n      \"processDefinitionId\": \"oneTaskProcess:1:158\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n      \"processDefinitionName\": \"A process definition name\",\n      \"processDefinitionDescription\": \"A process definition description\",\n      \"activityId\": \"processTask\",\n      \"startUserId\": \"johnDoe\",\n      \"startTime\": \"2018-04-17T10:17:43.902+0000\",\n      \"superProcessInstanceId\": \"3\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"callbackId\": \"3\",\n      \"callbackType\": \"cmmn\",\n      \"referenceId\": \"123\",\n      \"referenceType\": \"event-to-bpmn-2.0-process\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"someTenantId\",\n      \"completed\": true\n    },\n    {\n      \"id\": \"187\",\n      \"url\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n      \"name\": \"myProcessInstanceName\",\n      \"businessKey\": \"myBusinessKey\",\n      \"businessStatus\": \"myBusinessStatus\",\n      \"suspended\": false,\n      \"ended\": true,\n      \"processDefinitionId\": \"oneTaskProcess:1:158\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n      \"processDefinitionName\": \"A process definition name\",\n      \"processDefinitionDescription\": \"A process definition description\",\n      \"activityId\": \"processTask\",\n      \"startUserId\": \"johnDoe\",\n      \"startTime\": \"2018-04-17T10:17:43.902+0000\",\n      \"superProcessInstanceId\": \"3\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"callbackId\": \"3\",\n      \"callbackType\": \"cmmn\",\n      \"referenceId\": \"123\",\n      \"referenceType\": \"event-to-bpmn-2.0-process\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"someTenantId\",\n      \"completed\": true\n    }\n  ],\n  \"total\": 7037,\n  \"start\": 191,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 919\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5af63dae-0a9e-47ab-8a08-89b7c7dfadce",
+              "name": "Indicates a parameter was passed in the wrong format . The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query",
+                    "process-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"order\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"processInstanceIds\": [\n    \"<string>\"\n  ],\n  \"processInstanceName\": \"<string>\",\n  \"processInstanceNameLike\": \"<string>\",\n  \"processInstanceNameLikeIgnoreCase\": \"<string>\",\n  \"processBusinessKey\": \"<string>\",\n  \"processBusinessKeyLike\": \"<string>\",\n  \"processBusinessKeyLikeIgnoreCase\": \"<string>\",\n  \"processBusinessStatus\": \"<string>\",\n  \"processBusinessStatusLike\": \"<string>\",\n  \"processBusinessStatusLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"processDefinitionIds\": [\n    \"<string>\"\n  ],\n  \"processDefinitionKey\": \"<string>\",\n  \"processDefinitionKeyLike\": \"<string>\",\n  \"processDefinitionKeyLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionKeys\": [\n    \"<string>\"\n  ],\n  \"excludeProcessDefinitionKeys\": [\n    \"<string>\"\n  ],\n  \"processDefinitionName\": \"<string>\",\n  \"processDefinitionNameLike\": \"<string>\",\n  \"processDefinitionNameLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionCategory\": \"<string>\",\n  \"processDefinitionCategoryLike\": \"<string>\",\n  \"processDefinitionCategoryLikeIgnoreCase\": \"<string>\",\n  \"processDefinitionVersion\": \"<integer>\",\n  \"processDefinitionEngineVersion\": \"<string>\",\n  \"rootScopeId\": \"<string>\",\n  \"parentScopeId\": \"<string>\",\n  \"deploymentId\": \"<string>\",\n  \"deploymentIdIn\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"superProcessInstanceId\": \"<string>\",\n  \"subProcessInstanceId\": \"<string>\",\n  \"excludeSubprocesses\": \"<boolean>\",\n  \"activeActivityId\": \"<string>\",\n  \"activeActivityIds\": [\n    \"<string>\"\n  ],\n  \"involvedUser\": \"<string>\",\n  \"startedBy\": \"<string>\",\n  \"startedBefore\": \"<dateTime>\",\n  \"startedAfter\": \"<dateTime>\",\n  \"suspended\": \"<boolean>\",\n  \"includeProcessVariables\": \"<boolean>\",\n  \"includeProcessVariablesNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"callbackId\": \"<string>\",\n  \"callbackIds\": [\n    \"<string>\"\n  ],\n  \"callbackType\": \"<string>\",\n  \"parentCaseInstanceId\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"tenantIdLike\": \"<string>\",\n  \"tenantIdLikeIgnoreCase\": \"<string>\",\n  \"withoutTenantId\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac6bce11-2345-44ab-a57e-29652728a40f",
+          "name": "List process instances",
+          "request": {
+            "name": "List process instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "process-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given version."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given name."
+                },
+                {
+                  "disabled": false,
+                  "key": "nameLike",
+                  "value": "<string>",
+                  "description": "Only return process instances like the given name."
+                },
+                {
+                  "disabled": false,
+                  "key": "nameLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return process instances like the given name ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionName",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given process definition name."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionNameLike",
+                  "value": "<string>",
+                  "description": "Only return process instances like the given process definition name."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionNameLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return process instances like the given process definition name ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionKey",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given process definition key."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionKeyLike",
+                  "value": "<string>",
+                  "description": "Only return process instances like the given process definition key."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionKeyLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return process instances like the given process definition key ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionId",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given process definition id."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionCategory",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given process definition category."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionCategoryLike",
+                  "value": "<string>",
+                  "description": "Only return process instances like the given process definition category."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionCategoryLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return process instances like the given process definition category ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionVersion",
+                  "value": "<integer>",
+                  "description": "Only return process instances with the given process definition version."
+                },
+                {
+                  "disabled": false,
+                  "key": "processDefinitionEngineVersion",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given process definition engine version."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessKey",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given business key."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessKeyLike",
+                  "value": "<string>",
+                  "description": "Only return process instances with the business key like the given key."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessKeyLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return process instances with the business key like the given key ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessStatus",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given business status."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessStatusLike",
+                  "value": "<string>",
+                  "description": "Only return process instances with the business status like the given status."
+                },
+                {
+                  "disabled": false,
+                  "key": "businessStatusLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return process instances with the business status like the given status ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "startedBy",
+                  "value": "<string>",
+                  "description": "Only return process instances started by the given user."
+                },
+                {
+                  "disabled": false,
+                  "key": "startedBefore",
+                  "value": "<dateTime>",
+                  "description": "Only return process instances started before the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "startedAfter",
+                  "value": "<dateTime>",
+                  "description": "Only return process instances started after the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "activeActivityId",
+                  "value": "<string>",
+                  "description": "Only return process instances which have an active activity instance with the provided activity id."
+                },
+                {
+                  "disabled": false,
+                  "key": "involvedUser",
+                  "value": "<string>",
+                  "description": "Only return process instances in which the given user is involved."
+                },
+                {
+                  "disabled": false,
+                  "key": "suspended",
+                  "value": "<boolean>",
+                  "description": "If true, only return process instance which are suspended. If false, only return process instances which are not suspended (active)."
+                },
+                {
+                  "disabled": false,
+                  "key": "superProcessInstanceId",
+                  "value": "<string>",
+                  "description": "Only return process instances which have the given super process-instance id (for processes that have a call-activities)."
+                },
+                {
+                  "disabled": false,
+                  "key": "rootScopeId",
+                  "value": "<string>",
+                  "description": "Only return process instances which have the given root scope id (that can be a process or case instance ID)."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentScopeId",
+                  "value": "<string>",
+                  "description": "Only return process instances which have the given parent scope id (that can be a process or case instance ID)."
+                },
+                {
+                  "disabled": false,
+                  "key": "subProcessInstanceId",
+                  "value": "<string>",
+                  "description": "Only return process instances which have the given sub process-instance id (for processes started as a call-activity)."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeSubprocesses",
+                  "value": "<boolean>",
+                  "description": "Return only process instances which are not sub processes."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeProcessVariables",
+                  "value": "<boolean>",
+                  "description": "Indication to include process variables in the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeProcessVariablesName",
+                  "value": "<string>",
+                  "description": "Indication to include process variables with the given names in the result."
+                },
+                {
+                  "disabled": false,
+                  "key": "callbackId",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given callbackId."
+                },
+                {
+                  "disabled": false,
+                  "key": "callbackIds",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given callbackIds."
+                },
+                {
+                  "disabled": false,
+                  "key": "callbackType",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given callbackType."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentCaseInstanceId",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given parent case instance id."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantId",
+                  "value": "<string>",
+                  "description": "Only return process instances with the given tenant id."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLike",
+                  "value": "<string>",
+                  "description": "Only return process instances with a tenant id like the given value."
+                },
+                {
+                  "disabled": false,
+                  "key": "tenantIdLikeIgnoreCase",
+                  "value": "<string>",
+                  "description": "Only return process instances with a tenant id like the given value ignoring case."
+                },
+                {
+                  "disabled": false,
+                  "key": "withoutTenantId",
+                  "value": "<boolean>",
+                  "description": "If true, only returns process instances without a tenantId set. If false, the withoutTenantId parameter is ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Property to sort on, to be used together with the order."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order, either 'asc' or 'desc'. Defaults to 'asc'."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Index of the first row to fetch. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Number of rows to fetch, starting from start. Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6637c196-32a7-4034-b90a-5b187754c94d",
+              "name": "Indicates request was successful and the process-instances are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionNameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKeyLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionCategoryLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionCategoryLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionVersion",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "processDefinitionEngineVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKeyLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatusLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatusLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startedBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "activeActivityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "involvedUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "suspended",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "superProcessInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rootScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subProcessInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeSubprocesses",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeProcessVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeProcessVariablesName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentCaseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"187\",\n      \"url\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n      \"name\": \"myProcessInstanceName\",\n      \"businessKey\": \"myBusinessKey\",\n      \"businessStatus\": \"myBusinessStatus\",\n      \"suspended\": false,\n      \"ended\": true,\n      \"processDefinitionId\": \"oneTaskProcess:1:158\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n      \"processDefinitionName\": \"A process definition name\",\n      \"processDefinitionDescription\": \"A process definition description\",\n      \"activityId\": \"processTask\",\n      \"startUserId\": \"johnDoe\",\n      \"startTime\": \"2018-04-17T10:17:43.902+0000\",\n      \"superProcessInstanceId\": \"3\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"callbackId\": \"3\",\n      \"callbackType\": \"cmmn\",\n      \"referenceId\": \"123\",\n      \"referenceType\": \"event-to-bpmn-2.0-process\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"someTenantId\",\n      \"completed\": true\n    },\n    {\n      \"id\": \"187\",\n      \"url\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n      \"name\": \"myProcessInstanceName\",\n      \"businessKey\": \"myBusinessKey\",\n      \"businessStatus\": \"myBusinessStatus\",\n      \"suspended\": true,\n      \"ended\": true,\n      \"processDefinitionId\": \"oneTaskProcess:1:158\",\n      \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n      \"processDefinitionName\": \"A process definition name\",\n      \"processDefinitionDescription\": \"A process definition description\",\n      \"activityId\": \"processTask\",\n      \"startUserId\": \"johnDoe\",\n      \"startTime\": \"2018-04-17T10:17:43.902+0000\",\n      \"superProcessInstanceId\": \"3\",\n      \"variables\": [\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        },\n        {\n          \"name\": \"myVariable\",\n          \"type\": \"string\",\n          \"value\": {},\n          \"valueUrl\": \"http://....\",\n          \"scope\": \"string\"\n        }\n      ],\n      \"callbackId\": \"3\",\n      \"callbackType\": \"cmmn\",\n      \"referenceId\": \"123\",\n      \"referenceType\": \"event-to-bpmn-2.0-process\",\n      \"propagatedStageInstanceId\": \"string\",\n      \"tenantId\": \"someTenantId\",\n      \"completed\": true\n    }\n  ],\n  \"total\": 2688,\n  \"start\": 381,\n  \"sort\": \"string\",\n  \"order\": \"string\",\n  \"size\": 9374\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ec3fb39-b10c-4bd7-837b-d22b15913c13",
+              "name": "Indicates a parameter was passed in the wrong format . The status-message contains additional information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionNameLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionNameLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionKeyLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionCategoryLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionCategoryLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processDefinitionVersion",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "processDefinitionEngineVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKeyLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessKeyLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatusLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "businessStatusLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startedBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "activeActivityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "involvedUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "suspended",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "superProcessInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rootScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentScopeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subProcessInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeSubprocesses",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeProcessVariables",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeProcessVariablesName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callbackType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentCaseInstanceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLike",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tenantIdLikeIgnoreCase",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withoutTenantId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7259dec3-9750-4d89-beb2-e6803fc040fd",
+          "name": "Start a process instance",
+          "request": {
+            "name": "Start a process instance",
+            "description": {
+              "content": "Note that also a *transientVariables* property is accepted as part of this json, that follows the same structure as the *variables* property.\n\nOnly one of *processDefinitionId*, *processDefinitionKey* or *message* can be used in the request body. \n\nParameters *businessKey*, *variables* and *tenantId* are optional.\n\nIf tenantId is omitted, the default tenant will be used.\n\n It is possible to send variables, transientVariables and startFormVariables in one request.\n\nMore information about the variable format can be found in the REST variables section.\n\n Note that the variable-scope that is supplied is ignored, process-variables are always local.\n\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "process-instances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"processDefinitionId\": \"<string>\",\n  \"processDefinitionKey\": \"<string>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"businessKey\": \"<string>\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"transientVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"startFormVariables\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"<string>\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"outcome\": \"<string>\",\n  \"tenantId\": \"<string>\",\n  \"overrideDefinitionTenantId\": \"<string>\",\n  \"returnVariables\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8b6daddf-455c-4fdb-9fb7-d3b5eaf0c394",
+              "name": "Indicates the process instance was created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"processDefinitionId\": \"oneTaskProcess:1:158\",\n  \"processDefinitionKey\": \"oneTaskProcess\",\n  \"message\": \"newOrderMessage\",\n  \"name\": \"myProcessInstanceName\",\n  \"businessKey\": \"myBusinessKey\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"transientVariables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"startFormVariables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"outcome\": \"<string>\",\n  \"tenantId\": \"tenant1\",\n  \"overrideDefinitionTenantId\": \"overrideTenant1\",\n  \"returnVariables\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"187\",\n  \"url\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n  \"name\": \"myProcessInstanceName\",\n  \"businessKey\": \"myBusinessKey\",\n  \"businessStatus\": \"myBusinessStatus\",\n  \"suspended\": false,\n  \"ended\": true,\n  \"processDefinitionId\": \"oneTaskProcess:1:158\",\n  \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n  \"processDefinitionName\": \"A process definition name\",\n  \"processDefinitionDescription\": \"A process definition description\",\n  \"activityId\": \"processTask\",\n  \"startUserId\": \"johnDoe\",\n  \"startTime\": \"2018-04-17T10:17:43.902+0000\",\n  \"superProcessInstanceId\": \"3\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"callbackId\": \"3\",\n  \"callbackType\": \"cmmn\",\n  \"referenceId\": \"123\",\n  \"referenceType\": \"event-to-bpmn-2.0-process\",\n  \"propagatedStageInstanceId\": \"string\",\n  \"tenantId\": \"someTenantId\",\n  \"completed\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdca811f-b16e-4428-b6ff-47e55bb5e982",
+              "name": "Indicates either the process-definition was not found (based on id or key), no process is started by sending the given message or an invalid variable has been passed. Status description contains additional information about the error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"processDefinitionId\": \"oneTaskProcess:1:158\",\n  \"processDefinitionKey\": \"oneTaskProcess\",\n  \"message\": \"newOrderMessage\",\n  \"name\": \"myProcessInstanceName\",\n  \"businessKey\": \"myBusinessKey\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"transientVariables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"startFormVariables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"outcome\": \"<string>\",\n  \"tenantId\": \"tenant1\",\n  \"overrideDefinitionTenantId\": \"overrideTenant1\",\n  \"returnVariables\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52becc32-229b-4d77-9464-1b983a3fd348",
+          "name": "Bulk delete process instances",
+          "request": {
+            "name": "Bulk delete process instances",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "process-instances",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"instanceIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"deleteReason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dd63c1bf-66a6-45df-a181-d9b1c85c6995",
+              "name": "Indicates the bulk of process instances was found and deleted. Response body is left empty intentionally.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0359dd22-4ae0-4873-a6d6-5b98d6e71566",
+              "name": "Indicates at least one requested process instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8458b4f-01ea-418b-b88e-8c14bd1ddf34",
+          "name": "Get a process instance",
+          "request": {
+            "name": "Get a process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "process-instances",
+                ":processInstanceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "53461e3e-2e08-4606-a8b4-49340d5c4144",
+              "name": "Indicates the process instance was found and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"187\",\n  \"url\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n  \"name\": \"myProcessInstanceName\",\n  \"businessKey\": \"myBusinessKey\",\n  \"businessStatus\": \"myBusinessStatus\",\n  \"suspended\": false,\n  \"ended\": true,\n  \"processDefinitionId\": \"oneTaskProcess:1:158\",\n  \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n  \"processDefinitionName\": \"A process definition name\",\n  \"processDefinitionDescription\": \"A process definition description\",\n  \"activityId\": \"processTask\",\n  \"startUserId\": \"johnDoe\",\n  \"startTime\": \"2018-04-17T10:17:43.902+0000\",\n  \"superProcessInstanceId\": \"3\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"callbackId\": \"3\",\n  \"callbackType\": \"cmmn\",\n  \"referenceId\": \"123\",\n  \"referenceType\": \"event-to-bpmn-2.0-process\",\n  \"propagatedStageInstanceId\": \"string\",\n  \"tenantId\": \"someTenantId\",\n  \"completed\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "293e8873-24be-4187-bda1-6e107943d09c",
+              "name": "Indicates the requested process instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b6e5137-dc67-480a-8d7f-c0d6c714af10",
+          "name": "Update process instance properties or execute an action on a process instance (body needs to contain an 'action' property for the latter).",
+          "request": {
+            "name": "Update process instance properties or execute an action on a process instance (body needs to contain an 'action' property for the latter).",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "process-instances",
+                ":processInstanceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"name\": \"<string>\",\n  \"businessKey\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4c4e2436-6124-4a18-af6f-b079f0e2daea",
+              "name": "Indicates the process instance was found and the update/action was executed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"activate\",\n  \"name\": \"<string>\",\n  \"businessKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"187\",\n  \"url\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n  \"name\": \"myProcessInstanceName\",\n  \"businessKey\": \"myBusinessKey\",\n  \"businessStatus\": \"myBusinessStatus\",\n  \"suspended\": false,\n  \"ended\": true,\n  \"processDefinitionId\": \"oneTaskProcess:1:158\",\n  \"processDefinitionUrl\": \"http://localhost:8182/repository/process-definitions/processOne%3A1%3A4\",\n  \"processDefinitionName\": \"A process definition name\",\n  \"processDefinitionDescription\": \"A process definition description\",\n  \"activityId\": \"processTask\",\n  \"startUserId\": \"johnDoe\",\n  \"startTime\": \"2018-04-17T10:17:43.902+0000\",\n  \"superProcessInstanceId\": \"3\",\n  \"variables\": [\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    },\n    {\n      \"name\": \"myVariable\",\n      \"type\": \"string\",\n      \"value\": \"<object>\",\n      \"valueUrl\": \"http://....\",\n      \"scope\": \"<string>\"\n    }\n  ],\n  \"callbackId\": \"3\",\n  \"callbackType\": \"cmmn\",\n  \"referenceId\": \"123\",\n  \"referenceType\": \"event-to-bpmn-2.0-process\",\n  \"propagatedStageInstanceId\": \"string\",\n  \"tenantId\": \"someTenantId\",\n  \"completed\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2458d23f-0b1c-415f-a505-845de0db4047",
+              "name": "Indicates a invalid parameters are supplied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"activate\",\n  \"name\": \"<string>\",\n  \"businessKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1638663-5fa4-42bb-bb7f-75b983177a2c",
+              "name": "Indicates the requested process instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"activate\",\n  \"name\": \"<string>\",\n  \"businessKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "08153dc4-611d-4e53-8f1b-69745f4ee85d",
+              "name": "Indicates the requested process instance change cannot be executed since the process-instance is in a wrong status which doesn't accept the change",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"activate\",\n  \"name\": \"<string>\",\n  \"businessKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3bb5ee1f-1f96-4045-ae82-320c0f9f18bf",
+          "name": "Delete a process instance",
+          "request": {
+            "name": "Delete a process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "process-instances",
+                ":processInstanceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deleteReason",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "34486f7e-8b16-4b54-a09e-3086c130a728",
+              "name": "Indicates the process instance was found and deleted. Response body is left empty intentionally.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleteReason",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "32823b50-df9d-47f9-b6a0-87eae46368a5",
+              "name": "Indicates the requested process instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleteReason",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7731cfa-6d67-4016-8853-b509593aa608",
+          "name": "Change the state a process instance",
+          "request": {
+            "name": "Change the state a process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "process-instances",
+                ":processInstanceId",
+                "change-state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cancelActivityIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startActivityIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea0ba1cf-c213-460a-9b76-fa30da25cdfb",
+              "name": "Indicates the process instance was found and change state activity was executed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "change-state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "32cad201-fb59-4d0f-8fdb-ffbf1feb87dd",
+              "name": "Indicates the requested process instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "change-state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "33833a1e-80e6-44c8-9c74-38b2aa018685",
+              "name": "Indicates the requested process instance action cannot be executed since the process-instance is already activated/suspended.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "change-state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e1e7d07-722d-446c-a29e-83a8b107b4bf",
+          "name": "Get diagram for a process instance",
+          "request": {
+            "name": "Get diagram for a process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "process-instances",
+                ":processInstanceId",
+                "diagram"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e9bcbb53-7686-4c8a-afb3-baae78180481",
+              "name": "Indicates the process instance was found and the diagram was returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "diagram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93826042-9d07-4dcd-8c08-101a049346a7",
+              "name": "Indicates the requested process instance was not found but the process does not contain any graphical information (BPMN:DI) and no diagram can be created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "diagram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f3351c1-3981-4007-8d51-908baa56df70",
+              "name": "Indicates the requested process instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "diagram"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0b723a7-16a5-4860-a76e-56f6a361cb25",
+          "name": "Evaluate the conditions of a process instance",
+          "request": {
+            "name": "Evaluate the conditions of a process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "process-instances",
+                ":processInstanceId",
+                "evaluate-conditions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8cdeb222-3a7a-4a8f-840a-c0d5e19fffa2",
+              "name": "Indicates the process instance was found and the evaluation of the conditions was executed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "evaluate-conditions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "690b425b-45a0-4f40-ba8e-16c36bdb28bf",
+              "name": "Indicates the requested process instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "evaluate-conditions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99326d4a-e1d7-4b57-8cf8-2e075a08336e",
+              "name": "Indicates the requested process instance action cannot be executed since the process-instance is already activated/suspended.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "evaluate-conditions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "905c19ee-c54c-4a9a-9389-a37bfc5c8007",
+          "name": "Inject activity in a process instance",
+          "request": {
+            "name": "Inject activity in a process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "process-instances",
+                ":processInstanceId",
+                "inject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"injectionType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"assignee\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"joinParallelActivitiesOnComplete\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a74e6375-4bf5-4974-92e5-94a650ecead9",
+              "name": "Indicates the process instance was updated and the activity injection was executed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "inject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"injectionType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"assignee\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"joinParallelActivitiesOnComplete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "529ff1d0-0e32-46de-8c0a-07d5f8ae0f31",
+              "name": "Indicates the requested process instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "inject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"injectionType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"assignee\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"joinParallelActivitiesOnComplete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4471f07b-19b8-422d-808d-ee977f956a2e",
+              "name": "Indicates the requested process instance action cannot be executed since the process-instance is already activated/suspended.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "inject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"injectionType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"assignee\": \"<string>\",\n  \"taskId\": \"<string>\",\n  \"processDefinitionId\": \"<string>\",\n  \"joinParallelActivitiesOnComplete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4f69147-843e-4ee4-abb8-dcbacceb77d3",
+          "name": "Migrate process instance",
+          "request": {
+            "name": "Migrate process instance",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "runtime",
+                "process-instances",
+                ":processInstanceId",
+                "migrate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "processInstanceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<string>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a3c1a24-b296-4ef4-99b9-01091b5f8c59",
+              "name": "Indicates the process instance was found and migration was executed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "migrate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3391604c-8caa-4456-a689-c2ab8c2fea24",
+              "name": "Indicates the requested process instance was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "migrate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ce8a7f6-af23-48f5-a2c3-b1ba8cb10158",
+              "name": "Indicates the requested process instance action cannot be executed since the process-instance is already activated/suspended.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "runtime",
+                    "process-instances",
+                    ":processInstanceId",
+                    "migrate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "processInstanceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/flowable-rest/service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f6c751aa-f318-40be-bbd8-cde3a9210bd8",
+    "name": "Flowable REST Access Tokens Process Instances API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities.\n\nContact Support:\n Name: Flowable",
+      "type": "text/plain"
+    }
+  }
+}
