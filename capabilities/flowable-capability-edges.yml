@@ -1,0 +1,70 @@
+slug: flowable
+provider: Flowable
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Privileges
+  spec_file: flowable-privileges-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: POST /privileges/{privilegeId}/users  addUserPrivilege  Adds a privilege for a user; DELETE
+    /privileges/{privilegeId}/group/{groupId}  Deletes a privilege for a group
+  reason: Grant and revoke of privileges to users and groups is authorisation administration — Identity
+    & Access Management. Confidence held at 0.8 because it is application-scoped authorisation rather
+    than an enterprise IAM product.
+- tag: Users
+  spec_file: flowable-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: GET /identity/users listUsers; POST /identity/users createUser; DELETE /identity/users/{userId}
+    deleteUser; schemas GroupResponse, UserResponse
+  reason: Operations under /identity/users perform full lifecycle CRUD on user accounts plus group association,
+    which is identity and access administration; some risk it is treated as application master data, hence
+    0.75.
+- tag: Models
+  spec_file: flowable-models-api-openapi.yml
+  capability_id: BC-930.20
+  capability_id_l1: BC-930
+  capability_name: Process Modeling and Documentation
+  confidence: 0.72
+  evidence: GET /repository/models  listModels; PUT /repository/models/{modelId}/source  setModelSource  Set
+    the editor source for a model
+  reason: CRUD over a repository of process models plus their editor source — authoring, storage and versioned
+    maintenance of BPMN/CMMN process models, i.e. process modeling and documentation. Some chance this
+    is better read as repository tooling, hence 0.72.
+- tag: Case Definitions
+  spec_file: flowable-case-definitions-api-openapi.yml
+  capability_id: BC-930.20
+  capability_id_l1: BC-930
+  capability_name: Process Modeling and Documentation
+  confidence: 0.7
+  evidence: GET /cmmn-repository/case-definitions  listCaseDefinitions  List of case definitions
+  reason: CMMN case definitions are versioned, deployed process/case models in the repository, with decision
+    tables and form definitions attached — this is authoring/publication and version control of process
+    models.
+- tag: Groups
+  spec_file: flowable-groups-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: 'POST /identity/groups  createGroup  Create a group; POST /identity/groups/{groupId}/members  createMembership  Add
+    a member to a group; schemas: MembershipRequest, BasicPrivilegeResponse, UserResponse'
+  reason: Full CRUD over identity groups plus group membership and privilege responses under /identity
+    — this is identity and access administration (groups, members, privileges) used to authorise users
+    and assign work, matching BC-620.20 Identity & Access Management. Held at 0.7 because the scope is
+    the engine's own identity store rather than an enterprise IAM system.
