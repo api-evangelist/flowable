@@ -1,16 +1,17 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  title: Flowable Jobs API
   version: v1
-  title: Flowable REST Access Tokens Jobs API
   contact:
     name: Flowable
     url: http://www.flowable.org/
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: 'Operations tagged Jobs across 2 of this provider''s published API definitions: flowable-bpmn-openapi.yml, flowable-cmmn-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /flowable-rest/service
+- url: /flowable-rest/cmmn-api
 tags:
 - name: Jobs
 paths:
@@ -207,7 +208,7 @@ paths:
     post:
       tags:
       - Jobs
-      summary: Move a bulk of deadletter jobs. Accepts 'move' and 'moveToHistoryJob' as action.
+      summary: Move a bulk of deadletter jobs. Accepts 'move' and 'moveToHistoryJob' as action
       description: ''
       operationId: executeDeadLetterJobAction
       requestBody:
@@ -222,6 +223,8 @@ paths:
           description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/deadletter-jobs/{jobId}:
     get:
       tags:
@@ -249,7 +252,7 @@ paths:
     post:
       tags:
       - Jobs
-      summary: Move a single deadletter job. Accepts 'move' and 'moveToHistoryJob' as action.
+      summary: Move a single deadletter job. Accepts 'move' and 'moveToHistoryJob' as action
       description: ''
       operationId: executeDeadLetterJobAction
       parameters:
@@ -288,6 +291,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/deadletter-jobs/{jobId}/exception-stacktrace:
     get:
       tags:
@@ -312,6 +317,8 @@ paths:
           description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/history-jobs:
     get:
       tags:
@@ -431,6 +438,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/history-jobs/{jobId}:
     get:
       tags:
@@ -497,6 +506,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/jobs:
     get:
       tags:
@@ -681,6 +692,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/jobs/{jobId}:
     get:
       tags:
@@ -747,6 +760,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/jobs/{jobId}/exception-stacktrace:
     get:
       tags:
@@ -771,6 +786,8 @@ paths:
           description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/suspended-jobs:
     get:
       tags:
@@ -961,6 +978,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/suspended-jobs/{jobId}:
     get:
       tags:
@@ -1004,6 +1023,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/suspended-jobs/{jobId}/exception-stacktrace:
     get:
       tags:
@@ -1028,6 +1049,8 @@ paths:
           description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/timer-jobs:
     get:
       tags:
@@ -1218,6 +1241,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/timer-jobs/{jobId}:
     get:
       tags:
@@ -1287,6 +1312,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /management/timer-jobs/{jobId}/exception-stacktrace:
     get:
       tags:
@@ -1311,6 +1338,8 @@ paths:
           description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /cmmn-management/deadletter-jobs:
     get:
       tags:
@@ -1492,7 +1521,7 @@ paths:
     post:
       tags:
       - Jobs
-      summary: Move a bulk of deadletter jobs. Accepts 'move' and 'moveToHistoryJob' as action.
+      summary: Move a bulk of deadletter jobs. Accepts 'move' and 'moveToHistoryJob' as action
       description: ''
       operationId: executeDeadLetterJobAction
       requestBody:
@@ -1507,6 +1536,8 @@ paths:
           description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/deadletter-jobs/{jobId}:
     get:
       tags:
@@ -1534,7 +1565,7 @@ paths:
     post:
       tags:
       - Jobs
-      summary: Move a single deadletter job. Accepts 'move' and 'moveToHistoryJob' as action.
+      summary: Move a single deadletter job. Accepts 'move' and 'moveToHistoryJob' as action
       description: ''
       operationId: executeDeadLetterJobAction
       parameters:
@@ -1573,6 +1604,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/deadletter-jobs/{jobId}/exception-stacktrace:
     get:
       tags:
@@ -1597,6 +1630,8 @@ paths:
           description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/history-jobs:
     get:
       tags:
@@ -1704,6 +1739,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/history-jobs/{jobId}:
     get:
       tags:
@@ -1770,6 +1807,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/jobs:
     get:
       tags:
@@ -1948,6 +1987,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/jobs/{jobId}:
     get:
       tags:
@@ -2014,6 +2055,8 @@ paths:
           description: Indicates the requested job was not found..
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/jobs/{jobId}/exception-stacktrace:
     get:
       tags:
@@ -2038,6 +2081,8 @@ paths:
           description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/suspended-jobs:
     get:
       tags:
@@ -2216,6 +2261,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/suspended-jobs/{jobId}:
     get:
       tags:
@@ -2259,6 +2306,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/suspended-jobs/{jobId}/exception-stacktrace:
     get:
       tags:
@@ -2283,6 +2332,8 @@ paths:
           description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/timer-jobs:
     get:
       tags:
@@ -2461,6 +2512,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/timer-jobs/{jobId}:
     get:
       tags:
@@ -2530,6 +2583,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-management/timer-jobs/{jobId}/exception-stacktrace:
     get:
       tags:
@@ -2554,111 +2609,62 @@ paths:
           description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
 components:
   schemas:
-    JobResponse_2:
+    RestActionRequest:
       type: object
       properties:
-        id:
+        action:
           type: string
-          example: '8'
-        url:
+    TimerJobActionRequest:
+      type: object
+      properties:
+        action:
           type: string
-          example: http://localhost:8182/management/jobs/8
-        caseInstanceId:
-          type: string
-          example: '5'
-        caseInstanceUrl:
-          type: string
-          example: http://localhost:8182/cmmn-runtime/case-instances/5
-        caseDefinitionId:
-          type: string
-          example: timerCase:1:4
-        caseDefinitionUrl:
-          type: string
-          example: http://localhost:8182/cmmn-repository/case-definitions/timerCase%3A1%3A4
-        planItemInstanceId:
-          type: string
-          example: '7'
-        elementId:
-          type: string
-          example: scriptTask1
-        elementName:
-          type: string
-          example: Script task
-        handlerType:
-          type: string
-          example: cmmn-trigger-timer
-        retries:
-          type: integer
-          format: int32
-          example: 3
-        exceptionMessage:
-          type: string
-          example: 'null'
         dueDate:
           type: string
-          format: date-time
-          example: 2023-06-04T22:05:05.474+0000
-        createTime:
-          type: string
-          format: date-time
-          example: 2023-06-03T22:05:05.474+0000
-        lockOwner:
-          type: string
-          example: node1
-        lockExpirationTime:
-          type: string
-          format: date-time
-          example: 2023-06-03T22:05:05.474+0000
-        tenantId:
-          type: string
-          example: 'null'
-    HistoryJobResponse_2:
+    DataResponseJobResponse:
       type: object
       properties:
-        id:
-          type: string
-          example: '8'
-        url:
-          type: string
-          example: http://localhost:8182/management/jobs/8
-        scopeType:
-          type: string
-          example: cmmn
-        retries:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobResponse'
+        total:
+          type: integer
+          format: int64
+        start:
           type: integer
           format: int32
-          example: 3
-        exceptionMessage:
+        sort:
           type: string
-          example: 'null'
-        jobHandlerType:
+        order:
           type: string
-          example: async-history
-        jobHandlerConfiguration:
+        size:
+          type: integer
+          format: int32
+    DataResponseHistoryJobResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoryJobResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
           type: string
-          example: myCfg
-        advancedJobHandlerConfiguration:
+        order:
           type: string
-          example: myAdvancedCfg
-        tenantId:
-          type: string
-          example: 'null'
-        customValues:
-          type: string
-          example: custom value
-        createTime:
-          type: string
-          format: date-time
-          example: 2023-06-03T22:05:05.474+0000
-        lockOwner:
-          type: string
-          example: node1
-        lockExpirationTime:
-          type: string
-          format: date-time
-          example: 2023-06-03T22:05:05.474+0000
+        size:
+          type: integer
+          format: int32
     HistoryJobResponse:
       type: object
       properties:
@@ -2704,11 +2710,6 @@ components:
           type: string
           format: date-time
           example: 2023-06-03T22:05:05.474+0000
-    RestActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
     JobResponse:
       type: object
       properties:
@@ -2773,53 +2774,6 @@ components:
         tenantId:
           type: string
           example: 'null'
-    DataResponseHistoryJobResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoryJobResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    DataResponseJobResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    TimerJobActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        dueDate:
-          type: string
     BulkMoveDeadLetterActionRequest:
       type: object
       properties:
@@ -2829,6 +2783,109 @@ components:
           type: array
           items:
             type: string
+    HistoryJobResponse_2:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/management/jobs/8
+        scopeType:
+          type: string
+          example: cmmn
+        retries:
+          type: integer
+          format: int32
+          example: 3
+        exceptionMessage:
+          type: string
+          example: 'null'
+        jobHandlerType:
+          type: string
+          example: async-history
+        jobHandlerConfiguration:
+          type: string
+          example: myCfg
+        advancedJobHandlerConfiguration:
+          type: string
+          example: myAdvancedCfg
+        tenantId:
+          type: string
+          example: 'null'
+        customValues:
+          type: string
+          example: custom value
+        createTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+        lockOwner:
+          type: string
+          example: node1
+        lockExpirationTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+    JobResponse_2:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/management/jobs/8
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-runtime/case-instances/5
+        caseDefinitionId:
+          type: string
+          example: timerCase:1:4
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/timerCase%3A1%3A4
+        planItemInstanceId:
+          type: string
+          example: '7'
+        elementId:
+          type: string
+          example: scriptTask1
+        elementName:
+          type: string
+          example: Script task
+        handlerType:
+          type: string
+          example: cmmn-trigger-timer
+        retries:
+          type: integer
+          format: int32
+          example: 3
+        exceptionMessage:
+          type: string
+          example: 'null'
+        dueDate:
+          type: string
+          format: date-time
+          example: 2023-06-04T22:05:05.474+0000
+        createTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+        lockOwner:
+          type: string
+          example: node1
+        lockExpirationTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+        tenantId:
+          type: string
+          example: 'null'
   requestBodies:
     RestActionRequest:
       content:
@@ -2839,3 +2896,6 @@ components:
     basicAuth:
       type: http
       scheme: basic
+x-refined-from:
+- flowable-bpmn-openapi.yml
+- flowable-cmmn-openapi.yml

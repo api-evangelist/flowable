@@ -1,8 +1,11 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  description: '# flowable / flowəb(ə)l /
+
+
+    - a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.'
   version: v1
-  title: Flowable REST Access Tokens Acquire and Execute API
+  title: Flowable External Worker Job REST Acquire and Execute API
   contact:
     name: Flowable
     url: http://www.flowable.org/
@@ -10,7 +13,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-- url: /flowable-rest/service
+- url: /flowable-rest/external-job-api
 tags:
 - name: Acquire and Execute
 paths:
@@ -165,20 +168,6 @@ paths:
           description: Indicates the job does not exist.
 components:
   schemas:
-    ExternalWorkerJobTerminateRequest:
-      type: object
-      required:
-      - workerId
-      properties:
-        workerId:
-          type: string
-          description: The id of the external worker that executes the action. Must match the id of the worker who has most recently locked the job.
-        variables:
-          type: array
-          description: The variables that should be passed to the job scope
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-      description: Request that is used for terminating external worker jobs
     ExternalWorkerJobCompleteRequest:
       type: object
       required:
@@ -193,40 +182,62 @@ components:
           items:
             $ref: '#/components/schemas/EngineRestVariable'
       description: Request that is used for completing external worker jobs
-    AcquireExternalWorkerJobRequest:
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+    ExternalWorkerJobTerminateRequest:
       type: object
       required:
-      - lockDuration
-      - topic
       - workerId
       properties:
-        topic:
-          type: string
-          example: order
-          description: Acquire jobs with the given topic
-        lockDuration:
-          type: string
-          example: PT10M
-          description: The acquired jobs will be locked with this lock duration. ISO-8601 duration format PnDTnHnMn.nS with days considered to be exactly 24 hours.
-        numberOfTasks:
-          type: integer
-          format: int32
-          example: 1
-          description: The number of tasks that should be acquired. Default is 1.
-        numberOfRetries:
-          type: integer
-          format: int32
-          example: 10
-          description: The number of retries if an optimistic lock exception occurs during acquiring. Default is 5
         workerId:
           type: string
-          example: orderWorker1
-          description: The id of the external worker that would be used for locking the job
-        scopeType:
+          description: The id of the external worker that executes the action. Must match the id of the worker who has most recently locked the job.
+        variables:
+          type: array
+          description: The variables that should be passed to the job scope
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+      description: Request that is used for terminating external worker jobs
+    ExternalWorkerJobFailureRequest:
+      type: object
+      required:
+      - workerId
+      properties:
+        workerId:
           type: string
-          example: cmmn
-          description: Only acquire jobs with the given scope type
-      description: Request that is used for acquiring external worker jobs
+          description: The id of the external worker that reports the failure. Must match the id of the worker who has most recently locked the job.
+        errorMessage:
+          type: string
+          example: Database not available
+          description: Error message for the failure
+        errorDetails:
+          type: string
+          description: Details for the failure
+        retries:
+          type: integer
+          format: int32
+          description: The new number of retries. If not set it will be reduced by 1. If 0 the job will be moved ot the dead letter table and would no longer be available for acquiring.
+        retryTimeout:
+          type: string
+          example: PT20M
+          description: The timeout after which the job should be made available again. ISO-8601 duration format PnDTnHnMn.nS with days considered to be exactly 24 hours.
+      description: Request that is used for failing external worker jobs
     AcquiredExternalWorkerJobResponse:
       type: object
       required:
@@ -318,6 +329,40 @@ components:
           description: The variables from the scope of the job
           items:
             $ref: '#/components/schemas/EngineRestVariable'
+    AcquireExternalWorkerJobRequest:
+      type: object
+      required:
+      - lockDuration
+      - topic
+      - workerId
+      properties:
+        topic:
+          type: string
+          example: order
+          description: Acquire jobs with the given topic
+        lockDuration:
+          type: string
+          example: PT10M
+          description: The acquired jobs will be locked with this lock duration. ISO-8601 duration format PnDTnHnMn.nS with days considered to be exactly 24 hours.
+        numberOfTasks:
+          type: integer
+          format: int32
+          example: 1
+          description: The number of tasks that should be acquired. Default is 1.
+        numberOfRetries:
+          type: integer
+          format: int32
+          example: 10
+          description: The number of retries if an optimistic lock exception occurs during acquiring. Default is 5
+        workerId:
+          type: string
+          example: orderWorker1
+          description: The id of the external worker that would be used for locking the job
+        scopeType:
+          type: string
+          example: cmmn
+          description: Only acquire jobs with the given scope type
+      description: Request that is used for acquiring external worker jobs
     ExternalWorkerJobErrorRequest:
       type: object
       required:
@@ -335,48 +380,6 @@ components:
           type: string
           description: The BPMN error code
       description: Request that is used for completing external worker jobs with a bpmn error
-    EngineRestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-    ExternalWorkerJobFailureRequest:
-      type: object
-      required:
-      - workerId
-      properties:
-        workerId:
-          type: string
-          description: The id of the external worker that reports the failure. Must match the id of the worker who has most recently locked the job.
-        errorMessage:
-          type: string
-          example: Database not available
-          description: Error message for the failure
-        errorDetails:
-          type: string
-          description: Details for the failure
-        retries:
-          type: integer
-          format: int32
-          description: The new number of retries. If not set it will be reduced by 1. If 0 the job will be moved ot the dead letter table and would no longer be available for acquiring.
-        retryTimeout:
-          type: string
-          example: PT20M
-          description: The timeout after which the job should be made available again. ISO-8601 duration format PnDTnHnMn.nS with days considered to be exactly 24 hours.
-      description: Request that is used for failing external worker jobs
   securitySchemes:
     basicAuth:
       type: http

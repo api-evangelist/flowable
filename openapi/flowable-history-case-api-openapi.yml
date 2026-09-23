@@ -1,8 +1,11 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  description: '# flowable / flowəb(ə)l /
+
+
+    - a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.'
   version: v1
-  title: Flowable REST Access Tokens History Case API
+  title: Flowable CMMN REST History Case API
   contact:
     name: Flowable
     url: http://www.flowable.org/
@@ -10,7 +13,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-- url: /flowable-rest/service
+- url: /flowable-rest/cmmn-api
 tags:
 - name: History Case
 paths:
@@ -360,7 +363,7 @@ paths:
     delete:
       tags:
       - History Case
-      summary: ' Delete a historic case instance'
+      summary: Delete a historic case instance
       description: ''
       operationId: deleteHistoricCaseInstance
       parameters:
@@ -479,44 +482,95 @@ paths:
       x-s2o-warning: Operation queryHistoricCaseInstance has multiple requestBodies
 components:
   schemas:
-    StageResponse:
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    HistoricCaseInstanceResponse:
       type: object
       properties:
         id:
           type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
         name:
           type: string
-        ended:
-          type: boolean
+          example: myName
+        businessKey:
+          type: string
+          example: myKey
+        businessStatus:
+          type: string
+          example: myStatus
+        caseDefinitionId:
+          type: string
+          example: oneTaskCase%3A1%3A4
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/oneTaskCaseProcess%3A1%3A4
+        caseDefinitionName:
+          type: string
+          example: aCaseDefinitionName
+        caseDefinitionDescription:
+          type: string
+          example: A case definition description
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
         endTime:
           type: string
           format: date-time
-        current:
-          type: boolean
-    HistoricIdentityLinkResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          example: participant
-        userId:
+          example: 2013-04-18T14:06:32.715+0000
+        startUserId:
           type: string
           example: kermit
-        groupId:
+        endUserId:
           type: string
-          example: sales
-        taskId:
+          example: kermit
+        superProcessInstanceId:
+          type: string
+          example: '3'
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
           type: string
           example: 'null'
-        taskUrl:
+        state:
           type: string
-          example: 'null'
-        caseInstanceId:
+          example: active
+        callbackId:
           type: string
-          example: '5'
-        caseInstanceUrl:
+          example: '123'
+        callbackType:
           type: string
-          example: http://localhost:8182/cmmn-history/historic-case-instances/5
+          example: cmmn-1.1-to-cmmn-1.1-child-case
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-cmmn-1.1-case
     HistoricCaseInstanceQueryRequest:
       type: object
       properties:
@@ -667,26 +721,6 @@ components:
           type: boolean
         withoutCaseInstanceCallbackId:
           type: boolean
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
     DataResponseHistoricCaseInstanceResponse:
       type: object
       properties:
@@ -707,75 +741,44 @@ components:
         size:
           type: integer
           format: int32
-    HistoricCaseInstanceResponse:
+    HistoricIdentityLinkResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: participant
+        userId:
+          type: string
+          example: kermit
+        groupId:
+          type: string
+          example: sales
+        taskId:
+          type: string
+          example: 'null'
+        taskUrl:
+          type: string
+          example: 'null'
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
+    StageResponse:
       type: object
       properties:
         id:
           type: string
-          example: '5'
-        url:
-          type: string
-          example: http://localhost:8182/cmmn-history/historic-case-instances/5
         name:
           type: string
-          example: myName
-        businessKey:
-          type: string
-          example: myKey
-        businessStatus:
-          type: string
-          example: myStatus
-        caseDefinitionId:
-          type: string
-          example: oneTaskCase%3A1%3A4
-        caseDefinitionUrl:
-          type: string
-          example: http://localhost:8182/cmmn-repository/case-definitions/oneTaskCaseProcess%3A1%3A4
-        caseDefinitionName:
-          type: string
-          example: aCaseDefinitionName
-        caseDefinitionDescription:
-          type: string
-          example: A case definition description
-        startTime:
-          type: string
-          format: date-time
-          example: 2013-04-17T10:17:43.902+0000
+        ended:
+          type: boolean
         endTime:
           type: string
           format: date-time
-          example: 2013-04-18T14:06:32.715+0000
-        startUserId:
-          type: string
-          example: kermit
-        endUserId:
-          type: string
-          example: kermit
-        superProcessInstanceId:
-          type: string
-          example: '3'
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        tenantId:
-          type: string
-          example: 'null'
-        state:
-          type: string
-          example: active
-        callbackId:
-          type: string
-          example: '123'
-        callbackType:
-          type: string
-          example: cmmn-1.1-to-cmmn-1.1-child-case
-        referenceId:
-          type: string
-          example: '123'
-        referenceType:
-          type: string
-          example: event-to-cmmn-1.1-case
+        current:
+          type: boolean
     QueryVariable:
       type: object
       properties:

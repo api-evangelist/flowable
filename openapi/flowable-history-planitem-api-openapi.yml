@@ -1,8 +1,11 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  description: '# flowable / flowəb(ə)l /
+
+
+    - a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.'
   version: v1
-  title: Flowable REST Access Tokens History PlanItem API
+  title: Flowable CMMN REST History PlanItem API
   contact:
     name: Flowable
     url: http://www.flowable.org/
@@ -10,7 +13,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-- url: /flowable-rest/service
+- url: /flowable-rest/cmmn-api
 tags:
 - name: History PlanItem
 paths:
@@ -312,26 +315,6 @@ paths:
       x-s2o-warning: Operation queryHistoricPlanItemInstance has multiple requestBodies
 components:
   schemas:
-    DataResponseHistoricPlanItemInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricPlanItemInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     RestVariable:
       type: object
       properties:
@@ -352,6 +335,120 @@ components:
           example: http://....
         scope:
           type: string
+    HistoricPlanItemInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        planItemInstanceId:
+          type: string
+        planItemInstanceName:
+          type: string
+        planItemInstanceState:
+          type: string
+        caseDefinitionId:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        stageInstanceId:
+          type: string
+        elementId:
+          type: string
+        planItemDefinitionId:
+          type: string
+        planItemDefinitionType:
+          type: string
+        createdBefore:
+          type: string
+          format: date-time
+        createdAfter:
+          type: string
+          format: date-time
+        lastAvailableBefore:
+          type: string
+          format: date-time
+        lastAvailableAfter:
+          type: string
+          format: date-time
+        lastEnabledBefore:
+          type: string
+          format: date-time
+        lastEnabledAfter:
+          type: string
+          format: date-time
+        lastDisabledBefore:
+          type: string
+          format: date-time
+        lastDisabledAfter:
+          type: string
+          format: date-time
+        lastStartedBefore:
+          type: string
+          format: date-time
+        lastStartedAfter:
+          type: string
+          format: date-time
+        lastSuspendedBefore:
+          type: string
+          format: date-time
+        lastSuspendedAfter:
+          type: string
+          format: date-time
+        completedBefore:
+          type: string
+          format: date-time
+        completedAfter:
+          type: string
+          format: date-time
+        terminatedBefore:
+          type: string
+          format: date-time
+        terminatedAfter:
+          type: string
+          format: date-time
+        occurredBefore:
+          type: string
+          format: date-time
+        occurredAfter:
+          type: string
+          format: date-time
+        exitBefore:
+          type: string
+          format: date-time
+        exitAfter:
+          type: string
+          format: date-time
+        endedBefore:
+          type: string
+          format: date-time
+        endedAfter:
+          type: string
+          format: date-time
+        startUserId:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        tenantId:
+          type: string
+        withoutTenantId:
+          type: boolean
+        includeLocalVariables:
+          type: boolean
     HistoricPlanItemInstanceResponse:
       type: object
       properties:
@@ -477,120 +574,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RestVariable'
-    HistoricPlanItemInstanceQueryRequest:
+    DataResponseHistoricPlanItemInstanceResponse:
       type: object
       properties:
-        start:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricPlanItemInstanceResponse'
+        total:
           type: integer
-          format: int32
-        size:
+          format: int64
+        start:
           type: integer
           format: int32
         sort:
           type: string
         order:
           type: string
-        planItemInstanceId:
-          type: string
-        planItemInstanceName:
-          type: string
-        planItemInstanceState:
-          type: string
-        caseDefinitionId:
-          type: string
-        caseInstanceId:
-          type: string
-        caseInstanceIds:
-          type: array
-          uniqueItems: true
-          items:
-            type: string
-        stageInstanceId:
-          type: string
-        elementId:
-          type: string
-        planItemDefinitionId:
-          type: string
-        planItemDefinitionType:
-          type: string
-        createdBefore:
-          type: string
-          format: date-time
-        createdAfter:
-          type: string
-          format: date-time
-        lastAvailableBefore:
-          type: string
-          format: date-time
-        lastAvailableAfter:
-          type: string
-          format: date-time
-        lastEnabledBefore:
-          type: string
-          format: date-time
-        lastEnabledAfter:
-          type: string
-          format: date-time
-        lastDisabledBefore:
-          type: string
-          format: date-time
-        lastDisabledAfter:
-          type: string
-          format: date-time
-        lastStartedBefore:
-          type: string
-          format: date-time
-        lastStartedAfter:
-          type: string
-          format: date-time
-        lastSuspendedBefore:
-          type: string
-          format: date-time
-        lastSuspendedAfter:
-          type: string
-          format: date-time
-        completedBefore:
-          type: string
-          format: date-time
-        completedAfter:
-          type: string
-          format: date-time
-        terminatedBefore:
-          type: string
-          format: date-time
-        terminatedAfter:
-          type: string
-          format: date-time
-        occurredBefore:
-          type: string
-          format: date-time
-        occurredAfter:
-          type: string
-          format: date-time
-        exitBefore:
-          type: string
-          format: date-time
-        exitAfter:
-          type: string
-          format: date-time
-        endedBefore:
-          type: string
-          format: date-time
-        endedAfter:
-          type: string
-          format: date-time
-        startUserId:
-          type: string
-        referenceId:
-          type: string
-        referenceType:
-          type: string
-        tenantId:
-          type: string
-        withoutTenantId:
-          type: boolean
-        includeLocalVariables:
-          type: boolean
+        size:
+          type: integer
+          format: int32
   securitySchemes:
     basicAuth:
       type: http

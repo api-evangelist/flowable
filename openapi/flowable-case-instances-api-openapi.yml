@@ -1,8 +1,11 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  description: '# flowable / flowəb(ə)l /
+
+
+    - a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.'
   version: v1
-  title: Flowable REST Access Tokens Case Instances API
+  title: Flowable CMMN REST Case Instances API
   contact:
     name: Flowable
     url: http://www.flowable.org/
@@ -10,7 +13,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-- url: /flowable-rest/service
+- url: /flowable-rest/cmmn-api
 tags:
 - name: Case Instances
 paths:
@@ -344,7 +347,25 @@ paths:
       tags:
       - Case Instances
       summary: Start a case instance
-      description: "Note that also a *transientVariables* property is accepted as part of this json, that follows the same structure as the *variables* property.\n\nOnly one of *caseDefinitionId* or *caseDefinitionKey* an be used in the request body.\n\nParameters *businessKey*, *variables* and *tenantId* are optional.\n\nIf tenantId is omitted, the default tenant will be used.\n\n It is possible to send variables, transientVariables and startFormVariables in one request.\n\nMore information about the variable format can be found in the REST variables section.\n\n Note that the variable-scope that is supplied is ignored, case-variables are always local.\n\n"
+      description: 'Note that also a *transientVariables* property is accepted as part of this json, that follows the same structure as the *variables* property.
+
+
+        Only one of *caseDefinitionId* or *caseDefinitionKey* an be used in the request body.
+
+
+        Parameters *businessKey*, *variables* and *tenantId* are optional.
+
+
+        If tenantId is omitted, the default tenant will be used.
+
+
+        It is possible to send variables, transientVariables and startFormVariables in one request.
+
+
+        More information about the variable format can be found in the REST variables section.
+
+
+        Note that the variable-scope that is supplied is ignored, case-variables are always local.'
       operationId: createCaseInstance
       requestBody:
         content:
@@ -405,7 +426,7 @@ paths:
     put:
       tags:
       - Case Instances
-      summary: Update case instance properties or execute an action on a case instance (body needs to contain an 'action' property for the latter).
+      summary: Update case instance properties or execute an action on a case instance (body…
       description: ''
       operationId: updateCaseInstance
       parameters:
@@ -573,8 +594,172 @@ paths:
                   $ref: '#/components/schemas/StageResponse'
       security:
       - basicAuth: []
+      summary: Get stage overview
+      x-summary-source: derived
 components:
   schemas:
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    DataResponseCaseInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CaseInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    CaseInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '187'
+        name:
+          type: string
+          example: processName
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4
+        businessKey:
+          type: string
+          example: myBusinessKey
+        businessStatus:
+          type: string
+          example: myBusinessStatus
+        startTime:
+          type: string
+          format: date-time
+          example: 2019-04-17T10:17:43.902+0000
+        startUserId:
+          type: string
+          example: aUserId
+        state:
+          type: string
+          example: active
+        ended:
+          type: boolean
+        caseDefinitionId:
+          type: string
+          example: oneTaskCase:1:158
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4
+        caseDefinitionName:
+          type: string
+          example: aCaseDefinitionName
+        caseDefinitionDescription:
+          type: string
+          example: A case definition description
+        parentId:
+          type: string
+          example: '123'
+        callbackId:
+          type: string
+          example: '123'
+        callbackType:
+          type: string
+          example: cmmn-1.1-to-cmmn-1.1-child-case
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-cmmn-1.1-case
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
+          type: string
+          example: 'null'
+        completed:
+          type: boolean
+    PlanItemDefinitionWithTargetIdsRequest:
+      type: object
+      properties:
+        existingPlanItemDefinitionId:
+          type: string
+        newPlanItemId:
+          type: string
+        newPlanItemDefinitionId:
+          type: string
+    BulkDeleteInstancesRestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        instanceIds:
+          type: array
+          items:
+            type: string
+    CaseInstanceCreateRequest:
+      type: object
+      properties:
+        caseDefinitionId:
+          type: string
+          example: oneTaskCase:1:158
+        caseDefinitionKey:
+          type: string
+          example: oneTaskCase
+        name:
+          type: string
+          example: My case name
+        businessKey:
+          type: string
+          example: myBusinessKey
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        transientVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        startFormVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        outcome:
+          type: string
+        tenantId:
+          type: string
+          example: tenant1
+        overrideDefinitionTenantId:
+          type: string
+          example: overrideTenant1
+        returnVariables:
+          type: boolean
+      description: Only one of caseDefinitionId or caseDefinitionKey can be used in the request body
     StageResponse:
       type: object
       properties:
@@ -632,52 +817,27 @@ components:
           description: map an existing plan item id to a new plan item id and plan item definition id, this should not be necessary in general, but could be needed when plan item ids change between case definition versions.
           items:
             $ref: '#/components/schemas/PlanItemDefinitionWithTargetIdsRequest'
-    BulkDeleteInstancesRestActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        instanceIds:
-          type: array
-          items:
-            type: string
-    CaseInstanceUpdateRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        name:
-          type: string
-        businessKey:
-          type: string
-    PlanItemDefinitionWithTargetIdsRequest:
-      type: object
-      properties:
-        existingPlanItemDefinitionId:
-          type: string
-        newPlanItemId:
-          type: string
-        newPlanItemDefinitionId:
-          type: string
-    RestVariable:
+    QueryVariable:
       type: object
       properties:
         name:
           type: string
-          example: myVariable
-          description: Name of the variable
-        type:
+        operation:
           type: string
-          example: string
-          description: Type of the variable.
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
         value:
           type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
+        type:
           type: string
     CaseInstanceQueryRequest:
       type: object
@@ -815,163 +975,26 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    DataResponseCaseInstanceResponse:
+    CaseInstanceUpdateRequest:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CaseInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
+        action:
           type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    CaseInstanceCreateRequest:
-      type: object
-      properties:
-        caseDefinitionId:
-          type: string
-          example: oneTaskCase:1:158
-        caseDefinitionKey:
-          type: string
-          example: oneTaskCase
         name:
           type: string
-          example: My case name
         businessKey:
-          type: string
-          example: myBusinessKey
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        transientVariables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        startFormVariables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        outcome:
-          type: string
-        tenantId:
-          type: string
-          example: tenant1
-        overrideDefinitionTenantId:
-          type: string
-          example: overrideTenant1
-        returnVariables:
-          type: boolean
-      description: Only one of caseDefinitionId or caseDefinitionKey can be used in the request body
-    CaseInstanceResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '187'
-        name:
-          type: string
-          example: processName
-        url:
-          type: string
-          example: http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4
-        businessKey:
-          type: string
-          example: myBusinessKey
-        businessStatus:
-          type: string
-          example: myBusinessStatus
-        startTime:
-          type: string
-          format: date-time
-          example: 2019-04-17T10:17:43.902+0000
-        startUserId:
-          type: string
-          example: aUserId
-        state:
-          type: string
-          example: active
-        ended:
-          type: boolean
-        caseDefinitionId:
-          type: string
-          example: oneTaskCase:1:158
-        caseDefinitionUrl:
-          type: string
-          example: http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4
-        caseDefinitionName:
-          type: string
-          example: aCaseDefinitionName
-        caseDefinitionDescription:
-          type: string
-          example: A case definition description
-        parentId:
-          type: string
-          example: '123'
-        callbackId:
-          type: string
-          example: '123'
-        callbackType:
-          type: string
-          example: cmmn-1.1-to-cmmn-1.1-child-case
-        referenceId:
-          type: string
-          example: '123'
-        referenceType:
-          type: string
-          example: event-to-cmmn-1.1-case
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        tenantId:
-          type: string
-          example: 'null'
-        completed:
-          type: boolean
-    QueryVariable:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
           type: string
   requestBodies:
-    migrateHistoricCaseInstanceBody:
-      content:
-        application/json:
-          schema:
-            type: string
     BulkDeleteInstancesRestActionRequest:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/BulkDeleteInstancesRestActionRequest'
+    migrateHistoricCaseInstanceBody:
+      content:
+        application/json:
+          schema:
+            type: string
   securitySchemes:
     basicAuth:
       type: http

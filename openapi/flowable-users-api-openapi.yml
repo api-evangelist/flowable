@@ -1,16 +1,12 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  title: Flowable Users API
   version: v1
-  title: Flowable REST Access Tokens Users API
-  contact:
-    name: Flowable
-    url: http://www.flowable.org/
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: 'Operations tagged Users across 2 of this provider''s published API definitions: flowable-bpmn-openapi.yml, flowable-idm-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /flowable-rest/service
+- url: http://localhost:8090/idm-api
+- url: https://localhost:8090/idm-api
 tags:
 - name: Users
 paths:
@@ -152,6 +148,8 @@ paths:
           description: Indicates the id of the user was missing.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /identity/users/{userId}:
     get:
       tags:
@@ -222,6 +220,8 @@ paths:
           description: Indicates the requested user was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /identity/users/{userId}/info:
     get:
       tags:
@@ -277,6 +277,8 @@ paths:
           description: Indicates there is already an info-entry with the given key for the user, update the resource instance (PUT).
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /identity/users/{userId}/info/{key}:
     get:
       tags:
@@ -362,6 +364,8 @@ paths:
           description: Indicates the requested user was not found or the user does not have info for the given key. Status description contains additional information about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /identity/users/{userId}/picture:
     get:
       tags:
@@ -424,6 +428,8 @@ paths:
           description: Indicates the requested user was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /query/users:
     post:
       tags:
@@ -450,6 +456,9 @@ paths:
           description: Indicates the user does not have the rights to view the users.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /search/query-users:
     get:
       tags:
@@ -559,6 +568,9 @@ paths:
           description: Indicates the user does not have the rights to view the users.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users:
     get:
       tags:
@@ -664,6 +676,9 @@ paths:
           description: Indicates the id of the user was missing.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users/{userId}:
     get:
       tags:
@@ -747,6 +762,9 @@ paths:
           description: Indicates the requested user was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users/{userId}/avatar/data:
     get:
       tags:
@@ -796,6 +814,9 @@ paths:
           description: Indicates the requested avatar does not exist.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users/{userId}/avatar/thumbnail:
     get:
       tags:
@@ -826,6 +847,9 @@ paths:
           description: Indicates the requested avatar does not exist.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users/{userId}/change-language:
     put:
       tags:
@@ -853,6 +877,9 @@ paths:
           description: Indicates the requested user was updated simultaneously.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users/{userId}/change-password:
     put:
       tags:
@@ -880,6 +907,9 @@ paths:
           description: Indicates the requested user was updated simultaneously.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users/{userId}/change-theme:
     put:
       tags:
@@ -907,6 +937,9 @@ paths:
           description: Indicates the requested user was updated simultaneously.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users/{userId}/identity-info/{identityInfoName}:
     delete:
       tags:
@@ -938,6 +971,9 @@ paths:
           description: Indicates the requested identity info was not found.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users/{userId}/index-document:
     get:
       tags:
@@ -962,6 +998,9 @@ paths:
           description: Indicates that the user was not found in the ElasticSearch index.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users/{userId}/name:
     get:
       tags:
@@ -986,6 +1025,9 @@ paths:
           description: Indicates the requested user does not exist.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users/{userId}/presence:
     put:
       tags:
@@ -1011,6 +1053,9 @@ paths:
           description: Indicates the user does not have rights to perform the update.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users/{userId}/update-state:
     put:
       tags:
@@ -1042,6 +1087,9 @@ paths:
           description: Indicates the requested user was updated simultaneously.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
   /users/{userId}/update-user-definition:
     put:
       tags:
@@ -1073,8 +1121,98 @@ paths:
           description: Indicates the requested user was updated simultaneously.
       security:
       - basicAuth: []
+    servers:
+    - url: http://localhost:8090/idm-api
+    - url: https://localhost:8090/idm-api
 components:
+  requestBodies:
+    UserRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserRequest'
+    UserInfoRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserInfoRequest'
+    UpdateUserPresenceRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateUserPresenceRequest'
+      required: true
   schemas:
+    UserInfoRequest:
+      type: object
+      properties:
+        key:
+          type: string
+          example: jobTitle
+        value:
+          type: string
+          example: Muppet
+    UserInfoResponse:
+      type: object
+      properties:
+        key:
+          type: string
+          example: jobTitle
+        value:
+          type: string
+          example: Muppet
+        url:
+          type: string
+          example: http://localhost:8080/flowable-rest/service/identity/users/kermit/info/jobTitle
+    DataResponseUserResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testuser
+        firstName:
+          type: string
+          example: Fred
+        lastName:
+          type: string
+          example: Smith
+        displayName:
+          type: string
+          example: Fred Smith
+        url:
+          type: string
+          example: http://localhost:8182/identity/users/testuser
+        email:
+          type: string
+          example: no-reply@flowable.org
+        tenantId:
+          type: string
+          example: companyTenantId
+        pictureUrl:
+          type: string
+          example: http://localhost:8182/identity/users/testuser/picture
+        password:
+          type: string
     UserRequest:
       type: object
       properties:
@@ -1104,30 +1242,169 @@ components:
           example: http://localhost:8182/identity/users/testuser/picture
         password:
           type: string
-    UserBaseInformationResponse:
+    ChangeUserThemeRequest:
       type: object
-      required:
-      - id
+      properties:
+        newTheme:
+          type: string
+    FileSystem:
+      type: object
+      properties:
+        open:
+          type: boolean
+        readOnly:
+          type: boolean
+        separator:
+          type: string
+        rootDirectories:
+          $ref: '#/components/schemas/IterablePath'
+        fileStores:
+          $ref: '#/components/schemas/IterableFileStore'
+        userPrincipalLookupService:
+          $ref: '#/components/schemas/UserPrincipalLookupService'
+    CreateUserRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        displayName:
+          type: string
+        loginName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        repeatPassword:
+          type: string
+        type:
+          type: string
+        subType:
+          type: string
+        userDefinitionId:
+          type: string
+        userDefinitionKey:
+          type: string
+        state:
+          type: string
+        subState:
+          type: string
+        avatarId:
+          type: string
+        presence:
+          type: string
+        language:
+          type: string
+        theme:
+          type: string
+        tenantId:
+          type: string
+        identityInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        groups:
+          type: array
+          items:
+            type: string
+        returnIdentityInfo:
+          type: boolean
+    GroupResponse:
+      type: object
       properties:
         id:
           type: string
-          example: john.doe
-          description: The id of the user
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse_2'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the group
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+    UpdateUserStateRequest:
+      type: object
+      properties:
+        state:
+          type: string
+        subState:
+          type: string
+    ChangeUserLanguageRequest:
+      type: object
+      properties:
+        newLanguage:
+          type: string
+    IterableFileStore:
+      type: object
+    UsersOrGroups:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+        groupKeys:
+          type: array
+          items:
+            type: string
+    UserPrincipalLookupService:
+      type: object
+    UpdateUserRequest:
+      type: object
+      properties:
         firstName:
           type: string
-          example: John
-          description: The first name if the user
         lastName:
           type: string
-          example: Doe
-          description: The last name of the user
         displayName:
           type: string
-          example: John Doe
-          description: The display name of the user
+        email:
+          type: string
+        password:
+          type: string
+        repeatPassword:
+          type: string
         avatarId:
           type: string
-      description: The response for the User base information
+        language:
+          type: string
+        theme:
+          type: string
+        identityInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        groups:
+          type: array
+          items:
+            type: string
+        returnIdentityInfo:
+          type: boolean
     UserBodyQueryRequest:
       type: object
       properties:
@@ -1230,11 +1507,64 @@ components:
         usersOrGroups:
           $ref: '#/components/schemas/UsersOrGroups'
       description: Request that is used for querying users.
-    ChangeUserLanguageRequest:
+    DataResponsePlatformUserResponse:
       type: object
       properties:
-        newLanguage:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformUserResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
           type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    InputStream:
+      type: object
+    UpdateUserPresenceRequest:
+      type: object
+      required:
+      - presence
+      properties:
+        presence:
+          type: string
+          description: The presence that should be set on the user
+          enum:
+          - available
+          - away
+          - offline
+          - out-of-office
+          - snoozed
+        tenantId:
+          type: string
+          description: The tenant id that should be used for updating the presence. Only admin users can modify this parameter
+      description: Request for updating user presence
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
     Resource:
       type: object
       properties:
@@ -1264,54 +1594,6 @@ components:
             format: byte
         inputStream:
           $ref: '#/components/schemas/InputStream'
-    Path:
-      type: object
-      properties:
-        absolute:
-          type: boolean
-        parent:
-          $ref: '#/components/schemas/Path'
-        root:
-          $ref: '#/components/schemas/Path'
-        fileName:
-          $ref: '#/components/schemas/Path'
-        fileSystem:
-          $ref: '#/components/schemas/FileSystem'
-        nameCount:
-          type: integer
-          format: int32
-    ChangeUserThemeRequest:
-      type: object
-      properties:
-        newTheme:
-          type: string
-    EngineRestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-    UserInfoRequest:
-      type: object
-      properties:
-        key:
-          type: string
-          example: jobTitle
-        value:
-          type: string
-          example: Muppet
     UserResponse_2:
       type: object
       required:
@@ -1341,6 +1623,13 @@ components:
           type: string
           description: The tenant id of the user
       description: The response for the OSS User
+    BasicPrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
     UpdateUserDefinitionRequest:
       type: object
       properties:
@@ -1349,196 +1638,6 @@ components:
         userDefinitionKey:
           type: string
         tenantId:
-          type: string
-    GroupResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: testgroup
-        url:
-          type: string
-          example: http://localhost:8182/groups/groupId
-        name:
-          type: string
-          example: Test group
-        type:
-          type: string
-          example: Test type
-        key:
-          type: string
-          example: testgroup
-        tenantId:
-          type: string
-          example: testtenant
-        users:
-          type: array
-          description: Collection of all users that have a membership with the group
-          items:
-            $ref: '#/components/schemas/UserResponse_2'
-        privileges:
-          type: array
-          description: Collection of all privileges for this group
-          items:
-            $ref: '#/components/schemas/BasicPrivilegeResponse'
-        identityInfo:
-          type: array
-          description: Collection of all identity infos for the group
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-    DataResponsePlatformUserResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlatformUserResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    ChangeUserPasswordRequest:
-      type: object
-      properties:
-        password:
-          type: string
-        repeatPassword:
-          type: string
-    UpdateUserStateRequest:
-      type: object
-      properties:
-        state:
-          type: string
-        subState:
-          type: string
-    CreateUserRequest:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        displayName:
-          type: string
-        loginName:
-          type: string
-        email:
-          type: string
-        password:
-          type: string
-        repeatPassword:
-          type: string
-        type:
-          type: string
-        subType:
-          type: string
-        userDefinitionId:
-          type: string
-        userDefinitionKey:
-          type: string
-        state:
-          type: string
-        subState:
-          type: string
-        avatarId:
-          type: string
-        presence:
-          type: string
-        language:
-          type: string
-        theme:
-          type: string
-        tenantId:
-          type: string
-        identityInfo:
-          type: array
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-        groups:
-          type: array
-          items:
-            type: string
-        returnIdentityInfo:
-          type: boolean
-    UserInfoResponse:
-      type: object
-      properties:
-        key:
-          type: string
-          example: jobTitle
-        value:
-          type: string
-          example: Muppet
-        url:
-          type: string
-          example: http://localhost:8080/flowable-rest/service/identity/users/kermit/info/jobTitle
-    UpdateUserPresenceRequest:
-      type: object
-      required:
-      - presence
-      properties:
-        presence:
-          type: string
-          description: The presence that should be set on the user
-          enum:
-          - available
-          - away
-          - offline
-          - out-of-office
-          - snoozed
-        tenantId:
-          type: string
-          description: The tenant id that should be used for updating the presence. Only admin users can modify this parameter
-      description: Request for updating user presence
-    UsersOrGroups:
-      type: object
-      properties:
-        userIds:
-          type: array
-          items:
-            type: string
-        groupKeys:
-          type: array
-          items:
-            type: string
-    InputStream:
-      type: object
-    IterableFileStore:
-      type: object
-    IterablePath:
-      type: object
-    UserPrincipalLookupService:
-      type: object
-    FileSystem:
-      type: object
-      properties:
-        open:
-          type: boolean
-        readOnly:
-          type: boolean
-        separator:
-          type: string
-        rootDirectories:
-          $ref: '#/components/schemas/IterablePath'
-        fileStores:
-          $ref: '#/components/schemas/IterableFileStore'
-        userPrincipalLookupService:
-          $ref: '#/components/schemas/UserPrincipalLookupService'
-    BasicPrivilegeResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
           type: string
     JsonNode:
       type: object
@@ -1595,6 +1694,15 @@ components:
           type: boolean
         floatingPointNumber:
           type: boolean
+    IterablePath:
+      type: object
+    ChangeUserPasswordRequest:
+      type: object
+      properties:
+        password:
+          type: string
+        repeatPassword:
+          type: string
     PlatformUserResponse:
       type: object
       required:
@@ -1701,104 +1809,50 @@ components:
           items:
             type: string
       description: The response for a platform user
-    UserResponse:
+    UserBaseInformationResponse:
       type: object
+      required:
+      - id
       properties:
         id:
           type: string
-          example: testuser
+          example: john.doe
+          description: The id of the user
         firstName:
           type: string
-          example: Fred
+          example: John
+          description: The first name if the user
         lastName:
           type: string
-          example: Smith
+          example: Doe
+          description: The last name of the user
         displayName:
           type: string
-          example: Fred Smith
-        url:
-          type: string
-          example: http://localhost:8182/identity/users/testuser
-        email:
-          type: string
-          example: no-reply@flowable.org
-        tenantId:
-          type: string
-          example: companyTenantId
-        pictureUrl:
-          type: string
-          example: http://localhost:8182/identity/users/testuser/picture
-        password:
-          type: string
-    DataResponseUserResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    UpdateUserRequest:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        displayName:
-          type: string
-        email:
-          type: string
-        password:
-          type: string
-        repeatPassword:
-          type: string
+          example: John Doe
+          description: The display name of the user
         avatarId:
           type: string
-        language:
-          type: string
-        theme:
-          type: string
-        identityInfo:
-          type: array
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-        groups:
-          type: array
-          items:
-            type: string
-        returnIdentityInfo:
+      description: The response for the User base information
+    Path:
+      type: object
+      properties:
+        absolute:
           type: boolean
-  requestBodies:
-    UserRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UserRequest'
-    UserInfoRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UserInfoRequest'
-    UpdateUserPresenceRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateUserPresenceRequest'
-      required: true
+        parent:
+          $ref: '#/components/schemas/Path'
+        root:
+          $ref: '#/components/schemas/Path'
+        fileName:
+          $ref: '#/components/schemas/Path'
+        fileSystem:
+          $ref: '#/components/schemas/FileSystem'
+        nameCount:
+          type: integer
+          format: int32
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
+x-refined-from:
+- flowable-bpmn-openapi.yml
+- flowable-idm-openapi.yml

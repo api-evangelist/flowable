@@ -1,8 +1,11 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  description: '# flowable / flowəb(ə)l /
+
+
+    - a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.'
   version: v1
-  title: Flowable REST Access Tokens Models API
+  title: Flowable REST Models API
   contact:
     name: Flowable
     url: http://www.flowable.org/
@@ -195,7 +198,7 @@ paths:
       tags:
       - Models
       summary: Update a model
-      description: 'All request values are optional. For example, you can only include the name attribute in the request body JSON-object, only updating the name of the model, leaving all other fields unaffected. When an attribute is explicitly included and is set to null, the model-value will be updated to null. '
+      description: All request values are optional. For example, you can only include the name attribute in the request body JSON-object, only updating the name of the model, leaving all other fields unaffected. When an attribute is explicitly included and is set to null, the model-value will be updated to null.
       operationId: updateModel
       parameters:
       - name: modelId
@@ -333,6 +336,11 @@ paths:
       - basicAuth: []
 components:
   requestBodies:
+    ModelRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ModelRequest'
     uploadDeployment:
       content:
         multipart/form-data:
@@ -345,12 +353,52 @@ components:
             required:
             - file
       required: true
-    ModelRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ModelRequest'
   schemas:
+    DataResponseModelResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModelResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    ModelRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Model name
+        key:
+          type: string
+          example: Model key
+        category:
+          type: string
+          example: Model category
+        version:
+          type: integer
+          format: int32
+          example: 2
+        metaInfo:
+          type: string
+          example: Model metainfo
+        deploymentId:
+          type: string
+          example: '7'
+        tenantId:
+          type: string
+          example: 'null'
     ModelResponse:
       type: object
       properties:
@@ -397,51 +445,6 @@ components:
           type: string
         sourceExtraUrl:
           type: string
-    ModelRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Model name
-        key:
-          type: string
-          example: Model key
-        category:
-          type: string
-          example: Model category
-        version:
-          type: integer
-          format: int32
-          example: 2
-        metaInfo:
-          type: string
-          example: Model metainfo
-        deploymentId:
-          type: string
-          example: '7'
-        tenantId:
-          type: string
-          example: 'null'
-    DataResponseModelResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ModelResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
   securitySchemes:
     basicAuth:
       type: http

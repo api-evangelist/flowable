@@ -1,16 +1,14 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  description: Flowable Platform
   version: v1
-  title: Flowable REST Access Tokens Form Definitions API
+  title: Flowable Form REST Form Definitions API
   contact:
     name: Flowable
-    url: http://www.flowable.org/
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+    url: http://www.flowable.com/
 servers:
-- url: /flowable-rest/service
+- url: http://localhost:8090/form-api
+- url: https://localhost:8090/form-api
 tags:
 - name: Form Definitions
 paths:
@@ -294,80 +292,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    FormDefinitionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '10'
-        url:
-          type: string
-          example: http://localhost:8182/form-repository/form-definitions/simpleForm
-        category:
-          type: string
-          example: Examples
-        name:
-          type: string
-          example: The Simple Form
-        key:
-          type: string
-          example: simpleForm
-        description:
-          type: string
-          example: This is a form for testing purposes
-        version:
-          type: integer
-          format: int32
-          example: 1
-        resourceName:
-          type: string
-          example: SimpleSourceName
-        deploymentId:
-          type: string
-          example: 818e4703-f1d2-11e6-8549-acde48001121
-        tenantId:
-          type: string
-          example: 'null'
-    DataResponseFormDefinitionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/FormDefinitionResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    CustomValidationDefinition:
-      type: object
-      properties:
-        expression:
-          type: string
-        errorMsg:
-          type: string
-        i18n:
-          type: object
-          additionalProperties:
-            type: object
-            additionalProperties:
-              type: string
-    SectionDefinition:
-      type: object
-      properties:
-        name:
-          type: string
-        visibility:
-          type: string
     FormModelResponse:
       type: object
       properties:
@@ -420,33 +344,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomValidationDefinition'
-    FormModel:
-      type: object
-    MetadataDefinition:
+    CustomValidationDefinition:
       type: object
       properties:
-        key:
+        expression:
           type: string
-        name:
+        errorMsg:
           type: string
-        description:
-          type: string
-        version:
-          type: string
-        modelType:
-          type: string
-        flowableDesignVersion:
-          type: integer
-          format: int32
-    RowDefinition:
-      type: object
-      properties:
-        cols:
-          type: array
-          items:
+        i18n:
+          type: object
+          additionalProperties:
             type: object
             additionalProperties:
-              type: object
+              type: string
     ButtonModelResponse:
       type: object
       properties:
@@ -454,19 +364,8 @@ components:
           type: string
         value:
           type: string
-    EventDefinition:
+    FormModel:
       type: object
-      properties:
-        id:
-          type: string
-        eventType:
-          type: string
-        implementationType:
-          type: string
-        expression:
-          type: string
-        resultVariable:
-          type: string
     OutcomeDefinition:
       type: object
       properties:
@@ -498,6 +397,105 @@ components:
             type: object
             additionalProperties:
               type: string
+    RowDefinition:
+      type: object
+      properties:
+        cols:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: object
+    EventDefinition:
+      type: object
+      properties:
+        id:
+          type: string
+        eventType:
+          type: string
+        implementationType:
+          type: string
+        expression:
+          type: string
+        resultVariable:
+          type: string
+    MetadataDefinition:
+      type: object
+      properties:
+        key:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        version:
+          type: string
+        modelType:
+          type: string
+        flowableDesignVersion:
+          type: integer
+          format: int32
+    DataResponseFormDefinitionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormDefinitionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    FormDefinitionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '10'
+        url:
+          type: string
+          example: http://localhost:8182/form-repository/form-definitions/simpleForm
+        category:
+          type: string
+          example: Examples
+        name:
+          type: string
+          example: The Simple Form
+        key:
+          type: string
+          example: simpleForm
+        description:
+          type: string
+          example: This is a form for testing purposes
+        version:
+          type: integer
+          format: int32
+          example: 1
+        resourceName:
+          type: string
+          example: SimpleSourceName
+        deploymentId:
+          type: string
+          example: 818e4703-f1d2-11e6-8549-acde48001121
+        tenantId:
+          type: string
+          example: 'null'
+    SectionDefinition:
+      type: object
+      properties:
+        name:
+          type: string
+        visibility:
+          type: string
   securitySchemes:
     basicAuth:
       type: http

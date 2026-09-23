@@ -1,16 +1,17 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  title: Flowable Runtime API
   version: v1
-  title: Flowable REST Access Tokens Runtime API
   contact:
     name: Flowable
     url: http://www.flowable.org/
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: 'Operations tagged Runtime across 2 of this provider''s published API definitions: flowable-bpmn-openapi.yml, flowable-cmmn-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /flowable-rest/service
+- url: /flowable-rest/cmmn-api
 tags:
 - name: Runtime
 paths:
@@ -39,6 +40,8 @@ paths:
       security:
       - basicAuth: []
       x-s2o-warning: Operation queryActivityInstances has multiple requestBodies
+    servers:
+    - url: /flowable-rest/service
   /runtime/signals:
     post:
       tags:
@@ -60,6 +63,8 @@ paths:
           description: Signal not processed. The signal name is missing or variables are used together with async, which is not allowed. Response body contains additional information about the error.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /runtime/variable-instances/{varInstanceId}/data:
     get:
       tags:
@@ -87,12 +92,14 @@ paths:
           description: Indicates the requested variable instance was not found or the variable instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/service
   /cmmn-query/variable-instances:
     post:
       tags:
       - Runtime
       summary: Query for variable instances
-      description: 'All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of variable instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. '
+      description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of variable instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
       operationId: queryVariableInstances
       parameters:
       - name: sort
@@ -120,6 +127,8 @@ paths:
           description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
   /cmmn-runtime/variable-instances/{varInstanceId}/data:
     get:
       tags:
@@ -147,45 +156,30 @@ paths:
           description: Indicates the requested variable instance was not found or the variable instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.
       security:
       - basicAuth: []
+    servers:
+    - url: /flowable-rest/cmmn-api
 components:
   schemas:
-    SignalEventReceivedRequest:
+    RestVariable:
       type: object
       properties:
-        signalName:
+        name:
           type: string
-          description: Name of the signal
-        variables:
-          type: array
-          description: Array of variables (in the general variables format) to use as payload to pass along with the signal. Cannot be used in case async is set to true, this will result in an error.
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        tenantId:
+          example: myVariable
+          description: Name of the variable
+        type:
           type: string
-          description: ID of the tenant that the signal event should be processed in
-        async:
-          type: boolean
-          description: "If true, handling of the signal will happen asynchronously. Return code will be 202 - Accepted to indicate the request is accepted but not yet executed. If false,\n                    handling the signal will be done immediately and result (200 - OK) will only return after this completed successfully. Defaults to false if omitted."
-    DataResponseVariableInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/VariableInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
           type: string
-        order:
+          example: http://....
+        scope:
           type: string
-        size:
-          type: integer
-          format: int32
     ActivityInstanceQueryRequest:
       type: object
       properties:
@@ -284,26 +278,23 @@ components:
         tenantId:
           type: string
           example: 'null'
-    RestVariable:
+    SignalEventReceivedRequest:
       type: object
       properties:
-        name:
+        signalName:
           type: string
-          example: myVariable
-          description: Name of the variable
-        type:
+          description: Name of the signal
+        variables:
+          type: array
+          description: Array of variables (in the general variables format) to use as payload to pass along with the signal. Cannot be used in case async is set to true, this will result in an error.
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
           type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
+          description: ID of the tenant that the signal event should be processed in
+        async:
+          type: boolean
+          description: "If true, handling of the signal will happen asynchronously. Return code will be 202 - Accepted to indicate the request is accepted but not yet executed. If false,\n                    handling the signal will be done immediately and result (200 - OK) will only return after this completed successfully. Defaults to false if omitted."
     DataResponseActivityInstanceResponse:
       type: object
       properties:
@@ -324,6 +315,67 @@ components:
         size:
           type: integer
           format: int32
+    VariableInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '14'
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
+        taskId:
+          type: string
+          example: '6'
+        planItemInstanceId:
+          type: string
+        variable:
+          $ref: '#/components/schemas/RestVariable'
+    DataResponseVariableInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
     VariableInstanceQueryRequest:
       type: object
       properties:
@@ -357,48 +409,10 @@ components:
           type: boolean
         variableScope:
           type: string
-    QueryVariable:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
-          type: string
-    VariableInstanceResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '14'
-        caseInstanceId:
-          type: string
-          example: '5'
-        caseInstanceUrl:
-          type: string
-          example: http://localhost:8182/cmmn-history/historic-case-instances/5
-        taskId:
-          type: string
-          example: '6'
-        planItemInstanceId:
-          type: string
-        variable:
-          $ref: '#/components/schemas/RestVariable'
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
+x-refined-from:
+- flowable-bpmn-openapi.yml
+- flowable-cmmn-openapi.yml

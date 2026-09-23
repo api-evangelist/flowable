@@ -1,16 +1,14 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  description: Flowable Platform
   version: v1
-  title: Flowable REST Access Tokens Form Instance Models API
+  title: Flowable Form REST Form Instance Models API
   contact:
     name: Flowable
-    url: http://www.flowable.org/
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+    url: http://www.flowable.com/
 servers:
-- url: /flowable-rest/service
+- url: http://localhost:8090/form-api
+- url: https://localhost:8090/form-api
 tags:
 - name: Form Instance Models
 paths:
@@ -49,62 +47,6 @@ components:
             type: object
             additionalProperties:
               type: string
-    FormRequest:
-      type: object
-      properties:
-        formInstanceId:
-          type: string
-        formDefinitionId:
-          type: string
-        formDefinitionKey:
-          type: string
-        taskId:
-          type: string
-        processInstanceId:
-          type: string
-        processDefinitionId:
-          type: string
-        scopeId:
-          type: string
-        scopeType:
-          type: string
-        scopeDefinitionId:
-          type: string
-        outcome:
-          type: string
-        tenantId:
-          type: string
-        parentDeploymentId:
-          type: string
-        variables:
-          type: object
-          additionalProperties:
-            type: object
-    MetadataDefinition:
-      type: object
-      properties:
-        key:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        version:
-          type: string
-        modelType:
-          type: string
-        flowableDesignVersion:
-          type: integer
-          format: int32
-    RowDefinition:
-      type: object
-      properties:
-        cols:
-          type: array
-          items:
-            type: object
-            additionalProperties:
-              type: object
     FormInstanceModelResponse:
       type: object
       properties:
@@ -168,13 +110,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomValidationDefinition'
-    SectionDefinition:
-      type: object
-      properties:
-        name:
-          type: string
-        visibility:
-          type: string
     OutcomeDefinition:
       type: object
       properties:
@@ -206,6 +141,69 @@ components:
             type: object
             additionalProperties:
               type: string
+    RowDefinition:
+      type: object
+      properties:
+        cols:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: object
+    MetadataDefinition:
+      type: object
+      properties:
+        key:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        version:
+          type: string
+        modelType:
+          type: string
+        flowableDesignVersion:
+          type: integer
+          format: int32
+    FormRequest:
+      type: object
+      properties:
+        formInstanceId:
+          type: string
+        formDefinitionId:
+          type: string
+        formDefinitionKey:
+          type: string
+        taskId:
+          type: string
+        processInstanceId:
+          type: string
+        processDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        scopeType:
+          type: string
+        scopeDefinitionId:
+          type: string
+        outcome:
+          type: string
+        tenantId:
+          type: string
+        parentDeploymentId:
+          type: string
+        variables:
+          type: object
+          additionalProperties:
+            type: object
+    SectionDefinition:
+      type: object
+      properties:
+        name:
+          type: string
+        visibility:
+          type: string
   requestBodies:
     FormRequest:
       content:

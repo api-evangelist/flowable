@@ -1,8 +1,11 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  description: '# flowable / flowəb(ə)l /
+
+
+    - a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.'
   version: v1
-  title: Flowable REST Access Tokens Plan Item Instances API
+  title: Flowable CMMN REST Plan Item Instances API
   contact:
     name: Flowable
     url: http://www.flowable.org/
@@ -10,7 +13,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-- url: /flowable-rest/service
+- url: /flowable-rest/cmmn-api
 tags:
 - name: Plan Item Instances
 paths:
@@ -398,51 +401,52 @@ paths:
       security:
       - basicAuth: []
 components:
-  requestBodies:
-    PlanItemInstanceVariableResource:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-              name:
-                example: intProcVar
-                type: string
-              type:
-                example: integer
-                type: string
-              scope:
-                example: global
-                type: string
-      description: Update a variable on a plan item instance
-    RestActionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RestActionRequest'
-    PlanItemInstanceVariableCollectionResource:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-              name:
-                example: intProcVar
-                type: string
-              type:
-                example: integer
-                type: string
-              scope:
-                example: global
-                type: string
-      description: Create a variable on a plan item instance
   schemas:
+    DataResponsePlanItemInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItemInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    RestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
     QueryVariable:
       type: object
       properties:
@@ -465,119 +469,6 @@ components:
           type: object
         type:
           type: string
-    RestActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
-    DataResponsePlanItemInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlanItemInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    PlanItemInstanceQueryRequest:
-      type: object
-      properties:
-        start:
-          type: integer
-          format: int32
-        size:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        id:
-          type: string
-        elementId:
-          type: string
-        name:
-          type: string
-        caseInstanceId:
-          type: string
-        caseInstanceIds:
-          type: array
-          uniqueItems: true
-          items:
-            type: string
-        caseDefinitionId:
-          type: string
-        stageInstanceId:
-          type: string
-        planItemDefinitionId:
-          type: string
-        planItemDefinitionType:
-          type: string
-        planItemDefinitionTypes:
-          type: array
-          items:
-            type: string
-        state:
-          type: string
-        createdBefore:
-          type: string
-          format: date-time
-        createdAfter:
-          type: string
-          format: date-time
-        startUserId:
-          type: string
-        referenceId:
-          type: string
-        referenceType:
-          type: string
-        includeEnded:
-          type: boolean
-        includeLocalVariables:
-          type: boolean
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/QueryVariable'
-        caseInstanceVariables:
-          type: array
-          items:
-            $ref: '#/components/schemas/QueryVariable'
-        tenantId:
-          type: string
-        withoutTenantId:
-          type: boolean
     PlanItemInstanceResponse:
       type: object
       properties:
@@ -675,6 +566,118 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RestVariable'
+    PlanItemInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+        elementId:
+          type: string
+        name:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        caseDefinitionId:
+          type: string
+        stageInstanceId:
+          type: string
+        planItemDefinitionId:
+          type: string
+        planItemDefinitionType:
+          type: string
+        planItemDefinitionTypes:
+          type: array
+          items:
+            type: string
+        state:
+          type: string
+        createdBefore:
+          type: string
+          format: date-time
+        createdAfter:
+          type: string
+          format: date-time
+        startUserId:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        includeEnded:
+          type: boolean
+        includeLocalVariables:
+          type: boolean
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        caseInstanceVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        tenantId:
+          type: string
+        withoutTenantId:
+          type: boolean
+  requestBodies:
+    PlanItemInstanceVariableCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: intProcVar
+                type: string
+              type:
+                example: integer
+                type: string
+              scope:
+                example: global
+                type: string
+      description: Create a variable on a plan item instance
+    PlanItemInstanceVariableResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: intProcVar
+                type: string
+              type:
+                example: integer
+                type: string
+              scope:
+                example: global
+                type: string
+      description: Update a variable on a plan item instance
+    RestActionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestActionRequest'
   securitySchemes:
     basicAuth:
       type: http

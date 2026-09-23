@@ -1,8 +1,11 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: "# flowable / flowəb(ə)l /\r\n\r\n- a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.\r\n- a lightning fast, tried and tested BPMN 2 process engine written in Java. It is Apache 2.0 licensed open source, with a committed community.\r\n- can run embedded in a Java application, or as a service on a server, a cluster, and in the cloud. It integrates perfectly with Spring. With a rich Java and REST API, it is the ideal engine for orchestrating human or system activities."
+  description: '# flowable / flowəb(ə)l /
+
+
+    - a compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.'
   version: v1
-  title: Flowable REST Access Tokens Process Instance Variables API
+  title: Flowable REST Process Instance Variables API
   contact:
     name: Flowable
     url: http://www.flowable.org/
@@ -177,7 +180,7 @@ paths:
     put:
       tags:
       - Process Instance Variables
-      summary: Update multiple/single (non)binary variables on a process instance asynchronously
+      summary: Update multiple/single (non)binary variables on a process instance…
       description: 'This endpoint can be used in 2 ways: By passing a JSON Body (RestVariable or an array of RestVariable) or by passing a multipart/form-data Object.
 
         Nonexistent variables are created on the process-instance and existing ones are overridden without any error.
@@ -377,23 +380,6 @@ paths:
       security:
       - basicAuth: []
 components:
-  requestBodies:
-    ProcessInstanceVariableCollectionResource:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-              name:
-                example: Simple content item
-                type: string
-              type:
-                example: integer
-                type: string
-      description: Create a variable on a process instance
   schemas:
     RestVariable:
       type: object
@@ -415,6 +401,23 @@ components:
           example: http://....
         scope:
           type: string
+  requestBodies:
+    ProcessInstanceVariableCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: Simple content item
+                type: string
+              type:
+                example: integer
+                type: string
+      description: Create a variable on a process instance
   securitySchemes:
     basicAuth:
       type: http
