@@ -375,6 +375,23 @@ paths:
       security:
       - basicAuth: []
 components:
+  requestBodies:
+    CaseInstanceVariableCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: Simple content item
+                type: string
+              type:
+                example: integer
+                type: string
+      description: Create a variable on a case instance
   schemas:
     RestVariable:
       type: object
@@ -396,23 +413,6 @@ components:
           example: http://....
         scope:
           type: string
-  requestBodies:
-    CaseInstanceVariableCollectionResource:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-              name:
-                example: Simple content item
-                type: string
-              type:
-                example: integer
-                type: string
-      description: Create a variable on a case instance
   securitySchemes:
     basicAuth:
       type: http

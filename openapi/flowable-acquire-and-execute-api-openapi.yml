@@ -182,6 +182,23 @@ components:
           items:
             $ref: '#/components/schemas/EngineRestVariable'
       description: Request that is used for completing external worker jobs
+    ExternalWorkerJobErrorRequest:
+      type: object
+      required:
+      - workerId
+      properties:
+        workerId:
+          type: string
+          description: The id of the external worker that executes the action. Must match the id of the worker who has most recently locked the job.
+        variables:
+          type: array
+          description: The variables that should be passed to the job scope
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        errorCode:
+          type: string
+          description: The BPMN error code
+      description: Request that is used for completing external worker jobs with a bpmn error
     EngineRestVariable:
       type: object
       properties:
@@ -200,44 +217,6 @@ components:
         valueUrl:
           type: string
           example: http://....
-    ExternalWorkerJobTerminateRequest:
-      type: object
-      required:
-      - workerId
-      properties:
-        workerId:
-          type: string
-          description: The id of the external worker that executes the action. Must match the id of the worker who has most recently locked the job.
-        variables:
-          type: array
-          description: The variables that should be passed to the job scope
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-      description: Request that is used for terminating external worker jobs
-    ExternalWorkerJobFailureRequest:
-      type: object
-      required:
-      - workerId
-      properties:
-        workerId:
-          type: string
-          description: The id of the external worker that reports the failure. Must match the id of the worker who has most recently locked the job.
-        errorMessage:
-          type: string
-          example: Database not available
-          description: Error message for the failure
-        errorDetails:
-          type: string
-          description: Details for the failure
-        retries:
-          type: integer
-          format: int32
-          description: The new number of retries. If not set it will be reduced by 1. If 0 the job will be moved ot the dead letter table and would no longer be available for acquiring.
-        retryTimeout:
-          type: string
-          example: PT20M
-          description: The timeout after which the job should be made available again. ISO-8601 duration format PnDTnHnMn.nS with days considered to be exactly 24 hours.
-      description: Request that is used for failing external worker jobs
     AcquiredExternalWorkerJobResponse:
       type: object
       required:
@@ -329,6 +308,20 @@ components:
           description: The variables from the scope of the job
           items:
             $ref: '#/components/schemas/EngineRestVariable'
+    ExternalWorkerJobTerminateRequest:
+      type: object
+      required:
+      - workerId
+      properties:
+        workerId:
+          type: string
+          description: The id of the external worker that executes the action. Must match the id of the worker who has most recently locked the job.
+        variables:
+          type: array
+          description: The variables that should be passed to the job scope
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+      description: Request that is used for terminating external worker jobs
     AcquireExternalWorkerJobRequest:
       type: object
       required:
@@ -363,23 +356,30 @@ components:
           example: cmmn
           description: Only acquire jobs with the given scope type
       description: Request that is used for acquiring external worker jobs
-    ExternalWorkerJobErrorRequest:
+    ExternalWorkerJobFailureRequest:
       type: object
       required:
       - workerId
       properties:
         workerId:
           type: string
-          description: The id of the external worker that executes the action. Must match the id of the worker who has most recently locked the job.
-        variables:
-          type: array
-          description: The variables that should be passed to the job scope
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-        errorCode:
+          description: The id of the external worker that reports the failure. Must match the id of the worker who has most recently locked the job.
+        errorMessage:
           type: string
-          description: The BPMN error code
-      description: Request that is used for completing external worker jobs with a bpmn error
+          example: Database not available
+          description: Error message for the failure
+        errorDetails:
+          type: string
+          description: Details for the failure
+        retries:
+          type: integer
+          format: int32
+          description: The new number of retries. If not set it will be reduced by 1. If 0 the job will be moved ot the dead letter table and would no longer be available for acquiring.
+        retryTimeout:
+          type: string
+          example: PT20M
+          description: The timeout after which the job should be made available again. ISO-8601 duration format PnDTnHnMn.nS with days considered to be exactly 24 hours.
+      description: Request that is used for failing external worker jobs
   securitySchemes:
     basicAuth:
       type: http

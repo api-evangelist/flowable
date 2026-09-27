@@ -254,7 +254,7 @@ paths:
       - Jobs
       summary: Move a single deadletter job. Accepts 'move' and 'moveToHistoryJob' as action
       description: ''
-      operationId: executeDeadLetterJobAction
+      operationId: postManagementDeadletterJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -272,6 +272,8 @@ paths:
           description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: executeDeadLetterJobAction
     delete:
       tags:
       - Jobs
@@ -325,7 +327,7 @@ paths:
       - Jobs
       summary: List history jobs
       description: ''
-      operationId: listDeadLetterJobs
+      operationId: getManagementHistoryJobs
       parameters:
       - name: id
         in: query
@@ -438,6 +440,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listDeadLetterJobs
     servers:
     - url: /flowable-rest/service
   /management/history-jobs/{jobId}:
@@ -1346,7 +1350,7 @@ paths:
       - Jobs
       summary: List deadletter jobs
       description: ''
-      operationId: listDeadLetterJobs
+      operationId: getCmmnManagementDeadletterJobs
       parameters:
       - name: id
         in: query
@@ -1518,12 +1522,14 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listDeadLetterJobs
     post:
       tags:
       - Jobs
       summary: Move a bulk of deadletter jobs. Accepts 'move' and 'moveToHistoryJob' as action
       description: ''
-      operationId: executeDeadLetterJobAction
+      operationId: postCmmnManagementDeadletterJobs
       requestBody:
         content:
           application/json:
@@ -1536,6 +1542,8 @@ paths:
           description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: executeDeadLetterJobAction
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/deadletter-jobs/{jobId}:
@@ -1544,7 +1552,7 @@ paths:
       - Jobs
       summary: Get a single deadletter job
       description: ''
-      operationId: getDeadletterJob
+      operationId: getCmmnManagementDeadletterJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -1562,12 +1570,14 @@ paths:
           description: Indicates the requested job does not exist.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getDeadletterJob
     post:
       tags:
       - Jobs
       summary: Move a single deadletter job. Accepts 'move' and 'moveToHistoryJob' as action
       description: ''
-      operationId: executeDeadLetterJobAction
+      operationId: postCmmnManagementDeadletterJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -1585,12 +1595,14 @@ paths:
           description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: executeDeadLetterJobAction
     delete:
       tags:
       - Jobs
       summary: Delete a deadletter job
       description: ''
-      operationId: deleteDeadLetterJob
+      operationId: deleteCmmnManagementDeadletterJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -1604,6 +1616,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteDeadLetterJob
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/deadletter-jobs/{jobId}/exception-stacktrace:
@@ -1612,7 +1626,7 @@ paths:
       - Jobs
       summary: Get the exception stacktrace for a deadletter job
       description: ''
-      operationId: getDeadLetterJobStacktrace
+      operationId: getCmmnManagementDeadletterJobsByJobIdExceptionStacktrace
       parameters:
       - name: jobId
         in: path
@@ -1630,6 +1644,8 @@ paths:
           description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getDeadLetterJobStacktrace
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/history-jobs:
@@ -1638,7 +1654,7 @@ paths:
       - Jobs
       summary: List history jobs
       description: ''
-      operationId: listDeadLetterJobs
+      operationId: getCmmnManagementHistoryJobs
       parameters:
       - name: id
         in: query
@@ -1739,6 +1755,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listDeadLetterJobs
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/history-jobs/{jobId}:
@@ -1747,7 +1765,7 @@ paths:
       - Jobs
       summary: Get a single history job job
       description: ''
-      operationId: getHistoryJob
+      operationId: getCmmnManagementHistoryJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -1765,12 +1783,14 @@ paths:
           description: Indicates the requested job does not exist.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getHistoryJob
     post:
       tags:
       - Jobs
       summary: Execute a history job
       description: ''
-      operationId: executeHistoryJob
+      operationId: postCmmnManagementHistoryJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -1788,12 +1808,14 @@ paths:
           description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: executeHistoryJob
     delete:
       tags:
       - Jobs
       summary: Delete a history job
       description: ''
-      operationId: deleteHistoryJob
+      operationId: deleteCmmnManagementHistoryJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -1807,6 +1829,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteHistoryJob
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/jobs:
@@ -1815,7 +1839,7 @@ paths:
       - Jobs
       summary: List jobs
       description: ''
-      operationId: listJobs
+      operationId: getCmmnManagementJobs
       parameters:
       - name: id
         in: query
@@ -1987,6 +2011,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listJobs
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/jobs/{jobId}:
@@ -1995,7 +2021,7 @@ paths:
       - Jobs
       summary: Get a single job
       description: ''
-      operationId: getJob
+      operationId: getCmmnManagementJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -2013,12 +2039,14 @@ paths:
           description: Indicates the requested job does not exist.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getJob
     post:
       tags:
       - Jobs
       summary: Execute a single job
       description: ''
-      operationId: executeJobAction
+      operationId: postCmmnManagementJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -2036,12 +2064,14 @@ paths:
           description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: executeJobAction
     delete:
       tags:
       - Jobs
       summary: Delete a job
       description: ''
-      operationId: deleteJob
+      operationId: deleteCmmnManagementJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -2055,6 +2085,8 @@ paths:
           description: Indicates the requested job was not found..
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteJob
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/jobs/{jobId}/exception-stacktrace:
@@ -2063,7 +2095,7 @@ paths:
       - Jobs
       summary: Get the exception stacktrace for a job
       description: ''
-      operationId: getJobStacktrace
+      operationId: getCmmnManagementJobsByJobIdExceptionStacktrace
       parameters:
       - name: jobId
         in: path
@@ -2081,6 +2113,8 @@ paths:
           description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getJobStacktrace
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/suspended-jobs:
@@ -2089,7 +2123,7 @@ paths:
       - Jobs
       summary: List suspended jobs
       description: ''
-      operationId: listSuspendedJobs
+      operationId: getCmmnManagementSuspendedJobs
       parameters:
       - name: id
         in: query
@@ -2261,6 +2295,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listSuspendedJobs
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/suspended-jobs/{jobId}:
@@ -2269,7 +2305,7 @@ paths:
       - Jobs
       summary: Get a single suspended job
       description: ''
-      operationId: getSuspendedJob
+      operationId: getCmmnManagementSuspendedJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -2287,12 +2323,14 @@ paths:
           description: Indicates the requested job does not exist.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getSuspendedJob
     delete:
       tags:
       - Jobs
       summary: Delete a suspended job
       description: ''
-      operationId: deleteSuspendedJob
+      operationId: deleteCmmnManagementSuspendedJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -2306,6 +2344,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteSuspendedJob
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/suspended-jobs/{jobId}/exception-stacktrace:
@@ -2314,7 +2354,7 @@ paths:
       - Jobs
       summary: Get the exception stacktrace for a suspended job
       description: ''
-      operationId: getSuspendedJobStacktrace
+      operationId: getCmmnManagementSuspendedJobsByJobIdExceptionStacktrace
       parameters:
       - name: jobId
         in: path
@@ -2332,6 +2372,8 @@ paths:
           description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getSuspendedJobStacktrace
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/timer-jobs:
@@ -2340,7 +2382,7 @@ paths:
       - Jobs
       summary: List timer jobs
       description: ''
-      operationId: listTimerJobs
+      operationId: getCmmnManagementTimerJobs
       parameters:
       - name: id
         in: query
@@ -2512,6 +2554,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter or the both 'messagesOnly' and 'timersOnly' are used as parameters. Status description contains additional details about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listTimerJobs
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/timer-jobs/{jobId}:
@@ -2520,7 +2564,7 @@ paths:
       - Jobs
       summary: Get a single timer job
       description: ''
-      operationId: getTimerJob
+      operationId: getCmmnManagementTimerJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -2538,12 +2582,14 @@ paths:
           description: Indicates the requested job does not exist.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getTimerJob
     post:
       tags:
       - Jobs
       summary: Execute a single job action (move or reschedule)
       description: ''
-      operationId: executeTimerJobAction
+      operationId: postCmmnManagementTimerJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -2564,12 +2610,14 @@ paths:
           description: Indicates the an exception occurred while executing the job. The status-description contains additional detail about the error. The full error-stacktrace can be fetched later on if needed.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: executeTimerJobAction
     delete:
       tags:
       - Jobs
       summary: Delete a timer job
       description: ''
-      operationId: deleteTimerJob
+      operationId: deleteCmmnManagementTimerJobsByJobId
       parameters:
       - name: jobId
         in: path
@@ -2583,6 +2631,8 @@ paths:
           description: Indicates the requested job was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteTimerJob
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-management/timer-jobs/{jobId}/exception-stacktrace:
@@ -2591,7 +2641,7 @@ paths:
       - Jobs
       summary: Get the exception stacktrace for a timer job
       description: ''
-      operationId: getTimerJobStacktrace
+      operationId: getCmmnManagementTimerJobsByJobIdExceptionStacktrace
       parameters:
       - name: jobId
         in: path
@@ -2609,22 +2659,18 @@ paths:
           description: Indicates the requested job was not found or the job does not have an exception stacktrace. Status-description contains additional information about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getTimerJobStacktrace
     servers:
     - url: /flowable-rest/cmmn-api
 components:
-  schemas:
+  requestBodies:
     RestActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-    TimerJobActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        dueDate:
-          type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestActionRequest'
+  schemas:
     DataResponseJobResponse:
       type: object
       properties:
@@ -2632,26 +2678,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/JobResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    DataResponseHistoryJobResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoryJobResponse'
         total:
           type: integer
           format: int64
@@ -2774,6 +2800,13 @@ components:
         tenantId:
           type: string
           example: 'null'
+    TimerJobActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        dueDate:
+          type: string
     BulkMoveDeadLetterActionRequest:
       type: object
       properties:
@@ -2783,6 +2816,31 @@ components:
           type: array
           items:
             type: string
+    RestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+    DataResponseHistoryJobResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoryJobResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     HistoryJobResponse_2:
       type: object
       properties:
@@ -2886,12 +2944,6 @@ components:
         tenantId:
           type: string
           example: 'null'
-  requestBodies:
-    RestActionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RestActionRequest'
   securitySchemes:
     basicAuth:
       type: http

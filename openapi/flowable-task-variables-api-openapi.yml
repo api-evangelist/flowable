@@ -256,7 +256,7 @@ paths:
       - Task Variables
       summary: List variables for a task
       description: ''
-      operationId: listTaskVariables
+      operationId: getCmmnRuntimeTasksByTaskIdVariables
       parameters:
       - name: taskId
         in: path
@@ -282,6 +282,8 @@ paths:
           description: Indicates the requested task was not found..
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listTaskVariables
     post:
       tags:
       - Task Variables
@@ -293,7 +295,7 @@ paths:
         Any number of variables can be passed into the request body array.
 
         NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
-      operationId: createTaskVariable
+      operationId: postCmmnRuntimeTasksByTaskIdVariables
       parameters:
       - name: taskId
         in: path
@@ -336,6 +338,8 @@ paths:
           description: Indicates the serializable data contains an object for which no class is present in the JVM running the Flowable engine and therefore cannot be deserialized.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: createTaskVariable
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-runtime/tasks/{taskId}/variables/{variableName}:
@@ -344,7 +348,7 @@ paths:
       - Task Variables
       summary: Get a variable from a task
       description: ''
-      operationId: getTaskInstanceVariable
+      operationId: getCmmnRuntimeTasksByTaskIdVariablesByVariableName
       parameters:
       - name: taskId
         in: path
@@ -373,6 +377,8 @@ paths:
           description: Indicates the requested task was not found or the task does not have a variable with the given name (in the given scope). Status message provides additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getTaskInstanceVariable
     put:
       tags:
       - Task Variables
@@ -384,7 +390,7 @@ paths:
         Any number of variables can be passed into the request body array.
 
         NB: Swagger V2 specification does not support this use case that is why this endpoint might be buggy/incomplete if used with other tools.'
-      operationId: updateTaskInstanceVariable
+      operationId: putCmmnRuntimeTasksByTaskIdVariablesByVariableName
       parameters:
       - name: taskId
         in: path
@@ -430,12 +436,14 @@ paths:
           description: Indicates the serializable data contains an object for which no class is present in the JVM running the Flowable engine and therefore cannot be deserialized.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: updateTaskInstanceVariable
     delete:
       tags:
       - Task Variables
       summary: Delete a variable on a task
       description: ''
-      operationId: deleteTaskInstanceVariable
+      operationId: deleteCmmnRuntimeTasksByTaskIdVariablesByVariableName
       parameters:
       - name: taskId
         in: path
@@ -460,6 +468,8 @@ paths:
           description: Indicates the requested task was not found or the task does not have a variable with the given name. Status message contains additional information about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteTaskInstanceVariable
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-runtime/tasks/{taskId}/variables/{variableName}/data:
@@ -468,7 +478,7 @@ paths:
       - Task Variables
       summary: Get the binary data for a variable
       description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
-      operationId: getTaskVariableData
+      operationId: getCmmnRuntimeTasksByTaskIdVariablesByVariableNameData
       parameters:
       - name: taskId
         in: path
@@ -500,6 +510,8 @@ paths:
           description: Indicates the requested task was not found or the task does not have a variable with the given name (in the given scope). Status message provides additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getTaskVariableData
     servers:
     - url: /flowable-rest/cmmn-api
 components:

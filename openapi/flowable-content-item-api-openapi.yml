@@ -637,7 +637,7 @@ paths:
       - Content Item
       summary: Get a content item
       description: ''
-      operationId: getContentItem
+      operationId: getContentServiceVersionParentItemsByVersionParentId
       parameters:
       - name: versionParentId
         in: path
@@ -655,13 +655,15 @@ paths:
           description: Indicates the requested content item was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getContentItem
   /content-service/version-parent-items/{versionParentId}/data:
     get:
       tags:
       - Content Item
       summary: Get the data of a content item
       description: The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.
-      operationId: getContentItemData
+      operationId: getContentServiceVersionParentItemsByVersionParentIdData
       parameters:
       - name: versionParentId
         in: path
@@ -685,13 +687,15 @@ paths:
           description: Indicates the content item was not found or the content item does not have a binary stream available. Status message provides additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getContentItemData
   /content-service/version-parent-items/{versionParentId}/rendition/{renditionType}:
     get:
       tags:
       - Content Item
       summary: Get a rendition item (data) with a rendition type related to a content item
       description: Rendition type can be 'thumbnail' or 'pdf'The response body contains the binary content. By default, the content-type of the response is set to application/octet-stream unless the content item type contains a valid mime type.
-      operationId: getRenditionForContentItem
+      operationId: getContentServiceVersionParentItemsByVersionParentIdRenditionByRenditionType
       parameters:
       - name: versionParentId
         in: path
@@ -720,6 +724,8 @@ paths:
           description: Indicates the requested rendition item was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getRenditionForContentItem
   /query/content-items:
     post:
       tags:
@@ -745,30 +751,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    DataResponseContentItemResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentItemResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    IterableFileStore:
-      type: object
-    IterablePath:
-      type: object
     FileSystem:
       type: object
       properties:
@@ -784,37 +766,6 @@ components:
           $ref: '#/components/schemas/IterableFileStore'
         userPrincipalLookupService:
           $ref: '#/components/schemas/UserPrincipalLookupService'
-    InputStream:
-      type: object
-    Resource:
-      type: object
-      properties:
-        open:
-          type: boolean
-        file:
-          type: string
-          format: binary
-        readable:
-          type: boolean
-        url:
-          type: string
-          format: url
-        filePath:
-          $ref: '#/components/schemas/Path'
-        filename:
-          type: string
-        description:
-          type: string
-        uri:
-          type: string
-          format: uri
-        contentAsByteArray:
-          type: array
-          items:
-            type: string
-            format: byte
-        inputStream:
-          $ref: '#/components/schemas/InputStream'
     ContentItemRequest:
       type: object
       properties:
@@ -894,6 +845,55 @@ components:
           type: string
           example: myFolderId
           description: The parent folder id of the content item, optional
+    QueryMetadata:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+        value:
+          type: object
+        type:
+          type: string
+    Path:
+      type: object
+      properties:
+        absolute:
+          type: boolean
+        parent:
+          $ref: '#/components/schemas/Path'
+        root:
+          $ref: '#/components/schemas/Path'
+        fileName:
+          $ref: '#/components/schemas/Path'
+        fileSystem:
+          $ref: '#/components/schemas/FileSystem'
+        nameCount:
+          type: integer
+          format: int32
+    DataResponseContentItemResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentItemResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    InputStream:
+      type: object
     ContentItemQueryRequest:
       type: object
       properties:
@@ -1011,19 +1011,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QueryMetadata'
-    QueryMetadata:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-        value:
-          type: object
-        type:
-          type: string
-    UserPrincipalLookupService:
-      type: object
     ContentItemResponse:
       type: object
       properties:
@@ -1085,28 +1072,42 @@ components:
           type: string
         parentFolderId:
           type: string
-    Path:
+    UserPrincipalLookupService:
+      type: object
+    Resource:
       type: object
       properties:
-        absolute:
+        open:
           type: boolean
-        parent:
+        file:
+          type: string
+          format: binary
+        readable:
+          type: boolean
+        url:
+          type: string
+          format: url
+        filePath:
           $ref: '#/components/schemas/Path'
-        root:
-          $ref: '#/components/schemas/Path'
-        fileName:
-          $ref: '#/components/schemas/Path'
-        fileSystem:
-          $ref: '#/components/schemas/FileSystem'
-        nameCount:
-          type: integer
-          format: int32
+        filename:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+          format: uri
+        contentAsByteArray:
+          type: array
+          items:
+            type: string
+            format: byte
+        inputStream:
+          $ref: '#/components/schemas/InputStream'
+    IterablePath:
+      type: object
+    IterableFileStore:
+      type: object
   requestBodies:
-    ContentItemRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ContentItemRequest'
     saveContentItemData:
       content:
         multipart/form-data:
@@ -1119,6 +1120,11 @@ components:
             required:
             - file
       required: true
+    ContentItemRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ContentItemRequest'
   securitySchemes:
     basicAuth:
       type: http

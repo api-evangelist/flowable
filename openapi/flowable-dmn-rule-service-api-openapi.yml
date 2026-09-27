@@ -56,13 +56,6 @@ paths:
       security:
       - basicAuth: []
 components:
-  requestBodies:
-    DmnRuleServiceRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/DmnRuleServiceRequest'
-      description: request
   schemas:
     DmnRuleServiceSingleResponse:
       type: object
@@ -117,6 +110,13 @@ components:
               $ref: '#/components/schemas/EngineRestVariable'
         url:
           type: string
+  requestBodies:
+    DmnRuleServiceRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DmnRuleServiceRequest'
+      description: request
   securitySchemes:
     basicAuth:
       type: http

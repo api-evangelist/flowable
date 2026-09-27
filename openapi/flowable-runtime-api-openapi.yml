@@ -135,7 +135,7 @@ paths:
       - Runtime
       summary: Get the binary data for a variable instance
       description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
-      operationId: getVariableInstanceData
+      operationId: getCmmnRuntimeVariableInstancesByVarInstanceIdData
       parameters:
       - name: varInstanceId
         in: path
@@ -156,30 +156,12 @@ paths:
           description: Indicates the requested variable instance was not found or the variable instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getVariableInstanceData
     servers:
     - url: /flowable-rest/cmmn-api
 components:
   schemas:
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
     ActivityInstanceQueryRequest:
       type: object
       properties:
@@ -278,23 +260,26 @@ components:
         tenantId:
           type: string
           example: 'null'
-    SignalEventReceivedRequest:
+    RestVariable:
       type: object
       properties:
-        signalName:
+        name:
           type: string
-          description: Name of the signal
-        variables:
-          type: array
-          description: Array of variables (in the general variables format) to use as payload to pass along with the signal. Cannot be used in case async is set to true, this will result in an error.
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        tenantId:
+          example: myVariable
+          description: Name of the variable
+        type:
           type: string
-          description: ID of the tenant that the signal event should be processed in
-        async:
-          type: boolean
-          description: "If true, handling of the signal will happen asynchronously. Return code will be 202 - Accepted to indicate the request is accepted but not yet executed. If false,\n                    handling the signal will be done immediately and result (200 - OK) will only return after this completed successfully. Defaults to false if omitted."
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
     DataResponseActivityInstanceResponse:
       type: object
       properties:
@@ -315,6 +300,23 @@ components:
         size:
           type: integer
           format: int32
+    SignalEventReceivedRequest:
+      type: object
+      properties:
+        signalName:
+          type: string
+          description: Name of the signal
+        variables:
+          type: array
+          description: Array of variables (in the general variables format) to use as payload to pass along with the signal. Cannot be used in case async is set to true, this will result in an error.
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
+          type: string
+          description: ID of the tenant that the signal event should be processed in
+        async:
+          type: boolean
+          description: "If true, handling of the signal will happen asynchronously. Return code will be 202 - Accepted to indicate the request is accepted but not yet executed. If false,\n                    handling the signal will be done immediately and result (200 - OK) will only return after this completed successfully. Defaults to false if omitted."
     VariableInstanceResponse:
       type: object
       properties:
@@ -334,48 +336,6 @@ components:
           type: string
         variable:
           $ref: '#/components/schemas/RestVariable'
-    DataResponseVariableInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/VariableInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    QueryVariable:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
-          type: string
     VariableInstanceQueryRequest:
       type: object
       properties:
@@ -409,6 +369,48 @@ components:
           type: boolean
         variableScope:
           type: string
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    DataResponseVariableInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
   securitySchemes:
     basicAuth:
       type: http

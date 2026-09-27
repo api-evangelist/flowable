@@ -392,24 +392,37 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    DataResponseRenditionItemResponse:
+    FileSystem:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/RenditionItemResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
+        open:
+          type: boolean
+        readOnly:
+          type: boolean
+        separator:
           type: string
-        order:
-          type: string
-        size:
+        rootDirectories:
+          $ref: '#/components/schemas/IterablePath'
+        fileStores:
+          $ref: '#/components/schemas/IterableFileStore'
+        userPrincipalLookupService:
+          $ref: '#/components/schemas/UserPrincipalLookupService'
+    IterablePath:
+      type: object
+    Path:
+      type: object
+      properties:
+        absolute:
+          type: boolean
+        parent:
+          $ref: '#/components/schemas/Path'
+        root:
+          $ref: '#/components/schemas/Path'
+        fileName:
+          $ref: '#/components/schemas/Path'
+        fileSystem:
+          $ref: '#/components/schemas/FileSystem'
+        nameCount:
           type: integer
           format: int32
     RenditionItemResponse:
@@ -445,8 +458,59 @@ components:
           format: date-time
         url:
           type: string
-    IterableFileStore:
+    InputStream:
       type: object
+    DataResponseRenditionItemResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RenditionItemResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    UserPrincipalLookupService:
+      type: object
+    Resource:
+      type: object
+      properties:
+        open:
+          type: boolean
+        file:
+          type: string
+          format: binary
+        readable:
+          type: boolean
+        url:
+          type: string
+          format: url
+        filePath:
+          $ref: '#/components/schemas/Path'
+        filename:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+          format: uri
+        contentAsByteArray:
+          type: array
+          items:
+            type: string
+            format: byte
+        inputStream:
+          $ref: '#/components/schemas/InputStream'
     RenditionItemQueryRequest:
       type: object
       properties:
@@ -540,72 +604,8 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    IterablePath:
+    IterableFileStore:
       type: object
-    FileSystem:
-      type: object
-      properties:
-        open:
-          type: boolean
-        readOnly:
-          type: boolean
-        separator:
-          type: string
-        rootDirectories:
-          $ref: '#/components/schemas/IterablePath'
-        fileStores:
-          $ref: '#/components/schemas/IterableFileStore'
-        userPrincipalLookupService:
-          $ref: '#/components/schemas/UserPrincipalLookupService'
-    InputStream:
-      type: object
-    Resource:
-      type: object
-      properties:
-        open:
-          type: boolean
-        file:
-          type: string
-          format: binary
-        readable:
-          type: boolean
-        url:
-          type: string
-          format: url
-        filePath:
-          $ref: '#/components/schemas/Path'
-        filename:
-          type: string
-        description:
-          type: string
-        uri:
-          type: string
-          format: uri
-        contentAsByteArray:
-          type: array
-          items:
-            type: string
-            format: byte
-        inputStream:
-          $ref: '#/components/schemas/InputStream'
-    UserPrincipalLookupService:
-      type: object
-    Path:
-      type: object
-      properties:
-        absolute:
-          type: boolean
-        parent:
-          $ref: '#/components/schemas/Path'
-        root:
-          $ref: '#/components/schemas/Path'
-        fileName:
-          $ref: '#/components/schemas/Path'
-        fileSystem:
-          $ref: '#/components/schemas/FileSystem'
-        nameCount:
-          type: integer
-          format: int32
   requestBodies:
     saveContentItemData:
       content:

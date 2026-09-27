@@ -448,7 +448,7 @@ paths:
       - History
       summary: Query for variable instances
       description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of variable instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long.
-      operationId: queryVariableInstances
+      operationId: postQueryVariableInstances
       requestBody:
         content:
           application/json:
@@ -467,6 +467,8 @@ paths:
       security:
       - basicAuth: []
       x-s2o-warning: Operation queryVariableInstances has multiple requestBodies
+      x-operation-id-source: normalized
+      x-operation-id-original: queryVariableInstances
     servers:
     - url: /flowable-rest/service
   /runtime/activity-instances:
@@ -694,7 +696,7 @@ paths:
       - History
       summary: Get the binary data for a historic task instance variable
       description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
-      operationId: getHistoricTaskInstanceVariableData
+      operationId: getCmmnHistoryHistoricTaskInstancesByTaskIdVariablesByVariableNameData
       parameters:
       - name: taskId
         in: path
@@ -725,6 +727,8 @@ paths:
           description: Indicates the requested task instance was not found or the process instance does not have a variable with the given name or the variable does not  have a binary stream available. Status message provides additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getHistoricTaskInstanceVariableData
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-history/historic-variable-instances:
@@ -733,7 +737,7 @@ paths:
       - History
       summary: List of historic variable instances
       description: ''
-      operationId: listHistoricVariableInstances
+      operationId: getCmmnHistoryHistoricVariableInstances
       parameters:
       - name: caseInstanceId
         in: query
@@ -809,6 +813,8 @@ paths:
           description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listHistoricVariableInstances
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-history/historic-variable-instances/{varInstanceId}/data:
@@ -817,7 +823,7 @@ paths:
       - History
       summary: Get the binary data for a historic task instance variable
       description: The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.
-      operationId: getHistoricInstanceVariableData
+      operationId: getCmmnHistoryHistoricVariableInstancesByVarInstanceIdData
       parameters:
       - name: varInstanceId
         in: path
@@ -838,6 +844,8 @@ paths:
           description: Indicates the requested variable instance was not found or the variable instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getHistoricInstanceVariableData
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-query/historic-variable-instances:
@@ -846,7 +854,7 @@ paths:
       - History
       summary: Query for historic variable instances
       description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.
-      operationId: queryVariableInstances
+      operationId: postCmmnQueryHistoricVariableInstances
       parameters:
       - name: sort
         in: query
@@ -873,6 +881,8 @@ paths:
           description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: queryVariableInstances
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-runtime/variable-instances:
@@ -881,7 +891,7 @@ paths:
       - History
       summary: List of variable instances
       description: ''
-      operationId: listVariableInstances
+      operationId: getCmmnRuntimeVariableInstances
       parameters:
       - name: caseInstanceId
         in: query
@@ -957,10 +967,166 @@ paths:
           description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listVariableInstances
     servers:
     - url: /flowable-rest/cmmn-api
 components:
   schemas:
+    VariableInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '14'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+        taskId:
+          type: string
+          example: '6'
+        executionId:
+          type: string
+        variable:
+          $ref: '#/components/schemas/RestVariable'
+    HistoricActivityInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        activityId:
+          type: string
+          example: '4'
+        activityName:
+          type: string
+          example: My user task
+        activityType:
+          type: string
+          example: userTask
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess%3A1%3A4
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4
+        processInstanceId:
+          type: string
+          example: '3'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/3
+        executionId:
+          type: string
+          example: '4'
+        taskId:
+          type: string
+          example: '4'
+        calledProcessInstanceId:
+          type: string
+          example: 'null'
+        assignee:
+          type: string
+          example: fozzie
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endTime:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        durationInMillis:
+          type: integer
+          format: int64
+          example: 86400056
+        tenantId:
+          type: string
+          example: 'null'
+    VariableInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        excludeTaskVariables:
+          type: boolean
+        taskId:
+          type: string
+        executionId:
+          type: string
+        processInstanceId:
+          type: string
+        variableName:
+          type: string
+        variableNameLike:
+          type: string
+        excludeLocalVariables:
+          type: boolean
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+    HistoricVariableInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '14'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+        taskId:
+          type: string
+          example: '6'
+        executionId:
+          type: string
+        variable:
+          $ref: '#/components/schemas/RestVariable'
+    HistoricVariableInstanceQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        excludeTaskVariables:
+          type: boolean
+        taskId:
+          type: string
+        executionId:
+          type: string
+        processInstanceId:
+          type: string
+        variableName:
+          type: string
+        variableNameLike:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/QueryVariable'
+        excludeLocalVariables:
+          type: boolean
     HistoricDetailQueryRequest:
       type: object
       properties:
@@ -988,84 +1154,28 @@ components:
           type: boolean
         selectOnlyVariableUpdates:
           type: boolean
-    RestVariable:
+    QueryVariable:
       type: object
       properties:
         name:
           type: string
-          example: myVariable
-          description: Name of the variable
-        type:
+        operation:
           type: string
-          example: string
-          description: Type of the variable.
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
         value:
           type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
+        type:
           type: string
-          example: http://....
-        scope:
-          type: string
-    VariableInstanceResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '14'
-        processInstanceId:
-          type: string
-          example: '5'
-        processInstanceUrl:
-          type: string
-          example: http://localhost:8182/history/historic-process-instances/5
-        taskId:
-          type: string
-          example: '6'
-        executionId:
-          type: string
-        variable:
-          $ref: '#/components/schemas/RestVariable'
-    DataResponseHistoricActivityInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricActivityInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    HistoricVariableInstanceResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '14'
-        processInstanceId:
-          type: string
-          example: '5'
-        processInstanceUrl:
-          type: string
-          example: http://localhost:8182/history/historic-process-instances/5
-        taskId:
-          type: string
-          example: '6'
-        executionId:
-          type: string
-        variable:
-          $ref: '#/components/schemas/RestVariable'
     ActivityInstanceResponse:
       type: object
       properties:
@@ -1120,46 +1230,26 @@ components:
         tenantId:
           type: string
           example: 'null'
-    DataResponseVariableInstanceResponse:
+    RestVariable:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/VariableInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
+        name:
           type: string
-        order:
+          example: myVariable
+          description: Name of the variable
+        type:
           type: string
-        size:
-          type: integer
-          format: int32
-    DataResponseHistoricDetailResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricDetailResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
           type: string
-        order:
+          example: http://....
+        scope:
           type: string
-        size:
-          type: integer
-          format: int32
     DataResponseActivityInstanceResponse:
       type: object
       properties:
@@ -1167,79 +1257,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ActivityInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    QueryVariable:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
-          type: string
-    VariableInstanceQueryRequest:
-      type: object
-      properties:
-        start:
-          type: integer
-          format: int32
-        size:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        excludeTaskVariables:
-          type: boolean
-        taskId:
-          type: string
-        executionId:
-          type: string
-        processInstanceId:
-          type: string
-        variableName:
-          type: string
-        variableNameLike:
-          type: string
-        excludeLocalVariables:
-          type: boolean
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/QueryVariable'
-    DataResponseHistoricVariableInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricVariableInstanceResponse'
         total:
           type: integer
           format: int64
@@ -1300,6 +1317,48 @@ components:
           type: string
         withoutTenantId:
           type: boolean
+    DataResponseHistoricActivityInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricActivityInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DataResponseVariableInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricVariableInstanceCollectionResource:
+      type: object
     HistoricDetailResponse:
       type: object
       properties:
@@ -1343,93 +1402,46 @@ components:
         propertyValue:
           type: string
           example: 'null'
-    HistoricVariableInstanceQueryRequest:
+    DataResponseHistoricDetailResponse:
       type: object
       properties:
-        start:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricDetailResponse'
+        total:
           type: integer
-          format: int32
-        size:
+          format: int64
+        start:
           type: integer
           format: int32
         sort:
           type: string
         order:
           type: string
-        excludeTaskVariables:
-          type: boolean
-        taskId:
-          type: string
-        executionId:
-          type: string
-        processInstanceId:
-          type: string
-        variableName:
-          type: string
-        variableNameLike:
-          type: string
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/QueryVariable'
-        excludeLocalVariables:
-          type: boolean
-    HistoricActivityInstanceResponse:
+        size:
+          type: integer
+          format: int32
+    DataResponseHistoricVariableInstanceResponse:
       type: object
       properties:
-        id:
-          type: string
-          example: '5'
-        activityId:
-          type: string
-          example: '4'
-        activityName:
-          type: string
-          example: My user task
-        activityType:
-          type: string
-          example: userTask
-        processDefinitionId:
-          type: string
-          example: oneTaskProcess%3A1%3A4
-        processDefinitionUrl:
-          type: string
-          example: http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4
-        processInstanceId:
-          type: string
-          example: '3'
-        processInstanceUrl:
-          type: string
-          example: http://localhost:8182/history/historic-process-instances/3
-        executionId:
-          type: string
-          example: '4'
-        taskId:
-          type: string
-          example: '4'
-        calledProcessInstanceId:
-          type: string
-          example: 'null'
-        assignee:
-          type: string
-          example: fozzie
-        startTime:
-          type: string
-          format: date-time
-          example: 2013-04-17T10:17:43.902+0000
-        endTime:
-          type: string
-          format: date-time
-          example: 2013-04-18T14:06:32.715+0000
-        durationInMillis:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricVariableInstanceResponse'
+        total:
           type: integer
           format: int64
-          example: 86400056
-        tenantId:
+        start:
+          type: integer
+          format: int32
+        sort:
           type: string
-          example: 'null'
-    HistoricVariableInstanceCollectionResource:
-      type: object
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     VariableInstanceResponse_2:
       type: object
       properties:

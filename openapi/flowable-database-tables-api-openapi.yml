@@ -133,19 +133,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    TableMetaData:
-      type: object
-      properties:
-        tableName:
-          type: string
-        columnNames:
-          type: array
-          items:
-            type: string
-        columnTypes:
-          type: array
-          items:
-            type: string
     DataResponseListMapStringObject:
       type: object
       properties:
@@ -183,6 +170,19 @@ components:
           type: integer
           format: int64
           example: 4528
+    TableMetaData:
+      type: object
+      properties:
+        tableName:
+          type: string
+        columnNames:
+          type: array
+          items:
+            type: string
+        columnTypes:
+          type: array
+          items:
+            type: string
   securitySchemes:
     basicAuth:
       type: http

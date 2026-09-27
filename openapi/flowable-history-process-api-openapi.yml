@@ -745,25 +745,49 @@ components:
           type: string
         parentScopeId:
           type: string
-    RestVariable:
+    HistoricIdentityLinkResponse:
       type: object
       properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
         type:
           type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
+          example: participant
+        userId:
           type: string
-          example: http://....
-        scope:
+          example: kermit
+        groupId:
+          type: string
+          example: sales
+        taskId:
+          type: string
+          example: 'null'
+        taskUrl:
+          type: string
+          example: 'null'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+    CommentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        author:
+          type: string
+        message:
+          type: string
+        time:
+          type: string
+          format: date-time
+        taskId:
+          type: string
+        taskUrl:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceUrl:
           type: string
     HistoricProcessInstanceResponse:
       type: object
@@ -870,30 +894,6 @@ components:
         size:
           type: integer
           format: int32
-    HistoricIdentityLinkResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          example: participant
-        userId:
-          type: string
-          example: kermit
-        groupId:
-          type: string
-          example: sales
-        taskId:
-          type: string
-          example: 'null'
-        taskUrl:
-          type: string
-          example: 'null'
-        processInstanceId:
-          type: string
-          example: '5'
-        processInstanceUrl:
-          type: string
-          example: http://localhost:8182/history/historic-process-instances/5
     QueryVariable:
       type: object
       properties:
@@ -916,25 +916,25 @@ components:
           type: object
         type:
           type: string
-    CommentResponse:
+    RestVariable:
       type: object
       properties:
-        id:
+        name:
           type: string
-        author:
+          example: myVariable
+          description: Name of the variable
+        type:
           type: string
-        message:
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
           type: string
-        time:
-          type: string
-          format: date-time
-        taskId:
-          type: string
-        taskUrl:
-          type: string
-        processInstanceId:
-          type: string
-        processInstanceUrl:
+          example: http://....
+        scope:
           type: string
   securitySchemes:
     basicAuth:

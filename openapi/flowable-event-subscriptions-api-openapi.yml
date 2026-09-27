@@ -221,7 +221,7 @@ paths:
       - Event Subscriptions
       summary: List of event subscriptions
       description: ''
-      operationId: listEventSubscriptions
+      operationId: getCmmnRuntimeEventSubscriptions
       parameters:
       - name: id
         in: query
@@ -369,6 +369,8 @@ paths:
           description: Indicates an illegal value has been used in a url query parameter. Status description contains additional details about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listEventSubscriptions
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-runtime/event-subscriptions/{eventSubscriptionId}:
@@ -377,7 +379,7 @@ paths:
       - Event Subscriptions
       summary: Get a single event subscription
       description: ''
-      operationId: getEventSubscription
+      operationId: getCmmnRuntimeEventSubscriptionsByEventSubscriptionId
       parameters:
       - name: eventSubscriptionId
         in: path
@@ -395,10 +397,32 @@ paths:
           description: Indicates the requested event subscription does not exist.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getEventSubscription
     servers:
     - url: /flowable-rest/cmmn-api
 components:
   schemas:
+    DataResponseEventSubscriptionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventSubscriptionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     EventSubscriptionResponse:
       type: object
       properties:
@@ -439,26 +463,6 @@ components:
           type: string
         tenantId:
           type: string
-    DataResponseEventSubscriptionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventSubscriptionResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     EventSubscriptionResponse_2:
       type: object
       properties:

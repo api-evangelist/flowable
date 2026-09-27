@@ -380,6 +380,23 @@ paths:
       security:
       - basicAuth: []
 components:
+  requestBodies:
+    ProcessInstanceVariableCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: Simple content item
+                type: string
+              type:
+                example: integer
+                type: string
+      description: Create a variable on a process instance
   schemas:
     RestVariable:
       type: object
@@ -401,23 +418,6 @@ components:
           example: http://....
         scope:
           type: string
-  requestBodies:
-    ProcessInstanceVariableCollectionResource:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-              name:
-                example: Simple content item
-                type: string
-              type:
-                example: integer
-                type: string
-      description: Create a variable on a process instance
   securitySchemes:
     basicAuth:
       type: http

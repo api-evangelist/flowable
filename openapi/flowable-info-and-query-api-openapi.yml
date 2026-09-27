@@ -208,8 +208,6 @@ paths:
           description: Indicates the requested job was not found.
 components:
   schemas:
-    ExternalWorkerJobCollectionResource:
-      type: object
     ExternalWorkerJobResponse:
       type: object
       required:
@@ -316,6 +314,8 @@ components:
         size:
           type: integer
           format: int32
+    ExternalWorkerJobCollectionResource:
+      type: object
   securitySchemes:
     basicAuth:
       type: http

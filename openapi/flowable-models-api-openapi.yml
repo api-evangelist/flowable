@@ -336,11 +336,6 @@ paths:
       - basicAuth: []
 components:
   requestBodies:
-    ModelRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ModelRequest'
     uploadDeployment:
       content:
         multipart/form-data:
@@ -353,27 +348,12 @@ components:
             required:
             - file
       required: true
+    ModelRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ModelRequest'
   schemas:
-    DataResponseModelResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ModelResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     ModelRequest:
       type: object
       properties:
@@ -399,6 +379,26 @@ components:
         tenantId:
           type: string
           example: 'null'
+    DataResponseModelResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModelResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     ModelResponse:
       type: object
       properties:

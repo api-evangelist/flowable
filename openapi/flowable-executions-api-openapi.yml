@@ -599,25 +599,11 @@ paths:
       - basicAuth: []
 components:
   requestBodies:
-    ExecutionVariableCollectionResource:
+    ExecutionActionRequest:
       content:
-        multipart/form-data:
+        application/json:
           schema:
-            type: object
-            properties:
-              name:
-                description: Required name of the variable
-                example: Simple content item
-                type: string
-              type:
-                description: Type of variable that is updated. If omitted, reverts to raw JSON-value type (string, boolean, integer or double)
-                example: integer
-                type: string
-              scope:
-                description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable..
-                example: local
-                type: string
-      description: Update a task variable
+            $ref: '#/components/schemas/ExecutionActionRequest'
     ExecutionVariableResource:
       content:
         multipart/form-data:
@@ -637,92 +623,31 @@ components:
                 example: global
                 type: string
       description: Update a variable on an execution
-    ExecutionActionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecutionActionRequest'
     ExecutionChangeActivityStateRequest:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ExecutionChangeActivityStateRequest'
+    ExecutionVariableCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              name:
+                description: Required name of the variable
+                example: Simple content item
+                type: string
+              type:
+                description: Type of variable that is updated. If omitted, reverts to raw JSON-value type (string, boolean, integer or double)
+                example: integer
+                type: string
+              scope:
+                description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable..
+                example: local
+                type: string
+      description: Update a task variable
   schemas:
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
-    ExecutionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '5'
-        url:
-          type: string
-          example: http://localhost:8182/runtime/executions/5
-        parentId:
-          type: string
-          example: 'null'
-        parentUrl:
-          type: string
-          example: 'null'
-        superExecutionId:
-          type: string
-          example: 'null'
-        superExecutionUrl:
-          type: string
-          example: 'null'
-        processInstanceId:
-          type: string
-          example: '5'
-        processInstanceUrl:
-          type: string
-          example: http://localhost:8182/runtime/process-instances/5
-        suspended:
-          type: boolean
-        activityId:
-          type: string
-          example: 'null'
-        tenantId:
-          type: string
-          example: 'null'
-    DataResponseExecutionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExecutionResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     ExecutionQueryRequest:
       type: object
       properties:
@@ -773,28 +698,6 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    QueryVariable:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
-          type: string
     ExecutionActionRequest:
       type: object
       required:
@@ -820,6 +723,103 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RestVariable'
+    DataResponseExecutionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExecutionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    ExecutionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/runtime/executions/5
+        parentId:
+          type: string
+          example: 'null'
+        parentUrl:
+          type: string
+          example: 'null'
+        superExecutionId:
+          type: string
+          example: 'null'
+        superExecutionUrl:
+          type: string
+          example: 'null'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/runtime/process-instances/5
+        suspended:
+          type: boolean
+        activityId:
+          type: string
+          example: 'null'
+        tenantId:
+          type: string
+          example: 'null'
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
     ExecutionChangeActivityStateRequest:
       type: object
       properties:

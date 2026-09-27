@@ -30,16 +30,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    TenantResponse:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          example: default
-          description: The id of the tenant
-      description: The response for a tenant
     DataResponseTenantResponse:
       type: object
       properties:
@@ -60,6 +50,16 @@ components:
         size:
           type: integer
           format: int32
+    TenantResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: default
+          description: The id of the tenant
+      description: The response for a tenant
   securitySchemes:
     basicAuth:
       type: http

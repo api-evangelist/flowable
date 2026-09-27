@@ -617,38 +617,18 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    ExecutionChangeActivityStateRequest:
+    ProcessInstanceUpdateRequest:
       type: object
+      required:
+      - action
       properties:
-        cancelActivityIds:
-          type: array
-          description: activityIds to be canceled
-          items:
-            type: string
-        startActivityIds:
-          type: array
-          description: activityIds to be started
-          items:
-            type: string
-    RestVariable:
-      type: object
-      properties:
+        action:
+          type: string
+          example: activate
+          description: 'Action to perform: Either activate or suspend'
         name:
           type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
+        businessKey:
           type: string
     DataResponseProcessInstanceResponse:
       type: object
@@ -670,6 +650,28 @@ components:
         size:
           type: integer
           format: int32
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
     ProcessInstanceResponse:
       type: object
       properties:
@@ -740,17 +742,6 @@ components:
           example: someTenantId
         completed:
           type: boolean
-    BulkDeleteInstancesRestActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        instanceIds:
-          type: array
-          items:
-            type: string
-        deleteReason:
-          type: string
     ProcessInstanceQueryRequest:
       type: object
       properties:
@@ -893,27 +884,36 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    QueryVariable:
+    RestVariable:
       type: object
       properties:
         name:
           type: string
-        operation:
+          example: myVariable
+          description: Name of the variable
+        type:
           type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
+          example: string
+          description: Type of the variable.
         value:
           type: object
-        type:
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    BulkDeleteInstancesRestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        instanceIds:
+          type: array
+          items:
+            type: string
+        deleteReason:
           type: string
     ProcessInstanceCreateRequest:
       type: object
@@ -956,6 +956,19 @@ components:
         returnVariables:
           type: boolean
       description: Only one of processDefinitionId, processDefinitionKey or message can be used in the request body
+    ExecutionChangeActivityStateRequest:
+      type: object
+      properties:
+        cancelActivityIds:
+          type: array
+          description: activityIds to be canceled
+          items:
+            type: string
+        startActivityIds:
+          type: array
+          description: activityIds to be started
+          items:
+            type: string
     InjectActivityRequest:
       type: object
       properties:
@@ -973,30 +986,17 @@ components:
           type: string
         joinParallelActivitiesOnComplete:
           type: boolean
-    ProcessInstanceUpdateRequest:
-      type: object
-      required:
-      - action
-      properties:
-        action:
-          type: string
-          example: activate
-          description: 'Action to perform: Either activate or suspend'
-        name:
-          type: string
-        businessKey:
-          type: string
   requestBodies:
-    ExecutionChangeActivityStateRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecutionChangeActivityStateRequest'
     BulkDeleteInstancesRestActionRequest:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/BulkDeleteInstancesRestActionRequest'
+    ExecutionChangeActivityStateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExecutionChangeActivityStateRequest'
     batchMigrateInstancesOfProcessDefinitionBody:
       content:
         application/json:

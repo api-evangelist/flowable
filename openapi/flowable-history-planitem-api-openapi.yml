@@ -315,26 +315,6 @@ paths:
       x-s2o-warning: Operation queryHistoricPlanItemInstance has multiple requestBodies
 components:
   schemas:
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
     HistoricPlanItemInstanceQueryRequest:
       type: object
       properties:
@@ -449,6 +429,46 @@ components:
           type: boolean
         includeLocalVariables:
           type: boolean
+    DataResponseHistoricPlanItemInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricPlanItemInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
     HistoricPlanItemInstanceResponse:
       type: object
       properties:
@@ -574,26 +594,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RestVariable'
-    DataResponseHistoricPlanItemInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricPlanItemInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
   securitySchemes:
     basicAuth:
       type: http

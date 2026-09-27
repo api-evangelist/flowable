@@ -298,7 +298,7 @@ paths:
       - Deployment
       summary: List Deployments
       description: ''
-      operationId: listDeployments
+      operationId: getCmmnRepositoryDeployments
       parameters:
       - name: name
         in: query
@@ -392,6 +392,8 @@ paths:
                 $ref: '#/components/schemas/DataResponseCmmnDeploymentResponse'
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listDeployments
     post:
       tags:
       - Deployment
@@ -400,7 +402,7 @@ paths:
 
 
         An additional parameter (form-field) can be passed in the request body with name tenantId. The value of this field will be used as the id of the tenant this deployment is done in.'
-      operationId: uploadDeployment
+      operationId: postCmmnRepositoryDeployments
       parameters:
       - name: deploymentKey
         in: query
@@ -440,6 +442,8 @@ paths:
           description: Indicates there was no content present in the request body or the content mime-type is not supported for deployment. The status-description contains additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: uploadDeployment
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-repository/deployments/{deploymentId}:
@@ -448,7 +452,7 @@ paths:
       - Deployment
       summary: Get a deployment
       description: ''
-      operationId: getDeployment
+      operationId: getCmmnRepositoryDeploymentsByDeploymentId
       parameters:
       - name: deploymentId
         in: path
@@ -467,12 +471,14 @@ paths:
           description: Indicates the requested deployment was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getDeployment
     delete:
       tags:
       - Deployment
       summary: Delete a deployment
       description: ''
-      operationId: deleteDeployment
+      operationId: deleteCmmnRepositoryDeploymentsByDeploymentId
       parameters:
       - name: deploymentId
         in: path
@@ -491,6 +497,8 @@ paths:
           description: Indicates the requested deployment was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteDeployment
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-repository/deployments/{deploymentId}/resourcedata/{resourceName}:
@@ -499,7 +507,7 @@ paths:
       - Deployment
       summary: Get a deployment resource content
       description: The response body will contain the binary resource-content for the requested resource. The response content-type will be the same as the type returned in the resources mimeType property. Also, a content-disposition header is set, allowing browsers to download the file instead of displaying it.
-      operationId: getDeploymentResourceData
+      operationId: getCmmnRepositoryDeploymentsByDeploymentIdResourcedataByResourceName
       parameters:
       - name: deploymentId
         in: path
@@ -526,6 +534,8 @@ paths:
           description: Indicates the requested deployment was not found or there is no resource with the given id present in the deployment. The status-description contains additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getDeploymentResourceData
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-repository/deployments/{deploymentId}/resources:
@@ -534,7 +544,7 @@ paths:
       - Deployment
       summary: List resources in a deployment
       description: The dataUrl property in the resulting JSON for a single resource contains the actual URL to use for retrieving the binary resource.
-      operationId: listDeploymentResources
+      operationId: getCmmnRepositoryDeploymentsByDeploymentIdResources
       parameters:
       - name: deploymentId
         in: path
@@ -554,6 +564,8 @@ paths:
           description: Indicates the requested deployment was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listDeploymentResources
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-repository/deployments/{deploymentId}/resources/**:
@@ -562,7 +574,7 @@ paths:
       - Deployment
       summary: Get a deployment resource
       description: Replace ** by ResourceId
-      operationId: getDeploymentResource
+      operationId: getCmmnRepositoryDeploymentsByDeploymentIdResources**
       parameters:
       - name: deploymentId
         in: path
@@ -580,6 +592,8 @@ paths:
           description: Indicates the requested deployment was not found or there is no resource with the given id present in the deployment. The status-description contains additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getDeploymentResource
     servers:
     - url: /flowable-rest/cmmn-api
   /document-repository/deployments:
@@ -588,7 +602,7 @@ paths:
       - Deployment
       summary: List Deployments
       description: ''
-      operationId: listDeployments
+      operationId: getDocumentRepositoryDeployments
       parameters:
       - name: name
         in: query
@@ -670,6 +684,8 @@ paths:
                 $ref: '#/components/schemas/DataResponseDocumentDeploymentResponse'
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listDeployments
     post:
       tags:
       - Deployment
@@ -678,7 +694,7 @@ paths:
 
 
         An additional parameter (form-field) can be passed in the request body with name tenantId. The value of this field will be used as the id of the tenant this deployment is done in.'
-      operationId: uploadDeployment
+      operationId: postDocumentRepositoryDeployments
       parameters:
       - name: deploymentKey
         in: query
@@ -710,6 +726,8 @@ paths:
           description: Indicates there was no content present in the request body or the content mime-type is not supported for deployment. The status-description contains additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: uploadDeployment
     servers:
     - url: http://localhost:8090/content-api
     - url: https://localhost:8090/content-api
@@ -719,7 +737,7 @@ paths:
       - Deployment
       summary: Get a deployment
       description: ''
-      operationId: getDeployment
+      operationId: getDocumentRepositoryDeploymentsByDeploymentId
       parameters:
       - name: deploymentId
         in: path
@@ -738,12 +756,14 @@ paths:
           description: Indicates the requested deployment was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getDeployment
     delete:
       tags:
       - Deployment
       summary: Delete a deployment
       description: ''
-      operationId: deleteDeployment
+      operationId: deleteDocumentRepositoryDeploymentsByDeploymentId
       parameters:
       - name: deploymentId
         in: path
@@ -757,6 +777,8 @@ paths:
           description: Indicates the requested deployment was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteDeployment
     servers:
     - url: http://localhost:8090/content-api
     - url: https://localhost:8090/content-api
@@ -766,7 +788,7 @@ paths:
       - Deployment
       summary: Get a deployment resource content
       description: The response body will contain the binary resource-content for the requested resource. The response content-type will be the same as the type returned in the resources mimeType property. Also, a content-disposition header is set, allowing browsers to download the file instead of displaying it.
-      operationId: getDeploymentResourceData
+      operationId: getDocumentRepositoryDeploymentsByDeploymentIdResourcedataByResourceName
       parameters:
       - name: deploymentId
         in: path
@@ -793,6 +815,8 @@ paths:
           description: Indicates the requested deployment was not found or there is no resource with the given id present in the deployment. The status-description contains additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getDeploymentResourceData
     servers:
     - url: http://localhost:8090/content-api
     - url: https://localhost:8090/content-api
@@ -802,7 +826,7 @@ paths:
       - Deployment
       summary: List resources in a deployment
       description: The dataUrl property in the resulting JSON for a single resource contains the actual URL to use for retrieving the binary resource.
-      operationId: listDeploymentResources
+      operationId: getDocumentRepositoryDeploymentsByDeploymentIdResources
       parameters:
       - name: deploymentId
         in: path
@@ -822,6 +846,8 @@ paths:
           description: Indicates the requested deployment was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listDeploymentResources
     servers:
     - url: http://localhost:8090/content-api
     - url: https://localhost:8090/content-api
@@ -831,7 +857,7 @@ paths:
       - Deployment
       summary: Get a deployment resource
       description: Replace ** by ResourceId
-      operationId: getDeploymentResource
+      operationId: getDocumentRepositoryDeploymentsByDeploymentIdResources**
       parameters:
       - name: deploymentId
         in: path
@@ -849,6 +875,8 @@ paths:
           description: Indicates the requested deployment was not found or there is no resource with the given id present in the deployment. The status-description contains additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getDeploymentResource
     servers:
     - url: http://localhost:8090/content-api
     - url: https://localhost:8090/content-api
@@ -1069,6 +1097,31 @@ paths:
     servers:
     - url: /flowable-rest/dmn-api
 components:
+  requestBodies:
+    uploadDeployment:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+            required:
+            - file
+      required: true
+    saveContentItemData:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+            required:
+            - file
+      required: true
   schemas:
     DataResponseDeploymentResponse:
       type: object
@@ -1090,6 +1143,30 @@ components:
         size:
           type: integer
           format: int32
+    DeploymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '10'
+        name:
+          type: string
+          example: flowable-examples.bar
+        deploymentTime:
+          type: string
+          format: date-time
+          example: '2010-10-13T14:54:26.750+02:00'
+        category:
+          type: string
+          example: examples
+        parentDeploymentId:
+          type: string
+          example: '12'
+        url:
+          type: string
+          example: http://localhost:8081/flowable-rest/service/repository/deployments/10
+        tenantId:
+          type: string
     DeploymentResourceResponse:
       type: object
       properties:
@@ -1115,30 +1192,26 @@ components:
           - resource
           - processDefinition
           - processImage
-    DeploymentResponse:
+    DataResponseCmmnDeploymentResponse:
       type: object
       properties:
-        id:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CmmnDeploymentResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
           type: string
-          example: '10'
-        name:
+        order:
           type: string
-          example: flowable-examples.bar
-        deploymentTime:
-          type: string
-          format: date-time
-          example: '2010-10-13T14:54:26.750+02:00'
-        category:
-          type: string
-          example: examples
-        parentDeploymentId:
-          type: string
-          example: '12'
-        url:
-          type: string
-          example: http://localhost:8081/flowable-rest/service/repository/deployments/10
-        tenantId:
-          type: string
+        size:
+          type: integer
+          format: int32
     CmmnDeploymentResponse:
       type: object
       properties:
@@ -1188,50 +1261,6 @@ components:
           - resource
           - processDefinition
           - processImage
-    DataResponseCmmnDeploymentResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CmmnDeploymentResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    DocumentDeploymentResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '10'
-        name:
-          type: string
-          example: flowable-examples.document
-        deploymentTime:
-          type: string
-          format: date-time
-          example: '2019-10-13T14:54:26.750+02:00'
-        category:
-          type: string
-          example: examples
-        parentDeploymentId:
-          type: string
-          example: '12'
-        url:
-          type: string
-          example: http://localhost:8081/flowable-rest/content-api/content-repository/deployments/10
-        tenantId:
-          type: string
     DataResponseDocumentDeploymentResponse:
       type: object
       properties:
@@ -1276,6 +1305,30 @@ components:
           enum:
           - resource
           - documentDefinition
+    DocumentDeploymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '10'
+        name:
+          type: string
+          example: flowable-examples.document
+        deploymentTime:
+          type: string
+          format: date-time
+          example: '2019-10-13T14:54:26.750+02:00'
+        category:
+          type: string
+          example: examples
+        parentDeploymentId:
+          type: string
+          example: '12'
+        url:
+          type: string
+          example: http://localhost:8081/flowable-rest/content-api/content-repository/deployments/10
+        tenantId:
+          type: string
     DmnDeploymentResponse:
       type: object
       properties:
@@ -1321,31 +1374,6 @@ components:
         size:
           type: integer
           format: int32
-  requestBodies:
-    uploadDeployment:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-            required:
-            - file
-      required: true
-    saveContentItemData:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-            required:
-            - file
-      required: true
   securitySchemes:
     basicAuth:
       type: http

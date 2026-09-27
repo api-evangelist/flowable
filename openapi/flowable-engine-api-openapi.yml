@@ -59,7 +59,7 @@ paths:
       - Engine
       summary: Get Content engine info
       description: ''
-      operationId: getEngineInfo
+      operationId: getContentManagementEngine
       responses:
         '200':
           description: Indicates the engine info is returned.
@@ -69,6 +69,8 @@ paths:
                 $ref: '#/components/schemas/EngineInfoResponse'
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getEngineInfo
     servers:
     - url: http://localhost:8090/content-api
     - url: https://localhost:8090/content-api
@@ -78,7 +80,7 @@ paths:
       - Engine
       summary: Get DMN engine info
       description: Returns a read-only view of the DMN engine that is used in this REST-service.
-      operationId: getEngineInfo
+      operationId: getDmnManagementEngine
       responses:
         '200':
           description: Indicates the engine info is returned.
@@ -88,6 +90,8 @@ paths:
                 $ref: '#/components/schemas/EngineInfoResponse'
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getEngineInfo
     servers:
     - url: /flowable-rest/dmn-api
   /form-management/engine:
@@ -96,7 +100,7 @@ paths:
       - Engine
       summary: Get form engine info
       description: Returns a read-only view of the engine that is used in this REST-service.
-      operationId: getEngineInfo
+      operationId: getFormManagementEngine
       responses:
         '200':
           description: Indicates the engine info is returned.
@@ -106,6 +110,8 @@ paths:
                 $ref: '#/components/schemas/EngineInfoResponse'
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getEngineInfo
     servers:
     - url: http://localhost:8090/form-api
     - url: https://localhost:8090/form-api
@@ -115,7 +121,7 @@ paths:
       - Engine
       summary: Get IDM engine info
       description: Returns a read-only view of the engine that is used in this REST-service.
-      operationId: getEngineInfo
+      operationId: getIdmManagementEngine
       responses:
         '200':
           description: Indicates the engine info is returned.
@@ -125,6 +131,8 @@ paths:
                 $ref: '#/components/schemas/EngineInfoResponse'
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getEngineInfo
     servers:
     - url: http://localhost:8090/idm-api
     - url: https://localhost:8090/idm-api

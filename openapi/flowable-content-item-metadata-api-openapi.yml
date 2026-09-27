@@ -249,6 +249,23 @@ paths:
       security:
       - basicAuth: []
 components:
+  requestBodies:
+    MetadataCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: Simple content item
+                type: string
+              type:
+                example: integer
+                type: string
+      description: Create metadata on a content item
   schemas:
     EngineRestVariable:
       type: object
@@ -268,23 +285,6 @@ components:
         valueUrl:
           type: string
           example: http://....
-  requestBodies:
-    MetadataCollectionResource:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-              name:
-                example: Simple content item
-                type: string
-              type:
-                example: integer
-                type: string
-      description: Create metadata on a content item
   securitySchemes:
     basicAuth:
       type: http

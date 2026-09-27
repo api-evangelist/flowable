@@ -182,7 +182,7 @@ paths:
       - Task Identity Links
       summary: List identity links for a task
       description: ''
-      operationId: listTasksInstanceIdentityLinks
+      operationId: getCmmnRuntimeTasksByTaskIdIdentitylinks
       parameters:
       - name: taskId
         in: path
@@ -202,12 +202,14 @@ paths:
           description: Indicates the requested task was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listTasksInstanceIdentityLinks
     post:
       tags:
       - Task Identity Links
       summary: Create an identity link on a task
       description: It is possible to add either a user or a group.
-      operationId: createTaskInstanceIdentityLinks
+      operationId: postCmmnRuntimeTasksByTaskIdIdentitylinks
       parameters:
       - name: taskId
         in: path
@@ -227,6 +229,8 @@ paths:
           description: Indicates the requested task was not found or the task does not have the requested identityLink. The status contains additional information about this error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: createTaskInstanceIdentityLinks
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-runtime/tasks/{taskId}/identitylinks/{family}:
@@ -235,7 +239,7 @@ paths:
       - Task Identity Links
       summary: List identity links for a task for either groups or users
       description: Returns only identity links targeting either users or groups. Response body and status-codes are exactly the same as when getting the full list of identity links for a task.
-      operationId: listIdentityLinksForFamily
+      operationId: getCmmnRuntimeTasksByTaskIdIdentitylinksByFamily
       parameters:
       - name: taskId
         in: path
@@ -260,6 +264,8 @@ paths:
           description: Indicates the requested task was not found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listIdentityLinksForFamily
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-runtime/tasks/{taskId}/identitylinks/{family}/{identityId}/{type}:
@@ -268,7 +274,7 @@ paths:
       - Task Identity Links
       summary: Get a single identity link on a task
       description: ''
-      operationId: getTaskInstanceIdentityLinks
+      operationId: getCmmnRuntimeTasksByTaskIdIdentitylinksByFamilyByIdentityIdByType
       parameters:
       - name: taskId
         in: path
@@ -301,12 +307,14 @@ paths:
           description: Indicates the requested task was not found or the task does not have the requested identityLink. The status contains additional information about this error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getTaskInstanceIdentityLinks
     delete:
       tags:
       - Task Identity Links
       summary: Delete an identity link on a task
       description: ''
-      operationId: deleteTaskInstanceIdentityLinks
+      operationId: deleteCmmnRuntimeTasksByTaskIdIdentitylinksByFamilyByIdentityIdByType
       parameters:
       - name: taskId
         in: path
@@ -335,15 +343,11 @@ paths:
           description: Indicates the requested task was not found or the task does not have the requested identityLink. The status contains additional information about this error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteTaskInstanceIdentityLinks
     servers:
     - url: /flowable-rest/cmmn-api
 components:
-  requestBodies:
-    RestIdentityLink:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RestIdentityLink'
   schemas:
     RestIdentityLink:
       type: object
@@ -359,6 +363,12 @@ components:
         type:
           type: string
           example: candidate
+  requestBodies:
+    RestIdentityLink:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestIdentityLink'
   securitySchemes:
     basicAuth:
       type: http

@@ -128,6 +128,21 @@ paths:
       - basicAuth: []
 components:
   schemas:
+    CommentRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        author:
+          type: string
+        message:
+          type: string
+        type:
+          type: string
+        saveProcessInstanceId:
+          type: boolean
     CommentResponse:
       type: object
       properties:
@@ -148,21 +163,6 @@ components:
           type: string
         processInstanceUrl:
           type: string
-    CommentRequest:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-        author:
-          type: string
-        message:
-          type: string
-        type:
-          type: string
-        saveProcessInstanceId:
-          type: boolean
   securitySchemes:
     basicAuth:
       type: http

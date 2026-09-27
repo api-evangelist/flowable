@@ -659,7 +659,7 @@ paths:
       - History Task
       summary: List historic task instances
       description: ''
-      operationId: listHistoricTaskInstances
+      operationId: getCmmnHistoryHistoricTaskInstances
       parameters:
       - name: taskId
         in: query
@@ -963,6 +963,8 @@ paths:
           description: Indicates an parameter was passed in the wrong format. The status-message contains additional information.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listHistoricTaskInstances
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-history/historic-task-instances/{taskId}:
@@ -971,7 +973,7 @@ paths:
       - History Task
       summary: Get a single historic task instance
       description: ''
-      operationId: getTaskInstance
+      operationId: getCmmnHistoryHistoricTaskInstancesByTaskId
       parameters:
       - name: taskId
         in: path
@@ -989,12 +991,14 @@ paths:
           description: Indicates that the historic task instances could not be found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getTaskInstance
     delete:
       tags:
       - History Task
       summary: Delete a historic task instance
       description: ''
-      operationId: deleteTaskInstance
+      operationId: deleteCmmnHistoryHistoricTaskInstancesByTaskId
       parameters:
       - name: taskId
         in: path
@@ -1008,6 +1012,8 @@ paths:
           description: Indicates that the historic task instance could not be found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteTaskInstance
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-history/historic-task-instances/{taskId}/form:
@@ -1042,7 +1048,7 @@ paths:
       - History Task
       summary: List identity links of a historic task instance
       description: ''
-      operationId: listHistoricTaskInstanceIdentityLinks
+      operationId: getCmmnHistoryHistoricTaskInstancesByTaskIdIdentitylinks
       parameters:
       - name: taskId
         in: path
@@ -1062,6 +1068,8 @@ paths:
           description: Indicates the task instance could not be found.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listHistoricTaskInstanceIdentityLinks
     servers:
     - url: /flowable-rest/cmmn-api
   /cmmn-query/historic-task-instances:
@@ -1070,7 +1078,7 @@ paths:
       - History Task
       summary: Query for historic task instances
       description: All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic task instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The taskVariables and processVariables properties are JSON-arrays containing objects with the format as described here.
-      operationId: queryHistoricTaskInstance
+      operationId: postCmmnQueryHistoricTaskInstances
       requestBody:
         content:
           application/json:
@@ -1089,30 +1097,128 @@ paths:
       security:
       - basicAuth: []
       x-s2o-warning: Operation queryHistoricTaskInstance has multiple requestBodies
+      x-operation-id-source: normalized
+      x-operation-id-original: queryHistoricTaskInstance
     servers:
     - url: /flowable-rest/cmmn-api
 components:
   schemas:
-    RestVariable:
+    DataResponseHistoricTaskLogEntryResponse:
       type: object
       properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricTaskLogEntryResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricTaskInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionUrl:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceUrl:
+          type: string
+        executionId:
+          type: string
         name:
           type: string
-          example: myVariable
-          description: Name of the variable
+        description:
+          type: string
+        deleteReason:
+          type: string
+        owner:
+          type: string
+        assignee:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        durationInMillis:
+          type: integer
+          format: int64
+        workTimeInMillis:
+          type: integer
+          format: int64
+        claimTime:
+          type: string
+          format: date-time
+        taskDefinitionKey:
+          type: string
+        formKey:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        dueDate:
+          type: string
+          format: date-time
+        parentTaskId:
+          type: string
+        url:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        scopeDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        subScopeId:
+          type: string
+        scopeType:
+          type: string
+        propagatedStageInstanceId:
+          type: string
+        tenantId:
+          type: string
+        category:
+          type: string
+    HistoricIdentityLinkResponse:
+      type: object
+      properties:
         type:
           type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
+          example: participant
+        userId:
           type: string
-          example: http://....
-        scope:
+          example: kermit
+        groupId:
           type: string
+          example: sales
+        taskId:
+          type: string
+          example: 'null'
+        taskUrl:
+          type: string
+          example: 'null'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
     HistoricTaskInstanceQueryRequest:
       type: object
       properties:
@@ -1281,37 +1387,13 @@ components:
           type: string
         parentScopeId:
           type: string
-    HistoricIdentityLinkResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          example: participant
-        userId:
-          type: string
-          example: kermit
-        groupId:
-          type: string
-          example: sales
-        taskId:
-          type: string
-          example: 'null'
-        taskUrl:
-          type: string
-          example: 'null'
-        processInstanceId:
-          type: string
-          example: '5'
-        processInstanceUrl:
-          type: string
-          example: http://localhost:8182/history/historic-process-instances/5
-    DataResponseHistoricTaskLogEntryResponse:
+    DataResponseHistoricTaskInstanceResponse:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/HistoricTaskLogEntryResponse'
+            $ref: '#/components/schemas/HistoricTaskInstanceResponse'
         total:
           type: integer
           format: int64
@@ -1347,20 +1429,63 @@ components:
           type: object
         type:
           type: string
-    HistoricTaskInstanceResponse:
+    RestVariable:
       type: object
       properties:
-        id:
+        name:
           type: string
-        processDefinitionId:
+          example: myVariable
+          description: Name of the variable
+        type:
           type: string
-        processDefinitionUrl:
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    HistoricTaskLogEntryResponse:
+      type: object
+      properties:
+        logNumber:
+          type: integer
+          format: int64
+        type:
+          type: string
+        taskId:
+          type: string
+        timeStamp:
+          type: string
+          format: date-time
+        userId:
+          type: string
+        data:
+          type: string
+        executionId:
           type: string
         processInstanceId:
           type: string
-        processInstanceUrl:
+        processDefinitionId:
           type: string
-        executionId:
+        scopeId:
+          type: string
+        scopeDefinitionId:
+          type: string
+        subScopeId:
+          type: string
+        scopeType:
+          type: string
+        tenantId:
+          type: string
+    HistoricTaskInstanceResponse_2:
+      type: object
+      properties:
+        id:
           type: string
         name:
           type: string
@@ -1405,6 +1530,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RestVariable'
+        tenantId:
+          type: string
+        category:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceUrl:
+          type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionUrl:
+          type: string
         scopeDefinitionId:
           type: string
         scopeId:
@@ -1415,63 +1552,36 @@ components:
           type: string
         propagatedStageInstanceId:
           type: string
-        tenantId:
-          type: string
-        category:
-          type: string
-    DataResponseHistoricTaskInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricTaskInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    HistoricTaskLogEntryResponse:
-      type: object
-      properties:
-        logNumber:
-          type: integer
-          format: int64
-        type:
-          type: string
-        taskId:
-          type: string
-        timeStamp:
-          type: string
-          format: date-time
-        userId:
-          type: string
-        data:
-          type: string
         executionId:
           type: string
         processInstanceId:
           type: string
         processDefinitionId:
           type: string
-        scopeId:
+    HistoricIdentityLinkResponse_2:
+      type: object
+      properties:
+        type:
           type: string
-        scopeDefinitionId:
+          example: participant
+        userId:
           type: string
-        subScopeId:
+          example: kermit
+        groupId:
           type: string
-        scopeType:
+          example: sales
+        taskId:
           type: string
-        tenantId:
+          example: 'null'
+        taskUrl:
           type: string
+          example: 'null'
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
     HistoricTaskInstanceQueryRequest_2:
       type: object
       properties:
@@ -1623,106 +1733,6 @@ components:
         rootScopeId:
           type: string
         parentScopeId:
-          type: string
-    HistoricIdentityLinkResponse_2:
-      type: object
-      properties:
-        type:
-          type: string
-          example: participant
-        userId:
-          type: string
-          example: kermit
-        groupId:
-          type: string
-          example: sales
-        taskId:
-          type: string
-          example: 'null'
-        taskUrl:
-          type: string
-          example: 'null'
-        caseInstanceId:
-          type: string
-          example: '5'
-        caseInstanceUrl:
-          type: string
-          example: http://localhost:8182/cmmn-history/historic-case-instances/5
-    HistoricTaskInstanceResponse_2:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        deleteReason:
-          type: string
-        owner:
-          type: string
-        assignee:
-          type: string
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        durationInMillis:
-          type: integer
-          format: int64
-        workTimeInMillis:
-          type: integer
-          format: int64
-        claimTime:
-          type: string
-          format: date-time
-        taskDefinitionKey:
-          type: string
-        formKey:
-          type: string
-        priority:
-          type: integer
-          format: int32
-        dueDate:
-          type: string
-          format: date-time
-        parentTaskId:
-          type: string
-        url:
-          type: string
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        tenantId:
-          type: string
-        category:
-          type: string
-        caseInstanceId:
-          type: string
-        caseInstanceUrl:
-          type: string
-        caseDefinitionId:
-          type: string
-        caseDefinitionUrl:
-          type: string
-        scopeDefinitionId:
-          type: string
-        scopeId:
-          type: string
-        subScopeId:
-          type: string
-        scopeType:
-          type: string
-        propagatedStageInstanceId:
-          type: string
-        executionId:
-          type: string
-        processInstanceId:
-          type: string
-        processDefinitionId:
           type: string
   securitySchemes:
     basicAuth:

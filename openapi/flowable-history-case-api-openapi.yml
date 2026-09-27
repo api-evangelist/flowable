@@ -482,95 +482,64 @@ paths:
       x-s2o-warning: Operation queryHistoricCaseInstance has multiple requestBodies
 components:
   schemas:
-    RestVariable:
+    HistoricIdentityLinkResponse:
       type: object
       properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
         type:
           type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
+          example: participant
+        userId:
           type: string
-          example: http://....
-        scope:
+          example: kermit
+        groupId:
           type: string
-    HistoricCaseInstanceResponse:
+          example: sales
+        taskId:
+          type: string
+          example: 'null'
+        taskUrl:
+          type: string
+          example: 'null'
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
+    DataResponseHistoricCaseInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricCaseInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    StageResponse:
       type: object
       properties:
         id:
           type: string
-          example: '5'
-        url:
-          type: string
-          example: http://localhost:8182/cmmn-history/historic-case-instances/5
         name:
           type: string
-          example: myName
-        businessKey:
-          type: string
-          example: myKey
-        businessStatus:
-          type: string
-          example: myStatus
-        caseDefinitionId:
-          type: string
-          example: oneTaskCase%3A1%3A4
-        caseDefinitionUrl:
-          type: string
-          example: http://localhost:8182/cmmn-repository/case-definitions/oneTaskCaseProcess%3A1%3A4
-        caseDefinitionName:
-          type: string
-          example: aCaseDefinitionName
-        caseDefinitionDescription:
-          type: string
-          example: A case definition description
-        startTime:
-          type: string
-          format: date-time
-          example: 2013-04-17T10:17:43.902+0000
+        ended:
+          type: boolean
         endTime:
           type: string
           format: date-time
-          example: 2013-04-18T14:06:32.715+0000
-        startUserId:
-          type: string
-          example: kermit
-        endUserId:
-          type: string
-          example: kermit
-        superProcessInstanceId:
-          type: string
-          example: '3'
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        tenantId:
-          type: string
-          example: 'null'
-        state:
-          type: string
-          example: active
-        callbackId:
-          type: string
-          example: '123'
-        callbackType:
-          type: string
-          example: cmmn-1.1-to-cmmn-1.1-child-case
-        referenceId:
-          type: string
-          example: '123'
-        referenceType:
-          type: string
-          example: event-to-cmmn-1.1-case
+        current:
+          type: boolean
     HistoricCaseInstanceQueryRequest:
       type: object
       properties:
@@ -721,64 +690,6 @@ components:
           type: boolean
         withoutCaseInstanceCallbackId:
           type: boolean
-    DataResponseHistoricCaseInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricCaseInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    HistoricIdentityLinkResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          example: participant
-        userId:
-          type: string
-          example: kermit
-        groupId:
-          type: string
-          example: sales
-        taskId:
-          type: string
-          example: 'null'
-        taskUrl:
-          type: string
-          example: 'null'
-        caseInstanceId:
-          type: string
-          example: '5'
-        caseInstanceUrl:
-          type: string
-          example: http://localhost:8182/cmmn-history/historic-case-instances/5
-    StageResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        ended:
-          type: boolean
-        endTime:
-          type: string
-          format: date-time
-        current:
-          type: boolean
     QueryVariable:
       type: object
       properties:
@@ -800,6 +711,95 @@ components:
         value:
           type: object
         type:
+          type: string
+    HistoricCaseInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
+        name:
+          type: string
+          example: myName
+        businessKey:
+          type: string
+          example: myKey
+        businessStatus:
+          type: string
+          example: myStatus
+        caseDefinitionId:
+          type: string
+          example: oneTaskCase%3A1%3A4
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/oneTaskCaseProcess%3A1%3A4
+        caseDefinitionName:
+          type: string
+          example: aCaseDefinitionName
+        caseDefinitionDescription:
+          type: string
+          example: A case definition description
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endTime:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        startUserId:
+          type: string
+          example: kermit
+        endUserId:
+          type: string
+          example: kermit
+        superProcessInstanceId:
+          type: string
+          example: '3'
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
+          type: string
+          example: 'null'
+        state:
+          type: string
+          example: active
+        callbackId:
+          type: string
+          example: '123'
+        callbackType:
+          type: string
+          example: cmmn-1.1-to-cmmn-1.1-child-case
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-cmmn-1.1-case
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
           type: string
   requestBodies:
     migrateHistoricCaseInstanceBody:

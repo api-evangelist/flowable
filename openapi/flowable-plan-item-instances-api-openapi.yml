@@ -401,74 +401,51 @@ paths:
       security:
       - basicAuth: []
 components:
-  schemas:
-    DataResponsePlanItemInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlanItemInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
+  requestBodies:
     RestActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-    QueryVariable:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
-          type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestActionRequest'
+    PlanItemInstanceVariableResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: intProcVar
+                type: string
+              type:
+                example: integer
+                type: string
+              scope:
+                example: global
+                type: string
+      description: Update a variable on a plan item instance
+    PlanItemInstanceVariableCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: intProcVar
+                type: string
+              type:
+                example: integer
+                type: string
+              scope:
+                example: global
+                type: string
+      description: Create a variable on a plan item instance
+  schemas:
     PlanItemInstanceResponse:
       type: object
       properties:
@@ -566,6 +543,73 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RestVariable'
+    DataResponsePlanItemInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItemInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    RestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
     PlanItemInstanceQueryRequest:
       type: object
       properties:
@@ -634,50 +678,6 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-  requestBodies:
-    PlanItemInstanceVariableCollectionResource:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-              name:
-                example: intProcVar
-                type: string
-              type:
-                example: integer
-                type: string
-              scope:
-                example: global
-                type: string
-      description: Create a variable on a plan item instance
-    PlanItemInstanceVariableResource:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-              name:
-                example: intProcVar
-                type: string
-              type:
-                example: integer
-                type: string
-              scope:
-                example: global
-                type: string
-      description: Update a variable on a plan item instance
-    RestActionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RestActionRequest'
   securitySchemes:
     basicAuth:
       type: http

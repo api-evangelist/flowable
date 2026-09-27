@@ -354,8 +354,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    FormModel:
-      type: object
     DocumentDefinitionResponse:
       type: object
       required:
@@ -406,6 +404,42 @@ components:
             type: object
             additionalProperties:
               type: string
+    DocumentActionHandlerModel:
+      type: object
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+        overrideDefaultLogic:
+          type: boolean
+    DataResponseDocumentDefinitionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentDefinitionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DocumentDefinitionActionRequest:
+      type: object
+      properties:
+        category:
+          type: string
+    FormModel:
+      type: object
     DocumentDefinitionModel:
       type: object
       properties:
@@ -452,40 +486,6 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/DocumentActionHandlerModel'
-    DataResponseDocumentDefinitionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentDefinitionResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    DocumentDefinitionActionRequest:
-      type: object
-      properties:
-        category:
-          type: string
-    DocumentActionHandlerModel:
-      type: object
-      properties:
-        key:
-          type: string
-        type:
-          type: string
-        overrideDefaultLogic:
-          type: boolean
   securitySchemes:
     basicAuth:
       type: http

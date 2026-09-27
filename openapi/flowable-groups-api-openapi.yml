@@ -252,7 +252,7 @@ paths:
       - Groups
       summary: List groups
       description: ''
-      operationId: listGroups
+      operationId: getGroups
       parameters:
       - name: id
         in: query
@@ -327,12 +327,14 @@ paths:
                 $ref: '#/components/schemas/DataResponseGroupResponse'
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listGroups
     post:
       tags:
       - Groups
       summary: Create a group
       description: ''
-      operationId: createGroup
+      operationId: postGroups
       requestBody:
         $ref: '#/components/requestBodies/GroupRequest'
       responses:
@@ -346,6 +348,8 @@ paths:
           description: Indicates the id of the group was missing.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: createGroup
     servers:
     - url: http://localhost:8090/idm-api
     - url: https://localhost:8090/idm-api
@@ -355,7 +359,7 @@ paths:
       - Groups
       summary: Get a single group
       description: ''
-      operationId: getGroup
+      operationId: getGroupsByGroupId
       parameters:
       - name: groupId
         in: path
@@ -388,12 +392,14 @@ paths:
           description: Indicates the requested group does not exist.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: getGroup
     put:
       tags:
       - Groups
       summary: Update a group
       description: All request values are optional. For example, you can only include the name attribute in the request body JSON-object, only updating the name of the group, leaving all other fields unaffected. When an attribute is explicitly included and is set to null, the group-value will be updated to null.
-      operationId: updateGroup
+      operationId: putGroupsByGroupId
       parameters:
       - name: groupId
         in: path
@@ -415,12 +421,14 @@ paths:
           description: Indicates the requested group was updated simultaneously.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: updateGroup
     delete:
       tags:
       - Groups
       summary: Delete a group
       description: ''
-      operationId: deleteGroup
+      operationId: deleteGroupsByGroupId
       parameters:
       - name: groupId
         in: path
@@ -434,6 +442,8 @@ paths:
           description: Indicates the requested group does not exist.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteGroup
     servers:
     - url: http://localhost:8090/idm-api
     - url: https://localhost:8090/idm-api
@@ -443,7 +453,7 @@ paths:
       - Groups
       summary: Add a member to a group
       description: ''
-      operationId: createMembership
+      operationId: postGroupsByGroupIdMembers
       parameters:
       - name: groupId
         in: path
@@ -470,6 +480,8 @@ paths:
           description: Indicates the requested user is already a member of the group.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: createMembership
     servers:
     - url: http://localhost:8090/idm-api
     - url: https://localhost:8090/idm-api
@@ -479,7 +491,7 @@ paths:
       - Groups
       summary: Delete a member from a group
       description: ''
-      operationId: deleteMembership
+      operationId: deleteGroupsByGroupIdMembersByUserId
       parameters:
       - name: groupId
         in: path
@@ -498,6 +510,8 @@ paths:
           description: Indicates the requested group was not found or that the user is not a member of the group. The status description contains additional information about the error.
       security:
       - basicAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteMembership
     servers:
     - url: http://localhost:8090/idm-api
     - url: https://localhost:8090/idm-api
@@ -528,18 +542,6 @@ paths:
     - url: https://localhost:8090/idm-api
 components:
   schemas:
-    MembershipResponse:
-      type: object
-      properties:
-        userId:
-          type: string
-          example: kermit
-        url:
-          type: string
-          example: http://localhost:8182/identity/groups/sales/members/kermit
-        groupId:
-          type: string
-          example: sales
     GroupRequest:
       type: object
       properties:
@@ -565,6 +567,21 @@ components:
         userId:
           type: string
           example: kermit
+    GroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/identity/groups/testgroup
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
     DataResponseGroupResponse:
       type: object
       properties:
@@ -585,22 +602,7 @@ components:
         size:
           type: integer
           format: int32
-    GroupResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: testgroup
-        url:
-          type: string
-          example: http://localhost:8182/identity/groups/testgroup
-        name:
-          type: string
-          example: Test group
-        type:
-          type: string
-          example: Test type
-    MembershipResponse_2:
+    MembershipResponse:
       type: object
       properties:
         userId:
@@ -608,10 +610,28 @@ components:
           example: kermit
         url:
           type: string
-          example: http://localhost:8182/groups/sales/members/userId
+          example: http://localhost:8182/identity/groups/sales/members/kermit
         groupId:
           type: string
           example: sales
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
     GroupRequest_2:
       type: object
       properties:
@@ -651,24 +671,69 @@ components:
           type: boolean
         typeChanged:
           type: boolean
-    EngineRestVariable:
+    BasicPrivilegeResponse:
       type: object
       properties:
+        id:
+          type: string
         name:
           type: string
-          example: myVariable
-          description: Name of the variable
+    GroupQueryRequest:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        id:
+          type: string
+          description: Only return groups with the given id.
+        ids:
+          type: array
+          description: Only return groups with the given ids.
+          items:
+            type: string
+        key:
+          type: string
+          description: Only return groups with the given key.
+        keys:
+          type: array
+          description: Only return groups with the given keys.
+          items:
+            type: string
+        name:
+          type: string
+          description: Only return groups with the given name.
+        nameLike:
+          type: string
+          description: Only return groups with a name like the given value.
+        nameLikeIgnoreCase:
+          type: string
+          description: Only return groups with a name like the given value ignoring case.
         type:
           type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
+          description: Only return groups with a name like the given type.
+        member:
           type: string
-          example: http://....
+          description: Only return groups which have a member with the given username.
+        members:
+          type: array
+          description: Only return groups which have members with the given usernames.
+          items:
+            type: string
+        includeIdentityInfo:
+          type: boolean
+          description: Include the group identity info in the response.
+        tenantId:
+          type: string
+          description: Only return groups with the given tenant ID.
+      description: Request that is used for querying groups.
     UserResponse:
       type: object
       required:
@@ -734,69 +799,18 @@ components:
           description: Collection of all identity infos for the group
           items:
             $ref: '#/components/schemas/EngineRestVariable'
-    GroupQueryRequest:
+    MembershipResponse_2:
       type: object
       properties:
-        start:
-          type: integer
-          format: int32
-        size:
-          type: integer
-          format: int32
-        sort:
+        userId:
           type: string
-        order:
+          example: kermit
+        url:
           type: string
-        id:
+          example: http://localhost:8182/groups/sales/members/userId
+        groupId:
           type: string
-          description: Only return groups with the given id.
-        ids:
-          type: array
-          description: Only return groups with the given ids.
-          items:
-            type: string
-        key:
-          type: string
-          description: Only return groups with the given key.
-        keys:
-          type: array
-          description: Only return groups with the given keys.
-          items:
-            type: string
-        name:
-          type: string
-          description: Only return groups with the given name.
-        nameLike:
-          type: string
-          description: Only return groups with a name like the given value.
-        nameLikeIgnoreCase:
-          type: string
-          description: Only return groups with a name like the given value ignoring case.
-        type:
-          type: string
-          description: Only return groups with a name like the given type.
-        member:
-          type: string
-          description: Only return groups which have a member with the given username.
-        members:
-          type: array
-          description: Only return groups which have members with the given usernames.
-          items:
-            type: string
-        includeIdentityInfo:
-          type: boolean
-          description: Include the group identity info in the response.
-        tenantId:
-          type: string
-          description: Only return groups with the given tenant ID.
-      description: Request that is used for querying groups.
-    BasicPrivilegeResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
+          example: sales
   requestBodies:
     GroupRequest:
       content:

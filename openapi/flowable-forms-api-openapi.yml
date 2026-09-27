@@ -72,51 +72,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
-    FormDataResponse:
-      type: object
-      properties:
-        formKey:
-          type: string
-          example: 'null'
-        deploymentId:
-          type: string
-          example: '2'
-        processDefinitionId:
-          type: string
-          example: '3'
-        processDefinitionUrl:
-          type: string
-          example: http://localhost:8182/repository/process-definition/3
-        taskId:
-          type: string
-          example: '6'
-        taskUrl:
-          type: string
-          example: http://localhost:8182/runtime/task/6
-        formProperties:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestFormProperty'
     SubmitFormRequest:
       type: object
       properties:
@@ -132,6 +87,41 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RestFormProperty'
+    RestFormProperty:
+      type: object
+      properties:
+        id:
+          type: string
+          example: room
+        name:
+          type: string
+          example: Room
+        type:
+          type: string
+          example: string
+        value:
+          type: string
+        readable:
+          type: boolean
+        writable:
+          type: boolean
+        required:
+          type: boolean
+        datePattern:
+          type: string
+        enumValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestEnumFormProperty'
+    RestEnumFormProperty:
+      type: object
+      properties:
+        id:
+          type: string
+          example: normal
+        name:
+          type: string
+          example: Normal bed
     ProcessInstanceResponse:
       type: object
       properties:
@@ -202,41 +192,51 @@ components:
           example: someTenantId
         completed:
           type: boolean
-    RestEnumFormProperty:
+    FormDataResponse:
       type: object
       properties:
-        id:
+        formKey:
           type: string
-          example: normal
-        name:
+          example: 'null'
+        deploymentId:
           type: string
-          example: Normal bed
-    RestFormProperty:
+          example: '2'
+        processDefinitionId:
+          type: string
+          example: '3'
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definition/3
+        taskId:
+          type: string
+          example: '6'
+        taskUrl:
+          type: string
+          example: http://localhost:8182/runtime/task/6
+        formProperties:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestFormProperty'
+    RestVariable:
       type: object
       properties:
-        id:
-          type: string
-          example: room
         name:
           type: string
-          example: Room
+          example: myVariable
+          description: Name of the variable
         type:
           type: string
           example: string
+          description: Type of the variable.
         value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
           type: string
-        readable:
-          type: boolean
-        writable:
-          type: boolean
-        required:
-          type: boolean
-        datePattern:
+          example: http://....
+        scope:
           type: string
-        enumValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestEnumFormProperty'
   securitySchemes:
     basicAuth:
       type: http

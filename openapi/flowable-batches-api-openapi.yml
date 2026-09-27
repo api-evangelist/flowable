@@ -237,26 +237,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    DataResponseBatchResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BatchResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     BatchResponse:
       type: object
       properties:
@@ -336,6 +316,26 @@ components:
         tenantId:
           type: string
           example: 'null'
+    DataResponseBatchResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
   securitySchemes:
     basicAuth:
       type: http

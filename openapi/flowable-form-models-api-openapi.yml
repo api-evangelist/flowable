@@ -34,6 +34,15 @@ paths:
       - basicAuth: []
 components:
   schemas:
+    RowDefinition:
+      type: object
+      properties:
+        cols:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: object
     FormModelResponse:
       type: object
       properties:
@@ -99,77 +108,6 @@ components:
             type: object
             additionalProperties:
               type: string
-    FormModel:
-      type: object
-    OutcomeDefinition:
-      type: object
-      properties:
-        label:
-          type: string
-        value:
-          type: string
-        visible:
-          type: string
-        enabled:
-          type: string
-        primary:
-          type: string
-        ignorePayload:
-          type: boolean
-        ignoreValidation:
-          type: boolean
-        hideErrors:
-          type: boolean
-        styleClass:
-          type: string
-        navigationUrl:
-          type: string
-        outcomeFormKey:
-          type: string
-        i18n:
-          type: object
-          additionalProperties:
-            type: object
-            additionalProperties:
-              type: string
-    RowDefinition:
-      type: object
-      properties:
-        cols:
-          type: array
-          items:
-            type: object
-            additionalProperties:
-              type: object
-    EventDefinition:
-      type: object
-      properties:
-        id:
-          type: string
-        eventType:
-          type: string
-        implementationType:
-          type: string
-        expression:
-          type: string
-        resultVariable:
-          type: string
-    MetadataDefinition:
-      type: object
-      properties:
-        key:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        version:
-          type: string
-        modelType:
-          type: string
-        flowableDesignVersion:
-          type: integer
-          format: int32
     FormRequest:
       type: object
       properties:
@@ -201,12 +139,74 @@ components:
           type: object
           additionalProperties:
             type: object
+    FormModel:
+      type: object
+    MetadataDefinition:
+      type: object
+      properties:
+        key:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        version:
+          type: string
+        modelType:
+          type: string
+        flowableDesignVersion:
+          type: integer
+          format: int32
+    OutcomeDefinition:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: string
+        visible:
+          type: string
+        enabled:
+          type: string
+        primary:
+          type: string
+        ignorePayload:
+          type: boolean
+        ignoreValidation:
+          type: boolean
+        hideErrors:
+          type: boolean
+        styleClass:
+          type: string
+        navigationUrl:
+          type: string
+        outcomeFormKey:
+          type: string
+        i18n:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
     SectionDefinition:
       type: object
       properties:
         name:
           type: string
         visibility:
+          type: string
+    EventDefinition:
+      type: object
+      properties:
+        id:
+          type: string
+        eventType:
+          type: string
+        implementationType:
+          type: string
+        expression:
+          type: string
+        resultVariable:
           type: string
   requestBodies:
     FormRequest:
