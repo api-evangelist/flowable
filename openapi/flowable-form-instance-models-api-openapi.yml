@@ -34,97 +34,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    RowDefinition:
-      type: object
-      properties:
-        cols:
-          type: array
-          items:
-            type: object
-            additionalProperties:
-              type: object
-    CustomValidationDefinition:
-      type: object
-      properties:
-        expression:
-          type: string
-        errorMsg:
-          type: string
-        i18n:
-          type: object
-          additionalProperties:
-            type: object
-            additionalProperties:
-              type: string
-    FormRequest:
-      type: object
-      properties:
-        formInstanceId:
-          type: string
-        formDefinitionId:
-          type: string
-        formDefinitionKey:
-          type: string
-        taskId:
-          type: string
-        processInstanceId:
-          type: string
-        processDefinitionId:
-          type: string
-        scopeId:
-          type: string
-        scopeType:
-          type: string
-        scopeDefinitionId:
-          type: string
-        outcome:
-          type: string
-        tenantId:
-          type: string
-        parentDeploymentId:
-          type: string
-        variables:
-          type: object
-          additionalProperties:
-            type: object
-    SectionDefinition:
-      type: object
-      properties:
-        name:
-          type: string
-        visibility:
-          type: string
-    OutcomeDefinition:
-      type: object
-      properties:
-        label:
-          type: string
-        value:
-          type: string
-        visible:
-          type: string
-        enabled:
-          type: string
-        primary:
-          type: string
-        ignorePayload:
-          type: boolean
-        ignoreValidation:
-          type: boolean
-        hideErrors:
-          type: boolean
-        styleClass:
-          type: string
-        navigationUrl:
-          type: string
-        outcomeFormKey:
-          type: string
-        i18n:
-          type: object
-          additionalProperties:
-            type: object
-            additionalProperties:
-              type: string
     MetadataDefinition:
       type: object
       properties:
@@ -141,6 +50,19 @@ components:
         flowableDesignVersion:
           type: integer
           format: int32
+    CustomValidationDefinition:
+      type: object
+      properties:
+        expression:
+          type: string
+        errorMsg:
+          type: string
+        i18n:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
     FormInstanceModelResponse:
       type: object
       properties:
@@ -204,6 +126,84 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomValidationDefinition'
+    RowDefinition:
+      type: object
+      properties:
+        cols:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: object
+    OutcomeDefinition:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: string
+        visible:
+          type: string
+        enabled:
+          type: string
+        primary:
+          type: string
+        ignorePayload:
+          type: boolean
+        ignoreValidation:
+          type: boolean
+        hideErrors:
+          type: boolean
+        styleClass:
+          type: string
+        navigationUrl:
+          type: string
+        outcomeFormKey:
+          type: string
+        i18n:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+    SectionDefinition:
+      type: object
+      properties:
+        name:
+          type: string
+        visibility:
+          type: string
+    FormRequest:
+      type: object
+      properties:
+        formInstanceId:
+          type: string
+        formDefinitionId:
+          type: string
+        formDefinitionKey:
+          type: string
+        taskId:
+          type: string
+        processInstanceId:
+          type: string
+        processDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        scopeType:
+          type: string
+        scopeDefinitionId:
+          type: string
+        outcome:
+          type: string
+        tenantId:
+          type: string
+        parentDeploymentId:
+          type: string
+        variables:
+          type: object
+          additionalProperties:
+            type: object
   requestBodies:
     FormRequest:
       content:

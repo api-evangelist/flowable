@@ -597,98 +597,47 @@ paths:
       summary: Get stage overview
       x-summary-source: derived
 components:
-  requestBodies:
-    BulkDeleteInstancesRestActionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BulkDeleteInstancesRestActionRequest'
-    migrateHistoricCaseInstanceBody:
-      content:
-        application/json:
-          schema:
-            type: string
   schemas:
-    StageResponse:
+    RestVariable:
       type: object
       properties:
-        id:
-          type: string
         name:
           type: string
-        ended:
-          type: boolean
-        endTime:
+          example: myVariable
+          description: Name of the variable
+        type:
           type: string
-          format: date-time
-        current:
-          type: boolean
-    CaseInstanceResponse:
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    DataResponseCaseInstanceResponse:
       type: object
       properties:
-        id:
-          type: string
-          example: '187'
-        name:
-          type: string
-          example: processName
-        url:
-          type: string
-          example: http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4
-        businessKey:
-          type: string
-          example: myBusinessKey
-        businessStatus:
-          type: string
-          example: myBusinessStatus
-        startTime:
-          type: string
-          format: date-time
-          example: 2019-04-17T10:17:43.902+0000
-        startUserId:
-          type: string
-          example: aUserId
-        state:
-          type: string
-          example: active
-        ended:
-          type: boolean
-        caseDefinitionId:
-          type: string
-          example: oneTaskCase:1:158
-        caseDefinitionUrl:
-          type: string
-          example: http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4
-        caseDefinitionName:
-          type: string
-          example: aCaseDefinitionName
-        caseDefinitionDescription:
-          type: string
-          example: A case definition description
-        parentId:
-          type: string
-          example: '123'
-        callbackId:
-          type: string
-          example: '123'
-        callbackType:
-          type: string
-          example: cmmn-1.1-to-cmmn-1.1-child-case
-        referenceId:
-          type: string
-          example: '123'
-        referenceType:
-          type: string
-          example: event-to-cmmn-1.1-case
-        variables:
+        data:
           type: array
           items:
-            $ref: '#/components/schemas/RestVariable'
-        tenantId:
+            $ref: '#/components/schemas/CaseInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
           type: string
-          example: 'null'
-        completed:
-          type: boolean
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     CaseInstanceCreateRequest:
       type: object
       properties:
@@ -727,57 +676,15 @@ components:
         returnVariables:
           type: boolean
       description: Only one of caseDefinitionId or caseDefinitionKey can be used in the request body
-    QueryVariable:
+    PlanItemDefinitionWithTargetIdsRequest:
       type: object
       properties:
-        name:
+        existingPlanItemDefinitionId:
           type: string
-        operation:
+        newPlanItemId:
           type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
+        newPlanItemDefinitionId:
           type: string
-    DataResponseCaseInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CaseInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    BulkDeleteInstancesRestActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        instanceIds:
-          type: array
-          items:
-            type: string
     ChangePlanItemStateRequest:
       type: object
       properties:
@@ -821,44 +728,6 @@ components:
           description: map an existing plan item id to a new plan item id and plan item definition id, this should not be necessary in general, but could be needed when plan item ids change between case definition versions.
           items:
             $ref: '#/components/schemas/PlanItemDefinitionWithTargetIdsRequest'
-    PlanItemDefinitionWithTargetIdsRequest:
-      type: object
-      properties:
-        existingPlanItemDefinitionId:
-          type: string
-        newPlanItemId:
-          type: string
-        newPlanItemDefinitionId:
-          type: string
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
-    CaseInstanceUpdateRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        name:
-          type: string
-        businessKey:
-          type: string
     CaseInstanceQueryRequest:
       type: object
       properties:
@@ -995,6 +864,137 @@ components:
           type: string
         withoutTenantId:
           type: boolean
+    BulkDeleteInstancesRestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        instanceIds:
+          type: array
+          items:
+            type: string
+    CaseInstanceUpdateRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        name:
+          type: string
+        businessKey:
+          type: string
+    CaseInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '187'
+        name:
+          type: string
+          example: processName
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4
+        businessKey:
+          type: string
+          example: myBusinessKey
+        businessStatus:
+          type: string
+          example: myBusinessStatus
+        startTime:
+          type: string
+          format: date-time
+          example: 2019-04-17T10:17:43.902+0000
+        startUserId:
+          type: string
+          example: aUserId
+        state:
+          type: string
+          example: active
+        ended:
+          type: boolean
+        caseDefinitionId:
+          type: string
+          example: oneTaskCase:1:158
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/caseOne%3A1%3A4
+        caseDefinitionName:
+          type: string
+          example: aCaseDefinitionName
+        caseDefinitionDescription:
+          type: string
+          example: A case definition description
+        parentId:
+          type: string
+          example: '123'
+        callbackId:
+          type: string
+          example: '123'
+        callbackType:
+          type: string
+          example: cmmn-1.1-to-cmmn-1.1-child-case
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-cmmn-1.1-case
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
+          type: string
+          example: 'null'
+        completed:
+          type: boolean
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    StageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        ended:
+          type: boolean
+        endTime:
+          type: string
+          format: date-time
+        current:
+          type: boolean
+  requestBodies:
+    migrateHistoricCaseInstanceBody:
+      content:
+        application/json:
+          schema:
+            type: string
+    BulkDeleteInstancesRestActionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BulkDeleteInstancesRestActionRequest'
   securitySchemes:
     basicAuth:
       type: http

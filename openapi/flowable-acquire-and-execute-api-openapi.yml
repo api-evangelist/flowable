@@ -168,20 +168,6 @@ paths:
           description: Indicates the job does not exist.
 components:
   schemas:
-    ExternalWorkerJobCompleteRequest:
-      type: object
-      required:
-      - workerId
-      properties:
-        workerId:
-          type: string
-          description: The id of the external worker that executes the action. Must match the id of the worker who has most recently locked the job.
-        variables:
-          type: array
-          description: The variables that should be passed to the job scope
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-      description: Request that is used for completing external worker jobs
     ExternalWorkerJobErrorRequest:
       type: object
       required:
@@ -199,24 +185,40 @@ components:
           type: string
           description: The BPMN error code
       description: Request that is used for completing external worker jobs with a bpmn error
-    EngineRestVariable:
+    AcquireExternalWorkerJobRequest:
       type: object
+      required:
+      - lockDuration
+      - topic
+      - workerId
       properties:
-        name:
+        topic:
           type: string
-          example: myVariable
-          description: Name of the variable
-        type:
+          example: order
+          description: Acquire jobs with the given topic
+        lockDuration:
           type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
+          example: PT10M
+          description: The acquired jobs will be locked with this lock duration. ISO-8601 duration format PnDTnHnMn.nS with days considered to be exactly 24 hours.
+        numberOfTasks:
+          type: integer
+          format: int32
+          example: 1
+          description: The number of tasks that should be acquired. Default is 1.
+        numberOfRetries:
+          type: integer
+          format: int32
+          example: 10
+          description: The number of retries if an optimistic lock exception occurs during acquiring. Default is 5
+        workerId:
           type: string
-          example: http://....
+          example: orderWorker1
+          description: The id of the external worker that would be used for locking the job
+        scopeType:
+          type: string
+          example: cmmn
+          description: Only acquire jobs with the given scope type
+      description: Request that is used for acquiring external worker jobs
     AcquiredExternalWorkerJobResponse:
       type: object
       required:
@@ -308,6 +310,38 @@ components:
           description: The variables from the scope of the job
           items:
             $ref: '#/components/schemas/EngineRestVariable'
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+    ExternalWorkerJobCompleteRequest:
+      type: object
+      required:
+      - workerId
+      properties:
+        workerId:
+          type: string
+          description: The id of the external worker that executes the action. Must match the id of the worker who has most recently locked the job.
+        variables:
+          type: array
+          description: The variables that should be passed to the job scope
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+      description: Request that is used for completing external worker jobs
     ExternalWorkerJobTerminateRequest:
       type: object
       required:
@@ -322,40 +356,6 @@ components:
           items:
             $ref: '#/components/schemas/EngineRestVariable'
       description: Request that is used for terminating external worker jobs
-    AcquireExternalWorkerJobRequest:
-      type: object
-      required:
-      - lockDuration
-      - topic
-      - workerId
-      properties:
-        topic:
-          type: string
-          example: order
-          description: Acquire jobs with the given topic
-        lockDuration:
-          type: string
-          example: PT10M
-          description: The acquired jobs will be locked with this lock duration. ISO-8601 duration format PnDTnHnMn.nS with days considered to be exactly 24 hours.
-        numberOfTasks:
-          type: integer
-          format: int32
-          example: 1
-          description: The number of tasks that should be acquired. Default is 1.
-        numberOfRetries:
-          type: integer
-          format: int32
-          example: 10
-          description: The number of retries if an optimistic lock exception occurs during acquiring. Default is 5
-        workerId:
-          type: string
-          example: orderWorker1
-          description: The id of the external worker that would be used for locking the job
-        scopeType:
-          type: string
-          example: cmmn
-          description: Only acquire jobs with the given scope type
-      description: Request that is used for acquiring external worker jobs
     ExternalWorkerJobFailureRequest:
       type: object
       required:

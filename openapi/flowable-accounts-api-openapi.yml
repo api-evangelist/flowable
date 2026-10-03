@@ -66,26 +66,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    DataResponseUserAccountResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserAccountResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     UserAccountResponse:
       type: object
       required:
@@ -145,6 +125,26 @@ components:
         updateTime:
           type: string
           description: The time of the last update of this account
+    DataResponseUserAccountResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAccountResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
   securitySchemes:
     basicAuth:
       type: http

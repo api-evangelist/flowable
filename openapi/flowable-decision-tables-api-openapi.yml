@@ -222,62 +222,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    DataResponseDecisionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DecisionResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    DmnExtensionAttribute:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-        namespacePrefix:
-          type: string
-        namespace:
-          type: string
-    InputData:
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionAttribute'
-        name:
-          type: string
-        variable:
-          $ref: '#/components/schemas/InformationItem'
     DmnDefinition:
       type: object
       properties:
@@ -414,7 +358,77 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/DmnExtensionElement'
-    InformationRequirement:
+    InputData:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionAttribute'
+        name:
+          type: string
+        variable:
+          $ref: '#/components/schemas/InformationItem'
+    DataResponseDecisionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DecisionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    InformationItem:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionAttribute'
+        name:
+          type: string
+        typeRef:
+          type: string
+    AuthorityRequirement:
       type: object
       properties:
         id:
@@ -440,6 +454,8 @@ components:
         requiredDecision:
           $ref: '#/components/schemas/DmnElementReference'
         requiredInput:
+          $ref: '#/components/schemas/DmnElementReference'
+        requiredAuthority:
           $ref: '#/components/schemas/DmnElementReference'
     DecisionResponse:
       type: object
@@ -478,7 +494,36 @@ components:
         decisionType:
           type: string
           example: decision_table
-    DecisionService:
+    UnaryTests:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionAttribute'
+        text:
+          type: string
+        textValues:
+          type: array
+          items:
+            type: object
+        expressionLanguage:
+          type: string
+    ItemDefinition:
       type: object
       properties:
         id:
@@ -501,22 +546,81 @@ components:
               $ref: '#/components/schemas/DmnExtensionAttribute'
         name:
           type: string
-        outputDecisions:
+        typeRef:
+          type: string
+        allowedValues:
+          $ref: '#/components/schemas/UnaryTests'
+        itemComponents:
           type: array
           items:
-            $ref: '#/components/schemas/DmnElementReference'
-        encapsulatedDecisions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DmnElementReference'
-        inputDecisions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DmnElementReference'
-        inputData:
-          type: array
-          items:
-            $ref: '#/components/schemas/DmnElementReference'
+            $ref: '#/components/schemas/ItemDefinition'
+        typeLanguage:
+          type: string
+        collection:
+          type: boolean
+    DmnExtensionAttribute:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        namespacePrefix:
+          type: string
+        namespace:
+          type: string
+    InformationRequirement:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionAttribute'
+        name:
+          type: string
+        requiredDecision:
+          $ref: '#/components/schemas/DmnElementReference'
+        requiredInput:
+          $ref: '#/components/schemas/DmnElementReference'
+    DmnDiDiagram:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionAttribute'
+        name:
+          type: string
+        graphicInfo:
+          $ref: '#/components/schemas/GraphicInfo'
     GraphicInfo:
       type: object
       properties:
@@ -560,6 +664,89 @@ components:
         xmlColumnNumber:
           type: integer
           format: int32
+    DmnElement:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionAttribute'
+    DecisionService:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionAttribute'
+        name:
+          type: string
+        outputDecisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DmnElementReference'
+        encapsulatedDecisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DmnElementReference'
+        inputDecisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DmnElementReference'
+        inputData:
+          type: array
+          items:
+            $ref: '#/components/schemas/DmnElementReference'
+    Expression:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/DmnExtensionAttribute'
+        typeRef:
+          type: string
     DmnElementReference:
       type: object
       properties:
@@ -567,95 +754,6 @@ components:
           type: string
         parsedId:
           type: string
-    AuthorityRequirement:
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionAttribute'
-        name:
-          type: string
-        requiredDecision:
-          $ref: '#/components/schemas/DmnElementReference'
-        requiredInput:
-          $ref: '#/components/schemas/DmnElementReference'
-        requiredAuthority:
-          $ref: '#/components/schemas/DmnElementReference'
-    InformationItem:
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionAttribute'
-        name:
-          type: string
-        typeRef:
-          type: string
-    ItemDefinition:
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionAttribute'
-        name:
-          type: string
-        typeRef:
-          type: string
-        allowedValues:
-          $ref: '#/components/schemas/UnaryTests'
-        itemComponents:
-          type: array
-          items:
-            $ref: '#/components/schemas/ItemDefinition'
-        typeLanguage:
-          type: string
-        collection:
-          type: boolean
     Decision:
       type: object
       properties:
@@ -701,104 +799,6 @@ components:
           $ref: '#/components/schemas/Expression'
         forceDMN11:
           type: boolean
-    UnaryTests:
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionAttribute'
-        text:
-          type: string
-        textValues:
-          type: array
-          items:
-            type: object
-        expressionLanguage:
-          type: string
-    DmnDiDiagram:
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionAttribute'
-        name:
-          type: string
-        graphicInfo:
-          $ref: '#/components/schemas/GraphicInfo'
-    DmnElement:
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionAttribute'
-    Expression:
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/DmnExtensionAttribute'
-        typeRef:
-          type: string
   securitySchemes:
     basicAuth:
       type: http

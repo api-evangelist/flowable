@@ -541,47 +541,13 @@ paths:
     - url: http://localhost:8090/idm-api
     - url: https://localhost:8090/idm-api
 components:
-  schemas:
+  requestBodies:
     GroupRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          example: testgroup
-        url:
-          type: string
-          example: http://localhost:8182/identity/groups/testgroup
-        name:
-          type: string
-          example: Test group
-        type:
-          type: string
-          example: Test type
-        nameChanged:
-          type: boolean
-        typeChanged:
-          type: boolean
-    MembershipRequest:
-      type: object
-      properties:
-        userId:
-          type: string
-          example: kermit
-    GroupResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: testgroup
-        url:
-          type: string
-          example: http://localhost:8182/identity/groups/testgroup
-        name:
-          type: string
-          example: Test group
-        type:
-          type: string
-          example: Test type
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GroupRequest'
+  schemas:
     DataResponseGroupResponse:
       type: object
       properties:
@@ -602,6 +568,31 @@ components:
         size:
           type: integer
           format: int32
+    MembershipRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: kermit
+    GroupRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/identity/groups/testgroup
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        nameChanged:
+          type: boolean
+        typeChanged:
+          type: boolean
     MembershipResponse:
       type: object
       properties:
@@ -614,6 +605,21 @@ components:
         groupId:
           type: string
           example: sales
+    GroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/identity/groups/testgroup
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
     EngineRestVariable:
       type: object
       properties:
@@ -632,45 +638,35 @@ components:
         valueUrl:
           type: string
           example: http://....
-    GroupRequest_2:
+    UserResponse:
       type: object
+      required:
+      - id
       properties:
         id:
           type: string
-          example: testgroup
-        url:
+          example: john.doe
+          description: The id of the user
+        firstName:
           type: string
-          example: http://localhost:8182/groups/groupId
-        name:
+          example: John
+          description: The first name if the user
+        lastName:
           type: string
-          example: Test group
-        type:
+          example: Doe
+          description: The last name of the user
+        displayName:
           type: string
-          example: Test type
-        key:
+          example: John Doe
+          description: The display name of the user
+        email:
           type: string
-          example: testgroup
+          example: no-reply@flowable.org
+          description: The email of the user
         tenantId:
           type: string
-          example: testtenant
-        users:
-          type: array
-          items:
-            type: string
-        privileges:
-          type: array
-          items:
-            type: string
-        identityInfo:
-          type: array
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-        returnIdentityInfo:
-          type: boolean
-        nameChanged:
-          type: boolean
-        typeChanged:
-          type: boolean
+          description: The tenant id of the user
+      description: The response for the OSS User
     BasicPrivilegeResponse:
       type: object
       properties:
@@ -734,35 +730,57 @@ components:
           type: string
           description: Only return groups with the given tenant ID.
       description: Request that is used for querying groups.
-    UserResponse:
+    GroupRequest_2:
       type: object
-      required:
-      - id
       properties:
         id:
           type: string
-          example: john.doe
-          description: The id of the user
-        firstName:
+          example: testgroup
+        url:
           type: string
-          example: John
-          description: The first name if the user
-        lastName:
+          example: http://localhost:8182/groups/groupId
+        name:
           type: string
-          example: Doe
-          description: The last name of the user
-        displayName:
+          example: Test group
+        type:
           type: string
-          example: John Doe
-          description: The display name of the user
-        email:
+          example: Test type
+        key:
           type: string
-          example: no-reply@flowable.org
-          description: The email of the user
+          example: testgroup
         tenantId:
           type: string
-          description: The tenant id of the user
-      description: The response for the OSS User
+          example: testtenant
+        users:
+          type: array
+          items:
+            type: string
+        privileges:
+          type: array
+          items:
+            type: string
+        identityInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        returnIdentityInfo:
+          type: boolean
+        nameChanged:
+          type: boolean
+        typeChanged:
+          type: boolean
+    MembershipResponse_2:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: kermit
+        url:
+          type: string
+          example: http://localhost:8182/groups/sales/members/userId
+        groupId:
+          type: string
+          example: sales
     GroupResponse_2:
       type: object
       properties:
@@ -799,24 +817,6 @@ components:
           description: Collection of all identity infos for the group
           items:
             $ref: '#/components/schemas/EngineRestVariable'
-    MembershipResponse_2:
-      type: object
-      properties:
-        userId:
-          type: string
-          example: kermit
-        url:
-          type: string
-          example: http://localhost:8182/groups/sales/members/userId
-        groupId:
-          type: string
-          example: sales
-  requestBodies:
-    GroupRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GroupRequest'
   securitySchemes:
     basicAuth:
       type: http

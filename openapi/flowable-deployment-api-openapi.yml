@@ -1097,32 +1097,32 @@ paths:
     servers:
     - url: /flowable-rest/dmn-api
 components:
-  requestBodies:
-    uploadDeployment:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-            required:
-            - file
-      required: true
-    saveContentItemData:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-            required:
-            - file
-      required: true
   schemas:
+    DeploymentResourceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: diagrams/my-process.bpmn20.xml
+        url:
+          type: string
+          example: http://localhost:8081/flowable-rest/service/repository/deployments/10/resources/diagrams%2Fmy-process.bpmn20.xml
+          description: For a single resource contains the actual URL to use for retrieving the binary resource
+        contentUrl:
+          type: string
+          example: http://localhost:8081/flowable-rest/service/repository/deployments/10/resourcedata/diagrams%2Fmy-process.bpmn20.xml
+        mediaType:
+          type: string
+          example: text/xml
+          description: Contains the media-type the resource has. This is resolved using a (pluggable) MediaTypeResolver and contains, by default, a limited number of mime-type mappings.
+        type:
+          type: string
+          example: processDefinition
+          description: Type of resource
+          enum:
+          - resource
+          - processDefinition
+          - processImage
     DataResponseDeploymentResponse:
       type: object
       properties:
@@ -1167,7 +1167,7 @@ components:
           example: http://localhost:8081/flowable-rest/service/repository/deployments/10
         tenantId:
           type: string
-    DeploymentResourceResponse:
+    DeploymentResourceResponse_2:
       type: object
       properties:
         id:
@@ -1175,11 +1175,11 @@ components:
           example: diagrams/my-process.bpmn20.xml
         url:
           type: string
-          example: http://localhost:8081/flowable-rest/service/repository/deployments/10/resources/diagrams%2Fmy-process.bpmn20.xml
+          example: http://localhost:8081/flowable-rest/service/cmmn-repository/deployments/10/resources/diagrams%2Fmy-process.bpmn20.xml
           description: For a single resource contains the actual URL to use for retrieving the binary resource
         contentUrl:
           type: string
-          example: http://localhost:8081/flowable-rest/service/repository/deployments/10/resourcedata/diagrams%2Fmy-process.bpmn20.xml
+          example: http://localhost:8081/flowable-rest/service/cmmn-repository/deployments/10/resourcedata/diagrams%2Fmy-process.bpmn20.xml
         mediaType:
           type: string
           example: text/xml
@@ -1236,51 +1236,6 @@ components:
           example: http://localhost:8081/flowable-rest/service/cmmn-repository/deployments/10
         tenantId:
           type: string
-    DeploymentResourceResponse_2:
-      type: object
-      properties:
-        id:
-          type: string
-          example: diagrams/my-process.bpmn20.xml
-        url:
-          type: string
-          example: http://localhost:8081/flowable-rest/service/cmmn-repository/deployments/10/resources/diagrams%2Fmy-process.bpmn20.xml
-          description: For a single resource contains the actual URL to use for retrieving the binary resource
-        contentUrl:
-          type: string
-          example: http://localhost:8081/flowable-rest/service/cmmn-repository/deployments/10/resourcedata/diagrams%2Fmy-process.bpmn20.xml
-        mediaType:
-          type: string
-          example: text/xml
-          description: Contains the media-type the resource has. This is resolved using a (pluggable) MediaTypeResolver and contains, by default, a limited number of mime-type mappings.
-        type:
-          type: string
-          example: processDefinition
-          description: Type of resource
-          enum:
-          - resource
-          - processDefinition
-          - processImage
-    DataResponseDocumentDeploymentResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentDeploymentResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     DeploymentResourceResponse_3:
       type: object
       properties:
@@ -1305,6 +1260,26 @@ components:
           enum:
           - resource
           - documentDefinition
+    DataResponseDocumentDeploymentResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentDeploymentResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     DocumentDeploymentResponse:
       type: object
       properties:
@@ -1329,6 +1304,26 @@ components:
           example: http://localhost:8081/flowable-rest/content-api/content-repository/deployments/10
         tenantId:
           type: string
+    DataResponseDmnDeploymentResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DmnDeploymentResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     DmnDeploymentResponse:
       type: object
       properties:
@@ -1354,26 +1349,31 @@ components:
         tenantId:
           type: string
           example: 'null'
-    DataResponseDmnDeploymentResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DmnDeploymentResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
+  requestBodies:
+    uploadDeployment:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+            required:
+            - file
+      required: true
+    saveContentItemData:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+            required:
+            - file
+      required: true
   securitySchemes:
     basicAuth:
       type: http

@@ -2664,12 +2664,6 @@ paths:
     servers:
     - url: /flowable-rest/cmmn-api
 components:
-  requestBodies:
-    RestActionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RestActionRequest'
   schemas:
     DataResponseJobResponse:
       type: object
@@ -2691,51 +2685,42 @@ components:
         size:
           type: integer
           format: int32
-    HistoryJobResponse:
+    BulkMoveDeadLetterActionRequest:
       type: object
       properties:
-        id:
+        action:
           type: string
-          example: '8'
-        url:
-          type: string
-          example: http://localhost:8182/management/jobs/8
-        scopeType:
-          type: string
-          example: cmmn
-        retries:
+        jobIds:
+          type: array
+          items:
+            type: string
+    DataResponseHistoryJobResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoryJobResponse'
+        total:
+          type: integer
+          format: int64
+        start:
           type: integer
           format: int32
-          example: 3
-        exceptionMessage:
+        sort:
           type: string
-          example: 'null'
-        jobHandlerType:
+        order:
           type: string
-          example: async-history
-        jobHandlerConfiguration:
+        size:
+          type: integer
+          format: int32
+    TimerJobActionRequest:
+      type: object
+      properties:
+        action:
           type: string
-          example: myCfg
-        advancedJobHandlerConfiguration:
+        dueDate:
           type: string
-          example: myAdvancedCfg
-        tenantId:
-          type: string
-          example: 'null'
-        customValues:
-          type: string
-          example: custom value
-        createTime:
-          type: string
-          format: date-time
-          example: 2013-06-03T22:05:05.474+0000
-        lockOwner:
-          type: string
-          example: node1
-        lockExpirationTime:
-          type: string
-          format: date-time
-          example: 2023-06-03T22:05:05.474+0000
     JobResponse:
       type: object
       properties:
@@ -2800,48 +2785,12 @@ components:
         tenantId:
           type: string
           example: 'null'
-    TimerJobActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        dueDate:
-          type: string
-    BulkMoveDeadLetterActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        jobIds:
-          type: array
-          items:
-            type: string
     RestActionRequest:
       type: object
       properties:
         action:
           type: string
-    DataResponseHistoryJobResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoryJobResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    HistoryJobResponse_2:
+    HistoryJobResponse:
       type: object
       properties:
         id:
@@ -2878,7 +2827,7 @@ components:
         createTime:
           type: string
           format: date-time
-          example: 2023-06-03T22:05:05.474+0000
+          example: 2013-06-03T22:05:05.474+0000
         lockOwner:
           type: string
           example: node1
@@ -2944,6 +2893,57 @@ components:
         tenantId:
           type: string
           example: 'null'
+    HistoryJobResponse_2:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/management/jobs/8
+        scopeType:
+          type: string
+          example: cmmn
+        retries:
+          type: integer
+          format: int32
+          example: 3
+        exceptionMessage:
+          type: string
+          example: 'null'
+        jobHandlerType:
+          type: string
+          example: async-history
+        jobHandlerConfiguration:
+          type: string
+          example: myCfg
+        advancedJobHandlerConfiguration:
+          type: string
+          example: myAdvancedCfg
+        tenantId:
+          type: string
+          example: 'null'
+        customValues:
+          type: string
+          example: custom value
+        createTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+        lockOwner:
+          type: string
+          example: node1
+        lockExpirationTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
+  requestBodies:
+    RestActionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestActionRequest'
   securitySchemes:
     basicAuth:
       type: http

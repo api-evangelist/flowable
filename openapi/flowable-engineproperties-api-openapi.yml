@@ -92,6 +92,12 @@ paths:
       security:
       - basicAuth: []
 components:
+  requestBodies:
+    PropertyRequestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PropertyRequestBody'
   schemas:
     PropertyRequestBody:
       type: object
@@ -100,12 +106,6 @@ components:
           type: string
         value:
           type: string
-  requestBodies:
-    PropertyRequestBody:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PropertyRequestBody'
   securitySchemes:
     basicAuth:
       type: http

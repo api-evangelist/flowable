@@ -34,6 +34,12 @@ paths:
       security:
       - basicAuth: []
 components:
+  requestBodies:
+    BulkDeleteInstancesRestActionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BulkDeleteInstancesRestActionRequest'
   schemas:
     BulkDeleteInstancesRestActionRequest:
       type: object
@@ -44,12 +50,6 @@ components:
           type: array
           items:
             type: string
-  requestBodies:
-    BulkDeleteInstancesRestActionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BulkDeleteInstancesRestActionRequest'
   securitySchemes:
     basicAuth:
       type: http

@@ -277,6 +277,31 @@ paths:
       - basicAuth: []
 components:
   schemas:
+    AddGroupPrivilegeRequest:
+      type: object
+      properties:
+        groupId:
+          type: string
+    DataResponsePrivilegeResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrivilegeResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     EngineRestVariable:
       type: object
       properties:
@@ -295,18 +320,6 @@ components:
         valueUrl:
           type: string
           example: http://....
-    BasicPrivilegeResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    AddUserPrivilegeRequest:
-      type: object
-      properties:
-        userId:
-          type: string
     UserResponse:
       type: object
       required:
@@ -336,26 +349,28 @@ components:
           type: string
           description: The tenant id of the user
       description: The response for the OSS User
-    DataResponsePrivilegeResponse:
+    BasicPrivilegeResponse:
       type: object
       properties:
-        data:
+        id:
+          type: string
+        name:
+          type: string
+    PrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        users:
           type: array
           items:
-            $ref: '#/components/schemas/PrivilegeResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
+            $ref: '#/components/schemas/UserResponse'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupResponse'
     GroupResponse:
       type: object
       properties:
@@ -392,26 +407,11 @@ components:
           description: Collection of all identity infos for the group
           items:
             $ref: '#/components/schemas/EngineRestVariable'
-    AddGroupPrivilegeRequest:
+    AddUserPrivilegeRequest:
       type: object
       properties:
-        groupId:
+        userId:
           type: string
-    PrivilegeResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserResponse'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupResponse'
   securitySchemes:
     basicAuth:
       type: http

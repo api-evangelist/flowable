@@ -658,6 +658,808 @@ paths:
     - url: https://localhost:8090/content-api
 components:
   schemas:
+    Process:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        externalRef:
+          type: string
+        implementationType:
+          type: string
+    VariableAggregationDefinitions:
+      type: object
+      properties:
+        aggregations:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableAggregationDefinition'
+        overviewAggregations:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableAggregationDefinition'
+    ReactivationRule:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        condition:
+          type: string
+        activateCondition:
+          type: string
+        ignoreCondition:
+          type: string
+        defaultCondition:
+          type: string
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    PlanItemDefinition:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        planItemRef:
+          type: string
+        defaultControl:
+          $ref: '#/components/schemas/PlanItemControl'
+        lifecycleListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    ManualActivationRule:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        condition:
+          type: string
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    TextAnnotation:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        text:
+          type: string
+        textFormat:
+          type: string
+    FlowableListener:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        event:
+          type: string
+        sourceState:
+          type: string
+        targetState:
+          type: string
+        implementationType:
+          type: string
+        implementation:
+          type: string
+        fieldExtensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldExtension'
+        onTransaction:
+          type: string
+        scriptInfo:
+          $ref: '#/components/schemas/ScriptInfo'
+    ExtensionAttribute:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        namespacePrefix:
+          type: string
+        namespace:
+          type: string
+    RequiredRule:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        condition:
+          type: string
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    CmmnModel:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        targetNamespace:
+          type: string
+        expressionLanguage:
+          type: string
+        exporter:
+          type: string
+        exporterVersion:
+          type: string
+        author:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+        definitionsAttributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        cases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Case'
+        processes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Process'
+        decisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Decision'
+        associations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Association'
+        textAnnotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/TextAnnotation'
+        locationMap:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GraphicInfo'
+        labelLocationMap:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GraphicInfo'
+        flowLocationMap:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/GraphicInfo'
+        edgeMap:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/CmmnDiEdge'
+        namespaces:
+          type: object
+          additionalProperties:
+            type: string
+        primaryCase:
+          $ref: '#/components/schemas/Case'
+    ScriptInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        language:
+          type: string
+        resultVariable:
+          type: string
+        script:
+          type: string
+    DataResponseCaseDefinitionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CaseDefinitionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    SentryOnPart:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        sourceRef:
+          type: string
+        source:
+          $ref: '#/components/schemas/PlanItem'
+        standardEvent:
+          type: string
+    Association:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        sourceRef:
+          type: string
+        sourceElement:
+          $ref: '#/components/schemas/BaseElement'
+        targetRef:
+          type: string
+        targetElement:
+          $ref: '#/components/schemas/BaseElement'
+        transitionEvent:
+          type: string
+    PlanFragment:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        planItemRef:
+          type: string
+        defaultControl:
+          $ref: '#/components/schemas/PlanItemControl'
+        lifecycleListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+        planItem:
+          $ref: '#/components/schemas/PlanItem'
+        sentries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sentry'
+        directChildPlanItemsWithLifecycleEnabled:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItem'
+        planItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItem'
+        case:
+          $ref: '#/components/schemas/Case'
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    CompletionNeutralRule:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        condition:
+          type: string
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    CmmnDiEdge:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        cmmnElementRef:
+          type: string
+        targetCmmnElementRef:
+          type: string
+        sourceDockerInfo:
+          $ref: '#/components/schemas/GraphicInfo'
+        targetDockerInfo:
+          $ref: '#/components/schemas/GraphicInfo'
+        waypoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/GraphicInfo'
+        labelGraphicInfo:
+          $ref: '#/components/schemas/GraphicInfo'
+    BaseElement:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+    Case:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        initiatorVariableName:
+          type: string
+        planModel:
+          $ref: '#/components/schemas/Stage'
+        startEventType:
+          type: string
+        candidateStarterUsers:
+          type: array
+          items:
+            type: string
+        candidateStarterGroups:
+          type: array
+          items:
+            type: string
+        async:
+          type: boolean
+        allCaseElements:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/CaseElement'
+        lifecycleListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+        reactivateEventListener:
+          $ref: '#/components/schemas/ReactivateEventListener'
+    CaseElement:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    ReactivateEventListener:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        planItemRef:
+          type: string
+        defaultControl:
+          $ref: '#/components/schemas/PlanItemControl'
+        lifecycleListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+        availableConditionExpression:
+          type: string
+        authorizedRoleRefs:
+          type: array
+          items:
+            type: string
+        defaultReactivationRule:
+          $ref: '#/components/schemas/ReactivationRule'
+        reactivationAvailableConditionExpression:
+          type: string
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    ParentCompletionRule:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        name:
+          type: string
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        condition:
+          type: string
+        type:
+          type: string
+        parentStage:
+          $ref: '#/components/schemas/Stage'
     PlanItem:
       type: object
       properties:
@@ -742,280 +1544,6 @@ components:
             $ref: '#/components/schemas/PlanItem'
         parentStage:
           $ref: '#/components/schemas/Stage'
-    Case:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        name:
-          type: string
-        initiatorVariableName:
-          type: string
-        planModel:
-          $ref: '#/components/schemas/Stage'
-        startEventType:
-          type: string
-        candidateStarterUsers:
-          type: array
-          items:
-            type: string
-        candidateStarterGroups:
-          type: array
-          items:
-            type: string
-        async:
-          type: boolean
-        allCaseElements:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/CaseElement'
-        lifecycleListeners:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlowableListener'
-        reactivateEventListener:
-          $ref: '#/components/schemas/ReactivateEventListener'
-    GraphicInfo:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        x:
-          type: number
-          format: double
-        y:
-          type: number
-          format: double
-        height:
-          type: number
-          format: double
-        width:
-          type: number
-          format: double
-        element:
-          $ref: '#/components/schemas/BaseElement'
-        expanded:
-          type: boolean
-        rotation:
-          type: number
-          format: double
-    PlanFragment:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        name:
-          type: string
-        parent:
-          $ref: '#/components/schemas/PlanFragment'
-        planItemRef:
-          type: string
-        defaultControl:
-          $ref: '#/components/schemas/PlanItemControl'
-        lifecycleListeners:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlowableListener'
-        planItem:
-          $ref: '#/components/schemas/PlanItem'
-        sentries:
-          type: array
-          items:
-            $ref: '#/components/schemas/Sentry'
-        directChildPlanItemsWithLifecycleEnabled:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlanItem'
-        planItems:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlanItem'
-        case:
-          $ref: '#/components/schemas/Case'
-        parentStage:
-          $ref: '#/components/schemas/Stage'
-    BaseElement:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-    ScriptInfo:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        language:
-          type: string
-        resultVariable:
-          type: string
-        script:
-          type: string
-    ManualActivationRule:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        name:
-          type: string
-        parent:
-          $ref: '#/components/schemas/PlanFragment'
-        condition:
-          type: string
-        parentStage:
-          $ref: '#/components/schemas/Stage'
-    CaseElement:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        name:
-          type: string
-        parent:
-          $ref: '#/components/schemas/PlanFragment'
-        parentStage:
-          $ref: '#/components/schemas/Stage'
     CaseDefinitionResponse:
       type: object
       properties:
@@ -1063,347 +1591,6 @@ components:
           description: Indicates the case definition contains graphical information (CMMN DI).
         startFormDefined:
           type: boolean
-    FieldExtension:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        fieldName:
-          type: string
-        stringValue:
-          type: string
-        expression:
-          type: string
-    RequiredRule:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        name:
-          type: string
-        parent:
-          $ref: '#/components/schemas/PlanFragment'
-        condition:
-          type: string
-        parentStage:
-          $ref: '#/components/schemas/Stage'
-    RepetitionRule:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        name:
-          type: string
-        parent:
-          $ref: '#/components/schemas/PlanFragment'
-        condition:
-          type: string
-        repetitionCounterVariableName:
-          type: string
-        ignoreRepetitionCounterVariable:
-          type: boolean
-        collectionVariableName:
-          type: string
-        elementVariableName:
-          type: string
-        elementIndexVariableName:
-          type: string
-        maxInstanceCount:
-          type: integer
-          format: int32
-        aggregations:
-          $ref: '#/components/schemas/VariableAggregationDefinitions'
-        parentStage:
-          $ref: '#/components/schemas/Stage'
-    CaseDefinitionActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        category:
-          type: string
-    SentryOnPart:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        name:
-          type: string
-        sourceRef:
-          type: string
-        source:
-          $ref: '#/components/schemas/PlanItem'
-        standardEvent:
-          type: string
-    FlowableListener:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        event:
-          type: string
-        sourceState:
-          type: string
-        targetState:
-          type: string
-        implementationType:
-          type: string
-        implementation:
-          type: string
-        fieldExtensions:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldExtension'
-        onTransaction:
-          type: string
-        scriptInfo:
-          $ref: '#/components/schemas/ScriptInfo'
-    ParentCompletionRule:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        name:
-          type: string
-        parent:
-          $ref: '#/components/schemas/PlanFragment'
-        condition:
-          type: string
-        type:
-          type: string
-        parentStage:
-          $ref: '#/components/schemas/Stage'
-    CmmnModel:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        targetNamespace:
-          type: string
-        expressionLanguage:
-          type: string
-        exporter:
-          type: string
-        exporterVersion:
-          type: string
-        author:
-          type: string
-        creationDate:
-          type: string
-          format: date-time
-        definitionsAttributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        cases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Case'
-        processes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Process'
-        decisions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Decision'
-        associations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Association'
-        textAnnotations:
-          type: array
-          items:
-            $ref: '#/components/schemas/TextAnnotation'
-        locationMap:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/GraphicInfo'
-        labelLocationMap:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/GraphicInfo'
-        flowLocationMap:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/GraphicInfo'
-        edgeMap:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/CmmnDiEdge'
-        namespaces:
-          type: object
-          additionalProperties:
-            type: string
-        primaryCase:
-          $ref: '#/components/schemas/Case'
-    Decision:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        name:
-          type: string
-        externalRef:
-          type: string
-        implementationType:
-          type: string
     DmnDecision:
       type: object
       properties:
@@ -1429,155 +1616,6 @@ components:
         diagramResourceName:
           type: string
         decisionType:
-          type: string
-    VariableAggregationDefinition:
-      type: object
-      properties:
-        implementationType:
-          type: string
-        implementation:
-          type: string
-        target:
-          type: string
-        targetExpression:
-          type: string
-        definitions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Variable'
-        storeAsTransientVariable:
-          type: boolean
-        createOverviewVariable:
-          type: boolean
-    Criterion:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        name:
-          type: string
-        parent:
-          $ref: '#/components/schemas/PlanFragment'
-        technicalId:
-          type: string
-        sentryRef:
-          type: string
-        sentry:
-          $ref: '#/components/schemas/Sentry'
-        attachedToRefId:
-          type: string
-        exitType:
-          type: string
-        exitEventType:
-          type: string
-        incomingAssociations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Association'
-        outgoingAssociations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Association'
-        entryCriterion:
-          type: boolean
-        exitCriterion:
-          type: boolean
-        parentStage:
-          $ref: '#/components/schemas/Stage'
-    Variable:
-      type: object
-      properties:
-        source:
-          type: string
-        target:
-          type: string
-        targetExpression:
-          type: string
-        sourceExpression:
-          type: string
-    SentryIfPart:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        condition:
-          type: string
-    Process:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        name:
-          type: string
-        externalRef:
-          type: string
-        implementationType:
           type: string
     Sentry:
       type: object
@@ -1624,43 +1662,7 @@ components:
           type: boolean
         parentStage:
           $ref: '#/components/schemas/Stage'
-    RestIdentityLink:
-      type: object
-      properties:
-        url:
-          type: string
-        user:
-          type: string
-          example: kermit
-        group:
-          type: string
-          example: sales
-        type:
-          type: string
-          example: candidate
-    FormDefinition:
-      type: object
-      properties:
-        name:
-          type: string
-        key:
-          type: string
-        id:
-          type: string
-        version:
-          type: integer
-          format: int32
-        category:
-          type: string
-        tenantId:
-          type: string
-        description:
-          type: string
-        resourceName:
-          type: string
-        deploymentId:
-          type: string
-    TextAnnotation:
+    ExtensionElement:
       type: object
       properties:
         id:
@@ -1683,14 +1685,41 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
+        name:
           type: string
-        documentation:
+        namespacePrefix:
           type: string
-        text:
+        namespace:
           type: string
-        textFormat:
+        elementText:
           type: string
+        childElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+    CaseDefinitionActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        category:
+          type: string
+    RestIdentityLink:
+      type: object
+      properties:
+        url:
+          type: string
+        user:
+          type: string
+          example: kermit
+        group:
+          type: string
+          example: sales
+        type:
+          type: string
+          example: candidate
     PlanItemControl:
       type: object
       properties:
@@ -1736,7 +1765,58 @@ components:
           $ref: '#/components/schemas/ReactivationRule'
         parentStage:
           $ref: '#/components/schemas/Stage'
-    ReactivationRule:
+    FormDefinition:
+      type: object
+      properties:
+        name:
+          type: string
+        key:
+          type: string
+        id:
+          type: string
+        version:
+          type: integer
+          format: int32
+        category:
+          type: string
+        tenantId:
+          type: string
+        description:
+          type: string
+        resourceName:
+          type: string
+        deploymentId:
+          type: string
+    FieldExtension:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        fieldName:
+          type: string
+        stringValue:
+          type: string
+        expression:
+          type: string
+    Decision:
       type: object
       properties:
         id:
@@ -1765,164 +1845,29 @@ components:
           type: string
         name:
           type: string
-        parent:
-          $ref: '#/components/schemas/PlanFragment'
-        condition:
+        externalRef:
           type: string
-        activateCondition:
+        implementationType:
           type: string
-        ignoreCondition:
-          type: string
-        defaultCondition:
-          type: string
-        parentStage:
-          $ref: '#/components/schemas/Stage'
-    PlanItemDefinition:
+    VariableAggregationDefinition:
       type: object
       properties:
-        id:
+        implementationType:
           type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
+        implementation:
           type: string
-        documentation:
+        target:
           type: string
-        name:
+        targetExpression:
           type: string
-        parent:
-          $ref: '#/components/schemas/PlanFragment'
-        planItemRef:
-          type: string
-        defaultControl:
-          $ref: '#/components/schemas/PlanItemControl'
-        lifecycleListeners:
+        definitions:
           type: array
           items:
-            $ref: '#/components/schemas/FlowableListener'
-        parentStage:
-          $ref: '#/components/schemas/Stage'
-    DataResponseCaseDefinitionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CaseDefinitionResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    Association:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        sourceRef:
-          type: string
-        sourceElement:
-          $ref: '#/components/schemas/BaseElement'
-        targetRef:
-          type: string
-        targetElement:
-          $ref: '#/components/schemas/BaseElement'
-        transitionEvent:
-          type: string
-    CmmnDiEdge:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        cmmnElementRef:
-          type: string
-        targetCmmnElementRef:
-          type: string
-        sourceDockerInfo:
-          $ref: '#/components/schemas/GraphicInfo'
-        targetDockerInfo:
-          $ref: '#/components/schemas/GraphicInfo'
-        waypoints:
-          type: array
-          items:
-            $ref: '#/components/schemas/GraphicInfo'
-        labelGraphicInfo:
-          $ref: '#/components/schemas/GraphicInfo'
-    VariableAggregationDefinitions:
-      type: object
-      properties:
-        aggregations:
-          type: array
-          items:
-            $ref: '#/components/schemas/VariableAggregationDefinition'
-        overviewAggregations:
-          type: array
-          items:
-            $ref: '#/components/schemas/VariableAggregationDefinition'
+            $ref: '#/components/schemas/Variable'
+        storeAsTransientVariable:
+          type: boolean
+        createOverviewVariable:
+          type: boolean
     Stage:
       type: object
       properties:
@@ -2011,69 +1956,7 @@ components:
           $ref: '#/components/schemas/Case'
         parentStage:
           $ref: '#/components/schemas/Stage'
-    ExtensionAttribute:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-        namespacePrefix:
-          type: string
-        namespace:
-          type: string
-    ReactivateEventListener:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        documentationTextFormat:
-          type: string
-        documentation:
-          type: string
-        name:
-          type: string
-        parent:
-          $ref: '#/components/schemas/PlanFragment'
-        planItemRef:
-          type: string
-        defaultControl:
-          $ref: '#/components/schemas/PlanItemControl'
-        lifecycleListeners:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlowableListener'
-        availableConditionExpression:
-          type: string
-        authorizedRoleRefs:
-          type: array
-          items:
-            type: string
-        defaultReactivationRule:
-          $ref: '#/components/schemas/ReactivationRule'
-        reactivationAvailableConditionExpression:
-          type: string
-        parentStage:
-          $ref: '#/components/schemas/Stage'
-    CompletionNeutralRule:
+    RepetitionRule:
       type: object
       properties:
         id:
@@ -2106,9 +1989,24 @@ components:
           $ref: '#/components/schemas/PlanFragment'
         condition:
           type: string
+        repetitionCounterVariableName:
+          type: string
+        ignoreRepetitionCounterVariable:
+          type: boolean
+        collectionVariableName:
+          type: string
+        elementVariableName:
+          type: string
+        elementIndexVariableName:
+          type: string
+        maxInstanceCount:
+          type: integer
+          format: int32
+        aggregations:
+          $ref: '#/components/schemas/VariableAggregationDefinitions'
         parentStage:
           $ref: '#/components/schemas/Stage'
-    ExtensionElement:
+    Criterion:
       type: object
       properties:
         id:
@@ -2131,20 +2029,122 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
         name:
           type: string
-        namespacePrefix:
+        parent:
+          $ref: '#/components/schemas/PlanFragment'
+        technicalId:
           type: string
-        namespace:
+        sentryRef:
           type: string
-        elementText:
+        sentry:
+          $ref: '#/components/schemas/Sentry'
+        attachedToRefId:
           type: string
-        childElements:
+        exitType:
+          type: string
+        exitEventType:
+          type: string
+        incomingAssociations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Association'
+        outgoingAssociations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Association'
+        entryCriterion:
+          type: boolean
+        exitCriterion:
+          type: boolean
+        parentStage:
+          $ref: '#/components/schemas/Stage'
+    GraphicInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
           type: object
           additionalProperties:
             type: array
             items:
               $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        x:
+          type: number
+          format: double
+        y:
+          type: number
+          format: double
+        height:
+          type: number
+          format: double
+        width:
+          type: number
+          format: double
+        element:
+          $ref: '#/components/schemas/BaseElement'
+        expanded:
+          type: boolean
+        rotation:
+          type: number
+          format: double
+    SentryIfPart:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        documentationTextFormat:
+          type: string
+        documentation:
+          type: string
+        condition:
+          type: string
+    Variable:
+      type: object
+      properties:
+        source:
+          type: string
+        target:
+          type: string
+        targetExpression:
+          type: string
+        sourceExpression:
+          type: string
   requestBodies:
     RestIdentityLink:
       content:

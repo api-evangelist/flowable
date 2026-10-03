@@ -617,60 +617,25 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    ProcessInstanceUpdateRequest:
-      type: object
-      required:
-      - action
-      properties:
-        action:
-          type: string
-          example: activate
-          description: 'Action to perform: Either activate or suspend'
-        name:
-          type: string
-        businessKey:
-          type: string
-    DataResponseProcessInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProcessInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    QueryVariable:
+    RestVariable:
       type: object
       properties:
         name:
           type: string
-        operation:
+          example: myVariable
+          description: Name of the variable
+        type:
           type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
+          example: string
+          description: Type of the variable.
         value:
           type: object
-        type:
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
           type: string
     ProcessInstanceResponse:
       type: object
@@ -741,6 +706,43 @@ components:
           type: string
           example: someTenantId
         completed:
+          type: boolean
+    DataResponseProcessInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    InjectActivityRequest:
+      type: object
+      properties:
+        injectionType:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        assignee:
+          type: string
+        taskId:
+          type: string
+        processDefinitionId:
+          type: string
+        joinParallelActivitiesOnComplete:
           type: boolean
     ProcessInstanceQueryRequest:
       type: object
@@ -884,26 +886,6 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
     BulkDeleteInstancesRestActionRequest:
       type: object
       properties:
@@ -915,6 +897,32 @@ components:
             type: string
         deleteReason:
           type: string
+    ProcessInstanceUpdateRequest:
+      type: object
+      required:
+      - action
+      properties:
+        action:
+          type: string
+          example: activate
+          description: 'Action to perform: Either activate or suspend'
+        name:
+          type: string
+        businessKey:
+          type: string
+    ExecutionChangeActivityStateRequest:
+      type: object
+      properties:
+        cancelActivityIds:
+          type: array
+          description: activityIds to be canceled
+          items:
+            type: string
+        startActivityIds:
+          type: array
+          description: activityIds to be started
+          items:
+            type: string
     ProcessInstanceCreateRequest:
       type: object
       properties:
@@ -956,37 +964,34 @@ components:
         returnVariables:
           type: boolean
       description: Only one of processDefinitionId, processDefinitionKey or message can be used in the request body
-    ExecutionChangeActivityStateRequest:
+    QueryVariable:
       type: object
       properties:
-        cancelActivityIds:
-          type: array
-          description: activityIds to be canceled
-          items:
-            type: string
-        startActivityIds:
-          type: array
-          description: activityIds to be started
-          items:
-            type: string
-    InjectActivityRequest:
-      type: object
-      properties:
-        injectionType:
-          type: string
-        id:
-          type: string
         name:
           type: string
-        assignee:
+        operation:
           type: string
-        taskId:
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
           type: string
-        processDefinitionId:
-          type: string
-        joinParallelActivitiesOnComplete:
-          type: boolean
   requestBodies:
+    batchMigrateInstancesOfProcessDefinitionBody:
+      content:
+        application/json:
+          schema:
+            type: string
     BulkDeleteInstancesRestActionRequest:
       content:
         application/json:
@@ -997,11 +1002,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ExecutionChangeActivityStateRequest'
-    batchMigrateInstancesOfProcessDefinitionBody:
-      content:
-        application/json:
-          schema:
-            type: string
   securitySchemes:
     basicAuth:
       type: http

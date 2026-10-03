@@ -162,6 +162,26 @@ paths:
     - url: /flowable-rest/cmmn-api
 components:
   schemas:
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
     ActivityInstanceQueryRequest:
       type: object
       properties:
@@ -260,26 +280,23 @@ components:
         tenantId:
           type: string
           example: 'null'
-    RestVariable:
+    SignalEventReceivedRequest:
       type: object
       properties:
-        name:
+        signalName:
           type: string
-          example: myVariable
-          description: Name of the variable
-        type:
+          description: Name of the signal
+        variables:
+          type: array
+          description: Array of variables (in the general variables format) to use as payload to pass along with the signal. Cannot be used in case async is set to true, this will result in an error.
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        tenantId:
           type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
+          description: ID of the tenant that the signal event should be processed in
+        async:
+          type: boolean
+          description: "If true, handling of the signal will happen asynchronously. Return code will be 202 - Accepted to indicate the request is accepted but not yet executed. If false,\n                    handling the signal will be done immediately and result (200 - OK) will only return after this completed successfully. Defaults to false if omitted."
     DataResponseActivityInstanceResponse:
       type: object
       properties:
@@ -300,42 +317,26 @@ components:
         size:
           type: integer
           format: int32
-    SignalEventReceivedRequest:
+    DataResponseVariableInstanceResponse:
       type: object
       properties:
-        signalName:
-          type: string
-          description: Name of the signal
-        variables:
+        data:
           type: array
-          description: Array of variables (in the general variables format) to use as payload to pass along with the signal. Cannot be used in case async is set to true, this will result in an error.
           items:
-            $ref: '#/components/schemas/RestVariable'
-        tenantId:
+            $ref: '#/components/schemas/VariableInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
           type: string
-          description: ID of the tenant that the signal event should be processed in
-        async:
-          type: boolean
-          description: "If true, handling of the signal will happen asynchronously. Return code will be 202 - Accepted to indicate the request is accepted but not yet executed. If false,\n                    handling the signal will be done immediately and result (200 - OK) will only return after this completed successfully. Defaults to false if omitted."
-    VariableInstanceResponse:
-      type: object
-      properties:
-        id:
+        order:
           type: string
-          example: '14'
-        caseInstanceId:
-          type: string
-          example: '5'
-        caseInstanceUrl:
-          type: string
-          example: http://localhost:8182/cmmn-history/historic-case-instances/5
-        taskId:
-          type: string
-          example: '6'
-        planItemInstanceId:
-          type: string
-        variable:
-          $ref: '#/components/schemas/RestVariable'
+        size:
+          type: integer
+          format: int32
     VariableInstanceQueryRequest:
       type: object
       properties:
@@ -369,6 +370,25 @@ components:
           type: boolean
         variableScope:
           type: string
+    VariableInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '14'
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
+        taskId:
+          type: string
+          example: '6'
+        planItemInstanceId:
+          type: string
+        variable:
+          $ref: '#/components/schemas/RestVariable'
     QueryVariable:
       type: object
       properties:
@@ -391,26 +411,6 @@ components:
           type: object
         type:
           type: string
-    DataResponseVariableInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/VariableInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
   securitySchemes:
     basicAuth:
       type: http

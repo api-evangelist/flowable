@@ -1138,44 +1138,6 @@ paths:
     - url: https://localhost:8090/idm-api
 components:
   schemas:
-    UserInfoRequest:
-      type: object
-      properties:
-        key:
-          type: string
-          example: jobTitle
-        value:
-          type: string
-          example: Muppet
-    UserResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: testuser
-        firstName:
-          type: string
-          example: Fred
-        lastName:
-          type: string
-          example: Smith
-        displayName:
-          type: string
-          example: Fred Smith
-        url:
-          type: string
-          example: http://localhost:8182/identity/users/testuser
-        email:
-          type: string
-          example: no-reply@flowable.org
-        tenantId:
-          type: string
-          example: companyTenantId
-        pictureUrl:
-          type: string
-          example: http://localhost:8182/identity/users/testuser/picture
-        password:
-          type: string
     UserRequest:
       type: object
       properties:
@@ -1205,18 +1167,6 @@ components:
           example: http://localhost:8182/identity/users/testuser/picture
         password:
           type: string
-    UserInfoResponse:
-      type: object
-      properties:
-        key:
-          type: string
-          example: jobTitle
-        value:
-          type: string
-          example: Muppet
-        url:
-          type: string
-          example: http://localhost:8080/flowable-rest/service/identity/users/kermit/info/jobTitle
     DataResponseUserResponse:
       type: object
       properties:
@@ -1237,88 +1187,246 @@ components:
         size:
           type: integer
           format: int32
-    FileSystem:
-      type: object
-      properties:
-        open:
-          type: boolean
-        readOnly:
-          type: boolean
-        separator:
-          type: string
-        rootDirectories:
-          $ref: '#/components/schemas/IterablePath'
-        fileStores:
-          $ref: '#/components/schemas/IterableFileStore'
-        userPrincipalLookupService:
-          $ref: '#/components/schemas/UserPrincipalLookupService'
-    UpdateUserPresenceRequest:
-      type: object
-      required:
-      - presence
-      properties:
-        presence:
-          type: string
-          description: The presence that should be set on the user
-          enum:
-          - available
-          - away
-          - offline
-          - out-of-office
-          - snoozed
-        tenantId:
-          type: string
-          description: The tenant id that should be used for updating the presence. Only admin users can modify this parameter
-      description: Request for updating user presence
-    UserPrincipalLookupService:
-      type: object
-    GroupResponse:
+    UserResponse:
       type: object
       properties:
         id:
           type: string
-          example: testgroup
+          example: testuser
+        firstName:
+          type: string
+          example: Fred
+        lastName:
+          type: string
+          example: Smith
+        displayName:
+          type: string
+          example: Fred Smith
         url:
           type: string
-          example: http://localhost:8182/groups/groupId
-        name:
+          example: http://localhost:8182/identity/users/testuser
+        email:
           type: string
-          example: Test group
-        type:
-          type: string
-          example: Test type
-        key:
-          type: string
-          example: testgroup
+          example: no-reply@flowable.org
         tenantId:
           type: string
-          example: testtenant
-        users:
-          type: array
-          description: Collection of all users that have a membership with the group
-          items:
-            $ref: '#/components/schemas/UserResponse_2'
-        privileges:
-          type: array
-          description: Collection of all privileges for this group
-          items:
-            $ref: '#/components/schemas/BasicPrivilegeResponse'
-        identityInfo:
-          type: array
-          description: Collection of all identity infos for the group
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-    UsersOrGroups:
+          example: companyTenantId
+        pictureUrl:
+          type: string
+          example: http://localhost:8182/identity/users/testuser/picture
+        password:
+          type: string
+    UserInfoRequest:
       type: object
       properties:
-        userIds:
+        key:
+          type: string
+          example: jobTitle
+        value:
+          type: string
+          example: Muppet
+    UserInfoResponse:
+      type: object
+      properties:
+        key:
+          type: string
+          example: jobTitle
+        value:
+          type: string
+          example: Muppet
+        url:
+          type: string
+          example: http://localhost:8080/flowable-rest/service/identity/users/kermit/info/jobTitle
+    ChangeUserThemeRequest:
+      type: object
+      properties:
+        newTheme:
+          type: string
+    Resource:
+      type: object
+      properties:
+        open:
+          type: boolean
+        file:
+          type: string
+          format: binary
+        readable:
+          type: boolean
+        url:
+          type: string
+          format: url
+        filePath:
+          $ref: '#/components/schemas/Path'
+        filename:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+          format: uri
+        contentAsByteArray:
           type: array
           items:
             type: string
-        groupKeys:
+            format: byte
+        inputStream:
+          $ref: '#/components/schemas/InputStream'
+    UserPrincipalLookupService:
+      type: object
+    CreateUserRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        displayName:
+          type: string
+        loginName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        repeatPassword:
+          type: string
+        type:
+          type: string
+        subType:
+          type: string
+        userDefinitionId:
+          type: string
+        userDefinitionKey:
+          type: string
+        state:
+          type: string
+        subState:
+          type: string
+        avatarId:
+          type: string
+        presence:
+          type: string
+        language:
+          type: string
+        theme:
+          type: string
+        tenantId:
+          type: string
+        identityInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        groups:
           type: array
           items:
             type: string
+        returnIdentityInfo:
+          type: boolean
+    UserResponse_2:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+      description: The response for the OSS User
+    Path:
+      type: object
+      properties:
+        absolute:
+          type: boolean
+        parent:
+          $ref: '#/components/schemas/Path'
+        root:
+          $ref: '#/components/schemas/Path'
+        fileName:
+          $ref: '#/components/schemas/Path'
+        fileSystem:
+          $ref: '#/components/schemas/FileSystem'
+        nameCount:
+          type: integer
+          format: int32
+    UserBaseInformationResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        avatarId:
+          type: string
+      description: The response for the User base information
+    ChangeUserLanguageRequest:
+      type: object
+      properties:
+        newLanguage:
+          type: string
+    UpdateUserRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        displayName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        repeatPassword:
+          type: string
+        avatarId:
+          type: string
+        language:
+          type: string
+        theme:
+          type: string
+        identityInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        groups:
+          type: array
+          items:
+            type: string
+        returnIdentityInfo:
+          type: boolean
     UserBodyQueryRequest:
       type: object
       properties:
@@ -1421,97 +1529,6 @@ components:
         usersOrGroups:
           $ref: '#/components/schemas/UsersOrGroups'
       description: Request that is used for querying users.
-    InputStream:
-      type: object
-    ChangeUserLanguageRequest:
-      type: object
-      properties:
-        newLanguage:
-          type: string
-    UserBaseInformationResponse:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          example: john.doe
-          description: The id of the user
-        firstName:
-          type: string
-          example: John
-          description: The first name if the user
-        lastName:
-          type: string
-          example: Doe
-          description: The last name of the user
-        displayName:
-          type: string
-          example: John Doe
-          description: The display name of the user
-        avatarId:
-          type: string
-      description: The response for the User base information
-    IterableFileStore:
-      type: object
-    CreateUserRequest:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        displayName:
-          type: string
-        loginName:
-          type: string
-        email:
-          type: string
-        password:
-          type: string
-        repeatPassword:
-          type: string
-        type:
-          type: string
-        subType:
-          type: string
-        userDefinitionId:
-          type: string
-        userDefinitionKey:
-          type: string
-        state:
-          type: string
-        subState:
-          type: string
-        avatarId:
-          type: string
-        presence:
-          type: string
-        language:
-          type: string
-        theme:
-          type: string
-        tenantId:
-          type: string
-        identityInfo:
-          type: array
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-        groups:
-          type: array
-          items:
-            type: string
-        returnIdentityInfo:
-          type: boolean
-    UpdateUserDefinitionRequest:
-      type: object
-      properties:
-        userDefinitionId:
-          type: string
-        userDefinitionKey:
-          type: string
-        tenantId:
-          type: string
     PlatformUserResponse:
       type: object
       required:
@@ -1618,13 +1635,49 @@ components:
           items:
             type: string
       description: The response for a platform user
-    ChangeUserThemeRequest:
+    UpdateUserPresenceRequest:
+      type: object
+      required:
+      - presence
+      properties:
+        presence:
+          type: string
+          description: The presence that should be set on the user
+          enum:
+          - available
+          - away
+          - offline
+          - out-of-office
+          - snoozed
+        tenantId:
+          type: string
+          description: The tenant id that should be used for updating the presence. Only admin users can modify this parameter
+      description: Request for updating user presence
+    UsersOrGroups:
       type: object
       properties:
-        newTheme:
-          type: string
-    IterablePath:
+        userIds:
+          type: array
+          items:
+            type: string
+        groupKeys:
+          type: array
+          items:
+            type: string
+    BasicPrivilegeResponse:
       type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    UpdateUserStateRequest:
+      type: object
+      properties:
+        state:
+          type: string
+        subState:
+          type: string
     JsonNode:
       type: object
       properties:
@@ -1680,44 +1733,70 @@ components:
           type: boolean
         floatingPointNumber:
           type: boolean
-    UpdateUserRequest:
+    FileSystem:
       type: object
       properties:
-        firstName:
+        open:
+          type: boolean
+        readOnly:
+          type: boolean
+        separator:
           type: string
-        lastName:
+        rootDirectories:
+          $ref: '#/components/schemas/IterablePath'
+        fileStores:
+          $ref: '#/components/schemas/IterableFileStore'
+        userPrincipalLookupService:
+          $ref: '#/components/schemas/UserPrincipalLookupService'
+    GroupResponse:
+      type: object
+      properties:
+        id:
           type: string
-        displayName:
+          example: testgroup
+        url:
           type: string
-        email:
+          example: http://localhost:8182/groups/groupId
+        name:
           type: string
-        password:
+          example: Test group
+        type:
           type: string
-        repeatPassword:
+          example: Test type
+        key:
           type: string
-        avatarId:
+          example: testgroup
+        tenantId:
           type: string
-        language:
-          type: string
-        theme:
-          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse_2'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
         identityInfo:
           type: array
+          description: Collection of all identity infos for the group
           items:
             $ref: '#/components/schemas/EngineRestVariable'
-        groups:
-          type: array
-          items:
-            type: string
-        returnIdentityInfo:
-          type: boolean
-    UpdateUserStateRequest:
+    IterableFileStore:
+      type: object
+    UpdateUserDefinitionRequest:
       type: object
       properties:
-        state:
+        userDefinitionId:
           type: string
-        subState:
+        userDefinitionKey:
           type: string
+        tenantId:
+          type: string
+    IterablePath:
+      type: object
     EngineRestVariable:
       type: object
       properties:
@@ -1736,29 +1815,13 @@ components:
         valueUrl:
           type: string
           example: http://....
-    BasicPrivilegeResponse:
+    ChangeUserPasswordRequest:
       type: object
       properties:
-        id:
+        password:
           type: string
-        name:
+        repeatPassword:
           type: string
-    Path:
-      type: object
-      properties:
-        absolute:
-          type: boolean
-        parent:
-          $ref: '#/components/schemas/Path'
-        root:
-          $ref: '#/components/schemas/Path'
-        fileName:
-          $ref: '#/components/schemas/Path'
-        fileSystem:
-          $ref: '#/components/schemas/FileSystem'
-        nameCount:
-          type: integer
-          format: int32
     DataResponsePlatformUserResponse:
       type: object
       properties:
@@ -1779,82 +1842,19 @@ components:
         size:
           type: integer
           format: int32
-    UserResponse_2:
+    InputStream:
       type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          example: john.doe
-          description: The id of the user
-        firstName:
-          type: string
-          example: John
-          description: The first name if the user
-        lastName:
-          type: string
-          example: Doe
-          description: The last name of the user
-        displayName:
-          type: string
-          example: John Doe
-          description: The display name of the user
-        email:
-          type: string
-          example: no-reply@flowable.org
-          description: The email of the user
-        tenantId:
-          type: string
-          description: The tenant id of the user
-      description: The response for the OSS User
-    Resource:
-      type: object
-      properties:
-        open:
-          type: boolean
-        file:
-          type: string
-          format: binary
-        readable:
-          type: boolean
-        url:
-          type: string
-          format: url
-        filePath:
-          $ref: '#/components/schemas/Path'
-        filename:
-          type: string
-        description:
-          type: string
-        uri:
-          type: string
-          format: uri
-        contentAsByteArray:
-          type: array
-          items:
-            type: string
-            format: byte
-        inputStream:
-          $ref: '#/components/schemas/InputStream'
-    ChangeUserPasswordRequest:
-      type: object
-      properties:
-        password:
-          type: string
-        repeatPassword:
-          type: string
   requestBodies:
-    UserInfoRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UserInfoRequest'
     UserRequest:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/UserRequest'
+    UserInfoRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserInfoRequest'
     UpdateUserPresenceRequest:
       content:
         application/json:

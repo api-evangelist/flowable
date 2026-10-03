@@ -75,79 +75,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    EngineRestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-    BasicPrivilegeResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    ContactFilterResponse:
-      type: object
-      required:
-      - defaultFilter
-      - id
-      properties:
-        id:
-          type: string
-          description: The id of the filter
-        labelKey:
-          type: string
-          description: The key for the label of filter
-        defaultLabelName:
-          type: string
-          description: The default name of the filter label
-        defaultFilter:
-          type: boolean
-          description: Flag indicating whether this filter is a default one
-      description: The response for the contact filters
-    UserResponse:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          example: john.doe
-          description: The id of the user
-        firstName:
-          type: string
-          example: John
-          description: The first name if the user
-        lastName:
-          type: string
-          example: Doe
-          description: The last name of the user
-        displayName:
-          type: string
-          example: John Doe
-          description: The display name of the user
-        email:
-          type: string
-          example: no-reply@flowable.org
-          description: The email of the user
-        tenantId:
-          type: string
-          description: The tenant id of the user
-      description: The response for the OSS User
     PlatformUserResponse:
       type: object
       required:
@@ -254,6 +181,99 @@ components:
           items:
             type: string
       description: The response for a platform user
+    ContactFilterResponse:
+      type: object
+      required:
+      - defaultFilter
+      - id
+      properties:
+        id:
+          type: string
+          description: The id of the filter
+        labelKey:
+          type: string
+          description: The key for the label of filter
+        defaultLabelName:
+          type: string
+          description: The default name of the filter label
+        defaultFilter:
+          type: boolean
+          description: Flag indicating whether this filter is a default one
+      description: The response for the contact filters
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+    UserResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+      description: The response for the OSS User
+    BasicPrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    PagePlatformUserResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformUserResponse'
+        size:
+          type: integer
+          format: int32
+        start:
+          type: integer
+          format: int32
+        total:
+          type: integer
+          format: int64
+        sort:
+          type: string
+        order:
+          type: string
     GroupResponse:
       type: object
       properties:
@@ -290,26 +310,6 @@ components:
           description: Collection of all identity infos for the group
           items:
             $ref: '#/components/schemas/EngineRestVariable'
-    PagePlatformUserResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlatformUserResponse'
-        size:
-          type: integer
-          format: int32
-        start:
-          type: integer
-          format: int32
-        total:
-          type: integer
-          format: int64
-        sort:
-          type: string
-        order:
-          type: string
   securitySchemes:
     basicAuth:
       type: http

@@ -392,6 +392,41 @@ paths:
       - basicAuth: []
 components:
   schemas:
+    Resource:
+      type: object
+      properties:
+        open:
+          type: boolean
+        file:
+          type: string
+          format: binary
+        readable:
+          type: boolean
+        url:
+          type: string
+          format: url
+        filePath:
+          $ref: '#/components/schemas/Path'
+        filename:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+          format: uri
+        contentAsByteArray:
+          type: array
+          items:
+            type: string
+            format: byte
+        inputStream:
+          $ref: '#/components/schemas/InputStream'
+    IterableFileStore:
+      type: object
+    UserPrincipalLookupService:
+      type: object
+    IterablePath:
+      type: object
     FileSystem:
       type: object
       properties:
@@ -407,22 +442,24 @@ components:
           $ref: '#/components/schemas/IterableFileStore'
         userPrincipalLookupService:
           $ref: '#/components/schemas/UserPrincipalLookupService'
-    IterablePath:
-      type: object
-    Path:
+    DataResponseRenditionItemResponse:
       type: object
       properties:
-        absolute:
-          type: boolean
-        parent:
-          $ref: '#/components/schemas/Path'
-        root:
-          $ref: '#/components/schemas/Path'
-        fileName:
-          $ref: '#/components/schemas/Path'
-        fileSystem:
-          $ref: '#/components/schemas/FileSystem'
-        nameCount:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RenditionItemResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
           type: integer
           format: int32
     RenditionItemResponse:
@@ -458,59 +495,24 @@ components:
           format: date-time
         url:
           type: string
+    Path:
+      type: object
+      properties:
+        absolute:
+          type: boolean
+        parent:
+          $ref: '#/components/schemas/Path'
+        root:
+          $ref: '#/components/schemas/Path'
+        fileName:
+          $ref: '#/components/schemas/Path'
+        fileSystem:
+          $ref: '#/components/schemas/FileSystem'
+        nameCount:
+          type: integer
+          format: int32
     InputStream:
       type: object
-    DataResponseRenditionItemResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/RenditionItemResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    UserPrincipalLookupService:
-      type: object
-    Resource:
-      type: object
-      properties:
-        open:
-          type: boolean
-        file:
-          type: string
-          format: binary
-        readable:
-          type: boolean
-        url:
-          type: string
-          format: url
-        filePath:
-          $ref: '#/components/schemas/Path'
-        filename:
-          type: string
-        description:
-          type: string
-        uri:
-          type: string
-          format: uri
-        contentAsByteArray:
-          type: array
-          items:
-            type: string
-            format: byte
-        inputStream:
-          $ref: '#/components/schemas/InputStream'
     RenditionItemQueryRequest:
       type: object
       properties:
@@ -604,8 +606,6 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    IterableFileStore:
-      type: object
   requestBodies:
     saveContentItemData:
       content:

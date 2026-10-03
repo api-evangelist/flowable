@@ -123,6 +123,37 @@ paths:
       x-s2o-warning: Operation queryHistoricMilestoneInstance has multiple requestBodies
 components:
   schemas:
+    HistoricMilestoneInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        name:
+          type: string
+          example: milestoneName
+        elementId:
+          type: string
+          example: milestonePlanItemId
+        timestamp:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        caseInstanceId:
+          type: string
+          example: '12345'
+        caseDefinitionId:
+          type: string
+          example: oneMilestoneCase%3A1%3A4
+        url:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-milestone-instances/5
+        historicCaseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/12345
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-repository/case-definitions/oneMilestoneCase%3A1%3A4
     HistoricMilestoneInstanceQueryRequest:
       type: object
       properties:
@@ -170,37 +201,6 @@ components:
         size:
           type: integer
           format: int32
-    HistoricMilestoneInstanceResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '5'
-        name:
-          type: string
-          example: milestoneName
-        elementId:
-          type: string
-          example: milestonePlanItemId
-        timestamp:
-          type: string
-          format: date-time
-          example: 2013-04-18T14:06:32.715+0000
-        caseInstanceId:
-          type: string
-          example: '12345'
-        caseDefinitionId:
-          type: string
-          example: oneMilestoneCase%3A1%3A4
-        url:
-          type: string
-          example: http://localhost:8182/cmmn-history/historic-milestone-instances/5
-        historicCaseInstanceUrl:
-          type: string
-          example: http://localhost:8182/cmmn-history/historic-case-instances/12345
-        caseDefinitionUrl:
-          type: string
-          example: http://localhost:8182/cmmn-repository/case-definitions/oneMilestoneCase%3A1%3A4
   securitySchemes:
     basicAuth:
       type: http

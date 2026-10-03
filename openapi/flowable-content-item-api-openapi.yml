@@ -751,127 +751,37 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    FileSystem:
+    Resource:
       type: object
       properties:
         open:
           type: boolean
-        readOnly:
+        file:
+          type: string
+          format: binary
+        readable:
           type: boolean
-        separator:
+        url:
           type: string
-        rootDirectories:
-          $ref: '#/components/schemas/IterablePath'
-        fileStores:
-          $ref: '#/components/schemas/IterableFileStore'
-        userPrincipalLookupService:
-          $ref: '#/components/schemas/UserPrincipalLookupService'
-    ContentItemRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Simple content item
-          description: Name of the content item
-        versionInfo:
-          type: string
-          example: Version 1a
-          description: Version information of the content item
-        mimeType:
-          type: string
-          example: application/pdf
-          description: Mime type of the content item, optional
-        taskId:
-          type: string
-          example: '12345'
-          description: Task identifier for the content item, optional
-        processInstanceId:
-          type: string
-          example: '1234'
-          description: Process instance identifier for the content item, optional
-        scopeType:
-          type: string
-          example: bpmn
-          description: Scope type for the content item, optional
-        scopeId:
-          type: string
-          example: '1234'
-          description: Scope instance identifier for the content item, optional
-        contentStoreId:
-          type: string
-          example: '5678'
-          description: The identifier of the content item in an external content store, optional.
-        contentStoreName:
-          type: string
-          example: myFileStore
-          description: The name of an external content store, optional
-        field:
-          type: string
-          example: uploadField
-          description: The form field for the content item, optional
-        versionParentId:
-          type: string
-          example: '1234'
-          description: The version parent id for the content item to create a new version, optional
-        tenantId:
-          type: string
-          example: myTenantId
-          description: The tenant identifier of the content item, optional.
-        createdBy:
-          type: string
-          example: johndoe
-          description: The user identifier that created the content item, optional
-        lastModifiedBy:
-          type: string
-          example: johndoe
-          description: The user identifier that last modified the content item, optional
-        type:
-          type: string
-          example: folder
-          description: The type of the content item, optional
-        subType:
-          type: string
-          example: spreadsheet
-          description: The subtype of the content item, optional
-        state:
-          type: string
-          example: active
-          description: The state of the content item, optional
-        subState:
-          type: string
-          example: active
-          description: The substate of the content item, optional
-        parentFolderId:
-          type: string
-          example: myFolderId
-          description: The parent folder id of the content item, optional
-    QueryMetadata:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-        value:
-          type: object
-        type:
-          type: string
-    Path:
-      type: object
-      properties:
-        absolute:
-          type: boolean
-        parent:
+          format: url
+        filePath:
           $ref: '#/components/schemas/Path'
-        root:
-          $ref: '#/components/schemas/Path'
-        fileName:
-          $ref: '#/components/schemas/Path'
-        fileSystem:
-          $ref: '#/components/schemas/FileSystem'
-        nameCount:
-          type: integer
-          format: int32
+        filename:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+          format: uri
+        contentAsByteArray:
+          type: array
+          items:
+            type: string
+            format: byte
+        inputStream:
+          $ref: '#/components/schemas/InputStream'
+    IterableFileStore:
+      type: object
     DataResponseContentItemResponse:
       type: object
       properties:
@@ -890,6 +800,41 @@ components:
         order:
           type: string
         size:
+          type: integer
+          format: int32
+    UserPrincipalLookupService:
+      type: object
+    IterablePath:
+      type: object
+    FileSystem:
+      type: object
+      properties:
+        open:
+          type: boolean
+        readOnly:
+          type: boolean
+        separator:
+          type: string
+        rootDirectories:
+          $ref: '#/components/schemas/IterablePath'
+        fileStores:
+          $ref: '#/components/schemas/IterableFileStore'
+        userPrincipalLookupService:
+          $ref: '#/components/schemas/UserPrincipalLookupService'
+    Path:
+      type: object
+      properties:
+        absolute:
+          type: boolean
+        parent:
+          $ref: '#/components/schemas/Path'
+        root:
+          $ref: '#/components/schemas/Path'
+        fileName:
+          $ref: '#/components/schemas/Path'
+        fileSystem:
+          $ref: '#/components/schemas/FileSystem'
+        nameCount:
           type: integer
           format: int32
     InputStream:
@@ -1011,6 +956,96 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QueryMetadata'
+    ContentItemRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Simple content item
+          description: Name of the content item
+        versionInfo:
+          type: string
+          example: Version 1a
+          description: Version information of the content item
+        mimeType:
+          type: string
+          example: application/pdf
+          description: Mime type of the content item, optional
+        taskId:
+          type: string
+          example: '12345'
+          description: Task identifier for the content item, optional
+        processInstanceId:
+          type: string
+          example: '1234'
+          description: Process instance identifier for the content item, optional
+        scopeType:
+          type: string
+          example: bpmn
+          description: Scope type for the content item, optional
+        scopeId:
+          type: string
+          example: '1234'
+          description: Scope instance identifier for the content item, optional
+        contentStoreId:
+          type: string
+          example: '5678'
+          description: The identifier of the content item in an external content store, optional.
+        contentStoreName:
+          type: string
+          example: myFileStore
+          description: The name of an external content store, optional
+        field:
+          type: string
+          example: uploadField
+          description: The form field for the content item, optional
+        versionParentId:
+          type: string
+          example: '1234'
+          description: The version parent id for the content item to create a new version, optional
+        tenantId:
+          type: string
+          example: myTenantId
+          description: The tenant identifier of the content item, optional.
+        createdBy:
+          type: string
+          example: johndoe
+          description: The user identifier that created the content item, optional
+        lastModifiedBy:
+          type: string
+          example: johndoe
+          description: The user identifier that last modified the content item, optional
+        type:
+          type: string
+          example: folder
+          description: The type of the content item, optional
+        subType:
+          type: string
+          example: spreadsheet
+          description: The subtype of the content item, optional
+        state:
+          type: string
+          example: active
+          description: The state of the content item, optional
+        subState:
+          type: string
+          example: active
+          description: The substate of the content item, optional
+        parentFolderId:
+          type: string
+          example: myFolderId
+          description: The parent folder id of the content item, optional
+    QueryMetadata:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+        value:
+          type: object
+        type:
+          type: string
     ContentItemResponse:
       type: object
       properties:
@@ -1072,41 +1107,6 @@ components:
           type: string
         parentFolderId:
           type: string
-    UserPrincipalLookupService:
-      type: object
-    Resource:
-      type: object
-      properties:
-        open:
-          type: boolean
-        file:
-          type: string
-          format: binary
-        readable:
-          type: boolean
-        url:
-          type: string
-          format: url
-        filePath:
-          $ref: '#/components/schemas/Path'
-        filename:
-          type: string
-        description:
-          type: string
-        uri:
-          type: string
-          format: uri
-        contentAsByteArray:
-          type: array
-          items:
-            type: string
-            format: byte
-        inputStream:
-          $ref: '#/components/schemas/InputStream'
-    IterablePath:
-      type: object
-    IterableFileStore:
-      type: object
   requestBodies:
     saveContentItemData:
       content:

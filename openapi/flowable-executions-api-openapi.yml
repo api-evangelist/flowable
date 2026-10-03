@@ -599,35 +599,6 @@ paths:
       - basicAuth: []
 components:
   requestBodies:
-    ExecutionActionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecutionActionRequest'
-    ExecutionVariableResource:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-              name:
-                example: intProcVar
-                type: string
-              type:
-                example: integer
-                type: string
-              scope:
-                example: global
-                type: string
-      description: Update a variable on an execution
-    ExecutionChangeActivityStateRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ExecutionChangeActivityStateRequest'
     ExecutionVariableCollectionResource:
       content:
         multipart/form-data:
@@ -647,7 +618,136 @@ components:
                 example: local
                 type: string
       description: Update a task variable
+    ExecutionActionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExecutionActionRequest'
+    ExecutionChangeActivityStateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExecutionChangeActivityStateRequest'
+    ExecutionVariableResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: intProcVar
+                type: string
+              type:
+                example: integer
+                type: string
+              scope:
+                example: global
+                type: string
+      description: Update a variable on an execution
   schemas:
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    ExecutionActionRequest:
+      type: object
+      required:
+      - action
+      properties:
+        action:
+          type: string
+          example: signalEventReceived
+          description: 'Action to perform: Either signal, trigger, signalEventReceived or messageEventReceived'
+        signalName:
+          type: string
+          example: My Signal
+          description: Name of the signal
+        messageName:
+          type: string
+          example: My Signal
+          description: Message of the signal
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        transientVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    ExecutionChangeActivityStateRequest:
+      type: object
+      properties:
+        cancelActivityIds:
+          type: array
+          description: activityIds to be canceled
+          items:
+            type: string
+        startActivityIds:
+          type: array
+          description: activityIds to be started
+          items:
+            type: string
+    DataResponseExecutionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExecutionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     ExecutionQueryRequest:
       type: object
       properties:
@@ -698,73 +798,6 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    ExecutionActionRequest:
-      type: object
-      required:
-      - action
-      properties:
-        action:
-          type: string
-          example: signalEventReceived
-          description: 'Action to perform: Either signal, trigger, signalEventReceived or messageEventReceived'
-        signalName:
-          type: string
-          example: My Signal
-          description: Name of the signal
-        messageName:
-          type: string
-          example: My Signal
-          description: Message of the signal
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        transientVariables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-    DataResponseExecutionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExecutionResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    QueryVariable:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
-          type: string
     ExecutionResponse:
       type: object
       properties:
@@ -800,39 +833,6 @@ components:
         tenantId:
           type: string
           example: 'null'
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
-    ExecutionChangeActivityStateRequest:
-      type: object
-      properties:
-        cancelActivityIds:
-          type: array
-          description: activityIds to be canceled
-          items:
-            type: string
-        startActivityIds:
-          type: array
-          description: activityIds to be started
-          items:
-            type: string
   securitySchemes:
     basicAuth:
       type: http

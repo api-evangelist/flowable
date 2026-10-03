@@ -335,24 +335,6 @@ paths:
       security:
       - basicAuth: []
 components:
-  requestBodies:
-    uploadDeployment:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-            required:
-            - file
-      required: true
-    ModelRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ModelRequest'
   schemas:
     ModelRequest:
       type: object
@@ -445,6 +427,24 @@ components:
           type: string
         sourceExtraUrl:
           type: string
+  requestBodies:
+    ModelRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ModelRequest'
+    uploadDeployment:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+            required:
+            - file
+      required: true
   securitySchemes:
     basicAuth:
       type: http

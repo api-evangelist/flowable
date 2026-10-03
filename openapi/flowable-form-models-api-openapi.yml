@@ -34,15 +34,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    RowDefinition:
-      type: object
-      properties:
-        cols:
-          type: array
-          items:
-            type: object
-            additionalProperties:
-              type: object
     FormModelResponse:
       type: object
       properties:
@@ -95,6 +86,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomValidationDefinition'
+    SectionDefinition:
+      type: object
+      properties:
+        name:
+          type: string
+        visibility:
+          type: string
     CustomValidationDefinition:
       type: object
       properties:
@@ -108,39 +106,6 @@ components:
             type: object
             additionalProperties:
               type: string
-    FormRequest:
-      type: object
-      properties:
-        formInstanceId:
-          type: string
-        formDefinitionId:
-          type: string
-        formDefinitionKey:
-          type: string
-        taskId:
-          type: string
-        processInstanceId:
-          type: string
-        processDefinitionId:
-          type: string
-        scopeId:
-          type: string
-        scopeType:
-          type: string
-        scopeDefinitionId:
-          type: string
-        outcome:
-          type: string
-        tenantId:
-          type: string
-        parentDeploymentId:
-          type: string
-        variables:
-          type: object
-          additionalProperties:
-            type: object
-    FormModel:
-      type: object
     MetadataDefinition:
       type: object
       properties:
@@ -157,6 +122,28 @@ components:
         flowableDesignVersion:
           type: integer
           format: int32
+    RowDefinition:
+      type: object
+      properties:
+        cols:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: object
+    EventDefinition:
+      type: object
+      properties:
+        id:
+          type: string
+        eventType:
+          type: string
+        implementationType:
+          type: string
+        expression:
+          type: string
+        resultVariable:
+          type: string
     OutcomeDefinition:
       type: object
       properties:
@@ -188,26 +175,39 @@ components:
             type: object
             additionalProperties:
               type: string
-    SectionDefinition:
+    FormModel:
+      type: object
+    FormRequest:
       type: object
       properties:
-        name:
+        formInstanceId:
           type: string
-        visibility:
+        formDefinitionId:
           type: string
-    EventDefinition:
-      type: object
-      properties:
-        id:
+        formDefinitionKey:
           type: string
-        eventType:
+        taskId:
           type: string
-        implementationType:
+        processInstanceId:
           type: string
-        expression:
+        processDefinitionId:
           type: string
-        resultVariable:
+        scopeId:
           type: string
+        scopeType:
+          type: string
+        scopeDefinitionId:
+          type: string
+        outcome:
+          type: string
+        tenantId:
+          type: string
+        parentDeploymentId:
+          type: string
+        variables:
+          type: object
+          additionalProperties:
+            type: object
   requestBodies:
     FormRequest:
       content:

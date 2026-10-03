@@ -166,6 +166,26 @@ paths:
       - basicAuth: []
 components:
   schemas:
+    DataResponseAccessTokenResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessTokenResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     AccessTokenResponse:
       type: object
       required:
@@ -195,26 +215,6 @@ components:
           type: string
           description: The expiry time of the token in ISO 8601 format
       description: Response for an access token
-    DataResponseAccessTokenResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccessTokenResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
   securitySchemes:
     basicAuth:
       type: http

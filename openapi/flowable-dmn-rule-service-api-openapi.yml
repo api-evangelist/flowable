@@ -66,21 +66,17 @@ components:
             $ref: '#/components/schemas/EngineRestVariable'
         url:
           type: string
-    DmnRuleServiceRequest:
+    DmnRuleServiceResponse:
       type: object
       properties:
-        decisionKey:
-          type: string
-        tenantId:
-          type: string
-        parentDeploymentId:
-          type: string
-        inputVariables:
+        resultVariables:
           type: array
           items:
-            $ref: '#/components/schemas/EngineRestVariable'
-        disableHistory:
-          type: boolean
+            type: array
+            items:
+              $ref: '#/components/schemas/EngineRestVariable'
+        url:
+          type: string
     EngineRestVariable:
       type: object
       properties:
@@ -99,17 +95,21 @@ components:
         valueUrl:
           type: string
           example: http://....
-    DmnRuleServiceResponse:
+    DmnRuleServiceRequest:
       type: object
       properties:
-        resultVariables:
+        decisionKey:
+          type: string
+        tenantId:
+          type: string
+        parentDeploymentId:
+          type: string
+        inputVariables:
           type: array
           items:
-            type: array
-            items:
-              $ref: '#/components/schemas/EngineRestVariable'
-        url:
-          type: string
+            $ref: '#/components/schemas/EngineRestVariable'
+        disableHistory:
+          type: boolean
   requestBodies:
     DmnRuleServiceRequest:
       content:
