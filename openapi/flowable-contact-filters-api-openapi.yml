@@ -75,6 +75,96 @@ paths:
       - basicAuth: []
 components:
   schemas:
+    GroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the group
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+    UserResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+      description: The response for the OSS User
+    BasicPrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
     PlatformUserResponse:
       type: object
       required:
@@ -181,79 +271,6 @@ components:
           items:
             type: string
       description: The response for a platform user
-    ContactFilterResponse:
-      type: object
-      required:
-      - defaultFilter
-      - id
-      properties:
-        id:
-          type: string
-          description: The id of the filter
-        labelKey:
-          type: string
-          description: The key for the label of filter
-        defaultLabelName:
-          type: string
-          description: The default name of the filter label
-        defaultFilter:
-          type: boolean
-          description: Flag indicating whether this filter is a default one
-      description: The response for the contact filters
-    EngineRestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-    UserResponse:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          example: john.doe
-          description: The id of the user
-        firstName:
-          type: string
-          example: John
-          description: The first name if the user
-        lastName:
-          type: string
-          example: Doe
-          description: The last name of the user
-        displayName:
-          type: string
-          example: John Doe
-          description: The display name of the user
-        email:
-          type: string
-          example: no-reply@flowable.org
-          description: The email of the user
-        tenantId:
-          type: string
-          description: The tenant id of the user
-      description: The response for the OSS User
-    BasicPrivilegeResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     PagePlatformUserResponse:
       type: object
       properties:
@@ -274,42 +291,25 @@ components:
           type: string
         order:
           type: string
-    GroupResponse:
+    ContactFilterResponse:
       type: object
+      required:
+      - defaultFilter
+      - id
       properties:
         id:
           type: string
-          example: testgroup
-        url:
+          description: The id of the filter
+        labelKey:
           type: string
-          example: http://localhost:8182/groups/groupId
-        name:
+          description: The key for the label of filter
+        defaultLabelName:
           type: string
-          example: Test group
-        type:
-          type: string
-          example: Test type
-        key:
-          type: string
-          example: testgroup
-        tenantId:
-          type: string
-          example: testtenant
-        users:
-          type: array
-          description: Collection of all users that have a membership with the group
-          items:
-            $ref: '#/components/schemas/UserResponse'
-        privileges:
-          type: array
-          description: Collection of all privileges for this group
-          items:
-            $ref: '#/components/schemas/BasicPrivilegeResponse'
-        identityInfo:
-          type: array
-          description: Collection of all identity infos for the group
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
+          description: The default name of the filter label
+        defaultFilter:
+          type: boolean
+          description: Flag indicating whether this filter is a default one
+      description: The response for the contact filters
   securitySchemes:
     basicAuth:
       type: http

@@ -541,58 +541,7 @@ paths:
     - url: http://localhost:8090/idm-api
     - url: https://localhost:8090/idm-api
 components:
-  requestBodies:
-    GroupRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GroupRequest'
   schemas:
-    DataResponseGroupResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    MembershipRequest:
-      type: object
-      properties:
-        userId:
-          type: string
-          example: kermit
-    GroupRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          example: testgroup
-        url:
-          type: string
-          example: http://localhost:8182/identity/groups/testgroup
-        name:
-          type: string
-          example: Test group
-        type:
-          type: string
-          example: Test type
-        nameChanged:
-          type: boolean
-        typeChanged:
-          type: boolean
     MembershipResponse:
       type: object
       properties:
@@ -620,6 +569,99 @@ components:
         type:
           type: string
           example: Test type
+    MembershipRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: kermit
+    DataResponseGroupResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    GroupRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/identity/groups/testgroup
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        nameChanged:
+          type: boolean
+        typeChanged:
+          type: boolean
+    MembershipResponse_2:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: kermit
+        url:
+          type: string
+          example: http://localhost:8182/groups/sales/members/userId
+        groupId:
+          type: string
+          example: sales
+    GroupResponse_2:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the group
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
     EngineRestVariable:
       type: object
       properties:
@@ -674,6 +716,45 @@ components:
           type: string
         name:
           type: string
+    GroupRequest_2:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          items:
+            type: string
+        privileges:
+          type: array
+          items:
+            type: string
+        identityInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+        returnIdentityInfo:
+          type: boolean
+        nameChanged:
+          type: boolean
+        typeChanged:
+          type: boolean
     GroupQueryRequest:
       type: object
       properties:
@@ -730,93 +811,12 @@ components:
           type: string
           description: Only return groups with the given tenant ID.
       description: Request that is used for querying groups.
-    GroupRequest_2:
-      type: object
-      properties:
-        id:
-          type: string
-          example: testgroup
-        url:
-          type: string
-          example: http://localhost:8182/groups/groupId
-        name:
-          type: string
-          example: Test group
-        type:
-          type: string
-          example: Test type
-        key:
-          type: string
-          example: testgroup
-        tenantId:
-          type: string
-          example: testtenant
-        users:
-          type: array
-          items:
-            type: string
-        privileges:
-          type: array
-          items:
-            type: string
-        identityInfo:
-          type: array
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-        returnIdentityInfo:
-          type: boolean
-        nameChanged:
-          type: boolean
-        typeChanged:
-          type: boolean
-    MembershipResponse_2:
-      type: object
-      properties:
-        userId:
-          type: string
-          example: kermit
-        url:
-          type: string
-          example: http://localhost:8182/groups/sales/members/userId
-        groupId:
-          type: string
-          example: sales
-    GroupResponse_2:
-      type: object
-      properties:
-        id:
-          type: string
-          example: testgroup
-        url:
-          type: string
-          example: http://localhost:8182/groups/groupId
-        name:
-          type: string
-          example: Test group
-        type:
-          type: string
-          example: Test type
-        key:
-          type: string
-          example: testgroup
-        tenantId:
-          type: string
-          example: testtenant
-        users:
-          type: array
-          description: Collection of all users that have a membership with the group
-          items:
-            $ref: '#/components/schemas/UserResponse'
-        privileges:
-          type: array
-          description: Collection of all privileges for this group
-          items:
-            $ref: '#/components/schemas/BasicPrivilegeResponse'
-        identityInfo:
-          type: array
-          description: Collection of all identity infos for the group
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
+  requestBodies:
+    GroupRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GroupRequest'
   securitySchemes:
     basicAuth:
       type: http

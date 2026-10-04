@@ -191,6 +191,80 @@ paths:
       - basicAuth: []
 components:
   schemas:
+    Application:
+      type: object
+      required:
+      - id
+      - name
+      - type
+      properties:
+        id:
+          type: string
+          description: The id of the application
+        name:
+          type: string
+          description: The name of the application
+        type:
+          type: string
+          description: The type of the application
+        url:
+          type: string
+          description: The public URL of the application
+      description: The applications that the user has access to
+    GroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the group
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+    SnoozeUserRequest:
+      type: object
+      required:
+      - snoozeUntil
+      properties:
+        snoozeUntil:
+          type: string
+          description: The date until the user should be snoozed in ISO 8601 format
+      description: Request for snoozing the user
+    OriginalAuthentication:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: The id of the user doing the impersonation
+      description: The original authentication for a current user.
     CurrentUserResponse:
       type: object
       required:
@@ -324,24 +398,21 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/Application'
       description: The response for a current user
-    UpdateUserPresenceRequest:
+    CurrentUserThemeConfiguration:
       type: object
       required:
-      - presence
+      - name
+      - options
       properties:
-        presence:
+        name:
           type: string
-          description: The presence that should be set on the user
-          enum:
-          - available
-          - away
-          - offline
-          - out-of-office
-          - snoozed
-        tenantId:
-          type: string
-          description: The tenant id that should be used for updating the presence. Only admin users can modify this parameter
-      description: Request for updating user presence
+          description: The name of the theme
+        options:
+          type: object
+          description: The options of the theme
+          additionalProperties:
+            type: string
+      description: The response for the current user theme configuration
     EngineRestVariable:
       type: object
       properties:
@@ -389,33 +460,6 @@ components:
           type: string
           description: The tenant id of the user
       description: The response for the OSS User
-    CreateAccessTokenRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: The name of the token
-        description:
-          type: string
-          description: The description of the token
-        validFor:
-          type: string
-          description: A positive ISO 8601 duration for which the token should be valid for. Mutually exclusive with validFor
-        validUntil:
-          type: string
-          description: The ISO 8601 date until the token should be valid. Mutually exclusive with validFor
-      description: Request for creating an access token for a user
-    SnoozeUserRequest:
-      type: object
-      required:
-      - snoozeUntil
-      properties:
-        snoozeUntil:
-          type: string
-          description: The date until the user should be snoozed in ISO 8601 format
-      description: Request for snoozing the user
     BasicPrivilegeResponse:
       type: object
       properties:
@@ -423,106 +467,6 @@ components:
           type: string
         name:
           type: string
-    Application:
-      type: object
-      required:
-      - id
-      - name
-      - type
-      properties:
-        id:
-          type: string
-          description: The id of the application
-        name:
-          type: string
-          description: The name of the application
-        type:
-          type: string
-          description: The type of the application
-        url:
-          type: string
-          description: The public URL of the application
-      description: The applications that the user has access to
-    GroupResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: testgroup
-        url:
-          type: string
-          example: http://localhost:8182/groups/groupId
-        name:
-          type: string
-          example: Test group
-        type:
-          type: string
-          example: Test type
-        key:
-          type: string
-          example: testgroup
-        tenantId:
-          type: string
-          example: testtenant
-        users:
-          type: array
-          description: Collection of all users that have a membership with the group
-          items:
-            $ref: '#/components/schemas/UserResponse'
-        privileges:
-          type: array
-          description: Collection of all privileges for this group
-          items:
-            $ref: '#/components/schemas/BasicPrivilegeResponse'
-        identityInfo:
-          type: array
-          description: Collection of all identity infos for the group
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-    DataResponseAccessTokenResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccessTokenResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    OriginalAuthentication:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: The id of the user doing the impersonation
-      description: The original authentication for a current user.
-    CurrentUserThemeConfiguration:
-      type: object
-      required:
-      - name
-      - options
-      properties:
-        name:
-          type: string
-          description: The name of the theme
-        options:
-          type: object
-          description: The options of the theme
-          additionalProperties:
-            type: string
-      description: The response for the current user theme configuration
     AccessTokenResponse:
       type: object
       required:
@@ -552,6 +496,62 @@ components:
           type: string
           description: The expiry time of the token in ISO 8601 format
       description: Response for an access token
+    CreateAccessTokenRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The name of the token
+        description:
+          type: string
+          description: The description of the token
+        validFor:
+          type: string
+          description: A positive ISO 8601 duration for which the token should be valid for. Mutually exclusive with validFor
+        validUntil:
+          type: string
+          description: The ISO 8601 date until the token should be valid. Mutually exclusive with validFor
+      description: Request for creating an access token for a user
+    DataResponseAccessTokenResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessTokenResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    UpdateUserPresenceRequest:
+      type: object
+      required:
+      - presence
+      properties:
+        presence:
+          type: string
+          description: The presence that should be set on the user
+          enum:
+          - available
+          - away
+          - offline
+          - out-of-office
+          - snoozed
+        tenantId:
+          type: string
+          description: The tenant id that should be used for updating the presence. Only admin users can modify this parameter
+      description: Request for updating user presence
   requestBodies:
     UpdateUserPresenceRequest:
       content:

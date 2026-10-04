@@ -668,31 +668,61 @@ components:
           example: http://....
         scope:
           type: string
-    ExecutionActionRequest:
+    ExecutionResponse:
       type: object
-      required:
-      - action
       properties:
-        action:
+        id:
           type: string
-          example: signalEventReceived
-          description: 'Action to perform: Either signal, trigger, signalEventReceived or messageEventReceived'
-        signalName:
+          example: '5'
+        url:
           type: string
-          example: My Signal
-          description: Name of the signal
-        messageName:
+          example: http://localhost:8182/runtime/executions/5
+        parentId:
           type: string
-          example: My Signal
-          description: Message of the signal
-        variables:
+          example: 'null'
+        parentUrl:
+          type: string
+          example: 'null'
+        superExecutionId:
+          type: string
+          example: 'null'
+        superExecutionUrl:
+          type: string
+          example: 'null'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/runtime/process-instances/5
+        suspended:
+          type: boolean
+        activityId:
+          type: string
+          example: 'null'
+        tenantId:
+          type: string
+          example: 'null'
+    DataResponseExecutionResponse:
+      type: object
+      properties:
+        data:
           type: array
           items:
-            $ref: '#/components/schemas/RestVariable'
-        transientVariables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
+            $ref: '#/components/schemas/ExecutionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     QueryVariable:
       type: object
       properties:
@@ -715,39 +745,6 @@ components:
           type: object
         type:
           type: string
-    ExecutionChangeActivityStateRequest:
-      type: object
-      properties:
-        cancelActivityIds:
-          type: array
-          description: activityIds to be canceled
-          items:
-            type: string
-        startActivityIds:
-          type: array
-          description: activityIds to be started
-          items:
-            type: string
-    DataResponseExecutionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExecutionResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     ExecutionQueryRequest:
       type: object
       properties:
@@ -798,41 +795,44 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    ExecutionResponse:
+    ExecutionActionRequest:
+      type: object
+      required:
+      - action
+      properties:
+        action:
+          type: string
+          example: signalEventReceived
+          description: 'Action to perform: Either signal, trigger, signalEventReceived or messageEventReceived'
+        signalName:
+          type: string
+          example: My Signal
+          description: Name of the signal
+        messageName:
+          type: string
+          example: My Signal
+          description: Message of the signal
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        transientVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+    ExecutionChangeActivityStateRequest:
       type: object
       properties:
-        id:
-          type: string
-          example: '5'
-        url:
-          type: string
-          example: http://localhost:8182/runtime/executions/5
-        parentId:
-          type: string
-          example: 'null'
-        parentUrl:
-          type: string
-          example: 'null'
-        superExecutionId:
-          type: string
-          example: 'null'
-        superExecutionUrl:
-          type: string
-          example: 'null'
-        processInstanceId:
-          type: string
-          example: '5'
-        processInstanceUrl:
-          type: string
-          example: http://localhost:8182/runtime/process-instances/5
-        suspended:
-          type: boolean
-        activityId:
-          type: string
-          example: 'null'
-        tenantId:
-          type: string
-          example: 'null'
+        cancelActivityIds:
+          type: array
+          description: activityIds to be canceled
+          items:
+            type: string
+        startActivityIds:
+          type: array
+          description: activityIds to be started
+          items:
+            type: string
   securitySchemes:
     basicAuth:
       type: http

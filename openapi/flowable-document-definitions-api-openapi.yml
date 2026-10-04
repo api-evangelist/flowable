@@ -354,61 +354,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    DocumentActionHandlerModel:
-      type: object
-      properties:
-        key:
-          type: string
-        type:
-          type: string
-        overrideDefaultLogic:
-          type: boolean
-    DocumentDefinitionModel:
-      type: object
-      properties:
-        name:
-          type: string
-        key:
-          type: string
-        description:
-          type: string
-        versioning:
-          type: string
-        variables:
-          type: object
-          additionalProperties:
-            type: string
-        initialType:
-          type: string
-        i18n:
-          type: object
-          additionalProperties:
-            type: object
-            additionalProperties:
-              type: string
-        forms:
-          type: object
-          additionalProperties:
-            type: string
-        actionPermissions:
-          type: object
-          additionalProperties:
-            type: array
-            uniqueItems: true
-            items:
-              type: string
-        initialState:
-          type: string
-        initialSubState:
-          type: string
-        initialSubType:
-          type: string
-        aiInstructions:
-          type: string
-        actionHandlers:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/DocumentActionHandlerModel'
     DataResponseDocumentDefinitionResponse:
       type: object
       properties:
@@ -429,6 +374,17 @@ components:
         size:
           type: integer
           format: int32
+    DocumentActionHandlerModel:
+      type: object
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+        overrideDefaultLogic:
+          type: boolean
+    FormModel:
+      type: object
     DocumentDefinitionResponse:
       type: object
       required:
@@ -479,8 +435,52 @@ components:
             type: object
             additionalProperties:
               type: string
-    FormModel:
+    DocumentDefinitionModel:
       type: object
+      properties:
+        name:
+          type: string
+        key:
+          type: string
+        description:
+          type: string
+        versioning:
+          type: string
+        variables:
+          type: object
+          additionalProperties:
+            type: string
+        initialType:
+          type: string
+        i18n:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+        forms:
+          type: object
+          additionalProperties:
+            type: string
+        actionPermissions:
+          type: object
+          additionalProperties:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+        initialState:
+          type: string
+        initialSubState:
+          type: string
+        initialSubType:
+          type: string
+        aiInstructions:
+          type: string
+        actionHandlers:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/DocumentActionHandlerModel'
     DocumentDefinitionActionRequest:
       type: object
       properties:

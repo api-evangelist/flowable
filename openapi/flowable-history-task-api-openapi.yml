@@ -1103,6 +1103,26 @@ paths:
     - url: /flowable-rest/cmmn-api
 components:
   schemas:
+    DataResponseHistoricTaskLogEntryResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricTaskLogEntryResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     RestVariable:
       type: object
       properties:
@@ -1122,6 +1142,105 @@ components:
           type: string
           example: http://....
         scope:
+          type: string
+    DataResponseHistoricTaskInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricTaskInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricTaskLogEntryResponse:
+      type: object
+      properties:
+        logNumber:
+          type: integer
+          format: int64
+        type:
+          type: string
+        taskId:
+          type: string
+        timeStamp:
+          type: string
+          format: date-time
+        userId:
+          type: string
+        data:
+          type: string
+        executionId:
+          type: string
+        processInstanceId:
+          type: string
+        processDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        scopeDefinitionId:
+          type: string
+        subScopeId:
+          type: string
+        scopeType:
+          type: string
+        tenantId:
+          type: string
+    HistoricIdentityLinkResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: participant
+        userId:
+          type: string
+          example: kermit
+        groupId:
+          type: string
+          example: sales
+        taskId:
+          type: string
+          example: 'null'
+        taskUrl:
+          type: string
+          example: 'null'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
           type: string
     HistoricTaskInstanceQueryRequest:
       type: object
@@ -1291,103 +1410,6 @@ components:
           type: string
         parentScopeId:
           type: string
-    DataResponseHistoricTaskLogEntryResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricTaskLogEntryResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    HistoricIdentityLinkResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          example: participant
-        userId:
-          type: string
-          example: kermit
-        groupId:
-          type: string
-          example: sales
-        taskId:
-          type: string
-          example: 'null'
-        taskUrl:
-          type: string
-          example: 'null'
-        processInstanceId:
-          type: string
-          example: '5'
-        processInstanceUrl:
-          type: string
-          example: http://localhost:8182/history/historic-process-instances/5
-    HistoricTaskLogEntryResponse:
-      type: object
-      properties:
-        logNumber:
-          type: integer
-          format: int64
-        type:
-          type: string
-        taskId:
-          type: string
-        timeStamp:
-          type: string
-          format: date-time
-        userId:
-          type: string
-        data:
-          type: string
-        executionId:
-          type: string
-        processInstanceId:
-          type: string
-        processDefinitionId:
-          type: string
-        scopeId:
-          type: string
-        scopeDefinitionId:
-          type: string
-        subScopeId:
-          type: string
-        scopeType:
-          type: string
-        tenantId:
-          type: string
-    DataResponseHistoricTaskInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricTaskInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     HistoricTaskInstanceResponse:
       type: object
       properties:
@@ -1460,28 +1482,30 @@ components:
           type: string
         category:
           type: string
-    QueryVariable:
+    HistoricIdentityLinkResponse_2:
       type: object
       properties:
-        name:
-          type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
         type:
           type: string
+          example: participant
+        userId:
+          type: string
+          example: kermit
+        groupId:
+          type: string
+          example: sales
+        taskId:
+          type: string
+          example: 'null'
+        taskUrl:
+          type: string
+          example: 'null'
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
     HistoricTaskInstanceQueryRequest_2:
       type: object
       properties:
@@ -1634,30 +1658,6 @@ components:
           type: string
         parentScopeId:
           type: string
-    HistoricIdentityLinkResponse_2:
-      type: object
-      properties:
-        type:
-          type: string
-          example: participant
-        userId:
-          type: string
-          example: kermit
-        groupId:
-          type: string
-          example: sales
-        taskId:
-          type: string
-          example: 'null'
-        taskUrl:
-          type: string
-          example: 'null'
-        caseInstanceId:
-          type: string
-          example: '5'
-        caseInstanceUrl:
-          type: string
-          example: http://localhost:8182/cmmn-history/historic-case-instances/5
     HistoricTaskInstanceResponse_2:
       type: object
       properties:

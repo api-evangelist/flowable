@@ -68,12 +68,6 @@ paths:
         '404':
           description: Indicates the job does not exist.
 components:
-  requestBodies:
-    UnacquireExternalWorkerJobsRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnacquireExternalWorkerJobsRequest'
   schemas:
     UnacquireExternalWorkerJobsRequest:
       type: object
@@ -89,6 +83,12 @@ components:
           example: tenant1
           description: The tenant id for the external worker jobs to unaquire
       description: Request that is used for unacquiring external worker jobs
+  requestBodies:
+    UnacquireExternalWorkerJobsRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnacquireExternalWorkerJobsRequest'
   securitySchemes:
     basicAuth:
       type: http

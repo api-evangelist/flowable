@@ -2664,7 +2664,22 @@ paths:
     servers:
     - url: /flowable-rest/cmmn-api
 components:
+  requestBodies:
+    RestActionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestActionRequest'
   schemas:
+    BulkMoveDeadLetterActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        jobIds:
+          type: array
+          items:
+            type: string
     DataResponseJobResponse:
       type: object
       properties:
@@ -2685,42 +2700,6 @@ components:
         size:
           type: integer
           format: int32
-    BulkMoveDeadLetterActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        jobIds:
-          type: array
-          items:
-            type: string
-    DataResponseHistoryJobResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoryJobResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    TimerJobActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        dueDate:
-          type: string
     JobResponse:
       type: object
       properties:
@@ -2789,6 +2768,33 @@ components:
       type: object
       properties:
         action:
+          type: string
+    DataResponseHistoryJobResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoryJobResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    TimerJobActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        dueDate:
           type: string
     HistoryJobResponse:
       type: object
@@ -2938,12 +2944,6 @@ components:
           type: string
           format: date-time
           example: 2023-06-03T22:05:05.474+0000
-  requestBodies:
-    RestActionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RestActionRequest'
   securitySchemes:
     basicAuth:
       type: http

@@ -235,49 +235,57 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    FormInstanceResponse:
+    FormRequest:
       type: object
       properties:
-        id:
+        formInstanceId:
           type: string
-          example: 48b9ac82-f1d3-11e6-8549-acde48001122
         formDefinitionId:
           type: string
-          example: 818e4703-f1d2-11e6-8549-acde48001122
+        formDefinitionKey:
+          type: string
         taskId:
           type: string
-          example: '88'
         processInstanceId:
           type: string
-          example: '66'
         processDefinitionId:
           type: string
-          example: oneTaskProcess:1:158
-        submittedDate:
-          type: string
-          format: date-time
-          example: 2013-04-17T10:17:43.902+0000
-        submittedBy:
-          type: string
-          example: testUser
-        formValuesId:
-          type: string
-          example: 818e4703-f1d2-11e6-8549-acde48001110
-        tenantId:
-          type: string
-          example: 'null'
-        url:
-          type: string
-          example: http://localhost:8182/form/form-instances/48b9ac82-f1d3-11e6-8549-acde48001122
         scopeId:
           type: string
-          example: '66'
         scopeType:
           type: string
-          example: CAS-d6d53baa-2618-11e9-895e-aee50c200f02
         scopeDefinitionId:
           type: string
-          example: CAS-d6d53baa-2618-11e9-895e-aee50c200f02
+        outcome:
+          type: string
+        tenantId:
+          type: string
+        parentDeploymentId:
+          type: string
+        variables:
+          type: object
+          additionalProperties:
+            type: object
+    DataResponseFormInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     FormInstanceQueryRequest:
       type: object
       properties:
@@ -325,57 +333,49 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    DataResponseFormInstanceResponse:
+    FormInstanceResponse:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/FormInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
+        id:
           type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    FormRequest:
-      type: object
-      properties:
-        formInstanceId:
-          type: string
+          example: 48b9ac82-f1d3-11e6-8549-acde48001122
         formDefinitionId:
           type: string
-        formDefinitionKey:
-          type: string
+          example: 818e4703-f1d2-11e6-8549-acde48001122
         taskId:
           type: string
+          example: '88'
         processInstanceId:
           type: string
+          example: '66'
         processDefinitionId:
           type: string
-        scopeId:
+          example: oneTaskProcess:1:158
+        submittedDate:
           type: string
-        scopeType:
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        submittedBy:
           type: string
-        scopeDefinitionId:
+          example: testUser
+        formValuesId:
           type: string
-        outcome:
-          type: string
+          example: 818e4703-f1d2-11e6-8549-acde48001110
         tenantId:
           type: string
-        parentDeploymentId:
+          example: 'null'
+        url:
           type: string
-        variables:
-          type: object
-          additionalProperties:
-            type: object
+          example: http://localhost:8182/form/form-instances/48b9ac82-f1d3-11e6-8549-acde48001122
+        scopeId:
+          type: string
+          example: '66'
+        scopeType:
+          type: string
+          example: CAS-d6d53baa-2618-11e9-895e-aee50c200f02
+        scopeDefinitionId:
+          type: string
+          example: CAS-d6d53baa-2618-11e9-895e-aee50c200f02
   requestBodies:
     FormRequest:
       content:

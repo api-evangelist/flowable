@@ -233,6 +233,26 @@ components:
               type: string
         tenantId:
           type: string
+    DataResponseUserDefinitionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinitionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     UserDefinitionModelResponse:
       type: object
       properties:
@@ -303,26 +323,6 @@ components:
           type: array
           items:
             type: string
-    DataResponseUserDefinitionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserDefinitionResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
   securitySchemes:
     basicAuth:
       type: http

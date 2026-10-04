@@ -751,60 +751,18 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    Resource:
+    QueryMetadata:
       type: object
       properties:
-        open:
-          type: boolean
-        file:
+        name:
           type: string
-          format: binary
-        readable:
-          type: boolean
-        url:
+        operation:
           type: string
-          format: url
-        filePath:
-          $ref: '#/components/schemas/Path'
-        filename:
+        value:
+          type: object
+        type:
           type: string
-        description:
-          type: string
-        uri:
-          type: string
-          format: uri
-        contentAsByteArray:
-          type: array
-          items:
-            type: string
-            format: byte
-        inputStream:
-          $ref: '#/components/schemas/InputStream'
-    IterableFileStore:
-      type: object
-    DataResponseContentItemResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentItemResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     UserPrincipalLookupService:
-      type: object
-    IterablePath:
       type: object
     FileSystem:
       type: object
@@ -837,6 +795,179 @@ components:
         nameCount:
           type: integer
           format: int32
+    IterablePath:
+      type: object
+    IterableFileStore:
+      type: object
+    Resource:
+      type: object
+      properties:
+        open:
+          type: boolean
+        file:
+          type: string
+          format: binary
+        readable:
+          type: boolean
+        url:
+          type: string
+          format: url
+        filePath:
+          $ref: '#/components/schemas/Path'
+        filename:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+          format: uri
+        contentAsByteArray:
+          type: array
+          items:
+            type: string
+            format: byte
+        inputStream:
+          $ref: '#/components/schemas/InputStream'
+    ContentItemRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Simple content item
+          description: Name of the content item
+        versionInfo:
+          type: string
+          example: Version 1a
+          description: Version information of the content item
+        mimeType:
+          type: string
+          example: application/pdf
+          description: Mime type of the content item, optional
+        taskId:
+          type: string
+          example: '12345'
+          description: Task identifier for the content item, optional
+        processInstanceId:
+          type: string
+          example: '1234'
+          description: Process instance identifier for the content item, optional
+        scopeType:
+          type: string
+          example: bpmn
+          description: Scope type for the content item, optional
+        scopeId:
+          type: string
+          example: '1234'
+          description: Scope instance identifier for the content item, optional
+        contentStoreId:
+          type: string
+          example: '5678'
+          description: The identifier of the content item in an external content store, optional.
+        contentStoreName:
+          type: string
+          example: myFileStore
+          description: The name of an external content store, optional
+        field:
+          type: string
+          example: uploadField
+          description: The form field for the content item, optional
+        versionParentId:
+          type: string
+          example: '1234'
+          description: The version parent id for the content item to create a new version, optional
+        tenantId:
+          type: string
+          example: myTenantId
+          description: The tenant identifier of the content item, optional.
+        createdBy:
+          type: string
+          example: johndoe
+          description: The user identifier that created the content item, optional
+        lastModifiedBy:
+          type: string
+          example: johndoe
+          description: The user identifier that last modified the content item, optional
+        type:
+          type: string
+          example: folder
+          description: The type of the content item, optional
+        subType:
+          type: string
+          example: spreadsheet
+          description: The subtype of the content item, optional
+        state:
+          type: string
+          example: active
+          description: The state of the content item, optional
+        subState:
+          type: string
+          example: active
+          description: The substate of the content item, optional
+        parentFolderId:
+          type: string
+          example: myFolderId
+          description: The parent folder id of the content item, optional
+    ContentItemResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        version:
+          type: integer
+          format: int32
+        versionInfo:
+          type: string
+        size:
+          type: integer
+          format: int64
+        mimeType:
+          type: string
+        definitionId:
+          type: string
+        definitionName:
+          type: string
+        taskId:
+          type: string
+        processInstanceId:
+          type: string
+        scopeId:
+          type: string
+        scopeType:
+          type: string
+        contentStoreId:
+          type: string
+        contentStoreName:
+          type: string
+        contentAvailable:
+          type: boolean
+        versionParentId:
+          type: string
+        tenantId:
+          type: string
+        created:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        lastModified:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        url:
+          type: string
+        type:
+          type: string
+        subType:
+          type: string
+        state:
+          type: string
+        subState:
+          type: string
+        parentFolderId:
+          type: string
     InputStream:
       type: object
     ContentItemQueryRequest:
@@ -956,157 +1087,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QueryMetadata'
-    ContentItemRequest:
+    DataResponseContentItemResponse:
       type: object
       properties:
-        name:
-          type: string
-          example: Simple content item
-          description: Name of the content item
-        versionInfo:
-          type: string
-          example: Version 1a
-          description: Version information of the content item
-        mimeType:
-          type: string
-          example: application/pdf
-          description: Mime type of the content item, optional
-        taskId:
-          type: string
-          example: '12345'
-          description: Task identifier for the content item, optional
-        processInstanceId:
-          type: string
-          example: '1234'
-          description: Process instance identifier for the content item, optional
-        scopeType:
-          type: string
-          example: bpmn
-          description: Scope type for the content item, optional
-        scopeId:
-          type: string
-          example: '1234'
-          description: Scope instance identifier for the content item, optional
-        contentStoreId:
-          type: string
-          example: '5678'
-          description: The identifier of the content item in an external content store, optional.
-        contentStoreName:
-          type: string
-          example: myFileStore
-          description: The name of an external content store, optional
-        field:
-          type: string
-          example: uploadField
-          description: The form field for the content item, optional
-        versionParentId:
-          type: string
-          example: '1234'
-          description: The version parent id for the content item to create a new version, optional
-        tenantId:
-          type: string
-          example: myTenantId
-          description: The tenant identifier of the content item, optional.
-        createdBy:
-          type: string
-          example: johndoe
-          description: The user identifier that created the content item, optional
-        lastModifiedBy:
-          type: string
-          example: johndoe
-          description: The user identifier that last modified the content item, optional
-        type:
-          type: string
-          example: folder
-          description: The type of the content item, optional
-        subType:
-          type: string
-          example: spreadsheet
-          description: The subtype of the content item, optional
-        state:
-          type: string
-          example: active
-          description: The state of the content item, optional
-        subState:
-          type: string
-          example: active
-          description: The substate of the content item, optional
-        parentFolderId:
-          type: string
-          example: myFolderId
-          description: The parent folder id of the content item, optional
-    QueryMetadata:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-        value:
-          type: object
-        type:
-          type: string
-    ContentItemResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        version:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentItemResponse'
+        total:
+          type: integer
+          format: int64
+        start:
           type: integer
           format: int32
-        versionInfo:
+        sort:
+          type: string
+        order:
           type: string
         size:
           type: integer
-          format: int64
-        mimeType:
-          type: string
-        definitionId:
-          type: string
-        definitionName:
-          type: string
-        taskId:
-          type: string
-        processInstanceId:
-          type: string
-        scopeId:
-          type: string
-        scopeType:
-          type: string
-        contentStoreId:
-          type: string
-        contentStoreName:
-          type: string
-        contentAvailable:
-          type: boolean
-        versionParentId:
-          type: string
-        tenantId:
-          type: string
-        created:
-          type: string
-          format: date-time
-        createdBy:
-          type: string
-        lastModified:
-          type: string
-          format: date-time
-        lastModifiedBy:
-          type: string
-        url:
-          type: string
-        type:
-          type: string
-        subType:
-          type: string
-        state:
-          type: string
-        subState:
-          type: string
-        parentFolderId:
-          type: string
+          format: int32
   requestBodies:
     saveContentItemData:
       content:

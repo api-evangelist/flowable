@@ -615,177 +615,6 @@ components:
           example: http://....
         scope:
           type: string
-    CommentResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        author:
-          type: string
-        message:
-          type: string
-        time:
-          type: string
-          format: date-time
-        taskId:
-          type: string
-        taskUrl:
-          type: string
-        processInstanceId:
-          type: string
-        processInstanceUrl:
-          type: string
-    DataResponseHistoricProcessInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricProcessInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    HistoricIdentityLinkResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          example: participant
-        userId:
-          type: string
-          example: kermit
-        groupId:
-          type: string
-          example: sales
-        taskId:
-          type: string
-          example: 'null'
-        taskUrl:
-          type: string
-          example: 'null'
-        processInstanceId:
-          type: string
-          example: '5'
-        processInstanceUrl:
-          type: string
-          example: http://localhost:8182/history/historic-process-instances/5
-    QueryVariable:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
-          type: string
-    HistoricProcessInstanceResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '5'
-        url:
-          type: string
-          example: http://localhost:8182/history/historic-process-instances/5
-        name:
-          type: string
-          example: myProcessInstanceName
-        businessKey:
-          type: string
-          example: myKey
-        businessStatus:
-          type: string
-          example: myStatus
-        processDefinitionId:
-          type: string
-          example: oneTaskProcess%3A1%3A4
-        processDefinitionUrl:
-          type: string
-          example: http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4
-        processDefinitionName:
-          type: string
-          example: A process definition name
-        processDefinitionDescription:
-          type: string
-          example: A process definition description
-        startTime:
-          type: string
-          format: date-time
-          example: 2013-04-17T10:17:43.902+0000
-        endTime:
-          type: string
-          format: date-time
-          example: 2013-04-18T14:06:32.715+0000
-        durationInMillis:
-          type: integer
-          format: int64
-          example: 86400056
-        startUserId:
-          type: string
-          example: kermit
-        endUserId:
-          type: string
-          example: kermit
-        state:
-          type: string
-          example: running
-        startActivityId:
-          type: string
-          example: startEvent
-        endActivityId:
-          type: string
-          example: endEvent
-        deleteReason:
-          type: string
-          example: 'null'
-        superProcessInstanceId:
-          type: string
-          example: '3'
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        callbackId:
-          type: string
-          example: '3'
-        callbackType:
-          type: string
-          example: cmmn
-        referenceId:
-          type: string
-          example: '123'
-        referenceType:
-          type: string
-          example: event-to-bpmn-2.0-process
-        propagatedStageInstanceId:
-          type: string
-          description: The stage plan item instance id this process instance belongs to or null, if it is not part of a case at all or is not a child element of a stage
-        tenantId:
-          type: string
-          example: someTenantId
     HistoricProcessInstanceQueryRequest:
       type: object
       properties:
@@ -936,6 +765,177 @@ components:
           type: string
         parentScopeId:
           type: string
+    HistoricIdentityLinkResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: participant
+        userId:
+          type: string
+          example: kermit
+        groupId:
+          type: string
+          example: sales
+        taskId:
+          type: string
+          example: 'null'
+        taskUrl:
+          type: string
+          example: 'null'
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+    DataResponseHistoricProcessInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricProcessInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    CommentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        author:
+          type: string
+        message:
+          type: string
+        time:
+          type: string
+          format: date-time
+        taskId:
+          type: string
+        taskUrl:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceUrl:
+          type: string
+    HistoricProcessInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '5'
+        url:
+          type: string
+          example: http://localhost:8182/history/historic-process-instances/5
+        name:
+          type: string
+          example: myProcessInstanceName
+        businessKey:
+          type: string
+          example: myKey
+        businessStatus:
+          type: string
+          example: myStatus
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess%3A1%3A4
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/repository/process-definitions/oneTaskProcess%3A1%3A4
+        processDefinitionName:
+          type: string
+          example: A process definition name
+        processDefinitionDescription:
+          type: string
+          example: A process definition description
+        startTime:
+          type: string
+          format: date-time
+          example: 2013-04-17T10:17:43.902+0000
+        endTime:
+          type: string
+          format: date-time
+          example: 2013-04-18T14:06:32.715+0000
+        durationInMillis:
+          type: integer
+          format: int64
+          example: 86400056
+        startUserId:
+          type: string
+          example: kermit
+        endUserId:
+          type: string
+          example: kermit
+        state:
+          type: string
+          example: running
+        startActivityId:
+          type: string
+          example: startEvent
+        endActivityId:
+          type: string
+          example: endEvent
+        deleteReason:
+          type: string
+          example: 'null'
+        superProcessInstanceId:
+          type: string
+          example: '3'
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        callbackId:
+          type: string
+          example: '3'
+        callbackType:
+          type: string
+          example: cmmn
+        referenceId:
+          type: string
+          example: '123'
+        referenceType:
+          type: string
+          example: event-to-bpmn-2.0-process
+        propagatedStageInstanceId:
+          type: string
+          description: The stage plan item instance id this process instance belongs to or null, if it is not part of a case at all or is not a child element of a stage
+        tenantId:
+          type: string
+          example: someTenantId
   securitySchemes:
     basicAuth:
       type: http

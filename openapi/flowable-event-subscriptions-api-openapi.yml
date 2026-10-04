@@ -403,6 +403,26 @@ paths:
     - url: /flowable-rest/cmmn-api
 components:
   schemas:
+    DataResponseEventSubscriptionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventSubscriptionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     EventSubscriptionResponse:
       type: object
       properties:
@@ -443,26 +463,6 @@ components:
           type: string
         tenantId:
           type: string
-    DataResponseEventSubscriptionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventSubscriptionResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     EventSubscriptionResponse_2:
       type: object
       properties:

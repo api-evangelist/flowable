@@ -34,28 +34,61 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    MetadataDefinition:
+    FormRequest:
       type: object
       properties:
-        key:
+        formInstanceId:
           type: string
-        name:
+        formDefinitionId:
           type: string
-        description:
+        formDefinitionKey:
           type: string
-        version:
+        taskId:
           type: string
-        modelType:
+        processInstanceId:
           type: string
-        flowableDesignVersion:
-          type: integer
-          format: int32
-    CustomValidationDefinition:
+        processDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        scopeType:
+          type: string
+        scopeDefinitionId:
+          type: string
+        outcome:
+          type: string
+        tenantId:
+          type: string
+        parentDeploymentId:
+          type: string
+        variables:
+          type: object
+          additionalProperties:
+            type: object
+    OutcomeDefinition:
       type: object
       properties:
-        expression:
+        label:
           type: string
-        errorMsg:
+        value:
+          type: string
+        visible:
+          type: string
+        enabled:
+          type: string
+        primary:
+          type: string
+        ignorePayload:
+          type: boolean
+        ignoreValidation:
+          type: boolean
+        hideErrors:
+          type: boolean
+        styleClass:
+          type: string
+        navigationUrl:
+          type: string
+        outcomeFormKey:
           type: string
         i18n:
           type: object
@@ -135,37 +168,6 @@ components:
             type: object
             additionalProperties:
               type: object
-    OutcomeDefinition:
-      type: object
-      properties:
-        label:
-          type: string
-        value:
-          type: string
-        visible:
-          type: string
-        enabled:
-          type: string
-        primary:
-          type: string
-        ignorePayload:
-          type: boolean
-        ignoreValidation:
-          type: boolean
-        hideErrors:
-          type: boolean
-        styleClass:
-          type: string
-        navigationUrl:
-          type: string
-        outcomeFormKey:
-          type: string
-        i18n:
-          type: object
-          additionalProperties:
-            type: object
-            additionalProperties:
-              type: string
     SectionDefinition:
       type: object
       properties:
@@ -173,37 +175,35 @@ components:
           type: string
         visibility:
           type: string
-    FormRequest:
+    MetadataDefinition:
       type: object
       properties:
-        formInstanceId:
+        key:
           type: string
-        formDefinitionId:
+        name:
           type: string
-        formDefinitionKey:
+        description:
           type: string
-        taskId:
+        version:
           type: string
-        processInstanceId:
+        modelType:
           type: string
-        processDefinitionId:
+        flowableDesignVersion:
+          type: integer
+          format: int32
+    CustomValidationDefinition:
+      type: object
+      properties:
+        expression:
           type: string
-        scopeId:
+        errorMsg:
           type: string
-        scopeType:
-          type: string
-        scopeDefinitionId:
-          type: string
-        outcome:
-          type: string
-        tenantId:
-          type: string
-        parentDeploymentId:
-          type: string
-        variables:
+        i18n:
           type: object
           additionalProperties:
             type: object
+            additionalProperties:
+              type: string
   requestBodies:
     FormRequest:
       content:

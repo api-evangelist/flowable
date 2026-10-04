@@ -154,6 +154,26 @@ components:
         caseDefinitionUrl:
           type: string
           example: http://localhost:8182/cmmn-repository/case-definitions/oneMilestoneCase%3A1%3A4
+    DataResponseHistoricMilestoneInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricMilestoneInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     HistoricMilestoneInstanceQueryRequest:
       type: object
       properties:
@@ -181,26 +201,6 @@ components:
         reachedAfter:
           type: string
           format: date-time
-    DataResponseHistoricMilestoneInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricMilestoneInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
   securitySchemes:
     basicAuth:
       type: http

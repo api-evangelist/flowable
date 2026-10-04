@@ -133,6 +133,19 @@ paths:
       - basicAuth: []
 components:
   schemas:
+    TableResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          example: ACT_RU_VARIABLE
+        url:
+          type: string
+          example: http://localhost:8080/flowable-rest/service/management/tables/ACT_RU_VARIABLE
+        count:
+          type: integer
+          format: int64
+          example: 4528
     DataResponseListMapStringObject:
       type: object
       properties:
@@ -157,19 +170,6 @@ components:
         size:
           type: integer
           format: int32
-    TableResponse:
-      type: object
-      properties:
-        name:
-          type: string
-          example: ACT_RU_VARIABLE
-        url:
-          type: string
-          example: http://localhost:8080/flowable-rest/service/management/tables/ACT_RU_VARIABLE
-        count:
-          type: integer
-          format: int64
-          example: 4528
     TableMetaData:
       type: object
       properties:

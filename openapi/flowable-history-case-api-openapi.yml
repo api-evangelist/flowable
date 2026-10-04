@@ -482,26 +482,6 @@ paths:
       x-s2o-warning: Operation queryHistoricCaseInstance has multiple requestBodies
 components:
   schemas:
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
     HistoricCaseInstanceResponse:
       type: object
       properties:
@@ -571,50 +551,26 @@ components:
         referenceType:
           type: string
           example: event-to-cmmn-1.1-case
-    HistoricIdentityLinkResponse:
+    RestVariable:
       type: object
       properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
         type:
           type: string
-          example: participant
-        userId:
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
           type: string
-          example: kermit
-        groupId:
+          example: http://....
+        scope:
           type: string
-          example: sales
-        taskId:
-          type: string
-          example: 'null'
-        taskUrl:
-          type: string
-          example: 'null'
-        caseInstanceId:
-          type: string
-          example: '5'
-        caseInstanceUrl:
-          type: string
-          example: http://localhost:8182/cmmn-history/historic-case-instances/5
-    DataResponseHistoricCaseInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricCaseInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     HistoricCaseInstanceQueryRequest:
       type: object
       properties:
@@ -765,6 +721,30 @@ components:
           type: boolean
         withoutCaseInstanceCallbackId:
           type: boolean
+    HistoricIdentityLinkResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: participant
+        userId:
+          type: string
+          example: kermit
+        groupId:
+          type: string
+          example: sales
+        taskId:
+          type: string
+          example: 'null'
+        taskUrl:
+          type: string
+          example: 'null'
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-history/historic-case-instances/5
     QueryVariable:
       type: object
       properties:
@@ -787,6 +767,26 @@ components:
           type: object
         type:
           type: string
+    DataResponseHistoricCaseInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricCaseInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     StageResponse:
       type: object
       properties:

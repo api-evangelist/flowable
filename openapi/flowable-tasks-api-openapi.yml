@@ -1542,6 +1542,117 @@ paths:
     - url: /flowable-rest/cmmn-api
 components:
   schemas:
+    EventResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        id:
+          type: string
+        action:
+          type: string
+        userId:
+          type: string
+        time:
+          type: string
+          format: date-time
+        taskUrl:
+          type: string
+        processInstanceUrl:
+          type: string
+        message:
+          type: array
+          items:
+            type: string
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    TaskRequest:
+      type: object
+      properties:
+        owner:
+          type: string
+        assignee:
+          type: string
+        delegationState:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        dueDate:
+          type: string
+          format: date-time
+        priority:
+          type: integer
+          format: int32
+        parentTaskId:
+          type: string
+        category:
+          type: string
+        tenantId:
+          type: string
+        formKey:
+          type: string
+        ownerSet:
+          type: boolean
+        assigneeSet:
+          type: boolean
+        delegationStateSet:
+          type: boolean
+        nameSet:
+          type: boolean
+        descriptionSet:
+          type: boolean
+        duedateSet:
+          type: boolean
+        prioritySet:
+          type: boolean
+        parentTaskIdSet:
+          type: boolean
+        categorySet:
+          type: boolean
+        tenantIdSet:
+          type: boolean
+        formKeySet:
+          type: boolean
+    DataResponseTaskResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     TaskQueryRequest:
       type: object
       properties:
@@ -1705,45 +1816,78 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QueryVariable'
-    RestVariable:
+    QueryVariable:
       type: object
       properties:
         name:
           type: string
-          example: myVariable
-          description: Name of the variable
-        type:
+        operation:
           type: string
-          example: string
-          description: Type of the variable.
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
         value:
           type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
+        type:
           type: string
-          example: http://....
-        scope:
-          type: string
-    EventResponse:
+    BulkTasksRequest:
       type: object
       properties:
-        url:
+        owner:
           type: string
-        id:
+        assignee:
           type: string
-        action:
+        delegationState:
           type: string
-        userId:
+        name:
           type: string
-        time:
+        description:
+          type: string
+        dueDate:
           type: string
           format: date-time
-        taskUrl:
+        priority:
+          type: integer
+          format: int32
+        parentTaskId:
           type: string
-        processInstanceUrl:
+        category:
           type: string
-        message:
+        tenantId:
+          type: string
+        formKey:
+          type: string
+        ownerSet:
+          type: boolean
+        assigneeSet:
+          type: boolean
+        delegationStateSet:
+          type: boolean
+        nameSet:
+          type: boolean
+        descriptionSet:
+          type: boolean
+        duedateSet:
+          type: boolean
+        prioritySet:
+          type: boolean
+        parentTaskIdSet:
+          type: boolean
+        categorySet:
+          type: boolean
+        tenantIdSet:
+          type: boolean
+        formKeySet:
+          type: boolean
+        taskIds:
           type: array
           items:
             type: string
@@ -1778,26 +1922,6 @@ components:
           description: 'If action is complete, you can use this parameter to set transient variables '
           items:
             $ref: '#/components/schemas/RestVariable'
-    DataResponseTaskResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TaskResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     TaskResponse:
       type: object
       properties:
@@ -1894,130 +2018,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RestVariable'
-    QueryVariable:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
-          type: string
-    TaskRequest:
-      type: object
-      properties:
-        owner:
-          type: string
-        assignee:
-          type: string
-        delegationState:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        dueDate:
-          type: string
-          format: date-time
-        priority:
-          type: integer
-          format: int32
-        parentTaskId:
-          type: string
-        category:
-          type: string
-        tenantId:
-          type: string
-        formKey:
-          type: string
-        ownerSet:
-          type: boolean
-        assigneeSet:
-          type: boolean
-        delegationStateSet:
-          type: boolean
-        nameSet:
-          type: boolean
-        descriptionSet:
-          type: boolean
-        duedateSet:
-          type: boolean
-        prioritySet:
-          type: boolean
-        parentTaskIdSet:
-          type: boolean
-        categorySet:
-          type: boolean
-        tenantIdSet:
-          type: boolean
-        formKeySet:
-          type: boolean
-    BulkTasksRequest:
-      type: object
-      properties:
-        owner:
-          type: string
-        assignee:
-          type: string
-        delegationState:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        dueDate:
-          type: string
-          format: date-time
-        priority:
-          type: integer
-          format: int32
-        parentTaskId:
-          type: string
-        category:
-          type: string
-        tenantId:
-          type: string
-        formKey:
-          type: string
-        ownerSet:
-          type: boolean
-        assigneeSet:
-          type: boolean
-        delegationStateSet:
-          type: boolean
-        nameSet:
-          type: boolean
-        descriptionSet:
-          type: boolean
-        duedateSet:
-          type: boolean
-        prioritySet:
-          type: boolean
-        parentTaskIdSet:
-          type: boolean
-        categorySet:
-          type: boolean
-        tenantIdSet:
-          type: boolean
-        formKeySet:
-          type: boolean
-        taskIds:
-          type: array
-          items:
-            type: string
     TaskQueryRequest_2:
       type: object
       properties:

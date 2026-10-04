@@ -598,6 +598,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CaseInstanceUpdateRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        name:
+          type: string
+        businessKey:
+          type: string
     RestVariable:
       type: object
       properties:
@@ -617,73 +626,6 @@ components:
           type: string
           example: http://....
         scope:
-          type: string
-    DataResponseCaseInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CaseInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    CaseInstanceCreateRequest:
-      type: object
-      properties:
-        caseDefinitionId:
-          type: string
-          example: oneTaskCase:1:158
-        caseDefinitionKey:
-          type: string
-          example: oneTaskCase
-        name:
-          type: string
-          example: My case name
-        businessKey:
-          type: string
-          example: myBusinessKey
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        transientVariables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        startFormVariables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        outcome:
-          type: string
-        tenantId:
-          type: string
-          example: tenant1
-        overrideDefinitionTenantId:
-          type: string
-          example: overrideTenant1
-        returnVariables:
-          type: boolean
-      description: Only one of caseDefinitionId or caseDefinitionKey can be used in the request body
-    PlanItemDefinitionWithTargetIdsRequest:
-      type: object
-      properties:
-        existingPlanItemDefinitionId:
-          type: string
-        newPlanItemId:
-          type: string
-        newPlanItemDefinitionId:
           type: string
     ChangePlanItemStateRequest:
       type: object
@@ -864,24 +806,6 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    BulkDeleteInstancesRestActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        instanceIds:
-          type: array
-          items:
-            type: string
-    CaseInstanceUpdateRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        name:
-          type: string
-        businessKey:
-          type: string
     CaseInstanceResponse:
       type: object
       properties:
@@ -948,6 +872,44 @@ components:
           example: 'null'
         completed:
           type: boolean
+    CaseInstanceCreateRequest:
+      type: object
+      properties:
+        caseDefinitionId:
+          type: string
+          example: oneTaskCase:1:158
+        caseDefinitionKey:
+          type: string
+          example: oneTaskCase
+        name:
+          type: string
+          example: My case name
+        businessKey:
+          type: string
+          example: myBusinessKey
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        transientVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        startFormVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        outcome:
+          type: string
+        tenantId:
+          type: string
+          example: tenant1
+        overrideDefinitionTenantId:
+          type: string
+          example: overrideTenant1
+        returnVariables:
+          type: boolean
+      description: Only one of caseDefinitionId or caseDefinitionKey can be used in the request body
     QueryVariable:
       type: object
       properties:
@@ -970,6 +932,35 @@ components:
           type: object
         type:
           type: string
+    DataResponseCaseInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CaseInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    PlanItemDefinitionWithTargetIdsRequest:
+      type: object
+      properties:
+        existingPlanItemDefinitionId:
+          type: string
+        newPlanItemId:
+          type: string
+        newPlanItemDefinitionId:
+          type: string
     StageResponse:
       type: object
       properties:
@@ -984,6 +975,15 @@ components:
           format: date-time
         current:
           type: boolean
+    BulkDeleteInstancesRestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+        instanceIds:
+          type: array
+          items:
+            type: string
   requestBodies:
     migrateHistoricCaseInstanceBody:
       content:

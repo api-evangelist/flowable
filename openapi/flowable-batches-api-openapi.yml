@@ -237,38 +237,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    BatchResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '8'
-        url:
-          type: string
-          example: http://localhost:8182/management/batches/8
-        batchType:
-          type: string
-          example: processMigration
-        searchKey:
-          type: string
-          example: 1:22:MP
-        searchKey2:
-          type: string
-          example: 1:24:MP
-        createTime:
-          type: string
-          format: date-time
-          example: 2020-06-03T22:05:05.474+0000
-        completeTime:
-          type: string
-          format: date-time
-          example: 2020-06-03T22:05:05.474+0000
-        status:
-          type: string
-          example: completed
-        tenantId:
-          type: string
-          example: 'null'
     BatchPartResponse:
       type: object
       properties:
@@ -336,6 +304,38 @@ components:
         size:
           type: integer
           format: int32
+    BatchResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/management/batches/8
+        batchType:
+          type: string
+          example: processMigration
+        searchKey:
+          type: string
+          example: 1:22:MP
+        searchKey2:
+          type: string
+          example: 1:24:MP
+        createTime:
+          type: string
+          format: date-time
+          example: 2020-06-03T22:05:05.474+0000
+        completeTime:
+          type: string
+          format: date-time
+          example: 2020-06-03T22:05:05.474+0000
+        status:
+          type: string
+          example: completed
+        tenantId:
+          type: string
+          example: 'null'
   securitySchemes:
     basicAuth:
       type: http

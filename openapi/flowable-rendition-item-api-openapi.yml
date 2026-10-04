@@ -392,6 +392,43 @@ paths:
       - basicAuth: []
 components:
   schemas:
+    UserPrincipalLookupService:
+      type: object
+    FileSystem:
+      type: object
+      properties:
+        open:
+          type: boolean
+        readOnly:
+          type: boolean
+        separator:
+          type: string
+        rootDirectories:
+          $ref: '#/components/schemas/IterablePath'
+        fileStores:
+          $ref: '#/components/schemas/IterableFileStore'
+        userPrincipalLookupService:
+          $ref: '#/components/schemas/UserPrincipalLookupService'
+    Path:
+      type: object
+      properties:
+        absolute:
+          type: boolean
+        parent:
+          $ref: '#/components/schemas/Path'
+        root:
+          $ref: '#/components/schemas/Path'
+        fileName:
+          $ref: '#/components/schemas/Path'
+        fileSystem:
+          $ref: '#/components/schemas/FileSystem'
+        nameCount:
+          type: integer
+          format: int32
+    IterablePath:
+      type: object
+    IterableFileStore:
+      type: object
     Resource:
       type: object
       properties:
@@ -421,27 +458,8 @@ components:
             format: byte
         inputStream:
           $ref: '#/components/schemas/InputStream'
-    IterableFileStore:
+    InputStream:
       type: object
-    UserPrincipalLookupService:
-      type: object
-    IterablePath:
-      type: object
-    FileSystem:
-      type: object
-      properties:
-        open:
-          type: boolean
-        readOnly:
-          type: boolean
-        separator:
-          type: string
-        rootDirectories:
-          $ref: '#/components/schemas/IterablePath'
-        fileStores:
-          $ref: '#/components/schemas/IterableFileStore'
-        userPrincipalLookupService:
-          $ref: '#/components/schemas/UserPrincipalLookupService'
     DataResponseRenditionItemResponse:
       type: object
       properties:
@@ -462,57 +480,6 @@ components:
         size:
           type: integer
           format: int32
-    RenditionItemResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        contentItemId:
-          type: string
-        name:
-          type: string
-        mimeType:
-          type: string
-        taskId:
-          type: string
-        processInstanceId:
-          type: string
-        contentStoreId:
-          type: string
-        contentStoreName:
-          type: string
-        contentAvailable:
-          type: boolean
-        contentItemName:
-          type: string
-        tenantId:
-          type: string
-        created:
-          type: string
-          format: date-time
-        lastModified:
-          type: string
-          format: date-time
-        url:
-          type: string
-    Path:
-      type: object
-      properties:
-        absolute:
-          type: boolean
-        parent:
-          $ref: '#/components/schemas/Path'
-        root:
-          $ref: '#/components/schemas/Path'
-        fileName:
-          $ref: '#/components/schemas/Path'
-        fileSystem:
-          $ref: '#/components/schemas/FileSystem'
-        nameCount:
-          type: integer
-          format: int32
-    InputStream:
-      type: object
     RenditionItemQueryRequest:
       type: object
       properties:
@@ -606,6 +573,39 @@ components:
           type: string
         withoutTenantId:
           type: boolean
+    RenditionItemResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        contentItemId:
+          type: string
+        name:
+          type: string
+        mimeType:
+          type: string
+        taskId:
+          type: string
+        processInstanceId:
+          type: string
+        contentStoreId:
+          type: string
+        contentStoreName:
+          type: string
+        contentAvailable:
+          type: boolean
+        contentItemName:
+          type: string
+        tenantId:
+          type: string
+        created:
+          type: string
+          format: date-time
+        lastModified:
+          type: string
+          format: date-time
+        url:
+          type: string
   requestBodies:
     saveContentItemData:
       content:

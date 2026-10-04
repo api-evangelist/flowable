@@ -422,6 +422,33 @@ components:
           example: http://....
         scope:
           type: string
+    RestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
     PlanItemInstanceResponse:
       type: object
       properties:
@@ -519,26 +546,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RestVariable'
-    DataResponsePlanItemInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlanItemInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     PlanItemInstanceQueryRequest:
       type: object
       properties:
@@ -607,53 +614,32 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    QueryVariable:
+    DataResponsePlanItemInstanceResponse:
       type: object
       properties:
-        name:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItemInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
           type: string
-        operation:
+        order:
           type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
-          type: string
-    RestActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
+        size:
+          type: integer
+          format: int32
   requestBodies:
-    PlanItemInstanceVariableCollectionResource:
+    RestActionRequest:
       content:
-        multipart/form-data:
+        application/json:
           schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-              name:
-                example: intProcVar
-                type: string
-              type:
-                example: integer
-                type: string
-              scope:
-                example: global
-                type: string
-      description: Create a variable on a plan item instance
+            $ref: '#/components/schemas/RestActionRequest'
     PlanItemInstanceVariableResource:
       content:
         multipart/form-data:
@@ -673,11 +659,25 @@ components:
                 example: global
                 type: string
       description: Update a variable on a plan item instance
-    RestActionRequest:
+    PlanItemInstanceVariableCollectionResource:
       content:
-        application/json:
+        multipart/form-data:
           schema:
-            $ref: '#/components/schemas/RestActionRequest'
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+              name:
+                example: intProcVar
+                type: string
+              type:
+                example: integer
+                type: string
+              scope:
+                example: global
+                type: string
+      description: Create a variable on a plan item instance
   securitySchemes:
     basicAuth:
       type: http

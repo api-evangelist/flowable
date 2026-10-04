@@ -277,11 +277,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    AddGroupPrivilegeRequest:
-      type: object
-      properties:
-        groupId:
-          type: string
     DataResponsePrivilegeResponse:
       type: object
       properties:
@@ -302,6 +297,62 @@ components:
         size:
           type: integer
           format: int32
+    GroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: testgroup
+        url:
+          type: string
+          example: http://localhost:8182/groups/groupId
+        name:
+          type: string
+          example: Test group
+        type:
+          type: string
+          example: Test type
+        key:
+          type: string
+          example: testgroup
+        tenantId:
+          type: string
+          example: testtenant
+        users:
+          type: array
+          description: Collection of all users that have a membership with the group
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        privileges:
+          type: array
+          description: Collection of all privileges for this group
+          items:
+            $ref: '#/components/schemas/BasicPrivilegeResponse'
+        identityInfo:
+          type: array
+          description: Collection of all identity infos for the group
+          items:
+            $ref: '#/components/schemas/EngineRestVariable'
+    AddUserPrivilegeRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+    PrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupResponse'
     EngineRestVariable:
       type: object
       properties:
@@ -356,61 +407,10 @@ components:
           type: string
         name:
           type: string
-    PrivilegeResponse:
+    AddGroupPrivilegeRequest:
       type: object
       properties:
-        id:
-          type: string
-        name:
-          type: string
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserResponse'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupResponse'
-    GroupResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          example: testgroup
-        url:
-          type: string
-          example: http://localhost:8182/groups/groupId
-        name:
-          type: string
-          example: Test group
-        type:
-          type: string
-          example: Test type
-        key:
-          type: string
-          example: testgroup
-        tenantId:
-          type: string
-          example: testtenant
-        users:
-          type: array
-          description: Collection of all users that have a membership with the group
-          items:
-            $ref: '#/components/schemas/UserResponse'
-        privileges:
-          type: array
-          description: Collection of all privileges for this group
-          items:
-            $ref: '#/components/schemas/BasicPrivilegeResponse'
-        identityInfo:
-          type: array
-          description: Collection of all identity infos for the group
-          items:
-            $ref: '#/components/schemas/EngineRestVariable'
-    AddUserPrivilegeRequest:
-      type: object
-      properties:
-        userId:
+        groupId:
           type: string
   securitySchemes:
     basicAuth:
