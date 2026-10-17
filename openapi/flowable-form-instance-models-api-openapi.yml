@@ -65,6 +65,29 @@ components:
           type: object
           additionalProperties:
             type: object
+    SectionDefinition:
+      type: object
+      properties:
+        name:
+          type: string
+        visibility:
+          type: string
+    MetadataDefinition:
+      type: object
+      properties:
+        key:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        version:
+          type: string
+        modelType:
+          type: string
+        flowableDesignVersion:
+          type: integer
+          format: int32
     OutcomeDefinition:
       type: object
       properties:
@@ -96,6 +119,28 @@ components:
             type: object
             additionalProperties:
               type: string
+    CustomValidationDefinition:
+      type: object
+      properties:
+        expression:
+          type: string
+        errorMsg:
+          type: string
+        i18n:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
+    RowDefinition:
+      type: object
+      properties:
+        cols:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: object
     FormInstanceModelResponse:
       type: object
       properties:
@@ -159,51 +204,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomValidationDefinition'
-    RowDefinition:
-      type: object
-      properties:
-        cols:
-          type: array
-          items:
-            type: object
-            additionalProperties:
-              type: object
-    SectionDefinition:
-      type: object
-      properties:
-        name:
-          type: string
-        visibility:
-          type: string
-    MetadataDefinition:
-      type: object
-      properties:
-        key:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        version:
-          type: string
-        modelType:
-          type: string
-        flowableDesignVersion:
-          type: integer
-          format: int32
-    CustomValidationDefinition:
-      type: object
-      properties:
-        expression:
-          type: string
-        errorMsg:
-          type: string
-        i18n:
-          type: object
-          additionalProperties:
-            type: object
-            additionalProperties:
-              type: string
   requestBodies:
     FormRequest:
       content:

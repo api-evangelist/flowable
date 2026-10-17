@@ -2671,15 +2671,51 @@ components:
           schema:
             $ref: '#/components/schemas/RestActionRequest'
   schemas:
-    BulkMoveDeadLetterActionRequest:
+    HistoryJobResponse:
       type: object
       properties:
-        action:
+        id:
           type: string
-        jobIds:
-          type: array
-          items:
-            type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/management/jobs/8
+        scopeType:
+          type: string
+          example: cmmn
+        retries:
+          type: integer
+          format: int32
+          example: 3
+        exceptionMessage:
+          type: string
+          example: 'null'
+        jobHandlerType:
+          type: string
+          example: async-history
+        jobHandlerConfiguration:
+          type: string
+          example: myCfg
+        advancedJobHandlerConfiguration:
+          type: string
+          example: myAdvancedCfg
+        tenantId:
+          type: string
+          example: 'null'
+        customValues:
+          type: string
+          example: custom value
+        createTime:
+          type: string
+          format: date-time
+          example: 2013-06-03T22:05:05.474+0000
+        lockOwner:
+          type: string
+          example: node1
+        lockExpirationTime:
+          type: string
+          format: date-time
+          example: 2023-06-03T22:05:05.474+0000
     DataResponseJobResponse:
       type: object
       properties:
@@ -2700,6 +2736,11 @@ components:
         size:
           type: integer
           format: int32
+    RestActionRequest:
+      type: object
+      properties:
+        action:
+          type: string
     JobResponse:
       type: object
       properties:
@@ -2764,10 +2805,12 @@ components:
         tenantId:
           type: string
           example: 'null'
-    RestActionRequest:
+    TimerJobActionRequest:
       type: object
       properties:
         action:
+          type: string
+        dueDate:
           type: string
     DataResponseHistoryJobResponse:
       type: object
@@ -2789,14 +2832,16 @@ components:
         size:
           type: integer
           format: int32
-    TimerJobActionRequest:
+    BulkMoveDeadLetterActionRequest:
       type: object
       properties:
         action:
           type: string
-        dueDate:
-          type: string
-    HistoryJobResponse:
+        jobIds:
+          type: array
+          items:
+            type: string
+    HistoryJobResponse_2:
       type: object
       properties:
         id:
@@ -2833,7 +2878,7 @@ components:
         createTime:
           type: string
           format: date-time
-          example: 2013-06-03T22:05:05.474+0000
+          example: 2023-06-03T22:05:05.474+0000
         lockOwner:
           type: string
           example: node1
@@ -2899,51 +2944,6 @@ components:
         tenantId:
           type: string
           example: 'null'
-    HistoryJobResponse_2:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '8'
-        url:
-          type: string
-          example: http://localhost:8182/management/jobs/8
-        scopeType:
-          type: string
-          example: cmmn
-        retries:
-          type: integer
-          format: int32
-          example: 3
-        exceptionMessage:
-          type: string
-          example: 'null'
-        jobHandlerType:
-          type: string
-          example: async-history
-        jobHandlerConfiguration:
-          type: string
-          example: myCfg
-        advancedJobHandlerConfiguration:
-          type: string
-          example: myAdvancedCfg
-        tenantId:
-          type: string
-          example: 'null'
-        customValues:
-          type: string
-          example: custom value
-        createTime:
-          type: string
-          format: date-time
-          example: 2023-06-03T22:05:05.474+0000
-        lockOwner:
-          type: string
-          example: node1
-        lockExpirationTime:
-          type: string
-          format: date-time
-          example: 2023-06-03T22:05:05.474+0000
   securitySchemes:
     basicAuth:
       type: http

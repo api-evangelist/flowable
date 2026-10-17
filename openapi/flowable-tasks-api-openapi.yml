@@ -1541,50 +1541,14 @@ paths:
     servers:
     - url: /flowable-rest/cmmn-api
 components:
-  schemas:
-    EventResponse:
-      type: object
-      properties:
-        url:
-          type: string
-        id:
-          type: string
-        action:
-          type: string
-        userId:
-          type: string
-        time:
-          type: string
-          format: date-time
-        taskUrl:
-          type: string
-        processInstanceUrl:
-          type: string
-        message:
-          type: array
-          items:
-            type: string
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
+  requestBodies:
     TaskRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TaskRequest'
+  schemas:
+    BulkTasksRequest:
       type: object
       properties:
         owner:
@@ -1633,6 +1597,128 @@ components:
           type: boolean
         formKeySet:
           type: boolean
+        taskIds:
+          type: array
+          items:
+            type: string
+    EventResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        id:
+          type: string
+        action:
+          type: string
+        userId:
+          type: string
+        time:
+          type: string
+          format: date-time
+        taskUrl:
+          type: string
+        processInstanceUrl:
+          type: string
+        message:
+          type: array
+          items:
+            type: string
+    TaskResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '8'
+        url:
+          type: string
+          example: http://localhost:8182/runtime/tasks/8
+        owner:
+          type: string
+          example: owner
+        assignee:
+          type: string
+          example: kermit
+        delegationState:
+          type: string
+          example: pending
+          description: Delegation-state of the task, can be null, "pending" or "resolved".
+        name:
+          type: string
+          example: My task
+        description:
+          type: string
+          example: Task description
+        createTime:
+          type: string
+          format: date-time
+          example: 2018-04-17T10:17:43.902+0000
+        dueDate:
+          type: string
+          format: date-time
+          example: 2018-04-17T10:17:43.902+0000
+        priority:
+          type: integer
+          format: int32
+          example: 50
+        suspended:
+          type: boolean
+        claimTime:
+          type: string
+          example: 2018-04-17T10:17:43.902+0000
+        taskDefinitionKey:
+          type: string
+          example: theTask
+        scopeDefinitionId:
+          type: string
+          example: '12'
+        scopeId:
+          type: string
+          example: '14'
+        subScopeId:
+          type: string
+          example: '15'
+        scopeType:
+          type: string
+          example: cmmn
+        propagatedStageInstanceId:
+          type: string
+          example: '16'
+        tenantId:
+          type: string
+          example: someTenantId
+        category:
+          type: string
+          example: ExampleCategory
+        formKey:
+          type: string
+        parentTaskId:
+          type: string
+          example: 'null'
+        parentTaskUrl:
+          type: string
+          example: 'null'
+        executionId:
+          type: string
+          example: '5'
+        executionUrl:
+          type: string
+          example: http://localhost:8182/runtime/executions/5
+        processInstanceId:
+          type: string
+          example: '5'
+        processInstanceUrl:
+          type: string
+          example: http://localhost:8182/runtime/process-instances/5
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess%3A1%3A4
+        processDefinitionUrl:
+          type: string
+          example: http://localhost:8182/runtime/process-definitions/oneTaskProcess%3A1%3A4
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
     DataResponseTaskResponse:
       type: object
       properties:
@@ -1653,6 +1739,37 @@ components:
         size:
           type: integer
           format: int32
+    TaskActionRequest:
+      type: object
+      required:
+      - action
+      properties:
+        action:
+          type: string
+          example: complete
+          description: 'Action to perform: Either complete, claim, delegate or resolve'
+        assignee:
+          type: string
+          example: userWhoClaims/userToDelegateTo
+          description: 'If action is claim or delegate, you can use this parameter to set the assignee associated '
+        formDefinitionId:
+          type: string
+          example: '12345'
+          description: Required when completing a task with a form
+        outcome:
+          type: string
+          example: accepted/rejected
+          description: Optional outcome value when completing a task with a form
+        variables:
+          type: array
+          description: 'If action is complete, you can use this parameter to set variables '
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        transientVariables:
+          type: array
+          description: 'If action is complete, you can use this parameter to set transient variables '
+          items:
+            $ref: '#/components/schemas/RestVariable'
     TaskQueryRequest:
       type: object
       properties:
@@ -1816,29 +1933,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QueryVariable'
-    QueryVariable:
+    RestVariable:
       type: object
       properties:
         name:
           type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
+          example: myVariable
+          description: Name of the variable
         type:
           type: string
-    BulkTasksRequest:
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    TaskRequest:
       type: object
       properties:
         owner:
@@ -1887,42 +2002,29 @@ components:
           type: boolean
         formKeySet:
           type: boolean
-        taskIds:
-          type: array
-          items:
-            type: string
-    TaskActionRequest:
+    QueryVariable:
       type: object
-      required:
-      - action
       properties:
-        action:
+        name:
           type: string
-          example: complete
-          description: 'Action to perform: Either complete, claim, delegate or resolve'
-        assignee:
+        operation:
           type: string
-          example: userWhoClaims/userToDelegateTo
-          description: 'If action is claim or delegate, you can use this parameter to set the assignee associated '
-        formDefinitionId:
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
           type: string
-          example: '12345'
-          description: Required when completing a task with a form
-        outcome:
-          type: string
-          example: accepted/rejected
-          description: Optional outcome value when completing a task with a form
-        variables:
-          type: array
-          description: 'If action is complete, you can use this parameter to set variables '
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        transientVariables:
-          type: array
-          description: 'If action is complete, you can use this parameter to set transient variables '
-          items:
-            $ref: '#/components/schemas/RestVariable'
-    TaskResponse:
+    TaskResponse_2:
       type: object
       properties:
         id:
@@ -1930,7 +2032,7 @@ components:
           example: '8'
         url:
           type: string
-          example: http://localhost:8182/runtime/tasks/8
+          example: http://localhost:8182/cmmn-runtime/tasks/8
         owner:
           type: string
           example: owner
@@ -1950,11 +2052,11 @@ components:
         createTime:
           type: string
           format: date-time
-          example: 2018-04-17T10:17:43.902+0000
+          example: 2013-04-17T10:17:43.902+0000
         dueDate:
           type: string
           format: date-time
-          example: 2018-04-17T10:17:43.902+0000
+          example: 2013-04-17T10:17:43.902+0000
         priority:
           type: integer
           format: int32
@@ -1969,27 +2071,39 @@ components:
           example: theTask
         scopeDefinitionId:
           type: string
-          example: '12'
+          example: '123'
         scopeId:
           type: string
-          example: '14'
+          example: '123'
         subScopeId:
           type: string
-          example: '15'
+          example: '123'
         scopeType:
           type: string
           example: cmmn
         propagatedStageInstanceId:
           type: string
-          example: '16'
+          example: '123'
         tenantId:
           type: string
-          example: someTenantId
+          example: 'null'
         category:
           type: string
           example: ExampleCategory
         formKey:
           type: string
+        caseInstanceId:
+          type: string
+          example: '5'
+        caseInstanceUrl:
+          type: string
+          example: http://localhost:8182/cmmn-runtime/case-instances/5
+        caseDefinitionId:
+          type: string
+          example: oneTaskCase%3A1%3A4
+        caseDefinitionUrl:
+          type: string
+          example: http://localhost:8182/cmmn-runtime/case-definitions/oneTaskCase%3A1%3A4
         parentTaskId:
           type: string
           example: 'null'
@@ -1998,22 +2112,13 @@ components:
           example: 'null'
         executionId:
           type: string
-          example: '5'
-        executionUrl:
-          type: string
-          example: http://localhost:8182/runtime/executions/5
+          example: '123'
         processInstanceId:
           type: string
-          example: '5'
-        processInstanceUrl:
-          type: string
-          example: http://localhost:8182/runtime/process-instances/5
+          example: '123'
         processDefinitionId:
           type: string
-          example: oneTaskProcess%3A1%3A4
-        processDefinitionUrl:
-          type: string
-          example: http://localhost:8182/runtime/process-definitions/oneTaskProcess%3A1%3A4
+          example: '123'
         variables:
           type: array
           items:
@@ -2171,111 +2276,6 @@ components:
             type: string
         withoutCategory:
           type: boolean
-    TaskResponse_2:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '8'
-        url:
-          type: string
-          example: http://localhost:8182/cmmn-runtime/tasks/8
-        owner:
-          type: string
-          example: owner
-        assignee:
-          type: string
-          example: kermit
-        delegationState:
-          type: string
-          example: pending
-          description: Delegation-state of the task, can be null, "pending" or "resolved".
-        name:
-          type: string
-          example: My task
-        description:
-          type: string
-          example: Task description
-        createTime:
-          type: string
-          format: date-time
-          example: 2013-04-17T10:17:43.902+0000
-        dueDate:
-          type: string
-          format: date-time
-          example: 2013-04-17T10:17:43.902+0000
-        priority:
-          type: integer
-          format: int32
-          example: 50
-        suspended:
-          type: boolean
-        claimTime:
-          type: string
-          example: 2018-04-17T10:17:43.902+0000
-        taskDefinitionKey:
-          type: string
-          example: theTask
-        scopeDefinitionId:
-          type: string
-          example: '123'
-        scopeId:
-          type: string
-          example: '123'
-        subScopeId:
-          type: string
-          example: '123'
-        scopeType:
-          type: string
-          example: cmmn
-        propagatedStageInstanceId:
-          type: string
-          example: '123'
-        tenantId:
-          type: string
-          example: 'null'
-        category:
-          type: string
-          example: ExampleCategory
-        formKey:
-          type: string
-        caseInstanceId:
-          type: string
-          example: '5'
-        caseInstanceUrl:
-          type: string
-          example: http://localhost:8182/cmmn-runtime/case-instances/5
-        caseDefinitionId:
-          type: string
-          example: oneTaskCase%3A1%3A4
-        caseDefinitionUrl:
-          type: string
-          example: http://localhost:8182/cmmn-runtime/case-definitions/oneTaskCase%3A1%3A4
-        parentTaskId:
-          type: string
-          example: 'null'
-        parentTaskUrl:
-          type: string
-          example: 'null'
-        executionId:
-          type: string
-          example: '123'
-        processInstanceId:
-          type: string
-          example: '123'
-        processDefinitionId:
-          type: string
-          example: '123'
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-  requestBodies:
-    TaskRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TaskRequest'
   securitySchemes:
     basicAuth:
       type: http

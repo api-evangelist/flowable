@@ -515,26 +515,6 @@ paths:
     servers:
     - url: /flowable-rest/cmmn-api
 components:
-  requestBodies:
-    ExecutionVariableCollectionResource:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              name:
-                description: Required name of the variable
-                example: Simple content item
-                type: string
-              type:
-                description: Type of variable that is updated. If omitted, reverts to raw JSON-value type (string, boolean, integer or double)
-                example: integer
-                type: string
-              scope:
-                description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable..
-                example: local
-                type: string
-      description: Update a task variable
   schemas:
     RestVariable:
       type: object
@@ -556,6 +536,26 @@ components:
           example: http://....
         scope:
           type: string
+  requestBodies:
+    ExecutionVariableCollectionResource:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              name:
+                description: Required name of the variable
+                example: Simple content item
+                type: string
+              type:
+                description: Type of variable that is updated. If omitted, reverts to raw JSON-value type (string, boolean, integer or double)
+                example: integer
+                type: string
+              scope:
+                description: Scope of variable to be returned. When local, only task-local variable value is returned. When global, only variable value from the task’s parent execution-hierarchy are returned. When the parameter is omitted, a local variable will be returned if it exists, otherwise a global variable..
+                example: local
+                type: string
+      description: Update a task variable
   securitySchemes:
     basicAuth:
       type: http

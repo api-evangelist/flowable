@@ -1103,66 +1103,6 @@ paths:
     - url: /flowable-rest/cmmn-api
 components:
   schemas:
-    DataResponseHistoricTaskLogEntryResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricTaskLogEntryResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
-    DataResponseHistoricTaskInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricTaskInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     HistoricTaskLogEntryResponse:
       type: object
       properties:
@@ -1196,6 +1136,98 @@ components:
           type: string
         tenantId:
           type: string
+    DataResponseHistoricTaskLogEntryResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricTaskLogEntryResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    HistoricTaskInstanceResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        processDefinitionId:
+          type: string
+        processDefinitionUrl:
+          type: string
+        processInstanceId:
+          type: string
+        processInstanceUrl:
+          type: string
+        executionId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        deleteReason:
+          type: string
+        owner:
+          type: string
+        assignee:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        durationInMillis:
+          type: integer
+          format: int64
+        workTimeInMillis:
+          type: integer
+          format: int64
+        claimTime:
+          type: string
+          format: date-time
+        taskDefinitionKey:
+          type: string
+        formKey:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        dueDate:
+          type: string
+          format: date-time
+        parentTaskId:
+          type: string
+        url:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        scopeDefinitionId:
+          type: string
+        scopeId:
+          type: string
+        subScopeId:
+          type: string
+        scopeType:
+          type: string
+        propagatedStageInstanceId:
+          type: string
+        tenantId:
+          type: string
+        category:
+          type: string
     HistoricIdentityLinkResponse:
       type: object
       properties:
@@ -1220,28 +1252,6 @@ components:
         processInstanceUrl:
           type: string
           example: http://localhost:8182/history/historic-process-instances/5
-    QueryVariable:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
-          type: string
     HistoricTaskInstanceQueryRequest:
       type: object
       properties:
@@ -1410,20 +1420,72 @@ components:
           type: string
         parentScopeId:
           type: string
-    HistoricTaskInstanceResponse:
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    DataResponseHistoricTaskInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricTaskInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    QueryVariable:
+      type: object
+      properties:
+        name:
+          type: string
+        operation:
+          type: string
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
+          type: string
+    HistoricTaskInstanceResponse_2:
       type: object
       properties:
         id:
-          type: string
-        processDefinitionId:
-          type: string
-        processDefinitionUrl:
-          type: string
-        processInstanceId:
-          type: string
-        processInstanceUrl:
-          type: string
-        executionId:
           type: string
         name:
           type: string
@@ -1468,6 +1530,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RestVariable'
+        tenantId:
+          type: string
+        category:
+          type: string
+        caseInstanceId:
+          type: string
+        caseInstanceUrl:
+          type: string
+        caseDefinitionId:
+          type: string
+        caseDefinitionUrl:
+          type: string
         scopeDefinitionId:
           type: string
         scopeId:
@@ -1478,9 +1552,11 @@ components:
           type: string
         propagatedStageInstanceId:
           type: string
-        tenantId:
+        executionId:
           type: string
-        category:
+        processInstanceId:
+          type: string
+        processDefinitionId:
           type: string
     HistoricIdentityLinkResponse_2:
       type: object
@@ -1657,82 +1733,6 @@ components:
         rootScopeId:
           type: string
         parentScopeId:
-          type: string
-    HistoricTaskInstanceResponse_2:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        deleteReason:
-          type: string
-        owner:
-          type: string
-        assignee:
-          type: string
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        durationInMillis:
-          type: integer
-          format: int64
-        workTimeInMillis:
-          type: integer
-          format: int64
-        claimTime:
-          type: string
-          format: date-time
-        taskDefinitionKey:
-          type: string
-        formKey:
-          type: string
-        priority:
-          type: integer
-          format: int32
-        dueDate:
-          type: string
-          format: date-time
-        parentTaskId:
-          type: string
-        url:
-          type: string
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        tenantId:
-          type: string
-        category:
-          type: string
-        caseInstanceId:
-          type: string
-        caseInstanceUrl:
-          type: string
-        caseDefinitionId:
-          type: string
-        caseDefinitionUrl:
-          type: string
-        scopeDefinitionId:
-          type: string
-        scopeId:
-          type: string
-        subScopeId:
-          type: string
-        scopeType:
-          type: string
-        propagatedStageInstanceId:
-          type: string
-        executionId:
-          type: string
-        processInstanceId:
-          type: string
-        processDefinitionId:
           type: string
   securitySchemes:
     basicAuth:

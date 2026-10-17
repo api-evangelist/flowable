@@ -266,26 +266,6 @@ components:
           type: object
           additionalProperties:
             type: object
-    DataResponseFormInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/FormInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     FormInstanceQueryRequest:
       type: object
       properties:
@@ -333,6 +313,26 @@ components:
           type: string
         withoutTenantId:
           type: boolean
+    DataResponseFormInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     FormInstanceResponse:
       type: object
       properties:

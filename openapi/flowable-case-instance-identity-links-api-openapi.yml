@@ -134,12 +134,6 @@ paths:
       security:
       - basicAuth: []
 components:
-  requestBodies:
-    RestIdentityLink:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RestIdentityLink'
   schemas:
     RestIdentityLink:
       type: object
@@ -155,6 +149,12 @@ components:
         type:
           type: string
           example: candidate
+  requestBodies:
+    RestIdentityLink:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestIdentityLink'
   securitySchemes:
     basicAuth:
       type: http

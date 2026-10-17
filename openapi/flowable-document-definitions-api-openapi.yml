@@ -354,87 +354,6 @@ paths:
       - basicAuth: []
 components:
   schemas:
-    DataResponseDocumentDefinitionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentDefinitionResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    DocumentActionHandlerModel:
-      type: object
-      properties:
-        key:
-          type: string
-        type:
-          type: string
-        overrideDefaultLogic:
-          type: boolean
-    FormModel:
-      type: object
-    DocumentDefinitionResponse:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          example: simple:1:4
-        url:
-          type: string
-          example: http://localhost:8182/document-repository/document-definitions/simple%3A1%3A4
-        key:
-          type: string
-          example: simple
-        version:
-          type: integer
-          format: int32
-          example: 1
-        name:
-          type: string
-          example: Simple document definition
-        description:
-          type: string
-          example: This is a case for testing purposes
-        tenantId:
-          type: string
-          example: 'null'
-        deploymentId:
-          type: string
-          example: '2'
-        deploymentUrl:
-          type: string
-          example: http://localhost:8081/content-repository/deployments/2
-        resource:
-          type: string
-          example: http://localhost:8182/content-repository/deployments/2/resources/simple.document
-          description: Contains the actual deployed Document JSON.
-        category:
-          type: string
-          example: Examples
-        startFormDefined:
-          type: boolean
-          example: true
-        translations:
-          type: object
-          description: The translations for the document definition. Map having locale as the key and key value pairs for each locale.
-          additionalProperties:
-            type: object
-            additionalProperties:
-              type: string
     DocumentDefinitionModel:
       type: object
       properties:
@@ -486,6 +405,87 @@ components:
       properties:
         category:
           type: string
+    DocumentActionHandlerModel:
+      type: object
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+        overrideDefaultLogic:
+          type: boolean
+    FormModel:
+      type: object
+    DataResponseDocumentDefinitionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentDefinitionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    DocumentDefinitionResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: simple:1:4
+        url:
+          type: string
+          example: http://localhost:8182/document-repository/document-definitions/simple%3A1%3A4
+        key:
+          type: string
+          example: simple
+        version:
+          type: integer
+          format: int32
+          example: 1
+        name:
+          type: string
+          example: Simple document definition
+        description:
+          type: string
+          example: This is a case for testing purposes
+        tenantId:
+          type: string
+          example: 'null'
+        deploymentId:
+          type: string
+          example: '2'
+        deploymentUrl:
+          type: string
+          example: http://localhost:8081/content-repository/deployments/2
+        resource:
+          type: string
+          example: http://localhost:8182/content-repository/deployments/2/resources/simple.document
+          description: Contains the actual deployed Document JSON.
+        category:
+          type: string
+          example: Examples
+        startFormDefined:
+          type: boolean
+          example: true
+        translations:
+          type: object
+          description: The translations for the document definition. Map having locale as the key and key value pairs for each locale.
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: string
   securitySchemes:
     basicAuth:
       type: http

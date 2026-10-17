@@ -562,7 +562,42 @@ paths:
       security:
       - basicAuth: []
 components:
+  requestBodies:
+    RestIdentityLink:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestIdentityLink'
+    batchMigrateInstancesOfProcessDefinitionBody:
+      content:
+        application/json:
+          schema:
+            type: string
   schemas:
+    FormDefinitionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        category:
+          type: string
+        name:
+          type: string
+        key:
+          type: string
+        description:
+          type: string
+        version:
+          type: integer
+          format: int32
+        resourceName:
+          type: string
+        deploymentId:
+          type: string
+        tenantId:
+          type: string
     Import:
       type: object
       properties:
@@ -592,31 +627,7 @@ components:
           type: string
         namespace:
           type: string
-    FormDefinitionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-        category:
-          type: string
-        name:
-          type: string
-        key:
-          type: string
-        description:
-          type: string
-        version:
-          type: integer
-          format: int32
-        resourceName:
-          type: string
-        deploymentId:
-          type: string
-        tenantId:
-          type: string
-    Artifact:
+    Message:
       type: object
       properties:
         id:
@@ -639,34 +650,106 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ExtensionAttribute'
-    GraphicInfo:
+        name:
+          type: string
+        itemRef:
+          type: string
+    Interface:
       type: object
       properties:
-        x:
-          type: number
-          format: double
-        y:
-          type: number
-          format: double
-        height:
-          type: number
-          format: double
-        width:
-          type: number
-          format: double
-        element:
-          $ref: '#/components/schemas/BaseElement'
-        expanded:
-          type: boolean
+        id:
+          type: string
         xmlRowNumber:
           type: integer
           format: int32
         xmlColumnNumber:
           type: integer
           format: int32
-        rotation:
-          type: number
-          format: double
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        implementationRef:
+          type: string
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Operation'
+    RestIdentityLink:
+      type: object
+      properties:
+        url:
+          type: string
+        user:
+          type: string
+          example: kermit
+        group:
+          type: string
+          example: sales
+        type:
+          type: string
+          example: candidate
+    ProcessDefinitionActionRequest:
+      type: object
+      required:
+      - action
+      properties:
+        action:
+          type: string
+          example: activate
+          description: 'Action to perform: Either activate or suspend'
+        includeProcessInstances:
+          type: boolean
+          description: Whether or not to suspend/activate running process-instances for this process-definition. If omitted, the process-instances are left in the state they are
+        date:
+          type: string
+          format: date-time
+          description: Date (ISO-8601) when the suspension/activation should be executed. If omitted, the suspend/activation is effective immediately.
+        category:
+          type: string
+    EventListener:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        events:
+          type: string
+        implementationType:
+          type: string
+        implementation:
+          type: string
+        entityType:
+          type: string
+        onTransaction:
+          type: string
     BpmnModel:
       type: object
       properties:
@@ -768,6 +851,313 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/ItemDefinition'
+    ScriptInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        language:
+          type: string
+        resultVariable:
+          type: string
+        script:
+          type: string
+    MessageFlow:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        sourceRef:
+          type: string
+        targetRef:
+          type: string
+        messageRef:
+          type: string
+    DecisionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        category:
+          type: string
+        name:
+          type: string
+        key:
+          type: string
+        description:
+          type: string
+        version:
+          type: integer
+          format: int32
+        resourceName:
+          type: string
+        deploymentId:
+          type: string
+        tenantId:
+          type: string
+        url:
+          type: string
+    Operation:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        implementationRef:
+          type: string
+        inMessageRef:
+          type: string
+        outMessageRef:
+          type: string
+        errorMessageRef:
+          type: array
+          items:
+            type: string
+    Signal:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        scope:
+          type: string
+    BaseElement:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+    Lane:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        parentProcess:
+          $ref: '#/components/schemas/Process'
+        flowReferences:
+          type: array
+          items:
+            type: string
+    DataSpec:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        itemSubjectRef:
+          type: string
+        collection:
+          type: boolean
+    GraphicInfo:
+      type: object
+      properties:
+        x:
+          type: number
+          format: double
+        y:
+          type: number
+          format: double
+        height:
+          type: number
+          format: double
+        width:
+          type: number
+          format: double
+        element:
+          $ref: '#/components/schemas/BaseElement'
+        expanded:
+          type: boolean
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        rotation:
+          type: number
+          format: double
+    Artifact:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+    ItemDefinition:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        structureRef:
+          type: string
+        itemKind:
+          type: string
     FieldExtension:
       type: object
       properties:
@@ -797,53 +1187,6 @@ components:
           type: string
         expression:
           type: string
-    EventListener:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        events:
-          type: string
-        implementationType:
-          type: string
-        implementation:
-          type: string
-        entityType:
-          type: string
-        onTransaction:
-          type: string
-    RestIdentityLink:
-      type: object
-      properties:
-        url:
-          type: string
-        user:
-          type: string
-          example: kermit
-        group:
-          type: string
-          example: sales
-        type:
-          type: string
-          example: candidate
     ProcessDefinitionResponse:
       type: object
       properties:
@@ -893,7 +1236,7 @@ components:
           type: boolean
         startFormDefined:
           type: boolean
-    FlowElement:
+    IOSpecification:
       type: object
       properties:
         id:
@@ -916,183 +1259,22 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ExtensionAttribute'
-        name:
-          type: string
-        documentation:
-          type: string
-        executionListeners:
+        dataInputs:
           type: array
           items:
-            $ref: '#/components/schemas/FlowableListener'
-    ExtensionElement:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        name:
-          type: string
-        namespacePrefix:
-          type: string
-        namespace:
-          type: string
-        elementText:
-          type: string
-        childElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-    Resource:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        name:
-          type: string
-    ScriptInfo:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        language:
-          type: string
-        resultVariable:
-          type: string
-        script:
-          type: string
-    DataStore:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        name:
-          type: string
-        dataState:
-          type: string
-        itemSubjectRef:
-          type: string
-    ProcessDefinitionActionRequest:
-      type: object
-      required:
-      - action
-      properties:
-        action:
-          type: string
-          example: activate
-          description: 'Action to perform: Either activate or suspend'
-        includeProcessInstances:
-          type: boolean
-          description: Whether or not to suspend/activate running process-instances for this process-definition. If omitted, the process-instances are left in the state they are
-        date:
-          type: string
-          format: date-time
-          description: Date (ISO-8601) when the suspension/activation should be executed. If omitted, the suspend/activation is effective immediately.
-        category:
-          type: string
-    MessageFlow:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        name:
-          type: string
-        sourceRef:
-          type: string
-        targetRef:
-          type: string
-        messageRef:
-          type: string
+            $ref: '#/components/schemas/DataSpec'
+        dataOutputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSpec'
+        dataInputRefs:
+          type: array
+          items:
+            type: string
+        dataOutputRefs:
+          type: array
+          items:
+            type: string
     ExtensionAttribute:
       type: object
       properties:
@@ -1103,173 +1285,6 @@ components:
         namespacePrefix:
           type: string
         namespace:
-          type: string
-    Signal:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        name:
-          type: string
-        scope:
-          type: string
-    ValuedDataObject:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        name:
-          type: string
-        documentation:
-          type: string
-        executionListeners:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlowableListener'
-        itemSubjectRef:
-          $ref: '#/components/schemas/ItemDefinition'
-        value:
-          type: object
-        type:
-          type: string
-    DataResponseProcessDefinitionResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProcessDefinitionResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    DataSpec:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        name:
-          type: string
-        itemSubjectRef:
-          type: string
-        collection:
-          type: boolean
-    ItemDefinition:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        structureRef:
-          type: string
-        itemKind:
-          type: string
-    Message:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        name:
-          type: string
-        itemRef:
           type: string
     Process:
       type: object
@@ -1346,7 +1361,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FlowElement'
-    Operation:
+    Escalation:
       type: object
       properties:
         id:
@@ -1371,17 +1386,9 @@ components:
               $ref: '#/components/schemas/ExtensionAttribute'
         name:
           type: string
-        implementationRef:
+        escalationCode:
           type: string
-        inMessageRef:
-          type: string
-        outMessageRef:
-          type: string
-        errorMessageRef:
-          type: array
-          items:
-            type: string
-    Interface:
+    FlowElement:
       type: object
       properties:
         id:
@@ -1406,13 +1413,24 @@ components:
               $ref: '#/components/schemas/ExtensionAttribute'
         name:
           type: string
-        implementationRef:
+        documentation:
           type: string
-        operations:
+        executionListeners:
           type: array
           items:
-            $ref: '#/components/schemas/Operation'
-    BaseElement:
+            $ref: '#/components/schemas/FlowableListener'
+    BpmnDiEdge:
+      type: object
+      properties:
+        sourceDockerInfo:
+          $ref: '#/components/schemas/GraphicInfo'
+        targetDockerInfo:
+          $ref: '#/components/schemas/GraphicInfo'
+        waypoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/GraphicInfo'
+    Pool:
       type: object
       properties:
         id:
@@ -1435,6 +1453,98 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        processRef:
+          type: string
+        executable:
+          type: boolean
+    DataResponseProcessDefinitionResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessDefinitionResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
+    ValuedDataObject:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        documentation:
+          type: string
+        executionListeners:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowableListener'
+        itemSubjectRef:
+          $ref: '#/components/schemas/ItemDefinition'
+        value:
+          type: object
+        type:
+          type: string
+    DataStore:
+      type: object
+      properties:
+        id:
+          type: string
+        xmlRowNumber:
+          type: integer
+          format: int32
+        xmlColumnNumber:
+          type: integer
+          format: int32
+        extensionElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionAttribute'
+        name:
+          type: string
+        dataState:
+          type: string
+        itemSubjectRef:
+          type: string
     FlowableListener:
       type: object
       properties:
@@ -1476,81 +1586,7 @@ components:
           type: string
         scriptInfo:
           $ref: '#/components/schemas/ScriptInfo'
-    IOSpecification:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        dataInputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataSpec'
-        dataOutputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataSpec'
-        dataInputRefs:
-          type: array
-          items:
-            type: string
-        dataOutputRefs:
-          type: array
-          items:
-            type: string
-    BpmnDiEdge:
-      type: object
-      properties:
-        sourceDockerInfo:
-          $ref: '#/components/schemas/GraphicInfo'
-        targetDockerInfo:
-          $ref: '#/components/schemas/GraphicInfo'
-        waypoints:
-          type: array
-          items:
-            $ref: '#/components/schemas/GraphicInfo'
-    DecisionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        category:
-          type: string
-        name:
-          type: string
-        key:
-          type: string
-        description:
-          type: string
-        version:
-          type: integer
-          format: int32
-        resourceName:
-          type: string
-        deploymentId:
-          type: string
-        tenantId:
-          type: string
-        url:
-          type: string
-    Lane:
+    ExtensionElement:
       type: object
       properties:
         id:
@@ -1575,13 +1611,19 @@ components:
               $ref: '#/components/schemas/ExtensionAttribute'
         name:
           type: string
-        parentProcess:
-          $ref: '#/components/schemas/Process'
-        flowReferences:
-          type: array
-          items:
-            type: string
-    Escalation:
+        namespacePrefix:
+          type: string
+        namespace:
+          type: string
+        elementText:
+          type: string
+        childElements:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtensionElement'
+    Resource:
       type: object
       properties:
         id:
@@ -1606,48 +1648,6 @@ components:
               $ref: '#/components/schemas/ExtensionAttribute'
         name:
           type: string
-        escalationCode:
-          type: string
-    Pool:
-      type: object
-      properties:
-        id:
-          type: string
-        xmlRowNumber:
-          type: integer
-          format: int32
-        xmlColumnNumber:
-          type: integer
-          format: int32
-        extensionElements:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionElement'
-        attributes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ExtensionAttribute'
-        name:
-          type: string
-        processRef:
-          type: string
-        executable:
-          type: boolean
-  requestBodies:
-    batchMigrateInstancesOfProcessDefinitionBody:
-      content:
-        application/json:
-          schema:
-            type: string
-    RestIdentityLink:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RestIdentityLink'
   securitySchemes:
     basicAuth:
       type: http

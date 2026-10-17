@@ -617,6 +617,36 @@ paths:
       - basicAuth: []
 components:
   schemas:
+    ProcessInstanceUpdateRequest:
+      type: object
+      required:
+      - action
+      properties:
+        action:
+          type: string
+          example: activate
+          description: 'Action to perform: Either activate or suspend'
+        name:
+          type: string
+        businessKey:
+          type: string
+    InjectActivityRequest:
+      type: object
+      properties:
+        injectionType:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        assignee:
+          type: string
+        taskId:
+          type: string
+        processDefinitionId:
+          type: string
+        joinParallelActivitiesOnComplete:
+          type: boolean
     DataResponseProcessInstanceResponse:
       type: object
       properties:
@@ -637,6 +667,39 @@ components:
         size:
           type: integer
           format: int32
+    ExecutionChangeActivityStateRequest:
+      type: object
+      properties:
+        cancelActivityIds:
+          type: array
+          description: activityIds to be canceled
+          items:
+            type: string
+        startActivityIds:
+          type: array
+          description: activityIds to be started
+          items:
+            type: string
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
     ProcessInstanceResponse:
       type: object
       properties:
@@ -707,78 +770,58 @@ components:
           example: someTenantId
         completed:
           type: boolean
-    InjectActivityRequest:
+    BulkDeleteInstancesRestActionRequest:
       type: object
-      properties:
-        injectionType:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-        assignee:
-          type: string
-        taskId:
-          type: string
-        processDefinitionId:
-          type: string
-        joinParallelActivitiesOnComplete:
-          type: boolean
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
-    QueryVariable:
-      type: object
-      properties:
-        name:
-          type: string
-        operation:
-          type: string
-          enum:
-          - equals
-          - notEquals
-          - equalsIgnoreCase
-          - notEqualsIgnoreCase
-          - like
-          - likeIgnoreCase
-          - greaterThan
-          - greaterThanOrEquals
-          - lessThan
-          - lessThanOrEquals
-        value:
-          type: object
-        type:
-          type: string
-    ProcessInstanceUpdateRequest:
-      type: object
-      required:
-      - action
       properties:
         action:
           type: string
-          example: activate
-          description: 'Action to perform: Either activate or suspend'
+        instanceIds:
+          type: array
+          items:
+            type: string
+        deleteReason:
+          type: string
+    ProcessInstanceCreateRequest:
+      type: object
+      properties:
+        processDefinitionId:
+          type: string
+          example: oneTaskProcess:1:158
+        processDefinitionKey:
+          type: string
+          example: oneTaskProcess
+        message:
+          type: string
+          example: newOrderMessage
         name:
           type: string
+          example: myProcessInstanceName
         businessKey:
           type: string
+          example: myBusinessKey
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        transientVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        startFormVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestVariable'
+        outcome:
+          type: string
+        tenantId:
+          type: string
+          example: tenant1
+        overrideDefinitionTenantId:
+          type: string
+          example: overrideTenant1
+        returnVariables:
+          type: boolean
+      description: Only one of processDefinitionId, processDefinitionKey or message can be used in the request body
     ProcessInstanceQueryRequest:
       type: object
       properties:
@@ -921,82 +964,39 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    ProcessInstanceCreateRequest:
+    QueryVariable:
       type: object
       properties:
-        processDefinitionId:
-          type: string
-          example: oneTaskProcess:1:158
-        processDefinitionKey:
-          type: string
-          example: oneTaskProcess
-        message:
-          type: string
-          example: newOrderMessage
         name:
           type: string
-          example: myProcessInstanceName
-        businessKey:
+        operation:
           type: string
-          example: myBusinessKey
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        transientVariables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        startFormVariables:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestVariable'
-        outcome:
-          type: string
-        tenantId:
-          type: string
-          example: tenant1
-        overrideDefinitionTenantId:
-          type: string
-          example: overrideTenant1
-        returnVariables:
-          type: boolean
-      description: Only one of processDefinitionId, processDefinitionKey or message can be used in the request body
-    ExecutionChangeActivityStateRequest:
-      type: object
-      properties:
-        cancelActivityIds:
-          type: array
-          description: activityIds to be canceled
-          items:
-            type: string
-        startActivityIds:
-          type: array
-          description: activityIds to be started
-          items:
-            type: string
-    BulkDeleteInstancesRestActionRequest:
-      type: object
-      properties:
-        action:
-          type: string
-        instanceIds:
-          type: array
-          items:
-            type: string
-        deleteReason:
+          enum:
+          - equals
+          - notEquals
+          - equalsIgnoreCase
+          - notEqualsIgnoreCase
+          - like
+          - likeIgnoreCase
+          - greaterThan
+          - greaterThanOrEquals
+          - lessThan
+          - lessThanOrEquals
+        value:
+          type: object
+        type:
           type: string
   requestBodies:
-    batchMigrateInstancesOfProcessDefinitionBody:
-      content:
-        application/json:
-          schema:
-            type: string
     ExecutionChangeActivityStateRequest:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ExecutionChangeActivityStateRequest'
+    batchMigrateInstancesOfProcessDefinitionBody:
+      content:
+        application/json:
+          schema:
+            type: string
     BulkDeleteInstancesRestActionRequest:
       content:
         application/json:

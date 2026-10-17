@@ -551,26 +551,6 @@ components:
         referenceType:
           type: string
           example: event-to-cmmn-1.1-case
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
     HistoricCaseInstanceQueryRequest:
       type: object
       properties:
@@ -745,6 +725,60 @@ components:
         caseInstanceUrl:
           type: string
           example: http://localhost:8182/cmmn-history/historic-case-instances/5
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
+    StageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        ended:
+          type: boolean
+        endTime:
+          type: string
+          format: date-time
+        current:
+          type: boolean
+    DataResponseHistoricCaseInstanceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricCaseInstanceResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
+          type: string
+        order:
+          type: string
+        size:
+          type: integer
+          format: int32
     QueryVariable:
       type: object
       properties:
@@ -767,40 +801,6 @@ components:
           type: object
         type:
           type: string
-    DataResponseHistoricCaseInstanceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricCaseInstanceResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
-    StageResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        ended:
-          type: boolean
-        endTime:
-          type: string
-          format: date-time
-        current:
-          type: boolean
   requestBodies:
     migrateHistoricCaseInstanceBody:
       content:

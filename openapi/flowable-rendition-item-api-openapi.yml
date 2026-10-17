@@ -391,24 +391,24 @@ paths:
       security:
       - basicAuth: []
 components:
+  requestBodies:
+    saveContentItemData:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+            required:
+            - file
+      required: true
   schemas:
+    IterablePath:
+      type: object
     UserPrincipalLookupService:
       type: object
-    FileSystem:
-      type: object
-      properties:
-        open:
-          type: boolean
-        readOnly:
-          type: boolean
-        separator:
-          type: string
-        rootDirectories:
-          $ref: '#/components/schemas/IterablePath'
-        fileStores:
-          $ref: '#/components/schemas/IterableFileStore'
-        userPrincipalLookupService:
-          $ref: '#/components/schemas/UserPrincipalLookupService'
     Path:
       type: object
       properties:
@@ -425,9 +425,55 @@ components:
         nameCount:
           type: integer
           format: int32
-    IterablePath:
+    RenditionItemResponse:
       type: object
-    IterableFileStore:
+      properties:
+        id:
+          type: string
+        contentItemId:
+          type: string
+        name:
+          type: string
+        mimeType:
+          type: string
+        taskId:
+          type: string
+        processInstanceId:
+          type: string
+        contentStoreId:
+          type: string
+        contentStoreName:
+          type: string
+        contentAvailable:
+          type: boolean
+        contentItemName:
+          type: string
+        tenantId:
+          type: string
+        created:
+          type: string
+          format: date-time
+        lastModified:
+          type: string
+          format: date-time
+        url:
+          type: string
+    FileSystem:
+      type: object
+      properties:
+        open:
+          type: boolean
+        readOnly:
+          type: boolean
+        separator:
+          type: string
+        rootDirectories:
+          $ref: '#/components/schemas/IterablePath'
+        fileStores:
+          $ref: '#/components/schemas/IterableFileStore'
+        userPrincipalLookupService:
+          $ref: '#/components/schemas/UserPrincipalLookupService'
+    InputStream:
       type: object
     Resource:
       type: object
@@ -458,28 +504,8 @@ components:
             format: byte
         inputStream:
           $ref: '#/components/schemas/InputStream'
-    InputStream:
+    IterableFileStore:
       type: object
-    DataResponseRenditionItemResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/RenditionItemResponse'
-        total:
-          type: integer
-          format: int64
-        start:
-          type: integer
-          format: int32
-        sort:
-          type: string
-        order:
-          type: string
-        size:
-          type: integer
-          format: int32
     RenditionItemQueryRequest:
       type: object
       properties:
@@ -573,52 +599,26 @@ components:
           type: string
         withoutTenantId:
           type: boolean
-    RenditionItemResponse:
+    DataResponseRenditionItemResponse:
       type: object
       properties:
-        id:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RenditionItemResponse'
+        total:
+          type: integer
+          format: int64
+        start:
+          type: integer
+          format: int32
+        sort:
           type: string
-        contentItemId:
+        order:
           type: string
-        name:
-          type: string
-        mimeType:
-          type: string
-        taskId:
-          type: string
-        processInstanceId:
-          type: string
-        contentStoreId:
-          type: string
-        contentStoreName:
-          type: string
-        contentAvailable:
-          type: boolean
-        contentItemName:
-          type: string
-        tenantId:
-          type: string
-        created:
-          type: string
-          format: date-time
-        lastModified:
-          type: string
-          format: date-time
-        url:
-          type: string
-  requestBodies:
-    saveContentItemData:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              file:
-                type: string
-                format: binary
-            required:
-            - file
-      required: true
+        size:
+          type: integer
+          format: int32
   securitySchemes:
     basicAuth:
       type: http

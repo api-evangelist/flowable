@@ -94,7 +94,32 @@ paths:
       security:
       - basicAuth: []
 components:
+  requestBodies:
+    DmnRuleServiceRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DmnRuleServiceRequest'
+      description: request
   schemas:
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
     DmnRuleServiceSingleResponse:
       type: object
       properties:
@@ -119,24 +144,6 @@ components:
             $ref: '#/components/schemas/EngineRestVariable'
         disableHistory:
           type: boolean
-    EngineRestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
     DmnRuleServiceResponse:
       type: object
       properties:
@@ -148,13 +155,6 @@ components:
               $ref: '#/components/schemas/EngineRestVariable'
         url:
           type: string
-  requestBodies:
-    DmnRuleServiceRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/DmnRuleServiceRequest'
-      description: request
   securitySchemes:
     basicAuth:
       type: http

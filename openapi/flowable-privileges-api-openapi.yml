@@ -277,6 +277,40 @@ paths:
       - basicAuth: []
 components:
   schemas:
+    UserResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          example: john.doe
+          description: The id of the user
+        firstName:
+          type: string
+          example: John
+          description: The first name if the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        displayName:
+          type: string
+          example: John Doe
+          description: The display name of the user
+        email:
+          type: string
+          example: no-reply@flowable.org
+          description: The email of the user
+        tenantId:
+          type: string
+          description: The tenant id of the user
+      description: The response for the OSS User
+    AddUserPrivilegeRequest:
+      type: object
+      properties:
+        userId:
+          type: string
     DataResponsePrivilegeResponse:
       type: object
       properties:
@@ -297,6 +331,44 @@ components:
         size:
           type: integer
           format: int32
+    EngineRestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+    PrivilegeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+    AddGroupPrivilegeRequest:
+      type: object
+      properties:
+        groupId:
+          type: string
     GroupResponse:
       type: object
       properties:
@@ -333,84 +405,12 @@ components:
           description: Collection of all identity infos for the group
           items:
             $ref: '#/components/schemas/EngineRestVariable'
-    AddUserPrivilegeRequest:
-      type: object
-      properties:
-        userId:
-          type: string
-    PrivilegeResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserResponse'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupResponse'
-    EngineRestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-    UserResponse:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          example: john.doe
-          description: The id of the user
-        firstName:
-          type: string
-          example: John
-          description: The first name if the user
-        lastName:
-          type: string
-          example: Doe
-          description: The last name of the user
-        displayName:
-          type: string
-          example: John Doe
-          description: The display name of the user
-        email:
-          type: string
-          example: no-reply@flowable.org
-          description: The email of the user
-        tenantId:
-          type: string
-          description: The tenant id of the user
-      description: The response for the OSS User
     BasicPrivilegeResponse:
       type: object
       properties:
         id:
           type: string
         name:
-          type: string
-    AddGroupPrivilegeRequest:
-      type: object
-      properties:
-        groupId:
           type: string
   securitySchemes:
     basicAuth:

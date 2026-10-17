@@ -315,6 +315,26 @@ paths:
       x-s2o-warning: Operation queryHistoricPlanItemInstance has multiple requestBodies
 components:
   schemas:
+    RestVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myVariable
+          description: Name of the variable
+        type:
+          type: string
+          example: string
+          description: Type of the variable.
+        value:
+          type: object
+          example: test
+          description: Value of the variable.
+        valueUrl:
+          type: string
+          example: http://....
+        scope:
+          type: string
     HistoricPlanItemInstanceResponse:
       type: object
       properties:
@@ -574,26 +594,6 @@ components:
           type: boolean
         includeLocalVariables:
           type: boolean
-    RestVariable:
-      type: object
-      properties:
-        name:
-          type: string
-          example: myVariable
-          description: Name of the variable
-        type:
-          type: string
-          example: string
-          description: Type of the variable.
-        value:
-          type: object
-          example: test
-          description: Value of the variable.
-        valueUrl:
-          type: string
-          example: http://....
-        scope:
-          type: string
   securitySchemes:
     basicAuth:
       type: http
